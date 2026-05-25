@@ -1,0 +1,313 @@
+Subject: LangSOP Initial Workflow V2 Exploded Specification
+Date: 2026-05-25
+Exploded Specification UUID: 9d60b07e-49c3-4c40-b7bb-2cbaa8412b87
+
+@ [source_manifest] docs/source/2026-05-25_langsop_initial_workflow_v2/Source_Document_Manifest.sop
+@ [source_snapshot] docs/source/2026-05-25_langsop_initial_workflow_v2/SourceSnapshot_LangSOP_Initial_Workflow.v1.canonical.sop
+@ [source_snapshot] docs/source/2026-05-25_langsop_initial_workflow_v2/SourceSnapshot_LangSOP_Initial_Workflow.v1.exploded.sop
+@ [source_snapshot] docs/source/2026-05-25_langsop_initial_workflow_v2/SourceSnapshot_Capability_Field_Seed.v1.sop
+@ [prior_source_document] docs/source/2026-05-25_langsop_initial_workflow/Dictated_LangSOP_Source.sop
+@ [platform_source] platform/refinement/Specification_Justification_Solution.sop
+@ [platform_source] platform/refinement/Data_Driven_Design.sop
+@ [platform_source] platform/refinement/Project_Narrative_Surface.sop
+@ [platform_source] platform/refinement/Shared_Cognition_Space.sop
+@ [platform_source] platform/refinement/Agent_Coordination_Narrative_Negotiations.sop
+@ [platform_source] platform/refinement/Feature_Requirement_Support.sop
+@ [platform_source] platform/refinement/Model_Budget_Routing.sop
+
+& [LangSOPInitialWorkflowV2] is the second-pass expanded specification for compiling SOP-governed duties into an operational LangGraph and authority-kernel platform
+  + [root_subject] is LangSOP as a runtime-capable successor layer for ReasoningFramework workflow execution
+  + [primary_intent] is reduce repeated model-side SOP execution while preserving SOP as proof, soft-wire semantics, debugging source, and authority court
+  + [source_pressure] is v1 established the layer split but did not fully define kernel schemas, operator contracts, surface projections, fold traces, or packetization rules
+  + [v2_resolution] is stable surface specification ready for schema and operator-contract design, not runtime implementation
+
+  = must: preserve the v1 insight that SOP remains authority and LangGraph remains procedure
+  = must: expand the capability field enough that a surface layer can decompose work on demand
+  = must: encode blocked objectives as first-class planning material
+  = must: define enough operator contract shape to prevent hidden model improvisation
+  = must: define proof and fault routes before runtime implementation begins
+  - never: allow the v2 expansion to imply runtime completion
+
+## Fold 1: Subject Boundary
+
+& [Fold1SubjectBoundary] is the boundary pass for what LangSOP is and is not
+  + [inside] is SOP-to-operator compilation policy, authority kernel records, LangGraph execution shape, surface projections, capability-field planning, packetization, completion review, and proof/fault feedback
+  + [outside] is replacing SOP, replacing Git, replacing all chat systems, full production operations management, unrestricted machine control, and direct model-provider abstraction
+  + [references] are ReasoningFramework SOP layers, LangGraph, Langflow, future chat adapters, future operations manager, GitHub repository workflow, and target machine runtime
+  + [uncertainty] is first storage backend, exact LangGraph package version, first compiled operator, and live operations safety scope
+
+  = must: treat LangSOP as a workflow compilation and execution substrate
+  = must: keep SOP available for reconsideration rather than retiring it into unreachable archives
+  = must: keep existing external tools as projections, adapters, or executors unless their authority model is explicitly proven
+  = must: expose uncertainty as planning material
+
+& [NonGoalSet] is the explicit non-goal set for v2
+  + [non_goal] is implement live GPU or process control in this pass
+  + [non_goal] is replace ReasoningFramework SOP files with Python code
+  + [non_goal] is depend on Langflow as the canonical record model
+  + [non_goal] is treat LangGraph checkpoints as authoritative project memory
+  + [non_goal] is create autonomous repository mutation without work-packet authority and completion review
+
+## Fold 2: Data Design
+
+& [Fold2DataDesign] is the data model pass for the authority kernel
+  + [conceptual_model] is source events, authority artifacts, semantic projections, capability fields, work packets, and proof/fault feedback
+  + [logical_model] is typed records with natural keys, lineage edges, freshness rules, and status vocabularies
+  + [physical_model] is undecided between SOP-first files, SQLite, Postgres, or hybrid storage
+  + [hybrid_fit] is strong because SOP preserves semantic authority while a database may serve query, indexing, and runtime concurrency
+
+  = must: define conceptual and logical identity before choosing physical storage
+  = must: distinguish source records from derived projections
+  = must: allow physical storage to change without changing conceptual authority
+  = must: preserve file-backed SOP artifacts as authority even if database mirrors exist
+
+| [KernelRecordKind] is (
+  source_log |
+  log_entry |
+  citation_ref |
+  narrative_node |
+  understanding_anchor |
+  capability_node |
+  requirement_record |
+  support_record |
+  support_gap |
+  authority_artifact |
+  coordination_claim |
+  operator_contract |
+  operator_trace |
+  work_packet |
+  completion_review |
+  readiness_projection |
+  stale_projection |
+  proof_result |
+  fault_record
+)
+
+| [AuthorityState] is (
+  source_only |
+  narrative_projection |
+  accepted_decision |
+  signed_sjs |
+  proof_backed |
+  stale_projection |
+  contradicted |
+  invalidated |
+  human_override
+)
+
+| [ReadinessState] is (
+  desired |
+  source_preserved |
+  specified |
+  supported |
+  blocked |
+  deferred |
+  ready_to_packetize |
+  packetized |
+  assigned |
+  implemented |
+  verified |
+  stale |
+  superseded |
+  contradicted
+)
+
+& [KernelRecord] is the common record contract for authority-kernel material
+  + [record_id] is the stable surrogate key when a natural key is composite or large
+  + [record_kind] is one KernelRecordKind value
+  + [natural_key] is the domain-meaning key when available
+  + [subject_ref] is the capability, narrative branch, source, artifact, or operator subject the record belongs to
+  + [authority_state] is one AuthorityState value when the record carries a claim
+  + [source_ref_set] is the source documents, log entries, proofs, or authority artifacts supporting the record
+  + [lineage_edge_set] is derivation, projection, implementation, proof, invalidation, or supersession relations
+  + [freshness_rule] is the condition that keeps the record current
+  + [status] is the lifecycle state appropriate to record_kind
+
+  = must: preserve source_ref_set for every derived or claim-bearing record
+  = must: mark stale_projection when freshness_rule fails
+  = must: preserve contradicted or invalidated records as trace
+
+& [CapabilityNode] is the whole-field planning unit
+  + [natural_key] is project_scope plus capability_id
+  + [capability_id] is stable within project_scope
+  + [capability_name] is human-readable
+  + [purpose] is why the capability exists
+  + [authority_state] is one AuthorityState value
+  + [readiness_state] is one ReadinessState value
+  + [requirement_set] is RequirementRecord entries
+  + [dependency_set] is capability, artifact, proof, tool, environment, or decision dependencies
+  + [support_set] is SupportRecord entries
+  + [support_gap_set] is SupportGap entries
+  + [proof_route] is the verification path for capability claims
+  + [packetization_rule] is the rule that allows work_packet generation
+  + [blocked_reason] is required when readiness_state is blocked or deferred
+
+  = must: allow blocked and deferred capability nodes to exist without work packets
+  = must: not become verified without proof_result or explicit validated absence
+
+& [WorkPacket] is a generated executable view over current kernel state
+  + [natural_key] is packet_series plus packet_revision
+  + [packet_id] is a durable identifier
+  + [packet_kind] is research, specification, architecture, implementation, fixture, proof, ledger_update, adapter, review, rendezvous, blocker_resolution, or operations
+  + [capability_ref_set] is the capability nodes the packet serves
+  + [requirement_ref_set] is the requirements the packet may alter or satisfy
+  + [authority_basis] is the source, signed spec, proof, or human override allowing the packet
+  + [precondition_set] is what must be true before execution
+  + [expected_output_set] is files, records, proof outputs, or decisions expected from completion
+  + [verification_oracle] is the command, fixture, proof, review, or explicit absence check that validates output
+  + [model_route] is Spark-suitable or requires_deeper_reasoning with reason
+  + [completion_review_required] is true
+
+  = must: be regenerated when readiness_projection becomes stale
+  = must: preserve authority_basis and verification_oracle
+  = must: not replace capability_node identity
+
+## Fold 3: Procedure Model
+
+& [Fold3ProcedureModel] is the LangGraph execution model pass
+  + [procedure_principle] is LangGraph executes operators over authority kernel records
+  + [graph_state] is resumable execution state, current operator context, interrupt metadata, and references to kernel records
+  + [kernel_state] is truth-bearing source, authority, narrative, support, readiness, and proof state
+  + [interrupt_policy] is pause for human or deeper model judgment when a node encounters authority conflict, ambiguous identity, missing proof route, or high-risk operation
+
+  = must: keep graph_state small and reconstructable from kernel references
+  = must: write meaning-bearing output to kernel records
+  = must: preserve operator traces for every compiled duty
+
+& [GraphNodeContract] is the common contract for LangGraph nodes
+  + [node_id] is stable graph-local name
+  + [operator_ref] is the operator_contract implemented or invoked by the node
+  + [input_record_set] is typed kernel records read by the node
+  + [output_record_set] is typed kernel records created or updated by the node
+  + [precondition_set] is required authority, freshness, and data-shape conditions
+  + [postcondition_set] is the state guaranteed after success
+  + [interrupt_condition_set] is conditions requiring human or model judgment
+  + [fault_condition_set] is conditions that emit fault_record or blocked state
+  + [trace_ref] is the operator_trace record for the invocation
+
+  = must: define input and output record kinds before implementation
+  = must: expose interrupt_condition_set before execution
+  = must: avoid hidden writes to authority artifacts
+
+& [WholeFieldPlannerGraph] is the v2 target graph shape
+  + [SourceIntakeNode] is source-preserving and manifest-producing
+  + [BoundaryDelineationNode] is subject and scope boundary forming
+  + [CapabilityFieldUpdateNode] is capability-node creation and revision
+  + [DataIdentityNode] is natural-key and data-relation review
+  + [RequirementSupportNode] is requirement, dependency, support, and support-gap mapping
+  + [AuthorityClassificationNode] is source, narrative, signed, proof-backed, stale, or invalid authority classification
+  + [ReadinessProjectionNode] is derived readiness recomputation
+  + [PacketizationNode] is work-packet candidate generation
+  + [CoordinationPreflightNode] is claim overlap, dirty surface, and mailbox/inbox preflight
+  + [DispatchNode] is packet publication or assignment
+  + [CompletionReviewNode] is support_delta, requirement_delta, stale projection, and proof/fault review
+  + [NarrativeUpdateNode] is narrative, reentry, and unresolved-item update
+  + [SJSAuthorityUpdateNode] is source, exploded, canonical, signature, solution, and registry artifact update when authority changes
+
+  = must: run SourceIntakeNode before SJSAuthorityUpdateNode for new dictated specifications
+  = must: run CompletionReviewNode before generating the next packet after completed work
+  = must: allow HumanReviewInterrupt after any node when authority, ambiguity, or risk requires it
+
+## Fold 4: Authority Model
+
+& [Fold4AuthorityModel] is the authority and proof pass
+  + [source_data] is user dictation, preserved source documents, source snapshots, imported logs, proof outputs, and raw events
+  + [derived_projection] is exploded specifications, canonical summaries, readiness projections, packets, context packs, and surface views
+  + [accepted_authority] is source_data plus valid SJS canonical artifacts and proof-backed records
+  + [runtime_authority_limit] is operators may update derived state but cannot silently change source or canonical authority
+
+  = must: inspect satisfaction_signature before treating a canonical spec as processed authority
+  = must: mark generated readiness and work packets as derived_projection
+  = must: route authority change through SJS when source requirements change
+  = must: preserve invalidated or superseded authority for debugging
+
+& [AuthorityTransition] is the lifecycle of a claim from source to proof
+  + [source_only] is preserved but not yet interpreted as authority
+  + [narrative_projection] is meaning extracted from source but not governing implementation alone
+  + [accepted_decision] is a reviewed decision that may guide planning
+  + [signed_sjs] is canonical authority after valid SJS processing
+  + [proof_backed] is verified behavior with proof_result support
+  + [stale_projection] is derived state requiring recompute
+  + [contradicted] is a claim opposed by support or proof
+  + [invalidated] is authority no longer valid for current work
+  + [human_override] is explicit user override with citation and scope limit
+
+  = must: preserve transition lineage
+  = must: forbid direct transition from source_only to proof_backed without specification and proof support
+
+& [SignatureValidationOperatorIntent] is the first authority operator candidate
+  + [input] is candidate specification path, expected signature protocol UUID, source manifest, and optional hash set
+  + [output] is authority_state, signature_status, source_lineage_status, invalidation_reason, and citation_ref set
+  + [interrupt_condition] is missing source, mismatched hash, duplicate signature, or ambiguous lineage
+  + [proof_route] is deterministic fixture specs with valid, missing, invalid, and stale signatures
+
+## Fold 5: Surface Model
+
+& [Fold5SurfaceModel] is the projection and interaction pass
+  + [surface_principle] is surfaces render and submit through kernel operators without owning truth
+  + [manager_surface] is overview of capability field, readiness, blockers, packets, claims, proofs, and next frontiers
+  + [worker_surface] is a bounded work-packet view with authority basis, preconditions, expected outputs, and verification oracle
+  + [narrative_surface] is subject-tree, narrative-weave, decision, proof, dead-end, readiness, and frontier view
+  + [debug_surface] is source log, operator trace, stale projection, invalidation, and fault inspection view
+  + [chat_surface] is human and agent conversation projection over source_log and narrative anchors
+  + [langflow_surface] is optional visual/prototype flow surface generated from or linked to operator contracts
+
+  = must: preserve projection lineage from every surface row to kernel records
+  = must: show stale and blocked state visibly
+  = must: let surfaces submit events only through validated operators
+  = must: keep chat useful without making chat the canonical record model
+
+& [SurfaceProjectionRecord] is the kernel record for a rendered or exported surface view
+  + [surface_id] is stable identifier for one surface instance or export
+  + [surface_kind] is manager, worker, narrative, debug, chat, langflow, codex, terminal, irc, matrix, or web
+  + [source_record_set] is kernel records used to produce the projection
+  + [projection_hash] is optional content hash of rendered output
+  + [freshness_rule] is recompute when any source_record_set member changes or becomes stale
+  + [authority_notice] is the visible statement of whether projection is source, derived, stale, or advisory
+
+  = must: make authority_notice visible where decisions may be made from the surface
+
+## Fold 6: Fault Model
+
+& [Fold6FaultModel] is the operational fault and debugging pass
+  + [fault_kind] is over_compilation, hidden_authority_drift, stale_packetization, missing_source_lineage, unreviewed_completion, false_ready_packet, checkpoint_authority_confusion, surface_truth_confusion, unsupported_operations_control, or ambiguous_identity
+  + [fault_record] is a durable kernel record with evidence, local repair, prevention story, and SOP escalation path
+  + [debug_route] is inspect source, operator trace, projection lineage, authority transition, and freshness rule before repair
+
+  = must: emit fault_record when an operator cannot safely classify unknown state
+  = must: route reusable fault lessons through SOP-first reconsideration before becoming compiled rules
+  = must: preserve false-ready and stale-packet faults because they directly threaten manager workflow quality
+
+& [CriticalFaultSet] is the initial high-risk fault set
+  + [checkpoint_authority_confusion] is treating LangGraph checkpoint state as truth-bearing authority
+  + [surface_truth_confusion] is treating a rendered surface or Langflow flow as canonical state
+  + [false_ready_packet] is generating a work packet when support gaps remain unresolved
+  + [unreviewed_completion] is assigning next work before completion_review processes deltas
+  + [over_compilation] is compiling a semantic duty before its ambiguity and authority boundaries are stable
+  + [unsupported_operations_control] is allowing machine control before safety authority and dry-run proof exist
+
+  = must: block runtime escalation when any critical fault is active and unresolved
+
+## Fold 7: Development Frontier
+
+& [Fold7DevelopmentFrontier] is the implementation ordering pass
+  + [frontier_1] is kernel record schema and natural-key design
+  + [frontier_2] is storage decision and source/projection preservation rules
+  + [frontier_3] is operator contract template and first authority/readiness operators
+  + [frontier_4] is deterministic fixture pack for capability fields, signatures, support readiness, and packetization
+  + [frontier_5] is minimal LangGraph proof-of-shape using fixture kernel records
+  + [frontier_6] is manager, worker, narrative, and debug surface projections over fixture records
+  + [frontier_7] is first end-to-end compiled ReasoningFramework duty with SOP comparison trace
+  + [frontier_8] is operations-manager safety specification before live machine control
+
+  = must: keep frontiers 1 through 3 in deeper-reasoning mode
+  = must: mark fixture, validator, template, and projection implementation as Spark-suitable after contracts stabilize
+  = must: not begin live operations-manager implementation until frontier_8 is signed
+
+& [V2ReadinessConclusion] is the result of the seven-fold pass
+  + [ready_for] is kernel schema design, operator contract design, storage decision, and fixture planning
+  + [not_ready_for] is live LangGraph runtime reliance, live machine operations, autonomous dispatch, or production surface deployment
+  + [primary_gain_delta] is v2 converts the v1 layer concept into a data/procedure/authority/surface/fault/frontier specification suitable for further SJS processing
+  + [remaining_uncertainty] is exact storage backend, first operator implementation order, and Langflow export depth
+
+  = must: promote v2 canonical only with satisfaction signature and source-snapshot lineage

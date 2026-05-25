@@ -1,0 +1,153 @@
+Subject: LangSOP Capability Field V2
+Date: 2026-05-25
+
+@ [canonical_specification] docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+@ [prior_capability_seed] docs/planning/Capability_Field_Seed.sop
+
+& [LangSOPCapabilityFieldV2] is the expanded whole-field planning surface for LangSOP
+  + [field_status] is v2_ready_for_schema_and_operator_design
+  + [source_authority] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [purpose] is provide capability nodes, dependencies, support gaps, proof routes, and packetization targets for surface-layer decomposition
+
+& [CapabilityNode: semantic-proof-layer] is specified
+  + [capability_id] is semantic-proof-layer
+  + [authority_state] is signed_sjs
+  + [readiness_state] is supported
+  + [purpose] is preserve SOP source, proof, canonical authority, soft-wire debugging, semantic repair, and invalidation paths
+  + [requirement] is source snapshots must be preserved before reprocessing
+  + [requirement] is satisfaction signatures must use protocol UUID ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [requirement] is semantic ambiguity routes back to SOP-first processing
+  + [support] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [proof_route] is validate source manifest hashes and signature fields
+  + [packetization_rule] is not an implementation packet; supports authority-kernel and operator-contract design
+
+& [CapabilityNode: authority-kernel-schema] is ready_to_packetize
+  + [capability_id] is authority-kernel-schema
+  + [authority_state] is signed_sjs
+  + [readiness_state] is ready_to_packetize
+  + [purpose] is define the logical record schema for truth-bearing kernel state
+  + [requirement] is define KernelRecord common fields
+  + [requirement] is define record-specific schemas for capability_node, work_packet, operator_contract, operator_trace, completion_review, readiness_projection, proof_result, and fault_record
+  + [requirement] is define natural keys before storage backend implementation
+  + [dependency] is CanonicalKernelRecordContractV2
+  + [support] is Fold2DataDesign
+  + [support_gap] is physical storage remains undecided
+  + [proof_route] is schema fixtures with valid, stale, blocked, contradicted, and invalid records
+  + [packetization_rule] is create architecture/schema packet requiring deeper reasoning
+
+& [CapabilityNode: storage-backend-decision] is blocked
+  + [capability_id] is storage-backend-decision
+  + [authority_state] is signed_sjs
+  + [readiness_state] is blocked
+  + [purpose] is choose SOP-only files, SQLite, Postgres, or hybrid storage for v1 runtime
+  + [requirement] is compare source preservation, query needs, concurrency, Git friendliness, migration cost, and LangGraph integration
+  + [dependency] is authority-kernel-schema
+  + [blocker] is logical schema must be stable enough to evaluate physical fit
+  + [proof_route] is decision record with tradeoff table and invalidation conditions
+  + [packetization_rule] is packetize after kernel schema draft exists
+
+& [CapabilityNode: operator-contract-template] is ready_to_packetize
+  + [capability_id] is operator-contract-template
+  + [authority_state] is signed_sjs
+  + [readiness_state] is ready_to_packetize
+  + [purpose] is define the common contract for compiling stable SOP duties into traceable operators
+  + [requirement] is operator_id, source_sop_ref, input records, output records, preconditions, postconditions, interrupts, faults, trace schema, and fixtures
+  + [requirement] is distinguish operator success, blocked output, fault output, and SOP-first interrupt
+  + [support] is CanonicalOperatorContractV2
+  + [proof_route] is fixture operator contract review against signature_validation and support_readiness_recompute examples
+  + [packetization_rule] is create deeper-reasoning design packet
+
+& [CapabilityNode: signature-validation-operator] is blocked
+  + [capability_id] is signature-validation-operator
+  + [authority_state] is signed_sjs
+  + [readiness_state] is blocked
+  + [purpose] is mechanically validate candidate SOP canonical authority
+  + [requirement] is inspect signature protocol UUID, signature status, source lineage, source hashes, and processed_stage_set
+  + [dependency] is operator-contract-template
+  + [dependency] is authority-kernel-schema
+  + [blocker] is operator contract template not yet created
+  + [proof_route] is valid, missing, invalid, stale, duplicate, and broken-lineage fixture specs
+  + [packetization_rule] is Spark-suitable after operator template and schema are accepted
+
+& [CapabilityNode: support-readiness-operator] is blocked
+  + [capability_id] is support-readiness-operator
+  + [authority_state] is signed_sjs
+  + [readiness_state] is blocked
+  + [purpose] is derive readiness_projection from requirements, support records, support gaps, proof status, ownership, and risk
+  + [requirement] is never generate ready packet while unresolved blocking support_gap remains
+  + [requirement] is emit stale_projection when support freshness fails
+  + [dependency] is authority-kernel-schema
+  + [dependency] is operator-contract-template
+  + [proof_route] is fixture capability field with ready, blocked, stale, unsupported, and verified cases
+  + [packetization_rule] is Spark-suitable after schema and template are accepted
+
+& [CapabilityNode: work-packet-generator] is blocked
+  + [capability_id] is work-packet-generator
+  + [authority_state] is signed_sjs
+  + [readiness_state] is blocked
+  + [purpose] is generate WorkPacket records from readiness_projection and capability nodes
+  + [requirement] is preserve authority_basis, preconditions, expected outputs, verification_oracle, and model_route
+  + [requirement] is mark completion_review_required true
+  + [dependency] is support-readiness-operator
+  + [proof_route] is fixture readiness projection producing correct packet candidates and no false-ready packets
+  + [packetization_rule] is Spark-suitable after readiness operator proof fixtures exist
+
+& [CapabilityNode: whole-field-planner-graph] is blocked
+  + [capability_id] is whole-field-planner-graph
+  + [authority_state] is signed_sjs
+  + [readiness_state] is blocked
+  + [purpose] is implement the minimal LangGraph proof-of-shape over fixture kernel records
+  + [requirement] is graph nodes operate only through operator contracts
+  + [requirement] is graph checkpoint stores execution state and kernel references, not authority
+  + [dependency] is authority-kernel-schema
+  + [dependency] is operator-contract-template
+  + [dependency] is fixture-pack
+  + [proof_route] is run graph over fixture records and compare output kernel records to expected traces
+  + [packetization_rule] is Spark-suitable after schemas, operator template, and fixture pack are accepted
+
+& [CapabilityNode: surface-projection-fixtures] is blocked
+  + [capability_id] is surface-projection-fixtures
+  + [authority_state] is signed_sjs
+  + [readiness_state] is blocked
+  + [purpose] is render manager, worker, narrative, and debug views from fixture kernel records
+  + [requirement] is every projection includes source_record_set, freshness_rule, and authority_notice
+  + [requirement] is blocked, stale, and contradicted state must be visible
+  + [dependency] is authority-kernel-schema
+  + [dependency] is fixture-pack
+  + [proof_route] is projection snapshot fixtures and stale-source recompute tests
+  + [packetization_rule] is Spark-suitable after fixture pack exists
+
+& [CapabilityNode: operations-manager-safety] is deferred
+  + [capability_id] is operations-manager-safety
+  + [authority_state] is source_only
+  + [readiness_state] is deferred
+  + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model-runtime, and job-control management
+  + [requirement] is no live machine control before signed operations safety specification
+  + [requirement] is dry-run and fixture proof before live resource changes
+  + [dependency] is whole-field-planner-graph
+  + [dependency] is work-packet-generator
+  + [blocker] is frontiers 1 through 7 must mature first
+  + [proof_route] is future dry-run resource and job fixtures
+  + [packetization_rule] is requires deeper reasoning after core kernel/graph surfaces stabilize
+
+& [V2InitialPacketCandidates] is the current decomposition-ready packet view
+  + [packet_candidate] is kernel-record-schema-design
+    + [model_route] is requires_deeper_reasoning
+    + [reason] is natural keys, authority states, and source/projection split are architecture-level decisions
+    + [verification_oracle] is schema fixture review
+  + [packet_candidate] is operator-contract-template-design
+    + [model_route] is requires_deeper_reasoning
+    + [reason] is compiled SOP duty boundary is authority-sensitive
+    + [verification_oracle] is example operator contracts for signature_validation and support_readiness_recompute
+  + [packet_candidate] is storage-backend-decision
+    + [model_route] is requires_deeper_reasoning
+    + [reason] is physical model decision affects source authority, queryability, concurrency, and Git workflow
+    + [verification_oracle] is documented tradeoff and invalidation record
+  + [packet_candidate] is fixture-pack-generation
+    + [model_route] is Spark-suitable after schema contracts stabilize
+    + [reason] is bounded fixture generation with clear expected states
+    + [verification_oracle] is fixture validation tests
+  + [packet_candidate] is manager-worker-debug-surface-projections
+    + [model_route] is Spark-suitable after kernel fixture pack exists
+    + [reason] is bounded projection/template work with snapshot tests
+    + [verification_oracle] is projection fixtures with authority_notice and freshness checks

@@ -1,0 +1,191 @@
+Subject: LangSOP Initial Workflow V2 Canonical Specification
+Date: 2026-05-25
+
+@ [source_manifest] docs/source/2026-05-25_langsop_initial_workflow_v2/Source_Document_Manifest.sop
+@ [exploded_specification] docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop
+@ [prior_canonical] docs/canonical/LangSOP_Initial_Workflow.canonical.sop
+@ [prior_capability_seed] docs/planning/Capability_Field_Seed.sop
+@ [sjs_protocol] platform/refinement/Specification_Justification_Solution.sop
+
+& [CanonicalRecord: LangSOPInitialWorkflowV2] is the processed v2 planning authority for LangSOP
+  + [canonical_uuid] is 6b2f499c-a572-44c4-a13a-e8c9c1ea1fa0
+  + [source_manifest_uuid] is 45bf86c8-ded3-4f8a-b664-ebbc25e02747
+  + [exploded_uuid] is 9d60b07e-49c3-4c40-b7bb-2cbaa8412b87
+  + [authority_scope] is layer split, authority-kernel data model, LangGraph procedure model, surface projection model, fault model, and staged development frontier
+  + [implementation_scope] is specification and planning authority only
+  + [supersedes] is docs/canonical/LangSOP_Initial_Workflow.canonical.sop for planning details covered by v2
+  + [satisfaction_signature] is [SatisfactionSignature: LangSOPInitialWorkflowV2]
+
+  = must: treat this file as current LangSOP planning authority until superseded or invalidated
+  = must: preserve v1 artifacts and v2 source snapshots as lineage
+  = must: forbid runtime implementation claims from this file alone
+  = must: require future solution records for implemented schemas, operators, graphs, or surfaces
+
+& [CanonicalArchitectureContractV2] is the stable architecture split
+  + [sop_semantic_layer] is source, proof, SJS authority, semantic debugging, and reconsideration
+  + [authority_kernel_layer] is truth-bearing typed record storage and derived-projection governance
+  + [langgraph_procedure_layer] is executable workflow over authority kernel records
+  + [surface_projection_layer] is manager, worker, narrative, debug, chat, Langflow, Codex, terminal, IRC, Matrix, and web projections
+  + [judgment_layer] is human or model reasoning for ambiguity, high risk, semantic conflict, and authority mutation
+
+  = must: preserve SOP as authority and soft-wire debugging source
+  = must: keep kernel records as truth-bearing runtime state
+  = must: keep LangGraph checkpoints as execution state
+  = must: keep surfaces as projections and validated input channels
+  = must: escalate to judgment_layer when compiled operators encounter semantic uncertainty or authority conflict
+
+& [CanonicalKernelRecordContractV2] is the initial logical data contract
+  + [record_kind_set] is source_log, log_entry, citation_ref, narrative_node, understanding_anchor, capability_node, requirement_record, support_record, support_gap, authority_artifact, coordination_claim, operator_contract, operator_trace, work_packet, completion_review, readiness_projection, stale_projection, proof_result, and fault_record
+  + [shared_field] is record_id
+  + [shared_field] is record_kind
+  + [shared_field] is natural_key
+  + [shared_field] is subject_ref
+  + [shared_field] is authority_state
+  + [shared_field] is source_ref_set
+  + [shared_field] is lineage_edge_set
+  + [shared_field] is freshness_rule
+  + [shared_field] is status
+
+  = must: define natural keys before choosing physical storage
+  = must: distinguish source data from derived projections
+  = must: preserve source_ref_set for every claim-bearing or derived record
+  = must: keep invalidated, contradicted, and stale records as trace
+
+& [CanonicalCapabilityPlanningContractV2] is the whole-field planning contract
+  + [planning_primitive] is capability_node
+  + [execution_primitive] is work_packet
+  + [blocked_objective] is first-class planning material
+  + [readiness_projection] is derived and recomputable
+  + [completion_review] is required before next packetization after completed work
+
+  = must: bake the whole capability field before slicing work
+  = must: generate work packets only from readiness, support, authority, proof, dependency, ownership, risk, and verification conditions
+  = must: record blocked_reason for blocked or deferred capability nodes
+  = must: recompute readiness after completion_review changes support, requirements, proof, or freshness
+
+& [CanonicalOperatorContractV2] is the common shape for compiled SOP duties
+  + [operator_id] is stable identifier
+  + [source_sop_ref] is the SOP authority that justifies the operator
+  + [input_record_kind_set] is required kernel record kinds
+  + [output_record_kind_set] is created or updated kernel record kinds
+  + [precondition_set] is required authority, freshness, and data-shape conditions
+  + [postcondition_set] is guaranteed state after success
+  + [interrupt_condition_set] is conditions requiring human or model judgment
+  + [fault_condition_set] is conditions that emit fault_record or blocked output
+  + [trace_schema] is the operator_trace shape
+  + [fixture_set] is deterministic cases proving valid, invalid, stale, blocked, and ambiguous behavior
+
+  = must: define operator contracts before LangGraph node implementation
+  = must: preserve trace_schema for audit against SOP authority
+  = must: return to SOP-first handling when interrupt_condition_set is active
+
+& [CanonicalLangGraphContractV2] is the first graph execution contract
+  + [graph_name] is WholeFieldPlannerGraph
+  + [graph_state_role] is resumable execution state and kernel record references
+  + [kernel_state_role] is truth-bearing source, authority, narrative, support, readiness, and proof state
+  + [node_contract] is GraphNodeContract from v2 exploded specification
+  + [required_node] is SourceIntakeNode
+  + [required_node] is BoundaryDelineationNode
+  + [required_node] is CapabilityFieldUpdateNode
+  + [required_node] is DataIdentityNode
+  + [required_node] is RequirementSupportNode
+  + [required_node] is AuthorityClassificationNode
+  + [required_node] is ReadinessProjectionNode
+  + [required_node] is PacketizationNode
+  + [required_node] is CoordinationPreflightNode
+  + [required_node] is DispatchNode
+  + [required_node] is CompletionReviewNode
+  + [required_node] is NarrativeUpdateNode
+  + [required_node] is SJSAuthorityUpdateNode
+
+  = must: treat nodes as operators over kernel records
+  = must: store meaning-bearing results outside graph checkpoint state
+  = must: expose interrupts for authority conflict, ambiguous identity, missing proof route, and high-risk operation
+
+& [CanonicalSurfaceContractV2] is the projection contract
+  + [manager_surface] is capability, readiness, blocker, packet, claim, proof, and frontier view
+  + [worker_surface] is bounded packet view with authority basis, preconditions, expected outputs, and verification oracle
+  + [narrative_surface] is subject-tree, narrative-weave, proof, decision, dead-end, readiness, and frontier view
+  + [debug_surface] is source log, operator trace, stale projection, invalidation, and fault view
+  + [chat_surface] is conversation projection over source logs and narrative anchors
+  + [langflow_surface] is optional visual prototype generated from operator or graph contracts
+
+  = must: preserve source_record_set and freshness_rule for each surface projection
+  = must: display authority_notice when decisions may be made from the projection
+  = must: submit mutations through validated operators
+  - never: let surfaces mutate canonical authority directly
+
+& [CanonicalFaultContractV2] is the initial operational fault contract
+  + [critical_fault] is checkpoint_authority_confusion
+  + [critical_fault] is surface_truth_confusion
+  + [critical_fault] is false_ready_packet
+  + [critical_fault] is unreviewed_completion
+  + [critical_fault] is over_compilation
+  + [critical_fault] is unsupported_operations_control
+
+  = must: emit fault_record for unknown, unsafe, stale, or ambiguous operator outcomes
+  = must: block runtime escalation when critical faults are active
+  = must: route reusable fault lessons through SOP-first reconsideration before compiling new rules
+
+& [CanonicalDevelopmentFrontierV2] is the ordered v2 work frontier
+  + [frontier_1] is kernel record schema and natural-key design
+  + [frontier_2] is storage decision and source/projection preservation rules
+  + [frontier_3] is operator contract template and first authority/readiness operators
+  + [frontier_4] is deterministic fixture pack for capability fields, signatures, support readiness, and packetization
+  + [frontier_5] is minimal LangGraph proof-of-shape using fixture kernel records
+  + [frontier_6] is manager, worker, narrative, and debug surface projections over fixture records
+  + [frontier_7] is first end-to-end compiled ReasoningFramework duty with SOP comparison trace
+  + [frontier_8] is operations-manager safety specification before live machine control
+
+  = must: complete frontier_1 through frontier_3 before relying on runtime graph behavior
+  = must: keep frontier_8 signed before live operations-manager work
+  = should: classify fixture, validator, template, and projection implementation as Spark-suitable after contracts stabilize
+
+& [Justification: LangSOPInitialWorkflowV2] is the evidence bridge for accepting v2
+  + [claim] is LangSOP is ready for schema and operator-contract design
+  + [support] is preserved v1 snapshots, v2 source manifest, seven-fold exploded processing, expanded data model, graph model, authority model, surface model, fault model, and development frontier
+  + [confidence] is high for layer boundaries, whole-field planning, and the rule that LangGraph is procedure rather than authority
+  + [confidence] is moderate for storage backend, first operator sequence, and Langflow depth because those remain frontier decisions
+  + [counterargument] is too much schema detail before implementation feedback could freeze an untested physical model
+  + [invalidation_condition] is broken_source_snapshot_lineage, hidden_authority_state, checkpoint_authority_confusion, false_ready_packet, failed_schema_fixture, or implementation_contradiction
+
+  ! [LangSOPInitialWorkflowV2AcceptedForSchemaAndOperatorDesign] is accepted
+    @ [support] [CanonicalKernelRecordContractV2]
+    @ [support] [CanonicalOperatorContractV2]
+    @ [support] [CanonicalLangGraphContractV2]
+    @ [support] [CanonicalDevelopmentFrontierV2]
+    @ [support] [SatisfactionSignature: LangSOPInitialWorkflowV2]
+
+& [SatisfactionSignature: LangSOPInitialWorkflowV2] is the valid SJS satisfaction signature for the v2 LangSOP planning specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 0345105d-815c-4801-884b-b5ef1ecf9c27
+  + [signed_subject] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [source_manifest] is docs/source/2026-05-25_langsop_initial_workflow_v2/Source_Document_Manifest.sop
+  + [source_snapshot_sha256] is ADEC3F2D670F149724D5076A49A9CE34CF565278D2B83E5F9FA34CEFFF044D07
+  + [source_snapshot_sha256] is 68D15A6472B97C4DDBBE73896A6865A3EE95B1207DDDA36B65CAB74AFFBD3745
+  + [source_snapshot_sha256] is C77BA1BF8713C65EE0592395D76FC16C8FF9BA379C767DCA192E99DF8FEB4449
+  + [exploded_specification] is docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [processed_stage_set] is source_snapshots_preserved, delineated, exploded_7x, data_modeled, authority_modeled, procedure_modeled, surface_modeled, fault_modeled, frontier_seeded, justified, and signed
+  + [exhaustion_state] is phase_locked_for_schema_and_operator_contract_design
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for schema and operator-contract work; runtime code still requires solution records and proof
+  + [invalidation_condition] is source_snapshot_change, missing_trace, broken_lineage, failed_quality_gate, hidden_authority_state, or implementation_contradiction
+
+  = must: identify this file as the processed v2 LangSOP planning authority
+  = must: route source or authority changes through SJS reprocessing before replacing v2 authority
+
+& [RegistryRecord: LangSOPInitialWorkflowV2] is the durable identity ledger for the v2 specification family
+  + [registry_uuid] is d26ff32b-531b-4a44-99f8-ed24697065a1fa0
+  + [manifest_node_uuid] is 45bf86c8-ded3-4f8a-b664-ebbc25e02747
+  + [exploded_node_uuid] is 9d60b07e-49c3-4c40-b7bb-2cbaa8412b87
+  + [canonical_node_uuid] is 6b2f499c-a572-44c4-a13a-e8c9c1ea1fa0
+  + [signature_uuid] is 0345105d-815c-4801-884b-b5ef1ecf9c27
+  + [frontier_node_uuid] is 449722c1-4820-45ea-8e4f-869de0b39304
+  + [edge] is manifest_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+  + [edge] is canonical_node_uuid leaves_frontier frontier_node_uuid
+  + [edge] is canonical_node_uuid supersedes prior_canonical_for_planning_scope
+
+  = must: preserve this registry record for audit and future reprocessing

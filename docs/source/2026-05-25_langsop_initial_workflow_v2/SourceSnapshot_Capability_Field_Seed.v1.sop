@@ -1,0 +1,115 @@
+Subject: LangSOP Capability Field Seed
+Date: 2026-05-25
+
+@ [canonical_specification] docs/canonical/LangSOP_Initial_Workflow.canonical.sop
+
+& [LangSOPCapabilityFieldSeed] is the first whole-field planning surface for LangSOP
+  + [field_status] is initial_seed
+  + [source_authority] is docs/canonical/LangSOP_Initial_Workflow.canonical.sop
+  + [purpose] is provide enough structured capability material for future surface-layer decomposition into detailed work packets
+
+& [CapabilityNode: semantic-proof-layer] is desired
+  + [capability_id] is semantic-proof-layer
+  + [capability_name] is SOP semantic proof and soft-wire debugging layer
+  + [purpose] is preserve meaning, source lineage, authority, reconsideration, invalidation, and semantic repair paths
+  + [authority_state] is signed_sjs
+  + [readiness_state] is specified
+  + [requirement] is preserve source documents and source hashes before canonical processing
+  + [requirement] is preserve canonical specifications with valid satisfaction signatures
+  + [requirement] is route semantic ambiguity and authority changes back to SOP-first processing
+  + [support] is docs/canonical/LangSOP_Initial_Workflow.canonical.sop
+  + [proof_route] is signature validation and source lineage check
+  + [packetization_rule] is ready for schema design but not runtime implementation
+
+& [CapabilityNode: authority-kernel] is desired
+  + [capability_id] is authority-kernel
+  + [capability_name] is typed authority kernel
+  + [purpose] is preserve source logs, narrative anchors, capability nodes, support, authority artifacts, proofs, work packets, completion reviews, and freshness states outside LangGraph checkpoints
+  + [authority_state] is signed_sjs
+  + [readiness_state] is ready_to_packetize
+  + [requirement] is define natural keys and lineage rules for core data subjects
+  + [requirement] is separate source data from derived projections
+  + [requirement] is preserve stale, blocked, unsupported, and contradicted states
+  + [dependency] is storage backend decision
+  + [support] is CanonicalInitialDataSubjects
+  + [blocker] is exact storage representation remains undecided
+  + [proof_route] is fixture records validated by schema and freshness checks
+  + [packetization_rule] is packetize schema-design work before runtime storage implementation
+
+& [CapabilityNode: langgraph-procedure-layer] is desired
+  + [capability_id] is langgraph-procedure-layer
+  + [capability_name] is LangGraph procedural execution layer
+  + [purpose] is execute stable ReasoningFramework procedures over typed authority kernel records
+  + [authority_state] is accepted_decision
+  + [readiness_state] is blocked
+  + [requirement] is define node contracts as operators over kernel records
+  + [requirement] is keep checkpoints as execution state rather than authority
+  + [requirement] is use interrupts for human or model judgment
+  + [dependency] is authority-kernel schema
+  + [dependency] is operator contracts
+  + [blocker] is kernel data schemas are not implemented yet
+  + [proof_route] is minimal WholeFieldPlannerGraph over fixture kernel records
+  + [packetization_rule] is blocked until frontier_1 through frontier_3 produce enough support
+
+& [CapabilityNode: surface-projection-layer] is desired
+  + [capability_id] is surface-projection-layer
+  + [capability_name] is multi-surface projection layer
+  + [purpose] is render and accept collaboration state through manager dashboard, worker packet, narrative/debug view, chat, Codex, terminal, Langflow, and later IRC/Matrix surfaces
+  + [authority_state] is accepted_decision
+  + [readiness_state] is blocked
+  + [requirement] is projections must cite kernel records
+  + [requirement] is surfaces may submit events only through validated operators
+  + [dependency] is authority-kernel schema
+  + [dependency] is readiness_projection records
+  + [blocker] is no kernel schema or operator contract exists yet
+  + [proof_route] is fixture-driven manager, worker, blocker, and narrative views
+
+& [CapabilityNode: compiled-duty-operators] is desired
+  + [capability_id] is compiled-duty-operators
+  + [capability_name] is compiled SOP duty operators
+  + [purpose] is reduce repeated model-side SOP execution by moving stable governance duties into typed, traceable runtime operators
+  + [authority_state] is signed_sjs
+  + [readiness_state] is specified
+  + [requirement] is define inputs, outputs, traces, failure modes, and proof routes per operator
+  + [candidate_operator] is signature_validation
+  + [candidate_operator] is support_readiness_recompute
+  + [candidate_operator] is work_packet_generation
+  + [candidate_operator] is completion_delta_review
+  + [candidate_operator] is stale_projection_detection
+  + [dependency] is operator contract template
+  + [proof_route] is deterministic fixtures that compare operator output to SOP source expectations
+
+& [CapabilityNode: whole-field-planning] is desired
+  + [capability_id] is whole-field-planning
+  + [capability_name] is whole-field planning and on-demand packetization
+  + [purpose] is replace premature slice-first planning with capability-field-first planning
+  + [authority_state] is signed_sjs
+  + [readiness_state] is ready_to_packetize
+  + [requirement] is blocked objectives remain first-class capability nodes
+  + [requirement] is work packets are generated from readiness projections
+  + [requirement] is completion review updates requirements and support before next packet generation
+  + [proof_route] is fixture capability field with blocked, ready, stale, and verified nodes producing correct packet candidates
+
+& [CapabilityNode: operations-manager] is desired
+  + [capability_id] is operations-manager
+  + [capability_name] is Ryzen 9 RTX 5090 operations manager
+  + [purpose] is eventually manage machine operations, job dispatch, model runtime availability, GPU workload supervision, resource health, leases, and human override
+  + [authority_state] is source_only
+  + [readiness_state] is deferred
+  + [requirement] is define safety boundaries before process or GPU control
+  + [requirement] is integrate with work packets and model routing
+  + [dependency] is authority kernel
+  + [dependency] is LangGraph procedure layer
+  + [dependency] is operations safety specification
+  + [blocker] is authority and packetization semantics must stabilize before operations control
+  + [proof_route] is dry-run resource and job fixtures before live machine control
+
+& [InitialPacketCandidates] is the first packetization view
+  + [requires_deeper_reasoning] is kernel schema and natural-key design for authority-kernel
+  + [requires_deeper_reasoning] is operator contract template for compiled-duty-operators
+  + [requires_deeper_reasoning] is storage backend decision
+  + [spark_suitable_after_contract] is schema fixture generation
+  + [spark_suitable_after_contract] is validation tests
+  + [spark_suitable_after_contract] is README and ledger updates
+  + [blocked] is LangGraph proof-of-shape until kernel schema and operator contracts exist
+  + [deferred] is operations-manager until safety and runtime boundaries are specified

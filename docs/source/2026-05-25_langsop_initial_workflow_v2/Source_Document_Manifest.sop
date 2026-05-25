@@ -1,0 +1,24 @@
+Subject: LangSOP Initial Workflow V2 Source Document Manifest
+Date: 2026-05-25
+Manifest UUID: 45bf86c8-ded3-4f8a-b664-ebbc25e02747
+
+& [SourceDocumentManifest: LangSOPInitialWorkflowV2] is the source preservation manifest for the second LangSOP processing pass
+  + [source_snapshot] is docs/source/2026-05-25_langsop_initial_workflow_v2/SourceSnapshot_LangSOP_Initial_Workflow.v1.canonical.sop
+    + [sha256] is ADEC3F2D670F149724D5076A49A9CE34CF565278D2B83E5F9FA34CEFFF044D07
+    + [source_role] is prior canonical planning authority
+  + [source_snapshot] is docs/source/2026-05-25_langsop_initial_workflow_v2/SourceSnapshot_LangSOP_Initial_Workflow.v1.exploded.sop
+    + [sha256] is 68D15A6472B97C4DDBBE73896A6865A3EE95B1207DDDA36B65CAB74AFFBD3745
+    + [source_role] is prior exploded processing trace
+  + [source_snapshot] is docs/source/2026-05-25_langsop_initial_workflow_v2/SourceSnapshot_Capability_Field_Seed.v1.sop
+    + [sha256] is C77BA1BF8713C65EE0592395D76FC16C8FF9BA379C767DCA192E99DF8FEB4449
+    + [source_role] is prior whole-field planning seed
+  + [prior_source_manifest] is docs/source/2026-05-25_langsop_initial_workflow/Source_Document_Manifest.sop
+  + [prior_dictated_source] is docs/source/2026-05-25_langsop_initial_workflow/Dictated_LangSOP_Source.sop
+  + [v2_exploded_target] is docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop
+  + [v2_canonical_target] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [v2_capability_surface_target] is docs/planning/Capability_Field.v2.sop
+
+  = must: treat the preserved snapshots as v2 source material
+  = must: preserve the original v1 source folder and snapshots unchanged
+  = must: invalidate v2 canonical authority if any source snapshot hash changes without reprocessing
+  - never: overwrite v1 canonical, v1 exploded, or v1 capability seed while producing v2 artifacts

@@ -1,0 +1,195 @@
+Subject: LangSOP Initial Workflow Exploded Specification
+Date: 2026-05-25
+Exploded Specification UUID: ef0c7679-4c7d-4773-bd8d-e567018a7648
+
+@ [source_document] docs/source/2026-05-25_langsop_initial_workflow/Dictated_LangSOP_Source.sop
+@ [source_manifest] docs/source/2026-05-25_langsop_initial_workflow/Source_Document_Manifest.sop
+@ [source_sha256] D66E52EB63BC2BEB0AEEA2E380FEE7574D1A169292A355C8FE0A51D0351FC428
+@ [platform_source] platform/refinement/Project_Narrative_Surface.sop
+@ [platform_source] platform/refinement/Shared_Cognition_Space.sop
+@ [platform_source] platform/refinement/Agent_Coordination_Narrative_Negotiations.sop
+@ [platform_source] platform/refinement/Specification_Justification_Solution.sop
+@ [platform_source] platform/refinement/Data_Driven_Design.sop
+@ [platform_source] platform/refinement/Feature_Requirement_Support.sop
+@ [platform_source] platform/refinement/Model_Budget_Routing.sop
+
+& [LangSOPInitialWorkflow] is the expanded platform subject for compiling SOP-governed reasoning duties into operational runtime layers
+  + [root_purpose] is reduce repeated model-side SOP execution by turning stable duties into inspectable operators, LangGraph subgraphs, validators, and surface projections
+  + [semantic_source_layer] is SOP source, proof, reconsideration, and authority material
+  + [authority_kernel] is the durable typed record system that preserves source logs, narrative claims, authority artifacts, support records, work packets, completion reviews, and freshness state
+  + [procedural_layer] is LangGraph workflow execution over kernel records
+  + [projection_layer] is IRC, Matrix, Codex, terminal, web dashboard, Langflow, and other conversation or visualization surfaces
+  + [model_judgment_layer] is the human or AI reasoning layer used when operators cannot mechanically decide a question
+  + [soft_wire_layer] is SOP retained as the semantic debugging and reconsideration system after stable duties are compiled
+
+  = must: compile only stable, frequent, mechanically checkable SOP duties
+  = must: keep truth-bearing records outside LangGraph checkpoints
+  = must: let LangGraph execute procedural shape without becoming the authority model
+  = must: let existing surface tools consume and display kernel state without owning truth
+  = must: return to SOP for meaning, ambiguity, authority changes, failed proof interpretation, and semantic repair
+  = must: preserve blocked objectives inside the capability field even when they are not sliceable
+  - never: treat a chat surface, Langflow flow, LangGraph checkpoint, or work packet as the source of truth by itself
+
+## Layer Model
+
+& [SemanticProofLayer] is the SOP-first layer
+  + [owned_material] is source documents, canonical specifications, proof traces, narrative authorities, reconsideration records, and invalidation rules
+  + [operational_role] is define meaning, authority, constraints, and appeal paths
+  + [runtime_role] is act as soft-wire debugging and reprocessing source when compiled operators fail, drift, or become stale
+
+  = must: preserve original source language and source hashes
+  = must: carry SJS satisfaction signatures for canonical specifications
+  = must: retain retired or superseded authority as trace
+
+& [AuthorityKernelLayer] is the typed collaboration record layer
+  + [owned_material] is source_log, narrative_node, understanding_anchor, authority_artifact, capability_node, requirement_record, support_record, coordination_claim, work_packet, completion_review, citation_ref, stale_projection, and proof_result
+  + [operational_role] is store current and historical truth-bearing records with provenance and freshness rules
+  + [runtime_role] is provide stable data to LangGraph nodes, dashboards, agents, and review surfaces
+
+  = must: distinguish source data from derived projections
+  = must: preserve lineage from every projection to its source data
+  = must: expose stale, blocked, unsupported, and contradicted state instead of smoothing it away
+
+& [LangGraphProcedureLayer] is the compiled execution layer
+  + [owned_material] is subgraph definitions, node contracts, checkpoint state, interrupt points, and procedural transitions
+  + [operational_role] is execute stable ReasoningFramework procedures over typed kernel records
+  + [runtime_role] is reduce repeated manual SOP interpretation during ordinary workflow cycles
+
+  = must: treat each graph node as an operator over kernel records
+  = must: checkpoint execution state without claiming checkpoint state is authority
+  = must: use human or model interrupts when judgment is required
+
+& [SurfaceProjectionLayer] is the multi-surface collaboration layer
+  + [owned_material] is views, adapters, rendered conversation surfaces, manager dashboards, worker packets, Langflow prototypes, IRC rooms, Matrix rooms, Codex prompts, terminal summaries, and web interfaces
+  + [operational_role] is create and display collaboration state through usable interfaces
+
+  = must: preserve projection lineage to kernel records
+  = must: allow surfaces to submit events through validated operators
+  - never: let a surface rewrite canonical authority without an authority operator
+
+## Whole-Field Development Model
+
+& [WholeFieldDevelopmentPlanning] is the upgraded planning model that bakes the entire capability field before creating on-demand work packets
+  + [capability_field] is the whole graph of desired, supported, blocked, deferred, and verified capabilities
+  + [capability_node] is one meaningful capability or objective in the field
+  + [blocked_objective] is a capability_node that belongs in the field but cannot yet become a work packet
+  + [readiness_projection] is the derived view of which capability nodes can be packetized now
+  + [work_packet] is a generated view over one or more capability nodes under current readiness rules
+  + [completion_review] is the between-packet review that updates support, requirements, freshness, and narrative state
+
+  = must: model the whole intended capability field before optimizing for worker-sized slices
+  = must: keep blocked objectives visible with blocker reasons and resolution conditions
+  = must: generate work packets on demand from authority, support, dependency, ownership, risk, and verification conditions
+  = must: review completed packets for support_delta and requirement_delta before generating the next packet
+
+| [CapabilityReadiness] is (desired | source_preserved | specified | supported | blocked | deferred | ready_to_packetize | assigned | implemented | verified | stale | superseded | contradicted)
+| [PacketKind] is (research | specification | architecture | implementation | fixture | proof | ledger_update | adapter | review | rendezvous | blocker_resolution | operations)
+| [AuthorityState] is (source_only | narrative_projection | accepted_decision | signed_sjs | proof_backed | stale_projection | contradicted | invalidated | human_override)
+
+& [CapabilityNode] is the central whole-field planning unit
+  + [capability_id] is a stable identifier
+  + [capability_name] is a human-readable subject name
+  + [purpose] is why the capability exists
+  + [authority_state] is one AuthorityState value
+  + [readiness_state] is one CapabilityReadiness value
+  + [requirement_set] is the atomic obligations for the capability
+  + [dependency_set] is upstream capabilities, artifacts, decisions, proofs, tools, or environment requirements
+  + [support_set] is support records that make implementation or proof possible
+  + [blocker_set] is blockers that prevent packetization
+  + [proof_route] is the verification path for completion claims
+  + [packetization_rule] is the condition that permits generating work_packet records
+  + [narrative_anchor_set] is the narrative and understanding material that explains context
+
+  = must: be stored separately from generated work packets
+  = must: preserve authority_state and readiness_state independently
+  = must: allow blocked capability nodes to remain first-class planning material
+
+## Candidate Compiled Duties
+
+& [CompiledDutyCandidateSet] is the first group of SOP duties likely to become operators or LangGraph nodes
+  + [signature_validation] is checking whether a specification has a valid SJS satisfaction signature and lineage
+  + [inbox_check] is checking coordination mailbox directories and emitting unread-message events
+  + [dirty_surface_classification] is classifying workspace changes as owned, foreign, mixed, unknown, or generated
+  + [coordination_claim_overlap] is comparing active claims and overlap keys for conflicts
+  + [support_readiness_recompute] is deriving readiness from requirements, support, gaps, proofs, and freshness rules
+  + [work_packet_generation] is producing worker-ready packet records from ready capability nodes
+  + [completion_delta_review] is deriving support_delta, requirement_delta, stale projections, and next frontiers after completed work
+  + [stale_projection_detection] is checking whether mutable sources invalidated derived projections
+  + [citation_index_update] is promoting citation candidates into durable citation references
+
+  = must: start with operators whose inputs, outputs, and verification oracles can be defined
+  = must: record operator traces so runtime behavior can be audited against SOP authority
+
+& [SOPFirstDutySet] is the set of duties that should remain semantic-first until stable enough to compile
+  + [new_architecture] is broad or high-consequence design work
+  + [new_specification_source] is dictated or imported specification material that needs preservation and SJS processing
+  + [ambiguous_identity] is a subject boundary or natural-key question requiring delineation
+  + [authority_conflict] is contradiction between source, signature, proof, or user instruction
+  + [requirement_mutation] is a change to the meaning or dependency shape of a requirement
+  + [major_reroute] is a changed implementation route with narrative and proof implications
+  + [failed_proof_interpretation] is proof failure that cannot be mechanically classified
+  + [narrative_reframing] is a change in story meaning, readiness, or cross-subject feedback
+
+  = must: route these duties through SOP and model/human judgment before compiling
+
+## Candidate LangGraph Shape
+
+& [WholeFieldPlannerGraph] is the initial LangGraph procedural shape for LangSOP
+  + [SourceIntakeNode] preserves dictated or imported source material
+  + [DelineationNode] forms stable subject boundaries
+  + [CapabilityFieldNode] creates or updates capability_node records
+  + [DataDesignNode] derives conceptual, logical, and physical data model obligations
+  + [RequirementSupportNode] extracts requirements, dependencies, support, and gaps
+  + [AuthorityClassificationNode] classifies source-only, signed, proof-backed, stale, contradicted, or invalid authority states
+  + [ReadinessProjectionNode] recomputes packetization readiness
+  + [WorkPacketGeneratorNode] emits candidate work packets
+  + [HumanReviewInterrupt] pauses for human approval when authority, ambiguity, or risk requires it
+  + [DispatchNode] assigns or publishes work packets
+  + [CompletionReviewNode] inspects completed work for deltas, faults, and stale state
+  + [NarrativeUpdateNode] records narrative arcs, reentry material, and unresolved items
+  + [SJSUpdateNode] creates or updates SJS artifacts when authority changes
+  + [RecomputeReadinessNode] refreshes readiness after deltas
+
+  = must: keep graph state minimal enough to resume execution
+  = must: store truth-bearing records in the authority kernel
+  = must: expose interrupts for authority changes and unresolved ambiguity
+
+## Development Stages
+
+& [LangSOPDevelopmentStages] is the staged plan for implementation
+  + [stage_0_source_intake] is source preservation, manifest creation, and initial SJS processing
+  + [stage_1_capability_field_schema] is defining capability_node, requirement_record, support_record, authority_artifact, and work_packet schemas
+  + [stage_2_kernel_storage] is selecting and implementing the first durable kernel storage representation
+  + [stage_3_operator_contracts] is defining compiled-duty operator inputs, outputs, traces, and proof routes
+  + [stage_4_langgraph_proof_of_shape] is implementing the first LangGraph workflow over kernel records
+  + [stage_5_surface_projection] is producing manager, worker, narrative, and debugging views from kernel state
+  + [stage_6_reasoningframework_duty_compilation] is compiling existing SOP duties into tested operators incrementally
+  + [stage_7_operations_manager] is adding machine/job/resource supervision for the target Ryzen 9 RTX 5090 environment
+
+  = must: keep stage_0 through stage_3 mostly architecture and authority work
+  = must: avoid implementing broad operations management before kernel authority and packetization semantics are stable
+  = should: make stages after stage_3 produce small Spark-suitable implementation packets where possible
+
+## Model Routing
+
+& [LangSOPModelRouting] is the budget-aware model policy for this project
+  + [requires_deeper_reasoning] is architecture, authority kernel design, SOP-to-LangGraph compilation boundary, ambiguous data identity, major reroutes, and operations-manager safety policy
+  + [spark_suitable] is bounded schema implementation, validators, tests, fixtures, proof refreshes, adapter nodes, ledger updates, and template generation after contracts stabilize
+
+  = must: mark each generated work packet as Spark-suitable or requiring deeper reasoning
+  = must: escalate Spark-suitable work back to deeper reasoning when a design fork, ambiguous failure, or authority conflict appears
+
+## SJS Processing Trace
+
+& [SJSProcessingTrace: LangSOPInitialWorkflow] is the seven-fold processing trace for this initial specification
+  + [fold_1_subject] is LangSOP is a platform for compiling stable SOP duties into operational graph and kernel layers, not a replacement for SOP authority
+  + [fold_2_boundary] is SOP, kernel, LangGraph, surfaces, and model judgment have distinct responsibilities
+  + [fold_3_data_design] is capability_node, source_log, narrative_node, authority_artifact, support_record, work_packet, completion_review, and readiness_projection are the first core data subjects
+  + [fold_4_governance] is source preservation and SJS signatures remain stronger than generated projections or graph checkpoints
+  + [fold_5_solution_shape] is begin with SOP specifications and schemas before implementing runtime graph execution
+  + [fold_6_fault_review] is over-compiling semantic duties, treating LangGraph state as authority, hiding blocked objectives, and skipping completion review are primary workflow faults
+  + [fold_7_phase_lock] is the subject is stable enough for initial canonical specification and staged development, with unresolved implementation choices preserved as open questions
+  + [exhaustion_state] is phase_locked_for_initial_planning_not_runtime_complete
+
+  = must: promote only the canonical specification after satisfaction signature validation
+  = must: preserve this exploded file as derivation trace
