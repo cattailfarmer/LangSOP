@@ -1,0 +1,155 @@
+Subject: LangSOP Initial Workflow Canonical Specification
+Date: 2026-05-25
+
+@ [source_document] docs/source/2026-05-25_langsop_initial_workflow/Dictated_LangSOP_Source.sop
+@ [source_manifest] docs/source/2026-05-25_langsop_initial_workflow/Source_Document_Manifest.sop
+@ [source_sha256] D66E52EB63BC2BEB0AEEA2E380FEE7574D1A169292A355C8FE0A51D0351FC428
+@ [exploded_specification] docs/exploded/LangSOP_Initial_Workflow.exploded.sop
+@ [sjs_protocol] platform/refinement/Specification_Justification_Solution.sop
+
+& [CanonicalRecord: LangSOPInitialWorkflow] is the processed initial planning authority for LangSOP
+  + [canonical_uuid] is b4f65971-1324-4228-9193-8d395704ccf7
+  + [source_uuid] is 72626309-1ab9-4e26-9d59-5ad35d8e9f36
+  + [exploded_uuid] is ef0c7679-4c7d-4773-bd8d-e567018a7648
+  + [authority_scope] is initial architecture, layer responsibilities, whole-field planning model, candidate compiled duties, candidate LangGraph shape, development stages, and model routing policy
+  + [implementation_scope] is specification only; no runtime operator, storage schema, or LangGraph execution has been implemented by this canonical record
+  + [satisfaction_signature] is [SatisfactionSignature: LangSOPInitialWorkflow]
+
+  = must: treat this file as the current processed planning authority for LangSOP until superseded or invalidated
+  = must: consult the exploded specification for derivation detail and open questions
+  = must: preserve the dictated source document unchanged
+  = must: invalidate this canonical record if the source hash changes without reprocessing
+
+& [CanonicalLayerContract: LangSOPInitialWorkflow] is the stable layer split
+  + [sop_layer] is semantic proof, source preservation, specification authority, SJS processing, reconsideration, invalidation, and soft-wire debugging
+  + [authority_kernel_layer] is typed durable records for source logs, narrative anchors, capability fields, support, authority, proof, coordination, readiness, and work packets
+  + [langgraph_layer] is executable procedure over authority kernel records
+  + [surface_layer] is projections and adapters for human, agent, chat, dashboard, terminal, Codex, Langflow, and other interfaces
+  + [judgment_layer] is human or model reasoning for ambiguous, high-risk, semantic, or authority-changing work
+
+  = must: keep truth-bearing authority in SOP and authority kernel records
+  = must: use LangGraph for procedural workflow execution, not as the sole truth model
+  = must: use surface tools as projections and input channels, not as canonical authority
+  = must: route semantic repair and authority changes back to SOP-first processing
+
+& [CanonicalWholeFieldPlanningContract] is the initial replacement for premature slice-first planning
+  + [planning_primitive] is capability_field
+  + [execution_primitive] is work_packet
+  + [capability_node] is the central planning record
+  + [blocked_objective] is allowed as a first-class capability node before packetization
+  + [readiness_projection] is a derived view, not source authority
+
+  = must: articulate the whole capability field before creating worker-sized packets
+  = must: generate work packets on demand from readiness, support, authority, proof, dependency, ownership, and risk conditions
+  = must: update the capability field after completion review before generating the next packet
+  - never: treat a generated work packet as replacing the capability field
+  - never: mark blocked or unsupported objectives ready merely to keep workers busy
+
+& [CanonicalCompiledDutyPolicy] is the first compilation policy for SOP duties
+  + [compile_when] is stable, frequent, mechanically checkable, typed inputs and outputs are known, and a trace or proof oracle exists
+  + [stay_sop_first_when] is meaning, ambiguity, authority, architecture, requirement mutation, proof interpretation, or narrative reframing is active
+  + [operator_trace] is required evidence that a compiled duty behaved according to its SOP source
+
+  = must: compile repetitive governance into kernel operators or LangGraph nodes only when contracts are stable
+  = must: preserve compiled operator output as derived state with lineage to source and operator trace
+  = must: return to SOP when compiled behavior conflicts with source meaning or encounters unknown state
+
+& [CanonicalInitialDataSubjects] is the initial kernel data vocabulary
+  + [source_log] is the append-only evidence stream of what happened
+  + [log_entry] is one citable unit in source_log
+  + [citation_ref] is a stable reference from a derived claim to source evidence
+  + [narrative_node] is a durable unit of project meaning or story state
+  + [understanding_anchor] is an agent's explicit working interpretation and support basis
+  + [capability_node] is one desired, blocked, ready, implemented, or verified capability in the whole field
+  + [requirement_record] is an atomic obligation belonging to a capability
+  + [support_record] is evidence supporting a requirement
+  + [authority_artifact] is a source document, canonical specification, proof, signature, solution, or registry record
+  + [coordination_claim] is an agent, user, or process claim over work boundaries, proof, review, or frontier
+  + [work_packet] is an on-demand executable packet generated from current readiness
+  + [completion_review] is the record that evaluates completed work for support_delta, requirement_delta, stale state, proof, and next frontier
+  + [readiness_projection] is a generated view of packetizable and blocked work
+
+  = must: define natural keys before storage implementation
+  = must: separate source data from derived projections
+  = must: preserve freshness and invalidation rules for derived projections
+
+& [CanonicalInitialLangGraphShape] is the first procedural target
+  + [graph_name] is WholeFieldPlannerGraph
+  + [node] is SourceIntakeNode
+  + [node] is DelineationNode
+  + [node] is CapabilityFieldNode
+  + [node] is DataDesignNode
+  + [node] is RequirementSupportNode
+  + [node] is AuthorityClassificationNode
+  + [node] is ReadinessProjectionNode
+  + [node] is WorkPacketGeneratorNode
+  + [node] is HumanReviewInterrupt
+  + [node] is DispatchNode
+  + [node] is CompletionReviewNode
+  + [node] is NarrativeUpdateNode
+  + [node] is SJSUpdateNode
+  + [node] is RecomputeReadinessNode
+
+  = must: treat nodes as operators over kernel records
+  = must: keep graph checkpoints as resumable execution state rather than authority
+  = must: expose interrupts for unresolved authority or ambiguity
+
+& [CanonicalDevelopmentFrontier] is the ordered initial work frontier
+  + [frontier_1] is define kernel data schemas for capability_node, requirement_record, support_record, authority_artifact, work_packet, completion_review, and readiness_projection
+  + [frontier_2] is choose first storage backend and preservation rules for source logs and kernel records
+  + [frontier_3] is define operator contracts for signature_validation, support_readiness_recompute, work_packet_generation, completion_delta_review, and stale_projection_detection
+  + [frontier_4] is implement a minimal LangGraph proof-of-shape over fixture kernel records
+  + [frontier_5] is add a surface layer that renders manager view, worker packet, blocker view, and narrative/debug view from kernel records
+  + [frontier_6] is compile one existing ReasoningFramework duty end-to-end and compare operator trace against SOP source expectations
+  + [frontier_7] is design operations-manager integration for the target Ryzen 9 RTX 5090 machine after authority and packetization semantics stabilize
+
+  = must: complete frontier_1 through frontier_3 before relying on LangGraph as workflow authority
+  = should: treat frontier_1 through frontier_3 as requiring deeper reasoning
+  = should: split frontier_4 and later bounded implementation work into Spark-suitable packets after contracts stabilize
+
+& [Justification: LangSOPInitialWorkflow] is the evidence bridge for accepting this initial canonical specification
+  + [claim] is LangSOP is ready for initial staged specification and schema design
+  + [support] is preserved source document, source hash, exploded specification, stable layer split, whole-field planning contract, compiled-duty policy, data subject vocabulary, LangGraph target shape, and explicit development frontier
+  + [confidence] is high for the architecture split between SOP, kernel, LangGraph, surfaces, and model judgment
+  + [confidence] is moderate for exact storage backend, first operator set, Langflow role, and runtime implementation order because those remain open design decisions
+  + [counterargument] is LangGraph may absorb more authority-shaped state than expected if the kernel contract is underspecified
+  + [invalidation_condition] is source_change, failed_schema_design, operator_contract_conflict, hidden_authority_state, LangGraph_checkpoint_treated_as_authority, or implementation_contradiction
+
+  ! [LangSOPInitialWorkflowAcceptedForPlanning] is accepted
+    @ [support] [CanonicalLayerContract: LangSOPInitialWorkflow]
+    @ [support] [CanonicalWholeFieldPlanningContract]
+    @ [support] [CanonicalDevelopmentFrontier]
+    @ [support] [SatisfactionSignature: LangSOPInitialWorkflow]
+
+& [SatisfactionSignature: LangSOPInitialWorkflow] is the valid SJS satisfaction signature for the initial LangSOP planning specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 55971c49-aadd-49ae-b00a-23f11070e6f7
+  + [signed_subject] is docs/canonical/LangSOP_Initial_Workflow.canonical.sop
+  + [source_document] is docs/source/2026-05-25_langsop_initial_workflow/Dictated_LangSOP_Source.sop
+  + [source_document_sha256] is D66E52EB63BC2BEB0AEEA2E380FEE7574D1A169292A355C8FE0A51D0351FC428
+  + [exploded_specification] is docs/exploded/LangSOP_Initial_Workflow.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_Initial_Workflow.canonical.sop
+  + [processed_stage_set] is source_preserved, delineated, exploded, data_modeled, constraint_checked, pruned, seven_fold_phase_locked, justified, frontier_seeded, and signed
+  + [exhaustion_state] is phase_locked_for_initial_planning_not_runtime_complete
+  + [signature_status] is valid
+  + [signature_limit] is initial planning authority only; runtime implementation authority must be extended by future canonical specifications or solution records
+  + [invalidation_condition] is source_change, missing_trace, broken_lineage, hidden_authority_state, failed_quality_gate, or implementation_contradiction
+
+  = must: identify this file as the processed initial LangSOP planning specification
+  = must: route source changes through SJS reprocessing before canonical authority changes
+
+& [RegistryRecord: LangSOPInitialWorkflow] is the durable identity ledger for this specification family
+  + [registry_uuid] is 94a31092-a001-463f-af9e-e06d79b52cd5
+  + [source_node_uuid] is 72626309-1ab9-4e26-9d59-5ad35d8e9f36
+  + [manifest_node_uuid] is 065752eb-0f31-4a26-bc59-9e5c27c13662
+  + [exploded_node_uuid] is ef0c7679-4c7d-4773-bd8d-e567018a7648
+  + [canonical_node_uuid] is b4f65971-1324-4228-9193-8d395704ccf7
+  + [signature_uuid] is 55971c49-aadd-49ae-b00a-23f11070e6f7
+  + [frontier_node_uuid] is f1cdbc00-d860-498a-95c6-4679bf2eec72
+  + [edge] is source_node_uuid preserved_by manifest_node_uuid
+  + [edge] is source_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+  + [edge] is canonical_node_uuid leaves_frontier frontier_node_uuid
+
+  = must: preserve this registry record for audit and future reprocessing

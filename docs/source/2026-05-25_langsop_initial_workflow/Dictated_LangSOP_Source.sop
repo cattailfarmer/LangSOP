@@ -1,0 +1,49 @@
+Subject: Dictated LangSOP Initial Workflow Source
+Date: 2026-05-25
+Source UUID: 72626309-1ab9-4e26-9d59-5ad35d8e9f36
+
+& [DictatedLangSOPSource] is the preserved source document for the initial LangSOP platform specification
+  + [source_kind] is user-dictated build and architecture source
+  + [source_author] is user
+  + [capture_context] is Codex conversation in C:\Project\Codex_Projects\ReasoningFramework
+  + [project_name] is LangSOP
+  + [target_location] is C:\Project\Codex_Projects\ReasoningFramework\LangSOP
+  + [github_target] is cattailfarmer/LangSOP
+
+  = preserve: The user asked to start this as `ReasoningFramework/LangSOP/`, create that folder, initialize it as a GitHub repo named `LangSOP` on the `cattailfarmer` account, and start writing the specification for the workflow covered in the conversation.
+
+  = preserve: The design direction is to mature the ReasoningFramework Narrative, Coordination, SJS, and Data Driven Design platform into an operational collaboration platform for multiple users and multiple agents across many conversation surfaces.
+
+  = preserve: Chat protocols such as IRC, Matrix, Codex threads, terminals, dashboards, and web UI should be surfaces or projections, not the source of truth.
+
+  = preserve: The source of truth should be a typed collaboration kernel that records source logs, narrative meaning, agent understanding anchors, follow-through details, authority artifacts, coordination claims, proof status, support readiness, stale projections, blocked objectives, and work packets.
+
+  = preserve: The existing slice system should be upgraded. Development should not begin by cutting clean slices from an unstable local view. Instead, the whole capability field should be articulated first, with blocked objectives baked into the graph even when they are not sliceable yet. Work packets should be generated on demand from readiness, support, authority, and verification conditions.
+
+  = preserve: The user described this as a "whole pie" that is baked and then measured out for clean slicing on demand, with objectives that are blocked able to be baked in but not sliced yet.
+
+  = preserve: SOP should remain the proof and semantic source layer. Stable, frequent, mechanically checkable SOP duties should be compiled into LangGraph nodes, kernel operators, validators, and operational services where suited.
+
+  = preserve: SOP should retire to a layer available for careful reconsideration, a soft-wire system fit for debugging, semantic repair, invalidation, and authority reconsideration.
+
+  = preserve: LangGraph should model the active procedural shape of the wider ReasoningFramework by running named subgraphs and operators over typed records, while truth-bearing records remain outside LangGraph in schemas, SOP artifacts, and event logs.
+
+  = preserve: Langflow may be useful as a visual/prototyping surface, but should not be the canonical authority model unless it can faithfully preserve source, narrative, authority, stale, support, and proof distinctions.
+
+  = preserve: The desired optimization is to reduce how much SOP the model has to mentally execute during ordinary work by delegating repetitive governance duties to operational layers that function according to intended purposes.
+
+  = preserve: SOP remains the law, proof, semantic debugger, and appeal court; LangGraph becomes executable procedure; kernel services become ledgers, validators, clerks, alarms, and durable record keepers; models handle judgment, ambiguity, synthesis, and exceptions.
+
+  = preserve: Examples of duties suitable for compilation include signature validation, inbox checks, dirty surface classification, coordination claim overlap detection, support readiness recomputation, work packet generation, completion delta review, stale projection detection, and citation index update.
+
+  = preserve: Examples that should remain SOP-first include new architecture, new specification sources, ambiguous identity, authority conflict, requirement mutation, major reroute, failed proof interpretation, narrative reframing, and semantic repair.
+
+  = preserve: The system should explicitly classify whether work is Spark-suitable or requires deeper reasoning. The architecture and SOP-to-LangGraph compilation boundary require deeper reasoning; bounded schemas, validators, templates, fixtures, tests, proof refreshes, adapter implementation, and ledger updates can become Spark-suitable after the contract stabilizes.
+
+  + [open_question] is whether LangGraph alone can preserve enough authority distinction if its state is extended with typed kernel records, or whether the authority kernel must be fully external
+  + [open_question] is which first runtime representation should be used for the kernel: SOP-only files, SQLite, Postgres, or a hybrid
+  + [open_question] is whether the first artifact should be a pure specification, a schema prototype, or a LangGraph proof-of-shape
+  + [open_question] is which existing ReasoningFramework SOP duties should be compiled first
+
+  - never: treat this dictated source document as the canonical processed specification
+  - never: overwrite this source document with the canonical specification

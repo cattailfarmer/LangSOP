@@ -1,0 +1,17 @@
+Subject: LangSOP Initial Workflow Source Document Manifest
+Date: 2026-05-25
+Manifest UUID: 065752eb-0f31-4a26-bc59-9e5c27c13662
+
+& [SourceDocumentManifest: LangSOPInitialWorkflow] is the source preservation manifest for the first LangSOP specification
+  + [source_document] is docs/source/2026-05-25_langsop_initial_workflow/Dictated_LangSOP_Source.sop
+  + [source_document_sha256] is D66E52EB63BC2BEB0AEEA2E380FEE7574D1A169292A355C8FE0A51D0351FC428
+  + [source_uuid] is 72626309-1ab9-4e26-9d59-5ad35d8e9f36
+  + [capture_date] is 2026-05-25
+  + [capture_timezone] is America/Chicago
+  + [source_purpose] is preserve the user's original LangSOP platform intent before SJS processing
+  + [canonical_target] is docs/canonical/LangSOP_Initial_Workflow.canonical.sop
+  + [exploded_target] is docs/exploded/LangSOP_Initial_Workflow.exploded.sop
+
+  = must: preserve the source document unchanged unless a new source snapshot is intentionally created
+  = must: invalidate downstream canonical authority if this source hash changes without reprocessing
+  - never: treat the source document as the canonical processed implementation authority
