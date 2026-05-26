@@ -1,0 +1,113 @@
+Subject: IR3 S01 Completion Review V1
+Date: 2026-05-26
+Review UUID: fed6c481-685a-40fc-a9eb-ccbd08fc97b8
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+@ [slice_minting_review] docs/reviews/IR3_Final_Slice_Minting_Review.v1.sop
+
+& [CompletedWorkReview: IR3-S01] is the completed-work review for IR3 operator harness boundary and invariant map
+  + [slice_id] is IR3-S01
+  + [slice_name] is operator harness boundary and invariant map
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+  + [completed_output_sha256] is 0048A2D79061B80A7F9C48724A018FCE955F9CB6BBFE6A1D0530D95AA5AC73BE
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-S01 as the semantic boundary for downstream runner, trace, fixture IO, and implementation activation planning
+  + [next_gate_result] is IR3-S02 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR3-S02 only
+  = must: rerun this review if the boundary map, IR3 canonical specification, IR3 slice surface, slice minting review, IR2 proof pack, or FSC2 planning coordination pack changes
+  = must: keep fixture runner IO policy, implementation code, fixture source, expected ledgers, generated traces, operations control, and live machine control gated until their specific slices open
+
+& [IR3S01Verification] is the verification result for operator harness boundary and invariant map
+  + [operator_role_map_present] is true
+  + [authority_boundary_present] is true
+  + [observation_boundary_present] is true
+  + [transformation_boundary_present] is true
+  + [emission_boundary_present] is true
+  + [trace_identity_rules_present] is true
+  + [source_projection_invariants_present] is true
+  + [allowed_generated_artifact_set_present] is true
+  + [future_implementation_file_ownership_present] is true
+  + [stale_trigger_set_present] is true
+  + [blocked_downstream_dependency_set_present] is true
+  + [forbidden_scope_set_present] is true
+  + [runner_contract_created] is false
+  + [fixture_io_policy_created] is false
+  + [implementation_plan_created] is false
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3S01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+
+& [SupportDelta: IR3-S01] is the support delta produced by the accepted operator harness boundary
+  + [new_support_record] is IR3OperatorHarnessBoundaryAndInvariantMapV1 supports IR3-S02 runner and trace contract planning
+  + [new_support_record] is accepted role, authority, observation, transformation, emission, trace identity, stale trigger, generated artifact, and refusal boundaries are available as downstream inputs
+  + [new_support_record] is generated traces are explicitly projection-only and cannot replace signed SOP authority
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-S01] is the requirement delta produced by the accepted operator harness boundary
+  + [requirement_delta] is IR3-S02 must define runner input/output contracts, trace event schema, refusal and fault event contract, deterministic replay notes, and non-authoritative trace warning from the accepted boundary
+  + [requirement_delta] is future operator harness implementation must preserve trace identity components and refusal requirements defined in IR3-S01
+  + [requirement_delta] is no fixture runner IO policy, implementation plan, code, fixture source, expected ledger, generated trace, dependency installation, operations control, or live machine control is authorized by IR3-S01
+  + [requirement_delta] is no rebake required before IR3-S02
+
+& [StalenessAndContradictionReview: IR3-S01] is the staleness review for this completion
+  + [stale_source_manifest_found] is false
+  + [stale_canonical_specification_found] is false
+  + [stale_slice_surface_found] is false
+  + [stale_IR2_proof_pack_found] is false
+  + [stale_FSC2_planning_coordination_pack_found] is false
+  + [contradicted_authority_boundary_found] is false
+  + [false_ready_IR3_S02_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3-S01 stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-S01] is the fault review for operator harness boundary and invariant map
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [runner_contract_creation_leak_found] is false
+  + [fixture_io_policy_creation_leak_found] is false
+  + [implementation_plan_creation_leak_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3S01Accepted] is accepted
+    @ [support] [IR3S01Verification]
+    @ [support] [SupportDelta: IR3-S01]
+    @ [support] [RequirementDelta: IR3-S01]
+    @ [support] [StalenessAndContradictionReview: IR3-S01]
+    @ [support] [FaultReview: IR3-S01]
+
+& [NextSliceGate: IR3-S02] is opened
+  + [opened_slice] is IR3-S02 contract-driven operator runner and trace contract
+  + [accepted_boundary_input] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_boundary_input_sha256] is 0048A2D79061B80A7F9C48724A018FCE955F9CB6BBFE6A1D0530D95AA5AC73BE
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is runner and trace semantics must preserve authority distinctions, refusal behavior, trace identity, and non-authoritative generated output boundaries
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-S02 next unless user redirects or a new fault invalidates this review

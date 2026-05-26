@@ -1,0 +1,223 @@
+Subject: IR3 Operator Harness Boundary And Invariant Map V1
+Date: 2026-05-26
+Boundary UUID: 4aeec37e-ab20-42d1-994e-97ea5a8a0d17
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+@ [slice_minting_review] docs/reviews/IR3_Final_Slice_Minting_Review.v1.sop
+@ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [IR2_completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [IR3OperatorHarnessBoundaryAndInvariantMapV1] is the IR3-S01 boundary map for operator harness and fixture runner work
+  + [boundary_id] is ir3-operator-harness-boundary-invariant-map-v1
+  + [boundary_uuid] is 4aeec37e-ab20-42d1-994e-97ea5a8a0d17
+  + [slice_id] is IR3-S01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is boundary and invariant map only
+
+  = must: define the maximum IR3 operator, trace, fixture, projection, artifact, and file-ownership boundaries before runner contracts or implementation code begin
+  = must: preserve SOP artifacts and accepted completion reviews as the authority layer
+  = must: preserve operator traces, runner reports, generated fixture outputs, caches, and projected records as generated evidence only
+  = must: require every future operator trace to cite source paths, source hashes, operator contract version, run identity, input identity, refusal state when present, and generated-output status
+  - never: implement operator runner behavior, fixture runner behavior, LangGraph nodes, process dispatch, job dispatch, operations control, or live machine control in this slice
+  - never: allow generated trace state, LangGraph checkpoint state, terminal state, or chat transcript state to replace signed SOP authority
+
+& [OperatorHarnessRoleMap] is the role boundary for the future IR3 operator harness
+  + [harness_role] is deterministic coordination helper for bounded, contract-defined planning operators and fixture-scale proof work
+  + [harness_role] is refusal and fault surface for stale, ambiguous, contradicted, unsupported, unsafe, or unauthorized operator requests
+  + [harness_role] is trace producer for generated operator evidence that managers can review
+  + [harness_role] is fixture runner coordinator only after a later accepted slice defines IO policy and implementation scope
+  + [non_role] is source authority
+  + [non_role] is live dispatcher
+  + [non_role] is background job manager
+  + [non_role] is credential broker
+  + [non_role] is machine operations controller
+
+  = must: keep human and SOP review authority above generated harness output
+  = must: allow a future implementation to refuse rather than improvise missing authority
+
+& [AuthorityBoundary: IR3OperatorHarness] is the trust boundary for operator harness work
+  + [authority_store] is tracked SOP files under docs/ and accepted SOP artifacts cited by current source manifests, canonical specifications, slice surfaces, decisions, schemas, operators, fixtures, planning packs, and completion reviews
+  + [authority_input] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [authority_input] is docs/slices/IR3_Final_Slices.v1.sop
+  + [authority_input] is docs/reviews/IR3_Final_Slice_Minting_Review.v1.sop
+  + [authority_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [authority_input] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+  + [authority_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [projection_input] is parser output, extracted KernelRecord candidates, validation reports, SQLite rows, generated indexes, generated caches, generated fixture outputs, generated runner traces, and transient diagnostics
+  + [authority_promotion_rule] is harness output may become authority only when rewritten as a tracked SOP artifact by an explicit later slice and accepted by completion review
+  + [authority_write_rule] is future harness implementation reads authority inputs and writes generated traces or reviewable SOP outputs only when a later accepted slice authorizes the path
+
+  = must: reject any future operator output that treats trace events, checkpoint state, generated reports, or projection rows as canonical truth
+  = must: preserve invalid, stale, contradicted, contested, malformed, or unsupported inputs as reviewable refusals or faults rather than silently succeeding
+
+& [OperatorObservationBoundary] is the maximum observation surface for a future operator harness
+  + [may_observe] is accepted SOP source paths, source hashes, SJS signatures, source manifests, canonical specifications, slice surfaces, completion reviews, planning packs, schema contracts, fixture plans, and accepted generated-output policies
+  + [may_observe] is generated projection records from IR2 only as derived evidence with source path and source hash lineage
+  + [may_observe] is coordination claims, work packets, readiness projections, support gaps, requirement deltas, and fault records only when their authority basis is cited
+  + [may_observe] is fixture inputs and expected ledgers only after a later accepted slice creates or authorizes them
+  + [must_not_observe_as_authority] is chat text, terminal scrollback, generated SQLite state, LangGraph checkpoints, cache files, runner traces, OS process lists, GPU state, network state, credentials, or live machine state
+
+  = must: make observation provenance explicit in future trace records
+  = must: refuse when an observation lacks an accepted source boundary and the operator contract requires one
+
+& [OperatorTransformationBoundary] is the maximum transformation surface for a future operator harness
+  + [may_transform_conceptually] is accepted authority plus derived projections into readiness projections, work packet projections, refusal records, fault records, generated trace events, fixture comparison reports, and review support summaries
+  + [may_transform_conceptually] is fixture input plus expected ledger into generated fixture trace only after fixture IO policy and implementation activation are accepted
+  + [must_preserve] is source path, source hash, schema version, operator contract version, run identity, input identity, and refusal or fault reason
+  + [must_refuse_when] is authority input is stale, missing, unsigned, wrong-protocol, contradicted, ambiguous, contested, malformed, unsupported, outside slice scope, or requesting live control
+  + [must_refuse_when] is generated projection is presented as source authority
+  + [must_refuse_when] is an operator request would install dependencies, mutate source authority, access credentials, control processes, control GPU workloads, control network services, dispatch jobs, or manage a live machine
+
+  = must: keep transformations deterministic for the same accepted inputs and operator contract version
+  = must: record refusal as a positive output instead of treating refusal as absence of work
+
+& [OperatorEmissionBoundary] is the maximum output surface for a future operator harness
+  + [may_emit_generated] is operator_trace
+  + [may_emit_generated] is readiness_projection
+  + [may_emit_generated] is stale_projection
+  + [may_emit_generated] is support_gap
+  + [may_emit_generated] is proof_result
+  + [may_emit_generated] is fault_record
+  + [may_emit_generated] is fixture_comparison_report
+  + [may_emit_generated] is generated_output_manifest
+  + [may_emit_authority_only_when_slice_authorizes] is tracked SOP operator contracts, tracked SOP fixture plans, tracked SOP expected ledgers, tracked SOP completion reviews, and tracked SOP activation packs
+  + [must_not_emit] is live dispatch command
+  + [must_not_emit] is operations-control instruction
+  + [must_not_emit] is credential-bearing record
+  + [must_not_emit] is destructive filesystem instruction
+  + [must_not_emit] is background job control instruction
+  + [must_not_emit] is source mutation outside accepted file scope
+
+  = must: label generated outputs as non-authoritative in their record body or generated-output manifest
+  = must: keep authority-bearing SOP emissions behind explicit slice outputs and completion review
+
+& [OperatorTraceIdentityRuleSet] is the identity rule set for future generated operator traces
+  + [trace_identity_component] is trace_schema_version
+  + [trace_identity_component] is operator_contract_id
+  + [trace_identity_component] is operator_contract_version
+  + [trace_identity_component] is run_id
+  + [trace_identity_component] is event_id
+  + [trace_identity_component] is parent_event_id when available
+  + [trace_identity_component] is source_ref_set with path and sha256 when available
+  + [trace_identity_component] is input_ref_set with natural key and lifecycle state when available
+  + [trace_identity_component] is slice_id and completion_review_ref when the trace supports slice work
+  + [trace_identity_component] is generated_output_root and cleanup_policy_ref when a file is emitted
+  + [trace_identity_component] is refusal_reason when the operator refuses
+  + [trace_identity_component] is fault_code and repair_hint when the operator faults
+  + [trace_status] is generated_projection_only
+
+  = must: make trace events stable enough for fixture comparison without making them source authority
+  = must: make replay differences visible as stale, changed, or faulted generated evidence
+
+& [SourceProjectionInvariantSet: IR3OperatorHarness] is the invariant set every IR3 slice must preserve
+  + [invariant] is SOP source files and accepted completion reviews remain the source authority even when projected, traced, or replayed
+  + [invariant] is operator traces are evidence and projections until reviewed into explicit SOP artifacts
+  + [invariant] is LangGraph checkpoints, chat logs, terminal state, generated SQLite rows, generated reports, and fixture outputs are not authority
+  + [invariant] is every future trace preserves source path and source hash for stable source inputs
+  + [invariant] is every future trace names the operator contract version that produced it
+  + [invariant] is stale, contested, ambiguous, contradicted, malformed, unauthorized, or unsafe inputs produce refusal or fault records
+  + [invariant] is generated artifacts are ignored by default and may not satisfy source-manifest or SJS-signature requirements
+  + [invariant] is authority mutation happens through source-preserving SOP artifacts and completion review, not through generated harness writes
+  + [invariant] is operator harness behavior must be deterministic for the same tracked input set and accepted contract version
+  + [invariant] is manager review remains required before downstream slice gates open
+
+& [AllowedGeneratedArtifactSet: IR3OperatorHarness] is the planned generated artifact boundary for IR3
+  + [generated_root] is .langsop/
+  + [allowed_generated_artifact] is .langsop/traces/
+  + [allowed_generated_artifact] is .langsop/operators/
+  + [allowed_generated_artifact] is .langsop/reports/
+  + [allowed_generated_artifact] is .langsop/fixtures/
+  + [allowed_generated_artifact] is tests/fixtures/generated/ir3_operator_harness/
+  + [artifact_status] is projection_only
+
+  = must: keep generated artifacts out of tracked authority unless a later source-preserving SOP record explicitly authorizes a tracked expected-output ledger
+  = must: make generated artifact deletion safe when source hashes, operator contracts, fixture policies, or trace schemas change
+  = must: keep actual generated output creation gated until later accepted slices authorize implementation or fixture execution
+
+& [FutureImplementationFileOwnership: IR3OperatorHarness] is the candidate ownership boundary for later IR3 implementation slices
+  + [candidate_owned_file_role] is operator harness package initialization after implementation activation plan acceptance
+  + [candidate_owned_file_role] is operator contract model implementation after runner contract acceptance
+  + [candidate_owned_file_role] is trace event model and writer implementation after trace contract acceptance
+  + [candidate_owned_file_role] is fixture runner implementation after fixture IO policy and implementation activation plan acceptance
+  + [candidate_owned_file_role] is contract tests after fixture plan acceptance
+  + [candidate_owned_file_role] is generated-output proof after implementation test integration
+
+  = must: treat this ownership list as candidate planning material until IR3-S04 accepts an exact file inventory
+  = must: require a new review before creating files outside the later accepted ownership boundary
+  = must: keep future implementation side effects limited to accepted generated projection paths unless a later accepted slice authorizes tracked expected ledgers
+
+& [OperatorHarnessStaleTriggerSet] is the staleness trigger set for IR3 outputs
+  + [stale_trigger] is IR3 source document or source manifest changes
+  + [stale_trigger] is IR3 canonical satisfaction signature changes
+  + [stale_trigger] is IR3 slice surface changes
+  + [stale_trigger] is IR3-S01 boundary map changes
+  + [stale_trigger] is IR3 runner contract changes
+  + [stale_trigger] is IR3 fixture runner IO policy changes
+  + [stale_trigger] is IR3 implementation activation plan changes
+  + [stale_trigger] is IR3 fixture plan or expected trace ledger changes
+  + [stale_trigger] is IR2 parser/projection implementation proof pack changes
+  + [stale_trigger] is FSC2 planning coordination pack changes
+  + [stale_trigger] is accepted source hash, operator contract version, trace schema version, generated-output policy, or completion review changes
+  + [stale_trigger] is operations safety prohibition changes
+
+  = must: produce stale_projection, refusal, blocked output, fixture mismatch, or completion-review fault when a stale trigger applies
+
+& [BlockedDownstreamDependencySet: IR3-S01] is the dependency set blocked by this boundary
+  + [blocked_until_later_slice] is runner input/output contract creation
+  + [blocked_until_later_slice] is trace event schema finalization
+  + [blocked_until_later_slice] is fixture runner IO path policy
+  + [blocked_until_later_slice] is implementation file inventory
+  + [blocked_until_later_slice] is implementation code creation
+  + [blocked_until_later_slice] is fixture source creation
+  + [blocked_until_later_slice] is expected trace ledger creation
+  + [blocked_until_later_slice] is generated trace creation
+  + [blocked_until_later_slice] is tests for operator harness behavior
+  + [blocked_until_later_slice] is bounded operator harness implementation activation
+  + [blocked_until_later_slice] is downstream IR4 work
+
+  = must: open only IR3-S02 after IR3-S01 completion review accepts this boundary
+
+& [ForbiddenScopeSet: IR3-S01] is the forbidden scope list for this boundary
+  + [forbidden_scope] is runner contract creation
+  + [forbidden_scope] is fixture runner IO policy finalization
+  + [forbidden_scope] is implementation file inventory finalization
+  + [forbidden_scope] is implementation code creation
+  + [forbidden_scope] is fixture file creation
+  + [forbidden_scope] is expected-ledger creation
+  + [forbidden_scope] is generated trace creation
+  + [forbidden_scope] is dependency installation
+  + [forbidden_scope] is LangGraph runtime implementation
+  + [forbidden_scope] is surface implementation
+  + [forbidden_scope] is adapter implementation
+  + [forbidden_scope] is operations simulator implementation
+  + [forbidden_scope] is process, GPU, model runtime, job, credential, network, destructive filesystem, or live machine control behavior
+
+& [IR3S01CoverageReview] is the coverage checklist for IR3-S01
+  + [operator_role_map_present] is OperatorHarnessRoleMap
+  + [authority_boundary_present] is AuthorityBoundary: IR3OperatorHarness
+  + [observation_boundary_present] is OperatorObservationBoundary
+  + [transformation_boundary_present] is OperatorTransformationBoundary
+  + [emission_boundary_present] is OperatorEmissionBoundary
+  + [trace_identity_rules_present] is OperatorTraceIdentityRuleSet
+  + [source_projection_invariants_present] is SourceProjectionInvariantSet: IR3OperatorHarness
+  + [allowed_generated_artifact_set_present] is AllowedGeneratedArtifactSet: IR3OperatorHarness
+  + [future_implementation_file_ownership_present] is FutureImplementationFileOwnership: IR3OperatorHarness
+  + [stale_trigger_set_present] is OperatorHarnessStaleTriggerSet
+  + [blocked_downstream_dependency_set_present] is BlockedDownstreamDependencySet: IR3-S01
+  + [forbidden_scope_set_present] is ForbiddenScopeSet: IR3-S01
+  + [runner_contract_created] is false
+  + [fixture_io_policy_created] is false
+  + [implementation_plan_created] is false
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR3-S01 only when all checklist items are satisfied
+  = must: open IR3-S02 only after this boundary is reviewed in a completion review
