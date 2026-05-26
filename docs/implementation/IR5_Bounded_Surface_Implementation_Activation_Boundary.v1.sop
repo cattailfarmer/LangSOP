@@ -1,0 +1,167 @@
+Subject: IR5 Bounded Surface Implementation Activation Boundary V1
+Date: 2026-05-26
+Activation Boundary UUID: da8f425c-0a24-4998-9db1-3c0eb6433b03
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR5_Implementation_Activation.canonical.sop
+@ [IR5_activation_pack] docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR5_Surface_Projection_Prototype_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+
+& [IR5BoundedSurfaceImplementationActivationBoundaryV1] is the IR5-IA01 activation boundary for future bounded surface projection implementation work
+  + [activation_boundary_id] is ir5-bounded-surface-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is da8f425c-0a24-4998-9db1-3c0eb6433b03
+  + [slice_id] is IR5-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary and dependency decision only
+
+  = must: confirm future file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, dependency boundary, adapter boundary, command plan, and proof gate for implementation slices
+  = must: preserve accepted IR5 authority display, projection state, fixture, generated-output, adapter, operation safety, and no-live-control semantics without implementation code creation in this slice
+  = must: keep package dependency changes gated until IR5-IA07 or a later dependency-authorizing slice
+  - never: create surface implementation code, fixture source files, expected ledgers, generated projections, generated reports, tests, dependencies, adapter transports, UI, operations simulator code, operations control, or live machine control in this slice
+
+& [ConfirmedImplementationFileInventory: IR5SurfaceProjection] is the maximum code and test file inventory for first-pass IR5 surface projection implementation
+  + [future_code_file] is src/langsop/surfaces/__init__.py
+  + [future_code_file] is src/langsop/surfaces/authority.py
+  + [future_code_file] is src/langsop/surfaces/projection_state.py
+  + [future_code_file] is src/langsop/surfaces/projectors.py
+  + [future_code_file] is src/langsop/surfaces/action_routes.py
+  + [future_code_file] is src/langsop/surfaces/generated_paths.py
+  + [future_code_file] is src/langsop/surfaces/fixture_runner.py
+  + [future_test_file] is tests/test_ir5_surface_projection_contracts.py
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+
+& [ConfirmedFixtureSourceInventory: IR5SurfaceProjection] is the fixture source inventory opened by IR5-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/manager_ready_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/worker_blocked_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/stale_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/narrative_lineage.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/debug_fault_trace.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/conversation_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/adapter_mutation_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/missing_authority_notice.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/langflow_non_authority_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/multi_surface_divergence.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/completion_gate_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/ir4_runtime_graph_proof_handoff.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/dry_run_success_not_live_control.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to FixturePlan: IR5SurfaceProjectionFixturePlanV1
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR5SurfaceProjection] is the expected ledger inventory opened by IR5-IA02 after this boundary is accepted
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/authority_display_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/projection_state_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/action_route_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/runtime_and_operations_boundary_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/no_authority_promotion_expected.sop
+
+  = must: make expected ledgers reviewable without generated projections, generated reports, carrier state, or runtime state
+  = must: keep expected ledgers as tracked fixture authority only after IR5-IA02 completion review accepts them
+
+& [ConfirmedGeneratedOutputBoundary: IR5SurfaceProjection] is the generated-output boundary for future tests and fixture runs
+  + [generated_output_root] is .langsop/projections/ir5_surface_projection/
+  + [generated_output_root] is .langsop/reports/ir5_surface_projection/
+  + [generated_output_root] is tests/fixtures/generated/ir5_surface_projection/
+  + [generated_output_root] is tests/fixtures/generated/ir5_surface_projection/projections/
+  + [generated_output_root] is tests/fixtures/generated/ir5_surface_projection/reports/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is projection_only
+  + [source_authority_status] is docs/ and accepted tracked fixture source or expected ledgers only
+
+  = must: refuse writes outside accepted generated roots during projection or test execution
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject projection records, reports, manifests, caches, carrier state, adapter state, dry-runs, or runtime state as source authority
+
+& [ConfirmedDependencyBoundary: IR5SurfaceProjection] is the dependency boundary for the first IR5 implementation pass
+  + [allowed_dependency_set] is Python standard library only through IR5-IA06
+  + [allowed_internal_dependency] is src/langsop/runtime accepted IR4 runtime graph modules
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [langflow_dependency_state] is gated_until_IR5-IA07_dependency_decision
+  + [irc_or_matrix_dependency_state] is gated_until_future_adapter_authorization
+  + [web_ui_dependency_state] is gated_until_future_UI_authorization
+
+  = must: require IR5-IA07 or a later dependency-authorizing slice before adding package dependencies, lockfiles, imports from external adapter packages, UI frameworks, Langflow packages, IRC or Matrix clients, or runtime requirements
+  = must: keep first-pass surface projection implementation clearly marked as data projection, not live adapter, UI, transport, or orchestration integration
+
+& [ConfirmedAdapterBoundary: IR5SurfaceProjection] is the adapter and UI boundary for first-pass implementation
+  + [adapter_status] is carrier_context_projection_only
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [Langflow_install_or_export_authorized] is false
+  + [IRC_or_Matrix_connection_authorized] is false
+  + [web_server_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_authorized] is false
+
+  = must: preserve carrier context as traceable evidence without granting authority
+  = must: refuse future implementation that opens live transports or UI surfaces without a separate accepted activation slice
+
+& [ConfirmedCommandPlan: IR5SurfaceProjection] is the command and verification plan for future implementation slices
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test] is python -m unittest tests.test_ir5_surface_projection_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated projections and reports are ignored, disposable, reproducible, and non-authoritative
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir5_surface_projection_contracts exists
+
+& [ImplementationSliceProofGate: IR5SurfaceProjection] is the proof gate opened by this activation boundary
+  + [IR5-IA02_opened_after_review] is fixture source and expected-ledger seed material
+  + [IR5-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after IR5-IA01 acceptance
+  + [IR5-IA02_scope] is fixture source files, expected ledger files, and fixture index only
+  + [code_creation_authorized_after_IR5-IA01] is false
+  + [fixture_creation_authorized_after_IR5-IA01] is true_for_IR5-IA02_only
+  + [expected_ledger_creation_authorized_after_IR5-IA01] is true_for_IR5-IA02_only
+  + [generated_projection_creation_authorized_after_IR5-IA01] is false
+  + [test_file_creation_authorized_after_IR5-IA01] is false
+  + [dependency_installation_authorized_after_IR5-IA01] is false
+  + [package_metadata_mutation_authorized_after_IR5-IA01] is false
+  + [adapter_implementation_authorized_after_IR5-IA01] is false
+  + [UI_implementation_authorized_after_IR5-IA01] is false
+  + [operations_control_authorized_after_IR5-IA01] is false
+  + [live_machine_control_authorized_after_IR5-IA01] is false
+
+  = must: open only IR5-IA02 after this boundary is accepted
+  = must: keep authority models, projection state models, projectors, action routes, generated path policy, fixture runner, tests, generated outputs, dependency changes, adapter work, UI work, proof packs, operations simulator work, operations control, and live machine control gated until their specific slices open
+
+& [IR5IA01CoverageReview] is the coverage checklist for IR5-IA01
+  + [confirmed_implementation_file_inventory_present] is ConfirmedImplementationFileInventory: IR5SurfaceProjection
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceInventory: IR5SurfaceProjection
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory: IR5SurfaceProjection
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary: IR5SurfaceProjection
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: IR5SurfaceProjection
+  + [confirmed_adapter_boundary_present] is ConfirmedAdapterBoundary: IR5SurfaceProjection
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: IR5SurfaceProjection
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: IR5SurfaceProjection
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_projection_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR5-IA01 only when all checklist items are satisfied
+  = must: open IR5-IA02 only after this activation boundary is reviewed in a completion review
