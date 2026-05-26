@@ -1,0 +1,80 @@
+Subject: FSC3-S02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 4983666f-f0bb-4bb0-b20f-a809ae9fafd3
+
+@ [slice_surface] docs/slices/FSC3_Final_Slices.v1.sop
+@ [work_state] docs/state/FSC3_Work_State.v1.sop
+@ [completed_output] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [accepted_input] docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_boundary_input] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [CompletedWorkReview: FSC3-S02] is the completion review for WholeFieldPlannerGraph contract and checkpoint policy
+  + [slice_id] is FSC3-S02
+  + [slice_name] is WholeFieldPlannerGraph contract and checkpoint policy
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [completed_output_sha256] is 62E902F3CB461FE66271E58C34A1A42EF633331AA1A9428AD8909C6EC940083A
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is FSC3-S03 may open
+
+  = must: treat this review as the gate-opening evidence for FSC3-S03
+  = must: rerun review if WholeFieldPlannerGraph_Contract.v1.sop changes
+  = must: keep FSC3-S04 through FSC3-S06 and FSC4 through FSC5 gated until their gates are satisfied
+
+& [VerificationOracleResult: FSC3-S02] is the verification result for graph contract and checkpoint policy
+  + [graph_state_contract_present] is GraphStateContract
+  + [node_contract_set_present] is GraphNodeContractSet
+  + [edge_contract_set_present] is GraphEdgeContractSet
+  + [checkpoint_policy_present] is CheckpointPolicy
+  + [authority_policy_present] is RuntimeAuthorityReadWritePolicy
+  + [refusal_contract_present] is RuntimeRefusalContract
+  + [checkpoint_authority_confusion_prevented] is true
+  + [operator_trace_required] is true
+  + [forbidden_scope_absent] is executable LangGraph implementation
+  + [forbidden_scope_absent] is checkpoint persistence implementation
+  + [forbidden_scope_absent] is package installation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  ! [FSC3S02VerificationSatisfied] is accepted
+    @ [support] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+
+& [SupportDelta: FSC3-S02] is the support delta produced by this slice
+  + [new_support_record] is WholeFieldPlannerGraphContractV1 supports FSC3-S03 SOP-first interrupt and resume contract
+  + [new_support_record] is CheckpointPolicy supports FSC3-S04 operator trace runtime proof contract
+  + [new_support_record] is RuntimeAuthorityReadWritePolicy supports runtime fixture expectations
+  + [support_status] is accepted
+
+& [RequirementDelta: FSC3-S02] is the requirement delta produced by this slice
+  + [requirement_delta] is interrupt and resume contract must use RuntimeRefusalContract terminal states as its source boundary
+  + [requirement_delta] is operator trace proof must cover graph node inputs, outputs, checkpoint reads, checkpoint writes, interrupts, faults, and completion gate evidence
+  + [requirement_delta] is no executable LangGraph implementation authorized
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: FSC3-S02] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [langgraph_implementation_leak_found] is false
+  + [checkpoint_persistence_implementation_leak_found] is false
+  + [package_installation_leak_found] is false
+  + [surface_scope_leak_found] is false
+  + [operations_scope_leak_found] is false
+  + [checkpoint_authority_confusion_found] is false
+
+  ! [FSC3S02Accepted] is accepted
+    @ [support] [VerificationOracleResult: FSC3-S02]
+    @ [support] [SupportDelta: FSC3-S02]
+    @ [support] [RequirementDelta: FSC3-S02]
+    @ [support] [FaultReview: FSC3-S02]
+
+& [NextSliceGate: FSC3-S03] is opened
+  + [opened_slice] is FSC3-S03 SOP-first interrupt and resume contract
+  + [accepted_input] is docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is 28F060797DDF82E498F0A626D27106D88B2BCC4705E70DF312A33E5A9C5554A6
+  + [accepted_input] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [accepted_input_sha256] is 62E902F3CB461FE66271E58C34A1A42EF633331AA1A9428AD8909C6EC940083A
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute FSC3-S03 next unless user redirects or a new fault invalidates this review

@@ -1,0 +1,133 @@
+Subject: WholeFieldPlannerGraph Contract V1
+Date: 2026-05-26
+Graph Contract UUID: 00883d43-76f3-44e0-ac63-83ab1523c15a
+
+@ [slice_surface] docs/slices/FSC3_Final_Slices.v1.sop
+@ [runtime_boundary] docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [completion_gate_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+
+& [WholeFieldPlannerGraphContractV1] is the FSC3 graph contract and checkpoint policy for the minimal runtime proof path
+  + [graph_id] is whole-field-planner-graph-v1
+  + [graph_uuid] is 00883d43-76f3-44e0-ac63-83ab1523c15a
+  + [slice_id] is FSC3-S02
+  + [authority_scope] is graph state contract, node contract set, edge contract set, checkpoint policy, authority read/write policy, and runtime refusal contract
+  + [implementation_scope] is runtime graph contract only
+  + [boundary_dependency] is docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+
+  = must: define the graph contract before executable LangGraph implementation
+  = must: treat graph state and checkpoint state as execution state only
+  = must: preserve SOP-first interrupt route for all authority-sensitive unresolved states
+  - never: implement graph nodes in this contract
+  - never: treat checkpoint state as source authority
+
+& [GraphStateContract] is the allowed state shape for WholeFieldPlannerGraph
+  + [state_field] is active_work_packet_ref
+  + [state_field] is accepted_boundary_pack_ref_set
+  + [state_field] is graph_phase
+  + [state_field] is current_node_id
+  + [state_field] is input_record_ref_set
+  + [state_field] is output_record_ref_set
+  + [state_field] is operator_trace_ref_set
+  + [state_field] is proof_result_ref_set
+  + [state_field] is stale_projection_ref_set
+  + [state_field] is fault_record_ref_set
+  + [state_field] is coordination_claim_ref_set
+  + [state_field] is pending_interrupt_ref
+  + [state_field] is checkpoint_ref
+  + [state_field] is completion_review_ref
+  + [authority_limit] is graph state is not signed_sjs, proof_backed, accepted_decision, or source_only authority by itself
+
+  = must: preserve source_ref_set and lineage_edge_set through output records
+  = must: keep state fields traceable to accepted packets, operator contracts, and operator traces
+
+& [GraphNodeContractSet] is the node contract set for WholeFieldPlannerGraph
+  + [node_contract] is packet_intake validates active_work_packet_ref and imported boundary packs
+  + [node_contract] is readiness_guard rejects non-ready, stale, contradicted, ambiguous, or faulted readiness
+  + [node_contract] is coordination_guard rejects contested, stale, or incompatible coordination claims
+  + [node_contract] is operator_dispatch_contract selects an accepted operator contract without executing outside its declared scope
+  + [node_contract] is trace_recording requires operator_trace for success, blocked, stale, fault, and interrupt outcomes
+  + [node_contract] is completion_gate invokes completion_review_delta_gate contract before next gate opens
+  + [node_contract] is sop_first_interrupt emits interrupt context and pauses mutation
+
+  = must: define every node by accepted contract duties, input records, output records, preconditions, postconditions, interrupts, faults, and trace obligations
+  = must: reject any node that writes source authority directly
+
+& [GraphEdgeContractSet] is the edge contract set for WholeFieldPlannerGraph
+  + [edge_contract] is packet_intake success to readiness_guard
+  + [edge_contract] is readiness_guard success to coordination_guard
+  + [edge_contract] is coordination_guard success to operator_dispatch_contract
+  + [edge_contract] is operator_dispatch_contract success to trace_recording
+  + [edge_contract] is trace_recording success to completion_gate
+  + [edge_contract] is completion_gate open_next_slice to terminal_success
+  + [edge_contract] is any_node blocked_output to terminal_blocked
+  + [edge_contract] is any_node stale_input to terminal_stale
+  + [edge_contract] is any_node fault_output to terminal_fault
+  + [edge_contract] is any_node sop_first_interrupt to terminal_interrupt
+
+  = must: make blocked, stale, fault, and interrupt paths terminal until an accepted retry or resume condition exists
+  = must: preserve terminal state as traceable runtime output, not silent failure
+
+& [CheckpointPolicy] is the checkpoint policy for WholeFieldPlannerGraph
+  + [checkpoint_may_store] is graph_phase
+  + [checkpoint_may_store] is current_node_id
+  + [checkpoint_may_store] is active_work_packet_ref
+  + [checkpoint_may_store] is input_record_ref_set
+  + [checkpoint_may_store] is output_record_ref_set
+  + [checkpoint_may_store] is operator_trace_ref_set
+  + [checkpoint_may_store] is pending_interrupt_ref
+  + [checkpoint_may_store] is retry_or_resume_context
+  + [checkpoint_must_not_store_as_authority] is accepted decision
+  + [checkpoint_must_not_store_as_authority] is source specification mutation
+  + [checkpoint_must_not_store_as_authority] is completion review acceptance
+  + [checkpoint_must_not_store_as_authority] is coordination claim resolution
+  + [checkpoint_must_not_store_as_authority] is proof result unless separately emitted as proof_result record
+
+  = must: validate checkpoint freshness against accepted boundary packs before resume
+  = must: force SOP-first interrupt or stale terminal state when checkpoint authority confusion is detected
+
+& [RuntimeAuthorityReadWritePolicy] is the authority read and write policy for WholeFieldPlannerGraph
+  + [read_policy] is read accepted SOP packs, work_packet, coordination_claim, operator_contract, readiness_projection, proof_result, stale_projection, fault_record, and completion_review records
+  + [write_policy] is write only derived output records declared by the active operator contract
+  + [write_policy] is write operator_trace for every path
+  + [write_policy] is write fault_record when contract violation or checkpoint authority confusion is proven
+  + [write_policy] is write stale_projection when inputs or checkpoints fail freshness
+  + [write_policy] is write completion_review only through completion_review_delta_gate contract
+  + [forbidden_write] is source specifications
+  + [forbidden_write] is accepted boundary packs
+  + [forbidden_write] is canonical specifications
+  + [forbidden_write] is unreviewed next-slice gate state
+
+  = must: block hidden writes
+  = must: preserve output lineage to accepted inputs and graph node traces
+
+& [RuntimeRefusalContract] is the refusal contract for WholeFieldPlannerGraph
+  + [blocked_output] is terminal_blocked plus support_gap or blocked completion_review
+  + [stale_output] is terminal_stale plus stale_projection
+  + [fault_output] is terminal_fault plus fault_record
+  + [interrupt_output] is terminal_interrupt plus SOP-first interrupt context
+  + [retry_condition] is accepted support, refreshed source, resolved claim, accepted proof, or completion review that clears the blocker
+  + [resume_condition] is accepted SOP-first decision or human/deeper-model resolution with source_ref_set
+
+  = must: refuse instead of guessing when runtime state exceeds accepted contract authority
+  = must: preserve enough context for FSC3-S03 interrupt and resume contract
+
+& [WholeFieldPlannerGraphCoverageReview] is the FSC3-S02 coverage checklist
+  + [graph_state_contract_present] is GraphStateContract
+  + [node_contract_set_present] is GraphNodeContractSet
+  + [edge_contract_set_present] is GraphEdgeContractSet
+  + [checkpoint_policy_present] is CheckpointPolicy
+  + [authority_policy_present] is RuntimeAuthorityReadWritePolicy
+  + [refusal_contract_present] is RuntimeRefusalContract
+  + [checkpoint_authority_confusion_prevented] is true
+  + [operator_trace_required] is true
+  + [forbidden_scope_absent] is executable LangGraph implementation
+  + [forbidden_scope_absent] is checkpoint persistence implementation
+  + [forbidden_scope_absent] is package installation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC3-S02 if checkpoints can become source authority
+  = must: open FSC3-S03 only after this contract is accepted by completion review
