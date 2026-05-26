@@ -1,0 +1,107 @@
+Subject: IR5 IA05 Completion Review V1
+Date: 2026-05-26
+Review UUID: 61b4914f-ad2e-4d64-8f38-6e8f2ead6f2f
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [previous_completion_review] docs/reviews/IR5_IA04_Completion_Review.v1.sop
+@ [completed_output] src/langsop/surfaces/generated_paths.py
+@ [completed_output] src/langsop/surfaces/fixture_runner.py
+@ [completed_output] src/langsop/surfaces/__init__.py
+
+& [CompletedWorkReview: IR5-IA05] is the completed-work review for IR5-IA05 generated path policy and fixture runner implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR5-IA05
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5-IA05 and open IR5-IA06
+  + [next_gate_result] is IR5-IA06 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for contract tests and generated-output proof
+  + [next_model_route_depth] is Spark-suitable
+  + [completed_output] is src/langsop/surfaces/generated_paths.py
+  + [completed_output_sha256] is 7E4A5C53079F7BA4621496694650F8A4EAC66ED1337D13544FF9AE7784EBD67D
+  + [completed_output] is src/langsop/surfaces/fixture_runner.py
+  + [completed_output_sha256] is 588151532488B2CA89B960CA109A17E09928D631BAA98AF875D9BAB898743E32
+  + [completed_output] is src/langsop/surfaces/__init__.py
+  + [completed_output_sha256] is 7EB74E8E200B6613FA7F21E43DB97DEC083EE886C3A4D15792C5F0E393DDF913
+
+  = must: treat this review as gate-opening evidence for IR5-IA06 only
+  = must: rerun this review if generated path policy, fixture runner, projectors, action routes, fixture source set, expected ledger set, or IR5-IA04 completion review changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR5IA05Verification] is the verification result for IR5-IA05
+  + [generated_path_policy_present] is true
+  + [fixture_runner_present] is true
+  + [tracked_fixture_source_read_policy_present] is true
+  + [tracked_expected_ledger_read_policy_present] is true
+  + [accepted_generated_root_policy_present] is true
+  + [source_mutation_refusal_present] is true
+  + [fixture_corpus_size] is 13
+  + [fixture_corpus_in_memory_comparison_passed] is true
+  + [accepted_generated_report_path_smoke] is passed
+  + [docs_write_refusal_smoke] is source_mutation_refusal
+  + [baseline_compile_command] is passed
+  + [baseline_test_command] is passed
+  + [generated_projection_created] is false
+  + [generated_report_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5IA05VerificationSatisfied] is accepted
+    @ [support] src/langsop/surfaces/generated_paths.py
+    @ [support] src/langsop/surfaces/fixture_runner.py
+    @ [support] src/langsop/surfaces/__init__.py
+
+& [SupportDelta: IR5-IA05] is the support delta produced by IR5-IA05
+  + [new_support_record] is IR5 generated path policy accepts only the configured generated roots and refuses writes to docs, src, platform, .git, fixture source roots, and expected ledger roots
+  + [new_support_record] is IR5 fixture runner loads only tracked fixture sources and expected ledgers, projects all 13 fixture cases in memory, and compares generated projection facts without treating generated output as authority
+  + [new_support_record] is generated output writer exists behind path policy but no generated outputs were created by this slice
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-IA05] is the requirement delta produced by IR5-IA05
+  + [requirement_delta] is IR5-IA06 may create the bounded contract test file and generated-output proof document named in the activation boundary
+  + [requirement_delta] is IR5-IA06 remains GPT-5.3-Codex-Spark-suitable because tests and generated-output proof are bounded by accepted fixture runner behavior
+  + [requirement_delta] is no dependency installation, adapter implementation, UI implementation, operations simulator, operations control, or live machine control is authorized by IR5-IA05
+
+& [FaultReview: IR5-IA05] is the fault review for IR5-IA05
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [generated_output_created] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5IA05Accepted] is accepted
+    @ [support] [IR5IA05Verification]
+    @ [support] [SupportDelta: IR5-IA05]
+    @ [support] [RequirementDelta: IR5-IA05]
+    @ [support] [FaultReview: IR5-IA05]
+
+& [NextSliceGate: IR5-IA06] is opened
+  + [opened_slice] is IR5-IA06 contract tests and generated-output proof
+  + [accepted_dependency] is src/langsop/surfaces/generated_paths.py
+  + [accepted_dependency_sha256] is 7E4A5C53079F7BA4621496694650F8A4EAC66ED1337D13544FF9AE7784EBD67D
+  + [accepted_dependency] is src/langsop/surfaces/fixture_runner.py
+  + [accepted_dependency_sha256] is 588151532488B2CA89B960CA109A17E09928D631BAA98AF875D9BAB898743E32
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is contract tests and generated-output proof are bounded by accepted fixture runner behavior
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-IA06 next unless user redirects or a new fault invalidates this review
