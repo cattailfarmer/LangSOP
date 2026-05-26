@@ -1,0 +1,28 @@
+Subject: Dictated Operations Safety Source
+Date: 2026-05-26
+Source UUID: 98f17b78-4446-4cde-b59f-ef4a4601ec00
+
+& [DictatedSource: OperationsSafety] is the preserved source instruction for future operations-manager safety
+  + [source_context] is future Ryzen 9 RTX 5090 machine operations management
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [safety_scope] is process, GPU, model runtime, job queue, workspace, network, credential, and resource-health management boundaries
+  + [allowed_pre_safety_activity] is planning, specification, final-slice minting, dry-run contract design, and fixture design
+  + [forbidden_pre_safety_activity] is live process control, GPU workload control, model runtime mutation, job dispatch, credential mutation, network exposure, destructive filesystem operation, and operations automation
+  + [required_boundary] is operations are requests and dry-run projections until accepted safety authority exists
+  + [required_boundary] is human override and explicit approval are required for high-risk or live-control transitions
+  + [required_boundary] is every operations-facing projection must carry authority_notice, freshness_state, intended_effect, blast_radius, rollback_or_abort_route, and dry_run_result_ref before action
+  + [required_boundary] is no live machine control is authorized by FSC4 surface projection acceptance alone
+  + [required_fixture] is dry-run resource request
+  + [required_fixture] is blocked live control
+  + [required_fixture] is GPU contention
+  + [required_fixture] is model runtime unavailable
+  + [required_fixture] is credential or secret boundary
+  + [required_fixture] is network exposure refusal
+  + [required_fixture] is destructive command refusal
+  + [model_route] is requires deeper reasoning for safety specification and slice minting
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only for later bounded dry-run fixture drafting after safety contracts exist
+
+  = must: preserve this source before FSC5 final slicing
+  = must: SJS-process this source into a canonical safety specification before FSC5 slice execution
+  = must: require explicit future acceptance before any live operations control is authorized
+  - never: treat planning, projection, dry-run, or fixture records as permission to control live processes, GPU workloads, model runtimes, jobs, credentials, network exposure, or destructive filesystem actions

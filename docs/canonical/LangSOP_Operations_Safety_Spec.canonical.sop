@@ -1,0 +1,145 @@
+Subject: LangSOP Operations Safety Specification Canonical
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_operations_safety/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-26_operations_safety/Dictated_Operations_Safety_Source.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [CanonicalRecord: OperationsSafetySpec] is the processed safety authority for FSC5 operations safety planning
+  + [canonical_uuid] is c488f265-04ee-4df8-a9d4-2c49e5a77b51
+  + [source_manifest_uuid] is 9e1f4b3e-93b5-4447-b36a-ce32d711e3f1
+  + [authority_scope] is safety boundaries, dry-run-only preconditions, live-control prohibitions, human override requirements, risk fields, and FSC5 slice prerequisites
+  + [implementation_scope] is safety specification and planning authority only
+  + [depends_on] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+
+  = must: use this specification as the safety source for FSC5 final slice minting
+  = must: require dry-run proof before live resource operations
+  = must: require explicit future accepted safety authority before any live machine control is authorized
+  - never: treat this safety specification as permission to operate the target machine
+
+& [OperationsSafetyBoundary] is the core safety boundary for future operations management
+  + [protected_target] is process control
+  + [protected_target] is GPU workload control
+  + [protected_target] is model runtime mutation
+  + [protected_target] is job dispatch
+  + [protected_target] is workspace mutation
+  + [protected_target] is credential or secret handling
+  + [protected_target] is network exposure
+  + [protected_target] is destructive filesystem action
+  + [protected_target] is operations automation
+  + [allowed_before_fsc5_acceptance] is planning
+  + [allowed_before_fsc5_acceptance] is specification
+  + [allowed_before_fsc5_acceptance] is final-slice minting
+  + [allowed_before_fsc5_acceptance] is dry-run contract design
+  + [allowed_before_fsc5_acceptance] is fixture design
+  + [forbidden_before_fsc5_acceptance] is live process control
+  + [forbidden_before_fsc5_acceptance] is GPU workload mutation
+  + [forbidden_before_fsc5_acceptance] is model runtime mutation
+  + [forbidden_before_fsc5_acceptance] is job dispatch
+  + [forbidden_before_fsc5_acceptance] is credential mutation
+  + [forbidden_before_fsc5_acceptance] is network exposure mutation
+  + [forbidden_before_fsc5_acceptance] is destructive filesystem action
+
+  = must: keep operations as gated requests and dry-run projections until FSC5 safety pack acceptance
+
+& [OperationsRequestSafetyFields] is the required field set for any future operations request
+  + [required_field] is operation_request_id
+  + [required_field] is requested_by
+  + [required_field] is carrier_surface
+  + [required_field] is intended_effect
+  + [required_field] is resource_target
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is accepted_boundary_input_ref_set
+  + [required_field] is risk_classification
+  + [required_field] is blast_radius
+  + [required_field] is dry_run_required
+  + [required_field] is dry_run_result_ref
+  + [required_field] is rollback_or_abort_route
+  + [required_field] is human_approval_ref
+  + [required_field] is credential_boundary_ref
+  + [required_field] is network_boundary_ref
+  + [required_field] is completion_review_ref
+
+  = must: reject operations requests that lack required safety fields
+  = must: keep dry_run_result_ref and human_approval_ref absent until produced by accepted routes
+
+& [DryRunOnlyPreAcceptanceRule] is the pre-acceptance rule for FSC5 planning and fixtures
+  + [allowed_effect] is inspect planned operation
+  + [allowed_effect] is simulate command intent
+  + [allowed_effect] is estimate resource use
+  + [allowed_effect] is classify safety risk
+  + [allowed_effect] is emit dry_run_result
+  + [blocked_effect] is mutate process state
+  + [blocked_effect] is mutate GPU workload
+  + [blocked_effect] is mutate model runtime
+  + [blocked_effect] is dispatch job
+  + [blocked_effect] is change credentials
+  + [blocked_effect] is expose network service
+  + [blocked_effect] is perform destructive filesystem action
+
+  = must: route blocked effects to refusal records and human/safety review
+  = must: never treat dry-run success as live-control approval
+
+& [HumanOverrideSafetyRule] is the rule for high-risk human approvals
+  + [human_review_required_when] is live_control_requested
+  + [human_review_required_when] is credential_or_secret_boundary_touched
+  + [human_review_required_when] is network_exposure_requested
+  + [human_review_required_when] is destructive_action_possible
+  + [human_review_required_when] is GPU_or_model_runtime_mutation_requested
+  + [human_review_required_when] is cost_or_resource_blast_radius_uncertain
+  + [human_review_required_when] is authority_notice_missing_or_stale
+  + [approval_must_include] is explicit human approval record
+  + [approval_must_include] is authority_notice
+  + [approval_must_include] is intended_effect
+  + [approval_must_include] is risk_classification
+  + [approval_must_include] is rollback_or_abort_route
+  + [approval_must_include] is expiration_or_stale_after
+
+  = must: require fresh human approval for any future live-control transition
+  = must: prevent broad standing approvals from authorizing unrelated operations
+
+& [OperationsSafetyFixtureObligationSet] is the fixture obligation set for FSC5
+  + [fixture] is dry_run_resource_request
+  + [fixture] is blocked_live_control
+  + [fixture] is gpu_contention
+  + [fixture] is model_runtime_unavailable
+  + [fixture] is credential_secret_boundary
+  + [fixture] is network_exposure_refusal
+  + [fixture] is destructive_command_refusal
+  + [fixture] is missing_authority_notice
+  + [fixture] is stale_human_approval
+  + [fixture] is dry_run_success_not_live_approval
+
+  = must: require fixture coverage before FSC5 completion can activate any future operations pack
+
+& [SatisfactionSignature: OperationsSafetySpec] is the valid SJS satisfaction signature for the operations safety specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is d4d56ecb-5c14-4257-b2e8-3fe8b2dfe23f
+  + [signed_subject] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_operations_safety/Source_Document_Manifest.sop
+  + [source_sha256] is 318CDACDC3766377B00949BEC367F86ADC0BC29A56CA560B455ED51999430213
+  + [source_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [source_sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+  + [source_sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+  + [source_sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+  + [source_sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+  + [canonical_source_specification] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [processed_stage_set] is source_preserved, FSC4_boundary_imported, safety_boundary_defined, dry_run_rule_defined, human_override_rule_defined, fixture_obligations_defined, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for FSC5 safety slice minting; no live operations control authorized
+  + [invalidation_condition] is source_hash_change, FSC4_pack_change, FSC4_review_change, missing_required_safety_field, live_control_leak, or implementation_contradiction
+
+  = must: reprocess when operations safety scope, source inputs, live-control boundary, or required fixture obligations materially change
+
+& [RegistryRecord: OperationsSafetySpec] is the durable identity ledger for the operations safety specification
+  + [registry_uuid] is d49671da-b8e9-4569-934b-90bf70c793d4
+  + [manifest_node_uuid] is 9e1f4b3e-93b5-4447-b36a-ce32d711e3f1
+  + [canonical_node_uuid] is c488f265-04ee-4df8-a9d4-2c49e5a77b51
+  + [signature_uuid] is d4d56ecb-5c14-4257-b2e8-3fe8b2dfe23f
+  + [closure_review_uuid] is 3051855f-b8a3-4f34-8123-920f7b1f40e8
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for FSC5 slice minting and safety completion reviews

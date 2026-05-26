@@ -1,0 +1,29 @@
+Subject: Operations Safety Source Manifest
+Date: 2026-05-26
+Manifest UUID: 9e1f4b3e-93b5-4447-b36a-ce32d711e3f1
+
+& [SourceDocumentManifest: OperationsSafety] is the source preservation manifest for the operations safety specification
+  + [dictated_source] is docs/source/2026-05-26_operations_safety/Dictated_Operations_Safety_Source.sop
+    + [sha256] is 318CDACDC3766377B00949BEC367F86ADC0BC29A56CA560B455ED51999430213
+    + [source_role] is preserved user-goal safety source for future Ryzen 9 RTX 5090 operations management
+  + [authority_source] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+    + [sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+    + [source_role] is accepted FSC4 boundary input
+  + [authority_source] is docs/reviews/FSC4_Completion_Review.v1.sop
+    + [sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+    + [source_role] is FSC4 activation review
+  + [authority_source] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+    + [sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+    + [source_role] is final slicing authority
+  + [authority_source] is docs/planning/Final_Slicing_Surface.v1.sop
+    + [sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+    + [source_role] is active final slicing surface
+  + [authority_source] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+    + [sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+    + [source_role] is whole-pie development authority
+  + [canonical_target] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+
+  = must: preserve this manifest as the lineage record for the operations safety specification
+  = must: invalidate FSC5 final slicing if a cited source hash changes without reprocessing
+  = must: treat this manifest as source lineage, not live operations authority
+  - never: use this manifest to authorize process, GPU, model runtime, job, credential, network, or destructive filesystem control
