@@ -1,0 +1,108 @@
+Subject: IR1-S05 Completion Review V1
+Date: 2026-05-26
+Review UUID: 34323758-0485-4f38-a2fc-513635d6c73d
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+@ [accepted_input] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_input] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [accepted_input] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+@ [accepted_input] docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+
+& [CompletedWorkReview: IR1-S05] is the completion review for scaffold execution plan and placeholder scope
+  + [slice_id] is IR1-S05
+  + [slice_name] is scaffold execution plan and placeholder scope
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+  + [completed_output_sha256] is 14F85B430EC2E8185ACC4C4A7AF7FC1C5A6D844C75A74F331577CD3A59AE7CDB
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [review_result] is accepted
+  + [next_gate_result] is IR1-S06 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR1-S06
+  = must: rerun review if IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop changes
+
+& [VerificationOracleResult: IR1-S05] is the verification result for scaffold plan coverage
+  + [scaffold_file_inventory_present] is ScaffoldFileInventory
+  + [placeholder_module_boundary_present] is PlaceholderModuleBoundary
+  + [package_metadata_plan_present] is PackageMetadataPlan
+  + [no_op_test_plan_present] is NoOpTestPlan
+  + [generated_artifact_exclusion_plan_present] is GeneratedArtifactExclusionPlan
+  + [scaffold_only_proof_checklist_present] is ScaffoldOnlyProofChecklist
+  + [actual_scaffold_files_created] is false
+  + [package_metadata_created] is false
+  + [test_files_created] is false
+  + [dependencies_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [forbidden_scope_absent] is runtime behavior
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR1S05VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+
+& [SupportDelta: IR1-S05] is the support delta produced by this slice
+  + [new_support_record] is IR1ScaffoldExecutionPlanAndPlaceholderScopeV1 supports IR1-S06 scaffold activation review
+  + [new_support_record] is ScaffoldFileInventory defines the maximum candidate scaffold file set
+  + [new_support_record] is ScaffoldOnlyProofChecklist supports activation safety review
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1-S05] is the requirement delta produced by this slice
+  + [requirement_delta] is IR1-S06 must decide whether scaffold authority opens for the planned inert placeholder file set
+  + [requirement_delta] is IR1-S06 requires deeper reasoning
+  + [requirement_delta] is actual scaffold file creation remains unauthorized until IR1-S06 accepts scaffold activation
+  + [requirement_delta] is no runtime behavior, parser implementation, SQLite builder implementation, LangGraph implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR1-S05] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [actual_scaffold_creation_leak_found] is false
+  + [package_metadata_creation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [runtime_behavior_leak_found] is false
+  + [parser_implementation_leak_found] is false
+  + [sqlite_builder_implementation_leak_found] is false
+  + [langgraph_implementation_leak_found] is false
+  + [surface_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR1S05Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR1-S05]
+    @ [support] [SupportDelta: IR1-S05]
+    @ [support] [RequirementDelta: IR1-S05]
+    @ [support] [FaultReview: IR1-S05]
+
+& [NextSliceGate: IR1-S06] is opened
+  + [opened_slice] is IR1-S06 IR1 completion review and scaffold activation pack
+  + [accepted_input] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [accepted_input] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [accepted_input_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
+  + [accepted_input] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [accepted_input_sha256] is CDE97B898024E6FDAFF19CCD33895ABC47B0AEB9B96C108DADC8FF2B3F2AC688
+  + [accepted_input] is docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+  + [accepted_input_sha256] is 8BC81195EC5FEDFCE0DD693B69C4B3B88F59DC950E8B764C19DDB7DD8AB31F58
+  + [accepted_input] is docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+  + [accepted_input_sha256] is 14F85B430EC2E8185ACC4C4A7AF7FC1C5A6D844C75A74F331577CD3A59AE7CDB
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance opens scaffold execution authority and must preserve downstream implementation boundaries
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR1-S06 next unless user redirects or a new fault invalidates this review

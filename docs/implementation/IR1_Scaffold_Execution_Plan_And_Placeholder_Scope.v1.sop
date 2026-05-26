@@ -1,0 +1,150 @@
+Subject: IR1 Scaffold Execution Plan And Placeholder Scope V1
+Date: 2026-05-26
+Plan UUID: 161b6641-8ae6-4ae1-95b6-95b8e7c42ebd
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [substrate_boundary] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [tooling_decision] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [layout_policy] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+@ [harness_shape] docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+
+& [IR1ScaffoldExecutionPlanAndPlaceholderScopeV1] is the IR1-S05 plan for scaffold execution and placeholder scope
+  + [plan_id] is ir1-scaffold-execution-plan-placeholder-scope-v1
+  + [plan_uuid] is 161b6641-8ae6-4ae1-95b6-95b8e7c42ebd
+  + [slice_id] is IR1-S05
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [implementation_scope] is scaffold plan only
+
+  = must: define a bounded scaffold file inventory and placeholder scope for later activation
+  = must: remain a plan-only artifact until IR1-S06 accepts the scaffold activation pack
+  = must: preserve that scaffold files are inert placeholders and cannot implement parser, SQLite, LangGraph, surface, adapter, operations simulator, operations control, or live machine control behavior
+
+& [ScaffoldFileInventory] is the file inventory that IR1-S06 may activate for scaffold creation
+  + [planned_file] is pyproject.toml
+  + [planned_file_role] is PEP 621 project metadata and future tool configuration holder
+  + [planned_file] is src/langsop/__init__.py
+  + [planned_file_role] is inert package marker with version placeholder only
+  + [planned_file] is src/langsop/authority/__init__.py
+  + [planned_file_role] is inert authority module marker
+  + [planned_file] is src/langsop/kernel/__init__.py
+  + [planned_file_role] is inert kernel module marker
+  + [planned_file] is src/langsop/projections/__init__.py
+  + [planned_file_role] is inert projections module marker
+  + [planned_file] is src/langsop/operators/__init__.py
+  + [planned_file_role] is inert operators module marker
+  + [planned_file] is src/langsop/runtime/__init__.py
+  + [planned_file_role] is inert runtime module marker
+  + [planned_file] is src/langsop/surfaces/__init__.py
+  + [planned_file_role] is inert surfaces module marker
+  + [planned_file] is src/langsop/coordination/__init__.py
+  + [planned_file_role] is inert coordination module marker
+  + [planned_file] is src/langsop/operations/__init__.py
+  + [planned_file_role] is inert operations module marker that explicitly states dry-run-only future scope
+  + [planned_file] is tests/test_scaffold_imports.py
+  + [planned_file_role] is no-op import smoke test for inert package markers
+  + [planned_file] is .gitignore
+  + [planned_file_role] is generated artifact exclusion update
+
+  = must: treat this inventory as the maximum scaffold file set until IR1-S06 acceptance
+  = must: require a new review before adding files outside this inventory
+
+& [PlaceholderModuleBoundary] is the behavioral boundary for planned placeholder modules
+  + [allowed_placeholder_content] is module docstring
+  + [allowed_placeholder_content] is __all__ empty tuple or list
+  + [allowed_placeholder_content] is package version placeholder in src/langsop/__init__.py
+  + [allowed_placeholder_content] is comment pointing to accepted SOP authority
+  + [forbidden_placeholder_content] is file system traversal
+  + [forbidden_placeholder_content] is subprocess usage
+  + [forbidden_placeholder_content] is network usage
+  + [forbidden_placeholder_content] is credential or environment secret access
+  + [forbidden_placeholder_content] is SQLite connection creation
+  + [forbidden_placeholder_content] is LangGraph import or graph construction
+  + [forbidden_placeholder_content] is parser behavior
+  + [forbidden_placeholder_content] is adapter behavior
+  + [forbidden_placeholder_content] is operations simulation
+  + [forbidden_placeholder_content] is process, GPU, model runtime, or job control
+
+  = must: make placeholders importable without side effects
+  = must: fail scaffold review if any placeholder performs behavior beyond inert module marking
+
+& [PackageMetadataPlan] is the package metadata plan for pyproject.toml
+  + [project_name] is langsop
+  + [requires_python] is >=3.12
+  + [dependency_set] is empty_initial_runtime_dependencies
+  + [optional_dependency_group] is dev may later include pytest after dependency review
+  + [build_backend_candidate] is setuptools.build_meta or hatchling pending scaffold activation review
+  + [script_entry_point] is none_initially
+  + [tool_config_allowed] is minimal pytest path configuration only after IR1-S06 acceptance
+
+  = must: avoid external dependencies in the first scaffold unless IR1-S06 explicitly accepts them
+  = must: avoid console scripts until a later slice authorizes CLI behavior
+
+& [NoOpTestPlan] is the no-op test plan for scaffold smoke testing
+  + [test_file] is tests/test_scaffold_imports.py
+  + [test_case] is import langsop package
+  + [test_case] is import inert marker modules
+  + [test_case] is assert no generated artifact path is created by imports
+  + [test_case] is assert operations module exposes no live-control function
+  + [forbidden_test_behavior] is parsing SOP files
+  + [forbidden_test_behavior] is building SQLite projections
+  + [forbidden_test_behavior] is running LangGraph
+  + [forbidden_test_behavior] is opening network connections
+  + [forbidden_test_behavior] is accessing credentials
+  + [forbidden_test_behavior] is launching processes or jobs
+
+  = must: keep smoke tests side-effect-free
+
+& [GeneratedArtifactExclusionPlan] is the generated artifact exclusion plan for .gitignore
+  + [ignore_entry] is .venv/
+  + [ignore_entry] is .langsop/
+  + [ignore_entry] is .pytest_cache/
+  + [ignore_entry] is .coverage
+  + [ignore_entry] is htmlcov/
+  + [ignore_entry] is dist/
+  + [ignore_entry] is build/
+  + [ignore_entry] is *.egg-info/
+  + [ignore_entry] is __pycache__/
+  + [ignore_entry] is *.pyc
+
+  = must: preserve docs/ and tests/fixtures/expected/ as tracked source or expected-output ledgers
+  = must: keep generated artifacts ignored unless a future source-preserving record explicitly authorizes tracking
+
+& [ScaffoldOnlyProofChecklist] is the proof checklist for later scaffold activation
+  + [proof_check] is scaffold inventory matches accepted plan
+  + [proof_check] is pyproject contains no unreviewed runtime dependencies
+  + [proof_check] is placeholders import without side effects
+  + [proof_check] is tests are no-op smoke tests only
+  + [proof_check] is .gitignore excludes generated projection artifacts
+  + [proof_check] is no parser behavior present
+  + [proof_check] is no SQLite builder behavior present
+  + [proof_check] is no LangGraph behavior present
+  + [proof_check] is no surface or adapter behavior present
+  + [proof_check] is no operations simulator behavior present
+  + [proof_check] is no operations control or live machine control present
+
+  = must: use this checklist in IR1-S06 before scaffold authority is activated
+
+& [IR1S05CoverageReview] is the coverage checklist for IR1-S05
+  + [scaffold_file_inventory_present] is ScaffoldFileInventory
+  + [placeholder_module_boundary_present] is PlaceholderModuleBoundary
+  + [package_metadata_plan_present] is PackageMetadataPlan
+  + [no_op_test_plan_present] is NoOpTestPlan
+  + [generated_artifact_exclusion_plan_present] is GeneratedArtifactExclusionPlan
+  + [scaffold_only_proof_checklist_present] is ScaffoldOnlyProofChecklist
+  + [actual_scaffold_files_created] is false
+  + [package_metadata_created] is false
+  + [test_files_created] is false
+  + [dependencies_installed] is false
+  + [forbidden_scope_absent] is runtime behavior
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: open IR1-S06 only after this scaffold plan is accepted by completion review
