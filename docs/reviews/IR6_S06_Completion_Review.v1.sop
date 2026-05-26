@@ -1,0 +1,104 @@
+Subject: IR6 S06 Completion Review V1
+Date: 2026-05-26
+Review UUID: f2a58509-9bec-4925-a803-c8162e2e3353
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [implementation_plan] docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+@ [fixture_plan_review] docs/reviews/IR6_S05_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR6-S06] is the completed-work review for IR6-S06 coordination mailbox projection prototype implementation plan and generated-output boundary
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-S06
+  + [completed_output] is docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+  + [completed_output_sha256] is DFAF1C91BA83DF19F8BF97BD6953A0359292EEB1FED966CB5481209C6B4258F8
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-S06 and open IR6-S07
+  + [next_gate_result] is IR6-S07 may open
+  + [next_model_route] is requires deeper reasoning for IR6 completion review and implementation activation pack
+  + [next_model_route_depth] is not Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR6-S07 only
+  = must: rerun this review if the implementation plan, IR6-S01 boundary import, IR6-S02 claim identity contract, IR6-S03 mailbox carrier contract, IR6-S04 conflict review contract, IR6-S05 fixture plan or index, or any of their completion reviews change
+  = must: keep executable coordination code, mailbox transport, mailbox files, adapter code, dependency installation, generated output creation, agent dispatch, operations simulator implementation, operations control, and live machine control gated
+
+& [IR6S06Verification] is the verification result for IR6-S06
+  + [implementation_file_inventory_present] is true
+  + [fixture_source_inventory_present] is true
+  + [expected_ledger_inventory_present] is true
+  + [dependency_boundary_present] is true
+  + [public_api_boundary_present] is true
+  + [mailbox_carrier_implementation_boundary_present] is true
+  + [generated_coordination_output_policy_present] is true
+  + [fixture_runner_implementation_boundary_present] is true
+  + [implementation_command_plan_present] is true
+  + [implementation_proof_checklist_present] is true
+  + [activation_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [mailbox_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6S06VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+
+& [SupportDelta: IR6-S06] is the support delta produced by IR6-S06
+  + [new_support_record] is IR6 has a future implementation file inventory for claims, mailbox carrier projections, conflict reviews, action routes, generated path policy, fixture runner, and tests
+  + [new_support_record] is IR6 has future fixture source and expected-ledger inventories traceable to the accepted 13-case fixture plan
+  + [new_support_record] is IR6 has a dependency boundary that keeps first-pass implementation standard-library-only and excludes mailbox IO, transport, Langflow, IRC, Matrix, web, watcher, and adapter dependencies
+  + [new_support_record] is IR6 has a generated-output policy for disposable non-authoritative coordination projection records and reports
+  + [new_support_record] is IR6 has a proof checklist for claim identity, work boundary, mailbox carrier, conflict review, human override, action route refusal, generated paths, and no dispatch or live control
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-S06] is the requirement delta produced by IR6-S06
+  + [requirement_delta] is IR6-S07 must produce a completion review and implementation activation pack without creating code, fixtures, expected ledgers, mailbox files, generated outputs, dependencies, or package metadata changes
+  + [requirement_delta] is future IR6 implementation activation must split fixture source creation, expected ledger creation, model and contract code, projector code, fixture runner, tests, generated-output proof, mailbox IO decision, and dependency decisions into bounded slices
+  + [requirement_delta] is future bounded code and fixture creation may be GPT-5.3-Codex-Spark-suitable only after IR6-S07 accepts a slice surface that isolates each bounded task
+  + [requirement_delta] is no executable coordination code, mailbox transport, mailbox files, adapter code, dependency installation, generated output, agent dispatch, operations simulator, operations control, or live machine control is authorized by IR6-S06
+
+& [FaultReview: IR6-S06] is the fault review for IR6-S06
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [implementation_code_leak_found] is false
+  + [fixture_source_file_leak_found] is false
+  + [expected_ledger_file_leak_found] is false
+  + [mailbox_file_creation_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6S06Accepted] is accepted
+    @ [support] [IR6S06Verification]
+    @ [support] [SupportDelta: IR6-S06]
+    @ [support] [RequirementDelta: IR6-S06]
+    @ [support] [FaultReview: IR6-S06]
+
+& [NextSliceGate: IR6-S07] is opened
+  + [opened_slice] is IR6-S07 IR6 completion review and implementation activation pack
+  + [accepted_dependency] is docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+  + [accepted_dependency_sha256] is DFAF1C91BA83DF19F8BF97BD6953A0359292EEB1FED966CB5481209C6B4258F8
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR6 planning acceptance affects implementation activation and downstream IR7 operations readiness
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-S07 next unless user redirects or a new fault invalidates this review

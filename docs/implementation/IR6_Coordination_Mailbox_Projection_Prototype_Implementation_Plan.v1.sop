@@ -1,0 +1,246 @@
+Subject: IR6 Coordination Mailbox Projection Prototype Implementation Plan V1
+Date: 2026-05-26
+Plan UUID: 9101f059-aa2f-4ee2-9f97-2e539a7ef263
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+@ [fixture_plan_review] docs/reviews/IR6_S05_Completion_Review.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR6CoordinationMailboxProjectionPrototypeImplementationPlanV1] is the IR6-S06 implementation plan and generated-output boundary for future coordination mailbox projection prototype activation
+  + [plan_id] is ir6-coordination-mailbox-projection-prototype-implementation-plan-v1
+  + [plan_uuid] is 9101f059-aa2f-4ee2-9f97-2e539a7ef263
+  + [slice_id] is IR6-S06
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is future file inventory, dependency boundary, coordination API boundary, mailbox carrier boundary, generated output boundary, fixture runner boundary, command plan, and proof checklist only
+
+  = must: define future implementation files, fixture roots, expected ledger roots, generated projection roots, mailbox carrier boundaries, dependency decision boundary, command plan, and proof checklist
+  = must: preserve that actual code creation, fixture source creation, expected ledger creation, mailbox file creation, generated output creation, dependency installation, and package metadata mutation remain gated until later implementation activation slices accept them
+  = must: keep all future generated coordination artifacts projection-only and disposable
+  - never: write executable coordination code, implement mailbox transport, implement chat adapters, create mailbox files, create fixture source files, create expected ledgers, write generated outputs, install packages, authorize agent dispatch, authorize operations simulator code, authorize operations control, or authorize live machine control in this slice
+
+& [ImplementationFileInventory: IR6CoordinationMailboxProjectionPrototype] is the future file inventory for bounded IR6 implementation
+  + [future_code_file] is src/langsop/coordination/__init__.py
+  + [future_code_file_role] is expose only bounded coordination projection APIs and keep live transport, dispatch, operations, and mailbox IO names absent
+  + [future_code_file] is src/langsop/coordination/claims.py
+  + [future_code_file_role] is define claim identity envelope, work-boundary projection envelope, claim states, compatibility relations, freshness, and refusal records
+  + [future_code_file] is src/langsop/coordination/mailbox.py
+  + [future_code_file_role] is define rendezvous packet projection envelope, mailbox carrier envelope, read cursor freshness, carrier authority boundary, and multi-carrier divergence records without file IO
+  + [future_code_file] is src/langsop/coordination/reviews.py
+  + [future_code_file_role] is define conflict review, stale claim review, human override review, decision matrix, and completion gate interaction records
+  + [future_code_file] is src/langsop/coordination/action_routes.py
+  + [future_code_file_role] is classify claim, release, supersession, conflict, stale-refresh, notice, human override, completion review, dispatch-like, and operation-like requests without mutating authority
+  + [future_code_file] is src/langsop/coordination/generated_paths.py
+  + [future_code_file_role] is validate generated coordination projection paths and refuse writes outside accepted generated roots
+  + [future_code_file] is src/langsop/coordination/fixture_runner.py
+  + [future_code_file_role] is load tracked IR6 fixture source and expected ledgers, build coordination projections, compare expected records, and write generated outputs only under accepted generated roots
+  + [future_test_file] is tests/test_ir6_coordination_mailbox_contracts.py
+
+  = must: require deeper reasoning review before creating or editing files outside this inventory for IR6 coordination mailbox implementation
+  = must: keep code and test creation gated until specific implementation activation slices open
+
+& [ConfirmedFixtureSourceInventory: IR6CoordinationMailboxProjectionPrototype] is the fixture source inventory for future activation
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/valid_claim_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/compatible_parallel_claims.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/conflicting_write_claims.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/stale_claim_refresh_required.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/release_notice_with_lineage.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/superseded_claim_preserves_lineage.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/ambiguous_conversation_identity_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/inbox_unread_notice_blocks_ready.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/read_cursor_stale_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/mailbox_carrier_authority_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/human_override_scope_review.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/hidden_scope_expansion_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/completion_gate_refusal_for_unresolved_claim.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to IR6 fixture plan cases
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR6CoordinationMailboxProjectionPrototype] is the expected ledger inventory for future activation
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/claim_identity_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/work_boundary_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/mailbox_carrier_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/conflict_and_stale_review_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/no_authority_promotion_expected.sop
+
+  = must: make expected ledgers reviewable without generated projections, generated reports, carrier state, runtime state, dispatch, or live control
+  = must: keep expected ledgers as tracked fixture authority only after a future implementation activation slice accepts them
+
+& [DependencyBoundary: IR6CoordinationMailboxProjectionPrototype] is the dependency boundary for future IR6 implementation
+  + [dependency_policy] is no dependency installation authorized by IR6-S06
+  + [first_pass_dependency_set] is Python standard library only unless a later dependency-authorizing activation slice explicitly authorizes more
+  + [external_dependency_set] is empty_for_current_slice
+  + [future_dependency_candidate] is irc_client_library
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+  + [future_dependency_candidate] is matrix_client_library
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+  + [future_dependency_candidate] is web_ui_framework
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+  + [future_dependency_candidate] is langflow
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+  + [future_dependency_candidate] is file_watcher_library
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+
+  = must: require a dependency-authorizing slice before adding packages, lockfiles, imports, UI frameworks, transport libraries, watcher libraries, Langflow packages, or runtime requirements
+  = must: keep first-pass coordination prototype as pure data transformation over tracked fixture records
+
+& [PublicAPIBoundary: IR6CoordinationMailboxProjectionPrototype] is the future public API boundary for IR6 implementation
+  + [api] is validate_claim_identity_envelope(envelope, authority_basis, policy) returns accepted or coordination fault
+  + [api] is build_work_boundary_projection(claim_record, packet_record, claim_set, policy) returns work boundary projection
+  + [api] is classify_claim_compatibility(claim_a, claim_b, policy) returns compatibility relation, conflict, or interrupt
+  + [api] is project_rendezvous_packet(packet_record, claim_context, policy) returns rendezvous projection
+  + [api] is project_mailbox_carrier(message_record, cursor_record, claim_context, policy) returns mailbox carrier projection
+  + [api] is classify_mailbox_freshness(mailbox_record, cursor_record, claim_context, policy) returns freshness state or stale projection
+  + [api] is review_coordination_conflict(conflict_context, policy) returns proceed, block, interrupt, refresh, release, supersede, invalidate, rebake, human override, or refusal decision
+  + [api] is review_human_override(override_record, coordination_context, policy) returns scoped result, rejection, expiration, out-of-scope, SJS route, or completion review route
+  + [api] is classify_coordination_action(action_packet, policy) returns route, refusal, or SOP-first interrupt context
+  + [api] is validate_generated_coordination_output_path(path, generated_output_policy) returns accepted generated path or refusal
+  + [api] is run_coordination_mailbox_fixture(fixture_case, expected_ledger, runner_policy) returns generated fixture comparison report
+  + [api_status] is future implementation target only
+
+  = must: make identity, boundary, freshness, conflict, stale, human override, refusal, authority tier, and carrier-only status visible in return values
+  = must: avoid APIs named or shaped as live mailbox writer, inbox poller, IRC client, Matrix client, web server, UI renderer, agent dispatch, job control, process control, GPU control, model runtime control, network control, credential access, operations control, or live machine control
+
+& [MailboxCarrierImplementationBoundary: IR6CoordinationMailboxProjectionPrototype] is the mailbox carrier boundary for future implementation
+  + [carrier_supported_as_projection] is SOP mailbox
+  + [carrier_supported_as_projection] is IRC
+  + [carrier_supported_as_projection] is Matrix
+  + [carrier_supported_as_projection] is web
+  + [carrier_supported_as_projection] is terminal
+  + [carrier_supported_as_projection] is Codex thread
+  + [carrier_supported_as_projection] is Langflow diagram
+  + [carrier_implementation_status] is projection_record_only
+  + [mailbox_file_write_authorized] is false
+  + [mailbox_file_read_authorized] is false
+  + [read_cursor_persistence_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [browser_ui_authorized] is false
+  + [Langflow_install_or_export_authorized] is false
+  + [adapter_queue_authorized] is false
+  + [agent_dispatch_authorized] is false
+
+  = must: represent carriers as carrier_context fields and projection records only
+  = must: preserve carrier context without treating it as authority
+  = must: refuse future implementation that opens mailbox IO, live transports, UI surfaces, or dispatch without a separate accepted activation slice
+
+& [GeneratedCoordinationOutputPolicy: IR6CoordinationMailboxProjectionPrototype] is the future generated output policy for coordination fixtures and reports
+  + [allowed_write_root] is tests/fixtures/generated/ir6_coordination_mailbox/projections/
+  + [allowed_write_root] is tests/fixtures/generated/ir6_coordination_mailbox/reports/
+  + [allowed_write_root] is .langsop/projections/ir6_coordination_mailbox/
+  + [allowed_write_root] is .langsop/reports/ir6_coordination_mailbox/
+  + [write_forbidden_root] is docs/
+  + [write_forbidden_root] is src/
+  + [write_forbidden_root] is tests/fixtures/sop/
+  + [write_forbidden_root] is tests/fixtures/expected/
+  + [write_forbidden_root] is platform/
+  + [write_forbidden_root] is .git/
+  + [write_forbidden_root] is platform/coordination/mailboxes/
+  + [write_result] is generated_projection_only
+  + [authority_status] is non_authoritative_disposable_evidence
+
+  = must: refuse writes outside accepted generated roots
+  = must: preserve failed projection reports without mutating SOP authority
+  = must: make generated artifacts disposable and reproducible
+  = must: reject generated projection, report, manifest, cache, carrier state, mailbox message, adapter state, or read cursor as source authority
+
+& [FixtureRunnerImplementationBoundary: IR6CoordinationMailboxProjectionPrototype] is the future fixture runner boundary for IR6 implementation
+  + [allowed_fixture_source_root] is tests/fixtures/sop/ir6_coordination_mailbox/
+  + [allowed_expected_ledger_root] is tests/fixtures/expected/ir6_coordination_mailbox/
+  + [allowed_generated_root] is tests/fixtures/generated/ir6_coordination_mailbox/
+  + [fixture_execution_mode] is in_process_projection_only
+  + [fixture_execution_forbidden] is shell execution
+  + [fixture_execution_forbidden] is subprocess control
+  + [fixture_execution_forbidden] is mailbox file creation
+  + [fixture_execution_forbidden] is platform mailbox mutation
+  + [fixture_execution_forbidden] is socket or network listener
+  + [fixture_execution_forbidden] is IRC or Matrix connection
+  + [fixture_execution_forbidden] is web UI launch
+  + [fixture_execution_forbidden] is Langflow installation or export
+  + [fixture_execution_forbidden] is agent dispatch
+  + [fixture_execution_forbidden] is credential access
+  + [fixture_execution_forbidden] is process control
+  + [fixture_execution_forbidden] is GPU control
+  + [fixture_execution_forbidden] is model runtime mutation
+  + [fixture_execution_forbidden] is live machine control
+
+  = must: compare generated coordination projection records to tracked expected ledgers without promoting generated output to authority
+  = must: fail closed when fixture source, expected ledger, or generated root is outside accepted policy
+
+& [ImplementationCommandPlan: IR6CoordinationMailboxProjectionPrototype] is the future command and verification plan
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [future_targeted_test] is python -m unittest tests.test_ir6_coordination_mailbox_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated coordination projection records and reports are ignored, disposable, reproducible, and non-authoritative
+  + [mailbox_io_review] is prove platform mailbox paths, inbox directories, read cursors, and message files are not created or mutated by tests unless a later activation slice explicitly authorizes mailbox IO
+
+  = must: run baseline tests and diff hygiene after every future implementation slice
+  = must: run targeted coordination tests once tests.test_ir6_coordination_mailbox_contracts exists
+
+& [ImplementationProofChecklist: IR6CoordinationMailboxProjectionPrototype] is the proof checklist for later implementation activation
+  + [proof_check] is implementation files match ImplementationFileInventory: IR6CoordinationMailboxProjectionPrototype
+  + [proof_check] is external dependency set remains empty unless a dependency-authorizing activation slice accepts a package
+  + [proof_check] is claim identity envelope rejects missing claimant, conversation, work packet, authority basis, freshness, or authority notice
+  + [proof_check] is work boundary projection prevents dependency_closed status when conflicting, stale, unsupported, ambiguous, or pending-review evidence exists
+  + [proof_check] is mailbox carrier projection keeps mailbox path, timestamp, read cursor, logs, carrier state, and diagrams as carrier_context_only
+  + [proof_check] is conflict review blocks unresolved contested claims, stale claims, hidden scope expansion, ambiguous identity, and pending human override
+  + [proof_check] is action route classifier emits request, refusal, or SOP-first interrupt records without mutating source authority
+  + [proof_check] is future fixture runner covers all 13 accepted IR6 fixture cases
+  + [proof_check] is generated projection and report writers refuse paths outside accepted generated roots
+  + [proof_check] is source files, expected ledgers, platform mailboxes, mailbox messages, read cursors, and tracked SOP authority are not mutated by projection code or tests
+  + [proof_check] is mailbox transport, chat adapters, agent dispatch, operations simulator implementation, operations control, and live machine control remain absent
+
+  = must: require completion review before any implementation output is accepted
+  = must: fail implementation review if any proof check fails
+
+& [ActivationGate: IR6CoordinationMailboxProjectionPrototypeImplementation] is the activation boundary created by this implementation plan
+  + [code_creation_authorized_by_this_slice] is false
+  + [fixture_creation_authorized_by_this_slice] is false
+  + [expected_ledger_creation_authorized_by_this_slice] is false
+  + [mailbox_file_creation_authorized_by_this_slice] is false
+  + [generated_output_creation_authorized_by_this_slice] is false
+  + [dependency_installation_authorized_by_this_slice] is false
+  + [package_metadata_mutation_authorized_by_this_slice] is false
+  + [next_slice_after_review] is IR6-S07 IR6 completion review and implementation activation pack
+  + [IR6-S07_model_route] is requires deeper reasoning because activation affects implementation authorization and downstream IR7 operations readiness boundaries
+  + [model_route_for_future_bounded_code_creation] is GPT-5.3-Codex-Spark-suitable only after IR6 implementation activation slices isolate bounded code, fixture, expected-ledger, and generated-output work
+  + [deeper_reasoning_required_for_changes] is any change to claim identity semantics, mailbox carrier authority, conflict review policy, generated output policy, dependency boundary, fixture IO policy, operation safety boundary, dispatch boundary, or live-control boundary
+
+  = must: keep implementation code, fixture source files, expected ledgers, mailbox files, generated output creation, dependency installation, and package metadata mutation gated until a later accepted implementation activation slice opens them
+  = must: preserve deeper reasoning for architecture, authority-boundary, dependency-boundary, generated-output-boundary, mailbox-boundary, adapter-boundary, dispatch-boundary, or safety-boundary changes
+
+& [IR6S06CoverageReview] is the coverage checklist for IR6-S06
+  + [implementation_file_inventory_present] is true
+  + [fixture_source_inventory_present] is true
+  + [expected_ledger_inventory_present] is true
+  + [dependency_boundary_present] is true
+  + [public_api_boundary_present] is true
+  + [mailbox_carrier_implementation_boundary_present] is true
+  + [generated_coordination_output_policy_present] is true
+  + [fixture_runner_implementation_boundary_present] is true
+  + [implementation_command_plan_present] is true
+  + [implementation_proof_checklist_present] is true
+  + [activation_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [mailbox_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR6-S06 only when all checklist items are satisfied
+  = must: open IR6-S07 only after this implementation plan is reviewed in a completion review

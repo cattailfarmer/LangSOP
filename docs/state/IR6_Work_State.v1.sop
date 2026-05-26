@@ -25,12 +25,14 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
 @ [accepted_output] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
 @ [accepted_output] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
 @ [completion_review] docs/reviews/IR6_S05_Completion_Review.v1.sop
+@ [accepted_output] docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+@ [completion_review] docs/reviews/IR6_S06_Completion_Review.v1.sop
 
 & [IR6WorkStateV1] is the current derived work state for IR6 coordination mailbox and claim projection prototype planning
   + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
-  + [state_basis] is docs/reviews/IR6_S05_Completion_Review.v1.sop
-  + [state_basis_sha256] is 86A5540CEB9D52D007E6CE15154B74D1218A7540B6A0A2C809A57AEC7DEEA775
-  + [surface_status] is IR6-S05_accepted_and_IR6-S06_open
+  + [state_basis] is docs/reviews/IR6_S06_Completion_Review.v1.sop
+  + [state_basis_sha256] is DE9FAC891F462595F033E26E862F146B24F6969FD65A9F812D5A3BD407473AE1
+  + [surface_status] is IR6-S06_accepted_and_IR6-S07_open
   + [source_document] is docs/source/2026-05-26_ir6_final_slices/Derived_IR6_Final_Slices_Source.sop
   + [source_document_sha256] is ABB5882E6E23A50B4A40A7F4E6D270F46E500D31F2649F69F44AD2F98A383B53
   + [source_manifest] is docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
@@ -84,12 +86,16 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [accepted_output_sha256] is 50E437297B8C5E514A5D27016AA777FA23E4BF4B912367BE8F80514006078F8D
   + [accepted_completion_review] is docs/reviews/IR6_S05_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 86A5540CEB9D52D007E6CE15154B74D1218A7540B6A0A2C809A57AEC7DEEA775
-  + [current_ready_slice] is IR6-S06
-  + [current_ready_slice_name] is coordination mailbox projection prototype implementation plan and generated-output boundary
+  + [accepted_slice] is IR6-S06
+  + [accepted_output] is docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is DFAF1C91BA83DF19F8BF97BD6953A0359292EEB1FED966CB5481209C6B4258F8
+  + [accepted_completion_review] is docs/reviews/IR6_S06_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is DE9FAC891F462595F033E26E862F146B24F6969FD65A9F812D5A3BD407473AE1
+  + [current_ready_slice] is IR6-S07
+  + [current_ready_slice_name] is IR6 completion review and implementation activation pack
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is implementation and generated-output policy affect coordination authority, mailbox carrier semantics, and downstream operations readiness
+  + [current_ready_slice_model_route_reason] is final IR6 planning acceptance affects implementation activation and downstream IR7 operations readiness
   + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after IR6 implementation activation slices are accepted and implementation tasks are bounded
-  + [gated_slice] is IR6-S07
   + [implementation_code_creation_authorized_by_current_slice] is false
   + [claim_projection_contract_creation_authorized_by_current_slice] is false
   + [mailbox_projection_contract_creation_authorized_by_current_slice] is false
@@ -97,8 +103,8 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [fixture_plan_document_creation_authorized_by_current_slice] is false
   + [fixture_file_creation_authorized_by_current_slice] is false
   + [expected_ledger_creation_authorized_by_current_slice] is false
-  + [implementation_plan_document_creation_authorized_by_current_slice] is true
-  + [activation_pack_creation_authorized_by_current_slice] is false
+  + [implementation_plan_document_creation_authorized_by_current_slice] is false
+  + [activation_pack_creation_authorized_by_current_slice] is true
   + [boundary_document_creation_authorized_by_current_slice] is false
   + [generated_output_creation_authorized_by_current_slice] is false
   + [dependency_installation_authorized_by_current_slice] is false
@@ -110,12 +116,12 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [coordination_claim_authority_status] is work_boundary_record_only
   + [rendezvous_packet_authority_status] is carrier_context_only
   + [mailbox_authority_status] is carrier_context_only
-  + [IR6_state] is ready_for_IR6-S06_coordination_mailbox_projection_prototype_implementation_plan_and_generated_output_boundary
+  + [IR6_state] is ready_for_IR6-S07_completion_review_and_implementation_activation_pack
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR6-S06 before IR6-S07 is assigned
-  = must: limit IR6-S06 work to implementation plan and generated-output boundary unless a completion review or rebake changes the boundary
+  = must: execute IR6-S07 before implementation activation slice minting is assigned
+  = must: limit IR6-S07 work to IR6 completion review and implementation activation pack unless a completion review or rebake changes the boundary
   = must: keep downstream IR7 gated until IR6 planning and implementation proof are accepted or a future rebake explicitly reclassifies IR7 scope
   = must: keep coordination claims, rendezvous packets, mailboxes, IRC, Matrix, web, terminal, Codex, Langflow, generated projection, and generated report state non-authoritative
-  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, IR6-S01 output, IR6-S01 completion review, IR6-S02 output, IR6-S02 completion review, IR6-S03 output, IR6-S03 completion review, IR6-S04 output, IR6-S04 completion review, IR6-S05 fixture plan, IR6-S05 fixture index, IR6-S05 completion review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
+  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, IR6-S01 output, IR6-S01 completion review, IR6-S02 output, IR6-S02 completion review, IR6-S03 output, IR6-S03 completion review, IR6-S04 output, IR6-S04 completion review, IR6-S05 fixture plan, IR6-S05 fixture index, IR6-S05 completion review, IR6-S06 implementation plan, IR6-S06 completion review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
   = must: keep agent dispatch, operations control, and live machine control unauthorized
