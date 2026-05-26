@@ -1,0 +1,35 @@
+Subject: IR4 Implementation Activation Source Manifest
+Date: 2026-05-26
+Manifest UUID: 65f4d1a7-2c4f-45c7-b517-fd27e1b14a72
+
+& [SourceDocumentManifest: IR4ImplementationActivation] is the source preservation manifest for minting IR4 implementation activation slices
+  + [derived_source] is docs/source/2026-05-26_ir4_implementation_activation/Derived_IR4_Implementation_Activation_Source.sop
+    + [source_uuid] is cfae4378-80ee-4556-9b2a-a5de97e1ba44
+    + [source_role] is preserved manager-derived source for IR4 implementation activation slice minting
+    + [source_sha256] is 5CBFEE04AEFF929E5443B239835B2EC456D911C213EE7C00431A63A95176995B
+  + [boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+    + [source_role] is accepted IR4 activation pack and implementation activation gate input
+    + [source_sha256] is 60ABF65E6B81CF5FA4AE8883D03CD6B1751F4A5A3EE38BA17FB9A1F172FAA9BD
+  + [boundary_input] is docs/reviews/IR4_Completion_Review.v1.sop
+    + [source_role] is accepted IR4 completion review and implementation activation gate evidence
+    + [source_sha256] is BDC658183E34FBC07A3F7C29B9B16866ADB9C5162159E3EB68405D5A4C060635
+  + [boundary_input] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+    + [source_role] is accepted future implementation inventory and proof checklist
+    + [source_sha256] is 638BF71EFBCEB6BF76C18ACE3AC2C5930775C2C72002FA7CF0A655AE59EDADB8
+  + [boundary_input] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+    + [source_role] is accepted future fixture and expected-ledger plan
+    + [source_sha256] is 749FB2E2ECCCE7DB86921DDAFD7AC90E4E49F879FF705E84205F8E1064346E97
+  + [boundary_input] is docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+    + [source_role] is accepted graph state, node, edge, and operator harness call contract
+    + [source_sha256] is AF1C1813832D16BE02609223CF4E67415170991408D32407B4D002EAE219FEBB
+  + [boundary_input] is docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+    + [source_role] is accepted checkpoint and interrupt authority boundary
+    + [source_sha256] is F6DDB19E169F354D750837BA60B007C7A655600564AF588F14F1FA30904549DE
+  + [canonical_target] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [slice_surface_target] is docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for IR4 implementation activation slices
+  = must: invalidate IR4 implementation activation slices if a cited source hash changes without reprocessing
+  = must: keep implementation activation bounded to accepted IR4 runtime graph contracts and proof obligations
+  = must: keep dependency installation gated until an explicit dependency-authorizing activation slice accepts it
+  = must: keep operations control and live machine control unauthorized

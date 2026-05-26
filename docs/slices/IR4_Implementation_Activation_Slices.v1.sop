@@ -1,0 +1,187 @@
+Subject: LangSOP IR4 Implementation Activation Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 4cd6c61b-5e8c-47f3-af16-6a80d7017a5f
+
+@ [canonical_specification] docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir4_implementation_activation/Source_Document_Manifest.sop
+@ [IR4_activation_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+@ [IR4_completion_review] docs/reviews/IR4_Completion_Review.v1.sop
+@ [implementation_plan] docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+
+& [IR4ImplementationActivationSliceSurfaceV1] is the executable slice surface for IR4 bounded runtime graph implementation activation
+  + [chunk_ref] is IR4 implementation activation
+  + [chunk_boundary] is activation boundary, dependency decision, fixture source, expected ledgers, graph state models, graph contract models, checkpoint models, interrupt models, pure graph runner, fixture runner, tests, generated-output proof, adapter dependency decision, and final implementation proof pack
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR4_Completion_Review.v1.sop
+  + [accepted_boundary_input] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+  + [accepted_boundary_input] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+  + [accepted_boundary_input] is docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+  + [accepted_boundary_input] is docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR4-IA01
+  + [gated_slice_set] is IR4-IA02, IR4-IA03, IR4-IA04, IR4-IA05, IR4-IA06, IR4-IA07, IR4-IA08, and IR4-IA09
+  + [safety_limit] is no operations control or live machine control authorized
+
+  = must: execute IR4-IA01 before creating code, fixtures, expected ledgers, generated checkpoints, generated traces, tests, dependencies, or implementation proof artifacts
+  = must: run completed-work review after each implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes graph state, generated checkpoints, traces, reports, fixture outputs, caches, manifests, LangGraph checkpoints, surface state, adapter state, chat carriers, or runtime projections to source authority
+
+& [FinalWorkSlice: IR4-IA01-BoundedImplementationActivationBoundaryAndDependencyDecision] is ready
+  + [slice_id] is IR4-IA01
+  + [slice_name] is bounded implementation activation boundary and dependency decision
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is implementation activation gate
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [boundary_input_set] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [boundary_input_set] is docs/reviews/IR4_Completion_Review.v1.sop
+  + [boundary_input_set] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/implementation/IR4_Bounded_Implementation_Activation_Boundary.v1.sop
+  + [expected_output_set] is confirmed implementation file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, command plan, dependency decision, and proof gate for IR4 implementation slices
+  + [verification_oracle] is activation boundary confirms exact file creation scope and dependency policy without writing implementation code, fixtures, expected ledgers, generated checkpoints, generated traces, tests, dependencies, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary confirms what bounded runtime graph implementation may safely create and preserves authority/projection distinctions
+  + [forbidden_scope] is implementation code creation, fixture file creation, expected-ledger creation, generated checkpoint creation, generated trace creation, test file creation, dependency installation, package metadata mutation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA02-FixtureSourceAndExpectedLedgerSeedMaterial] is gated
+  + [slice_id] is IR4-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is fixture and expected-ledger material
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA01 accepted
+  + [internal_dependency_set] is IR4-IA01 accepted output
+  + [expected_output_set] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [expected_output_set] is tests/fixtures/sop/ir4_runtime_graph/*.sop
+  + [expected_output_set] is tests/fixtures/expected/ir4_runtime_graph/*.sop
+  + [verification_oracle] is fixture source and expected ledgers cover accepted IR4 fixture cases without generated checkpoints, generated traces, runner implementation, source mutation, dependency changes, or authority promotion
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA01 acceptance
+  + [model_route_reason] is fixture and expected-ledger creation is bounded by accepted fixture plan and activation boundary
+  + [forbidden_scope] is implementation code creation, generated checkpoint creation, generated trace creation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA03-GraphStateAndGraphContractModelImplementation] is gated
+  + [slice_id] is IR4-IA03
+  + [slice_name] is graph state and graph contract model implementation
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is graph state and graph contracts
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA02 accepted
+  + [internal_dependency_set] is IR4-IA01 and IR4-IA02 accepted outputs
+  + [expected_output_set] is src/langsop/runtime/graph_state.py
+  + [expected_output_set] is src/langsop/runtime/graph_contracts.py
+  + [verification_oracle] is code implements frozen graph state, terminal outcome, node result, node and edge contract models, precondition/postcondition helpers, and terminal classifiers using Python standard library only with no side effects outside returned values
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA02 acceptance
+  + [model_route_reason] is graph state and contract models are bounded by accepted graph implementation contract, fixture source, and expected ledgers
+  + [forbidden_scope] is runner orchestration implementation, checkpoint persistence implementation, interrupt packet implementation, fixture runner implementation, generated output writing, dependency installation, source mutation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA04-CheckpointAndSOPFirstInterruptModelImplementation] is gated
+  + [slice_id] is IR4-IA04
+  + [slice_name] is checkpoint and SOP-first interrupt model implementation
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is checkpoint and interrupt models
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA03 accepted
+  + [internal_dependency_set] is IR4-IA01 through IR4-IA03 accepted outputs
+  + [expected_output_set] is src/langsop/runtime/checkpoints.py
+  + [expected_output_set] is src/langsop/runtime/interrupts.py
+  + [verification_oracle] is code validates checkpoint freshness, checkpoint authority confusion, interrupt context, resume requirements, stale state, and non-authority warnings using Python standard library only
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA03 acceptance
+  + [model_route_reason] is checkpoint and interrupt models are bounded by accepted checkpoint policy and graph contract models
+  + [forbidden_scope] is graph runner implementation, fixture runner implementation, generated checkpoint file writing, dependency installation, source mutation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA05-PureGraphRunnerImplementationWithoutExternalLangGraphDependency] is gated
+  + [slice_id] is IR4-IA05
+  + [slice_name] is pure graph runner implementation without external LangGraph dependency
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is in-process runtime graph proof runner
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA04 accepted
+  + [internal_dependency_set] is IR4-IA01 through IR4-IA04 accepted outputs
+  + [expected_output_set] is src/langsop/runtime/graph_runner.py
+  + [expected_output_set] is src/langsop/runtime/__init__.py
+  + [verification_oracle] is runner evaluates accepted WholeFieldPlannerGraph fixture records, returns terminal_success, terminal_blocked, terminal_stale, terminal_fault, or terminal_interrupt, preserves trace identity, invokes only accepted in-process operator harness boundaries, and exposes no live-control API
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA04 acceptance
+  + [model_route_reason] is pure runner implementation is bounded by accepted contracts, checkpoint and interrupt models, fixture source, and expected ledgers
+  + [forbidden_scope] is external LangGraph dependency installation, package metadata mutation, fixture runner implementation, generated checkpoint or trace file writing, process control, GPU control, job dispatch, network control, credentials, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA06-FixtureRunnerAndGeneratedPathPolicyImplementation] is gated
+  + [slice_id] is IR4-IA06
+  + [slice_name] is fixture runner and generated path policy implementation
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is fixture runner and generated path safety
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA05 accepted
+  + [internal_dependency_set] is IR4-IA01 through IR4-IA05 accepted outputs
+  + [expected_output_set] is src/langsop/runtime/fixture_runner.py
+  + [verification_oracle] is fixture runner loads tracked fixture source and expected ledgers, validates generated checkpoint, trace, and report paths, writes only generated outputs under accepted roots when tests run, refuses source mutation, and keeps runtime outputs non-authoritative
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA05 acceptance
+  + [model_route_reason] is fixture runner implementation is bounded by accepted fixture IO policy, fixture source, expected ledgers, and pure runner implementation
+  + [forbidden_scope] is dependency installation, source or expected-ledger mutation, live dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA07-ContractTestsAndGeneratedOutputProof] is gated
+  + [slice_id] is IR4-IA07
+  + [slice_name] is contract tests and generated-output proof
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is test integration and generated-output proof
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA06 accepted
+  + [internal_dependency_set] is IR4-IA01 through IR4-IA06 accepted outputs
+  + [expected_output_set] is tests/test_ir4_runtime_graph_contracts.py
+  + [expected_output_set] is docs/reviews/IR4_Runtime_Graph_Generated_Output_Proof.v1.sop
+  + [verification_oracle] is contract tests pass, compile check passes, generated runtime outputs stay ignored and reproducible, and source files, fixture source, and expected ledgers are not mutated by runtime code or tests
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA06 acceptance
+  + [model_route_reason] is test integration and proof update are bounded by accepted fixtures, pure runner implementation, and generated path policy
+  + [forbidden_scope] is dependency installation, unreviewed fixture expansion, generated runtime authority promotion, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA08-DependencyAuthorizedLangGraphAdapterDecisionOrDeferralReview] is gated
+  + [slice_id] is IR4-IA08
+  + [slice_name] is dependency-authorized LangGraph adapter decision or deferral review
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is dependency decision and adapter boundary
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA07 accepted
+  + [internal_dependency_set] is IR4-IA01 through IR4-IA07 accepted outputs
+  + [expected_output_set] is docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+  + [verification_oracle] is decision either defers external LangGraph installation with proof that pure runner satisfies current IR4 proof needs or authorizes a later explicit adapter implementation slice with dependency, package metadata, API, fixture, and proof boundaries
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency and adapter decisions affect runtime architecture, package state, authority boundaries, and downstream IR5 readiness
+  + [forbidden_scope] is silent dependency installation, package metadata mutation without explicit accepted decision, adapter implementation without a new slice, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-IA09-ImplementationCompletionReviewAndRuntimeGraphProofPack] is gated
+  + [slice_id] is IR4-IA09
+  + [slice_name] is implementation completion review and runtime graph proof pack
+  + [chunk_ref] is IR4 implementation activation
+  + [portion_ref] is implementation closure
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR4-IA08 accepted
+  + [internal_dependency_set] is IR4-IA01 through IR4-IA08 accepted outputs
+  + [expected_output_set] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+  + [expected_output_set] is acceptance record for implementation files, fixtures, tests, generated-output proof, dependency decision, stale outputs, contradictions, unresolved proof gaps, and downstream IR5 readiness
+  + [verification_oracle] is completion review accepts only bounded runtime graph implementation proof and opens downstream work only if no false authority, mutation, dependency, generated output, dispatch, operations control, or live-control fault is present
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream readiness and authority/projection proof boundaries
+  + [forbidden_scope] is surface implementation, operations simulator implementation, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR4ImplementationActivationSliceClosureReview] is the dependency audit for minted IR4 implementation activation slices
+  + [slice_surface_uuid] is 4cd6c61b-5e8c-47f3-af16-6a80d7017a5f
+  + [IR4_boundary_input_set] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [IR4_boundary_input_set] is docs/reviews/IR4_Completion_Review.v1.sop
+  + [IR4_boundary_input_set] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is IR4-IA01
+  + [safety_limit] is no operations control or live machine control authorized
+
+  = must: rerun this closure review after every IR4 implementation activation completion review

@@ -1,0 +1,101 @@
+Subject: LangSOP IR4 Implementation Activation Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir4_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [IR4_activation_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+@ [IR4_completion_review] docs/reviews/IR4_Completion_Review.v1.sop
+@ [implementation_plan] docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+
+& [CanonicalRecord: IR4ImplementationActivation] is the processed planning authority for IR4 bounded runtime graph implementation activation slices
+  + [canonical_uuid] is 917b6b74-0ebe-40bf-bd03-728a4e04dc09
+  + [source_manifest_uuid] is 65f4d1a7-2c4f-45c7-b517-fd27e1b14a72
+  + [slice_surface_uuid] is 4cd6c61b-5e8c-47f3-af16-6a80d7017a5f
+  + [authority_scope] is IR4 implementation activation slice order, gates, expected outputs, model routing, file inventory, fixture inventory, generated-output proof, dependency decision boundary, implementation boundaries, and forbidden live-control scope
+  + [implementation_scope] is bounded runtime graph implementation activation planning and gated implementation slices
+  + [depends_on] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR4_Completion_Review.v1.sop
+  + [depends_on] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+  + [depends_on] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+
+  = must: use docs/slices/IR4_Implementation_Activation_Slices.v1.sop as the current IR4 implementation activation surface
+  = must: execute IR4-IA01 first
+  = must: run completion review after each IR4 implementation activation slice before opening the next gated slice
+  = must: preserve generated checkpoints, traces, reports, manifests, caches, fixture outputs, graph state, LangGraph checkpoints, surface state, adapter state, and chat carriers as non-authoritative projections
+  = must: preserve SOP artifacts and accepted completion reviews as the truth-bearing records outside runtime graph state
+  - never: treat IR4 implementation activation as permission for surface implementation, operations simulator implementation, operations control, or live machine control
+
+& [CanonicalIR4ImplementationActivationSliceSet] is the final IR4 implementation activation slice sequence
+  + [slice] is IR4-IA01 bounded implementation activation boundary and dependency decision
+  + [slice] is IR4-IA02 fixture source and expected-ledger seed material
+  + [slice] is IR4-IA03 graph state and graph contract model implementation
+  + [slice] is IR4-IA04 checkpoint and SOP-first interrupt model implementation
+  + [slice] is IR4-IA05 pure graph runner implementation without external LangGraph dependency
+  + [slice] is IR4-IA06 fixture runner and generated path policy implementation
+  + [slice] is IR4-IA07 contract tests and generated-output proof
+  + [slice] is IR4-IA08 dependency-authorized LangGraph adapter decision or deferral review
+  + [slice] is IR4-IA09 implementation completion review and runtime graph proof pack
+
+  = must: preserve this order unless completion review rebakes IR4 implementation activation
+
+& [CanonicalIR4ImplementationActivationGate] is the activation rule for IR4 implementation
+  + [current_ready_slice] is IR4-IA01
+  + [gated_slice] is IR4-IA02 until IR4-IA01 accepted
+  + [gated_slice] is IR4-IA03 until IR4-IA02 accepted
+  + [gated_slice] is IR4-IA04 until IR4-IA03 accepted
+  + [gated_slice] is IR4-IA05 until IR4-IA04 accepted
+  + [gated_slice] is IR4-IA06 until IR4-IA05 accepted
+  + [gated_slice] is IR4-IA07 until IR4-IA06 accepted
+  + [gated_slice] is IR4-IA08 until IR4-IA07 accepted
+  + [gated_slice] is IR4-IA09 until IR4-IA08 accepted
+  + [completion_gate] is IR4 implementation proof pack accepted after IR4-IA09
+
+& [CanonicalIR4ImplementationActivationModelRouting] is the model-routing record
+  + [IR4-IA01] is requires deeper reasoning
+  + [IR4-IA02] is GPT-5.3-Codex-Spark-suitable after IR4-IA01 acceptance
+  + [IR4-IA03] is GPT-5.3-Codex-Spark-suitable after IR4-IA02 acceptance
+  + [IR4-IA04] is GPT-5.3-Codex-Spark-suitable after IR4-IA03 acceptance
+  + [IR4-IA05] is GPT-5.3-Codex-Spark-suitable after IR4-IA04 acceptance
+  + [IR4-IA06] is GPT-5.3-Codex-Spark-suitable after IR4-IA05 acceptance
+  + [IR4-IA07] is GPT-5.3-Codex-Spark-suitable after IR4-IA06 acceptance
+  + [IR4-IA08] is requires deeper reasoning
+  + [IR4-IA09] is requires deeper reasoning
+
+  = must: route any authority semantics, graph semantics, checkpoint authority boundary, interrupt/resume contract, dependency-boundary, generated output policy, public API boundary, or safety-boundary change to deeper reasoning
+  = must: treat IR4-IA02 through IR4-IA07 as Spark-suitable only while they remain within accepted boundaries and have passing verification oracles
+
+& [CanonicalIR4ImplementationActivationDependencyPolicy] is the dependency decision policy for IR4
+  + [initial_dependency_state] is Python standard library only
+  + [langgraph_package_state] is gated_until_IR4-IA08
+  + [pure_runner_status] is proof-runtime implementation, not final package integration
+  + [adapter_status] is decision_or_deferral_only_until_dependency_authorizing_slice_accepts
+
+  = must: keep package installation, lockfile mutation, dependency metadata mutation, and external package imports out of IR4-IA01 through IR4-IA07
+  = must: let IR4-IA08 either authorize a later LangGraph adapter slice with explicit dependency instructions or defer dependency work with proof of why the pure runner is sufficient for current runtime proof
+
+& [SatisfactionSignature: IR4ImplementationActivation] is the valid SJS satisfaction signature for the IR4 implementation activation surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 1d533ab7-5ea6-4126-bc5f-ed8c433cd9dc
+  + [signed_subject] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir4_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is 5CBFEE04AEFF929E5443B239835B2EC456D911C213EE7C00431A63A95176995B
+  + [source_sha256] is 60ABF65E6B81CF5FA4AE8883D03CD6B1751F4A5A3EE38BA17FB9A1F172FAA9BD
+  + [source_sha256] is BDC658183E34FBC07A3F7C29B9B16866ADB9C5162159E3EB68405D5A4C060635
+  + [source_sha256] is 638BF71EFBCEB6BF76C18ACE3AC2C5930775C2C72002FA7CF0A655AE59EDADB8
+  + [source_sha256] is 749FB2E2ECCCE7DB86921DDAFD7AC90E4E49F879FF705E84205F8E1064346E97
+  + [source_sha256] is AF1C1813832D16BE02609223CF4E67415170991408D32407B4D002EAE219FEBB
+  + [source_sha256] is F6DDB19E169F354D750837BA60B007C7A655600564AF588F14F1FA30904549DE
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR4_gate_imported, implementation_plan_imported, fixture_plan_imported, graph_contract_imported, checkpoint_policy_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, dependency_gate_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR4_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR4 implementation activation slices; no live operations control authorized
+
+& [RegistryRecord: IR4ImplementationActivation] is the durable identity ledger for the IR4 implementation activation surface
+  + [registry_uuid] is bc9bdbba-9252-4bec-894e-35dc04674a75
+  + [manifest_node_uuid] is 65f4d1a7-2c4f-45c7-b517-fd27e1b14a72
+  + [canonical_node_uuid] is 917b6b74-0ebe-40bf-bd03-728a4e04dc09
+  + [slice_surface_uuid] is 4cd6c61b-5e8c-47f3-af16-6a80d7017a5f
+  + [signature_uuid] is 1d533ab7-5ea6-4126-bc5f-ed8c433cd9dc
+  + [closure_review_uuid] is d6d6cee1-7bca-4b81-bbb1-d62a0ed24067

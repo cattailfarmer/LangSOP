@@ -1,0 +1,48 @@
+Subject: IR4 Implementation Activation Source
+Date: 2026-05-26
+Source UUID: cfae4378-80ee-4556-9b2a-a5de97e1ba44
+
+& [SourcePrompt: IR4ImplementationActivation] is the preserved source for minting IR4 bounded runtime graph implementation activation slices
+  + [origin] is Codex project-manager session derived from accepted IR4 LangGraph proof runtime activation pack
+  + [user_intent] is continue long-haul project-manager work by preparing the implementation surface without prematurely writing runtime code or installing dependencies
+  + [purpose] is split IR4 LangGraph proof runtime implementation activation into clean slices before implementation code, fixture source, expected ledgers, generated checkpoints, generated traces, tests, or dependency changes begin
+  + [chunk_ref] is IR4 bounded runtime graph implementation activation
+  + [model_route] is requires deeper reasoning for activation slice minting; bounded future code, fixture, expected-ledger, generated-output, and test slices may be GPT-5.3-Codex-Spark-suitable after this activation surface is accepted and their gates open
+  + [source_basis] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [source_basis] is docs/reviews/IR4_Completion_Review.v1.sop
+  + [source_basis] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+  + [source_basis] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+
+  = must: preserve the accepted IR4 activation pack as the implementation activation boundary input
+  = must: keep activation slice minting distinct from runtime code creation
+  = must: require completion review after every implementation activation slice
+  = must: keep graph state, checkpoints, generated traces, reports, fixture outputs, caches, manifests, and surface projections non-authoritative
+  = must: keep true LangGraph package installation behind an explicit dependency-authorizing activation slice
+  = must: keep operations control and live machine control unauthorized
+
+& [RequiredIR4ImplementationActivationSliceSet] is the source-level slice set for IR4 implementation activation
+  + [slice_candidate] is IR4-IA01 bounded implementation activation boundary and dependency decision
+  + [slice_candidate] is IR4-IA02 fixture source and expected-ledger seed material
+  + [slice_candidate] is IR4-IA03 graph state and graph contract model implementation
+  + [slice_candidate] is IR4-IA04 checkpoint and SOP-first interrupt model implementation
+  + [slice_candidate] is IR4-IA05 pure graph runner implementation without external LangGraph dependency
+  + [slice_candidate] is IR4-IA06 fixture runner and generated path policy implementation
+  + [slice_candidate] is IR4-IA07 contract tests and generated-output proof
+  + [slice_candidate] is IR4-IA08 dependency-authorized LangGraph adapter decision or deferral review
+  + [slice_candidate] is IR4-IA09 implementation completion review and runtime graph proof pack
+
+  = must: route IR4-IA01, IR4-IA08, and IR4-IA09 to deeper reasoning
+  = should: route IR4-IA02 through IR4-IA07 to GPT-5.3-Codex-Spark after their upstream gates are accepted because their file scopes and verification oracles are bounded
+
+& [IR4ImplementationActivationSafetySource] is the source-level safety boundary for this activation surface
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [first_pass_dependency_policy] is Python standard library only until explicit dependency decision
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+
+  = must: reject any implementation activation slice that promotes generated runtime state to authority
+  = must: reject any implementation activation slice that exposes live dispatch, process control, GPU control, network control, credential access, operations control, or live machine control

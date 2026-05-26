@@ -1,0 +1,109 @@
+Subject: IR4 Implementation Activation Minting Review V1
+Date: 2026-05-26
+Review UUID: d6d6cee1-7bca-4b81-bbb1-d62a0ed24067
+
+@ [source_manifest] docs/source/2026-05-26_ir4_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [IR4_activation_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+@ [IR4_completion_review] docs/reviews/IR4_Completion_Review.v1.sop
+
+& [SliceMintingReview: IR4ImplementationActivation] is the completed-work review for minting IR4 bounded implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir4_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 7EFDBD376B5BA46B67386CC97E84EDE6191A0694A4B8610346204B2CD6969C4D
+  + [completed_output] is docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is EA75506B7498874EECB238D803BCA003C8202333D85A52B3E71D8495271A49A0
+  + [completed_output] is docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is 2E6481946846620FC0BE2CCE12E4B66AE76819A4189349E44D5670FD0A94E97C
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR4-IA01 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR4-IA01 only
+  = must: rerun this review if IR4 implementation activation source, canonical specification, or slice surface changes
+  = must: keep implementation code, fixture source, expected ledgers, generated checkpoints, generated traces, tests, dependencies, operations control, and live machine control gated until their specific slices open
+
+& [VerificationOracleResult: IR4ImplementationActivation] is the verification result for IR4 implementation activation slice minting
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [slice_count] is 9
+  + [ready_slice] is IR4-IA01 bounded implementation activation boundary and dependency decision
+  + [gated_slice] is IR4-IA02 fixture source and expected-ledger seed material
+  + [gated_slice] is IR4-IA03 graph state and graph contract model implementation
+  + [gated_slice] is IR4-IA04 checkpoint and SOP-first interrupt model implementation
+  + [gated_slice] is IR4-IA05 pure graph runner implementation without external LangGraph dependency
+  + [gated_slice] is IR4-IA06 fixture runner and generated path policy implementation
+  + [gated_slice] is IR4-IA07 contract tests and generated-output proof
+  + [gated_slice] is IR4-IA08 dependency-authorized LangGraph adapter decision or deferral review
+  + [gated_slice] is IR4-IA09 implementation completion review and runtime graph proof pack
+  + [model_route_present] is IR4-IA01 requires deeper reasoning
+  + [model_route_present] is IR4-IA02 GPT-5.3-Codex-Spark-suitable after IR4-IA01 acceptance
+  + [model_route_present] is IR4-IA03 GPT-5.3-Codex-Spark-suitable after IR4-IA02 acceptance
+  + [model_route_present] is IR4-IA04 GPT-5.3-Codex-Spark-suitable after IR4-IA03 acceptance
+  + [model_route_present] is IR4-IA05 GPT-5.3-Codex-Spark-suitable after IR4-IA04 acceptance
+  + [model_route_present] is IR4-IA06 GPT-5.3-Codex-Spark-suitable after IR4-IA05 acceptance
+  + [model_route_present] is IR4-IA07 GPT-5.3-Codex-Spark-suitable after IR4-IA06 acceptance
+  + [model_route_present] is IR4-IA08 requires deeper reasoning
+  + [model_route_present] is IR4-IA09 requires deeper reasoning
+  + [forbidden_scope_absent] is silent external dependency addition
+  + [forbidden_scope_absent] is source authority mutation
+  + [forbidden_scope_absent] is generated runtime authority promotion
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation before dependency decision
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR4ImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+    @ [support] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: IR4ImplementationActivation] is the support delta produced by this slice minting pass
+  + [new_support_record] is IR4ImplementationActivationSliceSurfaceV1 supports IR4-IA01 execution
+  + [new_support_record] is IR4-IA02 through IR4-IA07 Spark suitability is gated by accepted upstream slices and bounded file scopes
+  + [new_support_record] is IR4-IA08 preserves deeper-reasoning dependency and adapter decision authority
+  + [new_support_record] is IR4-IA09 preserves deeper-reasoning final implementation proof acceptance
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4ImplementationActivation] is the requirement delta produced by this slice minting pass
+  + [requirement_delta] is IR4-IA01 must run first and requires deeper reasoning
+  + [requirement_delta] is no implementation code, fixture source, expected-ledger, generated checkpoint, generated trace, or test files are authorized until IR4-IA01 confirms the activation boundary and their specific slice gates open
+  + [requirement_delta] is future bounded implementation and fixture slices must explicitly state Spark suitability after their gates are accepted
+  + [requirement_delta] is no dependency installation, package metadata mutation, operations control, or live machine control authorized before explicit accepted gates
+  + [requirement_delta] is no rebake required before IR4-IA01
+
+& [FaultReview: IR4ImplementationActivation] is the fault review for IR4 implementation activation slice minting
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_checkpoint_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [generated_runtime_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_slice_found] is false
+
+  ! [IR4ImplementationActivationSlicesAccepted] is accepted
+    @ [support] [VerificationOracleResult: IR4ImplementationActivation]
+    @ [support] [SupportDelta: IR4ImplementationActivation]
+    @ [support] [RequirementDelta: IR4ImplementationActivation]
+    @ [support] [FaultReview: IR4ImplementationActivation]
+
+& [NextSliceGate: IR4-IA01] is opened
+  + [opened_slice] is IR4-IA01 bounded implementation activation boundary and dependency decision
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary confirms what bounded runtime graph implementation may safely create and keeps dependency installation explicitly gated
+  + [safety_limit] is no operations control or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-IA01 next unless user redirects or a new fault invalidates this review
