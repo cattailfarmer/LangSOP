@@ -1,0 +1,212 @@
+Subject: Authority Kernel Record Schemas V1
+Date: 2026-05-26
+Schema UUID: cee1a53e-89d1-4d13-b039-90e9ccf3b11f
+
+@ [slice_authority] docs/slices/FSC1_Final_Slices.v1.sop
+@ [canonical_slice_authority] docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+& [SchemaRecord: AuthorityKernelRecordSchemasV1] is the record-specific logical schema inventory for LangSOP authority-kernel records
+  + [schema_id] is authority-kernel-record-schemas-v1
+  + [schema_uuid] is cee1a53e-89d1-4d13-b039-90e9ccf3b11f
+  + [slice_id] is FSC1-S02
+  + [authority_scope] is record-specific payload fields, source rules, lifecycle rules, freshness rules, and invalidation rules for every KernelRecordKind
+  + [implementation_scope] is logical schema only
+  + [core_schema_dependency] is docs/schema/Kernel_Record_Core.v1.sop
+
+  = must: include the KernelRecord common envelope from Kernel_Record_Core.v1.sop for every record kind
+  = must: use Natural_Key_And_Lifecycle_Matrix.v1.sop for natural-key, lifecycle, freshness, and invalidation details
+  = must: keep payload fields logical and storage-independent
+  = must: preserve record-kind boundaries so operators and projections can validate inputs without guessing payload meaning
+  - never: choose physical storage in this schema
+  - never: implement operator behavior in this schema
+  - never: implement runtime graph, surface rendering, dispatch, or operations control from this schema
+
+& [RecordSchemaRule] is the common rule for record-specific payload sections
+  + [required_common_envelope] is KernelRecord from Kernel_Record_Core.v1.sop
+  + [payload_field_set] is the record-kind-specific logical fields named by each RecordSchema
+  + [natural_key_rule_ref] is the matching MatrixEntry in Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [source_ref_rule] is how source_ref_set must be populated
+  + [lifecycle_rule] is allowed status movement for the record kind
+  + [freshness_rule] is how the record becomes stale or invalidated
+  + [invalidation_rule] is how invalidation is preserved
+
+  = must: reject payload fields that require hidden source or hidden authority
+  = must: keep derived records visibly derived through lineage_edge_set
+  = must: keep invalidated and contradicted payloads available as trace
+
+& [RecordSchema: source_log] is the schema for preserved source collections
+  + [record_kind] is source_log
+  + [payload_field_set] is source_log_id, source_locator, source_kind, captured_at, captured_by, source_hash, retention_rule, and entry_count
+  + [source_ref_rule] is cite the preserved source itself or the source intake manifest
+  + [lifecycle_rule] is draft to accepted to superseded or invalidated
+  + [freshness_rule] is not_applicable when source_hash is immutable, stale when source_locator changes or hash mismatch appears
+  + [invalidation_rule] is preserve old source_log and add invalidates or supersedes lineage edge
+
+& [RecordSchema: log_entry] is the schema for one atomic entry inside a source log
+  + [record_kind] is log_entry
+  + [payload_field_set] is log_entry_id, source_log_ref, entry_ordinal, entry_time, speaker_or_actor_ref, entry_text_ref, entry_hash, and interpretation_status
+  + [source_ref_rule] is cite source_log and entry locator or hash
+  + [lifecycle_rule] is draft to accepted to superseded or invalidated
+  + [freshness_rule] is stale when parent source_log changes, entry_hash mismatches, or interpretation_status is invalidated
+  + [invalidation_rule] is preserve entry and add invalidation reason rather than rewriting text
+
+& [RecordSchema: citation_ref] is the schema for a citation or evidence pointer
+  + [record_kind] is citation_ref
+  + [payload_field_set] is citation_id, cited_ref, cited_scope, citation_purpose, quoted_hash_or_locator, and evidence_limit
+  + [source_ref_rule] is cite cited_ref and any source hash used for validation
+  + [lifecycle_rule] is draft to accepted to stale, superseded, or invalidated
+  + [freshness_rule] is stale when cited_ref changes, cited_scope disappears, or evidence_limit is contradicted
+  + [invalidation_rule] is preserve citation and link to contradicted or invalidating source
+
+& [RecordSchema: narrative_node] is the schema for project narrative continuity
+  + [record_kind] is narrative_node
+  + [payload_field_set] is narrative_node_id, subject_ref, narrative_role, narrative_text_ref, anchor_ref_set, decision_ref_set, open_frontier_set, and reentry_ref
+  + [source_ref_rule] is cite source logs, canonical specs, reviews, or proof records behind the narrative claim
+  + [lifecycle_rule] is draft to active to superseded, stale, contradicted, or invalidated
+  + [freshness_rule] is stale when cited source, decision, proof, or frontier state changes
+  + [invalidation_rule] is preserve older node and supersede with new narrative_node
+
+& [RecordSchema: understanding_anchor] is the schema for stable anchors of meaning
+  + [record_kind] is understanding_anchor
+  + [payload_field_set] is anchor_id, subject_ref, anchor_statement, authority_basis_ref_set, confidence_state, ambiguity_set, and reentry_use
+  + [source_ref_rule] is cite source or canonical authority establishing the anchor
+  + [lifecycle_rule] is draft to accepted to stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when authority_basis_ref_set changes or ambiguity_set becomes unresolved
+  + [invalidation_rule] is preserve anchor and create contradiction or supersession edge
+
+& [RecordSchema: capability_node] is the schema for whole-field planning capabilities
+  + [record_kind] is capability_node
+  + [payload_field_set] is capability_id, capability_name, purpose, requirement_ref_set, dependency_ref_set, support_ref_set, support_gap_ref_set, proof_route, packetization_rule, readiness_state, and blocked_reason
+  + [source_ref_rule] is cite canonical product, planning, or completion-review source establishing the capability
+  + [lifecycle_rule] is desired to specified to supported, blocked, ready_to_packetize, verified, stale, superseded, or contradicted
+  + [freshness_rule] is stale when requirements, support, proof, dependency, or authority basis changes
+  + [invalidation_rule] is preserve capability node and add supersedes, contradicts, or invalidates edge
+
+& [RecordSchema: requirement_record] is the schema for atomic requirements
+  + [record_kind] is requirement_record
+  + [payload_field_set] is requirement_id, owning_capability_ref, requirement_statement, requirement_type, dependency_ref_set, support_ref_set, support_gap_ref_set, acceptance_rule, and readiness_state
+  + [source_ref_rule] is cite source specification, canonical artifact, or completion review that created or changed the requirement
+  + [lifecycle_rule] is draft to accepted to supported, blocked, verified, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when owning capability, source specification, dependency, support, or acceptance rule changes
+  + [invalidation_rule] is preserve old requirement and link to replacement, contradiction, or invalidating review
+
+& [RecordSchema: support_record] is the schema for evidence supporting a requirement
+  + [record_kind] is support_record
+  + [payload_field_set] is support_id, requirement_ref, support_provider_ref, support_scope, support_limit, proof_ref, support_status, and freshness_rule_ref
+  + [source_ref_rule] is cite provider artifact, proof, decision, or explicit absence
+  + [lifecycle_rule] is draft to accepted, verified, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when support_provider_ref, proof_ref, requirement_ref, or support_limit changes
+  + [invalidation_rule] is preserve support record and add contradiction or stale projection edge
+
+& [RecordSchema: support_gap] is the schema for missing or inadequate support
+  + [record_kind] is support_gap
+  + [payload_field_set] is gap_id, requirement_ref, gap_statement, gap_kind, blocker_scope, resolution_path, owner_ref, and readiness_effect
+  + [source_ref_rule] is cite requirement, review, proof failure, or authority record revealing the gap
+  + [lifecycle_rule] is draft to active, blocked, resolved_by_support_record, superseded, or invalidated
+  + [freshness_rule] is stale when requirement or resolution_path changes
+  + [invalidation_rule] is preserve gap and link to resolving support_record or invalidating decision
+
+& [RecordSchema: authority_artifact] is the schema for signed or accepted authority material
+  + [record_kind] is authority_artifact
+  + [payload_field_set] is artifact_id, artifact_path, artifact_kind, signature_uuid, signature_protocol_uuid, source_manifest_ref, artifact_hash, authority_scope, and invalidation_condition_set
+  + [source_ref_rule] is cite source manifest, canonical artifact, signature, and hash
+  + [lifecycle_rule] is draft to signed_sjs, accepted, superseded, invalidated, or contradicted
+  + [freshness_rule] is stale or invalidated when artifact_hash, source_manifest_ref, signature status, or invalidation condition changes
+  + [invalidation_rule] is preserve artifact and cite invalidating signature, source change, or review
+
+& [RecordSchema: coordination_claim] is the schema for ownership and concurrency claims
+  + [record_kind] is coordination_claim
+  + [payload_field_set] is claim_id, conversation_uuid, actor_ref, claim_scope, claimed_artifact_set, claim_state, expiration_rule, conflict_ref_set, and rendezvous_ref
+  + [source_ref_rule] is cite conversation, mailbox, manager surface, or review that established the claim
+  + [lifecycle_rule] is draft to active, released, expired, conflicted, superseded, or invalidated
+  + [freshness_rule] is stale when expiration_rule triggers, claimed artifact changes, or conflict_ref_set changes
+  + [invalidation_rule] is preserve claim and link to release, conflict, or invalidation record
+
+& [RecordSchema: operator_contract] is the schema for compiled SOP duty contracts
+  + [record_kind] is operator_contract
+  + [payload_field_set] is operator_id, operator_version, source_sop_ref, input_record_kind_set, output_record_kind_set, precondition_set, postcondition_set, interrupt_condition_set, fault_condition_set, trace_schema_ref, and fixture_ref_set
+  + [source_ref_rule] is cite source SOP, canonical operator template, and accepted schema records
+  + [lifecycle_rule] is draft to accepted, verified, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when source_sop_ref, input/output schema, fixture, or authority rule changes
+  + [invalidation_rule] is preserve contract and supersede with new operator_contract
+
+& [RecordSchema: operator_trace] is the schema for one operator invocation trace
+  + [record_kind] is operator_trace
+  + [payload_field_set] is trace_id, operator_contract_ref, invocation_id, input_record_ref_set, output_record_ref_set, precondition_result_set, postcondition_result_set, interrupt_result_set, fault_result_set, started_at, completed_at, and execution_status
+  + [source_ref_rule] is cite operator_contract and input records
+  + [lifecycle_rule] is draft to completed, blocked, faulted, superseded, or invalidated
+  + [freshness_rule] is stale when operator_contract or input_record_ref_set is invalidated
+  + [invalidation_rule] is preserve trace and link to invalidating input or contract
+
+& [RecordSchema: work_packet] is the schema for a generated executable work view
+  + [record_kind] is work_packet
+  + [payload_field_set] is packet_id, packet_series, packet_revision, packet_kind, capability_ref_set, requirement_ref_set, authority_basis_ref_set, precondition_set, expected_output_set, verification_oracle, model_route, forbidden_scope, and completion_review_required
+  + [source_ref_rule] is cite readiness_projection, authority artifact, and packetization source
+  + [lifecycle_rule] is candidate to ready_to_packetize, packetized, assigned, completed, verified, stale, superseded, or invalidated
+  + [freshness_rule] is stale when readiness_projection, authority_basis_ref_set, preconditions, expected outputs, or model_route changes
+  + [invalidation_rule] is preserve old packet and generate superseding work_packet
+
+& [RecordSchema: completion_review] is the schema for completed-work review
+  + [record_kind] is completion_review
+  + [payload_field_set] is review_id, completed_slice_ref, completed_output_ref_set, proof_ref_set, support_delta_set, requirement_delta_set, fault_ref_set, review_result, next_gate_result, and reviewer_ref
+  + [source_ref_rule] is cite completed output, proof, slice authority, and reviewer record
+  + [lifecycle_rule] is draft to accepted, blocked, contradicted, superseded, or invalidated
+  + [freshness_rule] is stale when completed output, proof, or slice authority changes
+  + [invalidation_rule] is preserve review and link to replacement review or invalidating fault
+
+& [RecordSchema: readiness_projection] is the schema for derived readiness state
+  + [record_kind] is readiness_projection
+  + [payload_field_set] is projection_id, subject_ref, input_record_ref_set, readiness_state, blocker_ref_set, proof_route_ref, generated_by_ref, projection_revision, and recompute_rule
+  + [source_ref_rule] is cite all input records and generator authority
+  + [lifecycle_rule] is draft to active, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when any input_record_ref_set member changes, stales, contradicts, or invalidates
+  + [invalidation_rule] is preserve projection and create stale_projection or superseding readiness_projection
+
+& [RecordSchema: stale_projection] is the schema for stale derived material
+  + [record_kind] is stale_projection
+  + [payload_field_set] is stale_event_id, stale_record_ref, stale_reason, changed_source_ref, stale_detected_at, required_recompute_ref, and blocked_effect
+  + [source_ref_rule] is cite stale record and changed source or failed freshness check
+  + [lifecycle_rule] is active to resolved_by_recompute, superseded, or invalidated
+  + [freshness_rule] is current until stale_record_ref is recomputed or invalidated
+  + [invalidation_rule] is preserve stale_projection and link to recompute or invalidating review
+
+& [RecordSchema: proof_result] is the schema for verification evidence
+  + [record_kind] is proof_result
+  + [payload_field_set] is proof_id, proof_subject_ref, proof_kind, proof_command_or_method, proof_output_ref, proof_status, proof_scope, proof_limit, and checked_at
+  + [source_ref_rule] is cite command output, reviewed artifact, explicit absence proof, or verification record
+  + [lifecycle_rule] is draft to verified, failed, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when proof_subject_ref, proof_output_ref, command, method, or proof scope changes
+  + [invalidation_rule] is preserve proof and cite failed or superseding proof_result
+
+& [RecordSchema: fault_record] is the schema for operational or reasoning faults
+  + [record_kind] is fault_record
+  + [payload_field_set] is fault_id, fault_kind, fault_subject_ref, severity, evidence_ref_set, local_repair, prevention_story, escalation_path, and resolution_state
+  + [source_ref_rule] is cite evidence, trace, review, stale projection, or source conflict behind the fault
+  + [lifecycle_rule] is active to mitigated, resolved, superseded, or invalidated
+  + [freshness_rule] is stale when evidence_ref_set, repair, prevention story, or resolution state changes
+  + [invalidation_rule] is preserve fault and link to resolution or invalidating review
+
+& [RecordKindCoverageReview] is the coverage proof for AuthorityKernelRecordSchemasV1
+  + [covered_record_kind] is source_log
+  + [covered_record_kind] is log_entry
+  + [covered_record_kind] is citation_ref
+  + [covered_record_kind] is narrative_node
+  + [covered_record_kind] is understanding_anchor
+  + [covered_record_kind] is capability_node
+  + [covered_record_kind] is requirement_record
+  + [covered_record_kind] is support_record
+  + [covered_record_kind] is support_gap
+  + [covered_record_kind] is authority_artifact
+  + [covered_record_kind] is coordination_claim
+  + [covered_record_kind] is operator_contract
+  + [covered_record_kind] is operator_trace
+  + [covered_record_kind] is work_packet
+  + [covered_record_kind] is completion_review
+  + [covered_record_kind] is readiness_projection
+  + [covered_record_kind] is stale_projection
+  + [covered_record_kind] is proof_result
+  + [covered_record_kind] is fault_record
+
+  = must: reject FSC1-S02 if any KernelRecordKind lacks a RecordSchema and matrix entry

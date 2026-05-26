@@ -23,4 +23,4 @@ The working development pattern is "whole-pie first": keep the product overview 
 
 The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is the only current final-slice-ready chunk; downstream chunks stay gated until their upstream contract packs are accepted as boundary inputs.
 
-FSC1 has been minted into final slices. `FSC1-S01` is accepted, and the current ready slice is `FSC1-S02` record-specific schema and natural-key matrix; the remaining FSC1 slices are gated on accepted outputs inside the same chunk.
+FSC1 has been minted into final slices. `FSC1-S01` and `FSC1-S02` are accepted, and the current ready slice is `FSC1-S03` operator contract template; the remaining FSC1 slices are gated on accepted outputs inside the same chunk.

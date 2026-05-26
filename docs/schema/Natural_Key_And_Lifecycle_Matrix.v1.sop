@@ -1,0 +1,177 @@
+Subject: Natural Key And Lifecycle Matrix V1
+Date: 2026-05-26
+Matrix UUID: 77ad4101-3197-4d4e-b9a4-aacc4fccd61b
+
+@ [slice_authority] docs/slices/FSC1_Final_Slices.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+
+& [NaturalKeyAndLifecycleMatrixV1] is the identity, lifecycle, freshness, and invalidation matrix for every KernelRecordKind
+  + [matrix_id] is natural-key-and-lifecycle-matrix-v1
+  + [matrix_uuid] is 77ad4101-3197-4d4e-b9a4-aacc4fccd61b
+  + [slice_id] is FSC1-S02
+  + [authority_scope] is natural-key rule, source-ref rule, lifecycle state rule, freshness rule, and invalidation behavior for every KernelRecordKind
+  + [implementation_scope] is logical schema only
+
+  = must: preserve natural identity when it is meaningful and stable enough for reasoning
+  = must: use composite natural keys when identity is relational
+  = must: use unresolved natural_key state when a record cannot yet be identified safely
+  = must: preserve invalidated, stale, contradicted, and superseded records as trace
+  = must: keep physical storage out of this matrix
+  - never: let a surrogate record_id erase a meaningful natural key
+
+& [MatrixEntry: source_log] is the identity rule for source_log
+  + [natural_key_rule] is project_scope plus source_locator plus source_hash
+  + [source_ref_rule] is preserved source artifact or source intake manifest
+  + [lifecycle_state_rule] is draft, accepted, superseded, or invalidated
+  + [freshness_rule] is current while source_hash matches and source_locator remains valid
+  + [invalidation_behavior] is invalidated by hash mismatch, lost source, or superseding source snapshot
+
+& [MatrixEntry: log_entry] is the identity rule for log_entry
+  + [natural_key_rule] is source_log_ref plus entry_ordinal, with entry_hash as stability evidence
+  + [source_ref_rule] is parent source_log and entry locator
+  + [lifecycle_state_rule] is draft, accepted, superseded, or invalidated
+  + [freshness_rule] is stale when parent source_log changes or entry_hash mismatches
+  + [invalidation_behavior] is invalidated by parent source invalidation or proven entry mismatch
+
+& [MatrixEntry: citation_ref] is the identity rule for citation_ref
+  + [natural_key_rule] is cited_ref plus cited_scope plus citation_purpose
+  + [source_ref_rule] is cited artifact, cited record, or explicit absence proof
+  + [lifecycle_state_rule] is draft, accepted, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when cited scope changes or evidence limit is contradicted
+  + [invalidation_behavior] is invalidated by missing cited target, wrong scope, or contradicted evidence
+
+& [MatrixEntry: narrative_node] is the identity rule for narrative_node
+  + [natural_key_rule] is project_scope plus subject_ref plus narrative_role plus narrative_revision
+  + [source_ref_rule] is source logs, canonical specs, decisions, reviews, or proofs behind narrative claims
+  + [lifecycle_state_rule] is draft, active, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when anchor, decision, proof, or frontier references change
+  + [invalidation_behavior] is superseded by revised narrative or invalidated by contradicted authority
+
+& [MatrixEntry: understanding_anchor] is the identity rule for understanding_anchor
+  + [natural_key_rule] is subject_ref plus anchor_statement_hash plus authority_basis_ref_set
+  + [source_ref_rule] is authority basis establishing the anchor
+  + [lifecycle_state_rule] is draft, accepted, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when authority basis changes or ambiguity set reopens
+  + [invalidation_behavior] is superseded by corrected anchor or contradicted by proof/source
+
+& [MatrixEntry: capability_node] is the identity rule for capability_node
+  + [natural_key_rule] is project_scope plus capability_id
+  + [source_ref_rule] is product, planning, canonical, or completion-review source
+  + [lifecycle_state_rule] is desired, specified, supported, blocked, ready_to_packetize, verified, stale, superseded, or contradicted
+  + [freshness_rule] is stale when requirement, support, proof, dependency, or authority basis changes
+  + [invalidation_behavior] is superseded by new capability node or invalidated by source/authority change
+
+& [MatrixEntry: requirement_record] is the identity rule for requirement_record
+  + [natural_key_rule] is owning_capability_ref plus requirement_id
+  + [source_ref_rule] is source specification, canonical artifact, or completion review creating the requirement
+  + [lifecycle_state_rule] is draft, accepted, supported, blocked, verified, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when source, owning capability, dependency, support, or acceptance rule changes
+  + [invalidation_behavior] is superseded by split/merged/revised requirement or invalidated by source change
+
+& [MatrixEntry: support_record] is the identity rule for support_record
+  + [natural_key_rule] is requirement_ref plus support_provider_ref plus support_scope
+  + [source_ref_rule] is support provider, proof, decision, fixture, or explicit absence
+  + [lifecycle_state_rule] is draft, accepted, verified, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when provider, proof, requirement, or support limit changes
+  + [invalidation_behavior] is contradicted by proof failure or invalidated by provider/source change
+
+& [MatrixEntry: support_gap] is the identity rule for support_gap
+  + [natural_key_rule] is requirement_ref plus gap_kind plus gap_statement_hash
+  + [source_ref_rule] is requirement, review, proof failure, or authority record revealing the gap
+  + [lifecycle_state_rule] is draft, active, blocked, resolved_by_support_record, superseded, or invalidated
+  + [freshness_rule] is stale when requirement or resolution path changes
+  + [invalidation_behavior] is resolved by support_record or invalidated by revised requirement
+
+& [MatrixEntry: authority_artifact] is the identity rule for authority_artifact
+  + [natural_key_rule] is artifact_path plus signature_uuid or artifact_hash
+  + [source_ref_rule] is source manifest, canonical artifact, satisfaction signature, and artifact hash
+  + [lifecycle_state_rule] is draft, signed_sjs, accepted, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when artifact hash, source manifest, signature, or invalidation condition changes
+  + [invalidation_behavior] is invalidated by source hash change, broken signature, or superseding authority artifact
+
+& [MatrixEntry: coordination_claim] is the identity rule for coordination_claim
+  + [natural_key_rule] is conversation_uuid plus claim_scope plus claimed_artifact_set plus claim_revision
+  + [source_ref_rule] is conversation, mailbox, manager surface, or review establishing the claim
+  + [lifecycle_state_rule] is draft, active, released, expired, conflicted, superseded, or invalidated
+  + [freshness_rule] is stale when expiration triggers, claimed artifact changes, or conflict is recorded
+  + [invalidation_behavior] is invalidated by conflict resolution, release, expiration, or ownership supersession
+
+& [MatrixEntry: operator_contract] is the identity rule for operator_contract
+  + [natural_key_rule] is operator_id plus operator_version
+  + [source_ref_rule] is source SOP, operator template, schema records, and accepted authority basis
+  + [lifecycle_state_rule] is draft, accepted, verified, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when source SOP, input/output schema, template, fixture, or authority rule changes
+  + [invalidation_behavior] is superseded by new operator version or invalidated by authority/schema contradiction
+
+& [MatrixEntry: operator_trace] is the identity rule for operator_trace
+  + [natural_key_rule] is operator_contract_ref plus invocation_id
+  + [source_ref_rule] is operator contract plus input records
+  + [lifecycle_state_rule] is draft, completed, blocked, faulted, stale, superseded, or invalidated
+  + [freshness_rule] is stale when operator contract or input records are invalidated
+  + [invalidation_behavior] is invalidated by invalid input, invalid contract, or trace corruption
+
+& [MatrixEntry: work_packet] is the identity rule for work_packet
+  + [natural_key_rule] is packet_series plus packet_revision
+  + [source_ref_rule] is readiness projection, authority basis, and packetization source
+  + [lifecycle_state_rule] is candidate, ready_to_packetize, packetized, assigned, completed, verified, stale, superseded, or invalidated
+  + [freshness_rule] is stale when readiness, authority basis, preconditions, expected outputs, or model route changes
+  + [invalidation_behavior] is superseded by regenerated work packet or invalidated by false-ready review
+
+& [MatrixEntry: completion_review] is the identity rule for completion_review
+  + [natural_key_rule] is completed_slice_ref plus completed_output_hash plus review_revision
+  + [source_ref_rule] is completed output, proof, slice authority, and reviewer evidence
+  + [lifecycle_state_rule] is draft, accepted, blocked, contradicted, superseded, or invalidated
+  + [freshness_rule] is stale when completed output, proof, or slice authority changes
+  + [invalidation_behavior] is superseded by revised review or invalidated by proof/authority contradiction
+
+& [MatrixEntry: readiness_projection] is the identity rule for readiness_projection
+  + [natural_key_rule] is subject_ref plus projection_revision plus input_record_set_hash
+  + [source_ref_rule] is every input record plus generator authority
+  + [lifecycle_state_rule] is draft, active, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when any input record changes, stales, contradicts, or invalidates
+  + [invalidation_behavior] is superseded by recompute or invalidated by false-ready fault
+
+& [MatrixEntry: stale_projection] is the identity rule for stale_projection
+  + [natural_key_rule] is stale_record_ref plus stale_event_id
+  + [source_ref_rule] is stale record plus changed source or failed freshness check
+  + [lifecycle_state_rule] is active, resolved_by_recompute, superseded, or invalidated
+  + [freshness_rule] is current until stale record is recomputed or invalidated
+  + [invalidation_behavior] is resolved by recompute or invalidated by revised stale finding
+
+& [MatrixEntry: proof_result] is the identity rule for proof_result
+  + [natural_key_rule] is proof_subject_ref plus proof_kind plus proof_run_id or proof_output_hash
+  + [source_ref_rule] is command output, reviewed artifact, explicit absence proof, or verification record
+  + [lifecycle_state_rule] is draft, verified, failed, stale, superseded, contradicted, or invalidated
+  + [freshness_rule] is stale when proof subject, output, method, command, or scope changes
+  + [invalidation_behavior] is superseded by new proof or invalidated by failed proof/review
+
+& [MatrixEntry: fault_record] is the identity rule for fault_record
+  + [natural_key_rule] is fault_kind plus fault_subject_ref plus fault_event_id
+  + [source_ref_rule] is evidence, trace, review, stale projection, or source conflict behind the fault
+  + [lifecycle_state_rule] is active, mitigated, resolved, superseded, or invalidated
+  + [freshness_rule] is stale when evidence, repair, prevention story, or resolution state changes
+  + [invalidation_behavior] is resolved by repair evidence or invalidated by revised fault classification
+
+& [NaturalKeyMatrixCoverageReview] is the matrix coverage proof
+  + [covered_record_kind] is source_log
+  + [covered_record_kind] is log_entry
+  + [covered_record_kind] is citation_ref
+  + [covered_record_kind] is narrative_node
+  + [covered_record_kind] is understanding_anchor
+  + [covered_record_kind] is capability_node
+  + [covered_record_kind] is requirement_record
+  + [covered_record_kind] is support_record
+  + [covered_record_kind] is support_gap
+  + [covered_record_kind] is authority_artifact
+  + [covered_record_kind] is coordination_claim
+  + [covered_record_kind] is operator_contract
+  + [covered_record_kind] is operator_trace
+  + [covered_record_kind] is work_packet
+  + [covered_record_kind] is completion_review
+  + [covered_record_kind] is readiness_projection
+  + [covered_record_kind] is stale_projection
+  + [covered_record_kind] is proof_result
+  + [covered_record_kind] is fault_record
+
+  = must: reject FSC1-S02 if any record kind lacks a natural-key rule, source-ref rule, lifecycle state rule, freshness rule, or invalidation behavior

@@ -4,14 +4,17 @@ State UUID: 57c0d3bf-1623-4232-9315-d3dffcdf5ea9
 
 @ [slice_surface] docs/slices/FSC1_Final_Slices.v1.sop
 @ [completion_review] docs/reviews/FSC1_S01_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/FSC1_S02_Completion_Review.v1.sop
 @ [accepted_output] docs/schema/Kernel_Record_Core.v1.sop
+@ [accepted_output] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [accepted_output] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
 
 & [FSC1WorkStateV1] is the current derived work state for FSC1 foundation contracts
   + [chunk_ref] is FSC1 foundation contracts
-  + [state_basis] is docs/reviews/FSC1_S01_Completion_Review.v1.sop
+  + [state_basis] is docs/reviews/FSC1_S02_Completion_Review.v1.sop
   + [accepted_slice] is FSC1-S01
-  + [current_ready_slice] is FSC1-S02
-  + [gated_slice] is FSC1-S03 until FSC1-S02 accepted
+  + [accepted_slice] is FSC1-S02
+  + [current_ready_slice] is FSC1-S03
   + [gated_slice] is FSC1-S04 until FSC1-S03 accepted
   + [gated_slice] is FSC1-S05 until FSC1-S02 and FSC1-S03 accepted
   + [gated_slice] is FSC1-S06 until FSC1-S04 and FSC1-S05 accepted
@@ -21,5 +24,5 @@ State UUID: 57c0d3bf-1623-4232-9315-d3dffcdf5ea9
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run completion review after FSC1-S02 before opening FSC1-S03
-  = must: mark this state stale if Kernel_Record_Core.v1.sop or FSC1_S01_Completion_Review.v1.sop changes
+  = must: run completion review after FSC1-S03 before opening FSC1-S04
+  = must: mark this state stale if any accepted FSC1-S01 or FSC1-S02 output or completion review changes
