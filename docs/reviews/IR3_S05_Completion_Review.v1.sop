@@ -1,0 +1,110 @@
+Subject: IR3 S05 Completion Review V1
+Date: 2026-05-26
+Review UUID: e00b2e9f-4e2b-4b25-96d3-4261129c2a01
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+@ [implementation_plan] docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+@ [fixture_io_policy] docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+@ [runner_trace_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+@ [previous_review] docs/reviews/IR3_S04_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-S05] is the completed-work review for IR3 operator harness fixture and expected trace ledger plan
+  + [slice_id] is IR3-S05
+  + [slice_name] is operator harness fixture and expected trace ledger plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+  + [completed_output_sha256] is 4B5D4DFD350B926594A8CB53C2CD0CC3BC39A8FEBB68CFC9970E1898FAE5440A
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR3-S04 acceptance and bounded fixture scope
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-S05 as the bounded fixture case matrix, expected trace ledger plan, no-authority-promotion checklist, and future fixture test oracle for IR3 completion planning
+  + [next_gate_result] is IR3-S06 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR3-S06 only
+  = must: rerun this review if the fixture plan, implementation plan, fixture IO policy, runner contract, IR3-S01 boundary, IR3 canonical specification, or IR3 slice surface changes
+  = must: keep implementation code, fixture source, expected ledgers, generated traces, operations control, and live machine control gated until their specific slices open
+
+& [IR3S05Verification] is the verification result for operator harness fixture and expected trace ledger plan
+  + [fixture_directory_plan_present] is true
+  + [fixture_case_matrix_present] is true
+  + [future_fixture_source_inventory_present] is true
+  + [expected_trace_ledger_inventory_present] is true
+  + [expected_operator_trace_ledger_shape_present] is true
+  + [expected_fixture_comparison_ledger_shape_present] is true
+  + [no_authority_promotion_proof_checklist_present] is true
+  + [future_fixture_execution_policy_present] is true
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+  + [implementation_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3S05VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+
+& [SupportDelta: IR3-S05] is the support delta produced by the accepted fixture plan
+  + [new_support_record] is IR3OperatorHarnessFixturePlanV1 supports IR3-S06 completion review and implementation activation pack
+  + [new_support_record] is future fixture case matrix covers success, stale, missing contract version, undeclared output, generated-authority confusion, ambiguous identity, unsupported scope, unsafe operations request, invalid shape, replay mismatch, path escape, and source mutation refusal
+  + [new_support_record] is future expected ledgers can prove trace identity, refusal/fault classification, generated output policy, cleanup, and no live-control behavior
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-S05] is the requirement delta produced by the accepted fixture plan
+  + [requirement_delta] is IR3-S06 must produce an activation pack that accepts IR3-S01 through IR3-S05 planning proof and decides whether bounded implementation activation slices may be minted
+  + [requirement_delta] is future code, fixture source, expected ledger, generated trace, and test creation remains gated until IR3-S06 or a later explicit implementation activation slice opens that work
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, generated trace, dependency installation, operations control, or live machine control is authorized by IR3-S05
+  + [requirement_delta] is no rebake required before IR3-S06
+
+& [StalenessAndContradictionReview: IR3-S05] is the staleness review for this completion
+  + [stale_IR3_S04_implementation_plan_found] is false
+  + [stale_IR3_S03_fixture_io_policy_found] is false
+  + [stale_IR3_S02_runner_contract_found] is false
+  + [stale_IR3_S01_boundary_found] is false
+  + [stale_IR3_canonical_found] is false
+  + [stale_IR3_slice_surface_found] is false
+  + [contradicted_fixture_case_matrix_found] is false
+  + [contradicted_expected_ledger_boundary_found] is false
+  + [false_ready_IR3_S06_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3-S05 stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-S05] is the fault review for fixture and expected trace ledger plan
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [generated_output_authority_leak_found] is false
+  + [unsafe_operation_fixture_gap_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3S05Accepted] is accepted
+    @ [support] [IR3S05Verification]
+    @ [support] [SupportDelta: IR3-S05]
+    @ [support] [RequirementDelta: IR3-S05]
+    @ [support] [StalenessAndContradictionReview: IR3-S05]
+    @ [support] [FaultReview: IR3-S05]
+
+& [NextSliceGate: IR3-S06] is opened
+  + [opened_slice] is IR3-S06 IR3 completion review and implementation activation pack
+  + [accepted_boundary_input] is docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 4B5D4DFD350B926594A8CB53C2CD0CC3BC39A8FEBB68CFC9970E1898FAE5440A
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR3 planning acceptance affects implementation readiness, activation slicing, proof pack boundaries, and downstream work gates
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-S06 next unless user redirects or a new fault invalidates this review
