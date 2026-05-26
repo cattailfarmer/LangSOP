@@ -21,7 +21,7 @@ Review UUID: d54e6bfd-e08d-44dd-8ac8-285b4f745fa7
   + [completed_output] is src/langsop/projections/sqlite_projection.py
   + [completed_output_sha256] is BE9A4BD602E6B23103C58175011BB97E7C629D09489DF5349DF33F90B4334139
   + [completed_output] is src/langsop/projections/rebuild.py
-  + [completed_output_sha256] is 0773A870D271B756B803B8724F428C14093C7CF2DBD4D36504891AFCA024B44C
+  + [completed_output_sha256] is 1373CA1BD9E871011491C3C6107AC79AF9C1637BDD76BE3A811A6FFA99317984
   + [model_route] is GPT-5.3-Codex-Spark-suitable
   + [model_route_used] is current Codex manager session because no separate Spark worker was active
   + [review_result] is accepted
@@ -58,6 +58,7 @@ Review UUID: d54e6bfd-e08d-44dd-8ac8-285b4f745fa7
   + [smoke_stale_rows_written] is 1
   + [smoke_kernel_record_candidate_row_count] is 10
   + [smoke_authority_notice] is generated_sqlite_non_authority
+  + [windows_sqlite_handle_closure_check] is corrected_before_IR2-IA06_acceptance
   + [dependency_installed] is false
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
@@ -84,6 +85,7 @@ Review UUID: d54e6bfd-e08d-44dd-8ac8-285b4f745fa7
 & [FaultReview: IR2-IA05] is the fault review for this slice
   + [unlisted_code_file_created] is false
   + [generated_file_creation_leak_found] is false
+  + [sqlite_file_handle_leak_found_during_IR2-IA06_pretest] is true_corrected_by_explicit_connection_close
   + [dependency_installation_leak_found] is false
   + [source_mutation_authority_leak_found] is false
   + [generated_projection_authority_leak_found] is false
@@ -103,7 +105,7 @@ Review UUID: d54e6bfd-e08d-44dd-8ac8-285b4f745fa7
   + [accepted_input] is src/langsop/projections/sqlite_projection.py
   + [accepted_input_sha256] is BE9A4BD602E6B23103C58175011BB97E7C629D09489DF5349DF33F90B4334139
   + [accepted_input] is src/langsop/projections/rebuild.py
-  + [accepted_input_sha256] is 0773A870D271B756B803B8724F428C14093C7CF2DBD4D36504891AFCA024B44C
+  + [accepted_input_sha256] is 1373CA1BD9E871011491C3C6107AC79AF9C1637BDD76BE3A811A6FFA99317984
   + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance
   + [model_route_reason] is test integration and proof update are bounded by accepted fixtures and implementation outputs
   + [safety_limit] is no live operations control authorized

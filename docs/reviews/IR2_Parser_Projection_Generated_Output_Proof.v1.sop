@@ -1,0 +1,54 @@
+Subject: IR2 Parser Projection Generated Output Proof V1
+Date: 2026-05-26
+Proof UUID: 8ace5d65-35f2-410d-a690-b8a74003ddc4
+
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [test_file] tests/test_ir2_parser_projection_contracts.py
+@ [projection_rebuild] src/langsop/projections/rebuild.py
+@ [projection_writer] src/langsop/projections/sqlite_projection.py
+
+& [GeneratedOutputProof: IR2ParserProjection] is the IR2-IA06 proof that generated projection outputs remain non-authoritative
+  + [proof_id] is ir2-parser-projection-generated-output-proof-v1
+  + [slice_id] is IR2-IA06
+  + [test_file] is tests/test_ir2_parser_projection_contracts.py
+  + [test_file_sha256] is D65D928DC64D96B57ED9EBD89069D5636215A7595811E6CCE7B51D5C689336B9
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance
+  + [generated_output_root] is tests/fixtures/generated/ir2_parser_projection/
+  + [generated_output_status] is ignored_projection_only
+  + [authority_notice] is generated_sqlite_non_authority
+
+  = must: treat generated SQLite output as disposable projection material only
+  = must: preserve tracked fixture source and expected ledgers as the reviewable proof material
+  = must: keep generated outputs outside discovery authority candidates
+  - never: use generated database rows as source authority, SJS satisfaction signatures, source manifests, or completion-review substitutes
+
+& [ProofCommandResultSet] is the command result set for IR2-IA06
+  + [targeted_test_command] is python -m unittest tests.test_ir2_parser_projection_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 6
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [baseline_test_count] is 9
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed
+
+& [GeneratedOutputBoundaryProof] is the generated output boundary proof
+  + [generated_output_created_during_test] is tests/fixtures/generated/ir2_parser_projection/test_projection.sqlite3
+  + [generated_output_cleanup] is completed_by_test_teardown
+  + [generated_output_git_status] is ignored_when_present
+  + [generated_output_discovery_status] is excluded_from_discover_sop_artifacts
+  + [disallowed_output_test] is docs/forbidden.sqlite3 refused by rebuild_sqlite_projection
+  + [in_memory_projection_row_count] is 10
+  + [in_memory_authority_notice] is generated_sqlite_non_authority
+
+  = must: keep generated output deletion safe
+  = must: refuse generated projection writes outside accepted generated roots
+
+& [IR2IA06ProofLimits] is the explicit proof limit for this generated-output proof
+  + [proof_limit] is tests validate fixture-scale parser/projection behavior, path guards, and non-authority notices
+  + [proof_limit] is tests do not prove semantic truth of SOP source claims
+  + [proof_limit] is tests do not authorize LangGraph runtime, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control
+
+  = must: require final IR2-IA07 completion review before downstream IR3 implementation opens

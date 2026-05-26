@@ -38,8 +38,11 @@ def rebuild_sqlite_projection(
         raise ValueError(f"Refusing projection write outside generated roots: {output}")
 
     output.parent.mkdir(parents=True, exist_ok=True)
-    with sqlite3.connect(output) as connection:
+    connection = sqlite3.connect(output)
+    try:
         write_report = write_validation_report(connection, validated_projection_input)
+    finally:
+        connection.close()
     return ProjectionRebuildReport(
         output_path=output.as_posix(),
         write_report=write_report,

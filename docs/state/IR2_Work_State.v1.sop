@@ -19,6 +19,7 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [activation_completion_review] docs/reviews/IR2_IA03_Completion_Review.v1.sop
 @ [activation_completion_review] docs/reviews/IR2_IA04_Completion_Review.v1.sop
 @ [activation_completion_review] docs/reviews/IR2_IA05_Completion_Review.v1.sop
+@ [activation_completion_review] docs/reviews/IR2_IA06_Completion_Review.v1.sop
 @ [activation_canonical_specification] docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
 @ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
 @ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
@@ -40,12 +41,14 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [accepted_output] src/langsop/projections/sqlite_schema.py
 @ [accepted_output] src/langsop/projections/sqlite_projection.py
 @ [accepted_output] src/langsop/projections/rebuild.py
+@ [accepted_output] tests/test_ir2_parser_projection_contracts.py
+@ [accepted_output] docs/reviews/IR2_Parser_Projection_Generated_Output_Proof.v1.sop
 
 & [IR2WorkStateV1] is the current derived work state for IR2 authority-file parser and SQLite projection builder
   + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
-  + [state_basis] is docs/reviews/IR2_IA05_Completion_Review.v1.sop
-  + [state_basis_sha256] is 235D59DA029AD32A75409EE944AAAF5E897E4F5EF385FA8FE8AAF34D010BD21A
-  + [surface_status] is accepted_for_IR2-IA06_execution
+  + [state_basis] is docs/reviews/IR2_IA06_Completion_Review.v1.sop
+  + [state_basis_sha256] is F28F2B3E96907B20247EDA484058D90CF6AB694A6B19421F3A1F72D205378985
+  + [surface_status] is accepted_for_IR2-IA07_execution
   + [source_manifest] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
   + [canonical_specification] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
@@ -104,12 +107,17 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [accepted_code_output] is src/langsop/projections/sqlite_projection.py
   + [accepted_code_output_sha256] is BE9A4BD602E6B23103C58175011BB97E7C629D09489DF5349DF33F90B4334139
   + [accepted_code_output] is src/langsop/projections/rebuild.py
-  + [accepted_code_output_sha256] is 0773A870D271B756B803B8724F428C14093C7CF2DBD4D36504891AFCA024B44C
-  + [current_ready_slice] is IR2-IA06
-  + [current_ready_slice_name] is parser/projection contract test integration and generated-output proof
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance
-  + [test_creation_authorized_by_current_slice] is true_for_tests_test_ir2_parser_projection_contracts_py_only
-  + [generated_output_creation_authorized_by_current_slice] is true_for_tests_fixtures_generated_ir2_parser_projection_only
+  + [accepted_code_output_sha256] is 1373CA1BD9E871011491C3C6107AC79AF9C1637BDD76BE3A811A6FFA99317984
+  + [accepted_activation_slice] is IR2-IA06
+  + [accepted_test_output] is tests/test_ir2_parser_projection_contracts.py
+  + [accepted_test_output_sha256] is D65D928DC64D96B57ED9EBD89069D5636215A7595811E6CCE7B51D5C689336B9
+  + [accepted_proof_output] is docs/reviews/IR2_Parser_Projection_Generated_Output_Proof.v1.sop
+  + [accepted_proof_output_sha256] is DBAA192331B5A6B9BEE8621058BCF9E9702559734BF1D4B886FF54A9C894142D
+  + [current_ready_slice] is IR2-IA07
+  + [current_ready_slice_name] is implementation completion review and parser/projection proof pack
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [code_creation_authorized_by_current_slice] is false
+  + [generated_output_creation_authorized_by_current_slice] is false
   + [IR3_planning_intake_state] is may_consume_IR2_authority_projection_pack
   + [IR3_implementation_state] is gated_until_IR2_bounded_parser_projection_implementation_review_is_accepted_or_a_rebake_reclassifies_IR3_scope
   + [safety_limit] is no live operations control authorized
@@ -118,8 +126,8 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: keep IR2-IA06 bounded to tests/test_ir2_parser_projection_contracts.py, docs/reviews/IR2_Parser_Projection_Generated_Output_Proof.v1.sop, and generated fixture output under tests/fixtures/generated/ir2_parser_projection/ only
-  = must: run IR2-IA06 before final implementation completion review or IR3 implementation activation
+  = must: run IR2-IA07 before opening IR3 implementation
+  = must: keep IR2-IA07 bounded to docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop and docs/reviews/IR2_Implementation_Completion_Review.v1.sop
   = must: keep IR3 implementation gated until parser/projection implementation proof is accepted or a rebake reclassifies IR3 scope
   = must: keep generated SQLite, cache, index, fixture output, and projection artifacts non-authoritative
-  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S08 outputs, IR2-S01 through IR2-S08 completion reviews, IR2 implementation activation source manifest, canonical specification, slice surface, minting review, IR2-IA01 through IR2-IA05 outputs, or IR2-IA01 through IR2-IA05 completion reviews change
+  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S08 outputs, IR2-S01 through IR2-S08 completion reviews, IR2 implementation activation source manifest, canonical specification, slice surface, minting review, IR2-IA01 through IR2-IA06 outputs, or IR2-IA01 through IR2-IA06 completion reviews change
