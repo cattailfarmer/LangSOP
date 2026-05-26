@@ -1,0 +1,124 @@
+Subject: IR4 Runtime Boundary Import And Invariant Reconciliation V1
+Date: 2026-05-26
+Boundary Map UUID: d678cf40-3c4e-47c6-9024-d7dc77aa0a88
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+@ [fsc3_runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [whole_field_planner_graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [sop_first_interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [operator_trace_runtime_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+@ [ir3_operator_harness_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir3_completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+
+& [IR4RuntimeBoundaryImportAndInvariantReconciliationV1] is the IR4-S01 boundary map for LangGraph proof runtime planning
+  + [boundary_map_id] is ir4-runtime-boundary-import-and-invariant-reconciliation-v1
+  + [boundary_map_uuid] is d678cf40-3c4e-47c6-9024-d7dc77aa0a88
+  + [slice_id] is IR4-S01
+  + [source_chunk] is IR4 LangGraph proof runtime implementation
+  + [authority_scope] is imported runtime contracts, imported operator harness proof, graph/checkpoint non-authority invariants, operator handoff obligations, stale triggers, and forbidden mutation boundaries
+  + [implementation_scope] is boundary import and invariant reconciliation only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: import accepted runtime and operator-harness boundaries before defining implementation contracts
+  = must: preserve LangGraph checkpoint state and graph state as execution state only
+  = must: require operator_trace or equivalent trace evidence for every graph path before future surface consumption
+  = must: keep SOP-first interrupt when authority-sensitive conditions exceed mechanical runtime certainty
+  - never: implement executable graph code, install dependencies, create checkpoints, create fixtures, mutate source authority, authorize operations control, or authorize live machine control in this slice
+
+& [ImportedIR4BoundaryDigestSet] is the accepted boundary input hash ledger for IR4-S01
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [accepted_boundary_input] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 62E902F3CB461FE66271E58C34A1A42EF633331AA1A9428AD8909C6EC940083A
+  + [accepted_boundary_input] is docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 58B041B9B1BEA5482B788CA1256FB217F36887C53C4E006C2166D56C9A89CFAA
+  + [accepted_boundary_input] is docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 8FC7F0F78D006AE7B1441098554713BB0FBCC7E5DDE31E21B2262F28D62CAAA8
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [accepted_boundary_input] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is C3CD25BF2B5891F56ED8D8BCBB1F49A0BE099E7EDA7140E1E296E172F3EE0578
+
+  = must: mark IR4-S01 and downstream IR4 slices stale if any listed boundary input changes
+
+& [ReconciledRuntimeInvariantSet: IR4] is the reconciled invariant set for IR4 runtime planning
+  + [invariant] is SOP files and accepted proof packs remain source authority
+  + [invariant] is LangGraph graph state is execution state only
+  + [invariant] is LangGraph checkpoint state is execution state only
+  + [invariant] is graph nodes may invoke only accepted operator contracts or accepted operator harness functions inside declared scope
+  + [invariant] is every success, blocked, stale, fault, and interrupt path must preserve or emit operator_trace evidence
+  + [invariant] is runtime outputs consumed by future surfaces must carry non-authority status unless accepted by a completion review
+  + [invariant] is SOP-first interrupt pauses mutation until accepted resume evidence exists
+  + [invariant] is completion_review_delta_gate remains the only accepted next-gate control contract
+  + [invariant] is checkpoint authority confusion is a fault, not a source of truth
+
+  = must: preserve these invariants through IR4-S02 through IR4-S06
+  = must: route invariant contradictions through completion review and rebake rather than silent edits
+
+& [OperatorHarnessRuntimeHandoff: IR4] is the handoff from IR3 operator harness proof into IR4 graph planning
+  + [handoff_source] is IR3OperatorHarnessImplementationProofPackV1
+  + [operator_contract_validation] is available through accepted IR3 contracts.py
+  + [trace_event_model] is available through accepted IR3 traces.py
+  + [runner_classification] is available through accepted IR3 runner.py after repair
+  + [fixture_path_policy] is available through accepted IR3 fixture_runner.py after repair
+  + [handoff_limit] is fixture-scale proof only; no live dispatch, job control, process control, GPU control, network control, credential access, operations control, or live machine control
+
+  = must: make future graph implementation call operator-harness functions only through bounded in-process fixture/runtime contracts
+  = must: refuse any graph node that tries to use operator harness proof as permission for live work dispatch
+
+& [RuntimeCheckpointAndTraceAuthorityBoundary: IR4] is the checkpoint and trace authority boundary
+  + [checkpoint_role] is generated execution continuation state
+  + [checkpoint_not_role] is signed authority, accepted decision, completion review, coordination claim acceptance, or source specification
+  + [operator_trace_role] is generated projection evidence with lineage to accepted inputs
+  + [operator_trace_not_role] is source authority by itself
+  + [checkpoint_stale_trigger] is changed source authority, changed proof pack, changed graph contract, changed operator contract, changed trace schema, changed fixture expectation, changed resume condition, or checkpoint policy change
+  + [trace_stale_trigger] is changed source authority, changed operator contract, changed input record, changed graph node contract, changed trace schema, or generated output policy change
+
+  = must: reject checkpoint resume when freshness cannot be proven
+  = must: require SOP-first interrupt or stale terminal state when checkpoint authority confusion is detected
+
+& [ForbiddenRuntimeMutationList: IR4] is the forbidden mutation set for IR4 runtime planning
+  + [forbidden_mutation] is editing accepted FSC3 or IR3 proof outputs to make runtime proof easier
+  + [forbidden_mutation] is treating graph state as authority
+  + [forbidden_mutation] is treating checkpoint state as authority
+  + [forbidden_mutation] is treating generated traces or reports as authority
+  + [forbidden_mutation] is implementing executable LangGraph nodes
+  + [forbidden_mutation] is installing LangGraph or other dependencies
+  + [forbidden_mutation] is implementing checkpoint persistence
+  + [forbidden_mutation] is implementing surface adapters
+  + [forbidden_mutation] is creating runtime fixtures before fixture slices open
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR4-S01 review if any forbidden mutation appears in the output
+
+& [DownstreamStaleTriggerList: IR4] is the stale trigger set for downstream IR4 work
+  + [stale_trigger] is FSC3 runtime graph proof pack hash changes
+  + [stale_trigger] is IR3 operator harness implementation proof pack hash changes
+  + [stale_trigger] is IR3 implementation completion review changes
+  + [stale_trigger] is IR4 final slice surface changes
+  + [stale_trigger] is runtime invariant contradiction
+  + [stale_trigger] is checkpoint authority confusion
+  + [stale_trigger] is hidden graph write
+  + [stale_trigger] is missing operator_trace on graph path output
+  + [stale_trigger] is false-ready surface or checkpoint state
+
+  = must: mark affected downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review rather than silent edits
+
+& [IR4S01CoverageReview] is the coverage checklist for IR4-S01
+  + [boundary_digest_set_present] is true
+  + [reconciled_runtime_invariant_set_present] is true
+  + [operator_harness_runtime_handoff_present] is true
+  + [checkpoint_trace_authority_boundary_present] is true
+  + [forbidden_runtime_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [executable_graph_code_created] is false
+  + [dependency_installed] is false
+  + [fixture_file_created] is false
+  + [generated_output_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR4-S01 only when all checklist items are satisfied
+  = must: open IR4-S02 only after this boundary map is reviewed in a completion review

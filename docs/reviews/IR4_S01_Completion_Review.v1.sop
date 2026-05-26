@@ -1,0 +1,78 @@
+Subject: IR4 S01 Completion Review V1
+Date: 2026-05-26
+Review UUID: 95dbd93e-e8b2-4f76-a17f-d9bf20f2179d
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [completed_output] docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [slice_minting_review] docs/reviews/IR4_Final_Slice_Minting_Review.v1.sop
+
+& [CompletedWorkReview: IR4-S01] is the completed-work review for runtime boundary import and invariant reconciliation
+  + [slice_id] is IR4-S01
+  + [slice_name] is runtime boundary import and invariant reconciliation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [completed_output_sha256] is A96BC39A063B9598E66D5F812F2917C0915A1E80596F8364A03F49F788AEC2C0
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-S01 boundary import and open IR4-S02
+  + [next_gate_result] is IR4-S02 may open
+  + [next_model_route] is requires deeper reasoning for IR4-S02
+
+  = must: treat this review as gate-opening evidence for IR4-S02 only
+  = must: rerun this review if boundary input hashes, IR4 final slice surface, IR3 proof pack, FSC3 runtime graph proof pack, or runtime boundary map changes
+  = must: keep executable graph implementation, dependency installation, checkpoint persistence, fixtures, generated outputs, surface implementation, adapter implementation, operations control, and live machine control gated
+
+& [IR4S01Verification] is the verification result for runtime boundary import
+  + [boundary_digest_set_present] is true
+  + [reconciled_runtime_invariant_set_present] is true
+  + [operator_harness_runtime_handoff_present] is true
+  + [checkpoint_trace_authority_boundary_present] is true
+  + [forbidden_runtime_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [executable_graph_code_created] is false
+  + [dependency_installed] is false
+  + [fixture_file_created] is false
+  + [generated_output_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR4S01VerificationSatisfied] is accepted
+    @ [support] docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+
+& [SupportDelta: IR4-S01] is the support delta produced by accepted runtime boundary import
+  + [new_support_record] is IR4-S02 may define WholeFieldPlannerGraph implementation contract and node mapping against reconciled runtime and operator-harness invariants
+  + [new_support_record] is checkpoint and trace authority boundary is imported before any graph implementation contract work
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-S01] is the requirement delta produced by accepted runtime boundary import
+  + [requirement_delta] is IR4-S02 requires deeper reasoning
+  + [requirement_delta] is no executable graph implementation, dependency installation, fixtures, generated outputs, operations control, or live machine control is authorized by IR4-S01
+  + [requirement_delta] is no rebake required before IR4-S02
+
+& [FaultReview: IR4-S01] is the fault review for runtime boundary import
+  + [source_overwrite_found] is false
+  + [executable_graph_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [checkpoint_authority_promotion_found] is false
+  + [generated_authority_promotion_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4S01Accepted] is accepted
+    @ [support] [IR4S01Verification]
+    @ [support] [SupportDelta: IR4-S01]
+    @ [support] [RequirementDelta: IR4-S01]
+    @ [support] [FaultReview: IR4-S01]
+
+& [NextSliceGate: IR4-S02] is opened
+  + [opened_slice] is IR4-S02 WholeFieldPlannerGraph implementation contract and node mapping
+  + [accepted_boundary_input] is docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_boundary_input_sha256] is A96BC39A063B9598E66D5F812F2917C0915A1E80596F8364A03F49F788AEC2C0
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is node and edge contracts decide runtime authority, checkpoint, and trace semantics
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-S02 next unless user redirects or a new fault invalidates this review
