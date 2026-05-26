@@ -1,0 +1,92 @@
+Subject: IR3 IA03 Completion Review V1
+Date: 2026-05-26
+Review UUID: 39ff95e6-4c1c-41cd-b514-04fb769acc37
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] src/langsop/operators/contracts.py
+@ [completed_output] src/langsop/operators/traces.py
+@ [fixture_index] docs/fixtures/IR3_Operator_Harness_Fixture_Index.v1.sop
+@ [previous_review] docs/reviews/IR3_IA02_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-IA03] is the completed-work review for IR3 contracts and trace model implementation
+  + [slice_id] is IR3-IA03
+  + [slice_name] is contracts and trace model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/operators/contracts.py
+  + [completed_output_sha256] is 1576193CE3A35AE394DA1625BE304519650F7E772BB0A27EFE7CD57866DFBEEC
+  + [completed_output] is src/langsop/operators/traces.py
+  + [completed_output_sha256] is C00556D4000DFAB34BBA64CB86642F99DC525F1A307C0A89C0A0E5275552D21D
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR3-IA02 acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-IA03 as pure contract and trace model implementation
+  + [next_gate_result] is IR3-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA03 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR3-IA04 only
+  = must: rerun this review if contract model files, fixture material, activation boundary, or IR3 implementation activation surface changes
+  = must: keep runner orchestration, fixture runner implementation, generated trace writing, tests, dependencies, operations control, and live machine control gated until their specific slices open
+
+& [IR3IA03Verification] is the verification result for contracts and trace model implementation
+  + [contracts_module_created] is true
+  + [traces_module_created] is true
+  + [operator_request_model_present] is true
+  + [operator_contract_model_present] is true
+  + [contract_validation_result_present] is true
+  + [trace_event_model_present] is true
+  + [generated_output_manifest_present] is true
+  + [non_authority_warning_present] is true
+  + [filesystem_write_behavior_present] is false
+  + [runner_orchestration_created] is false
+  + [fixture_runner_created] is false
+  + [generated_trace_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [compile_result] is passed
+  + [baseline_test_result] is passed
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3IA03VerificationSatisfied] is accepted
+    @ [support] src/langsop/operators/contracts.py
+    @ [support] src/langsop/operators/traces.py
+
+& [SupportDelta: IR3-IA03] is the support delta produced by accepted contracts and trace models
+  + [new_support_record] is contracts.py and traces.py support IR3-IA04 contract-driven operator runner implementation
+  + [new_support_record] is request validation, issue classification, trace identity, generated manifest, and non-authority warning models are implemented without filesystem writes
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA03] is the requirement delta produced by accepted contracts and trace models
+  + [requirement_delta] is IR3-IA04 may create only src/langsop/operators/runner.py and update src/langsop/operators/__init__.py
+  + [requirement_delta] is fixture runner implementation, generated trace file creation, test file creation, dependency installation, operations control, and live machine control remain unauthorized by IR3-IA03
+  + [requirement_delta] is no rebake required before IR3-IA04
+
+& [FaultReview: IR3-IA03] is the fault review for contracts and trace model implementation
+  + [forbidden_external_dependency_found] is false
+  + [unlisted_code_file_created] is false
+  + [runner_orchestration_leak_found] is false
+  + [fixture_runner_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [filesystem_write_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3IA03Accepted] is accepted
+    @ [support] [IR3IA03Verification]
+    @ [support] [SupportDelta: IR3-IA03]
+    @ [support] [RequirementDelta: IR3-IA03]
+    @ [support] [FaultReview: IR3-IA03]
+
+& [NextSliceGate: IR3-IA04] is opened
+  + [opened_slice] is IR3-IA04 contract-driven operator runner implementation
+  + [accepted_boundary_input] is src/langsop/operators/contracts.py
+  + [accepted_boundary_input_sha256] is 1576193CE3A35AE394DA1625BE304519650F7E772BB0A27EFE7CD57866DFBEEC
+  + [accepted_boundary_input] is src/langsop/operators/traces.py
+  + [accepted_boundary_input_sha256] is C00556D4000DFAB34BBA64CB86642F99DC525F1A307C0A89C0A0E5275552D21D
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA03 acceptance
+  + [model_route_reason] is runner implementation is bounded by accepted contracts, trace models, fixture source, and expected ledgers
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-IA04 next unless user redirects or a new fault invalidates this review
