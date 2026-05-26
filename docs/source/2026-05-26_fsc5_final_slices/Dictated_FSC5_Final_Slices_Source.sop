@@ -1,0 +1,26 @@
+Subject: Dictated FSC5 Final Slices Source
+Date: 2026-05-26
+Source UUID: f2548ced-2d8c-4fa6-8bc9-310d91d6bb53
+
+& [DictatedSource: FSC5FinalSlices] is the preserved source instruction for minting FSC5 operations safety slices
+  + [source_context] is long-haul project-manager work after FSC4 surface projection pack acceptance and operations safety source processing
+  + [activated_by] is docs/reviews/FSC4_Completion_Review.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [safety_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [chunk_scope] is FSC5 operations safety envelope
+  + [included_portion] is P9 operations-manager safety and future machine control
+  + [included_local_proof_leg] is P8e operations safety and dry-run resource fixtures
+  + [required_slice] is operations boundary and safety invariant map
+  + [required_slice] is dry-run operation request contract
+  + [required_slice] is resource safety and human override contract
+  + [required_slice] is machine-control non-authority and live-control prohibition gates
+  + [required_slice] is operations dry-run fixture plan
+  + [required_slice] is FSC5 completion review and safety pack
+  + [safety_limit] is no live process, GPU, model runtime, job, credential, network, or destructive filesystem control is authorized by slice minting
+  + [model_route] is requires deeper reasoning for safety boundary, dry-run contracts, human override, live-control prohibition, and final acceptance
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only for bounded dry-run fixture drafting after safety contracts are accepted
+
+  = must: mint FSC5 final slices before implementing any operations manager behavior
+  = must: keep all live control prohibited until a future explicit safety authority accepts it
+  = must: preserve dry-run-only and human-approval gates through every slice
+  - never: use FSC5 slice minting, fixture drafting, or safety pack acceptance as automatic permission for live machine control

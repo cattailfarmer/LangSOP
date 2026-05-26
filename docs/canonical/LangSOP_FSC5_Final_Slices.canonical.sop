@@ -1,0 +1,98 @@
+Subject: LangSOP FSC5 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_fsc5_final_slices/Source_Document_Manifest.sop
+@ [exploded_specification] docs/exploded/LangSOP_FSC5_Final_Slices.exploded.sop
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_spec] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [CanonicalRecord: FSC5FinalSlices] is the processed planning authority for FSC5 final work slices
+  + [canonical_uuid] is 1220510f-d7bf-4409-b530-35a0fb50084c
+  + [source_manifest_uuid] is 7c7a1856-ce93-4955-b6d6-0f9fbaf9fb9f
+  + [exploded_uuid] is d2c71130-d47e-497c-9263-adf3764ab12d
+  + [slice_surface_uuid] is 65b27936-41dc-41ab-af74-73cbda52e8b0
+  + [authority_scope] is FSC5 slice order, slice readiness, slice gates, model routing, expected outputs, verification oracles, and live-control prohibition
+  + [implementation_scope] is final slice planning authority only
+  + [depends_on] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [depends_on] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+
+  = must: use docs/slices/FSC5_Final_Slices.v1.sop as the current FSC5 slice surface
+  = must: execute FSC5-S01 first
+  = must: run completion review after each slice before opening the next gated slice
+  = must: preserve that FSC5 slice work does not authorize live operations control
+  - never: treat FSC5 slice records as implementation proof or machine-control permission
+
+& [CanonicalFSC5SliceSet] is the final FSC5 slice sequence
+  + [slice] is FSC5-S01 operations boundary and safety invariant map
+  + [slice] is FSC5-S02 dry-run operation request contract
+  + [slice] is FSC5-S03 resource safety and human override contract
+  + [slice] is FSC5-S04 machine-control non-authority and live-control prohibition gates
+  + [slice] is FSC5-S05 operations dry-run fixture plan
+  + [slice] is FSC5-S06 FSC5 completion review and safety pack
+
+  = must: preserve this order unless completion review rebakes FSC5
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+& [CanonicalFSC5ExecutionGate] is the activation rule for FSC5
+  + [current_ready_slice] is FSC5-S01
+  + [gated_slice] is FSC5-S02 until FSC5-S01 accepted
+  + [gated_slice] is FSC5-S03 until FSC5-S02 accepted
+  + [gated_slice] is FSC5-S04 until FSC5-S03 accepted
+  + [gated_slice] is FSC5-S05 until FSC5-S04 accepted
+  + [gated_slice] is FSC5-S06 until FSC5-S05 accepted
+  + [completion_gate] is FSC5 operations safety pack accepted after FSC5-S06
+
+  = must: expose only FSC5-S01 as ready right now
+  = must: keep all later slices gated inside FSC5
+
+& [CanonicalFSC5ModelRouting] is the model-routing record
+  + [FSC5-S01] is requires deeper reasoning
+  + [FSC5-S02] is requires deeper reasoning
+  + [FSC5-S03] is requires deeper reasoning
+  + [FSC5-S04] is requires deeper reasoning
+  + [FSC5-S05] is GPT-5.3-Codex-Spark-suitable after FSC5-S01 through FSC5-S04 are accepted
+  + [FSC5-S06] is requires deeper reasoning
+
+  = must: keep safety semantics, human override, live-control prohibition, and final acceptance under deeper reasoning
+  = should: route dry-run fixture drafting to GPT-5.3-Codex-Spark only after operations safety contracts stabilize
+
+& [SatisfactionSignature: FSC5FinalSlices] is the valid SJS satisfaction signature for the FSC5 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is d8044578-6efd-4348-8e7e-42c25aea72b1
+  + [signed_subject] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_fsc5_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 08BF65F819C30C82DC7A5BB95F02421060A4FD4567DDC481A50EBD0B75C5C0E0
+  + [source_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [source_sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+  + [source_sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+  + [source_sha256] is 318CDACDC3766377B00949BEC367F86ADC0BC29A56CA560B455ED51999430213
+  + [source_sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+  + [source_sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+  + [source_sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+  + [exploded_specification] is docs/exploded/LangSOP_FSC5_Final_Slices.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/FSC5_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, FSC4_boundary_imported, operations_safety_spec_imported, FSC5_boundary_checked, slices_minted, gates_defined, outputs_defined, verification_oracles_defined, model_routes_defined, completion_reviews_required, justified, and signed
+  + [exhaustion_state] is phase_locked_for_FSC5_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for FSC5 final slices; no live operations control authorized
+  + [invalidation_condition] is source_hash_change, FSC4_pack_change, safety_spec_change, FSC5_boundary_change, forbidden_external_dependency_found, live_control_leak, missing_completion_review, or implementation_contradiction
+
+  = must: reprocess when FSC5 slice order, boundary, safety source, or required outputs materially change
+
+& [RegistryRecord: FSC5FinalSlices] is the durable identity ledger for the FSC5 final slice surface
+  + [registry_uuid] is f17c4e56-b813-47e1-9bb8-64ab533bfd72
+  + [manifest_node_uuid] is 7c7a1856-ce93-4955-b6d6-0f9fbaf9fb9f
+  + [exploded_node_uuid] is d2c71130-d47e-497c-9263-adf3764ab12d
+  + [canonical_node_uuid] is 1220510f-d7bf-4409-b530-35a0fb50084c
+  + [slice_surface_uuid] is 65b27936-41dc-41ab-af74-73cbda52e8b0
+  + [signature_uuid] is d8044578-6efd-4348-8e7e-42c25aea72b1
+  + [closure_review_uuid] is 1f5da585-7b39-4c40-9a96-c6f7593b972a
+  + [edge] is manifest_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for FSC5 slice execution records and completion reviews

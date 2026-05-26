@@ -1,0 +1,33 @@
+Subject: FSC5 Work State V1
+Date: 2026-05-26
+State UUID: a520ab3d-5dbd-4b6b-bc2f-397ca5062ce6
+
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+@ [accepted_boundary_input] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [safety_source] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+@ [activation_review] docs/reviews/FSC4_Completion_Review.v1.sop
+
+& [FSC5WorkStateV1] is the current derived work state for FSC5 operations safety envelope
+  + [chunk_ref] is FSC5 operations safety envelope
+  + [state_basis] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [safety_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [safety_source_sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+  + [activation_review] is docs/reviews/FSC4_Completion_Review.v1.sop
+  + [activation_review_sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+  + [current_ready_slice] is FSC5-S01
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [gated_slice] is FSC5-S02 until FSC5-S01 accepted
+  + [gated_slice] is FSC5-S03 until FSC5-S02 accepted
+  + [gated_slice] is FSC5-S04 until FSC5-S03 accepted
+  + [gated_slice] is FSC5-S05 until FSC5-S04 accepted
+  + [gated_slice] is FSC5-S06 until FSC5-S05 accepted
+  + [safety_limit] is no live operations control authorized
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: run FSC5-S01 before FSC5-S02
+  = must: mark this state stale if the FSC4 surface projection pack, operations safety spec, FSC5 final slice surface, FSC5 canonical specification, or any accepted FSC5 output changes

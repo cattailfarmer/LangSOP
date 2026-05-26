@@ -1,0 +1,143 @@
+Subject: LangSOP FSC5 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 65b27936-41dc-41ab-af74-73cbda52e8b0
+
+@ [canonical_specification] docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_spec] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC5FinalSliceSurfaceV1] is the executable final-slice surface for FSC5 operations safety envelope
+  + [chunk_ref] is FSC5 operations safety envelope
+  + [chunk_boundary] is P9 operations-manager safety and future machine control plus P8e dry-run resource fixtures
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [safety_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is FSC5-S01
+  + [gated_slice_set] is FSC5-S02, FSC5-S03, FSC5-S04, FSC5-S05, and FSC5-S06
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute FSC5-S01 before any other FSC5 slice
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: reject any output that authorizes live process, GPU, model runtime, job, credential, network, or destructive filesystem control
+
+& [FinalWorkSlice: FSC5-S01-OperationsBoundaryAndSafetyInvariantMap] is ready
+  + [slice_id] is FSC5-S01
+  + [slice_name] is operations boundary and safety invariant map
+  + [chunk_ref] is FSC5
+  + [portion_ref] is P9 operations safety boundary import
+  + [authority_basis] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [boundary_input_set] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is imported safety contract inventory, operations-owned invariant set, dry-run-only boundary, forbidden live-control list, and downstream stale trigger list
+  + [verification_oracle] is all FSC1 through FSC4 and safety imports are mapped without operations implementation, live control, automation, dispatch, credential mutation, network exposure mutation, or destructive filesystem action
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is operations safety boundary determines what future machine management may never do without explicit accepted authority
+  + [forbidden_scope] is implementing operations manager, controlling processes, controlling GPU, mutating model runtime, dispatching jobs, changing credentials, exposing network services, destructive filesystem actions, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC5-S02-DryRunOperationRequestContract] is gated
+  + [slice_id] is FSC5-S02
+  + [slice_name] is dry-run operation request contract
+  + [chunk_ref] is FSC5
+  + [portion_ref] is P9 dry-run operation request safety
+  + [authority_basis] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [activation_gate] is FSC5-S01 accepted
+  + [internal_dependency_set] is FSC5-S01 FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+  + [expected_output_set] is operation request schema, dry-run result schema, intended effect classification, resource target classification, refusal outputs, and no-live-effect rule
+  + [verification_oracle] is dry-run requests can simulate and classify operations without mutating live process, GPU, model runtime, jobs, credentials, network, or filesystem state
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dry-run semantics decide how future operations requests stay non-mutating
+  + [forbidden_scope] is operations execution, command execution, resource mutation, credential mutation, network mutation, and live control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC5-S03-ResourceSafetyAndHumanOverrideContract] is gated
+  + [slice_id] is FSC5-S03
+  + [slice_name] is resource safety and human override contract
+  + [chunk_ref] is FSC5
+  + [portion_ref] is P9 resource safety and human approval
+  + [authority_basis] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [activation_gate] is FSC5-S02 accepted
+  + [internal_dependency_set] is FSC5-S01 FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [internal_dependency_set] is FSC5-S02 Dry_Run_Operation_Request_Contract.v1.sop
+  + [expected_output_set] is docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+  + [expected_output_set] is resource risk classification, blast radius contract, credential boundary, network boundary, rollback/abort route, human approval record, expiration/stale rule, and override refusal rule
+  + [verification_oracle] is high-risk requests require explicit fresh human approval and cannot rely on broad standing permission
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is human override and resource safety semantics are high-risk authority decisions
+  + [forbidden_scope] is live control, broad standing approval, credential access, network exposure, and destructive operations
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC5-S04-MachineControlNonAuthorityAndLiveControlProhibitionGates] is gated
+  + [slice_id] is FSC5-S04
+  + [slice_name] is machine-control non-authority and live-control prohibition gates
+  + [chunk_ref] is FSC5
+  + [portion_ref] is P9 live-control prohibition proof
+  + [authority_basis] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [activation_gate] is FSC5-S03 accepted
+  + [internal_dependency_set] is FSC5-S01 through FSC5-S03 accepted outputs
+  + [expected_output_set] is docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [expected_output_set] is machine-control non-authority rule, live-control prohibition gate, refused effect map, future authority escalation path, and safety proof checklist
+  + [verification_oracle] is no projection, dry-run result, human request, fixture, or FSC5 pack can authorize live control without a separate future accepted authority
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is live-control prohibition is the highest-risk safety boundary in this project
+  + [forbidden_scope] is live process/GPU/model/job/credential/network/filesystem control and any executable operations implementation
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC5-S05-OperationsDryRunFixturePlan] is gated
+  + [slice_id] is FSC5-S05
+  + [slice_name] is operations dry-run fixture plan
+  + [chunk_ref] is FSC5
+  + [portion_ref] is P8e operations safety and dry-run resource fixtures
+  + [authority_basis] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [activation_gate] is FSC5-S04 accepted
+  + [internal_dependency_set] is FSC5-S02 Dry_Run_Operation_Request_Contract.v1.sop
+  + [internal_dependency_set] is FSC5-S03 Resource_Safety_Human_Override_Contract.v1.sop
+  + [internal_dependency_set] is FSC5-S04 Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC5_Operations_Safety_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+  + [expected_output_set] is fixture cases for dry-run resource request, blocked live control, GPU contention, model runtime unavailable, credential boundary, network exposure refusal, destructive command refusal, missing authority notice, stale human approval, and dry-run success not live approval
+  + [verification_oracle] is fixture plan maps every case to safety contract behavior, authority_notice, dry-run result, human approval state, refused effect, and acceptance status
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after FSC5-S01 through FSC5-S04 are accepted
+  + [model_route_reason] is fixture drafting becomes bounded once safety contracts and prohibition gates are accepted
+  + [forbidden_scope] is changing accepted safety contracts, executable test harness implementation, operations implementation, live control, and destructive commands
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC5-S06-FSC5CompletionReviewAndSafetyPack] is gated
+  + [slice_id] is FSC5-S06
+  + [slice_name] is FSC5 completion review and safety pack
+  + [chunk_ref] is FSC5
+  + [portion_ref] is P9 and P8e
+  + [authority_basis] is docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [activation_gate] is FSC5-S05 accepted
+  + [internal_dependency_set] is FSC5-S01 through FSC5-S05 accepted outputs
+  + [expected_output_set] is docs/reviews/FSC5_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [expected_output_set] is acceptance record for safety boundary, dry-run contract, resource/human override contract, live-control prohibition gate, and dry-run fixtures
+  + [expected_output_set] is closure recommendation that no live control is authorized without future explicit safety authority
+  + [verification_oracle] is completion review classifies support_delta, requirement_delta, stale outputs, contradictions, unresolved proof gaps, live-control leaks, and future authority limits
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance defines the safety envelope and must preserve live-control prohibition
+  + [forbidden_scope] is implementing operations control, live machine control, dispatch, credentials, network mutation, destructive filesystem actions, or silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [FSC5SliceClosureReview] is the dependency audit for minted FSC5 slices
+  + [slice_surface_uuid] is 65b27936-41dc-41ab-af74-73cbda52e8b0
+  + [FSC5_boundary_input_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [FSC5_safety_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is FSC5-S01
+  + [safety_limit] is no live operations control authorized
+
+  = must: rerun this closure review after every FSC5 completion review
