@@ -108,7 +108,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: never let surfaces mutate canonical authority directly
   = should: route bounded projection rendering to GPT-5.3-Codex-Spark after fixture records exist
 
-& [Portion: P7CoordinationAndMultiAgentGovernance] is ready_for_IR6_boundary_slice
+& [Portion: P7CoordinationAndMultiAgentGovernance] is ready_for_IR6_implementation_activation_slice_minting
   + [portion_id] is P7
   + [portion_name] is coordination and multi-agent governance
   + [purpose] is preserve claims, ownership, conversation identity, rendezvous packets, mailbox messages, conflicts, and human overrides
@@ -130,8 +130,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR6_S05_Completion_Review.v1.sop
   + [support_record] is docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
   + [support_record] is docs/reviews/IR6_S06_Completion_Review.v1.sop
-  + [support_gap] is IR6-S07 completion review and implementation activation pack not yet executed
-  + [support_gap] is coordination record schemas not yet rebound into the IR6 implementation boundary
+  + [support_record] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [support_record] is docs/reviews/IR6_Completion_Review.v1.sop
+  + [support_gap] is IR6 implementation activation slices not yet minted
+  + [support_gap] is coordination record schemas not yet rebound into the IR6 implementation activation boundary
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
   + [slice_family] is rendezvous-packet-fixtures

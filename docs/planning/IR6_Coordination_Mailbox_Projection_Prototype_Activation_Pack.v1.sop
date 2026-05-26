@@ -1,0 +1,148 @@
+Subject: IR6 Coordination Mailbox Projection Prototype Activation Pack V1
+Date: 2026-05-26
+Activation Pack UUID: d6ab2446-32f0-4482-b729-f91ebd4b0800
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+@ [implementation_plan] docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR6CoordinationMailboxProjectionPrototypeActivationPackV1] is the activation pack for future bounded IR6 coordination mailbox projection prototype implementation
+  + [activation_pack_id] is ir6-coordination-mailbox-projection-prototype-activation-pack-v1
+  + [activation_pack_uuid] is d6ab2446-32f0-4482-b729-f91ebd4b0800
+  + [source_chunk] is IR6 coordination mailbox and claim projection prototype final planning
+  + [activation_pack_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation pack only
+  + [safety_limit] is no live operations control authorized
+
+  = must: require a future implementation activation slice surface before creating code, fixture files, expected ledgers, generated outputs, dependency changes, mailbox IO, adapter transports, dispatch pathways, operation simulator code, or package metadata changes
+  = must: keep every future coordination mailbox output projection-only unless accepted by explicit source authority, proof, human override, or completion review
+  = must: keep IRC, Matrix, web, Codex thread, terminal, Langflow, mailbox file IO, and surface adapters behind future dependency, adapter, and transport authorization
+  - never: implement coordination code, install dependencies, create fixtures, create expected ledgers, write generated projections, create mailbox files, authorize agent dispatch, authorize operations control, or authorize live machine control in this pack
+
+& [AcceptedIR6FinalPlanningDigestSet] is the accepted hash ledger exported by IR6 final planning
+  + [accepted_output] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_output_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+  + [accepted_output] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [accepted_output_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+  + [accepted_output] is docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+  + [accepted_output_sha256] is D4C4D86DBF257D935B49362E6A09F4F01BE7290714A56D90AF69435C7B56AFC2
+  + [accepted_output] is docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+  + [accepted_output_sha256] is 78C427CC4AFE9E27A75F31076A80E9338F21CD219E256867B249B4C3489DF4C7
+  + [accepted_output] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is 31B1817B831A690CBAC1DAA3AF99ACFD8FDF171684351B7D4878F3872005693C
+  + [accepted_output] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is 50E437297B8C5E514A5D27016AA777FA23E4BF4B912367BE8F80514006078F8D
+  + [accepted_output] is docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is DFAF1C91BA83DF19F8BF97BD6953A0359292EEB1FED966CB5481209C6B4258F8
+
+  = must: mark this activation pack stale if any listed output changes
+
+& [AcceptedIR6FinalPlanningReviewDigestSet] is the accepted completion review hash ledger
+  + [accepted_review] is docs/reviews/IR6_Final_Slice_Minting_Review.v1.sop
+  + [accepted_review_sha256] is 78D74F146BF4E3A690776B76E9FBF3730FA12E148E545A5F2DBF5A347CA86DAE
+  + [accepted_review] is docs/reviews/IR6_S01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 6E4B360FB69656A67D9EC13B5D827F21764206620C4ABBFBD793B66A7EA94276
+  + [accepted_review] is docs/reviews/IR6_S02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 3F59E1E39CD1672CB1AEE8D5AAD8DA8B6DA397A48FC213C65DD097009DCD3CF5
+  + [accepted_review] is docs/reviews/IR6_S03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 2CC215EB32CA2A0508B1276E51EA14E79BE5C4376A52DF42282F8C86F9ABC3B1
+  + [accepted_review] is docs/reviews/IR6_S04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 94D12856BD1EB1E4473E43B4594643E849C57EB368F273EB71F394409D179319
+  + [accepted_review] is docs/reviews/IR6_S05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 86A5540CEB9D52D007E6CE15154B74D1218A7540B6A0A2C809A57AEC7DEEA775
+  + [accepted_review] is docs/reviews/IR6_S06_Completion_Review.v1.sop
+  + [accepted_review_sha256] is DE9FAC891F462595F033E26E862F146B24F6969FD65A9F812D5A3BD407473AE1
+
+  = must: mark this activation pack stale if any listed review changes
+
+& [FutureIR6ImplementationActivationShape] is the recommended future activation slice shape
+  + [future_activation_slice] is IR6-IA01 bounded coordination implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR6-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR6-IA03 claim identity and work-boundary model implementation
+  + [future_activation_slice] is IR6-IA04 mailbox carrier and conflict review model implementation
+  + [future_activation_slice] is IR6-IA05 generated path policy and fixture runner implementation
+  + [future_activation_slice] is IR6-IA06 contract tests and generated-output/no-mailbox-IO proof
+  + [future_activation_slice] is IR6-IA07 mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [future_activation_slice] is IR6-IA08 implementation completion review and proof pack
+
+  = must: mint implementation activation slices before writing code, fixture files, expected ledgers, generated outputs, dependencies, package metadata changes, adapters, transports, mailbox files, or operation simulator code
+  = must: keep package installation gated until the dependency-authorized adapter and mailbox transport decision or deferral review
+  = must: allow GPT-5.3-Codex-Spark-suitable work only after an activation slice isolates bounded fixture, model, runner, generated-output proof, or test work
+  = must: require deeper reasoning for activation minting, dependency decisions, adapter boundary changes, transport boundary changes, generated-output policy changes, mailbox IO boundary changes, operation safety changes, dispatch boundary changes, or live-control boundary changes
+
+& [FutureImplementationSafetyBoundary: IR6CoordinationMailboxProjectionPrototype] is the safety boundary for future implementation activation
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [mailbox_file_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [mailbox_IO_initial_state] is gated
+  + [UI_implementation_initial_state] is gated
+  + [operations_simulator_initial_state] is gated
+  + [agent_dispatch_initial_state] is unauthorized
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+  + [allowed_dependency_route] is future dependency-authorizing activation slice only
+  + [allowed_generated_output_route] is future generated-output proof slice only
+  + [allowed_adapter_route] is future adapter boundary and dependency decision slice only
+  + [allowed_mailbox_IO_route] is future mailbox IO and transport decision slice only
+
+  = must: fail any future activation review that silently installs dependencies, opens transports, starts UI services, writes mailbox files, writes generated outputs outside accepted roots, dispatches agents, or exposes live-control APIs
+  = must: preserve FSC5 dry-run-only and live-control prohibition in every future coordination mailbox implementation slice
+
+& [FutureIR6ImplementationProofTarget] is the target proof pack shape for future IR6 implementation completion
+  + [future_proof_pack] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [future_completion_review] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [required_proof] is accepted implementation output hash ledger
+  + [required_proof] is accepted fixture source and expected ledger hash ledger
+  + [required_proof] is generated coordination projection proof showing projections and reports are ignored, disposable, reproducible, and non-authoritative
+  + [required_proof] is mailbox IO proof showing platform mailboxes, inbox directories, message files, read cursors, and carrier state are not created or mutated unless a future accepted activation slice explicitly authorizes them
+  + [required_proof] is dependency decision or deferral review
+  + [required_proof] is command evidence for compile, baseline tests, targeted tests, and diff hygiene
+  + [required_proof] is support and requirement delta review before downstream IR7 can open
+
+  = must: keep downstream IR7 gated until the future IR6 implementation proof pack and implementation completion review are accepted, unless a future rebake explicitly reclassifies the readiness boundary
+
+& [DownstreamIR7GateExport] is the downstream readiness boundary exported by IR6 final planning
+  + [IR7_state] is gated_until_IR6_coordination_mailbox_implementation_review_is_accepted_or_a_rebake_reclassifies_IR7_scope
+  + [IR7_model_route] is requires deeper reasoning for operations dry-run, job-control simulation, resource-boundary modeling, and future machine-control safety semantics
+  + [IR7_boundary_input_future] is IR6 implementation proof pack after future implementation activation completion
+  + [IR7_current_permission] is none_from_IR6_final_planning
+
+  = must: prevent false-ready IR7 operations manager, dispatch, job-control, process-control, GPU-control, model-runtime-control, or live-control work before IR6 coordination mailbox implementation proof exists
+  = must: keep multi-user and multi-agent coordination surfaces projection-only until accepted implementation proof exists
+
+& [IR6ActivationPackCoverageReview] is the coverage checklist for IR6 activation pack
+  + [accepted_final_planning_digest_set_present] is true
+  + [accepted_review_digest_set_present] is true
+  + [future_activation_shape_present] is true
+  + [future_implementation_safety_boundary_present] is true
+  + [future_implementation_proof_target_present] is true
+  + [downstream_IR7_gate_export_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [mailbox_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept this activation pack only when all checklist items are satisfied

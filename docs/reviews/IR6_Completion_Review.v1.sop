@@ -1,0 +1,138 @@
+Subject: IR6 Completion Review V1
+Date: 2026-05-26
+Review UUID: d64c6faf-5181-4833-9d22-442c57921eba
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [work_state] docs/state/IR6_Work_State.v1.sop
+@ [completed_output] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [completed_review] docs/reviews/IR6_S01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR6_S02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR6_S03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR6_S04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR6_S05_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR6_S06_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR6-S07] is the final planning completion review for IR6 coordination mailbox and claim projection prototype
+  + [slice_id] is IR6-S07
+  + [slice_name] is IR6 completion review and implementation activation pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [completed_output_sha256] is 2BAD44F39FFA06F60EF2C88C6BD096474D6F632FF9DE3B0BE849B72887A1E947
+  + [completed_output] is docs/reviews/IR6_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR6 final planning accepted and implementation activation slice minting may open
+  + [next_gate_result] is IR6 implementation activation slice minting may open
+  + [next_model_route] is requires deeper reasoning for implementation activation slice minting; later bounded implementation slices may be GPT-5.3-Codex-Spark-suitable when scope is isolated
+
+  = must: treat this review and activation pack as gate-opening evidence for IR6 implementation activation slice minting only
+  = must: rerun IR6-S07 if the activation pack, accepted IR6 outputs, fixture plan, fixture index, implementation plan, or completion reviews change
+  = must: keep implementation code, fixture source, expected ledger, mailbox file creation, generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control unauthorized until explicit implementation activation slices open them
+
+& [IR6CompletionVerification] is the verification result for the full IR6 final planning pass
+  + [accepted_final_slice] is IR6-S01
+  + [accepted_final_slice] is IR6-S02
+  + [accepted_final_slice] is IR6-S03
+  + [accepted_final_slice] is IR6-S04
+  + [accepted_final_slice] is IR6-S05
+  + [accepted_final_slice] is IR6-S06
+  + [accepted_final_slice] is IR6-S07
+  + [coordination_boundary_import_status] is accepted
+  + [claim_identity_contract_status] is accepted
+  + [rendezvous_and_mailbox_carrier_contract_status] is accepted
+  + [conflict_stale_and_human_override_contract_status] is accepted
+  + [fixture_plan_status] is accepted
+  + [fixture_index_status] is accepted
+  + [implementation_plan_status] is accepted
+  + [activation_pack_status] is accepted
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [mailbox_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6CompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+
+& [SupportDelta: IR6-S07] is the support delta produced by IR6 final planning completion
+  + [new_support_record] is IR6 final planning supports implementation activation slice minting for bounded coordination mailbox projection prototype work
+  + [new_support_record] is future implementation activation has a recommended 8-slice shape covering activation boundary, fixture material, claim identity models, mailbox carrier models, conflict review models, generated path policy, fixture runner, tests, dependency decision, mailbox IO decision, and proof pack
+  + [new_support_record] is dependency installation, adapter implementation, transport implementation, mailbox IO, UI implementation, generated output creation, package metadata mutation, agent dispatch, operations simulator implementation, operations control, and live machine control remain gated until future explicit slices authorize them
+  + [new_support_record] is downstream IR7 remains gated until future IR6 implementation proof is accepted or a future rebake reclassifies IR7 readiness
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-S07] is the requirement delta produced by IR6 final planning completion
+  + [requirement_delta] is IR6 implementation activation slice minting may open and requires deeper reasoning
+  + [requirement_delta] is future bounded fixture, model, runner, generated-output proof, no-mailbox-IO proof, and test slices may be GPT-5.3-Codex-Spark-suitable only after activation slices isolate scope
+  + [requirement_delta] is future dependency, adapter, transport, mailbox IO, dispatch, and safety decisions require deeper reasoning unless explicitly narrowed by accepted activation scope
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, mailbox file, generated output, dependency installation, package metadata mutation, operations simulator, agent dispatch, operations control, or live machine control is authorized by IR6 final planning completion
+  + [requirement_delta] is no rebake required before implementation activation slice minting
+
+& [StalenessAndContradictionReview: IR6-S07] is the final staleness review for IR6 final planning
+  + [stale_source_found] is false
+  + [stale_accepted_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [false_ready_implementation_found] is false
+  + [false_ready_IR7_found] is false
+  + [unresolved_support_gap_found] is false
+  + [identity_collapse_found] is false
+  + [mailbox_carrier_authority_promotion_found] is false
+  + [dispatch_authority_leak_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR6 final planning stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR6-S07] is the final fault review for IR6 final planning
+  + [projection_authority_promotion_found] is false
+  + [coordination_claim_authority_promotion_found] is false
+  + [rendezvous_packet_authority_promotion_found] is false
+  + [mailbox_carrier_authority_promotion_found] is false
+  + [runtime_checkpoint_authority_promotion_found] is false
+  + [dry_run_to_live_control_promotion_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [implementation_code_leak_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [mailbox_file_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6S07Accepted] is accepted
+    @ [support] [IR6CompletionVerification]
+    @ [support] [SupportDelta: IR6-S07]
+    @ [support] [RequirementDelta: IR6-S07]
+    @ [support] [StalenessAndContradictionReview: IR6-S07]
+    @ [support] [FaultReview: IR6-S07]
+
+& [NextChunkGate: IR6-Implementation-Activation] is opened_as_slice_minting_only
+  + [opened_chunk] is IR6 implementation activation slice minting
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 2BAD44F39FFA06F60EF2C88C6BD096474D6F632FF9DE3B0BE849B72887A1E947
+  + [activation_state] is ready_for_implementation_activation_slice_minting
+  + [model_route] is requires deeper reasoning
+  + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after implementation activation slices are accepted and implementation tasks are bounded
+  + [downstream_IR7_state] is gated_until_IR6_implementation_proof_acceptance_or_future_rebake
+  + [safety_limit] is no live operations control authorized
+
+  = must: mint IR6 implementation activation slices before writing coordination code, fixture source files, expected ledgers, mailbox files, generated outputs, dependencies, package metadata changes, adapters, transports, UI, or operations simulator code
+  = must: keep agent dispatch, operations control, and live machine control unauthorized
