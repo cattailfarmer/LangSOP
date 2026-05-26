@@ -1,4 +1,65 @@
-"""Inert surfaces module marker for future conversation projections."""
+"""Bounded IR5 surface projection models.
 
-__all__ = ()
+Surface helpers are pure data and validation APIs. They do not implement UI,
+adapters, transports, generated-output writers, or operations control.
+"""
 
+from .authority import (
+    AUTHORITY_SENSITIVE_ACTION_SET,
+    DIRECT_MUTATION_ACTION_SET,
+    LOW_AUTHORITY_ACTION_SET,
+    REQUIRED_AUTHORITY_DISPLAY_FIELD_SET,
+    AuthorityDisplayEnvelope,
+    AuthorityDisplayIssue,
+    AuthorityDisplayIssueKind,
+    AuthorityDisplayIssueSeverity,
+    AuthorityDisplayValidationResult,
+    AuthorityTier,
+    authority_display_envelope_from_parts,
+    validate_authority_display_envelope,
+)
+from .projection_state import (
+    REQUIRED_PROJECTION_STATE_FIELD_SET,
+    STOP_STATE_STATUS_SET,
+    FreshnessState,
+    ProjectionRefusalRecord,
+    ProjectionStateEnvelope,
+    ProjectionStateIssue,
+    ProjectionStateIssueKind,
+    ProjectionStateIssueSeverity,
+    ProjectionStateValidationResult,
+    ProjectionStatus,
+    StopStateContext,
+    projected_status_for_evidence,
+    projection_state_envelope_from_parts,
+    validate_projection_state_envelope,
+)
+
+__all__ = (
+    "AUTHORITY_SENSITIVE_ACTION_SET",
+    "DIRECT_MUTATION_ACTION_SET",
+    "LOW_AUTHORITY_ACTION_SET",
+    "REQUIRED_AUTHORITY_DISPLAY_FIELD_SET",
+    "REQUIRED_PROJECTION_STATE_FIELD_SET",
+    "STOP_STATE_STATUS_SET",
+    "AuthorityDisplayEnvelope",
+    "AuthorityDisplayIssue",
+    "AuthorityDisplayIssueKind",
+    "AuthorityDisplayIssueSeverity",
+    "AuthorityDisplayValidationResult",
+    "AuthorityTier",
+    "FreshnessState",
+    "ProjectionRefusalRecord",
+    "ProjectionStateEnvelope",
+    "ProjectionStateIssue",
+    "ProjectionStateIssueKind",
+    "ProjectionStateIssueSeverity",
+    "ProjectionStateValidationResult",
+    "ProjectionStatus",
+    "StopStateContext",
+    "authority_display_envelope_from_parts",
+    "projected_status_for_evidence",
+    "projection_state_envelope_from_parts",
+    "validate_authority_display_envelope",
+    "validate_projection_state_envelope",
+)
