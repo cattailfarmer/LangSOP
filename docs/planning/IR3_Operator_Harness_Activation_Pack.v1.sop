@@ -1,0 +1,150 @@
+Subject: IR3 Operator Harness Activation Pack V1
+Date: 2026-05-26
+Pack UUID: 12b5033e-f038-4ef8-867f-12eb32e003c3
+
+@ [completion_review] docs/reviews/IR3_Completion_Review.v1.sop
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [boundary_map] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [runner_trace_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+@ [fixture_io_policy] docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+@ [implementation_plan] docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+
+& [ActivationPack: IR3OperatorHarnessActivationPackV1] is the accepted boundary pack exported by IR3 after completion review acceptance
+  + [pack_id] is ir3-operator-harness-activation-pack-v1
+  + [pack_uuid] is 12b5033e-f038-4ef8-867f-12eb32e003c3
+  + [source_chunk] is IR3 operator harness and fixture runner
+  + [export_status] is accepted_boundary_input_after_IR3_completion_review
+  + [consumer_work] is IR3 bounded operator harness implementation activation
+  + [activation_effect] is IR3 bounded operator harness implementation activation may be final-sliced from accepted contracts, file inventory, fixture plan, and generated-output policy
+  + [implementation_effect] is no operator harness code, fixture source files, expected ledgers, generated traces, tests, dependencies, operations control, or live machine control is authorized by this pack alone
+
+  = must: preserve SOP files and accepted completion reviews as source authority
+  = must: preserve operator traces, generated fixture outputs, reports, manifests, caches, and runtime trace files as projection-only
+  = must: require explicit bounded implementation activation before creating or editing IR3 implementation files, fixture source files, expected ledgers, generated outputs, or tests
+  - never: treat this pack as permission to control processes, GPUs, model runtimes, jobs, credentials, networks, destructive filesystem actions, operations, or live machines
+
+& [AcceptedIR3DigestSet] is the accepted hash ledger exported by IR3
+  + [accepted_boundary_input] is docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
+  + [accepted_boundary_input_sha256] is 54FBBC2914CDDDE3E75A4470AF5DADE511DD9335BDADEF544E073D9F2C64CE74
+  + [accepted_boundary_input] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [accepted_boundary_input_sha256] is DB3CA534CD20107429069B45F40EEC45EBF982CFC789C1FF5F9E1039E5C0297C
+  + [accepted_boundary_input] is docs/slices/IR3_Final_Slices.v1.sop
+  + [accepted_boundary_input_sha256] is ED6E0876738CC3E758593F721CFA1B771D97B26DEE2CD3C9C6ACB71FAAA71D18
+  + [accepted_output] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is 0048A2D79061B80A7F9C48724A018FCE955F9CB6BBFE6A1D0530D95AA5AC73BE
+  + [accepted_output] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [accepted_output_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [accepted_output] is docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+  + [accepted_output_sha256] is 55CE5B02BDC2C06B9F31751A95B5D311B0AF6093684501B34D4FB932DD59B21E
+  + [accepted_output] is docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is 8B50973CE50BB0FD50200234B9D6094092D0ECDEC200CF99DFEA8B40435FA632
+  + [accepted_output] is docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is 4B5D4DFD350B926594A8CB53C2CD0CC3BC39A8FEBB68CFC9970E1898FAE5440A
+
+  = must: mark this activation pack stale if any listed hash changes
+
+& [AcceptedIR3ReviewDigestSet] is the accepted review hash ledger exported by IR3
+  + [accepted_review] is docs/reviews/IR3_Final_Slice_Minting_Review.v1.sop
+  + [accepted_review_sha256] is A6E06F9CCBA0580A100E79A6BC8DD2A8FF12A922F62B7866DD3CB331FF344592
+  + [accepted_review] is docs/reviews/IR3_S01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 09DAF1A15E6F3818C8D848A4FE98ABB915CE5EC75B48237A3F82CC7AAD26D211
+  + [accepted_review] is docs/reviews/IR3_S02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is E87FA4F4D98E28D7B1CA8CA5515649A1B5210D7A9D672329B96C8A4E5CA950E7
+  + [accepted_review] is docs/reviews/IR3_S03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is FCE711E5B3806DFA29E996138FBB172E23FFD1F3E67308064EA6158E2C433ADE
+  + [accepted_review] is docs/reviews/IR3_S04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 14A2DFFF451E8980FB279DB9880F20648F4DCC3763CB8CD58EAFAE79256D3F7D
+  + [accepted_review] is docs/reviews/IR3_S05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is B0B91ABC31C0B5F40FCE2C1765FBD3621979A9A02D40156E5D262AD666B54A55
+
+  = must: mark this activation pack stale if any listed review changes
+
+& [ExportedOperatorHarnessContractSet] is the IR3 contract set available to bounded implementation activation
+  + [boundary_contract] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+  + [runner_contract] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [fixture_io_policy] is docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+  + [implementation_plan] is docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+  + [fixture_plan] is docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+  + [contract_status] is accepted_for_bounded_implementation_activation
+
+  = must: preserve operator request validation, refusal/fault behavior, trace identity, generated output non-authority, fixture path policy, and no-live-control safety limits in future implementation outputs
+  = must: emit blocked or fault records rather than silently accepting ambiguous, stale, unsupported, unsafe, or unauthorized requests
+
+& [ExportedImplementationCandidateSet: IR3OperatorHarness] is the bounded future implementation inventory exported by IR3
+  + [future_file] is src/langsop/operators/contracts.py
+  + [future_file] is src/langsop/operators/runner.py
+  + [future_file] is src/langsop/operators/traces.py
+  + [future_file] is src/langsop/operators/fixture_runner.py
+  + [future_file] is src/langsop/operators/__init__.py
+  + [future_file] is tests/test_ir3_operator_harness_contracts.py
+  + [dependency_boundary] is Python standard library only for the first implementation pass
+  + [public_api_boundary] is the API set defined in PublicAPIBoundary: IR3OperatorHarness from docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+  + [generated_write_boundary] is tests/fixtures/generated/ir3_operator_harness/ and accepted .langsop/ generated paths only
+  + [implementation_status] is candidate_only_until_explicit_activation
+
+  = must: require deeper reasoning before changing this inventory, API boundary, dependency boundary, or generated write boundary
+  = should: route bounded implementation of this accepted inventory to GPT-5.3-Codex-Spark after explicit activation because that work is Spark-suitable once contracts and fixtures are locked
+
+& [ExportedFixtureAndLedgerCandidateSet: IR3OperatorHarness] is the future fixture proof boundary exported by IR3
+  + [fixture_source_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [fixture_expected_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [fixture_generated_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [fixture_case_set] is valid_contract_request_success, stale_authority_input_refusal, missing_contract_version_refusal, undeclared_output_kind_fault, generated_projection_as_authority_fault, ambiguous_input_identity_interrupt, unsupported_scope_refusal, unsafe_operations_request_fault, invalid_input_shape_fault, deterministic_replay_mismatch_fault, generated_output_path_escape_refusal, and source_mutation_refusal
+  + [expected_ledger_shape_set] is ExpectedOperatorTraceLedgerShape and ExpectedFixtureComparisonLedgerShape
+  + [fixture_status] is candidate_only_until_explicit_activation
+
+  = must: track fixture source and expected ledgers as reviewable SOP material when a future activation slice creates them
+  = must: keep generated fixture outputs disposable and non-authoritative
+
+& [TraceProjectionBoundary] is the source/projection authority boundary exported by IR3
+  + [source_authority_root] is docs/
+  + [tracked_fixture_authority_root] is tests/fixtures/sop/ and tests/fixtures/expected/ only after fixture creation is explicitly activated
+  + [generated_projection_root] is .langsop/
+  + [generated_test_projection_root] is tests/fixtures/generated/
+  + [operator_trace_authority_status] is derived_projection_only
+  + [runner_report_authority_status] is derived_projection_only
+  + [fixture_comparison_authority_status] is derived_projection_only
+  + [langgraph_checkpoint_authority_status] is execution_state_only
+  + [surface_state_authority_status] is projection_only
+  + [chat_protocol_authority_status] is projection_or_carrier_only
+
+  = must: reject generated traces, generated reports, LangGraph checkpoints, surface projections, IRC, Matrix, terminal, Codex, or web chat state as source authority unless a future source-preserved and SJS-processed record explicitly imports it
+  = must: preserve source mutation and unsafe operations requests as first implementation proof obligations
+
+& [CodeActivationBoundaryExport: IR3OperatorHarness] is the activation boundary exported by IR3
+  + [code_creation_authorized_by_this_pack] is false
+  + [fixture_creation_authorized_by_this_pack] is false
+  + [expected_ledger_creation_authorized_by_this_pack] is false
+  + [generated_trace_creation_authorized_by_this_pack] is false
+  + [code_creation_precondition_satisfied] is IR3-S01 through IR3-S06 accepted
+  + [next_ready_work] is IR3 bounded operator harness implementation activation surface
+  + [next_ready_work_model_route] is requires deeper reasoning
+  + [future_bounded_code_route] is GPT-5.3-Codex-Spark-suitable after explicit activation selects bounded implementation slices from the accepted inventory
+  + [deeper_reasoning_required_for] is authority semantics, trace identity, fixture IO policy, generated artifact policy, dependency additions, public API boundary changes, file inventory changes, and downstream gate changes
+
+  = must: use a future activation review or minted implementation slice before writing code, creating fixture files, creating expected ledgers, generating traces, or creating tests
+  = must: keep implementation completion review mandatory before accepting any code, fixture, expected-ledger, generated-output, or test output
+
+& [DownstreamGateExport: IR4] is the downstream readiness boundary exported by IR3
+  + [IR4_state] is gated_until_IR3_bounded_operator_harness_implementation_review_is_accepted_or_a_rebake_reclassifies_IR4_scope
+  + [IR4_model_route] is requires deeper reasoning for any downstream runtime graph, surface, adapter, operations simulator, or multi-surface integration planning
+  + [IR3_implementation_activation_state] is may_open_after_IR3_completion_review_accepts_this_pack
+  + [safety_limit] is no live operations control authorized
+
+  = must: prevent a false-ready IR4 signal while allowing downstream planning to cite the accepted IR3 contract pack after implementation proof exists
+  = must: treat any desire to skip IR3 implementation proof as a rebake candidate, not an implicit activation
+
+& [IR3ActivationPackInvalidationRuleSet] is the staleness contract for IR3OperatorHarnessActivationPackV1
+  + [invalidated_by] is change to IR3 source manifest, canonical specification, slice surface, or SJS signature basis
+  + [invalidated_by] is change to any accepted IR3-S01 through IR3-S05 output hash
+  + [invalidated_by] is change to any IR3-S01 through IR3-S06 completion review that affects support, requirements, or gates
+  + [invalidated_by] is operator runner, trace, fixture, generated artifact, dependency, file inventory, or safety behavior exceeding the exported boundaries
+  + [invalidated_by] is generated trace promoted to source authority
+  + [invalidated_by] is silent mutation of SOP authority files by runner or fixture implementation
+  + [invalidated_by] is operations control or live machine control leak
+
+  = must: rerun IR3-S06 or rebake the relevant surface after invalidation before downstream work consumes this pack again

@@ -1,0 +1,131 @@
+Subject: IR3 Completion Review V1
+Date: 2026-05-26
+Review UUID: 2c61dcc3-012d-43f4-8b39-9f6697d15e00
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+@ [completed_review] docs/reviews/IR3_S01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_S02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_S03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_S04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_S05_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-S06] is the final completion review for IR3 operator harness and fixture runner planning
+  + [slice_id] is IR3-S06
+  + [slice_name] is IR3 completion review and implementation activation pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/reviews/IR3_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [completed_output] is docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+  + [completed_output_sha256] is FE11F82D98497E670397D612E18EFDD1C4476951F79876EEEC6FBE163BAE6861
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR3 accepted as operator harness activation planning pack
+  + [code_activation_result] is bounded implementation activation may be planned next but code, fixture source, expected ledger, generated trace, and test creation are not authorized by this review alone
+  + [downstream_gate_result] is IR3 bounded operator harness implementation activation may open, while IR4 remains gated until IR3 bounded implementation proof is accepted or a rebake reclassifies IR4 scope
+  + [next_model_route] is requires deeper reasoning for implementation activation slice minting; future bounded implementation and fixture slices are GPT-5.3-Codex-Spark-suitable only after explicit activation selects their scope
+
+  = must: treat this review and the activation pack as gate evidence for IR3 implementation activation planning only
+  = must: rerun IR3-S06 if the IR3 activation pack, any accepted IR3 output, or any IR3 slice completion review changes
+  = must: keep operations control and live machine control unauthorized
+
+& [IR3CompletionVerification] is the verification result for the full operator harness activation pack
+  + [accepted_slice] is IR3-S01 operator harness boundary and invariant map
+  + [accepted_slice] is IR3-S02 contract-driven operator runner and trace contract
+  + [accepted_slice] is IR3-S03 fixture runner input/output policy and generated trace boundary
+  + [accepted_slice] is IR3-S04 implementation file inventory and activation plan
+  + [accepted_slice] is IR3-S05 operator harness fixture and expected trace ledger plan
+  + [accepted_slice] is IR3-S06 IR3 completion review and implementation activation pack
+  + [boundary_map_status] is accepted
+  + [runner_trace_contract_status] is accepted
+  + [fixture_io_policy_status] is accepted
+  + [implementation_plan_status] is accepted
+  + [fixture_plan_status] is accepted
+  + [activation_pack_status] is accepted
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [generated_trace_authority_leak_found] is false
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3CompletionVerificationSatisfied] is accepted
+    @ [support] docs/reviews/IR3_S01_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR3_S02_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR3_S03_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR3_S04_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR3_S05_Completion_Review.v1.sop
+    @ [support] docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+
+& [SupportDelta: IR3-S06] is the support delta produced by IR3 completion
+  + [new_support_record] is IR3OperatorHarnessActivationPackV1 supports explicit bounded IR3 operator harness implementation activation planning
+  + [new_support_record] is accepted operator boundary, runner/trace contract, fixture IO policy, implementation plan, and fixture plan support future operator harness implementation proof
+  + [new_support_record] is DownstreamGateExport keeps IR4 gated until IR3 implementation proof is accepted
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-S06] is the requirement delta produced by IR3 completion
+  + [requirement_delta] is the next ready work is IR3 bounded operator harness implementation activation surface, which requires deeper reasoning
+  + [requirement_delta] is future bounded implementation slices are GPT-5.3-Codex-Spark-suitable only after explicit activation selects their scope
+  + [requirement_delta] is code creation, fixture source creation, expected-ledger creation, generated trace output, dependency installation, operations control, and live machine control remain unauthorized until a later accepted slice explicitly opens the relevant bounded work
+  + [requirement_delta] is IR4 remains gated until IR3 bounded operator harness implementation proof is accepted or a rebake reclassifies downstream scope
+  + [requirement_delta] is no rebake required for IR3 closure
+
+& [StalenessAndContradictionReview: IR3-S06] is the final staleness review for IR3
+  + [stale_source_manifest_found] is false
+  + [stale_canonical_specification_found] is false
+  + [stale_slice_surface_found] is false
+  + [stale_accepted_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [false_ready_IR4_found] is false
+  + [false_ready_implementation_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3 closure stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-S06] is the final fault review for IR3
+  + [runner_implementation_leak_found] is false
+  + [fixture_runner_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [test_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [generated_trace_authority_leak_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3S06Accepted] is accepted
+    @ [support] [IR3CompletionVerification]
+    @ [support] [SupportDelta: IR3-S06]
+    @ [support] [RequirementDelta: IR3-S06]
+    @ [support] [StalenessAndContradictionReview: IR3-S06]
+    @ [support] [FaultReview: IR3-S06]
+
+& [NextWorkGate: IR3ImplementationActivation] is opened
+  + [opened_work] is IR3 bounded operator harness implementation activation surface
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is FE11F82D98497E670397D612E18EFDD1C4476951F79876EEEC6FBE163BAE6861
+  + [activation_state] is ready_for_activation_planning
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is the activation surface must select code, fixture, expected-ledger, generated-output, and test slices without changing authority semantics or opening false downstream runtime work
+  + [future_code_model_route] is GPT-5.3-Codex-Spark-suitable only after activation selects bounded implementation slices from the accepted inventory
+  + [downstream_gate] is IR4 remains gated until IR3 bounded implementation proof is accepted
+  + [safety_limit] is no live operations control authorized
+
+  = must: plan activation before writing operator harness code, creating fixture files, creating expected ledgers, generating traces, or creating tests
+  = must: keep implementation completion review mandatory for every future code, fixture, expected-ledger, generated-output, or test slice
