@@ -1,0 +1,145 @@
+Subject: IR6 Coordination Mailbox Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: 28b9c369-0adb-4487-8c1d-ca653c4f4a68
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+
+& [FixturePlan: IR6CoordinationMailboxFixturePlanV1] is the bounded fixture plan for IR6 coordination mailbox and claim projection planning
+  + [slice_id] is IR6-S05
+  + [fixture_family] is ir6-coordination-mailbox-claim-projection
+  + [fixture_case_count] is 13
+  + [fixture_index] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture planning is bounded by accepted IR6-S01 through IR6-S04 contracts
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+
+  = must: treat this plan as fixture and expected-ledger planning, not executable test harness implementation
+  = must: cover valid claim, compatible claims, conflicting claims, stale claims, release, supersession, ambiguous identity, unread mailbox, stale cursor, carrier authority refusal, human override, hidden scope expansion, and completion gate refusal paths
+  = must: preserve claim identity, work boundary, mailbox carrier, freshness, conflict review, human override, authority notice, action route, and refusal evidence obligations
+  - never: implement coordination code, claim storage, mailbox transport, chat adapters, fixture source files, expected ledger files, generated outputs, dispatch, operations simulator, operations control, or live machine control here
+
+& [FixtureCase: IR6X-001-valid-claim-projection] is the valid claim projection fixture
+  + [input_shape] is coordination claim with claimant_ref, conversation_ref, work_packet_ref, scope_subject_ref, dependency-closed boundary, fresh authority basis, and no active conflict
+  + [expected_projection] is claim projection with ClaimIdentityEnvelope, WorkBoundaryProjectionEnvelope, freshness_state fresh, boundary_status dependency_closed, authority_notice_ref, and permitted low-authority action set
+  + [expected_visibility] is source authority refs, claim trust limit, no assignment authority, no dispatch authority, no completion authority, and no live-control authority
+  + [expected_refusal_absent] is missing identity, missing authority notice, hidden conflict, source mutation, assignment, dispatch, and operations control
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR6X-002-compatible-parallel-claims] is the compatible parallel claims fixture
+  + [input_shape] is two active claims with explicit non-overlapping write scope or read-only overlap classification under the same accepted work surface
+  + [expected_projection] is compatibility projection with relation non_overlapping_write_scope or read_only_overlap, separate claimant and conversation identities, and no contested claim state
+  + [expected_visibility] is compatibility evidence and scope relation visible before action
+  + [expected_refusal_absent] is identity collapse, silent scope merge, assignment, dispatch, completion acceptance, and live-control authority
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR6X-003-conflicting-write-claims] is the conflicting write claims fixture
+  + [input_shape] is two claims with overlapping_write_scope, identical_write_scope, or ambiguous_scope_relation and incompatible intended output set
+  + [expected_projection] is contested_claim_projection with ConflictReviewEnvelope, involved_claim_ref_set, evidence_ref_set, forbidden_action_set, and downstream ready state blocked
+  + [expected_route] is coordination_conflict_signal, SOP-first interrupt, human override, completion review, or rebake
+  + [acceptance_status] is contested
+
+& [FixtureCase: IR6X-004-stale-claim-refresh-required] is the stale claim refresh fixture
+  + [input_shape] is active claim whose related work packet hash, authority basis hash, scope, conversation freshness, or completion review state has changed
+  + [expected_projection] is stale_claim_projection with StaleClaimReviewEnvelope, stale_trigger_ref_set, allowed_resolution_set, lineage_preservation_ref_set, and no ready projection
+  + [expected_route] is refresh_claim, release_claim, supersede_claim, invalidate_claim, or rebake affected packet or slice
+  + [acceptance_status] is stale
+
+& [FixtureCase: IR6X-005-release-notice-with-lineage] is the release notice fixture
+  + [input_shape] is active claim whose release condition is met and reviewable release notice cites prior claim, claimant, conversation, work packet, and authority basis
+  + [expected_projection] is released claim lineage projection with prior active claim preserved, release notice visible, and no deletion of historical claim state
+  + [expected_visibility] is released state does not accept completion or erase prior work history
+  + [expected_refusal_absent] is claim deletion, hidden release evidence, assignment, dispatch, and source authority mutation
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR6X-006-superseded-claim-preserves-lineage] is the superseded claim fixture
+  + [input_shape] is new claim superseding an older claim through accepted route with explicit prior claim ref, reason, and boundary comparison
+  + [expected_projection] is superseded claim lineage projection with old and new claim refs, supersession reason, authority_basis_ref_set, and compatible boundary evidence
+  + [expected_visibility] is supersession does not hide contested, stale, or invalidated evidence
+  + [expected_refusal_absent] is silent merge, prior claim deletion, source authority mutation, and completion acceptance
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR6X-007-ambiguous-conversation-identity-interrupt] is the ambiguous conversation identity fixture
+  + [input_shape] is claim or mailbox notice with missing, conflicting, or ambiguous conversation_ref, claimant_ref, sender_ref, or addressed_to_ref
+  + [expected_projection] is sop_first_interrupt_context with IdentitySeparationAndReentryRule evidence, ambiguous identity refs, carrier context, and blocked claim action
+  + [expected_route] is identity clarification, human override, or completion review before claim state transition
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: IR6X-008-inbox-unread-notice-blocks-ready] is the unread inbox notice fixture
+  + [input_shape] is mailbox carrier projection where unread message timestamp is greater than read cursor and related claim or packet may affect current work state
+  + [expected_projection] is mailbox projection with unread_notice_set, freshness_state stale or pending_review, authority_notice_ref, and ready state blocked
+  + [expected_visibility] is unread notice state visible before next action recommendations
+  + [expected_route] is review unread notice before manager ready projection
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR6X-009-read-cursor-stale-projection] is the stale read cursor fixture
+  + [input_shape] is read cursor older than inbox last-modified timestamp, missing message hash, stale addressed participant, or stale related claim basis
+  + [expected_projection] is stale mailbox projection with MailboxFreshnessAndReadCursorContract evidence, stale trigger refs, and no claim state transition
+  + [expected_visibility] is read cursor displayed as projection cursor only
+  + [expected_refusal] is read cursor authority, mailbox delivery authority, claim transition authority, and completion acceptance
+  + [acceptance_status] is stale
+
+& [FixtureCase: IR6X-010-mailbox-carrier-authority-refusal] is the mailbox carrier authority refusal fixture
+  + [input_shape] is mailbox message, IRC log, Matrix event, terminal output, Codex state, web event, or Langflow diagram attempting to directly activate claim, release claim, accept completion, assign agent, or dispatch work
+  + [expected_projection] is refused carrier projection with CarrierAuthorityBoundaryRule, NoticeActionRouteContract, authority_notice_ref, blocked route evidence, and refusal reason
+  + [expected_route] is coordination operator, SOP-first interrupt, human override, SJS, or completion review
+  + [acceptance_status] is refused
+
+& [FixtureCase: IR6X-011-human-override-scope-review] is the human override scope review fixture
+  + [input_shape] is human override request related to contested claim, stale claim, ambiguous identity, or carrier action with explicit scope, expiration, and forbidden effects
+  + [expected_projection] is HumanOverrideReviewEnvelope with requested_override_scope, authority_notice_ref, expiration_or_recheck_condition, explicit_limit_set, forbidden_effect_set, and override_result
+  + [expected_visibility] is broad approval cannot authorize assignment, dispatch, completion acceptance, operations control, or live machine control
+  + [expected_route] is accepted_for_scope, rejected, expired, out_of_scope, SJS reprocessing, or completion review
+  + [acceptance_status] is pending_review
+
+& [FixtureCase: IR6X-012-hidden-scope-expansion-fault] is the hidden scope expansion fixture
+  + [input_shape] is claim whose file_scope_set, artifact_scope_set, intended_output_set, or subject scope expands beyond work packet boundary without accepted packet or review
+  + [expected_projection] is coordination fault record with hidden_scope_expansion, invalidated or contested claim state, authority_basis_ref_set, and required review route
+  + [expected_visibility] is fault remains visible until accepted repair or invalidation
+  + [expected_route] is fault review, claim invalidation, packet rebake, or completion review
+  + [acceptance_status] is faulted
+
+& [FixtureCase: IR6X-013-completion-gate-refusal-for-unresolved-claim] is the completion gate refusal fixture
+  + [input_shape] is projected follow-on action attempting to open IR6-S06, accept completion, create implementation plan, or proceed while contested claim, stale claim, or human override remains unresolved
+  + [expected_projection] is blocked projection with CompletionGateInteractionRule, unresolved coordination review refs, required resolution, and downstream gate closed
+  + [expected_visibility] is downstream implementation remains gated
+  + [expected_route] is IR6-S05 completion review only after fixture plan and index acceptance
+  + [acceptance_status] is blocked
+
+& [FixturePlanAcceptanceChecklist: IR6-S05] is the acceptance checklist for IR6 coordination mailbox fixture plan
+  + [fixture_case_count] is 13
+  + [contract_coverage] is ClaimIdentityEnvelope
+  + [contract_coverage] is WorkBoundaryProjectionEnvelope
+  + [contract_coverage] is ClaimCompatibilityRelationContract
+  + [contract_coverage] is ClaimStateTransitionDisplayContract
+  + [contract_coverage] is ClaimFreshnessAndStalenessContract
+  + [contract_coverage] is RendezvousPacketProjectionEnvelope
+  + [contract_coverage] is MailboxCarrierEnvelope
+  + [contract_coverage] is MailboxFreshnessAndReadCursorContract
+  + [contract_coverage] is CarrierAuthorityBoundaryRule
+  + [contract_coverage] is ConflictReviewEnvelope
+  + [contract_coverage] is StaleClaimReviewEnvelope
+  + [contract_coverage] is HumanOverrideReviewEnvelope
+  + [contract_coverage] is CoordinationReviewDecisionMatrix
+  + [contract_coverage] is CompletionGateInteractionRule
+  + [forbidden_scope_absent] is coordination implementation
+  + [forbidden_scope_absent] is claim storage implementation
+  + [forbidden_scope_absent] is mailbox transport implementation
+  + [forbidden_scope_absent] is chat adapter implementation
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is fixture source file creation
+  + [forbidden_scope_absent] is expected ledger file creation
+  + [forbidden_scope_absent] is generated output creation
+  + [forbidden_scope_absent] is agent dispatch
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: reject IR6-S05 if any required fixture case or contract coverage item is missing
+  = must: open IR6-S06 only after the fixture plan and index are reviewed in a completion review

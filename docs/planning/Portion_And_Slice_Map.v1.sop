@@ -125,7 +125,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR6_S03_Completion_Review.v1.sop
   + [support_record] is docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
   + [support_record] is docs/reviews/IR6_S04_Completion_Review.v1.sop
-  + [support_gap] is IR6-S05 coordination mailbox fixture plan and expected ledger plan not yet executed
+  + [support_record] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+  + [support_record] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [support_record] is docs/reviews/IR6_S05_Completion_Review.v1.sop
+  + [support_gap] is IR6-S06 coordination mailbox projection prototype implementation plan and generated-output boundary not yet executed
   + [support_gap] is coordination record schemas not yet rebound into the IR6 implementation boundary
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema

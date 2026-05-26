@@ -1,0 +1,119 @@
+Subject: IR6 S05 Completion Review V1
+Date: 2026-05-26
+Review UUID: 80a4b952-bfc5-4233-b216-63d84931f7cb
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+
+& [CompletedWorkReview: IR6-S05] is the completed-work review for IR6-S05 coordination mailbox fixture plan and expected ledger plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-S05
+  + [completed_output] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+  + [completed_output_sha256] is 31B1817B831A690CBAC1DAA3AF99ACFD8FDF171684351B7D4878F3872005693C
+  + [completed_output] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [completed_output_sha256] is 50E437297B8C5E514A5D27016AA777FA23E4BF4B912367BE8F80514006078F8D
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-S05 and open IR6-S06
+  + [next_gate_result] is IR6-S06 may open
+  + [next_model_route] is requires deeper reasoning for IR6-S06 implementation planning and generated-output boundary
+  + [next_model_route_depth] is not Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR6-S06 implementation planning only
+  = must: rerun this review if the fixture plan, fixture index, IR6-S01 boundary import, IR6-S02 claim identity contract, IR6-S03 mailbox carrier contract, IR6-S04 conflict review contract, or their completion reviews change
+  = must: keep executable coordination code, mailbox transport, mailbox files, adapter code, dependency installation, generated output creation, agent dispatch, operations simulator implementation, operations control, and live machine control gated
+
+& [IR6S05Verification] is the verification result for IR6-S05
+  + [fixture_plan_created] is true
+  + [fixture_index_created] is true
+  + [fixture_case_count] is 13
+  + [fixture_index_entry_count] is 13
+  + [valid_claim_projection_covered] is true
+  + [compatible_parallel_claims_covered] is true
+  + [conflicting_write_claims_covered] is true
+  + [stale_claim_refresh_required_covered] is true
+  + [release_notice_with_lineage_covered] is true
+  + [superseded_claim_preserves_lineage_covered] is true
+  + [ambiguous_conversation_identity_interrupt_covered] is true
+  + [inbox_unread_notice_blocks_ready_covered] is true
+  + [read_cursor_stale_projection_covered] is true
+  + [mailbox_carrier_authority_refusal_covered] is true
+  + [human_override_scope_review_covered] is true
+  + [hidden_scope_expansion_fault_covered] is true
+  + [completion_gate_refusal_for_unresolved_claim_covered] is true
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+  + [coordination_implementation_code_created] is false
+  + [mailbox_transport_code_created] is false
+  + [mailbox_file_created] is false
+  + [adapter_code_created] is false
+  + [dependency_installed] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6S05VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+    @ [support] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+
+& [SupportDelta: IR6-S05] is the support delta produced by IR6-S05
+  + [new_support_record] is IR6 has a 13-case fixture plan covering valid claims, compatible claims, conflicting claims, stale claims, release, supersession, ambiguous identity, unread mailbox notices, stale read cursors, carrier authority refusal, human override, hidden scope expansion, and completion gate refusal
+  + [new_support_record] is IR6 has a fixture index mapping every fixture case to primary and secondary contracts for later implementation activation
+  + [new_support_record] is future implementation planning can refer to planned fixture cases and planned expected ledgers without treating fixture source files or expected ledgers as already created
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-S05] is the requirement delta produced by IR6-S05
+  + [requirement_delta] is IR6-S06 must define future file inventory, fixture source root, expected ledger root, generated output root, mailbox carrier boundary, and command plan without implementing code, creating mailbox files, or creating generated outputs
+  + [requirement_delta] is IR6-S06 requires deeper reasoning because implementation planning and generated-output policy affect coordination authority and mailbox carrier semantics
+  + [requirement_delta] is actual fixture source files and expected ledger files remain gated until a later implementation activation slice explicitly authorizes them
+  + [requirement_delta] is no executable coordination code, mailbox transport, mailbox files, adapter code, dependency installation, generated output, agent dispatch, operations simulator, operations control, or live machine control is authorized by IR6-S05
+
+& [FaultReview: IR6-S05] is the fault review for IR6-S05
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_case_gap_found] is false
+  + [fixture_index_gap_found] is false
+  + [fixture_source_file_leak_found] is false
+  + [expected_ledger_file_leak_found] is false
+  + [mailbox_file_creation_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6S05Accepted] is accepted
+    @ [support] [IR6S05Verification]
+    @ [support] [SupportDelta: IR6-S05]
+    @ [support] [RequirementDelta: IR6-S05]
+    @ [support] [FaultReview: IR6-S05]
+
+& [NextSliceGate: IR6-S06] is opened
+  + [opened_slice] is IR6-S06 coordination mailbox projection prototype implementation plan and generated-output boundary
+  + [accepted_dependency] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+  + [accepted_dependency] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+  + [accepted_dependency] is docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is D4C4D86DBF257D935B49362E6A09F4F01BE7290714A56D90AF69435C7B56AFC2
+  + [accepted_dependency] is docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+  + [accepted_dependency_sha256] is 78C427CC4AFE9E27A75F31076A80E9338F21CD219E256867B249B4C3489DF4C7
+  + [accepted_dependency] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+  + [accepted_dependency_sha256] is 31B1817B831A690CBAC1DAA3AF99ACFD8FDF171684351B7D4878F3872005693C
+  + [accepted_dependency] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [accepted_dependency_sha256] is 50E437297B8C5E514A5D27016AA777FA23E4BF4B912367BE8F80514006078F8D
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation and generated-output policy affect coordination authority, mailbox carrier semantics, and downstream operations readiness
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-S06 next unless user redirects or a new fault invalidates this review

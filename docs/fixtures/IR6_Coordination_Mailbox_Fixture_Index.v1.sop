@@ -1,0 +1,159 @@
+Subject: IR6 Coordination Mailbox Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: d4736ba3-e801-439d-bc45-6a94f385b374
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+
+& [FixtureIndex: IR6CoordinationMailboxFixtureIndexV1] is the fixture index for planned IR6 coordination mailbox fixtures
+  + [slice_id] is IR6-S05
+  + [implementation_activation_slice_id] is future_IR6_implementation_activation_fixture_materialization
+  + [fixture_plan] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+  + [fixture_count] is 13
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [fixture_source_root] is tests/fixtures/sop/ir6_coordination_mailbox/
+  + [expected_ledger_root] is tests/fixtures/expected/ir6_coordination_mailbox/
+  + [generated_output_created] is false
+
+& [FixtureIndexEntry: IR6X-001] is valid_claim_projection
+  + [fixture_case] is IR6X-001-valid-claim-projection
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/valid_claim_projection.sop
+  + [primary_contract] is ClaimIdentityEnvelope
+  + [secondary_contract] is WorkBoundaryProjectionEnvelope
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-002] is compatible_parallel_claims
+  + [fixture_case] is IR6X-002-compatible-parallel-claims
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/compatible_parallel_claims.sop
+  + [primary_contract] is ClaimCompatibilityRelationContract
+  + [secondary_contract] is IdentitySeparationAndReentryRule
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-003] is conflicting_write_claims
+  + [fixture_case] is IR6X-003-conflicting-write-claims
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/conflicting_write_claims.sop
+  + [primary_contract] is ConflictReviewEnvelope
+  + [secondary_contract] is ClaimCompatibilityRelationContract
+  + [expected_status] is contested
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-004] is stale_claim_refresh_required
+  + [fixture_case] is IR6X-004-stale-claim-refresh-required
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/stale_claim_refresh_required.sop
+  + [primary_contract] is StaleClaimReviewEnvelope
+  + [secondary_contract] is ClaimFreshnessAndStalenessContract
+  + [expected_status] is stale
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-005] is release_notice_with_lineage
+  + [fixture_case] is IR6X-005-release-notice-with-lineage
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/release_notice_with_lineage.sop
+  + [primary_contract] is ClaimStateTransitionDisplayContract
+  + [secondary_contract] is RendezvousPacketProjectionEnvelope
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-006] is superseded_claim_preserves_lineage
+  + [fixture_case] is IR6X-006-superseded-claim-preserves-lineage
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/superseded_claim_preserves_lineage.sop
+  + [primary_contract] is ClaimStateTransitionDisplayContract
+  + [secondary_contract] is ClaimCompatibilityRelationContract
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-007] is ambiguous_conversation_identity_interrupt
+  + [fixture_case] is IR6X-007-ambiguous-conversation-identity-interrupt
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/ambiguous_conversation_identity_interrupt.sop
+  + [primary_contract] is IdentitySeparationAndReentryRule
+  + [secondary_contract] is ClaimProjectionRefusalContract
+  + [expected_status] is interrupted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-008] is inbox_unread_notice_blocks_ready
+  + [fixture_case] is IR6X-008-inbox-unread-notice-blocks-ready
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/inbox_unread_notice_blocks_ready.sop
+  + [primary_contract] is MailboxCarrierEnvelope
+  + [secondary_contract] is MailboxFreshnessAndReadCursorContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-009] is read_cursor_stale_projection
+  + [fixture_case] is IR6X-009-read-cursor-stale-projection
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/read_cursor_stale_projection.sop
+  + [primary_contract] is MailboxFreshnessAndReadCursorContract
+  + [secondary_contract] is CarrierAuthorityBoundaryRule
+  + [expected_status] is stale
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-010] is mailbox_carrier_authority_refusal
+  + [fixture_case] is IR6X-010-mailbox-carrier-authority-refusal
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/mailbox_carrier_authority_refusal.sop
+  + [primary_contract] is CarrierAuthorityBoundaryRule
+  + [secondary_contract] is NoticeActionRouteContract
+  + [expected_status] is refused
+  + [required_notice] is carrier_context_only
+
+& [FixtureIndexEntry: IR6X-011] is human_override_scope_review
+  + [fixture_case] is IR6X-011-human-override-scope-review
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/human_override_scope_review.sop
+  + [primary_contract] is HumanOverrideReviewEnvelope
+  + [secondary_contract] is CoordinationReviewDecisionMatrix
+  + [expected_status] is pending_review
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-012] is hidden_scope_expansion_fault
+  + [fixture_case] is IR6X-012-hidden-scope-expansion-fault
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/hidden_scope_expansion_fault.sop
+  + [primary_contract] is ConflictReviewEnvelope
+  + [secondary_contract] is CoordinationReviewDecisionMatrix
+  + [expected_status] is faulted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: IR6X-013] is completion_gate_refusal_for_unresolved_claim
+  + [fixture_case] is IR6X-013-completion-gate-refusal-for-unresolved-claim
+  + [planned_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/completion_gate_refusal_for_unresolved_claim.sop
+  + [primary_contract] is CompletionGateInteractionRule
+  + [secondary_contract] is CoordinationReviewDecisionMatrix
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref
+
+& [ExpectedLedgerPlan: IR6CoordinationMailbox] is the expected ledger plan for a future IR6 implementation activation slice
+  + [planned_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/claim_identity_expected.sop
+  + [planned_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/work_boundary_expected.sop
+  + [planned_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/mailbox_carrier_expected.sop
+  + [planned_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/conflict_and_stale_review_expected.sop
+  + [planned_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/no_authority_promotion_expected.sop
+
+  = must: keep expected ledgers reviewable without generated projections, generated reports, carrier state, runtime state, dispatch, or live control
+  = must: treat planned expected ledgers as uncreated until a future implementation activation slice authorizes materialization
+
+& [FixtureIndexCoverage: IR6-S05] is the fixture index coverage assertion
+  + [fixture_count] is 13
+  + [covered_projection] is claim_identity_projection
+  + [covered_projection] is work_boundary_projection
+  + [covered_projection] is compatibility_projection
+  + [covered_projection] is contested_claim_projection
+  + [covered_projection] is stale_claim_projection
+  + [covered_projection] is released_claim_lineage_projection
+  + [covered_projection] is superseded_claim_lineage_projection
+  + [covered_projection] is sop_first_interrupt_context
+  + [covered_projection] is mailbox_carrier_projection
+  + [covered_projection] is stale_mailbox_projection
+  + [covered_projection] is refused_carrier_projection
+  + [covered_projection] is human_override_review_projection
+  + [covered_projection] is completion_gate_refusal
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+
+  = must: reject IR6-S05 if fixture_count is less than 13
+  = must: reject future implementation activation if fixture source files or expected ledgers are missing from accepted roots
+  = must: reject IR6-S05 if fixture source files, expected ledgers, or generated outputs are created
