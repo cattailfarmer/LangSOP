@@ -1,0 +1,184 @@
+Subject: Coordination Claim And Rendezvous Contracts V1
+Date: 2026-05-26
+Coordination Contract UUID: d6fedb7d-2533-4aeb-8fe1-87d43a8b171d
+
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [boundary_map] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+
+& [CoordinationClaimAndRendezvousContractSetV1] is the FSC2 coordination contract set
+  + [contract_set_id] is coordination-claim-and-rendezvous-contracts-v1
+  + [contract_set_uuid] is d6fedb7d-2533-4aeb-8fe1-87d43a8b171d
+  + [slice_id] is FSC2-S04
+  + [authority_scope] is coordination claim lifecycle, ownership boundary, conflict signals, stale claim rules, and rendezvous packet contract
+  + [implementation_scope] is coordination contracts only
+  + [packet_dependency] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [boundary_dependency] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+
+  = must: coordinate work boundaries across multiple users, agents, conversations, and tools without becoming source authority
+  = must: keep claim records traceable to accepted work_packet and coordination context
+  = must: emit conflict and stale signals rather than silently merging ownership
+  - never: implement mailbox transport, chat adapters, runtime graph nodes, or surface rendering
+  - never: let a coordination claim override source specifications, accepted packets, or completion reviews
+
+& [CoordinationClaimLifecycle] is the lifecycle contract for coordination_claim records
+  + [claim_state] is proposed
+  + [claim_state] is active
+  + [claim_state] is contested
+  + [claim_state] is stale
+  + [claim_state] is released
+  + [claim_state] is superseded
+  + [claim_state] is invalidated
+  + [state_transition] is proposed to active when claim scope is dependency-closed and no active conflict is found
+  + [state_transition] is active to contested when an overlapping incompatible claim appears
+  + [state_transition] is active to stale when packet, authority, file scope, conversation heartbeat, or completion review changes invalidate the claim freshness
+  + [state_transition] is active to released when claimant completes or abandons the scope through reviewable notice
+  + [state_transition] is any state to invalidated when false ownership, hidden scope expansion, or authority drift is proven
+
+  = must: preserve superseded and invalidated claims as lineage rather than deleting them
+  = must: require operator_trace or review evidence for every non-trivial state transition
+
+& [CoordinationClaimBoundary] is the ownership boundary shape for one coordination claim
+  + [required_field] is claim_id
+  + [required_field] is claim_uuid
+  + [required_field] is claimant_ref
+  + [required_field] is conversation_ref
+  + [required_field] is work_packet_ref
+  + [required_field] is scope_subject_ref
+  + [required_field] is file_scope_set
+  + [required_field] is artifact_scope_set
+  + [required_field] is intended_output_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is claim_state
+  + [required_field] is freshness_rule
+  + [required_field] is conflict_policy
+  + [required_field] is release_condition
+  + [authority_limit] is claim coordinates work ownership only
+  + [authority_limit] is claim does not validate source specifications
+  + [authority_limit] is claim does not accept completed work
+  + [authority_limit] is claim does not authorize operations control
+
+  = must: reject coordination claims without work_packet_ref
+  = must: reject claims whose file_scope_set expands beyond the packet boundary unless a new packet or review accepts the expansion
+
+& [OperatorContract: coordination_claim_register] is the contract for creating or superseding a coordination claim
+  + [operator_id] is coordination_claim_register
+  + [operator_version] is v1
+  + [operator_name] is Coordination Claim Register
+  + [operator_purpose] is create or supersede a coordination_claim for a bounded work_packet and claimant context
+  + [source_sop_ref] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [source_sop_ref] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [authority_basis_ref_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [authority_basis_ref_set] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [input_record_kind_set] is work_packet, coordination_claim, authority_artifact, proof_result, stale_projection, and fault_record
+  + [output_record_kind_set] is coordination_claim, stale_projection, support_gap, fault_record, and operator_trace
+  + [precondition_set] is work_packet is current and generated from accepted FSC2 packet contract
+  + [precondition_set] is claimant_ref and conversation_ref are stable enough for coordination
+  + [precondition_set] is file_scope_set and artifact_scope_set are inside the work_packet boundary
+  + [precondition_set] is no active incompatible coordination_claim overlaps the requested write scope
+  + [precondition_set] is freshness_rule and release_condition are explicit
+  + [postcondition_set] is active coordination_claim records the exact scope and authority limit
+  + [postcondition_set] is contested or blocked output appears when incompatible active claim exists
+  + [postcondition_set] is stale_projection appears when packet or claim basis is stale
+  + [interrupt_condition_set] is ambiguous_identity, authority_conflict, stale_input, unsupported_scope, and human_override_required
+  + [fault_condition_set] is hidden_authority_drift, invalid_input_shape, forbidden_external_dependency, operator_contract_violation, and unsupported_operations_control
+  + [blocked_output_contract] is support_gap or contested coordination_claim explaining the conflict
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is valid_claim, overlapping_compatible_claim, conflicting_claim, stale_packet_claim, scope_expansion_attempt, missing_claimant, ambiguous_conversation, and false_ownership
+  + [forbidden_scope] is accepting source authority, accepting completed work, dispatching work, implementing transport, or mutating files
+
+  = must: prevent two incompatible active claims for the same write scope
+  = must: allow compatible claims only when scope relation is explicitly non-overlapping or read-only
+  = must: preserve contested claims for manager review rather than resolving by guess
+
+& [OperatorContract: coordination_conflict_signal] is the contract for surfacing claim conflicts and stale claims
+  + [operator_id] is coordination_conflict_signal
+  + [operator_version] is v1
+  + [operator_name] is Coordination Conflict Signal
+  + [operator_purpose] is classify overlapping claims, stale claims, hidden scope expansion, and false ownership into reviewable coordination signals
+  + [source_sop_ref] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [authority_basis_ref_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [input_record_kind_set] is coordination_claim, work_packet, proof_result, stale_projection, fault_record, and operator_trace
+  + [output_record_kind_set] is coordination_claim, stale_projection, fault_record, proof_result, and operator_trace
+  + [precondition_set] is claim set is current or stale state is explicitly handled
+  + [precondition_set] is overlap relation is computable from file_scope_set, artifact_scope_set, or subject_ref
+  + [postcondition_set] is contested claim state appears for unresolved incompatible overlap
+  + [postcondition_set] is stale_projection appears for stale claim basis
+  + [postcondition_set] is fault_record appears for hidden scope expansion or false ownership
+  + [interrupt_condition_set] is ambiguous_identity, authority_conflict, stale_input, unsupported_scope, and human_override_required
+  + [fault_condition_set] is hidden_authority_drift, invalid_input_shape, operator_contract_violation, and forbidden_external_dependency
+  + [blocked_output_contract] is contested coordination_claim requiring manager or SOP-first resolution
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is compatible_claims, conflicting_claims, stale_claim, hidden_scope_expansion, released_claim, superseded_claim, and false_ownership
+  + [forbidden_scope] is deleting claims, resolving semantic conflict silently, accepting completed work, or implementing transport
+
+  = must: emit conflict signals before downstream work relies on contested ownership
+  = must: treat unresolved contested claim as blocker for packet execution
+
+& [RendezvousPacketContract] is the contract for durable coordination notices between conversations
+  + [packet_kind] is manager_notice
+  + [packet_kind] is claim_notice
+  + [packet_kind] is conflict_notice
+  + [packet_kind] is release_notice
+  + [packet_kind] is stale_notice
+  + [required_field] is rendezvous_packet_id
+  + [required_field] is addressed_to_ref
+  + [required_field] is sender_ref
+  + [required_field] is conversation_ref
+  + [required_field] is related_work_packet_ref
+  + [required_field] is related_coordination_claim_ref
+  + [required_field] is notice_kind
+  + [required_field] is authority_notice
+  + [required_field] is requested_response
+  + [required_field] is stale_after
+  + [required_field] is source_ref_set
+  + [required_field] is lineage_edge_set
+  + [transport_policy] is contract_only
+
+  = must: preserve enough context for another conversation to resume or negotiate without collapsing identities
+  = must: treat mailbox, IRC, Matrix, web, Codex, terminal, and Langflow as possible projections or carriers only
+  - never: require a specific transport implementation in FSC2-S04
+
+& [StaleClaimRuleSet] is the stale rule set for coordination claims
+  + [stale_when] is related work_packet hash changes
+  + [stale_when] is authority_basis_ref_set changes
+  + [stale_when] is file_scope_set or artifact_scope_set changes without supersession
+  + [stale_when] is claimant conversation loses freshness beyond claim freshness_rule
+  + [stale_when] is completion_review invalidates or rebakes the work packet
+  + [stale_when] is hidden conflict appears after claim activation
+  + [stale_when] is release_condition is met but release notice is missing
+
+  = must: prevent stale claims from blocking new work indefinitely without review
+  = must: preserve stale claims as historical lineage
+
+& [MultiAgentWorkBoundaryInvariant] is the invariant set for multi-agent coordination
+  + [invariant] is claims coordinate work boundaries but do not create source authority
+  + [invariant] is incompatible active write claims cannot both be treated as current
+  + [invariant] is compatible parallel claims require explicit non-overlap or read-only classification
+  + [invariant] is contested claims block packet execution until resolved
+  + [invariant] is release, supersession, and invalidation preserve lineage
+  + [invariant] is rendezvous packets carry context but are not signed authority by themselves
+  + [invariant] is completion review remains the gate for accepting completed work and opening follow-on slices
+
+  = must: preserve these invariants through FSC2-S05 through FSC2-S07
+
+& [CoordinationContractCoverageReview] is the FSC2-S04 coverage checklist
+  + [lifecycle_present] is CoordinationClaimLifecycle
+  + [boundary_present] is CoordinationClaimBoundary
+  + [operator_contract_present] is coordination_claim_register
+  + [operator_contract_present] is coordination_conflict_signal
+  + [rendezvous_contract_present] is RendezvousPacketContract
+  + [stale_rule_set_present] is StaleClaimRuleSet
+  + [multi_agent_invariant_present] is MultiAgentWorkBoundaryInvariant
+  + [forbidden_scope_absent] is mailbox transport implementation
+  + [forbidden_scope_absent] is chat adapter implementation
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC2-S04 if claims can override source authority or completed-work acceptance
+  = must: open FSC2-S05 only after this contract is accepted by completion review
