@@ -16,11 +16,13 @@ Current planning authority:
 - `docs/planning/Final_Slicing_Surface.v1.sop`
 - `docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop`
 - `docs/slices/FSC1_Final_Slices.v1.sop`
+- `docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop`
+- `docs/slices/FSC2_Final_Slices.v1.sop`
 
 The v2 pass preserves the initial specification as source snapshots, expands it through a seven-fold specification explosion, and leaves the project ready for kernel schema and operator-contract design. Runtime code still requires solution records, fixtures, and proof before it can claim implementation authority.
 
 The working development pattern is "whole-pie first": keep the product overview and portion map current, mint slices from readiness only when support and proof routes are clear, review completed work for support and requirement deltas, then rebake the whole before the next slice when learning changes the shape of the system.
 
-The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is the only current final-slice-ready chunk; downstream chunks stay gated until their upstream contract packs are accepted as boundary inputs.
+The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is accepted as a boundary input, FSC2 planning coordination has been minted into final slices, and downstream chunks stay gated until their upstream contract packs are accepted.
 
-FSC1 has been minted, executed, reviewed, and accepted through `FSC1-S07`. The accepted boundary output is `docs/planning/FSC1_Foundation_Contract_Pack.v1.sop`, and the current ready chunk is `FSC2` planning coordination slice minting.
+FSC1 has been minted, executed, reviewed, and accepted through `FSC1-S07`. The accepted boundary output is `docs/planning/FSC1_Foundation_Contract_Pack.v1.sop`. The current ready slice is `FSC2-S01` imported boundary and invariant map.

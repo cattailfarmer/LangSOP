@@ -1,0 +1,161 @@
+Subject: LangSOP FSC2 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 8108c94b-16ab-457e-ac61-1c6f4fddd32a
+
+@ [canonical_specification] docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC2FinalSliceSurfaceV1] is the executable final-slice surface for FSC2 planning coordination
+  + [chunk_ref] is FSC2 planning coordination
+  + [chunk_boundary] is P4 whole-field planning and packetization, P7 coordination and multi-agent governance, and P8b readiness, packetization, completion-review, and coordination fixtures
+  + [accepted_boundary_input] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is FSC2-S01
+  + [gated_slice_set] is FSC2-S02, FSC2-S03, FSC2-S04, FSC2-S05, FSC2-S06, and FSC2-S07
+
+  = must: execute FSC2-S01 before any other FSC2 slice
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: keep FSC3 through FSC5 gated until FSC2-S07 accepts the planning coordination pack
+
+& [FinalWorkSlice: FSC2-S01-ImportedBoundaryAndInvariantMap] is ready
+  + [slice_id] is FSC2-S01
+  + [slice_name] is imported boundary and invariant map
+  + [chunk_ref] is FSC2
+  + [portion_ref] is P4 whole-field planning and packetization plus P7 coordination governance boundary import
+  + [authority_basis] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is imported record-kind inventory, imported operator contract inventory, FSC2-owned invariant set, forbidden mutation list, and downstream stale trigger list
+  + [verification_oracle] is all FSC1 imports are mapped without schema edits, runtime implementation, surface implementation, or dispatch authority
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is boundary import determines which FSC2 duties may refine FSC1 contracts and which must remain forbidden
+  + [forbidden_scope] is editing FSC1 outputs, finalizing readiness operator semantics, packet generation semantics, coordination conflict semantics, runtime graph code, surface rendering, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC2-S02-PlanningReadinessOperatorContract] is gated
+  + [slice_id] is FSC2-S02
+  + [slice_name] is planning readiness operator contract
+  + [chunk_ref] is FSC2
+  + [portion_ref] is P4 whole-field planning and packetization
+  + [authority_basis] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [activation_gate] is FSC2-S01 accepted
+  + [internal_dependency_set] is FSC2-S01 FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+  + [expected_output_set] is readiness operator contract refinement for capability_node, requirement_record, support_record, support_gap, readiness_projection, stale_projection, proof_result, and fault_record
+  + [verification_oracle] is contract expresses ready, blocked, stale, contradicted, ambiguous, and faulted readiness without generating a work packet
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is readiness semantics decide when work may be sliced and must preserve support authority distinctions
+  + [forbidden_scope] is packet generation, coordination claim mutation, runtime graph code, surface rendering, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC2-S03-WorkPacketGenerationContract] is gated
+  + [slice_id] is FSC2-S03
+  + [slice_name] is work packet generation contract
+  + [chunk_ref] is FSC2
+  + [portion_ref] is P4 whole-field planning and packetization
+  + [authority_basis] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [activation_gate] is FSC2-S02 accepted
+  + [internal_dependency_set] is FSC2-S01 FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [internal_dependency_set] is FSC2-S02 Planning_Readiness_Operator_Contracts.v1.sop
+  + [expected_output_set] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [expected_output_set] is contract that refines work_packet_generation beyond v1_stub, including packet boundaries, dependency closure, model route, owner claim prerequisites, support_delta obligations, requirement_delta obligations, and blocked/faulted packet rules
+  + [verification_oracle] is no packet is generated from blocked, stale, contradicted, ambiguous, or unsupported readiness
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is packetization controls work authority and must prevent false-ready work dispatch
+  + [forbidden_scope] is dispatch implementation, LangGraph node implementation, surface rendering, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC2-S04-CoordinationClaimAndRendezvousContracts] is gated
+  + [slice_id] is FSC2-S04
+  + [slice_name] is coordination claim and rendezvous contracts
+  + [chunk_ref] is FSC2
+  + [portion_ref] is P7 coordination and multi-agent governance
+  + [authority_basis] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [activation_gate] is FSC2-S03 accepted
+  + [internal_dependency_set] is FSC2-S01 FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [internal_dependency_set] is FSC2-S03 Work_Packet_Generation_Contract.v1.sop
+  + [expected_output_set] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [expected_output_set] is coordination claim lifecycle, ownership boundary, claim conflict signal, mailbox/rendezvous packet contract, stale claim rule, and multi-agent work boundary invariant
+  + [verification_oracle] is claims can coordinate multiple conversations and agents without becoming authority over source specifications or completed-work acceptance
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is multi-agent authority boundaries and conflict signals are high-risk coordination semantics
+  + [forbidden_scope] is implementing mailbox transport, implementing chat adapters, runtime graph code, surface rendering, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC2-S05-CompletionReviewDeltaGateContract] is gated
+  + [slice_id] is FSC2-S05
+  + [slice_name] is completion review delta gate contract
+  + [chunk_ref] is FSC2
+  + [portion_ref] is P4 whole-field planning and P7 coordination governance
+  + [authority_basis] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [activation_gate] is FSC2-S02 accepted
+  + [activation_gate] is FSC2-S03 accepted
+  + [activation_gate] is FSC2-S04 accepted
+  + [internal_dependency_set] is FSC2-S02 Planning_Readiness_Operator_Contracts.v1.sop
+  + [internal_dependency_set] is FSC2-S03 Work_Packet_Generation_Contract.v1.sop
+  + [internal_dependency_set] is FSC2-S04 Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [expected_output_set] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+  + [expected_output_set] is contract for support_delta review, requirement_delta review, stale packet detection, contradiction detection, next-slice gate update, and rebake triggers
+  + [verification_oracle] is completed work cannot open the next slice until support_delta and requirement_delta are classified and stale/contradiction/fault states are resolved
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is completion gates change authority for future work and must preserve proof boundaries
+  + [forbidden_scope] is implementing review automation, runtime graph code, surface rendering, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC2-S06-PlanningCoordinationFixturePlan] is gated
+  + [slice_id] is FSC2-S06
+  + [slice_name] is planning coordination fixture plan
+  + [chunk_ref] is FSC2
+  + [portion_ref] is P8b readiness, packetization, completion-review, and coordination fixtures
+  + [authority_basis] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [activation_gate] is FSC2-S05 accepted
+  + [internal_dependency_set] is FSC2-S02 Planning_Readiness_Operator_Contracts.v1.sop
+  + [internal_dependency_set] is FSC2-S03 Work_Packet_Generation_Contract.v1.sop
+  + [internal_dependency_set] is FSC2-S04 Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [internal_dependency_set] is FSC2-S05 Completion_Review_Delta_Gate_Contract.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC2_Planning_Coordination_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC2_Planning_Coordination_Fixture_Index.v1.sop
+  + [expected_output_set] is fixture cases for ready capability, blocked capability, stale support, contradicted support, ambiguous ownership, packet dependency leak, conflicting claim, stale claim, completion support delta, completion requirement delta, and false-ready next gate
+  + [verification_oracle] is fixture plan maps every case to imported schema records, FSC2 operator contract behavior, expected trace, and acceptance status
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after FSC2-S01 through FSC2-S05 are accepted
+  + [model_route_reason] is fixture drafting becomes bounded once readiness, packetization, coordination, and completion gate contracts are accepted
+  + [forbidden_scope] is changing imported schemas, changing accepted operator semantics, executable test harness implementation, runtime graph code, and surface UI
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC2-S07-FSC2CompletionReviewAndActivationPacket] is gated
+  + [slice_id] is FSC2-S07
+  + [slice_name] is FSC2 completion review and activation packet
+  + [chunk_ref] is FSC2
+  + [portion_ref] is P4, P7, and P8b
+  + [authority_basis] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [activation_gate] is FSC2-S06 accepted
+  + [internal_dependency_set] is FSC2-S01 through FSC2-S06 accepted outputs
+  + [expected_output_set] is docs/reviews/FSC2_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [expected_output_set] is acceptance record for imported boundary map, planning readiness operator contract, work packet generation contract, coordination contracts, completion-review delta gate, and planning coordination fixture plan
+  + [expected_output_set] is activation recommendation for FSC3 runtime graph proof
+  + [verification_oracle] is completion review classifies support_delta, requirement_delta, stale outputs, contradictions, unresolved support gaps, and FSC3 activation readiness
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance changes downstream boundary inputs and may activate FSC3
+  + [forbidden_scope] is implementing FSC3, runtime graph, surfaces, operations control, or silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [FSC2SliceClosureReview] is the dependency audit for minted FSC2 slices
+  + [slice_surface_uuid] is 8108c94b-16ab-457e-ac61-1c6f4fddd32a
+  + [FSC2_boundary_input_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is FSC2-S01
+  + [downstream_gate] is FSC3 remains gated until FSC2-S07 accepts FSC2_Planning_Coordination_Pack.v1.sop
+
+  = must: rerun this closure review after every FSC2 completion review

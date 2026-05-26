@@ -1,0 +1,28 @@
+Subject: FSC2 Work State V1
+Date: 2026-05-26
+State UUID: 57dd2c14-4401-4669-96b6-97750e5d6492
+
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+@ [accepted_boundary_input] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+
+& [FSC2WorkStateV1] is the current derived work state for FSC2 planning coordination
+  + [chunk_ref] is FSC2 planning coordination
+  + [state_basis] is docs/slices/FSC2_Final_Slices.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
+  + [current_ready_slice] is FSC2-S01
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [gated_slice] is FSC2-S02 until FSC2-S01 accepted
+  + [gated_slice] is FSC2-S03 until FSC2-S02 accepted
+  + [gated_slice] is FSC2-S04 until FSC2-S03 accepted
+  + [gated_slice] is FSC2-S05 until FSC2-S02, FSC2-S03, and FSC2-S04 accepted
+  + [gated_slice] is FSC2-S06 until FSC2-S05 accepted
+  + [gated_slice] is FSC2-S07 until FSC2-S06 accepted
+  + [downstream_gate] is FSC3 remains gated until FSC2-S07 accepts FSC2_Planning_Coordination_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: run FSC2-S01 before any later FSC2 slice
+  = must: mark this state stale if the FSC1 foundation contract pack or FSC2 final slice surface changes

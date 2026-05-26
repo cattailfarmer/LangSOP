@@ -1,0 +1,97 @@
+Subject: LangSOP FSC2 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_fsc2_final_slices/Source_Document_Manifest.sop
+@ [exploded_specification] docs/exploded/LangSOP_FSC2_Final_Slices.exploded.sop
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [CanonicalRecord: FSC2FinalSlices] is the processed planning authority for FSC2 final work slices
+  + [canonical_uuid] is 6a949014-c278-4073-b2e4-4c0eb1f9ee5d
+  + [source_manifest_uuid] is 9ff9386d-b228-4ed7-8fa1-e48612e41727
+  + [exploded_uuid] is b95a873a-0251-4fc0-9a4d-73815381a77a
+  + [slice_surface_uuid] is 8108c94b-16ab-457e-ac61-1c6f4fddd32a
+  + [authority_scope] is FSC2 slice order, slice readiness, slice gates, model routing, expected outputs, and verification oracles
+  + [implementation_scope] is final slice planning authority only
+  + [depends_on] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+
+  = must: use docs/slices/FSC2_Final_Slices.v1.sop as the current FSC2 slice surface
+  = must: execute FSC2-S01 first
+  = must: run completion review after each slice before opening the next gated slice
+  = must: keep FSC3 through FSC5 work gated until FSC2-S07 accepts the planning coordination pack
+  - never: treat FSC2 slice records as implementation proof
+
+& [CanonicalFSC2SliceSet] is the final FSC2 slice sequence
+  + [slice] is FSC2-S01 imported boundary and invariant map
+  + [slice] is FSC2-S02 planning readiness operator contract
+  + [slice] is FSC2-S03 work packet generation contract
+  + [slice] is FSC2-S04 coordination claim and rendezvous contracts
+  + [slice] is FSC2-S05 completion review delta gate contract
+  + [slice] is FSC2-S06 planning coordination fixture plan
+  + [slice] is FSC2-S07 FSC2 completion review and activation packet
+
+  = must: preserve this order unless completion review rebakes FSC2
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+& [CanonicalFSC2ExecutionGate] is the activation rule for FSC2
+  + [current_ready_slice] is FSC2-S01
+  + [gated_slice] is FSC2-S02 until FSC2-S01 accepted
+  + [gated_slice] is FSC2-S03 until FSC2-S02 accepted
+  + [gated_slice] is FSC2-S04 until FSC2-S03 accepted
+  + [gated_slice] is FSC2-S05 until FSC2-S02, FSC2-S03, and FSC2-S04 accepted
+  + [gated_slice] is FSC2-S06 until FSC2-S05 accepted
+  + [gated_slice] is FSC2-S07 until FSC2-S06 accepted
+  + [completion_gate] is FSC2 planning coordination pack accepted after FSC2-S07
+
+  = must: expose only FSC2-S01 as ready right now
+  = must: keep all later slices gated inside FSC2
+
+& [CanonicalFSC2ModelRouting] is the model-routing record
+  + [FSC2-S01] is requires deeper reasoning
+  + [FSC2-S02] is requires deeper reasoning
+  + [FSC2-S03] is requires deeper reasoning
+  + [FSC2-S04] is requires deeper reasoning
+  + [FSC2-S05] is requires deeper reasoning
+  + [FSC2-S06] is GPT-5.3-Codex-Spark-suitable after FSC2-S01 through FSC2-S05 are accepted
+  + [FSC2-S07] is requires deeper reasoning
+
+  = must: keep readiness semantics, work-packet authority, coordination claim boundaries, and completion-review delta gates under deeper reasoning
+  = should: route fixture drafting to GPT-5.3-Codex-Spark only after FSC2 contracts stabilize
+
+& [SatisfactionSignature: FSC2FinalSlices] is the valid SJS satisfaction signature for the FSC2 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 25529fbf-1a19-4e28-b36d-4db49035724c
+  + [signed_subject] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_fsc2_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 1A43AFBF96A527903378CEA72878973ECD3F7633F7D772358075E9F6487F9D03
+  + [source_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
+  + [source_sha256] is 7E7EA6E7FEBA2B9CDB6B36D715591B2C2EF2BAB78EA8DC169139964458360890
+  + [source_sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+  + [source_sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+  + [source_sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+  + [exploded_specification] is docs/exploded/LangSOP_FSC2_Final_Slices.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/FSC2_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, FSC1_boundary_imported, FSC2_boundary_checked, slices_minted, gates_defined, outputs_defined, verification_oracles_defined, model_routes_defined, completion_reviews_required, justified, and signed
+  + [exhaustion_state] is phase_locked_for_FSC2_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for FSC2 final slices; slice execution still requires solution records and proof
+  + [invalidation_condition] is source_hash_change, FSC1_pack_change, FSC2_boundary_change, forbidden_external_dependency_found, upstream_slice_contradiction, missing_completion_review, or implementation_contradiction
+
+  = must: reprocess when FSC2 slice order, boundary, or required outputs materially change
+
+& [RegistryRecord: FSC2FinalSlices] is the durable identity ledger for the FSC2 final slice surface
+  + [registry_uuid] is fa195112-ac2e-4ad3-a51b-ff5259496b26
+  + [manifest_node_uuid] is 9ff9386d-b228-4ed7-8fa1-e48612e41727
+  + [exploded_node_uuid] is b95a873a-0251-4fc0-9a4d-73815381a77a
+  + [canonical_node_uuid] is 6a949014-c278-4073-b2e4-4c0eb1f9ee5d
+  + [slice_surface_uuid] is 8108c94b-16ab-457e-ac61-1c6f4fddd32a
+  + [signature_uuid] is 25529fbf-1a19-4e28-b36d-4db49035724c
+  + [closure_review_uuid] is e39e60c8-cb3d-4326-99ac-20429d338f2d
+  + [edge] is manifest_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for FSC2 slice execution records and completion reviews

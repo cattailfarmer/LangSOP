@@ -1,0 +1,82 @@
+Subject: LangSOP FSC2 Final Slices Exploded Specification
+Date: 2026-05-26
+Exploded Specification UUID: b95a873a-0251-4fc0-9a4d-73815381a77a
+
+@ [source_manifest] docs/source/2026-05-26_fsc2_final_slices/Source_Document_Manifest.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC2FinalSlicesExplosion] is the processing pass that mints final work slices inside FSC2 planning coordination
+  + [root_subject] is FSC2 planning coordination
+  + [chunk_state] is activated_by_FSC1_foundation_contract_pack
+  + [boundary_input] is FSC1 foundation contract pack
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [slice_strategy] is order slices so imported boundary contracts are mapped before operator refinement, then packetization, coordination, completion gates, fixtures, and final pack acceptance
+  + [result] is seven final slices, one ready now and six gated inside FSC2
+
+  = must: preserve no unresolved dependency outside FSC2
+  = must: make each slice contiguous by expected output and verification oracle
+  = must: run completed-work review after each completed slice
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+## Fold 1: Boundary And Imported Contracts
+
+& [Fold1BoundaryAndImportedContracts] is the boundary check for FSC2 final slices
+  + [inside_boundary] is P4 whole-field planning and packetization, P7 coordination and multi-agent governance, and P8b readiness, packetization, completion-review, and coordination fixtures
+  + [accepted_boundary_input] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [forbidden_external_dependency] is FSC3 runtime graph proof, FSC4 surface projection, FSC5 operations safety, live machine control, production dispatch, and unreviewed schema mutation
+
+  = must: import FSC1 records, operator template, foundation operator contracts, storage decision, and foundation fixtures as accepted boundary inputs
+  = must: refine readiness and packetization inside FSC2 rather than editing FSC1
+  = must: keep runtime graph and surface projection outside FSC2
+
+## Fold 2: Slice Chain
+
+& [Fold2SliceChain] is the ordered final slice chain
+  + [FSC2-S01] is imported boundary and invariant map
+  + [FSC2-S02] is planning readiness operator contract
+  + [FSC2-S03] is work packet generation contract
+  + [FSC2-S04] is coordination claim and rendezvous contracts
+  + [FSC2-S05] is completion review delta gate contract
+  + [FSC2-S06] is planning coordination fixture plan
+  + [FSC2-S07] is FSC2 completion review and activation packet
+
+  = must: keep FSC2-S01 as the only ready slice at first minting
+  = must: activate later slices only when their inside-FSC2 inputs are accepted
+
+## Fold 3: Model Routing
+
+& [Fold3ModelRouting] is the route classification for FSC2 slices
+  + [FSC2-S01] is requires deeper reasoning
+  + [FSC2-S02] is requires deeper reasoning
+  + [FSC2-S03] is requires deeper reasoning
+  + [FSC2-S04] is requires deeper reasoning
+  + [FSC2-S05] is requires deeper reasoning
+  + [FSC2-S06] is GPT-5.3-Codex-Spark-suitable after FSC2-S01 through FSC2-S05 are accepted
+  + [FSC2-S07] is requires deeper reasoning
+
+  = must: state model route on every slice
+  = must: keep readiness semantics, packet boundaries, coordination authority, and completion gate behavior under deeper reasoning
+  = should: route fixture drafting to GPT-5.3-Codex-Spark only after contracts stabilize
+
+## Fold 4: Readiness And Gates
+
+& [Fold4ReadinessAndGates] is the current FSC2 readiness pass
+  + [ready_slice] is FSC2-S01
+  + [gated_slice] is FSC2-S02 until FSC2-S01 accepted
+  + [gated_slice] is FSC2-S03 until FSC2-S02 accepted
+  + [gated_slice] is FSC2-S04 until FSC2-S03 accepted
+  + [gated_slice] is FSC2-S05 until FSC2-S02, FSC2-S03, and FSC2-S04 accepted
+  + [gated_slice] is FSC2-S06 until FSC2-S05 accepted
+  + [gated_slice] is FSC2-S07 until FSC2-S06 accepted
+
+  = must: not start a gated slice until its activation gate is accepted
+  = must: run completion review before opening the next slice
+
+& [FSC2FinalSlicesConclusion] is the result of this pass
+  + [ready_for] is execution of FSC2-S01 imported boundary and invariant map
+  + [not_ready_for] is FSC3 runtime graph implementation, surface implementation, operations safety work, or production dispatch
+  + [remaining_uncertainty] is readiness semantics, packet boundary semantics, coordination claim conflict handling, and completion-review delta behavior
+
+  = must: promote the final slice surface only with satisfaction signature and source lineage

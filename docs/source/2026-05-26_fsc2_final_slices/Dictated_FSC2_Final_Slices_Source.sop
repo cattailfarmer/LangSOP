@@ -1,0 +1,17 @@
+Subject: Dictated FSC2 Final Slices Source
+Date: 2026-05-26
+
+& [DictatedSource: FSC2FinalSlices] is the preserved source instruction for minting FSC2 planning-coordination final slices
+  + [dictated_request] is take the project manager role and start a long-haul work session, keeping it going as long as you can still keep pressing forward
+  + [interpreted_request] is continue from accepted FSC1 foundation contracts into FSC2 planning coordination by preserving source, defining dependency-closed final slices, and keeping implementation gated until slices are minted and reviewed
+  + [source_context] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [source_context] is docs/reviews/FSC1_Completion_Review.v1.sop
+  + [source_context] is docs/planning/Final_Slicing_Surface.v1.sop
+  + [source_context] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+
+  = must: create concrete slice records for FSC2 planning coordination
+  = must: use the accepted FSC1 foundation contract pack as boundary input
+  = must: include readiness operator refinement, work packet generation beyond v1_stub, coordination claims, completion-review delta gates, and local fixtures
+  = must: keep FSC3 runtime graph proof, FSC4 surface projection, and FSC5 operations safety gated
+  = must: classify every slice as Spark-suitable or requiring deeper reasoning
+  = must: run completion review after each FSC2 slice before opening the next slice
