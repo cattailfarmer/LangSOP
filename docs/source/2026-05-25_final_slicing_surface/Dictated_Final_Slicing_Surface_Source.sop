@@ -1,0 +1,14 @@
+Subject: Dictated Final Slicing Surface Source
+Date: 2026-05-25
+
+& [DictatedSource: FinalSlicingSurface] is the preserved source instruction for preparing LangSOP portions for final slicing
+  + [dictated_request] is do what is necessary to prepare the surface for final slicing
+  + [dictated_request] is leave only contiguous chunks that have no dependency outside of their boundaries
+  + [source_context] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [source_context] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+  + [source_context] is docs/planning/Portion_And_Slice_Map.v1.sop
+
+  = must: transform the portion map into dependency-sealed chunks before final slices are minted
+  = must: pull unresolved dependencies inside chunk boundaries or gate the chunk
+  = must: allow accepted signed upstream contracts as boundary inputs without treating them as unresolved dependencies
+  = must: leave final slice candidates only inside chunks whose unresolved dependency set is internal

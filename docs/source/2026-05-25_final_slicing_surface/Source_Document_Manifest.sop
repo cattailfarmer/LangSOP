@@ -1,0 +1,28 @@
+Subject: Final Slicing Surface Source Manifest
+Date: 2026-05-25
+Manifest UUID: f2a457c8-f50d-4ae7-8e9b-54fad1f5d231
+
+& [SourceDocumentManifest: FinalSlicingSurface] is the source preservation manifest for the final slicing surface pass
+  + [dictated_source] is docs/source/2026-05-25_final_slicing_surface/Dictated_Final_Slicing_Surface_Source.sop
+    + [sha256] is D8B3CCCA3EB9F9A0D9E247591374A30356F4A63963599F6A413A4B565E411837
+    + [source_role] is new user-directed slicing specification
+  + [authority_source] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+    + [sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+    + [source_role] is whole-pie development pattern authority
+  + [authority_source] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+    + [sha256] is CFD6DE0F1C0C1DF20917B2B9CBC2B80AE9C48EF6B79B7386BEFF40C124EC7402
+    + [source_role] is baked product overview
+  + [authority_source] is docs/planning/Portion_And_Slice_Map.v1.sop
+    + [sha256] is 8601CDC316761D6C42731EEFC4727ED66883CD8F17FDA3822B8BE8280344E8CE
+    + [source_role] is current portion and slice family map
+  + [authority_source] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+    + [sha256] is D31925DEB0063F93376933089162FA5F128F05DEB72B29CE3D7DE8F4926D38AD
+    + [source_role] is underlying v2 planning authority
+  + [exploded_target] is docs/exploded/LangSOP_Final_Slicing_Surface.exploded.sop
+  + [canonical_target] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [surface_target] is docs/planning/Final_Slicing_Surface.v1.sop
+
+  = must: treat these sources as the complete authority set for dependency isolation
+  = must: invalidate the final slicing surface when any cited source hash changes without reprocessing
+  = must: preserve this manifest so later slice records can prove their source lineage
+  - never: mint final slices from a dependency-isolated chunk whose source lineage is invalid

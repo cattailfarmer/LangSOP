@@ -1,0 +1,100 @@
+Subject: LangSOP Final Slicing Surface Canonical Specification
+Date: 2026-05-25
+
+@ [source_manifest] docs/source/2026-05-25_final_slicing_surface/Source_Document_Manifest.sop
+@ [exploded_specification] docs/exploded/LangSOP_Final_Slicing_Surface.exploded.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [whole_pie_pattern] docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+
+& [CanonicalRecord: FinalSlicingSurface] is the processed planning authority for dependency-isolated final slicing
+  + [canonical_uuid] is 8fcaf245-fda7-4fc3-aeab-e5847cd44068
+  + [source_manifest_uuid] is f2a457c8-f50d-4ae7-8e9b-54fad1f5d231
+  + [exploded_uuid] is fe248262-e0fd-4045-b23a-f99eddf6ada5
+  + [surface_uuid] is 38266ad5-abd9-4907-bb66-aab981064d7d
+  + [authority_scope] is dependency closure, chunk isolation, final-slice readiness, activation gates, and model routing
+  + [implementation_scope] is planning and slice-preparation authority only
+  + [depends_on] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+
+  = must: use docs/planning/Final_Slicing_Surface.v1.sop as the current final-slicing surface
+  = must: classify dependencies before minting final slices
+  = must: allow only accepted_boundary_input dependencies outside a final-slice-ready chunk
+  = must: gate chunks whose needed upstream outputs are not yet accepted
+  = must: pull shared proof and fixture work into the local chunk it proves
+  - never: mint final slices from a chunk with forbidden_external_dependency
+
+& [CanonicalDependencyClosureContract] is the dependency isolation rule
+  + [internal_dependency] is a dependency resolved inside the chunk boundary
+  + [accepted_boundary_input] is signed or proof-backed material imported as stable input
+  + [activation_gate] is an upstream output required before the chunk may be final-sliced
+  + [forbidden_external_dependency] is unresolved work outside the chunk boundary
+
+  = must: convert forbidden_external_dependency into internal_dependency or activation_gate before slicing
+  = must: preserve activation_gate state visibly on manager surfaces
+  = must: mark final slices stale when accepted_boundary_input changes or invalidates
+
+& [CanonicalContiguousChunkContract] is the contract for final-slicing chunks
+  + [chunk] is a contiguous product territory with shared local data, procedure, proof, or surface purpose
+  + [chunk_seal_state_set] is accepted_boundary, final_slice_ready, gated, blocked, or superseded
+  + [chunk_record] is final_slicing_chunk with included portions, local proof leg, boundary inputs, activation gates, internal dependency order, final slice families, model route, and verification route
+
+  = must: keep P8 fixture and proof work split into local legs P8a through P8e
+  = must: keep downstream chunks parked behind accepted upstream outputs
+  = must: keep FSC1 as the only immediate final-slice-ready chunk
+
+& [CanonicalFinalChunkSet] is the sealed chunk set
+  + [FSC0] is accepted authority baseline
+  + [FSC1] is foundation contracts
+  + [FSC2] is planning coordination
+  + [FSC3] is runtime graph proof
+  + [FSC4] is surface projection
+  + [FSC5] is operations safety envelope
+
+  = must: treat FSC0 as accepted input, not new implementation work
+  = must: final-slice FSC1 first
+  = must: not final-slice FSC2 until FSC1 foundation contract pack is accepted
+  = must: not final-slice FSC3 until FSC1 and FSC2 accepted outputs exist
+  = must: not final-slice FSC4 until FSC1, FSC2, FSC3, and local projection fixtures are accepted
+  = must: not final-slice FSC5 until FSC1 through FSC4 are accepted and a safety source is preserved
+
+& [CanonicalFinalSliceRule] is the rule for the next operation after this surface
+  + [next_allowed_operation] is mint FSC1 final slices
+  + [required_slice_fields] is authority_basis, chunk_ref, boundary_input_set, internal_dependency_set, expected_output_set, verification_oracle, model_route, forbidden_scope, and completion_review_required
+  + [first_model_route] is requires deeper reasoning
+
+  = must: include completed-work review after each FSC1 slice
+  = must: rebake FSC1 if a slice discovers a schema or operator boundary contradiction
+  = should: route later fixture-generation slices to GPT-5.3-Codex-Spark after schema and operator contracts stabilize
+
+& [SatisfactionSignature: FinalSlicingSurface] is the valid SJS satisfaction signature for the final slicing surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 40007615-1ee3-4aad-a27c-a786c6462d2a
+  + [signed_subject] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [source_manifest] is docs/source/2026-05-25_final_slicing_surface/Source_Document_Manifest.sop
+  + [source_sha256] is D8B3CCCA3EB9F9A0D9E247591374A30356F4A63963599F6A413A4B565E411837
+  + [source_sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+  + [source_sha256] is CFD6DE0F1C0C1DF20917B2B9CBC2B80AE9C48EF6B79B7386BEFF40C124EC7402
+  + [source_sha256] is 8601CDC316761D6C42731EEFC4727ED66883CD8F17FDA3822B8BE8280344E8CE
+  + [source_sha256] is D31925DEB0063F93376933089162FA5F128F05DEB72B29CE3D7DE8F4926D38AD
+  + [exploded_specification] is docs/exploded/LangSOP_Final_Slicing_Surface.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [processed_stage_set] is source_preserved, dependency_classified, shared_fixture_split, chunks_closed, gates_defined, final_slice_ready_surface_pruned, model_route_defined, justified, and signed
+  + [exhaustion_state] is phase_locked_for_FSC1_final_slice_minting
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for final slicing; implementation still requires solution records and proof
+  + [invalidation_condition] is source_hash_change, forbidden_external_dependency_found, stale_boundary_input, false_ready_chunk, missing_completion_review, or implementation_contradiction
+
+  = must: reprocess when chunk boundaries, source hashes, or activation gate rules materially change
+
+& [RegistryRecord: FinalSlicingSurface] is the durable identity ledger for this slicing surface
+  + [registry_uuid] is 822dfcb7-cdf8-4946-96cf-1f9583011b2f
+  + [manifest_node_uuid] is f2a457c8-f50d-4ae7-8e9b-54fad1f5d231
+  + [exploded_node_uuid] is fe248262-e0fd-4045-b23a-f99eddf6ada5
+  + [canonical_node_uuid] is 8fcaf245-fda7-4fc3-aeab-e5847cd44068
+  + [surface_node_uuid] is 38266ad5-abd9-4907-bb66-aab981064d7d
+  + [signature_uuid] is 40007615-1ee3-4aad-a27c-a786c6462d2a
+  + [edge] is manifest_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes surface_node_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for later final slice records

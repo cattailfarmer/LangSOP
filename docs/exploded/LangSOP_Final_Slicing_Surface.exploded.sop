@@ -1,0 +1,120 @@
+Subject: LangSOP Final Slicing Surface Exploded Specification
+Date: 2026-05-25
+Exploded Specification UUID: fe248262-e0fd-4045-b23a-f99eddf6ada5
+
+@ [source_manifest] docs/source/2026-05-25_final_slicing_surface/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-25_final_slicing_surface/Dictated_Final_Slicing_Surface_Source.sop
+@ [whole_pie_pattern] docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+@ [product_overview] docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+@ [portion_slice_map] docs/planning/Portion_And_Slice_Map.v1.sop
+
+& [FinalSlicingSurfaceExplosion] is the dependency-isolation processing pass for LangSOP final slicing
+  + [root_subject] is the portion map after closure into contiguous final-slicing chunks
+  + [source_pressure] is current portions share P2, P3, and P8 dependencies in ways that would create cross-boundary slice coupling
+  + [resolution] is split shared proof/fixture duties into local fixture legs and promote accepted upstream outputs into boundary inputs
+  + [result] is a final slicing surface with sealed chunks, activation gates, and no unresolved external dependency inside a final-slice-ready chunk
+
+  = must: classify every dependency as internal_dependency, accepted_boundary_input, activation_gate, or forbidden_external_dependency
+  = must: pull forbidden_external_dependency into the chunk or gate the chunk from slicing
+  = must: leave final slices only under chunks whose unresolved dependency set is internal
+
+| [DependencyClass] is (
+  internal_dependency |
+  accepted_boundary_input |
+  activation_gate |
+  forbidden_external_dependency
+)
+
+| [ChunkSealState] is (
+  accepted_boundary |
+  final_slice_ready |
+  gated |
+  blocked |
+  superseded
+)
+
+## Fold 1: Closure Rule
+
+& [Fold1ClosureRule] is the rule for making chunks dependency-clean
+  + [contiguous_chunk] is a connected product territory whose work shares local requirements, proof routes, records, surfaces, or operators
+  + [accepted_boundary_input] is a signed or proof-backed artifact imported by the chunk without requiring unresolved work outside the chunk
+  + [activation_gate] is an upstream output that must become accepted before the chunk may be final-sliced
+  + [forbidden_external_dependency] is any unresolved dependency outside the chunk boundary
+
+  = must: allow accepted_boundary_input from signed canonical artifacts and completed prior chunk outputs
+  = must: treat activation_gate as a stop sign for final slicing, not as a hidden dependency
+  = must: eliminate forbidden_external_dependency before final slice minting
+  = must: preserve the gate that tells a manager when the chunk can open
+
+## Fold 2: Shared Portion Isolation
+
+& [Fold2SharedPortionIsolation] is the pass that splits shared proof and fixture work into local legs
+  + [shared_portion] is P8 proof, fixtures, evaluation, and faults
+  + [problem] is P8 supports P2, P3, P4, P5, P6, P7, and P9, so leaving it whole creates cross-chunk dependency leakage
+  + [split_leg] is P8a foundation schema and operator contract fixtures
+  + [split_leg] is P8b readiness, packetization, completion-review, and coordination fixtures
+  + [split_leg] is P8c LangGraph runtime, interrupt, and operator-trace fixtures
+  + [split_leg] is P8d surface projection and authority-notice fixtures
+  + [split_leg] is P8e operations safety and dry-run resource fixtures
+
+  = must: pull each P8 leg into the chunk it proves
+  = must: not require a general fixture pack outside the active chunk boundary
+  = must: allow a later consolidated fixture suite only after local proof legs exist
+
+## Fold 3: Chunk Set
+
+& [Fold3ChunkSet] is the dependency-closed chunk decomposition
+  + [chunk] is FSC0 accepted authority baseline
+  + [chunk] is FSC1 foundation contracts
+  + [chunk] is FSC2 planning coordination
+  + [chunk] is FSC3 runtime graph proof
+  + [chunk] is FSC4 surface projection
+  + [chunk] is FSC5 operations safety envelope
+
+  = must: keep each chunk contiguous by shared data/procedure/proof purpose
+  = must: require only accepted boundary inputs before final slicing a chunk
+  = must: prevent downstream chunks from receiving slices until their activation gates are accepted
+
+## Fold 4: Initial Activation
+
+& [Fold4InitialActivation] is the current ready state
+  + [accepted_boundary] is FSC0 accepted authority baseline
+  + [final_slice_ready] is FSC1 foundation contracts
+  + [gated] is FSC2 planning coordination until FSC1 foundation contract pack is accepted
+  + [gated] is FSC3 runtime graph proof until FSC1 and FSC2 outputs are accepted
+  + [gated] is FSC4 surface projection until FSC1, FSC2, FSC3, and relevant fixture outputs are accepted
+  + [gated] is FSC5 operations safety envelope until FSC1 through FSC4 are accepted and an operations safety source is preserved
+
+  = must: mint immediate final slices only from FSC1
+  = must: preserve downstream chunk frames without subdividing them prematurely
+
+## Fold 5: Final Slice Minting Rule
+
+& [Fold5FinalSliceMintingRule] is the rule for turning a clean chunk into final slices
+  + [slice_minting_input] is chunk record, accepted boundary inputs, internal dependency order, proof route, model route, and completion review rule
+  + [slice_minting_output] is final work slices with no dependency outside the chunk except accepted boundary inputs
+  + [stale_condition] is boundary input changes, chunk output invalidates, support gap appears, proof fails, or completed work changes requirements
+
+  = must: include authority_basis, expected_output_set, verification_oracle, model_route, and forbidden_scope on each final slice
+  = must: run completion review before minting the next slice in the same chunk
+  = must: mark all open slices stale when chunk boundary inputs change
+
+## Fold 6: Model Routing
+
+& [Fold6ModelRouting] is the route classification for sealed chunks
+  + [FSC1] is requires deeper reasoning because schemas, natural keys, authority states, operator boundaries, and storage decision are foundational
+  + [FSC2] is requires deeper reasoning for readiness and coordination semantics, then GPT-5.3-Codex-Spark-suitable for fixtures and bounded generators after contracts stabilize
+  + [FSC3] is GPT-5.3-Codex-Spark-suitable after graph contracts and fixtures stabilize, with deeper reasoning for interrupt semantics or trace contradictions
+  + [FSC4] is GPT-5.3-Codex-Spark-suitable after projection contracts and fixtures stabilize, with deeper reasoning for authority display or multi-surface conflicts
+  + [FSC5] is requires deeper reasoning because live machine control and safety boundaries are high risk
+
+  = must: state the route on every final slice
+  = must: keep FSC1 first in deeper-reasoning mode
+
+& [FinalSlicingConclusion] is the result of this pass
+  + [ready_for] is final slicing of FSC1 foundation contracts
+  + [not_ready_for] is final slicing FSC2 through FSC5 until activation gates accept prior outputs
+  + [surface_gain] is downstream work is now parked behind sealed chunk gates rather than exposed as cross-dependent slice candidates
+  + [remaining_uncertainty] is exact final slice count inside FSC1, storage backend choice, and later operations safety scope
+
+  = must: promote the final slicing surface only with satisfaction signature and source lineage

@@ -1,0 +1,174 @@
+Subject: LangSOP Final Slicing Surface V1
+Date: 2026-05-25
+Final Slicing Surface UUID: 38266ad5-abd9-4907-bb66-aab981064d7d
+
+@ [canonical_specification] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+@ [portion_slice_map] docs/planning/Portion_And_Slice_Map.v1.sop
+@ [whole_pie_product] docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+
+& [FinalSlicingSurfaceV1] is the dependency-isolated surface for minting final LangSOP development slices
+  + [surface_state] is prepared_for_FSC1_final_slice_minting
+  + [dependency_policy] is unresolved dependencies must be inside the chunk; accepted signed/proof-backed inputs may cross the boundary; unaccepted upstream work is an activation gate
+  + [active_final_slice_chunk] is FSC1 foundation contracts
+  + [parked_chunk] is FSC2 planning coordination
+  + [parked_chunk] is FSC3 runtime graph proof
+  + [parked_chunk] is FSC4 surface projection
+  + [parked_chunk] is FSC5 operations safety envelope
+
+  = must: mint immediate final slices only from FSC1
+  = must: keep FSC2 through FSC5 as contiguous chunks until their activation gates are accepted
+  = must: run completion review after each final slice before minting the next slice
+  = must: rebake this surface when any chunk gains a forbidden external dependency
+
+& [AcceptedBoundaryInput: FSC0AuthorityBaseline] is accepted_boundary
+  + [chunk_id] is FSC0
+  + [chunk_name] is accepted authority baseline
+  + [included_portion] is P1 semantic authority and source lineage
+  + [accepted_input] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [accepted_input] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [accepted_input] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [accepted_input] is docs/planning/Portion_And_Slice_Map.v1.sop
+  + [unresolved_external_dependency_set] is empty
+  + [output_contract] is authority baseline and slicing policy available as input to FSC1
+
+  = must: treat FSC0 as accepted planning input, not active implementation work
+
+& [FinalSlicingChunk: FSC1FoundationContracts] is final_slice_ready
+  + [chunk_id] is FSC1
+  + [chunk_name] is foundation contracts
+  + [included_portion] is P2 authority kernel and record schemas
+  + [included_portion] is P3 compiled SOP operator contracts
+  + [included_local_proof_leg] is P8a foundation schema and operator contract fixtures
+  + [accepted_boundary_input] is FSC0 authority baseline
+  + [unresolved_external_dependency_set] is empty
+  + [internal_dependency] is record-specific schemas depend on KernelRecord common field set
+  + [internal_dependency] is natural-key matrix depends on record-specific schema inventory
+  + [internal_dependency] is operator contract template depends on input/output record kinds
+  + [internal_dependency] is signature_validation contract depends on operator template and authority artifact schema
+  + [internal_dependency] is support_readiness contract depends on requirement, support, support_gap, and readiness_projection schemas
+  + [internal_dependency] is storage decision depends on logical schema and query/concurrency needs
+  + [internal_dependency] is foundation fixtures depend on accepted schema and operator contract shape
+  + [output_contract] is foundation contract pack containing logical schema, natural-key matrix, operator contract template, first authority/readiness operator contracts, storage decision, and foundation fixture plan
+  + [model_route] is requires deeper reasoning
+  + [verification_route] is schema and operator contract review against valid, stale, blocked, contradicted, invalid, and ambiguous fixture cases
+
+  = must: subdivide this chunk into final slices before any downstream implementation work
+  = must: keep all unresolved dependencies inside FSC1
+  = must: emit completed-work review after each FSC1 slice
+
+& [FinalSliceFamily: FSC1KernelRecordSchema] is candidate
+  + [chunk_ref] is FSC1
+  + [purpose] is define KernelRecord common fields, record-specific schemas, authority/readiness states, lineage, freshness, and natural keys
+  + [model_route] is requires deeper reasoning
+  + [dependency_scope] is inside FSC1
+  + [verification_oracle] is schema review plus fixture checklist for valid, stale, blocked, contradicted, invalid, and ambiguous records
+
+& [FinalSliceFamily: FSC1OperatorContractTemplate] is candidate
+  + [chunk_ref] is FSC1
+  + [purpose] is define operator contract template, trace schema, preconditions, postconditions, interrupts, faults, and fixture obligations
+  + [model_route] is requires deeper reasoning
+  + [dependency_scope] is inside FSC1
+  + [verification_oracle] is template review against signature_validation and support_readiness_recompute contract examples
+
+& [FinalSliceFamily: FSC1StorageDecision] is candidate
+  + [chunk_ref] is FSC1
+  + [purpose] is choose initial physical storage after logical schema is stable enough to evaluate fit
+  + [model_route] is requires deeper reasoning
+  + [dependency_scope] is inside FSC1
+  + [activation_inside_chunk] is logical schema draft accepted
+  + [verification_oracle] is storage decision record with tradeoffs, invalidation conditions, and source/projection preservation check
+
+& [FinalSliceFamily: FSC1FoundationFixtures] is candidate
+  + [chunk_ref] is FSC1
+  + [purpose] is author foundation fixture plan and fixture records after schema and operator contracts stabilize
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after schema and operator contracts stabilize
+  + [dependency_scope] is inside FSC1
+  + [verification_oracle] is fixture checklist covering signature validation, readiness states, stale projections, blocked output, and ambiguous lineage
+
+& [FinalSlicingChunk: FSC2PlanningCoordination] is gated
+  + [chunk_id] is FSC2
+  + [chunk_name] is planning coordination
+  + [included_portion] is P4 whole-field planning and packetization
+  + [included_portion] is P7 coordination and multi-agent governance
+  + [included_local_proof_leg] is P8b readiness, packetization, completion-review, and coordination fixtures
+  + [accepted_boundary_input] is FSC0 authority baseline
+  + [activation_gate] is FSC1 foundation contract pack accepted
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [internal_dependency] is readiness operator depends on requirement/support/support_gap schema imported from FSC1
+  + [internal_dependency] is work-packet generator depends on readiness operator and packet schema imported from FSC1
+  + [internal_dependency] is coordination claims depend on packetization and conversation identity records imported from FSC1
+  + [internal_dependency] is completion-review delta gate depends on support/readiness and coordination claims
+  + [output_contract] is planning coordination pack containing readiness operator, packet generator, completion review gate, coordination claim schema, and local fixtures
+  + [model_route] is requires deeper reasoning until readiness and coordination semantics stabilize
+
+  = must: not final-slice FSC2 until FSC1 output is accepted as boundary input
+  = must: keep all readiness, packetization, and coordination dependencies inside FSC2 after activation
+
+& [FinalSlicingChunk: FSC3RuntimeGraphProof] is gated
+  + [chunk_id] is FSC3
+  + [chunk_name] is runtime graph proof
+  + [included_portion] is P5 LangGraph procedure runtime
+  + [included_local_proof_leg] is P8c LangGraph runtime, interrupt, and operator-trace fixtures
+  + [accepted_boundary_input] is FSC0 authority baseline
+  + [activation_gate] is FSC1 foundation contract pack accepted
+  + [activation_gate] is FSC2 planning coordination pack accepted
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [internal_dependency] is graph nodes depend on operator contracts imported from FSC1
+  + [internal_dependency] is graph flow depends on packetization and completion review contracts imported from FSC2
+  + [internal_dependency] is interrupt fixtures depend on runtime graph proof path
+  + [output_contract] is runtime graph proof pack containing minimal WholeFieldPlannerGraph, checkpoint policy, interrupt fixtures, and operator trace proof
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after FSC1 and FSC2 contracts stabilize, with deeper reasoning for interrupt contradictions
+
+  = must: not final-slice FSC3 until FSC1 and FSC2 outputs are accepted
+
+& [FinalSlicingChunk: FSC4SurfaceProjection] is gated
+  + [chunk_id] is FSC4
+  + [chunk_name] is surface projection
+  + [included_portion] is P6 surface projection system
+  + [included_local_proof_leg] is P8d surface projection and authority-notice fixtures
+  + [accepted_boundary_input] is FSC0 authority baseline
+  + [activation_gate] is FSC1 foundation contract pack accepted
+  + [activation_gate] is FSC2 planning coordination pack accepted
+  + [activation_gate] is FSC3 runtime graph proof accepted
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [internal_dependency] is manager and worker projections depend on kernel records and packetization contracts imported from FSC1 and FSC2
+  + [internal_dependency] is narrative and debug projections depend on source lineage, operator trace, freshness, and fault records imported from FSC1 through FSC3
+  + [internal_dependency] is chat, Codex, terminal, IRC, Matrix, web, and Langflow adapters depend on projection contracts and mutation-through-operator rules
+  + [output_contract] is surface projection pack containing manager, worker, narrative, debug, conversation, adapter, and optional Langflow projection contracts with fixtures
+  + [model_route] is GPT-5.3-Codex-Spark-suitable for bounded projection implementation after fixtures exist, with deeper reasoning for authority display conflicts
+
+  = must: not final-slice FSC4 until FSC3 is accepted
+  = must: keep surfaces as projections and preserve authority_notice in every decision-making view
+
+& [FinalSlicingChunk: FSC5OperationsSafetyEnvelope] is gated
+  + [chunk_id] is FSC5
+  + [chunk_name] is operations safety envelope
+  + [included_portion] is P9 operations-manager safety and future machine control
+  + [included_local_proof_leg] is P8e operations safety and dry-run resource fixtures
+  + [accepted_boundary_input] is FSC0 authority baseline
+  + [activation_gate] is FSC1 foundation contract pack accepted
+  + [activation_gate] is FSC2 planning coordination pack accepted
+  + [activation_gate] is FSC3 runtime graph proof accepted
+  + [activation_gate] is FSC4 surface projection pack accepted
+  + [activation_gate] is operations safety source document preserved and SJS-processed
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [internal_dependency] is safety specification depends on accepted kernel, packet, graph, projection, coordination, and proof contracts
+  + [internal_dependency] is dry-run resource fixtures depend on safety specification
+  + [output_contract] is operations safety pack containing signed safety spec, dry-run resource fixtures, and live-control prohibition/proof gates
+  + [model_route] is requires deeper reasoning
+
+  = must: not final-slice FSC5 until all activation gates are accepted
+  = must: never authorize live process, GPU, model runtime, or job-control mutation from this surface alone
+
+& [ChunkClosureReview] is the dependency audit for this surface
+  + [FSC0_unresolved_external_dependency_set] is empty
+  + [FSC1_unresolved_external_dependency_set] is empty
+  + [FSC2_unresolved_external_dependency_set] is empty_after_gate
+  + [FSC3_unresolved_external_dependency_set] is empty_after_gate
+  + [FSC4_unresolved_external_dependency_set] is empty_after_gate
+  + [FSC5_unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_final_slice_ready_chunk_set] is FSC1
+
+  = must: treat gated chunks as parked, not slice-ready
+  = must: rerun closure review when a chunk output changes, fails proof, or invalidates
