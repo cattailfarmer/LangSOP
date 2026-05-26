@@ -1,0 +1,161 @@
+Subject: IR4 LangGraph Proof Runtime Implementation Plan V1
+Date: 2026-05-26
+Plan UUID: e3b0fdf1-24bb-4eb0-903f-6934d98bc058
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [runtime_boundary_import] docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [graph_implementation_contract] docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+@ [checkpoint_interrupt_policy] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+@ [fixture_plan] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+
+& [IR4LangGraphProofRuntimeImplementationPlanV1] is the IR4-S05 implementation plan and dependency boundary for future LangGraph proof runtime activation
+  + [plan_id] is ir4-langgraph-proof-runtime-implementation-plan-v1
+  + [plan_uuid] is e3b0fdf1-24bb-4eb0-903f-6934d98bc058
+  + [slice_id] is IR4-S05
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is implementation file inventory, dependency boundary, generated output boundary, command plan, and proof checklist only
+
+  = must: define future implementation files, public API boundaries, dependency decision boundary, generated checkpoint roots, fixture runner boundaries, command plan, and proof checklist
+  = must: preserve that actual code creation and dependency installation remain gated until later implementation activation slices accept them
+  = must: keep all future runtime side effects inside accepted generated output roots
+  - never: write graph runtime code, install LangGraph, create fixture source, create expected ledgers, create generated checkpoints, create tests, authorize operations control, or authorize live machine control in this slice
+
+& [ImplementationFileInventory: IR4LangGraphProofRuntime] is the future file inventory for bounded IR4 implementation
+  + [future_code_file] is src/langsop/runtime/graph_state.py
+  + [future_code_file_role] is define frozen graph state, terminal outcome, node result, checkpoint envelope, and non-authority warning records
+  + [future_code_file] is src/langsop/runtime/graph_contracts.py
+  + [future_code_file_role] is define graph node/edge contracts, precondition/postcondition helpers, and terminal outcome classifiers
+  + [future_code_file] is src/langsop/runtime/graph_runner.py
+  + [future_code_file_role] is evaluate the accepted WholeFieldPlannerGraph over fixture records without live dispatch or hidden source writes
+  + [future_code_file] is src/langsop/runtime/checkpoints.py
+  + [future_code_file_role] is validate checkpoint freshness, build generated checkpoint records, and refuse checkpoint authority confusion
+  + [future_code_file] is src/langsop/runtime/interrupts.py
+  + [future_code_file_role] is build SOP-first interrupt context packets and resume-condition classification records
+  + [future_code_file] is src/langsop/runtime/fixture_runner.py
+  + [future_code_file_role] is load tracked IR4 fixture source and expected ledgers, run graph fixtures, write generated outputs only under accepted roots, and compare output to expected ledgers
+  + [future_code_file] is src/langsop/runtime/__init__.py
+  + [future_code_file_role] is expose only bounded proof-runtime APIs and keep live-control names absent
+  + [future_test_file] is tests/test_ir4_runtime_graph_contracts.py
+
+  = must: require deeper reasoning review before creating or editing files outside this inventory for IR4 runtime implementation
+  = must: keep code and test creation gated until specific implementation activation slices open
+
+& [DependencyBoundary: IR4LangGraphProofRuntime] is the dependency boundary for future IR4 implementation
+  + [dependency_policy] is no dependency installation authorized by IR4-S05
+  + [first_pass_dependency_set] is Python standard library only unless a later activation slice explicitly authorizes LangGraph installation
+  + [future_dependency_candidate] is langgraph
+  + [future_dependency_candidate_status] is gated_until_dependency_authorizing_activation_slice
+  + [future_dependency_candidate_reason] is executable LangGraph integration should occur only after graph contracts, fixtures, generated-output roots, and no-authority-promotion tests are accepted
+  + [external_dependency_set] is empty_for_current_slice
+
+  = must: require a dependency-authorizing slice before adding packages, lockfiles, imports, or runtime requirements
+  = must: keep any standard-library graph runner clearly marked as proof-runtime implementation, not a substitute for accepted LangGraph dependency activation if true LangGraph integration is later required
+
+& [PublicAPIBoundary: IR4LangGraphProofRuntime] is the future public API boundary for IR4 implementation
+  + [api] is validate_graph_state(state, boundary_index, policy) returns validation result or terminal fault
+  + [api] is run_whole_field_planner_graph(graph_request, operator_harness, policy) returns terminal outcome and graph trace
+  + [api] is validate_checkpoint(checkpoint, freshness_basis, policy) returns current, stale, or checkpoint_authority_confusion
+  + [api] is build_interrupt_context(interrupt_kind, graph_state, evidence_refs, policy) returns SOP-first interrupt packet
+  + [api] is validate_generated_runtime_path(path, generated_output_policy) returns accepted generated path or refusal
+  + [api] is run_runtime_graph_fixture(fixture_case, expected_ledger, runner_policy) returns generated fixture comparison report
+  + [api_status] is future implementation target only
+
+  = must: make refusal, stale, fault, interrupt, and non-authority status visible in return values
+  = must: avoid APIs named or shaped as live dispatch, job control, process control, GPU control, network control, credential access, operations control, or live machine control
+
+& [GeneratedRuntimeOutputPolicy: IR4LangGraphProofRuntime] is the future generated output policy
+  + [allowed_write_root] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
+  + [allowed_write_root] is tests/fixtures/generated/ir4_runtime_graph/traces/
+  + [allowed_write_root] is tests/fixtures/generated/ir4_runtime_graph/reports/
+  + [allowed_write_root] is .langsop/checkpoints/ir4_runtime_graph/
+  + [allowed_write_root] is .langsop/traces/ir4_runtime_graph/
+  + [allowed_write_root] is .langsop/reports/ir4_runtime_graph/
+  + [write_forbidden_root] is docs/
+  + [write_forbidden_root] is src/
+  + [write_forbidden_root] is tests/fixtures/sop/
+  + [write_forbidden_root] is tests/fixtures/expected/
+  + [write_forbidden_root] is platform/
+  + [write_forbidden_root] is .git/
+  + [write_result] is generated_projection_only
+
+  = must: refuse writes outside accepted generated roots
+  = must: preserve failed runner reports without mutating SOP authority
+  = must: make generated artifacts disposable and reproducible
+
+& [FixtureRunnerImplementationBoundary: IR4LangGraphProofRuntime] is the future fixture runner boundary for IR4 implementation
+  + [allowed_fixture_source_root] is tests/fixtures/sop/ir4_runtime_graph/
+  + [allowed_expected_ledger_root] is tests/fixtures/expected/ir4_runtime_graph/
+  + [allowed_generated_root] is tests/fixtures/generated/ir4_runtime_graph/
+  + [fixture_execution_mode] is in_process_proof_runtime_only
+  + [fixture_execution_forbidden] is shell execution
+  + [fixture_execution_forbidden] is subprocess control
+  + [fixture_execution_forbidden] is job dispatch
+  + [fixture_execution_forbidden] is network access
+  + [fixture_execution_forbidden] is credential access
+  + [fixture_execution_forbidden] is process control
+  + [fixture_execution_forbidden] is GPU control
+  + [fixture_execution_forbidden] is live machine control
+
+  = must: compare generated graph traces and checkpoint facts to tracked expected ledgers without promoting generated output to authority
+  = must: fail closed when fixture source, expected ledger, or generated root is outside accepted policy
+
+& [ImplementationCommandPlan: IR4LangGraphProofRuntime] is the future command and verification plan
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [future_targeted_test] is python -m unittest tests.test_ir4_runtime_graph_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated checkpoints, traces, and reports are ignored, disposable, and reproducible
+
+  = must: run baseline tests and diff hygiene after every future implementation slice
+  = must: run targeted runtime graph tests once tests.test_ir4_runtime_graph_contracts exists
+
+& [ImplementationProofChecklist: IR4LangGraphProofRuntime] is the proof checklist for later implementation activation
+  + [proof_check] is implementation files match ImplementationFileInventory: IR4LangGraphProofRuntime
+  + [proof_check] is external dependency set remains empty unless a dependency-authorizing activation slice accepts LangGraph or another dependency
+  + [proof_check] is graph state validation rejects missing authority, stale checkpoint, unsupported scope, hidden write, and checkpoint authority confusion
+  + [proof_check] is graph runner returns terminal blocked, stale, fault, or interrupt records instead of silent success for unsafe states
+  + [proof_check] is operator harness calls remain in-process and bounded to accepted contracts
+  + [proof_check] is generated checkpoint, trace, and report writers refuse paths outside accepted generated roots
+  + [proof_check] is fixture runner reads only tracked fixture source and expected ledgers and writes only generated outputs
+  + [proof_check] is generated checkpoints, traces, and reports are ignored, disposable, and reproducible
+  + [proof_check] is source files, expected ledgers, and tracked SOP authority are not mutated by runtime code or tests
+  + [proof_check] is operations control and live machine control remain absent
+
+  = must: require completion review before any implementation output is accepted
+  = must: fail implementation review if any proof check fails
+
+& [ActivationGate: IR4LangGraphProofRuntimeImplementation] is the activation boundary created by this implementation plan
+  + [code_creation_authorized_by_this_slice] is false
+  + [fixture_creation_authorized_by_this_slice] is false
+  + [expected_ledger_creation_authorized_by_this_slice] is false
+  + [generated_output_creation_authorized_by_this_slice] is false
+  + [dependency_installation_authorized_by_this_slice] is false
+  + [next_slice_after_review] is IR4-S06 IR4 completion review and implementation activation pack
+  + [IR4-S06_model_route] is requires deeper reasoning because activation affects dependency, runtime, and downstream IR5 readiness boundaries
+  + [model_route_for_future_bounded_code_creation] is GPT-5.3-Codex-Spark-suitable only after IR4 implementation activation slices isolate bounded implementation work
+  + [deeper_reasoning_required_for_changes] is any change to graph semantics, checkpoint authority boundary, interrupt/resume contract, generated output policy, dependency boundary, fixture IO policy, or safety boundary
+
+  = must: keep implementation code and dependency installation gated until a later accepted implementation activation slice opens them
+  = must: preserve deeper reasoning for architecture, authority-boundary, dependency-boundary, or safety-boundary changes
+
+& [IR4S05CoverageReview] is the coverage checklist for IR4-S05
+  + [implementation_file_inventory_present] is true
+  + [dependency_boundary_present] is true
+  + [public_api_boundary_present] is true
+  + [generated_runtime_output_policy_present] is true
+  + [fixture_runner_implementation_boundary_present] is true
+  + [implementation_command_plan_present] is true
+  + [implementation_proof_checklist_present] is true
+  + [activation_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR4-S05 only when all checklist items are satisfied
+  = must: open IR4-S06 only after this implementation plan is reviewed in a completion review
