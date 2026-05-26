@@ -1,0 +1,137 @@
+Subject: FSC4 Completion Review V1
+Date: 2026-05-26
+Review UUID: a238d468-8b35-4921-a89f-aa8a123657ec
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [work_state] docs/state/FSC4_Work_State.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [completed_review] docs/reviews/FSC4_S01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/FSC4_S02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/FSC4_S03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/FSC4_S04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/FSC4_S05_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/FSC4_S06_Completion_Review.v1.sop
+
+& [CompletedWorkReview: FSC4-S07] is the final completion review for FSC4 surface projection
+  + [slice_id] is FSC4-S07
+  + [slice_name] is FSC4 completion review and activation packet
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/reviews/FSC4_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [completed_output] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [completed_output_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [activation_recommendation] is FSC5 operations safety envelope may open for final-slice minting
+
+  = must: treat this review and the surface projection pack as the gate-opening evidence for FSC5
+  = must: rerun FSC4-S07 if the FSC3 runtime graph proof pack, any accepted FSC4 output, or any FSC4 slice completion review changes
+  = must: preserve that FSC5 opening authorizes slice minting only, not operations control or live machine control
+
+& [AcceptedOutputDigestSet: FSC4] is the accepted hash ledger for FSC4 surface projection outputs
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [accepted_output] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [accepted_output] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [accepted_output_sha256] is CC5C7AF6E6CDD98F3FDA32204A7A4BA24A07366BE61F52843E91E7B01DA09E06
+  + [accepted_output] is docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+  + [accepted_output_sha256] is FFA0FF7BD2C2479C65B5D98AD53E70D580BA13555C40A03DA79E6AFC358A9665
+  + [accepted_output] is docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+  + [accepted_output_sha256] is CCB8ADC3D4315DE28901EA155B72C20EA949F21BD8F5A4E6508A6E6F4CE4FE75
+  + [accepted_output] is docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+  + [accepted_output_sha256] is 57FB23C910825FB370210E3E54FFE2C71A4255933F0FC3808A1C44BBFDCBAD7B
+  + [accepted_output] is docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is FD42E06849B93B92E25988AD6A27E3056EE7631CF03178D0EB9A0CD4689982D2
+  + [accepted_output] is docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is 3D3FB18A63F3E6ABEEA0D24C8915B745ACFEF12703C7E2FD676577C30D5AB6B1
+  + [accepted_output] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_output_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+
+  = must: mark this completion review stale if any listed hash changes
+
+& [FSC4CompletionVerification] is the verification result for the full surface projection pack
+  + [accepted_slice] is FSC4-S01 surface boundary and projection invariant map
+  + [accepted_slice] is FSC4-S02 authority notice and projection record contract
+  + [accepted_slice] is FSC4-S03 manager and worker projection contracts
+  + [accepted_slice] is FSC4-S04 narrative and debug projection contracts
+  + [accepted_slice] is FSC4-S05 conversation and adapter projection contracts
+  + [accepted_slice] is FSC4-S06 surface projection fixture plan
+  + [surface_boundary_status] is accepted
+  + [authority_notice_contract_status] is accepted
+  + [manager_worker_projection_status] is accepted
+  + [narrative_debug_projection_status] is accepted
+  + [conversation_adapter_projection_status] is accepted
+  + [fixture_plan_status] is accepted
+  + [surface_projection_pack_status] is accepted
+  + [fixture_case_count] is 11
+  + [fixture_index_entry_count] is 11
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [unresolved_proof_gap_count] is 0
+  + [unresolved_coordination_conflict_count] is 0
+  + [forbidden_external_dependency_found] is false
+  + [forbidden_scope_leak_found] is false
+
+  ! [FSC4CompletionVerificationSatisfied] is accepted
+    @ [support] docs/reviews/FSC4_S01_Completion_Review.v1.sop
+    @ [support] docs/reviews/FSC4_S02_Completion_Review.v1.sop
+    @ [support] docs/reviews/FSC4_S03_Completion_Review.v1.sop
+    @ [support] docs/reviews/FSC4_S04_Completion_Review.v1.sop
+    @ [support] docs/reviews/FSC4_S05_Completion_Review.v1.sop
+    @ [support] docs/reviews/FSC4_S06_Completion_Review.v1.sop
+    @ [support] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+
+& [SupportDelta: FSC4-S07] is the support delta produced by FSC4 completion
+  + [new_support_record] is FSC4SurfaceProjectionPackV1 supports FSC5 operations safety envelope activation
+  + [new_support_record] is accepted authority_notice and projection contracts support operations intent display without operations authority
+  + [new_support_record] is accepted adapter mutation gates support dry-run operation request safety planning
+  + [support_status] is accepted
+
+& [RequirementDelta: FSC4-S07] is the requirement delta produced by FSC4 completion
+  + [requirement_delta] is FSC5 must preserve operations as gated requests and dry-run projections until accepted safety authority exists
+  + [requirement_delta] is FSC5 final-slice minting requires deeper reasoning because operations safety and future machine control are high-risk
+  + [requirement_delta] is later bounded FSC5 dry-run fixture drafting may be GPT-5.3-Codex-Spark-suitable only after operations safety contracts exist
+  + [requirement_delta] is no FSC4 rebake required
+
+& [StalenessAndContradictionReview: FSC4-S07] is the final staleness review for FSC4
+  + [stale_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [unresolved_coordination_conflict_found] is false
+  + [false_ready_downstream_found] is false
+  + [unresolved_support_gap_found] is false
+  + [unresolved_proof_gap_found] is false
+
+  = must: mark FSC5 activation stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: FSC4-S07] is the final fault review for FSC4
+  + [forbidden_external_dependency_found] is false
+  + [ui_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [langflow_installation_or_export_leak_found] is false
+  + [operations_scope_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [silent_prior_slice_edit_found] is false
+
+  ! [FSC4S07Accepted] is accepted
+    @ [support] [FSC4CompletionVerification]
+    @ [support] [SupportDelta: FSC4-S07]
+    @ [support] [RequirementDelta: FSC4-S07]
+    @ [support] [StalenessAndContradictionReview: FSC4-S07]
+    @ [support] [FaultReview: FSC4-S07]
+
+& [NextChunkGate: FSC5] is opened
+  + [opened_chunk] is FSC5 operations safety envelope
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [activation_state] is ready_for_final_slice_minting
+  + [model_route] is requires deeper reasoning for FSC5 final-slice minting; GPT-5.3-Codex-Spark-suitable only for later bounded dry-run fixture drafting after safety contracts exist
+  + [safety_limit] is slice minting only; no operations control or live machine control authorized
+
+  = must: mint FSC5 slices before implementing FSC5
+  = must: keep operations as gated requests and dry-run projections until accepted safety authority exists
+  = must: prevent live machine control without explicit future safety envelope acceptance
