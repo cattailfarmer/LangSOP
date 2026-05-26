@@ -1,0 +1,208 @@
+Subject: Foundation Operator Contracts V1
+Date: 2026-05-26
+Operator Contract Set UUID: c1fc3c31-91d5-43cb-b4d3-547b1be43d50
+
+@ [slice_authority] docs/slices/FSC1_Final_Slices.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [specification_governance] ../platform/refinement/Specification_Governance.sop
+@ [feature_requirement_support] ../platform/refinement/Feature_Requirement_Support.sop
+
+& [FoundationOperatorContractSetV1] is the first foundation operator contract set for LangSOP
+  + [contract_set_id] is foundation-operator-contracts-v1
+  + [contract_set_uuid] is c1fc3c31-91d5-43cb-b4d3-547b1be43d50
+  + [slice_id] is FSC1-S04
+  + [authority_scope] is signature_validation, support_readiness_recompute, and work_packet_generation contract stub
+  + [implementation_scope] is operator contracts only
+  + [template_dependency] is docs/operators/Operator_Contract_Template.v1.sop
+
+  = must: define input records, output records, preconditions, postconditions, interrupts, faults, traces, and fixtures for each foundation operator
+  = must: keep work_packet_generation as a contract stub limited to inputs and outputs
+  = must: preserve SOP-first interrupt routes when authority, identity, proof, or readiness semantics are ambiguous
+  - never: implement executable operators in this file
+  - never: implement LangGraph nodes, dispatch, storage backend, surface rendering, or operations control in this file
+
+& [OperatorContract: signature_validation] is the contract for validating candidate SOP authority artifacts
+  + [operator_id] is signature_validation
+  + [operator_version] is v1
+  + [operator_name] is Signature Validation
+  + [operator_purpose] is classify whether a candidate canonical SOP artifact has valid source lineage and satisfaction signature
+  + [source_sop_ref] is platform/refinement/Specification_Governance.sop
+  + [source_sop_ref] is platform/refinement/Specification_Justification_Solution.sop
+  + [authority_basis_ref_set] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [input_record_kind_set] is authority_artifact, citation_ref, source_log, and proof_result
+  + [output_record_kind_set] is authority_artifact, proof_result, fault_record, and operator_trace
+  + [precondition_set] is candidate artifact has artifact_path or artifact_hash
+  + [precondition_set] is expected signature_protocol_uuid is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [precondition_set] is source_manifest_ref is present when artifact claims signed_sjs
+  + [precondition_set] is source hashes are present when source lineage claims immutable snapshots
+  + [postcondition_set] is valid signature produces proof_result with proof_status verified and authority_artifact authority_state signed_sjs
+  + [postcondition_set] is invalid signature produces fault_record or invalidated authority_artifact with preserved source_ref_set
+  + [interrupt_condition_set] is missing_source_lineage, ambiguous_identity, authority_conflict, stale_input, and human_override_required
+  + [fault_condition_set] is invalid_input_shape, hidden_authority_drift, missing_source_lineage, operator_contract_violation, and forbidden_external_dependency
+  + [blocked_output_contract] is blocked authority_artifact when source exists but required lineage evidence is incomplete
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is valid_signature, missing_signature, wrong_protocol_uuid, stale_source_hash, duplicate_signature, broken_lineage, and ambiguous_artifact_identity
+  + [forbidden_scope] is rewriting source artifacts, issuing new SJS signatures, changing canonical source content, or deciding storage backend
+
+  = must: never convert source_only to signed_sjs without valid signature evidence
+  = must: preserve invalid and superseded signatures as trace
+  = must: return sop_first_interrupt for ambiguous lineage rather than guessing
+
+& [OperatorIOBinding: signature_validation] is the input and output binding for signature_validation
+  + [input_record_kind] is authority_artifact
+  + [input_role] is candidate authority artifact
+  + [input_record_kind] is citation_ref
+  + [input_role] is source manifest and hash evidence
+  + [input_record_kind] is source_log
+  + [input_role] is preserved source lineage when available
+  + [output_record_kind] is proof_result
+  + [output_role] is prove signature validation result
+  + [output_record_kind] is authority_artifact
+  + [output_role] is update_by_supersession or invalidate authority classification
+  + [output_record_kind] is fault_record
+  + [output_role] is emit fault when validation cannot safely classify
+  + [output_record_kind] is operator_trace
+  + [output_role] is trace every invocation
+
+& [FixtureObligationSet: signature_validation] is the fixture requirement set for signature_validation
+  + [fixture] is valid_signature expects success and proof_result verified
+  + [fixture] is missing_signature expects blocked_output or fault_output
+  + [fixture] is wrong_protocol_uuid expects fault_output
+  + [fixture] is stale_source_hash expects stale_input or fault_output
+  + [fixture] is duplicate_signature expects sop_first_interrupt
+  + [fixture] is broken_lineage expects fault_output
+  + [fixture] is ambiguous_artifact_identity expects sop_first_interrupt
+
+& [OperatorContract: support_readiness_recompute] is the contract for deriving readiness from requirements and support
+  + [operator_id] is support_readiness_recompute
+  + [operator_version] is v1
+  + [operator_name] is Support Readiness Recompute
+  + [operator_purpose] is derive readiness_projection from requirements, support records, support gaps, proof status, dependencies, freshness, authority, and ownership
+  + [source_sop_ref] is platform/refinement/Feature_Requirement_Support.sop
+  + [source_sop_ref] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [authority_basis_ref_set] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [input_record_kind_set] is capability_node, requirement_record, support_record, support_gap, proof_result, authority_artifact, coordination_claim, and stale_projection
+  + [output_record_kind_set] is readiness_projection, stale_projection, support_gap, fault_record, and operator_trace
+  + [precondition_set] is capability_node subject_ref is resolved
+  + [precondition_set] is requirement_record set is current or stale state is explicitly handled
+  + [precondition_set] is support_record and support_gap references preserve source_ref_set
+  + [precondition_set] is authority_artifact inputs are signed_sjs, proof_backed, accepted_decision, or explicitly source_only for preparation work
+  + [postcondition_set] is unresolved blocking support_gap prevents ready_to_packetize readiness
+  + [postcondition_set] is stale input produces stale_projection or blocked readiness rather than false-ready output
+  + [postcondition_set] is supported requirements with current proof and no blocking gaps produce readiness_projection ready_to_packetize when packetization_rule permits
+  + [interrupt_condition_set] is ambiguous_identity, authority_conflict, missing_proof_route, stale_input, and unsupported_scope
+  + [fault_condition_set] is false_ready_packet, stale_projection, invalid_input_shape, hidden_authority_drift, and operator_contract_violation
+  + [blocked_output_contract] is readiness_projection with readiness_state blocked and blocker_ref_set
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is ready_capability, blocked_gap, stale_support, contradicted_support, missing_proof_route, authority_conflict, and ambiguous_dependency
+  + [forbidden_scope] is generating work packets, assigning work, implementing packet queues, or resolving support gaps silently
+
+  = must: never emit ready_to_packetize while unresolved blocking support_gap remains
+  = must: preserve stale_projection when freshness fails
+  = must: return sop_first_interrupt when readiness depends on semantic judgment outside the contract
+
+& [OperatorIOBinding: support_readiness_recompute] is the input and output binding for support_readiness_recompute
+  + [input_record_kind] is capability_node
+  + [input_role] is readiness subject
+  + [input_record_kind] is requirement_record
+  + [input_role] is obligations being evaluated
+  + [input_record_kind] is support_record
+  + [input_role] is evidence supporting requirements
+  + [input_record_kind] is support_gap
+  + [input_role] is blockers and missing support
+  + [input_record_kind] is proof_result
+  + [input_role] is verification evidence
+  + [output_record_kind] is readiness_projection
+  + [output_role] is create derived readiness state
+  + [output_record_kind] is stale_projection
+  + [output_role] is mark stale derived state
+  + [output_record_kind] is fault_record
+  + [output_role] is emit false-ready, stale, or authority faults
+  + [output_record_kind] is operator_trace
+  + [output_role] is trace every invocation
+
+& [FixtureObligationSet: support_readiness_recompute] is the fixture requirement set for support_readiness_recompute
+  + [fixture] is ready_capability expects readiness_projection ready_to_packetize
+  + [fixture] is blocked_gap expects readiness_projection blocked
+  + [fixture] is stale_support expects stale_projection
+  + [fixture] is contradicted_support expects readiness_projection contradicted or fault_output
+  + [fixture] is missing_proof_route expects sop_first_interrupt or blocked_output
+  + [fixture] is authority_conflict expects sop_first_interrupt
+  + [fixture] is ambiguous_dependency expects sop_first_interrupt
+
+& [OperatorContract: work_packet_generation] is the contract stub for generating bounded work packets from readiness
+  + [operator_id] is work_packet_generation
+  + [operator_version] is v1_stub
+  + [operator_name] is Work Packet Generation
+  + [operator_purpose] is generate a WorkPacket contract view from accepted readiness_projection and authority basis
+  + [source_sop_ref] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [source_sop_ref] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [authority_basis_ref_set] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [input_record_kind_set] is readiness_projection, capability_node, requirement_record, support_record, support_gap, proof_result, authority_artifact, and coordination_claim
+  + [output_record_kind_set] is work_packet, support_gap, fault_record, and operator_trace
+  + [precondition_set] is readiness_projection is current and ready_to_packetize
+  + [precondition_set] is authority_basis_ref_set is non-empty and current
+  + [precondition_set] is no blocking support_gap remains for the requested packet scope
+  + [precondition_set] is verification_oracle can be named before packet creation
+  + [postcondition_set] is generated work_packet preserves capability_ref_set, requirement_ref_set, authority_basis, precondition_set, expected_output_set, verification_oracle, model_route, forbidden_scope, and completion_review_required
+  + [postcondition_set] is blocked output appears instead of work_packet when support gap, stale readiness, missing oracle, or authority conflict remains
+  + [interrupt_condition_set] is authority_conflict, ambiguous_identity, missing_proof_route, stale_input, unsupported_scope, and high_risk_operation
+  + [fault_condition_set] is false_ready_packet, stale_projection, invalid_input_shape, hidden_authority_drift, and unsupported_operations_control
+  + [blocked_output_contract] is support_gap or blocked readiness_projection explaining why packet was not generated
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is valid_packet, blocked_gap, stale_readiness, missing_verification_oracle, authority_conflict, and high_risk_operation
+  + [forbidden_scope] is assigning work, dispatching to agents, mutating files, running commands, implementing queues, implementing LangGraph nodes, or authorizing live operations
+
+  = must: remain a contract stub until FSC2 planning coordination accepts packetization semantics
+  = must: never create a work_packet without completion_review_required true
+  = must: never generate packet output from stale readiness
+
+& [OperatorIOBinding: work_packet_generation] is the input and output binding for work_packet_generation
+  + [input_record_kind] is readiness_projection
+  + [input_role] is packet readiness source
+  + [input_record_kind] is capability_node
+  + [input_role] is capability scope
+  + [input_record_kind] is requirement_record
+  + [input_role] is packet obligations
+  + [input_record_kind] is authority_artifact
+  + [input_role] is packet authority basis
+  + [output_record_kind] is work_packet
+  + [output_role] is create packet contract view
+  + [output_record_kind] is support_gap
+  + [output_role] is block packet generation when support is missing
+  + [output_record_kind] is fault_record
+  + [output_role] is emit false-ready or authority fault
+  + [output_record_kind] is operator_trace
+  + [output_role] is trace every invocation
+
+& [FixtureObligationSet: work_packet_generation] is the fixture requirement set for work_packet_generation
+  + [fixture] is valid_packet expects work_packet output and operator_trace success
+  + [fixture] is blocked_gap expects blocked_output
+  + [fixture] is stale_readiness expects stale_projection or fault_output
+  + [fixture] is missing_verification_oracle expects blocked_output
+  + [fixture] is authority_conflict expects sop_first_interrupt
+  + [fixture] is high_risk_operation expects sop_first_interrupt
+
+& [FoundationOperatorContractCoverageReview] is the FSC1-S04 coverage checklist
+  + [contract_present] is signature_validation
+  + [contract_present] is support_readiness_recompute
+  + [contract_present] is work_packet_generation v1_stub
+  + [every_contract_has] is input_record_kind_set
+  + [every_contract_has] is output_record_kind_set
+  + [every_contract_has] is precondition_set
+  + [every_contract_has] is postcondition_set
+  + [every_contract_has] is interrupt_condition_set
+  + [every_contract_has] is fault_condition_set
+  + [every_contract_has] is trace_schema
+  + [every_contract_has] is fixture_set
+  + [forbidden_scope_absent] is executable operator implementation
+  + [forbidden_scope_absent] is LangGraph node implementation
+  + [forbidden_scope_absent] is dispatch implementation
+  + [forbidden_scope_absent] is storage backend choice
+  + [forbidden_scope_absent] is surface rendering
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC1-S04 if any contract lacks inputs, outputs, preconditions, postconditions, interrupts, faults, trace schema, or fixtures
