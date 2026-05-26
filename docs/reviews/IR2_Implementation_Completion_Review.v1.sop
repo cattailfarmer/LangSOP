@@ -1,0 +1,119 @@
+Subject: IR2 Implementation Completion Review V1
+Date: 2026-05-26
+Review UUID: 968ca630-df63-4ac2-a020-8112510f7ee9
+
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [completed_output] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [completed_review] docs/reviews/IR2_IA01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_IA02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_IA03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_IA04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_IA05_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_IA06_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR2-IA07] is the final implementation completion review for IR2 parser/projection implementation
+  + [slice_id] is IR2-IA07
+  + [slice_name] is implementation completion review and parser/projection proof pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [completed_output] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR2 parser/projection implementation accepted as fixture-scale implementation proof
+  + [downstream_gate_result] is IR3 operator harness and fixture runner final-slice minting may open
+  + [next_model_route] is requires deeper reasoning for IR3 final-slice minting; later bounded IR3 implementation may be GPT-5.3-Codex-Spark-suitable after slices are accepted
+
+  = must: treat this review and proof pack as the gate-opening evidence for IR3 final-slice minting only
+  = must: rerun IR2-IA07 if the proof pack, accepted implementation outputs, tests, generated-output proof, or implementation completion reviews change
+  = must: keep operations control and live machine control unauthorized
+
+& [IR2ImplementationCompletionVerification] is the verification result for the full IR2 implementation proof pack
+  + [accepted_activation_slice] is IR2-IA01
+  + [accepted_activation_slice] is IR2-IA02
+  + [accepted_activation_slice] is IR2-IA03
+  + [accepted_activation_slice] is IR2-IA04
+  + [accepted_activation_slice] is IR2-IA05
+  + [accepted_activation_slice] is IR2-IA06
+  + [accepted_activation_slice] is IR2-IA07
+  + [activation_boundary_status] is accepted
+  + [fixture_material_status] is accepted
+  + [discovery_parser_status] is accepted
+  + [extraction_validation_status] is accepted
+  + [sqlite_projection_status] is accepted
+  + [contract_tests_status] is accepted
+  + [generated_output_proof_status] is accepted
+  + [proof_pack_status] is accepted
+  + [targeted_test_result] is passed
+  + [baseline_test_result] is passed
+  + [compile_result] is passed
+  + [diff_hygiene_result] is passed
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [generated_projection_authority_leak_found] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR2ImplementationCompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+
+& [SupportDelta: IR2-IA07] is the support delta produced by IR2 implementation completion
+  + [new_support_record] is IR2ParserProjectionImplementationProofPackV1 supports IR3 final-slice minting
+  + [new_support_record] is accepted parser/projection implementation provides fixture-scale discovery, parsing, extraction, validation, projection, and generated-output proof
+  + [new_support_record] is downstream IR3 handoff remains slice-first rather than direct code execution
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2-IA07] is the requirement delta produced by IR2 implementation completion
+  + [requirement_delta] is IR3 final-slice minting may open and requires deeper reasoning for downstream boundary and authority/projection handoff
+  + [requirement_delta] is future bounded IR3 implementation work is GPT-5.3-Codex-Spark-suitable only after IR3 slices are minted and accepted gates open
+  + [requirement_delta] is no LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized by IR2 completion
+  + [requirement_delta] is no rebake required
+
+& [StalenessAndContradictionReview: IR2-IA07] is the final staleness review for IR2 implementation
+  + [stale_activation_source_found] is false
+  + [stale_accepted_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [false_ready_IR3_implementation_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR2 implementation proof stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR2-IA07] is the final fault review for IR2 implementation
+  + [generated_projection_authority_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [unlisted_code_file_created] is false
+  + [unlisted_test_file_created] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR2IA07Accepted] is accepted
+    @ [support] [IR2ImplementationCompletionVerification]
+    @ [support] [SupportDelta: IR2-IA07]
+    @ [support] [RequirementDelta: IR2-IA07]
+    @ [support] [StalenessAndContradictionReview: IR2-IA07]
+    @ [support] [FaultReview: IR2-IA07]
+
+& [NextChunkGate: IR3] is opened
+  + [opened_chunk] is IR3 operator harness and fixture runner final-slice minting
+  + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+  + [activation_state] is ready_for_final_slice_minting
+  + [model_route] is requires deeper reasoning for final-slice minting; GPT-5.3-Codex-Spark-suitable only for later bounded IR3 implementation after slices are accepted
+  + [downstream_gate] is IR4 remains gated until IR3 operator harness and fixture runner proof is accepted
+  + [safety_limit] is no live operations control authorized
+
+  = must: mint IR3 slices before implementing IR3
+  = must: keep IR3 dependencies inside IR3 after activation
+  = must: keep IR4 and later chunks gated

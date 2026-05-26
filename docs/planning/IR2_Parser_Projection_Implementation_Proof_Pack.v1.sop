@@ -1,0 +1,106 @@
+Subject: IR2 Parser Projection Implementation Proof Pack V1
+Date: 2026-05-26
+Proof Pack UUID: eaefc03e-b13f-4f39-bfee-c4e0164d45d3
+
+@ [completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [IR2_authority_projection_pack] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+@ [generated_output_proof] docs/reviews/IR2_Parser_Projection_Generated_Output_Proof.v1.sop
+@ [implementation_tests] tests/test_ir2_parser_projection_contracts.py
+
+& [ImplementationProofPack: IR2ParserProjectionImplementationProofPackV1] is the accepted parser/projection implementation proof pack exported by IR2 after completion review acceptance
+  + [proof_pack_id] is ir2-parser-projection-implementation-proof-pack-v1
+  + [proof_pack_uuid] is eaefc03e-b13f-4f39-bfee-c4e0164d45d3
+  + [source_chunk] is IR2 bounded parser/projection implementation activation
+  + [export_status] is accepted_boundary_input_after_IR2_implementation_completion_review
+  + [consumer_work] is IR3 operator harness and fixture runner final-slice minting
+  + [implementation_effect] is fixture-scale authority discovery, structural parsing, candidate extraction, validation, SQLite projection schema/writer/rebuild, and contract tests are accepted as bounded IR2 implementation proof
+  + [safety_limit] is no live operations control authorized
+
+  = must: preserve that generated SQLite, parser caches, fixture outputs, reports, and indexes are projection-only
+  = must: require IR3 final slices before any IR3 operator harness implementation starts
+  = must: keep LangGraph runtime, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control outside this pack
+
+& [AcceptedIR2ImplementationDigestSet] is the accepted hash ledger exported by IR2 implementation proof
+  + [accepted_code_output] is src/langsop/authority/discovery.py
+  + [accepted_code_output_sha256] is 202EC8AD87D99D516CBDBC3E4D8B56BF9FC363093DF23F4A16EC46BEA1230356
+  + [accepted_code_output] is src/langsop/authority/sop_parser.py
+  + [accepted_code_output_sha256] is 87868226D91F86B7BAE89D33EFA0EB2D431407AF8D0AB8EFF02061DF7570BD04
+  + [accepted_code_output] is src/langsop/authority/extraction.py
+  + [accepted_code_output_sha256] is C23C0451CC92CD446EF183EB465DD5DF223D533E144890862204418E59FB7AB1
+  + [accepted_code_output] is src/langsop/authority/validation.py
+  + [accepted_code_output_sha256] is EBC487EDE198F2DDC4A75482D296B4C45FED7816D821D04FD464723857FB50FE
+  + [accepted_code_output] is src/langsop/projections/sqlite_schema.py
+  + [accepted_code_output_sha256] is A57BF8354C33F4E97CA7CDB82E7AEC69398980043DC4A04B8E9A76094BB69B88
+  + [accepted_code_output] is src/langsop/projections/sqlite_projection.py
+  + [accepted_code_output_sha256] is BE9A4BD602E6B23103C58175011BB97E7C629D09489DF5349DF33F90B4334139
+  + [accepted_code_output] is src/langsop/projections/rebuild.py
+  + [accepted_code_output_sha256] is 1373CA1BD9E871011491C3C6107AC79AF9C1637BDD76BE3A811A6FFA99317984
+  + [accepted_test_output] is tests/test_ir2_parser_projection_contracts.py
+  + [accepted_test_output_sha256] is D65D928DC64D96B57ED9EBD89069D5636215A7595811E6CCE7B51D5C689336B9
+  + [accepted_proof_output] is docs/reviews/IR2_Parser_Projection_Generated_Output_Proof.v1.sop
+  + [accepted_proof_output_sha256] is DBAA192331B5A6B9BEE8621058BCF9E9702559734BF1D4B886FF54A9C894142D
+
+  = must: mark this proof pack stale if any listed hash changes
+
+& [AcceptedIR2ImplementationReviewDigestSet] is the accepted review hash ledger for implementation activation
+  + [accepted_review] is docs/reviews/IR2_IA01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 73CF7CDFE6B00CB1E6368081535B8B601E8575CFA8CBA9E7BE8D62503065D809
+  + [accepted_review] is docs/reviews/IR2_IA02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 28FAA3D870373782F5D88CBD6F05D59A78B2B3FB986ED651AC7BE29B608547AA
+  + [accepted_review] is docs/reviews/IR2_IA03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 814FF4FCA0F3D3D5FA70C43DC8F8B0D85991E0A3FA156DEC9247DB78ACD32AC6
+  + [accepted_review] is docs/reviews/IR2_IA04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 1B5D94AC579028DBA06C2B515EC43E81B9EEF74930B6C1CDBA2F2927ACBC3EF8
+  + [accepted_review] is docs/reviews/IR2_IA05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is E04A577255EBB947345B9239E9E56AF861973FAD7D868B2041CC5807CA53297B
+  + [accepted_review] is docs/reviews/IR2_IA06_Completion_Review.v1.sop
+  + [accepted_review_sha256] is F28F2B3E96907B20247EDA484058D90CF6AB694A6B19421F3A1F72D205378985
+
+  = must: mark this proof pack stale if any listed review changes
+
+& [ImplementationProofCommandSet] is the accepted command evidence for IR2 parser/projection implementation
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [targeted_test_command] is python -m unittest tests.test_ir2_parser_projection_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 6
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [baseline_test_count] is 9
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed
+
+& [ImplementationProofCoverage] is the accepted behavior coverage for IR2 parser/projection implementation
+  + [covered_behavior] is SOP artifact discovery includes tracked docs and fixture authority candidates
+  + [covered_behavior] is generated fixture output is excluded from discovery
+  + [covered_behavior] is structural parser preserves malformed line as recoverable unknown_marker fault
+  + [covered_behavior] is extraction emits KernelRecord candidate envelopes with source refs, lineage, natural-key state, freshness, status, and blocked/fault rationale
+  + [covered_behavior] is validation classifies valid, source-only, wrong-protocol, stale, malformed, unresolved, broken-lineage, projection-only, and source-mutation-refusal cases
+  + [covered_behavior] is SQLite projection writes in-memory rows with generated_sqlite_non_authority notice
+  + [covered_behavior] is rebuild refuses output outside accepted generated roots
+  + [covered_behavior] is generated output under tests/fixtures/generated/ir2_parser_projection/ is ignored and cleaned by tests
+
+  = must: require a future slice before widening fixture cases, output paths, dependency set, or parser semantics
+
+& [DownstreamIR3GateExport] is the downstream gate exported by this proof pack
+  + [IR3_final_slice_minting_state] is may_open_after_IR2_implementation_completion_review_accepts_this_pack
+  + [IR3_implementation_state] is gated_until_IR3_final_slices_are_minted_and_their_first_slice_gate_opens
+  + [IR3_final_slice_minting_model_route] is requires deeper reasoning for downstream boundary and authority/projection handoff
+  + [IR3_future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable after IR3 slice contracts are accepted and implementation tasks are bounded
+  + [safety_limit] is no live operations control authorized
+
+  = must: open IR3 by minting final slices, not by directly writing operator harness code
+  = must: preserve IR2 parser/projection proof as boundary input for IR3 fixture runner work
+
+& [IR2ImplementationProofPackInvalidationRuleSet] is the staleness contract for IR2ParserProjectionImplementationProofPackV1
+  + [invalidated_by] is change to any accepted implementation output hash
+  + [invalidated_by] is change to any accepted fixture or expected-ledger hash
+  + [invalidated_by] is change to generated-output proof or contract tests
+  + [invalidated_by] is change to IR2-IA01 through IR2-IA07 completion reviews that affects support, requirements, or gates
+  + [invalidated_by] is generated projection promoted to source authority
+  + [invalidated_by] is source mutation by parser/projection runtime
+  + [invalidated_by] is dependency installation without authorizing slice
+  + [invalidated_by] is operations control or live machine control leak
+
+  = must: rerun IR2-IA07 or rebake the relevant surface after invalidation before IR3 consumes this proof pack
