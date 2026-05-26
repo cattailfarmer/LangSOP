@@ -1,0 +1,149 @@
+Subject: FSC4 Surface Boundary And Invariant Map V1
+Date: 2026-05-26
+Map UUID: 13f44915-b708-43cf-867e-e02c07769557
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [runtime_boundary] docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+@ [graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [trace_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+
+& [SurfaceBoundaryMap: FSC4SurfaceBoundaryAndInvariantMapV1] is the imported surface boundary map for FSC4 surface projection
+  + [slice_id] is FSC4-S01
+  + [source_chunk] is FSC3 runtime graph proof
+  + [target_chunk] is FSC4 surface projection
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [import_policy] is read_only_import
+  + [projection_policy] is surfaces may render and route projected records but cannot become source authority
+  + [implementation_policy] is no UI, adapter, Langflow, transport, or operations implementation is authorized by this map alone
+
+  = must: treat FSC1, FSC2, and FSC3 packs as accepted boundary inputs, not editable surface drafts
+  = must: make every decision-making surface carry authority, freshness, lineage, and visible blocked/stale/fault/interrupt status
+  = must: route authority-sensitive actions through accepted operator contracts, SOP-first interrupt, human override, or completion review gates
+  - never: let surface state, adapter logs, chat messages, terminal output, or Langflow diagrams silently mutate source authority
+
+& [ImportedSurfaceContractInventory] is the accepted contract inventory imported into FSC4
+  + [imported_pack] is FSC1FoundationContractPackV1
+  + [imported_pack] is FSC2PlanningCoordinationPackV1
+  + [imported_pack] is FSC3RuntimeGraphProofPackV1
+  + [imported_contract] is KernelRecord common field contract
+  + [imported_contract] is work_packet_generation v1
+  + [imported_contract] is coordination_claim_register v1
+  + [imported_contract] is coordination_conflict_signal v1
+  + [imported_contract] is completion_review_delta_gate v1
+  + [imported_contract] is WholeFieldPlannerGraphContractV1
+  + [imported_contract] is SOPFirstInterruptResumeContractV1
+  + [imported_contract] is OperatorTraceRuntimeProofContractV1
+  + [imported_contract] is HiddenWritePreventionProof
+  + [imported_fixture_plan] is FSC3RuntimeGraphFixturePlanV1
+
+  = must: preserve record_id, record_kind, natural_key, subject_ref, authority_state, source_ref_set, lineage_edge_set, freshness_rule, and status on projected records
+  = must: preserve support_delta, requirement_delta, coordination claim, operator_trace, fault_record, stale_projection, interrupt_context, and completion review obligations
+
+& [ProjectionOwnedInvariantSet] is the invariant set owned by FSC4
+  + [invariant] is surface records are projections, not source authority
+  + [invariant] is surface-local state is display and interaction state only
+  + [invariant] is authority_notice is required anywhere a human or agent may make a decision from the projection
+  + [invariant] is freshness_rule and stale state are visible before action is offered
+  + [invariant] is blocked, faulted, interrupted, and pending-review states are visible and cannot be rendered as completed work
+  + [invariant] is source_ref_set and lineage_edge_set remain inspectable from every decision-making projection
+  + [invariant] is manager projection may summarize readiness but cannot assign or dispatch by itself
+  + [invariant] is worker projection may display packet obligations but cannot claim completion by itself
+  + [invariant] is narrative projection may summarize lineage but cannot rewrite source narrative authority
+  + [invariant] is debug projection may inspect traces and faults but cannot repair authority without an accepted route
+  + [invariant] is adapters are carriers and action classifiers, not authority stores
+  + [invariant] is optional Langflow diagrams are explanatory projections, not executable authority by themselves
+  + [invariant] is multi-surface divergence produces stale or conflict visibility before follow-on action
+
+  = must: preserve these invariants through FSC4-S02 through FSC4-S07
+  = must: mark downstream FSC4 slices stale when any invariant changes
+
+& [SurfaceNonAuthorityBoundary] is the authority boundary for projected surface state
+  + [not_authority] is browser component state
+  + [not_authority] is dashboard cache
+  + [not_authority] is chat transcript projection
+  + [not_authority] is Codex thread display
+  + [not_authority] is terminal output projection
+  + [not_authority] is IRC channel log
+  + [not_authority] is Matrix room event
+  + [not_authority] is web adapter request state
+  + [not_authority] is Langflow visual graph node
+  + [not_authority] is local adapter queue
+  + [authority_route] is signed source specification
+  + [authority_route] is accepted canonical specification
+  + [authority_route] is accepted proof_result
+  + [authority_route] is accepted completion_review
+  + [authority_route] is accepted human override record with authority notice
+  + [authority_route] is SOP-first interrupt resolution with source_ref_set
+
+  = must: reject any projection contract that promotes transport or UI state to authority without an accepted route
+  = must: require authority_notice whenever projected state is lower authority than the action it may invite
+
+& [AdapterMutationBoundary] is the mutation boundary for inbound actions from projected surfaces
+  + [inbound_action_kind] is observation
+  + [inbound_action_kind] is comment
+  + [inbound_action_kind] is proposal
+  + [inbound_action_kind] is work_request
+  + [inbound_action_kind] is claim_request
+  + [inbound_action_kind] is human_override_request
+  + [inbound_action_kind] is interrupt_resolution_request
+  + [authority_sensitive_action] is work_request
+  + [authority_sensitive_action] is claim_request
+  + [authority_sensitive_action] is human_override_request
+  + [authority_sensitive_action] is interrupt_resolution_request
+  + [required_route] is accepted operator contract, SOP-first interrupt, coordination review, or completion review gate
+  + [forbidden_route] is direct write to canonical specification, accepted pack, completion review, or source authority from adapter input
+
+  = must: preserve the carrier surface, actor, timestamp, source_ref_set, and intended mutation as traceable context
+  = must: classify unsupported or ambiguous inbound actions as SOP-first interrupt rather than silent mutation
+
+& [ForbiddenSurfaceMutationList: FSC4] is the forbidden mutation set for FSC4-S01
+  + [forbidden_mutation] is editing accepted FSC1, FSC2, or FSC3 output files to make projections easier
+  + [forbidden_mutation] is treating UI state as authority
+  + [forbidden_mutation] is treating adapter transport state as authority
+  + [forbidden_mutation] is treating Langflow diagrams as source authority
+  + [forbidden_mutation] is implementing UI components
+  + [forbidden_mutation] is implementing adapters or transports
+  + [forbidden_mutation] is installing Langflow or runtime packages
+  + [forbidden_mutation] is dispatching real work
+  + [forbidden_mutation] is authorizing operations control
+  + [forbidden_mutation] is omitting authority_notice from a decision-making projection
+
+  = must: fail FSC4-S01 review if any forbidden mutation appears in the output
+
+& [DownstreamStaleTriggerList: FSC4] is the stale trigger set for FSC4 downstream work
+  + [stale_trigger] is FSC3 runtime graph proof pack hash changes
+  + [stale_trigger] is FSC4 final slice surface changes
+  + [stale_trigger] is surface projection invariant changes
+  + [stale_trigger] is authority notice contract changes after manager or worker projection work starts
+  + [stale_trigger] is manager or worker projection contract changes after narrative, debug, or adapter projection work starts
+  + [stale_trigger] is narrative or debug projection contract changes after adapter projection work starts
+  + [stale_trigger] is conversation or adapter projection contract changes after fixture planning starts
+  + [stale_trigger] is imported runtime trace proof changes
+  + [stale_trigger] is missing authority_notice is detected
+  + [stale_trigger] is surface projection hides blocked, stale, faulted, interrupted, or pending-review state
+  + [stale_trigger] is adapter mutation bypasses accepted operator, interrupt, coordination, or completion review route
+
+  = must: mark affected downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review rather than silent edits
+
+& [FSC4S01AcceptanceChecklist] is the verification checklist for FSC4-S01
+  + [required_component] is imported surface contract inventory
+  + [required_component] is projection-owned invariant set
+  + [required_component] is surface non-authority boundary
+  + [required_component] is adapter mutation boundary
+  + [required_component] is forbidden surface mutation list
+  + [required_component] is downstream stale trigger list
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is Langflow export implementation
+  + [forbidden_scope_absent] is runtime graph implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: accept FSC4-S01 only when surface imports are mapped without creating implementation authority

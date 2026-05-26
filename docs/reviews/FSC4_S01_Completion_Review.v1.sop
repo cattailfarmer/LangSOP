@@ -1,0 +1,86 @@
+Subject: FSC4-S01 Completion Review V1
+Date: 2026-05-26
+Review UUID: 87d74122-0f9a-47ae-bbe8-94c50877e51b
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [work_state] docs/state/FSC4_Work_State.v1.sop
+@ [completed_output] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_input] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+
+& [CompletedWorkReview: FSC4-S01] is the completion review for surface boundary and projection invariant map
+  + [slice_id] is FSC4-S01
+  + [slice_name] is surface boundary and projection invariant map
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [completed_output_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is FSC4-S02 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for FSC4-S02
+  = must: rerun review if FSC4_Surface_Boundary_And_Invariant_Map.v1.sop changes
+  = should: route FSC4-S02 to deeper reasoning because authority_notice semantics decide how projected state can be trusted
+
+& [VerificationOracleResult: FSC4-S01] is the verification result for surface boundary import coverage
+  + [imported_surface_contract_inventory_present] is ImportedSurfaceContractInventory
+  + [projection_owned_invariant_set_present] is ProjectionOwnedInvariantSet
+  + [surface_non_authority_boundary_present] is SurfaceNonAuthorityBoundary
+  + [adapter_mutation_boundary_present] is AdapterMutationBoundary
+  + [forbidden_surface_mutation_list_present] is ForbiddenSurfaceMutationList
+  + [downstream_stale_trigger_list_present] is DownstreamStaleTriggerList
+  + [authority_notice_required] is true
+  + [surface_state_non_authority] is true
+  + [adapter_state_non_authority] is true
+  + [langflow_projection_non_authority] is true
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is Langflow export implementation
+  + [forbidden_scope_absent] is runtime graph implementation
+  + [forbidden_scope_absent] is operations control
+
+  ! [FSC4S01VerificationSatisfied] is accepted
+    @ [support] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+
+& [SupportDelta: FSC4-S01] is the support delta produced by this slice
+  + [new_support_record] is FSC4SurfaceBoundaryAndInvariantMapV1 supports FSC4-S02 authority notice and projection record contract
+  + [new_support_record] is SurfaceNonAuthorityBoundary supports later manager, worker, narrative, debug, conversation, adapter, and Langflow projection contracts
+  + [new_support_record] is AdapterMutationBoundary supports mutation-through-operator gate design
+  + [support_status] is accepted
+
+& [RequirementDelta: FSC4-S01] is the requirement delta produced by this slice
+  + [requirement_delta] is FSC4-S02 must define projection record schema, authority_notice contract, freshness display rule, state visibility rule, and mutation-through-operator rule
+  + [requirement_delta] is all decision-making projections must expose source_ref_set, lineage_edge_set, freshness_rule, authority_notice, and mutation boundary
+  + [requirement_delta] is no UI, adapter, Langflow, runtime, or operations implementation authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: FSC4-S01] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [ui_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [langflow_export_implementation_leak_found] is false
+  + [runtime_implementation_leak_found] is false
+  + [operations_scope_leak_found] is false
+  + [surface_authority_promotion_found] is false
+
+  ! [FSC4S01Accepted] is accepted
+    @ [support] [VerificationOracleResult: FSC4-S01]
+    @ [support] [SupportDelta: FSC4-S01]
+    @ [support] [RequirementDelta: FSC4-S01]
+    @ [support] [FaultReview: FSC4-S01]
+
+& [NextSliceGate: FSC4-S02] is opened
+  + [opened_slice] is FSC4-S02 authority notice and projection record contract
+  + [accepted_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [accepted_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [accepted_input] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is authority_notice and freshness semantics determine projection trust and mutation boundaries
+  + [completion_review_required] is true
+
+  = must: execute FSC4-S02 next unless user redirects or a new fault invalidates this review
