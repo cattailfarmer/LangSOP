@@ -1,0 +1,137 @@
+Subject: FSC2 Planning Coordination Pack V1
+Date: 2026-05-26
+Pack UUID: 0444bea4-a0e2-4055-bd03-adaf9ab1954a
+
+@ [completion_review] docs/reviews/FSC2_Completion_Review.v1.sop
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [boundary_map] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [completion_gate_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/FSC2_Planning_Coordination_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/FSC2_Planning_Coordination_Fixture_Index.v1.sop
+
+& [PlanningCoordinationPack: FSC2PlanningCoordinationPackV1] is the accepted boundary pack exported by FSC2
+  + [pack_id] is fsc2-planning-coordination-pack-v1
+  + [pack_uuid] is 0444bea4-a0e2-4055-bd03-adaf9ab1954a
+  + [source_chunk] is FSC2 planning coordination
+  + [export_status] is accepted_boundary_input
+  + [consumer_chunk] is FSC3 runtime graph proof
+  + [activation_effect] is FSC3 may be final-sliced
+  + [implementation_effect] is no runtime graph implementation is authorized by this pack alone
+
+  = must: treat FSC1 foundation contracts as imported authority and FSC2 planning coordination contracts as packetization and coordination authority
+  = must: keep runtime graph work behind FSC3 slice minting and proof fixtures
+  = must: preserve SOP-first interruption for ambiguity, authority conflict, stale input, contested claims, and false-ready gates
+  - never: treat LangGraph checkpoint state as source authority
+
+& [ExportedPlanningReadinessContract] is the readiness contract exported by FSC2
+  + [operator_contract] is planning_readiness_recompute v1
+  + [readiness_result] is ready_to_packetize
+  + [readiness_result] is blocked
+  + [readiness_result] is stale
+  + [readiness_result] is contradicted
+  + [readiness_result] is ambiguous
+  + [readiness_result] is faulted
+  + [output_record_kind] is readiness_projection
+  + [output_record_kind] is stale_projection
+  + [output_record_kind] is support_gap
+  + [output_record_kind] is proof_result
+  + [output_record_kind] is fault_record
+  + [output_record_kind] is operator_trace
+
+  = must: prevent packet generation from any non-ready readiness result
+  = must: preserve refusal outputs as records or traceable interrupts
+
+& [ExportedWorkPacketContract] is the packetization contract exported by FSC2
+  + [operator_contract] is work_packet_generation v1
+  + [requires_readiness_state] is ready_to_packetize
+  + [requires_dependency_closure] is true
+  + [requires_verification_oracle] is true
+  + [requires_model_route] is true
+  + [requires_completion_review] is true
+  + [requires_support_delta_obligation] is true
+  + [requires_requirement_delta_obligation] is true
+  + [forbidden_effect] is assignment
+  + [forbidden_effect] is dispatch
+  + [forbidden_effect] is execution
+  + [forbidden_effect] is live operations control
+
+  = must: treat work_packet as a bounded work view, not a command
+  = must: keep generated packets staleable by accepted input, readiness, packet, coordination, and review changes
+
+& [ExportedCoordinationContract] is the coordination contract exported by FSC2
+  + [contract] is CoordinationClaimLifecycle
+  + [contract] is CoordinationClaimBoundary
+  + [operator_contract] is coordination_claim_register
+  + [operator_contract] is coordination_conflict_signal
+  + [contract] is RendezvousPacketContract
+  + [contract] is StaleClaimRuleSet
+  + [contract] is MultiAgentWorkBoundaryInvariant
+  + [authority_limit] is claims coordinate work boundaries only
+  + [authority_limit] is rendezvous packets are carriers and context, not signed authority by themselves
+
+  = must: block packet execution on unresolved contested claims
+  = must: preserve conversation identity and claim lineage through runtime proof work
+
+& [ExportedCompletionGateContract] is the completion-review gate exported by FSC2
+  + [operator_contract] is completion_review_delta_gate v1
+  + [requires_support_delta_classification] is true
+  + [requires_requirement_delta_classification] is true
+  + [requires_stale_output_review] is true
+  + [requires_contradiction_review] is true
+  + [requires_coordination_claim_review] is true
+  + [requires_fault_review] is true
+  + [rebake_trigger_set] is accepted
+  + [false_ready_next_gate_fault] is required
+
+  = must: prevent follow-on work from opening until support_delta and requirement_delta are classified
+  = must: preserve rebake_required before downstream work consumes changed assumptions
+
+& [ExportedFSC2FixtureContractSet] is the verification fixture contract exported by FSC2
+  + [fixture_case_count] is 11
+  + [fixture_index_entry_count] is 11
+  + [fixture_case] is ready_capability
+  + [fixture_case] is blocked_capability
+  + [fixture_case] is stale_support
+  + [fixture_case] is contradicted_support
+  + [fixture_case] is ambiguous_ownership
+  + [fixture_case] is packet_dependency_leak
+  + [fixture_case] is conflicting_claim
+  + [fixture_case] is stale_claim
+  + [fixture_case] is completion_support_delta
+  + [fixture_case] is completion_requirement_delta
+  + [fixture_case] is false_ready_next_gate
+
+  = must: use these fixtures as FSC3 runtime graph proof cases before runtime graph nodes are trusted
+  = must: keep fixture planning distinct from executable test harness work until a downstream slice authorizes it
+
+& [FSC3ActivationBoundary] is the boundary FSC3 receives from FSC2
+  + [activation_state] is open_for_slice_minting
+  + [accepted_boundary_input] is FSC2PlanningCoordinationPackV1
+  + [must_import] is FSC1 foundation contract pack
+  + [must_import] is FSC2 boundary and invariant map
+  + [must_import] is planning readiness operator contract
+  + [must_import] is work packet generation contract
+  + [must_import] is coordination claim and rendezvous contracts
+  + [must_import] is completion review delta gate contract
+  + [must_import] is FSC2 planning coordination fixture plan and index
+  + [must_refine_inside_FSC3] is minimal WholeFieldPlannerGraph proof path
+  + [must_refine_inside_FSC3] is checkpoint policy that treats checkpoints as execution state, not authority
+  + [must_refine_inside_FSC3] is interrupt routing for SOP-first conditions
+  + [must_refine_inside_FSC3] is operator trace proof and runtime fixtures
+
+  = must: mint FSC3 final slices before implementing FSC3
+  = must: keep all runtime graph proof dependencies inside FSC3 after activation
+  = must: keep FSC4 surface projection gated until FSC3 runtime graph proof pack is accepted
+
+& [PlanningCoordinationPackInvalidationRuleSet] is the staleness contract for FSC2PlanningCoordinationPackV1
+  + [invalidated_by] is change to the FSC1 foundation contract pack
+  + [invalidated_by] is change to any accepted FSC2 output hash
+  + [invalidated_by] is change to any FSC2-S01 through FSC2-S07 completion review
+  + [invalidated_by] is discovered contradiction among readiness, packetization, coordination, completion gate, or fixture expectations
+  + [invalidated_by] is false-ready FSC3 runtime graph slice derived from this pack
+
+  = must: rerun FSC2-S07 after invalidation before FSC3 consumes this pack again
