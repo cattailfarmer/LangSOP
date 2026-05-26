@@ -1,0 +1,32 @@
+Subject: IR1 Final Slices Source
+Date: 2026-05-26
+Source UUID: 46fcc377-44a2-403a-84f3-68e7ad527adb
+
+& [SourcePrompt: IR1FinalSlices] is the preserved source for minting IR1 final slices
+  + [source_kind] is manager-derived implementation-readiness slice source
+  + [origin] is post-FSC5 implementation readiness surface and rebake review
+  + [purpose] is split IR1 implementation substrate and repository scaffold into clean final slices before code scaffolding
+  + [chunk_ref] is IR1 implementation substrate and repository scaffold
+  + [model_route] is requires deeper reasoning
+
+  = must: create an IR1 final slice surface that can be executed without depending on unsliced downstream chunks
+  = must: choose implementation language and package/tooling boundary before code scaffolding
+  = must: define repository layout, generated artifact policy, and authority/projection separation before code scaffolding
+  = must: define test harness and fixture execution shape before implementation work
+  = must: create a scaffold execution slice only after decisions and layout contracts are accepted
+  = must: require completion review after every IR1 slice
+  = must: keep parser implementation, SQLite builder implementation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control out of IR1 unless a slice explicitly authorizes a bounded scaffold-only placeholder
+  = must: preserve source SOP authority files as source truth and generated indexes as projections
+  = must: preserve no live operations control authorized
+
+& [RequiredIR1SliceSet] is the source-level slice set for IR1
+  + [slice_candidate] is IR1-S01 implementation substrate boundary and invariant map
+  + [slice_candidate] is IR1-S02 language runtime and package tooling decision
+  + [slice_candidate] is IR1-S03 repository layout and generated artifact policy
+  + [slice_candidate] is IR1-S04 test harness and fixture execution shape
+  + [slice_candidate] is IR1-S05 scaffold execution plan and placeholder scope
+  + [slice_candidate] is IR1-S06 IR1 completion review and scaffold activation pack
+
+  = must: keep IR1-S01 through IR1-S04 deeper-reasoning slices
+  = should: route IR1-S05 to GPT-5.3-Codex-Spark only if IR1-S01 through IR1-S04 have accepted bounded outputs
+  = must: route IR1-S06 to deeper reasoning because it opens code scaffolding authority for IR1 only

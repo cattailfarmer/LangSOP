@@ -1,0 +1,96 @@
+Subject: LangSOP IR1 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir1_final_slices/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [implementation_readiness_authority] docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [implementation_readiness_review] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+@ [foundation_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [CanonicalRecord: IR1FinalSlices] is the processed planning authority for IR1 final work slices
+  + [canonical_uuid] is aa40d5d5-2d7b-4182-8a77-e917fcec9efa
+  + [source_manifest_uuid] is a05e5f9b-7ac7-47e9-94e6-d48da6b0b7fb
+  + [slice_surface_uuid] is 5950e927-e384-4309-bab3-fc23ecaee2ab
+  + [authority_scope] is IR1 slice order, slice readiness, slice gates, model routing, expected outputs, verification oracles, and forbidden implementation scope
+  + [implementation_scope] is final slice planning authority only
+  + [depends_on] is docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+  + [depends_on] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [depends_on] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+
+  = must: use docs/slices/IR1_Final_Slices.v1.sop as the current IR1 slice surface
+  = must: execute IR1-S01 first
+  = must: run completion review after each slice before opening the next gated slice
+  = must: preserve that IR1 slice work does not authorize parser, SQLite, LangGraph, surface, adapter, operations simulator, operations control, or live machine control implementation except for bounded scaffold placeholders explicitly accepted by IR1-S05
+  - never: treat IR1 slice records as implementation proof or machine-control permission
+
+& [CanonicalIR1SliceSet] is the final IR1 slice sequence
+  + [slice] is IR1-S01 implementation substrate boundary and invariant map
+  + [slice] is IR1-S02 language runtime and package tooling decision
+  + [slice] is IR1-S03 repository layout and generated artifact policy
+  + [slice] is IR1-S04 test harness and fixture execution shape
+  + [slice] is IR1-S05 scaffold execution plan and placeholder scope
+  + [slice] is IR1-S06 IR1 completion review and scaffold activation pack
+
+  = must: preserve this order unless completion review rebakes IR1
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+& [CanonicalIR1ExecutionGate] is the activation rule for IR1
+  + [current_ready_slice] is IR1-S01
+  + [gated_slice] is IR1-S02 until IR1-S01 accepted
+  + [gated_slice] is IR1-S03 until IR1-S02 accepted
+  + [gated_slice] is IR1-S04 until IR1-S03 accepted
+  + [gated_slice] is IR1-S05 until IR1-S04 accepted
+  + [gated_slice] is IR1-S06 until IR1-S05 accepted
+  + [completion_gate] is IR1 implementation substrate pack accepted after IR1-S06
+
+  = must: expose only IR1-S01 as ready right now
+  = must: keep all later slices gated inside IR1
+
+& [CanonicalIR1ModelRouting] is the model-routing record
+  + [IR1-S01] is requires deeper reasoning
+  + [IR1-S02] is requires deeper reasoning
+  + [IR1-S03] is requires deeper reasoning
+  + [IR1-S04] is requires deeper reasoning
+  + [IR1-S05] is GPT-5.3-Codex-Spark-suitable after IR1-S01 through IR1-S04 are accepted
+  + [IR1-S06] is requires deeper reasoning
+
+  = must: keep repository shape, language/toolchain decision, generated-artifact policy, and final activation under deeper reasoning
+  = should: route bounded scaffold plan and placeholder inventory to GPT-5.3-Codex-Spark only after substrate decisions stabilize
+
+& [SatisfactionSignature: IR1FinalSlices] is the valid SJS satisfaction signature for the IR1 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is d7854925-04c3-4e1d-a997-f3ec0ea14fd9
+  + [signed_subject] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir1_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 79FEB25C76D3017A39DA3B80FC05B3B7F92D1EF86626EA1E42542610C1312F38
+  + [source_sha256] is EA3EF2515A90CCAC96ACA76E199C96FF39BDC9AA1568C253B3C33E1807A2EA0B
+  + [source_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [source_sha256] is 08205B1C45B24DFA4DFB3DBDC6A6EB720C05846E7B5FB027B7AC2FF59F2EE443
+  + [source_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
+  + [source_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [source_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR1_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, implementation_readiness_imported, IR1_boundary_checked, slices_minted, gates_defined, outputs_defined, verification_oracles_defined, model_routes_defined, completion_reviews_required, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR1_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR1 final slices; no live operations control authorized
+  + [invalidation_condition] is source_hash_change, implementation_readiness_surface_change, accepted_pack_change, IR1_boundary_change, forbidden_external_dependency_found, missing_completion_review, operations_control_leak, or implementation_contradiction
+
+  = must: reprocess when IR1 slice order, boundary, expected outputs, or required verification materially change
+
+& [RegistryRecord: IR1FinalSlices] is the durable identity ledger for the IR1 final slice surface
+  + [registry_uuid] is 63df83fa-3afb-4ede-a32c-14fea5b8f5d9
+  + [manifest_node_uuid] is a05e5f9b-7ac7-47e9-94e6-d48da6b0b7fb
+  + [canonical_node_uuid] is aa40d5d5-2d7b-4182-8a77-e917fcec9efa
+  + [slice_surface_uuid] is 5950e927-e384-4309-bab3-fc23ecaee2ab
+  + [signature_uuid] is d7854925-04c3-4e1d-a997-f3ec0ea14fd9
+  + [closure_review_uuid] is 59f35362-5b2e-4661-b84f-eef7b318e68f
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for IR1 slice execution records and completion reviews

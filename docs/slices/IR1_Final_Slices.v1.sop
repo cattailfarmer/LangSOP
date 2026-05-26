@@ -1,0 +1,135 @@
+Subject: LangSOP IR1 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 5950e927-e384-4309-bab3-fc23ecaee2ab
+
+@ [canonical_specification] docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [implementation_readiness_review] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+@ [foundation_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR1FinalSliceSurfaceV1] is the executable final-slice surface for IR1 implementation substrate and repository scaffold
+  + [chunk_ref] is IR1 implementation substrate and repository scaffold
+  + [chunk_boundary] is repository/tooling/substrate decisions and scaffold activation only
+  + [accepted_boundary_input] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR1-S01
+  + [gated_slice_set] is IR1-S02, IR1-S03, IR1-S04, IR1-S05, and IR1-S06
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR1-S01 before any other IR1 slice
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: reject any output that implements parser behavior, SQLite projection building, LangGraph runtime behavior, UI surfaces, adapters, operations simulation, operations control, or live machine control outside the explicit bounded scaffold scope
+
+& [FinalWorkSlice: IR1-S01-ImplementationSubstrateBoundaryAndInvariantMap] is ready
+  + [slice_id] is IR1-S01
+  + [slice_name] is implementation substrate boundary and invariant map
+  + [chunk_ref] is IR1
+  + [portion_ref] is post-FSC5 implementation substrate
+  + [authority_basis] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [boundary_input_set] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is imported authority pack inventory, substrate-owned invariant set, scaffold-only implementation boundary, generated-artifact non-authority rule, downstream stale trigger list, and forbidden implementation list
+  + [verification_oracle] is all post-FSC5 inputs are mapped without runtime code, parser implementation, SQLite builder implementation, LangGraph runtime implementation, UI/surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is the substrate boundary decides what implementation work may safely begin and what remains gated
+  + [forbidden_scope] is parser implementation, SQLite builder implementation, LangGraph runtime implementation, UI implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR1-S02-LanguageRuntimeAndPackageToolingDecision] is gated
+  + [slice_id] is IR1-S02
+  + [slice_name] is language runtime and package tooling decision
+  + [chunk_ref] is IR1
+  + [portion_ref] is implementation substrate language and tooling
+  + [authority_basis] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [activation_gate] is IR1-S01 accepted
+  + [internal_dependency_set] is IR1-S01 IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [expected_output_set] is language/runtime selection, package manager selection, script boundary, dependency policy, lockfile policy, local dev command policy, and invalidation conditions
+  + [verification_oracle] is tooling decision supports SOP authority files, rebuildable SQLite projection, fixture execution, LangGraph integration, and future surface prototypes without elevating generated artifacts to authority
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is language and package choices affect every downstream implementation and proof surface
+  + [forbidden_scope] is package installation, code scaffolding, parser implementation, SQLite builder implementation, runtime graph implementation, surface implementation, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR1-S03-RepositoryLayoutAndGeneratedArtifactPolicy] is gated
+  + [slice_id] is IR1-S03
+  + [slice_name] is repository layout and generated artifact policy
+  + [chunk_ref] is IR1
+  + [portion_ref] is implementation substrate repository layout
+  + [authority_basis] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [activation_gate] is IR1-S02 accepted
+  + [internal_dependency_set] is IR1-S01 accepted output
+  + [internal_dependency_set] is IR1-S02 accepted output
+  + [expected_output_set] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [expected_output_set] is directory layout, source module policy, tests and fixtures layout, generated SQLite/index/cache policy, docs authority boundary, .gitignore requirements, and downstream stale triggers
+  + [verification_oracle] is layout preserves SOP docs as authority, generated artifacts as projections, and fixture/test outputs as rebuildable evidence
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is layout controls authority/projection separation and downstream file ownership
+  + [forbidden_scope] is creating runtime scaffold files, parser implementation, SQLite builder implementation, LangGraph runtime implementation, surface implementation, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR1-S04-TestHarnessAndFixtureExecutionShape] is gated
+  + [slice_id] is IR1-S04
+  + [slice_name] is test harness and fixture execution shape
+  + [chunk_ref] is IR1
+  + [portion_ref] is implementation substrate tests and fixtures
+  + [authority_basis] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [activation_gate] is IR1-S03 accepted
+  + [internal_dependency_set] is IR1-S01 through IR1-S03 accepted outputs
+  + [expected_output_set] is docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+  + [expected_output_set] is test command contract, fixture directory policy, expected-output ledger shape, operator trace fixture boundary, generated test artifact policy, and verification coverage list
+  + [verification_oracle] is harness shape can verify fixture records without mutating SOP authority or implementing downstream parser, graph, surface, or operations behavior
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is test harness shape determines how future implementation proves conformance without creating hidden authority writes
+  + [forbidden_scope] is executable harness implementation, parser implementation, SQLite builder implementation, LangGraph runtime implementation, surface implementation, operations simulator implementation, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR1-S05-ScaffoldExecutionPlanAndPlaceholderScope] is gated
+  + [slice_id] is IR1-S05
+  + [slice_name] is scaffold execution plan and placeholder scope
+  + [chunk_ref] is IR1
+  + [portion_ref] is implementation substrate scaffold activation
+  + [authority_basis] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [activation_gate] is IR1-S04 accepted
+  + [internal_dependency_set] is IR1-S01 through IR1-S04 accepted outputs
+  + [expected_output_set] is docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+  + [expected_output_set] is scaffold file inventory, placeholder module boundary, package metadata plan, no-op test plan, generated artifact exclusions, and proof checklist for scaffold-only behavior
+  + [verification_oracle] is scaffold plan authorizes only package and placeholder files needed for later slices, with no parser, SQLite, LangGraph, surface, adapter, operations simulator, operations control, or live-control behavior
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR1-S01 through IR1-S04 are accepted
+  + [model_route_reason] is scaffold planning becomes bounded once substrate, tooling, layout, and harness shape are accepted
+  + [forbidden_scope] is implementing runtime behavior, implementing parser behavior, implementing SQLite projection behavior, implementing graph behavior, implementing surface behavior, implementing adapter behavior, implementing operations simulator behavior, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR1-S06-IR1CompletionReviewAndScaffoldActivationPack] is gated
+  + [slice_id] is IR1-S06
+  + [slice_name] is IR1 completion review and scaffold activation pack
+  + [chunk_ref] is IR1
+  + [portion_ref] is implementation substrate closure
+  + [authority_basis] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [activation_gate] is IR1-S05 accepted
+  + [internal_dependency_set] is IR1-S01 through IR1-S05 accepted outputs
+  + [expected_output_set] is docs/reviews/IR1_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [expected_output_set] is acceptance record for substrate boundary, tooling decision, layout policy, harness shape, scaffold plan, stale outputs, contradictions, unresolved proof gaps, and downstream activation readiness
+  + [verification_oracle] is completion review accepts scaffold authority only and keeps IR2 through IR7 gated until IR1 pack is accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance opens scaffold execution authority and must preserve downstream implementation boundaries
+  + [forbidden_scope] is implementing parser, SQLite builder, LangGraph runtime, surface prototype, adapter, operations simulator, operations control, live machine control, or silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR1SliceClosureReview] is the dependency audit for minted IR1 slices
+  + [slice_surface_uuid] is 5950e927-e384-4309-bab3-fc23ecaee2ab
+  + [IR1_boundary_input_set] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [IR1_rebake_review] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is IR1-S01
+  + [safety_limit] is no live operations control authorized
+
+  = must: rerun this closure review after every IR1 completion review

@@ -1,0 +1,34 @@
+Subject: IR1 Work State V1
+Date: 2026-05-26
+State UUID: 1512c8a4-f8cb-4a9d-8c18-0c3c59f6e8aa
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+@ [slice_minting_review] docs/reviews/IR1_Final_Slice_Minting_Review.v1.sop
+@ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [implementation_readiness_review] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+
+& [IR1WorkStateV1] is the current derived work state for IR1 implementation substrate and repository scaffold
+  + [chunk_ref] is IR1 implementation substrate and repository scaffold
+  + [state_basis] is docs/reviews/IR1_Final_Slice_Minting_Review.v1.sop
+  + [surface_status] is accepted_for_IR1-S01_execution
+  + [source_manifest] is docs/source/2026-05-26_ir1_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is B686EB9C738CF42E3232BFCDEFEC076320C08F394B774A6215A16C9D712AAF08
+  + [canonical_specification] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is 1EA5906B19C29760EF27E9FD98ADFF1562C39EF05A337F73FF6BA208710D6ABE
+  + [slice_surface] is docs/slices/IR1_Final_Slices.v1.sop
+  + [slice_surface_sha256] is 9BC2C1312B5E1D2EFAF401F8498D676C3089A4ECCE46827B467236DA4E81F58F
+  + [current_ready_slice] is IR1-S01
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [gated_slice] is IR1-S02 until IR1-S01 accepted
+  + [gated_slice] is IR1-S03 until IR1-S02 accepted
+  + [gated_slice] is IR1-S04 until IR1-S03 accepted
+  + [gated_slice] is IR1-S05 until IR1-S04 accepted
+  + [gated_slice] is IR1-S06 until IR1-S05 accepted
+  + [safety_limit] is no live operations control authorized
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: run IR1-S01 before any other IR1 slice
+  = must: mark this state stale if IR1 source manifest, canonical specification, slice surface, slice minting review, or post-FSC5 readiness authority changes

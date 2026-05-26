@@ -1,0 +1,33 @@
+Subject: IR1 Final Slices Source Manifest
+Date: 2026-05-26
+Manifest UUID: a05e5f9b-7ac7-47e9-94e6-d48da6b0b7fb
+
+& [SourceDocumentManifest: IR1FinalSlices] is the source preservation manifest for minting IR1 final slices
+  + [dictated_source] is docs/source/2026-05-26_ir1_final_slices/Dictated_IR1_Final_Slices_Source.sop
+    + [sha256] is 79FEB25C76D3017A39DA3B80FC05B3B7F92D1EF86626EA1E42542610C1312F38
+    + [source_role] is preserved manager-derived source for IR1 final slice minting
+  + [authority_source] is docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+    + [sha256] is EA3EF2515A90CCAC96ACA76E199C96FF39BDC9AA1568C253B3C33E1807A2EA0B
+    + [source_role] is signed post-FSC5 implementation readiness authority
+  + [authority_source] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+    + [sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+    + [source_role] is current implementation readiness surface
+  + [authority_source] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+    + [sha256] is 08205B1C45B24DFA4DFB3DBDC6A6EB720C05846E7B5FB027B7AC2FF59F2EE443
+    + [source_role] is IR1 gate-opening rebake review
+  + [authority_source] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+    + [sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
+    + [source_role] is accepted foundation boundary input
+  + [authority_source] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+    + [sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+    + [source_role] is accepted planning coordination boundary input
+  + [authority_source] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+    + [sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+    + [source_role] is accepted operations safety boundary input
+  + [canonical_target] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/IR1_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for IR1 final slices
+  = must: invalidate IR1 final slices if a cited source hash changes without reprocessing
+  = must: keep IR1 bounded to implementation substrate and repository scaffold decisions
+  - never: use this manifest to authorize parser implementation, SQLite builder implementation, runtime graph implementation, surface implementation, operations simulator implementation, operations control, or live machine control

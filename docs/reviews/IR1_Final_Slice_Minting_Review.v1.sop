@@ -1,0 +1,91 @@
+Subject: IR1 Final Slice Minting Review V1
+Date: 2026-05-26
+Review UUID: 59f35362-5b2e-4661-b84f-eef7b318e68f
+
+@ [source_manifest] docs/source/2026-05-26_ir1_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [implementation_readiness_review] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+
+& [SliceMintingReview: IR1FinalSlices] is the completed-work review for minting IR1 final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir1_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is B686EB9C738CF42E3232BFCDEFEC076320C08F394B774A6215A16C9D712AAF08
+  + [completed_output] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+  + [completed_output_sha256] is 1EA5906B19C29760EF27E9FD98ADFF1562C39EF05A337F73FF6BA208710D6ABE
+  + [completed_output] is docs/slices/IR1_Final_Slices.v1.sop
+  + [completed_output_sha256] is 9BC2C1312B5E1D2EFAF401F8498D676C3089A4ECCE46827B467236DA4E81F58F
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR1-S01 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR1-S01
+  = must: rerun this review if IR1 source, canonical specification, or slice surface changes
+
+& [VerificationOracleResult: IR1FinalSlices] is the verification result for IR1 slice minting
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [slice_count] is 6
+  + [ready_slice] is IR1-S01 implementation substrate boundary and invariant map
+  + [gated_slice] is IR1-S02 language runtime and package tooling decision
+  + [gated_slice] is IR1-S03 repository layout and generated artifact policy
+  + [gated_slice] is IR1-S04 test harness and fixture execution shape
+  + [gated_slice] is IR1-S05 scaffold execution plan and placeholder scope
+  + [gated_slice] is IR1-S06 IR1 completion review and scaffold activation pack
+  + [model_route_present] is IR1-S01 requires deeper reasoning
+  + [model_route_present] is IR1-S02 requires deeper reasoning
+  + [model_route_present] is IR1-S03 requires deeper reasoning
+  + [model_route_present] is IR1-S04 requires deeper reasoning
+  + [model_route_present] is IR1-S05 GPT-5.3-Codex-Spark-suitable after IR1-S01 through IR1-S04 are accepted
+  + [model_route_present] is IR1-S06 requires deeper reasoning
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph runtime implementation
+  + [forbidden_scope_absent] is UI or surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR1FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+    @ [support] docs/slices/IR1_Final_Slices.v1.sop
+
+& [SupportDelta: IR1FinalSlices] is the support delta produced by this slice minting pass
+  + [new_support_record] is IR1FinalSliceSurfaceV1 supports IR1-S01 execution
+  + [new_support_record] is IR1-S05 Spark suitability is gated until IR1-S01 through IR1-S04 are accepted
+  + [new_support_record] is IR1-S06 preserves deeper-reasoning final activation
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1FinalSlices] is the requirement delta produced by this slice minting pass
+  + [requirement_delta] is IR1-S01 must run first and requires deeper reasoning
+  + [requirement_delta] is no code scaffolding authorized until IR1-S05 plan is accepted and IR1-S06 activates scaffold authority
+  + [requirement_delta] is no parser, SQLite, LangGraph, surface, adapter, operations simulator, operations control, or live-control behavior authorized
+  + [requirement_delta] is no rebake required before IR1-S01
+
+& [FaultReview: IR1FinalSlices] is the fault review for IR1 slice minting
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [runtime_implementation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_slice_found] is false
+
+  ! [IR1FinalSlicesAccepted] is accepted
+    @ [support] [VerificationOracleResult: IR1FinalSlices]
+    @ [support] [SupportDelta: IR1FinalSlices]
+    @ [support] [RequirementDelta: IR1FinalSlices]
+    @ [support] [FaultReview: IR1FinalSlices]
+
+& [NextSliceGate: IR1-S01] is opened
+  + [opened_slice] is IR1-S01 implementation substrate boundary and invariant map
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is substrate boundary decides what implementation work may safely begin and what remains gated
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR1-S01 next unless user redirects or a new fault invalidates this review
