@@ -1,0 +1,143 @@
+Subject: IR1 Repository Layout And Generated Artifact Policy V1
+Date: 2026-05-26
+Policy UUID: d85e9f29-d501-4ee0-b58a-43bb3192548b
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [substrate_boundary] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [tooling_decision] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [foundation_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR1RepositoryLayoutAndGeneratedArtifactPolicyV1] is the IR1-S03 policy for repository layout and generated artifacts
+  + [policy_id] is ir1-repository-layout-generated-artifact-policy-v1
+  + [policy_uuid] is d85e9f29-d501-4ee0-b58a-43bb3192548b
+  + [slice_id] is IR1-S03
+  + [policy_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is layout and generated-artifact policy only
+
+  = must: define a Python project layout that preserves SOP authority files as source truth and generated outputs as projections
+  = must: avoid creating runtime scaffold files, parser implementation, SQLite builder implementation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control in this slice
+
+& [RepositoryTopLevelLayoutPolicy] is the top-level repository layout policy
+  + [tracked_authority_path] is docs/
+  + [tracked_authority_path] is docs/source/
+  + [tracked_authority_path] is docs/canonical/
+  + [tracked_authority_path] is docs/slices/
+  + [tracked_authority_path] is docs/reviews/
+  + [tracked_authority_path] is docs/state/
+  + [tracked_authority_path] is docs/planning/
+  + [tracked_authority_path] is docs/schema/
+  + [tracked_authority_path] is docs/operators/
+  + [tracked_authority_path] is docs/coordination/
+  + [tracked_authority_path] is docs/runtime/
+  + [tracked_authority_path] is docs/surfaces/
+  + [tracked_authority_path] is docs/operations/
+  + [tracked_authority_path] is docs/fixtures/
+  + [tracked_authority_path] is docs/implementation/
+  + [tracked_code_path] is src/langsop/
+  + [tracked_test_path] is tests/
+  + [tracked_fixture_path] is tests/fixtures/
+  + [tracked_tool_path] is tools/
+  + [tracked_config_file] is pyproject.toml
+  + [tracked_config_file] is README.md
+  + [tracked_config_file] is .gitignore
+  + [generated_root] is .langsop/
+  + [generated_root_status] is untracked_or_ignored_projection_root
+
+  = must: keep docs/ as tracked SOP authority and planning material
+  = must: keep generated projection outputs outside docs/ unless a future SOP source-preserving artifact explicitly authorizes a tracked record
+
+& [PythonSourceLayoutPolicy] is the Python source layout policy
+  + [package_root] is src/langsop/
+  + [module_boundary] is src/langsop/authority/ for authority file reading and validation
+  + [module_boundary] is src/langsop/kernel/ for record models and natural-key helpers
+  + [module_boundary] is src/langsop/projections/ for rebuildable SQLite and index projections
+  + [module_boundary] is src/langsop/operators/ for contract-driven operators
+  + [module_boundary] is src/langsop/runtime/ for future LangGraph proof runtime
+  + [module_boundary] is src/langsop/surfaces/ for future projection adapters
+  + [module_boundary] is src/langsop/coordination/ for future claim and mailbox projections
+  + [module_boundary] is src/langsop/operations/ for future dry-run-only operations simulator
+  + [module_boundary_status] is reserved_placeholder_until_authorized_by_downstream_slice
+
+  = must: allow IR1-S05 to create only inert placeholder modules if IR1-S06 activates scaffold authority
+  = must: keep actual behavior in each module gated by later IR chunks
+
+& [TestAndFixtureLayoutPolicy] is the tests and fixture layout policy
+  + [test_root] is tests/
+  + [test_subtree] is tests/unit/
+  + [test_subtree] is tests/integration/
+  + [test_subtree] is tests/fixtures/
+  + [fixture_subtree] is tests/fixtures/sop/
+  + [fixture_subtree] is tests/fixtures/expected/
+  + [fixture_subtree] is tests/fixtures/generated/
+  + [fixture_subtree_status] is policy_only_until_IR1-S04
+  + [fixture_authority_rule] is fixture source records must cite docs/ authority records and expected output ledgers
+  + [fixture_generated_rule] is generated fixture outputs are rebuildable projections
+
+  = must: keep fixture execution shape gated until IR1-S04
+  = must: prevent test outputs from becoming authority records
+
+& [GeneratedArtifactPathPolicy] is the generated artifact path policy
+  + [generated_projection_path] is .langsop/sqlite/
+  + [generated_projection_path] is .langsop/indexes/
+  + [generated_projection_path] is .langsop/cache/
+  + [generated_projection_path] is .langsop/checkpoints/
+  + [generated_projection_path] is .langsop/snapshots/
+  + [generated_projection_path] is .langsop/dry-runs/
+  + [generated_projection_path] is .pytest_cache/
+  + [generated_projection_path] is .coverage
+  + [generated_projection_path] is htmlcov/
+  + [generated_projection_path] is dist/
+  + [generated_projection_path] is build/
+  + [generated_projection_path] is *.egg-info/
+  + [authority_status] is projection_only
+  + [required_gitignore_policy] is ignore generated projection paths by default
+
+  = must: keep generated SQLite, indexes, caches, checkpoints, snapshots, dry-run outputs, coverage outputs, and build outputs out of authority status
+  = must: require rebuild or deletion when source input hashes change
+
+& [DocsAuthorityBoundaryPolicy] is the docs authority boundary policy
+  + [authority_file_extension] is .sop
+  + [legacy_or_simple_prose_extension] is .md
+  + [source_preservation_rule] is never overwrite source documents with exploded, pruned, canonical, or derived specifications
+  + [canonical_trust_rule] is canonical specifications require satisfaction signature protocol UUID ad10f10f-d506-48ef-a805-f8b0a133766c before trusted as processed authority
+  + [derived_state_rule] is state files are derived manager views and not replacement canonical authority
+  + [review_gate_rule] is completion reviews gate downstream consumption
+
+  = must: keep docs authority boundaries visible in README, state files, and future package documentation
+
+& [RepositoryLayoutDownstreamStaleTriggerSet] is the stale trigger set for repository layout decisions
+  + [stale_trigger] is change to IR1-S01 substrate boundary
+  + [stale_trigger] is change to IR1-S02 language runtime and tooling decision
+  + [stale_trigger] is change to generated artifact non-authority rule
+  + [stale_trigger] is change to selected package metadata format
+  + [stale_trigger] is future package manager change
+  + [stale_trigger] is future test harness shape contradiction
+  + [stale_trigger] is generated artifact path treated as authority
+  + [stale_trigger] is downstream module boundary needing new ownership
+  + [stale_trigger] is operations safety rule requiring a different dry-run artifact location
+
+  = must: rerun IR1-S03 review if any stale trigger is found
+
+& [IR1S03CoverageReview] is the coverage checklist for IR1-S03
+  + [top_level_layout_policy_present] is RepositoryTopLevelLayoutPolicy
+  + [python_source_layout_policy_present] is PythonSourceLayoutPolicy
+  + [test_fixture_layout_policy_present] is TestAndFixtureLayoutPolicy
+  + [generated_artifact_path_policy_present] is GeneratedArtifactPathPolicy
+  + [docs_authority_boundary_policy_present] is DocsAuthorityBoundaryPolicy
+  + [downstream_stale_trigger_set_present] is RepositoryLayoutDownstreamStaleTriggerSet
+  + [source_scaffold_created] is false
+  + [test_scaffold_created] is false
+  + [generated_artifact_created] is false
+  + [forbidden_scope_absent] is runtime code
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: open IR1-S04 only after this layout policy is accepted by completion review

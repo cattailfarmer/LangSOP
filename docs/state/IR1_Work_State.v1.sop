@@ -7,15 +7,17 @@ State UUID: 1512c8a4-f8cb-4a9d-8c18-0c3c59f6e8aa
 @ [slice_minting_review] docs/reviews/IR1_Final_Slice_Minting_Review.v1.sop
 @ [completion_review] docs/reviews/IR1_S01_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/IR1_S02_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/IR1_S03_Completion_Review.v1.sop
 @ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
 @ [implementation_readiness_review] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
 @ [accepted_output] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
 @ [accepted_output] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [accepted_output] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
 
 & [IR1WorkStateV1] is the current derived work state for IR1 implementation substrate and repository scaffold
   + [chunk_ref] is IR1 implementation substrate and repository scaffold
-  + [state_basis] is docs/reviews/IR1_S02_Completion_Review.v1.sop
-  + [surface_status] is accepted_for_IR1-S03_execution
+  + [state_basis] is docs/reviews/IR1_S03_Completion_Review.v1.sop
+  + [surface_status] is accepted_for_IR1-S04_execution
   + [source_manifest] is docs/source/2026-05-26_ir1_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B686EB9C738CF42E3232BFCDEFEC076320C08F394B774A6215A16C9D712AAF08
   + [canonical_specification] is docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
@@ -24,13 +26,15 @@ State UUID: 1512c8a4-f8cb-4a9d-8c18-0c3c59f6e8aa
   + [slice_surface_sha256] is 9BC2C1312B5E1D2EFAF401F8498D676C3089A4ECCE46827B467236DA4E81F58F
   + [accepted_slice] is IR1-S01
   + [accepted_slice] is IR1-S02
+  + [accepted_slice] is IR1-S03
   + [accepted_output] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
   + [accepted_output] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
   + [accepted_output_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
-  + [current_ready_slice] is IR1-S03
+  + [accepted_output] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [accepted_output_sha256] is CDE97B898024E6FDAFF19CCD33895ABC47B0AEB9B96C108DADC8FF2B3F2AC688
+  + [current_ready_slice] is IR1-S04
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is IR1-S04 until IR1-S03 accepted
   + [gated_slice] is IR1-S05 until IR1-S04 accepted
   + [gated_slice] is IR1-S06 until IR1-S05 accepted
   + [safety_limit] is no live operations control authorized
@@ -38,5 +42,5 @@ State UUID: 1512c8a4-f8cb-4a9d-8c18-0c3c59f6e8aa
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run IR1-S03 before any later IR1 slice
-  = must: mark this state stale if IR1 source manifest, canonical specification, slice surface, slice minting review, IR1-S01 through IR1-S02 outputs or completion reviews, or post-FSC5 readiness authority changes
+  = must: run IR1-S04 before any later IR1 slice
+  = must: mark this state stale if IR1 source manifest, canonical specification, slice surface, slice minting review, IR1-S01 through IR1-S03 outputs or completion reviews, or post-FSC5 readiness authority changes

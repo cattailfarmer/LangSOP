@@ -1,0 +1,103 @@
+Subject: IR1-S03 Completion Review V1
+Date: 2026-05-26
+Review UUID: 705cb01f-8598-41e0-9374-d90ce1a168a3
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+@ [accepted_input] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_input] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+
+& [CompletedWorkReview: IR1-S03] is the completion review for repository layout and generated artifact policy
+  + [slice_id] is IR1-S03
+  + [slice_name] is repository layout and generated artifact policy
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [completed_output_sha256] is CDE97B898024E6FDAFF19CCD33895ABC47B0AEB9B96C108DADC8FF2B3F2AC688
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR1-S04 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR1-S04
+  = must: rerun review if IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop changes
+
+& [VerificationOracleResult: IR1-S03] is the verification result for repository layout policy coverage
+  + [top_level_layout_policy_present] is RepositoryTopLevelLayoutPolicy
+  + [python_source_layout_policy_present] is PythonSourceLayoutPolicy
+  + [test_fixture_layout_policy_present] is TestAndFixtureLayoutPolicy
+  + [generated_artifact_path_policy_present] is GeneratedArtifactPathPolicy
+  + [docs_authority_boundary_policy_present] is DocsAuthorityBoundaryPolicy
+  + [downstream_stale_trigger_set_present] is RepositoryLayoutDownstreamStaleTriggerSet
+  + [source_package_root] is src/langsop/
+  + [test_root] is tests/
+  + [generated_root] is .langsop/
+  + [docs_authority_root] is docs/
+  + [generated_artifact_authority_status] is projection_only
+  + [source_scaffold_created] is false
+  + [test_scaffold_created] is false
+  + [generated_artifact_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [forbidden_scope_absent] is runtime code
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR1S03VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+
+& [SupportDelta: IR1-S03] is the support delta produced by this slice
+  + [new_support_record] is IR1RepositoryLayoutAndGeneratedArtifactPolicyV1 supports IR1-S04 test harness and fixture execution shape
+  + [new_support_record] is PythonSourceLayoutPolicy supports later scaffold plan
+  + [new_support_record] is GeneratedArtifactPathPolicy supports .gitignore and generated projection exclusion decisions
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1-S03] is the requirement delta produced by this slice
+  + [requirement_delta] is IR1-S04 must use tests/ and tests/fixtures/ policy while keeping generated test outputs projection-only
+  + [requirement_delta] is IR1-S04 requires deeper reasoning
+  + [requirement_delta] is IR1-S05 may later create inert placeholders only after IR1-S04 acceptance
+  + [requirement_delta] is no source scaffold, test scaffold, generated artifact, parser implementation, SQLite builder implementation, LangGraph implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR1-S03] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [source_scaffold_leak_found] is false
+  + [test_scaffold_leak_found] is false
+  + [generated_artifact_creation_leak_found] is false
+  + [parser_implementation_leak_found] is false
+  + [sqlite_builder_implementation_leak_found] is false
+  + [langgraph_implementation_leak_found] is false
+  + [surface_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR1S03Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR1-S03]
+    @ [support] [SupportDelta: IR1-S03]
+    @ [support] [RequirementDelta: IR1-S03]
+    @ [support] [FaultReview: IR1-S03]
+
+& [NextSliceGate: IR1-S04] is opened
+  + [opened_slice] is IR1-S04 test harness and fixture execution shape
+  + [accepted_input] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [accepted_input] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [accepted_input_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
+  + [accepted_input] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [accepted_input_sha256] is CDE97B898024E6FDAFF19CCD33895ABC47B0AEB9B96C108DADC8FF2B3F2AC688
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is test harness shape determines how future implementation proves conformance without creating hidden authority writes
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR1-S04 next unless user redirects or a new fault invalidates this review
