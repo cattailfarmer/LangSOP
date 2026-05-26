@@ -1,0 +1,146 @@
+Subject: IR4 Bounded Implementation Activation Boundary V1
+Date: 2026-05-26
+Activation Boundary UUID: 790810e7-76c9-43b1-a096-f90fea4c275f
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+@ [IR4_activation_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+
+& [IR4BoundedImplementationActivationBoundaryV1] is the IR4-IA01 activation boundary for future bounded runtime graph implementation work
+  + [activation_boundary_id] is ir4-bounded-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is 790810e7-76c9-43b1-a096-f90fea4c275f
+  + [slice_id] is IR4-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary and dependency decision only
+
+  = must: confirm future file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, dependency boundary, command plan, and proof gate for implementation slices
+  = must: preserve accepted IR4 authority, graph, checkpoint, interrupt, and trace semantics without implementation code creation in this slice
+  = must: keep package dependency changes gated until IR4-IA08 or a later dependency-authorizing slice
+  - never: create runtime graph code, fixture source files, expected ledgers, generated checkpoints, generated traces, tests, dependencies, operations control, or live machine control in this slice
+
+& [ConfirmedImplementationFileInventory: IR4RuntimeGraph] is the maximum code and test file inventory for first-pass IR4 runtime graph implementation
+  + [future_code_file] is src/langsop/runtime/graph_state.py
+  + [future_code_file] is src/langsop/runtime/graph_contracts.py
+  + [future_code_file] is src/langsop/runtime/checkpoints.py
+  + [future_code_file] is src/langsop/runtime/interrupts.py
+  + [future_code_file] is src/langsop/runtime/graph_runner.py
+  + [future_code_file] is src/langsop/runtime/fixture_runner.py
+  + [future_code_file] is src/langsop/runtime/__init__.py
+  + [future_test_file] is tests/test_ir4_runtime_graph_contracts.py
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+
+& [ConfirmedFixtureSourceInventory: IR4RuntimeGraph] is the fixture source inventory opened by IR4-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/valid_graph_pass.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/blocked_readiness.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/stale_checkpoint.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/ambiguous_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/authority_conflict_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/contested_claim_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/faulted_operator_trace.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/hidden_write_prevention.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/false_ready_checkpoint.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/completion_gate_refusal.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to FixtureCaseMatrix: IR4RuntimeGraph
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR4RuntimeGraph] is the expected ledger inventory opened by IR4-IA02 after this boundary is accepted
+  + [future_fixture_index] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/graph_trace_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/checkpoint_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/interrupt_fault_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/no_authority_promotion_expected.sop
+
+  = must: make expected ledgers reviewable without generated checkpoints, generated traces, or runtime state
+  = must: keep expected ledgers as tracked fixture authority only after IR4-IA02 completion review accepts them
+
+& [ConfirmedGeneratedOutputBoundary: IR4RuntimeGraph] is the generated-output boundary for future tests and fixture runs
+  + [generated_output_root] is .langsop/
+  + [generated_output_root] is .langsop/checkpoints/ir4_runtime_graph/
+  + [generated_output_root] is .langsop/traces/ir4_runtime_graph/
+  + [generated_output_root] is .langsop/reports/ir4_runtime_graph/
+  + [generated_output_root] is tests/fixtures/generated/ir4_runtime_graph/
+  + [generated_output_root] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
+  + [generated_output_root] is tests/fixtures/generated/ir4_runtime_graph/traces/
+  + [generated_output_root] is tests/fixtures/generated/ir4_runtime_graph/reports/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is projection_only
+  + [source_authority_status] is docs/ and accepted tracked fixture source or expected ledgers only
+
+  = must: refuse writes outside accepted generated roots during runtime or test execution
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject graph state, checkpoints, generated traces, reports, manifests, caches, fixture outputs, adapter state, or runtime state as source authority
+
+& [ConfirmedDependencyBoundary: IR4RuntimeGraph] is the dependency boundary for the first IR4 implementation pass
+  + [allowed_dependency_set] is Python standard library only through IR4-IA07
+  + [allowed_internal_dependency] is src/langsop/operators accepted IR3 operator harness modules
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [langgraph_dependency_state] is gated_until_IR4-IA08_dependency_decision
+
+  = must: require IR4-IA08 or a later dependency-authorizing slice before adding package dependencies, lockfiles, imports from external LangGraph packages, or runtime requirements
+  = must: keep first-pass graph runner clearly marked as proof-runtime implementation, not final external LangGraph package integration
+
+& [ConfirmedCommandPlan: IR4RuntimeGraph] is the command and verification plan for future implementation slices
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [targeted_contract_test] is python -m unittest tests.test_ir4_runtime_graph_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated checkpoints, traces, and reports are ignored, disposable, and reproducible
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir4_runtime_graph_contracts exists
+
+& [ImplementationSliceProofGate: IR4RuntimeGraph] is the proof gate opened by this activation boundary
+  + [IR4-IA02_opened_after_review] is fixture source and expected-ledger seed material
+  + [IR4-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA01 acceptance
+  + [IR4-IA02_scope] is fixture source files, expected ledger files, and fixture index only
+  + [code_creation_authorized_after_IR4-IA01] is false
+  + [fixture_creation_authorized_after_IR4-IA01] is true_for_IR4-IA02_only
+  + [expected_ledger_creation_authorized_after_IR4-IA01] is true_for_IR4-IA02_only
+  + [generated_checkpoint_creation_authorized_after_IR4-IA01] is false
+  + [generated_trace_creation_authorized_after_IR4-IA01] is false
+  + [test_file_creation_authorized_after_IR4-IA01] is false
+  + [dependency_installation_authorized_after_IR4-IA01] is false
+  + [package_metadata_mutation_authorized_after_IR4-IA01] is false
+  + [operations_control_authorized_after_IR4-IA01] is false
+  + [live_machine_control_authorized_after_IR4-IA01] is false
+
+  = must: open only IR4-IA02 after this boundary is accepted
+  = must: keep graph state models, graph contract models, checkpoint models, interrupt models, runner, fixture runner, tests, generated outputs, dependency changes, and proof packs gated until their specific slices open
+
+& [IR4IA01CoverageReview] is the coverage checklist for IR4-IA01
+  + [confirmed_implementation_file_inventory_present] is ConfirmedImplementationFileInventory: IR4RuntimeGraph
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceInventory: IR4RuntimeGraph
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory: IR4RuntimeGraph
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary: IR4RuntimeGraph
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: IR4RuntimeGraph
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: IR4RuntimeGraph
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: IR4RuntimeGraph
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_checkpoint_created] is false
+  + [generated_trace_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR4-IA01 only when all checklist items are satisfied
+  = must: open IR4-IA02 only after this activation boundary is reviewed in a completion review
