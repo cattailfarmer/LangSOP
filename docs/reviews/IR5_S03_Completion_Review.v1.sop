@@ -1,0 +1,111 @@
+Subject: IR5 S03 Completion Review V1
+Date: 2026-05-26
+Review UUID: 52b48139-e369-48b7-91d5-74bfa17a001a
+
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [boundary_import] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [boundary_import_review] docs/reviews/IR5_S01_Completion_Review.v1.sop
+@ [authority_display_review] docs/reviews/IR5_S02_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR5-S03] is the completed-work review for IR5-S03 surface projection fixture plan and expected ledger plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR5-S03
+  + [completed_output] is docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+  + [completed_output_sha256] is 09A95489B8B0EF99934FFC9B38BAAD56910025B02AE0767A754C2A2EEE2D410F
+  + [completed_output] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [completed_output_sha256] is 8EF02388B359C506FBBF06035DC191DDA14FCAC0BDB8DBC50F158F91B5CB9002
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5-S03 and open IR5-S04
+  + [next_gate_result] is IR5-S04 may open
+  + [next_model_route] is requires deeper reasoning for IR5-S04 implementation planning and generated-output boundary
+  + [next_model_route_depth] is not Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR5-S04 implementation planning only
+  = must: rerun this review if the fixture plan, fixture index, IR5-S01 boundary import, IR5-S02 authority display contract, or their completion reviews change
+  = must: keep executable UI code, adapter code, dependency installation, generated output creation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR5S03Verification] is the verification result for IR5-S03
+  + [fixture_plan_created] is true
+  + [fixture_index_created] is true
+  + [fixture_case_count] is 13
+  + [fixture_index_entry_count] is 13
+  + [manager_ready_packet_covered] is true
+  + [worker_blocked_packet_covered] is true
+  + [stale_projection_covered] is true
+  + [narrative_lineage_covered] is true
+  + [debug_fault_trace_covered] is true
+  + [conversation_interrupt_covered] is true
+  + [adapter_mutation_refusal_covered] is true
+  + [missing_authority_notice_covered] is true
+  + [langflow_non_authority_projection_covered] is true
+  + [multi_surface_divergence_covered] is true
+  + [completion_gate_refusal_covered] is true
+  + [ir4_runtime_graph_proof_handoff_covered] is true
+  + [dry_run_success_not_live_control_covered] is true
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+  + [executable_ui_code_created] is false
+  + [adapter_code_created] is false
+  + [dependency_installed] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5S03VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+    @ [support] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+
+& [SupportDelta: IR5-S03] is the support delta produced by IR5-S03
+  + [new_support_record] is IR5 has a 13-case fixture plan covering manager, worker, stale, narrative, debug, conversation, adapter, missing authority notice, Langflow, divergence, completion gate, runtime handoff, and dry-run live-control refusal paths
+  + [new_support_record] is IR5 has a fixture index mapping every fixture case to primary and secondary contracts for later implementation
+  + [new_support_record] is future implementation planning can refer to planned fixture cases without treating fixture source files or expected ledgers as already created
+  + [new_support_record] is IR4 runtime graph proof handoff and FSC5 dry-run safety are fixture-planned as explicit projection cases
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-S03] is the requirement delta produced by IR5-S03
+  + [requirement_delta] is IR5-S04 must define future file inventory, fixture source root, expected ledger root, generated output root, and command plan without implementing code or creating generated outputs
+  + [requirement_delta] is IR5-S04 requires deeper reasoning because implementation planning and generated-output policy affect authority boundaries
+  + [requirement_delta] is actual fixture source files and expected ledger files remain gated until a later implementation activation slice explicitly authorizes them
+  + [requirement_delta] is no executable UI code, adapter code, dependency installation, generated output, operations simulator, operations control, or live machine control is authorized by IR5-S03
+
+& [FaultReview: IR5-S03] is the fault review for IR5-S03
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_case_gap_found] is false
+  + [fixture_index_gap_found] is false
+  + [fixture_source_file_leak_found] is false
+  + [expected_ledger_file_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [implementation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5S03Accepted] is accepted
+    @ [support] [IR5S03Verification]
+    @ [support] [SupportDelta: IR5-S03]
+    @ [support] [RequirementDelta: IR5-S03]
+    @ [support] [FaultReview: IR5-S03]
+
+& [NextSliceGate: IR5-S04] is opened
+  + [opened_slice] is IR5-S04 surface projection prototype implementation plan and generated-output boundary
+  + [accepted_dependency] is docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is 60EF5679FBAC2AB6037696C59E078498F079E188B63564D1DE43C9A570B4CB56
+  + [accepted_dependency] is docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+  + [accepted_dependency_sha256] is 1F091339BCC35A4B1EA089FAF3735875CC763611CBDDBA85DCEF728B436F3469
+  + [accepted_dependency] is docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+  + [accepted_dependency_sha256] is 09A95489B8B0EF99934FFC9B38BAAD56910025B02AE0767A754C2A2EEE2D410F
+  + [accepted_dependency] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [accepted_dependency_sha256] is 8EF02388B359C506FBBF06035DC191DDA14FCAC0BDB8DBC50F158F91B5CB9002
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation and generated-output policy affect surface authority and downstream coordination readiness
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-S04 next unless user redirects or a new fault invalidates this review

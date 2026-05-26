@@ -1,0 +1,142 @@
+Subject: IR5 Surface Projection Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: 231c2f1c-c016-4222-881f-1f664bf4eeea
+
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [boundary_import] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [boundary_import_review] docs/reviews/IR5_S01_Completion_Review.v1.sop
+@ [authority_display_review] docs/reviews/IR5_S02_Completion_Review.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+
+& [FixturePlan: IR5SurfaceProjectionFixturePlanV1] is the bounded fixture plan for IR5 surface projection prototype planning
+  + [slice_id] is IR5-S03
+  + [fixture_family] is ir5-surface-projection-authority-display
+  + [fixture_case_count] is 13
+  + [fixture_index] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture planning is bounded by accepted IR5-S01 and IR5-S02 contracts
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+
+  = must: treat this plan as fixture and expected-ledger planning, not executable test harness implementation
+  = must: cover manager, worker, stale, narrative, debug, conversation, adapter, missing authority notice, Langflow, divergence, completion gate, IR4 runtime handoff, and dry-run live-control refusal paths
+  = must: preserve authority notice, freshness, lineage, stop-state visibility, action route, and refusal evidence obligations
+  - never: implement UI, adapters, transports, Langflow export, runtime services, fixture source files, expected ledger files, generated outputs, dispatch, operations simulator, operations control, or live machine control here
+
+& [FixtureCase: IR5X-001-manager-ready-packet] is the manager ready packet projection fixture
+  + [input_shape] is IR5 work state with accepted IR5-S02 review, fresh boundary inputs, no contested claim, and no open stop-state evidence
+  + [expected_projection] is manager_summary_projection with AuthorityDisplayEnvelope, ProjectionStateEnvelope, freshness_state fresh, current_ready_slice_or_chunk, source_authority_ref_set, and supported_action_route_set
+  + [expected_visibility] is current ready slice, support_delta, requirement_delta, completion_review_ref, no operations control, and no live-control authority visible before action
+  + [expected_refusal_absent] is assignment, dispatch, direct gate mutation, direct completion acceptance, and source authority mutation
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR5X-002-worker-blocked-packet] is the worker blocked packet projection fixture
+  + [input_shape] is worker packet projection with forbidden_scope mismatch, unresolved support gap, stale route, or missing completion review evidence
+  + [expected_projection] is worker_packet_projection with projected_status blocked, authority_notice_ref, blocker_ref_set, required_resolution, forbidden_scope_set, and model_route visibility
+  + [expected_visibility] is no completion claim action, no false ready display, and no fixture-source creation authority
+  + [expected_route] is support repair, rebake, SOP-first interrupt, or completion review gate
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR5X-003-stale-projection] is the stale projection fixture
+  + [input_shape] is projection with stale accepted pack hash, stale IR5-S01 output hash, stale IR5-S02 contract hash, or unknown lineage freshness
+  + [expected_projection] is stale_projection with freshness_state stale or unknown, stale_source_ref_set, invalidation_ref_set, source_authority_ref_set, and authority_notice_ref
+  + [expected_visibility] is stale state visible before any authority-sensitive action
+  + [expected_route] is refresh accepted input, rerun completion review, or rebake affected slice
+  + [acceptance_status] is stale
+
+& [FixtureCase: IR5X-004-narrative-lineage] is the narrative lineage projection fixture
+  + [input_shape] is narrative projection over accepted source refs, completion reviews, support deltas, requirement deltas, reentry packet, and open frontier set
+  + [expected_projection] is narrative_projection with authority notice, freshness state, narrative summary, source_lineage_ref_set, open_frontier_set, blocked_or_stale_context_set, and reentry_packet_ref_set
+  + [expected_visibility] is stale or incomplete narrative context remains visible and cannot be smoothed into completion
+  + [expected_refusal_absent] is source narrative rewrite, canonical specification rewrite, completion acceptance, and work gate mutation
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR5X-005-debug-fault-trace] is the debug fault trace projection fixture
+  + [input_shape] is runtime trace, checkpoint context, hidden-write evidence, or fault record from accepted IR4 runtime proof handoff
+  + [expected_projection] is debug_trace_projection with trace_path_summary, checkpoint_context_ref_set, fault_summary_set, hidden_write_check_summary, unresolved_debug_question_set, authority_notice_ref, and freshness_state
+  + [expected_visibility] is runtime terminal outcome displayed as generated_projection_evidence or accepted_execution_evidence according to accepted review status
+  + [expected_refusal_absent] is fault repair, trace mutation, checkpoint authority promotion, runtime execution, and source mutation
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR5X-006-conversation-interrupt] is the conversation interrupt projection fixture
+  + [input_shape] is conversation projection carrying ambiguous, authority-sensitive, stale, contested, or unsupported action from a user or agent
+  + [expected_projection] is conversation_projection with visible_authority_notice, visible_freshness_state, visible_blocked_stale_fault_interrupt_set, available_action_route_set, conversation_lineage_ref_set, and interrupt_context_ref
+  + [expected_route] is SOP-first interrupt with carrier context preserved
+  + [expected_refusal_absent] is participant identity collapse, direct authority mutation, direct claim acceptance, and completion review acceptance
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: IR5X-007-adapter-mutation-refusal] is the adapter mutation refusal fixture
+  + [input_shape] is adapter-originated work_request, claim_request, review_request, interrupt_resolution_request, human_override_request, or dry_run request attempting direct authority mutation
+  + [expected_projection] is adapter_event_projection with inbound_action_classification_ref, mutation_gate_ref, authority_notice_ref, freshness_state, blocked_route evidence, and carrier context
+  + [expected_route] is action_request, coordination_request, interrupt_context, dry-run request record, or completion_review_request
+  + [expected_refusal] is direct source write, accepted pack write, completion review acceptance, job dispatch, command execution, and operations command
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR5X-008-missing-authority-notice] is the missing authority notice fixture
+  + [input_shape] is decision-making projection lacking authority_notice_ref, trust_limit, source_authority_ref_set, or required_route_set
+  + [expected_projection] is projection_fault_record or blocked_projection
+  + [expected_visibility] is missing_authority_notice appears as refusal reason before user action
+  + [expected_route] is repair projection contract output before use
+  + [acceptance_status] is faulted
+
+& [FixtureCase: IR5X-009-langflow-non-authority-projection] is the Langflow non-authority projection fixture
+  + [input_shape] is Langflow-style graph projection displaying executable-looking flow, graph nodes, action routes, or runtime outcome summaries
+  + [expected_projection] is langflow_graph_projection with explanatory_projection_only authority limit, authority_notice_ref, freshness_state, source graph ref set, lineage_edge_set, and blocked direct execution route
+  + [expected_visibility] is graph projection cannot be mistaken for executable authority, accepted proof, or adapter command
+  + [expected_refusal_absent] is Langflow installation, Langflow export implementation, runtime execution, source mutation, and operations control
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR5X-010-multi-surface-divergence] is the multi-surface divergence fixture
+  + [input_shape] is two or more carrier projections with authority_notice mismatch, hidden fault state, stale projection, inconsistent claim state, carrier ordering conflict, or missing lineage
+  + [expected_projection] is divergence_notice plus stale_projection, coordination_conflict_signal, or sop_first_interrupt_context
+  + [expected_visibility] is per-surface evidence set and invalidation refs remain visible
+  + [expected_route] is reconcile source freshness, claim state, lineage, authority notice, or interrupt before authority-sensitive action
+  + [acceptance_status] is stale
+
+& [FixtureCase: IR5X-011-completion-gate-refusal] is the completion gate refusal fixture
+  + [input_shape] is projected follow-on action attempting to open IR5-S04, accept completion, or create implementation plan before IR5-S03 completion review acceptance
+  + [expected_projection] is blocked_projection with completion_review_ref missing, required_resolution, authority_notice_ref, and downstream_gate closed
+  + [expected_visibility] is downstream implementation remains gated
+  + [expected_route] is IR5-S03 completion review after fixture plan and index acceptance
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR5X-012-ir4-runtime-graph-proof-handoff] is the IR4 runtime graph proof handoff fixture
+  + [input_shape] is runtime terminal outcome, checkpoint ref, generated trace, generated report, or fixture output from accepted IR4 runtime proof
+  + [expected_projection] is debug or manager projection with generated_projection_evidence or accepted_execution_evidence authority tier, source lineage, freshness_state, invalidation_ref_set, and no checkpoint authority promotion
+  + [expected_visibility] is terminal_success, terminal_blocked, terminal_stale, terminal_fault, or terminal_interrupt displayed with trace and stop-state context
+  + [expected_refusal] is checkpoint readiness authority, generated trace authority, and generated report authority
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR5X-013-dry-run-success-not-live-control] is the dry-run success not live control fixture
+  + [input_shape] is operation-like projection with dry_run_result success, scoped human approval display, or requested GPU/model/job/process effect
+  + [expected_projection] is operation_projection with dry_run_display non_live_simulation_only, no-live-effect notice, refusal or safety review status, authority_notice_ref, risk_classification, and completion_review_required
+  + [expected_visibility] is dry-run success and human approval display do not authorize live control
+  + [expected_refusal] is command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations automation, operations control, and live machine control
+  + [acceptance_status] is blocked
+
+& [FixturePlanAcceptanceChecklist: IR5-S03] is the acceptance checklist for IR5 surface projection fixture plan
+  + [fixture_case_count] is 13
+  + [contract_coverage] is AuthorityDisplayEnvelope
+  + [contract_coverage] is ProjectionStateEnvelope
+  + [contract_coverage] is FreshnessAndLineageDisplayContract
+  + [contract_coverage] is StopStateDisplayContract
+  + [contract_coverage] is ActionRouteDisplayContract
+  + [contract_coverage] is ProjectionRefusalDisplayContract
+  + [contract_coverage] is CompletionGateAndOverrideDisplayRule
+  + [contract_coverage] is SurfaceFamilyDisplayObligationSet
+  + [contract_coverage] is IR4RuntimeAndFSC5SafetyDisplayBridge
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is Langflow installation or export implementation
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is fixture source file creation
+  + [forbidden_scope_absent] is expected ledger file creation
+  + [forbidden_scope_absent] is generated output creation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: reject IR5-S03 if any required fixture case or contract coverage item is missing
+  = must: open IR5-S04 only after the fixture plan and index are reviewed in a completion review
