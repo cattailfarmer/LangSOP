@@ -1,0 +1,170 @@
+Subject: IR2 Kernel Record Extraction And Validation Mapping V1
+Date: 2026-05-26
+Mapping UUID: 607566ef-4891-445a-8039-398b97a6b04b
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [boundary_map] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [parser_profile] docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+@ [kernel_record_core] docs/schema/Kernel_Record_Core.v1.sop
+@ [authority_kernel_schemas] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+& [IR2KernelRecordExtractionAndValidationMappingV1] is the IR2-S03 mapping from SOP parse events to KernelRecord candidates
+  + [mapping_id] is ir2-kernel-record-extraction-validation-mapping-v1
+  + [mapping_uuid] is 607566ef-4891-445a-8039-398b97a6b04b
+  + [slice_id] is IR2-S03
+  + [mapping_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is extraction and validation mapping only
+
+  = must: define how future implementation converts discovered SOP files and parse events into typed KernelRecord candidates
+  = must: require every candidate record to satisfy the KernelRecord common envelope before it can be projected
+  = must: preserve unresolved identity, unsupported authority, stale source, and malformed structure as blocked or fault-bearing output
+  - never: implement extraction code, parser code, SQLite writes, LangGraph runtime, surface behavior, operations control, or live machine control in this slice
+
+& [ExtractionInputSet] is the accepted input set for future record extraction
+  + [input] is discovered_authority_artifact_candidate from AuthorityArtifactDiscoveryScope
+  + [input] is parse_event from ParseEventShape
+  + [input] is parse_fault from RecoverableParseFaultShape
+  + [input] is source_file_hash
+  + [input] is source_path_role
+  + [input] is parser_profile_version
+  + [input] is extraction_rule_version
+
+  = must: reject extraction when source_path, source_hash, line_number, marker_kind, parse_status, or source_path_role is missing
+  = must: treat parse inputs as projections, not authority
+
+& [KernelRecordEnvelopeMapping] is the common field mapping for every extracted KernelRecord candidate
+  + [record_id] is deterministic candidate id derived from record_kind, source_path, source_hash, line_number, bracket_label hash, and extraction_rule_version
+  + [record_kind] is selected by RecordKindCandidateMapping
+  + [natural_key] is selected by NaturalKeyCandidateMapping and may be unresolved with rationale
+  + [subject_ref] is derived from bracket_label, path role, line scope, and parent subject when available
+  + [authority_state] is selected by AuthorityStateCandidateMapping and may remain source_only or none until signature validation
+  + [source_ref_set] is derived from source_path, source_hash, line_number, parser_profile_version, and extraction_rule_version
+  + [lineage_edge_set] includes derived_from parse_event and source_of source artifact edges
+  + [freshness_rule] is selected by FreshnessCandidateMapping and references source_hash and schema version triggers
+  + [status] is draft, blocked, active, or stale according to validation result
+
+  = must: reject or block any candidate missing one of the nine common KernelRecord fields
+  = must: preserve candidate identity separately from accepted record identity when later validation supersedes it
+  = must: keep payload extraction subordinate to common-envelope validation
+
+& [RecordKindCandidateMapping] is the candidate mapping from path role and structural markers to KernelRecordKind
+  + [mapping_rule] is every discovered SOP file produces a source_log candidate
+  + [mapping_rule] is every structural parse event produces a log_entry candidate unless it is blank and downstream extraction opts to omit blank projections
+  + [mapping_rule] is @ anchor parse events produce citation_ref candidates when they cite files, records, sources, support, lineage, transition, imports, implementation, or review evidence
+  + [mapping_rule] is docs/canonical/**/*.sop, docs/planning/**/*.sop, docs/slices/**/*.sop, docs/schema/**/*.sop, docs/decisions/**/*.sop, docs/runtime/**/*.sop, docs/surfaces/**/*.sop, docs/operations/**/*.sop, and docs/coordination/**/*.sop may produce authority_artifact candidates at file scope
+  + [mapping_rule] is & [OperatorContract:*] subject declarations may produce operator_contract candidates
+  + [mapping_rule] is & [CompletedWorkReview:*] and & [SliceMintingReview:*] subject declarations may produce completion_review candidates
+  + [mapping_rule] is & [FaultReview:*] and recoverable parse faults may produce fault_record candidates
+  + [mapping_rule] is & [VerificationOracleResult:*] and ! accepted proof claims may produce proof_result candidates only when support anchors are present
+  + [mapping_rule] is & [FinalWorkSlice:*] subject declarations may produce work_packet candidates when slice authority is current
+  + [mapping_rule] is docs/state/**/*.sop current-ready and accepted-slice fields may produce readiness_projection candidates as derived state projections
+  + [mapping_rule] is stale trigger findings may produce stale_projection candidates
+  + [mapping_rule] is unmapped structural subjects remain log_entry and authority_artifact candidates rather than guessed record kinds
+
+  = must: prefer blocked or generic candidates over invented record kinds
+  = must: require explicit future mapping before extracting coordination_claim, narrative_node, understanding_anchor, capability_node, requirement_record, support_record, or support_gap from ambiguous prose
+
+& [NaturalKeyCandidateMapping] is the candidate natural-key mapping for extracted records
+  + [source_log_natural_key] is project_scope plus source_path plus source_hash
+  + [log_entry_natural_key] is source_log_ref plus line_number plus raw_text_hash
+  + [citation_ref_natural_key] is cited_ref plus cited_scope plus citation_purpose when all are parseable, otherwise unresolved
+  + [authority_artifact_natural_key] is artifact_path plus signature_uuid when present or artifact_hash when signature is not yet validated
+  + [operator_contract_natural_key] is operator_id plus operator_version when both are parseable, otherwise unresolved
+  + [completion_review_natural_key] is completed_slice_ref plus completed_output_hash plus review_revision when available, otherwise unresolved
+  + [proof_result_natural_key] is proof_subject_ref plus proof_kind plus proof_output_hash when available, otherwise unresolved
+  + [fault_record_natural_key] is fault_kind plus fault_subject_ref plus source_path and line_number when needed
+  + [work_packet_natural_key] is packet_series plus packet_revision or slice_id plus slice_surface_hash
+  + [readiness_projection_natural_key] is subject_ref plus projection_revision plus input_record_set_hash
+  + [stale_projection_natural_key] is stale_record_ref plus stale_event_id
+
+  = must: use natural_key key_state unresolved when required terms cannot be extracted
+  = must: preserve unresolved natural keys with rationale rather than inventing stable identities
+
+& [AuthorityStateCandidateMapping] is the candidate authority-state mapping for extracted records
+  + [source_log_authority_state] is source_only
+  + [log_entry_authority_state] is source_only when representing preserved source text, otherwise none for mechanical parse events
+  + [citation_ref_authority_state] is source_only until cited target and scope validate
+  + [authority_artifact_authority_state] is source_only until SJS signature, source lineage, and freshness validation accept it
+  + [canonical_authority_artifact_authority_state] is candidate_signed_sjs only as a validation target, not a KernelRecord authority_state, until IR2-S04 validates signature evidence
+  + [operator_contract_authority_state] is accepted_decision or source_only only when source_ref_set and accepted source basis are explicit
+  + [completion_review_authority_state] is proof_backed only after completed output hashes and support anchors validate
+  + [proof_result_authority_state] is proof_backed only when proof command, reviewed artifact, or explicit absence proof is cited
+  + [fault_record_authority_state] is none unless the fault itself cites evidence and is accepted by review
+  + [readiness_projection_authority_state] is stale_projection, narrative_projection, or none according to freshness and source support
+
+  = must: never emit signed_sjs without valid signature evidence using protocol UUID ad10f10f-d506-48ef-a805-f8b0a133766c
+  = must: never promote parser or SQLite projection success to accepted authority
+
+& [SourceRefAndLineageMapping] is the source and lineage mapping for extraction
+  + [source_ref] is file source_path and source_hash
+  + [source_ref] is line_number and raw_text hash for line-derived candidates
+  + [source_ref] is parser_profile_version and extraction_rule_version for derived candidates
+  + [lineage_edge] is source_of from source_log candidate to log_entry candidate
+  + [lineage_edge] is derived_from from parse_event to extracted candidate
+  + [lineage_edge] is cites from citation_ref candidate to cited target when parseable
+  + [lineage_edge] is reviewed_by from accepted output candidate to completion_review candidate when parseable
+  + [lineage_edge] is gates or activates from review candidate to next slice or work gate when parseable
+  + [lineage_edge] is invalidates, contradicts, supersedes, or stale_projection only when explicit markers or review terms support the relation
+
+  = must: emit blocked output if a claim-bearing candidate has empty source_ref_set
+  = must: emit blocked output if a derived candidate lacks lineage_edge_set
+
+& [FreshnessCandidateMapping] is the freshness mapping for extraction
+  + [freshness_subject_set] is source_path and source_hash
+  + [freshness_subject_set] is parser_profile_version
+  + [freshness_subject_set] is extraction_rule_version
+  + [freshness_subject_set] is kernel_record_schema_version
+  + [freshness_subject_set] is record_specific_schema_version
+  + [freshness_subject_set] is natural_key_matrix_version
+  + [trigger_set] is source_hash_change, parser_profile_change, extraction_rule_change, schema_change, natural_key_matrix_change, signature_validation_change, completed_output_hash_change, or review_status_change
+  + [stale_action] is emit stale_projection or block projection rebuild until recompute
+  + [last_checked_ref] is future proof_result or operator_trace
+
+  = must: treat unknown freshness as blocked for trust-bearing records
+  = must: preserve stale records rather than overwriting them in place
+
+& [ValidationFailureMapping] is the validation failure map for extracted record candidates
+  + [failure] is missing_common_field produces fault_record candidate and blocked candidate status
+  + [failure] is unresolved_natural_key produces blocked candidate status unless record kind explicitly allows unresolved
+  + [failure] is missing_source_ref produces fault_record candidate
+  + [failure] is missing_lineage_edge produces fault_record candidate for derived records
+  + [failure] is hidden_authority_claim produces fault_record candidate
+  + [failure] is parser_fault_affects_identity produces blocked candidate status
+  + [failure] is parser_fault_affects_lineage produces blocked candidate status
+  + [failure] is unsupported_record_kind_mapping produces log_entry-only fallback and support_gap candidate if a required extraction was expected
+  + [failure] is stale_source_hash produces stale_projection candidate
+
+  = must: route validation failures to blocked, stale, or fault-bearing output, not silent omission
+  = must: preserve enough evidence for a manager review to reproduce the failure
+
+& [BlockedOutputBehavior] is the blocked-output rule for extraction
+  + [blocked_output] is KernelRecord candidate with status blocked when identity, source, lineage, freshness, or authority cannot be safely resolved
+  + [blocked_output] is fault_record candidate when the failure is a contract violation or hidden authority risk
+  + [blocked_output] is stale_projection candidate when freshness fails
+  + [blocked_output] is support_gap candidate only when an expected extraction contract lacks sufficient support
+
+  = must: prefer blocked output over false-ready extraction
+  = must: preserve parse events and source refs even when extraction blocks
+
+& [IR2S03CoverageReview] is the coverage checklist for IR2-S03
+  + [extraction_input_set_present] is ExtractionInputSet
+  + [kernel_record_envelope_mapping_present] is KernelRecordEnvelopeMapping
+  + [record_kind_candidate_mapping_present] is RecordKindCandidateMapping
+  + [natural_key_candidate_mapping_present] is NaturalKeyCandidateMapping
+  + [authority_state_candidate_mapping_present] is AuthorityStateCandidateMapping
+  + [source_ref_and_lineage_mapping_present] is SourceRefAndLineageMapping
+  + [freshness_candidate_mapping_present] is FreshnessCandidateMapping
+  + [validation_failure_mapping_present] is ValidationFailureMapping
+  + [blocked_output_behavior_present] is BlockedOutputBehavior
+  + [parser_code_created] is false
+  + [extraction_code_created] is false
+  + [sqlite_code_created] is false
+  + [generated_projection_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-S03 only when all checklist items are satisfied
+  = must: open IR2-S04 only after this extraction mapping is reviewed in a completion review
