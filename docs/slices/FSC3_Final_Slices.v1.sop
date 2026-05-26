@@ -1,0 +1,139 @@
+Subject: LangSOP FSC3 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 337e3bba-9048-4e1b-8011-479742b35c15
+
+@ [canonical_specification] docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC3FinalSliceSurfaceV1] is the executable final-slice surface for FSC3 runtime graph proof
+  + [chunk_ref] is FSC3 runtime graph proof
+  + [chunk_boundary] is P5 LangGraph procedure runtime and P8c LangGraph runtime, interrupt, and operator-trace fixtures
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is FSC3-S01
+  + [gated_slice_set] is FSC3-S02, FSC3-S03, FSC3-S04, FSC3-S05, and FSC3-S06
+
+  = must: execute FSC3-S01 before any other FSC3 slice
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: keep FSC4 and FSC5 gated until FSC3-S06 accepts the runtime graph proof pack
+
+& [FinalWorkSlice: FSC3-S01-RuntimeBoundaryAndInvariantMap] is ready
+  + [slice_id] is FSC3-S01
+  + [slice_name] is runtime boundary and invariant map
+  + [chunk_ref] is FSC3
+  + [portion_ref] is P5 LangGraph procedure runtime boundary import
+  + [authority_basis] is docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is imported contract inventory, runtime-owned invariant set, checkpoint authority boundary, forbidden mutation list, and downstream stale trigger list
+  + [verification_oracle] is all FSC1 and FSC2 imports are mapped without runtime implementation, surface implementation, operations control, or checkpoint authority confusion
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is runtime boundary import determines which graph duties may execute and which remain SOP authority
+  + [forbidden_scope] is implementing graph nodes, implementing checkpoint persistence, writing runtime code, surface rendering, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC3-S02-WholeFieldPlannerGraphContractAndCheckpointPolicy] is gated
+  + [slice_id] is FSC3-S02
+  + [slice_name] is WholeFieldPlannerGraph contract and checkpoint policy
+  + [chunk_ref] is FSC3
+  + [portion_ref] is P5 LangGraph procedure runtime
+  + [authority_basis] is docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [activation_gate] is FSC3-S01 accepted
+  + [internal_dependency_set] is FSC3-S01 FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [expected_output_set] is graph state contract, node contract set, edge contract set, checkpoint policy, authority read/write policy, and runtime refusal contract
+  + [verification_oracle] is checkpoint state cannot outrank SOP authority and graph outputs must remain operator_trace, proof_result, stale_projection, fault_record, or accepted packet records
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is checkpoint authority and graph-state semantics are high-risk runtime architecture choices
+  + [forbidden_scope] is executable LangGraph code, package installation, runtime service code, surface rendering, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC3-S03-SOPFirstInterruptAndResumeContract] is gated
+  + [slice_id] is FSC3-S03
+  + [slice_name] is SOP-first interrupt and resume contract
+  + [chunk_ref] is FSC3
+  + [portion_ref] is P5 LangGraph procedure runtime
+  + [authority_basis] is docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [activation_gate] is FSC3-S02 accepted
+  + [internal_dependency_set] is FSC3-S01 FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+  + [internal_dependency_set] is FSC3-S02 WholeFieldPlannerGraph_Contract.v1.sop
+  + [expected_output_set] is docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+  + [expected_output_set] is interrupt kind map, required context packet, human/deeper-model handoff, resume condition contract, and no-hidden-mutation rule
+  + [verification_oracle] is ambiguous identity, authority conflict, stale input, missing proof, contested claim, high-risk operation, and human override route to SOP-first interrupt without authority mutation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is interrupt and resume semantics decide how runtime returns to authority-bearing SOP
+  + [forbidden_scope] is implementing runtime interrupt handlers, UI prompts, transport, or operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC3-S04-OperatorTraceRuntimeProofContract] is gated
+  + [slice_id] is FSC3-S04
+  + [slice_name] is operator trace runtime proof contract
+  + [chunk_ref] is FSC3
+  + [portion_ref] is P5 runtime trace proof
+  + [authority_basis] is docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [activation_gate] is FSC3-S03 accepted
+  + [internal_dependency_set] is FSC3-S02 WholeFieldPlannerGraph_Contract.v1.sop
+  + [internal_dependency_set] is FSC3-S03 SOP_First_Interrupt_Resume_Contract.v1.sop
+  + [expected_output_set] is docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+  + [expected_output_set] is trace assertion contract for graph node inputs, outputs, checkpoint reads, checkpoint writes, interrupts, faults, and completion-review gate evidence
+  + [verification_oracle] is every success, blocked, fault, and interrupt path emits operator_trace and proof_result or fault/stale records without hidden writes
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is trace proof decides whether runtime behavior can be trusted by downstream surfaces
+  + [forbidden_scope] is executable runtime implementation, test harness implementation, surface rendering, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC3-S05-RuntimeGraphFixturePlan] is gated
+  + [slice_id] is FSC3-S05
+  + [slice_name] is runtime graph fixture plan
+  + [chunk_ref] is FSC3
+  + [portion_ref] is P8c LangGraph runtime, interrupt, and operator-trace fixtures
+  + [authority_basis] is docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [activation_gate] is FSC3-S04 accepted
+  + [internal_dependency_set] is FSC3-S02 WholeFieldPlannerGraph_Contract.v1.sop
+  + [internal_dependency_set] is FSC3-S03 SOP_First_Interrupt_Resume_Contract.v1.sop
+  + [internal_dependency_set] is FSC3-S04 Operator_Trace_Runtime_Proof_Contract.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC3_Runtime_Graph_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC3_Runtime_Graph_Fixture_Index.v1.sop
+  + [expected_output_set] is fixture cases for valid graph pass, blocked readiness, stale checkpoint, ambiguous interrupt, authority conflict interrupt, contested claim interrupt, faulted operator trace, hidden write prevention, false-ready checkpoint, and completion gate refusal
+  + [verification_oracle] is fixture plan maps every case to graph contract behavior, expected trace, checkpoint policy, interrupt handling, and acceptance status
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after FSC3-S01 through FSC3-S04 are accepted
+  + [model_route_reason] is fixture drafting becomes bounded once graph, checkpoint, interrupt, and trace contracts are accepted
+  + [forbidden_scope] is changing accepted runtime contracts, executable test harness implementation, surface UI, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC3-S06-FSC3CompletionReviewAndActivationPacket] is gated
+  + [slice_id] is FSC3-S06
+  + [slice_name] is FSC3 completion review and activation packet
+  + [chunk_ref] is FSC3
+  + [portion_ref] is P5 and P8c
+  + [authority_basis] is docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [activation_gate] is FSC3-S05 accepted
+  + [internal_dependency_set] is FSC3-S01 through FSC3-S05 accepted outputs
+  + [expected_output_set] is docs/reviews/FSC3_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [expected_output_set] is acceptance record for runtime boundary map, graph contract, interrupt/resume contract, operator trace proof contract, and runtime graph fixture plan
+  + [expected_output_set] is activation recommendation for FSC4 surface projection
+  + [verification_oracle] is completion review classifies support_delta, requirement_delta, stale outputs, contradictions, unresolved proof gaps, and FSC4 activation readiness
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance changes downstream boundary inputs and may activate FSC4
+  + [forbidden_scope] is implementing FSC4, surfaces, operations control, or silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [FSC3SliceClosureReview] is the dependency audit for minted FSC3 slices
+  + [slice_surface_uuid] is 337e3bba-9048-4e1b-8011-479742b35c15
+  + [FSC3_boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is FSC3-S01
+  + [downstream_gate] is FSC4 remains gated until FSC3-S06 accepts FSC3_Runtime_Graph_Proof_Pack.v1.sop
+
+  = must: rerun this closure review after every FSC3 completion review

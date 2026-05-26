@@ -1,0 +1,79 @@
+Subject: LangSOP FSC3 Final Slices Exploded Specification
+Date: 2026-05-26
+Exploded Specification UUID: b4ac8dad-2b87-447a-9cbe-eda33f57676f
+
+@ [source_manifest] docs/source/2026-05-26_fsc3_final_slices/Source_Document_Manifest.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC3FinalSlicesExplosion] is the processing pass that mints final work slices inside FSC3 runtime graph proof
+  + [root_subject] is FSC3 runtime graph proof
+  + [chunk_state] is activated_by_FSC2_planning_coordination_pack
+  + [boundary_input] is FSC2 planning coordination pack
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [slice_strategy] is order slices so imported boundary contracts are mapped before graph contract, checkpoint policy, interrupt/resume behavior, operator trace proof, fixtures, and final pack acceptance
+  + [result] is six final slices, one ready now and five gated inside FSC3
+
+  = must: preserve no unresolved dependency outside FSC3
+  = must: make each slice contiguous by expected output and verification oracle
+  = must: run completed-work review after each completed slice
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+## Fold 1: Boundary And Runtime Authority
+
+& [Fold1BoundaryAndRuntimeAuthority] is the boundary check for FSC3 final slices
+  + [inside_boundary] is P5 LangGraph procedure runtime and P8c LangGraph runtime, interrupt, and operator-trace fixtures
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [forbidden_external_dependency] is FSC4 surface projection, FSC5 operations safety, live machine control, production dispatch, UI adapter behavior, and unreviewed authority mutation
+
+  = must: import FSC1 and FSC2 packs as accepted boundary inputs
+  = must: treat LangGraph checkpoints as execution state and never as source authority
+  = must: keep surface projection outside FSC3
+
+## Fold 2: Slice Chain
+
+& [Fold2SliceChain] is the ordered final slice chain
+  + [FSC3-S01] is runtime boundary and invariant map
+  + [FSC3-S02] is WholeFieldPlannerGraph contract and checkpoint policy
+  + [FSC3-S03] is SOP-first interrupt and resume contract
+  + [FSC3-S04] is operator trace runtime proof contract
+  + [FSC3-S05] is runtime graph fixture plan
+  + [FSC3-S06] is FSC3 completion review and activation packet
+
+  = must: keep FSC3-S01 as the only ready slice at first minting
+  = must: activate later slices only when their inside-FSC3 inputs are accepted
+
+## Fold 3: Model Routing
+
+& [Fold3ModelRouting] is the route classification for FSC3 slices
+  + [FSC3-S01] is requires deeper reasoning
+  + [FSC3-S02] is requires deeper reasoning
+  + [FSC3-S03] is requires deeper reasoning
+  + [FSC3-S04] is requires deeper reasoning
+  + [FSC3-S05] is GPT-5.3-Codex-Spark-suitable after FSC3-S01 through FSC3-S04 are accepted
+  + [FSC3-S06] is requires deeper reasoning
+
+  = must: state model route on every slice
+  = must: keep checkpoint authority, interrupt semantics, and trace proof under deeper reasoning
+  = should: route runtime fixture drafting to GPT-5.3-Codex-Spark only after graph and interrupt contracts stabilize
+
+## Fold 4: Readiness And Gates
+
+& [Fold4ReadinessAndGates] is the current FSC3 readiness pass
+  + [ready_slice] is FSC3-S01
+  + [gated_slice] is FSC3-S02 until FSC3-S01 accepted
+  + [gated_slice] is FSC3-S03 until FSC3-S02 accepted
+  + [gated_slice] is FSC3-S04 until FSC3-S03 accepted
+  + [gated_slice] is FSC3-S05 until FSC3-S04 accepted
+  + [gated_slice] is FSC3-S06 until FSC3-S05 accepted
+
+  = must: not start a gated slice until its activation gate is accepted
+  = must: run completion review before opening the next slice
+
+& [FSC3FinalSlicesConclusion] is the result of this pass
+  + [ready_for] is execution of FSC3-S01 runtime boundary and invariant map
+  + [not_ready_for] is LangGraph implementation, surface implementation, operations safety work, or production dispatch
+  + [remaining_uncertainty] is graph node shape, checkpoint policy details, interrupt resume semantics, and operator trace proof obligations
+
+  = must: promote the final slice surface only with satisfaction signature and source lineage

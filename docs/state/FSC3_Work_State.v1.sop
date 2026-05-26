@@ -1,0 +1,27 @@
+Subject: FSC3 Work State V1
+Date: 2026-05-26
+State UUID: 9257789e-76db-4919-bb33-82b7f48439ea
+
+@ [slice_surface] docs/slices/FSC3_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+@ [accepted_boundary_input] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [FSC3WorkStateV1] is the current derived work state for FSC3 runtime graph proof
+  + [chunk_ref] is FSC3 runtime graph proof
+  + [state_basis] is docs/slices/FSC3_Final_Slices.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [current_ready_slice] is FSC3-S01
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [gated_slice] is FSC3-S02 until FSC3-S01 accepted
+  + [gated_slice] is FSC3-S03 until FSC3-S02 accepted
+  + [gated_slice] is FSC3-S04 until FSC3-S03 accepted
+  + [gated_slice] is FSC3-S05 until FSC3-S04 accepted
+  + [gated_slice] is FSC3-S06 until FSC3-S05 accepted
+  + [downstream_gate] is FSC4 remains gated until FSC3-S06 accepts FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: run FSC3-S01 before any later FSC3 slice
+  = must: mark this state stale if the FSC2 planning coordination pack or FSC3 final slice surface changes

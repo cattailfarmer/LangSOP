@@ -1,0 +1,18 @@
+Subject: Dictated FSC3 Final Slices Source
+Date: 2026-05-26
+
+& [DictatedSource: FSC3FinalSlices] is the preserved source instruction for minting FSC3 runtime-graph-proof final slices
+  + [dictated_request] is take the project manager role and start a long-haul work session, keeping it going as long as you can still keep pressing forward
+  + [interpreted_request] is continue from accepted FSC2 planning coordination into FSC3 runtime graph proof by preserving source, defining dependency-closed final slices, and keeping implementation gated until checkpoint, interrupt, trace, and fixture proof duties are specified
+  + [source_context] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [source_context] is docs/reviews/FSC2_Completion_Review.v1.sop
+  + [source_context] is docs/planning/Final_Slicing_Surface.v1.sop
+  + [source_context] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+
+  = must: create concrete slice records for FSC3 runtime graph proof
+  = must: use the accepted FSC2 planning coordination pack as boundary input
+  = must: include runtime boundary import, minimal WholeFieldPlannerGraph contract, checkpoint authority policy, SOP-first interrupt/resume policy, operator trace proof, and local runtime fixtures
+  = must: treat LangGraph checkpoint state as execution state, not authority
+  = must: keep FSC4 surface projection and FSC5 operations safety gated
+  = must: classify every slice as Spark-suitable or requiring deeper reasoning
+  = must: run completion review after each FSC3 slice before opening the next slice

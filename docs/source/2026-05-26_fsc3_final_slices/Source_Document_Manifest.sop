@@ -1,0 +1,31 @@
+Subject: FSC3 Final Slices Source Manifest
+Date: 2026-05-26
+Manifest UUID: 500f8095-5f6a-4e0a-b0fb-7503dc0040ed
+
+& [SourceDocumentManifest: FSC3FinalSlices] is the source preservation manifest for minting FSC3 final slices
+  + [dictated_source] is docs/source/2026-05-26_fsc3_final_slices/Dictated_FSC3_Final_Slices_Source.sop
+    + [sha256] is D52AE24EA6FA31866A6333B803689816BDE6D8C7E16670E5FF2D9CBE59C5C816
+    + [source_role] is user-directed long-haul project-manager instruction
+  + [authority_source] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+    + [sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+    + [source_role] is accepted FSC2 boundary input
+  + [authority_source] is docs/reviews/FSC2_Completion_Review.v1.sop
+    + [sha256] is F3B82E69E9101AA738CFA6343DB8113BDD7C166208AE80ED954D5767BB8C10FC
+    + [source_role] is FSC2 activation review
+  + [authority_source] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+    + [sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+    + [source_role] is final slicing authority
+  + [authority_source] is docs/planning/Final_Slicing_Surface.v1.sop
+    + [sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+    + [source_role] is active final slicing surface
+  + [authority_source] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+    + [sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+    + [source_role] is whole-pie development authority
+  + [exploded_target] is docs/exploded/LangSOP_FSC3_Final_Slices.exploded.sop
+  + [canonical_target] is docs/canonical/LangSOP_FSC3_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/FSC3_Final_Slices.v1.sop
+
+  = must: preserve this manifest as the lineage record for FSC3 final slices
+  = must: invalidate FSC3 final slices if a cited source hash changes without reprocessing
+  = must: keep FSC3 bounded to runtime graph proof, checkpoint policy, SOP-first interrupts, operator trace proof, and local runtime fixtures
+  - never: use these slices to authorize FSC4 surface projection before FSC3 completion review accepts the runtime graph proof pack
