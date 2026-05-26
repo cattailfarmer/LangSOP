@@ -25,6 +25,8 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
 @ [activation_repair_review] docs/reviews/IR3_IA05_Repair_Review.v1.sop
 @ [activation_completion_review] docs/reviews/IR3_IA06_Completion_Review.v1.sop
 @ [generated_output_proof] docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+@ [implementation_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [implementation_completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
 @ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
 @ [IR2_completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
 @ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
@@ -43,12 +45,14 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
 @ [accepted_output] src/langsop/operators/fixture_runner.py
 @ [accepted_output] tests/test_ir3_operator_harness_contracts.py
 @ [accepted_output] docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+@ [accepted_output] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [accepted_output] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
 
 & [IR3WorkStateV1] is the current derived work state for IR3 operator harness and fixture runner
   + [chunk_ref] is IR3 operator harness and fixture runner
-  + [state_basis] is docs/reviews/IR3_IA06_Completion_Review.v1.sop
-  + [state_basis_sha256] is 2AF0F90660E8E3A66E1EFE106E649D15666433ABB043EBC831B57E2BF9789CFC
-  + [surface_status] is IR3_IA06_tests_and_generated_output_proof_accepted_for_IR3_IA07_execution
+  + [state_basis] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+  + [state_basis_sha256] is C3CD25BF2B5891F56ED8D8BCBB1F49A0BE099E7EDA7140E1E296E172F3EE0578
+  + [surface_status] is IR3_implementation_complete_and_downstream_IR4_boundary_work_may_open
   + [source_document] is docs/source/2026-05-26_ir3_final_slices/Derived_IR3_Final_Slices_Source.sop
   + [source_document_sha256] is 34DC5C164C20CBFD9EE3E8D53FEF4E768BB902B78D4F592A34F37C49B3C424C2
   + [source_manifest] is docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
@@ -141,31 +145,36 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
   + [accepted_generated_output_proof_sha256] is B14179EAAEC82403B148F74B814ACECC9287C756883C139E64A31FE56C92F9DF
   + [accepted_activation_completion_review] is docs/reviews/IR3_IA06_Completion_Review.v1.sop
   + [accepted_activation_completion_review_sha256] is 2AF0F90660E8E3A66E1EFE106E649D15666433ABB043EBC831B57E2BF9789CFC
+  + [accepted_activation_slice] is IR3-IA07
+  + [accepted_implementation_proof_pack] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_implementation_proof_pack_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [accepted_implementation_completion_review] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+  + [accepted_implementation_completion_review_sha256] is C3CD25BF2B5891F56ED8D8BCBB1F49A0BE099E7EDA7140E1E296E172F3EE0578
   + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
   + [accepted_boundary_input] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
   + [accepted_boundary_input_sha256] is E7CCCA3A6744A03CD6871FF6B4CDB2682FA4BB6300179F2EA610717BA5F3F2ED
   + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
-  + [current_ready_slice] is IR3-IA07
-  + [current_ready_slice_name] is implementation completion review and operator harness proof pack
-  + [current_ready_slice_model_route] is requires deeper reasoning after IR3-IA06 acceptance
+  + [current_ready_slice] is downstream_IR4_boundary_or_readiness_selection
+  + [current_ready_slice_name] is downstream boundary minting or readiness review
+  + [current_ready_slice_model_route] is requires deeper reasoning after IR3 implementation completion
   + [future_bounded_code_model_route] is GPT-5.3-Codex-Spark-suitable after explicit activation selects bounded implementation slices from the accepted inventory
   + [future_spark_suitable_slice] is IR3-S05 after IR3-S01 through IR3-S04 acceptance and bounded fixture scope
   + [code_creation_authorized_by_current_slice] is false
-  + [proof_document_creation_authorized_by_current_slice] is true_for_IR3_IA07_only
+  + [proof_document_creation_authorized_by_current_slice] is false
   + [fixture_file_creation_authorized_by_current_slice] is false
   + [expected_ledger_creation_authorized_by_current_slice] is false
   + [generated_trace_creation_authorized_by_current_slice] is false
   + [dependency_installation_authorized_by_current_slice] is false
-  + [IR3_implementation_state] is IR3_IA06_tests_and_generated_output_proof_accepted_and_ready_for_completion_proof_pack
-  + [IR4_state] is gated_until_IR3_bounded_operator_harness_implementation_review_is_accepted_or_rebaked
+  + [IR3_implementation_state] is accepted_as_fixture_scale_operator_harness_implementation_proof
+  + [IR4_state] is ready_for_downstream_boundary_minting_or_readiness_review_requiring_deeper_reasoning
   + [generated_trace_authority_status] is derived_projection_only
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR3-IA07 before opening downstream IR4 implementation readiness
+  = must: mint or accept downstream IR4 boundary work before implementing runtime, surface, adapter, operations simulator, operations control, or live machine control layers
   = must: keep generated traces, caches, fixture outputs, projection files, and runner reports non-authoritative
-  = must: mark this state stale if IR3 source document, source manifest, canonical specification, slice surface, slice minting review, IR3-S01 output, IR3-S01 completion review, IR3-S02 output, IR3-S02 completion review, IR3-S03 output, IR3-S03 completion review, IR3-S04 output, IR3-S04 completion review, IR3-S05 output, IR3-S05 completion review, IR3 activation pack, IR3 completion review, IR3 implementation activation source manifest, activation canonical specification, activation slice surface, activation minting review, IR3-IA01 output, IR3-IA01 completion review, IR3-IA02 fixture material, IR3-IA02 completion review, IR3-IA03 output, IR3-IA03 completion review, IR3-IA04 output, IR3-IA04 completion review, IR3-IA04 repair review, IR3-IA05 output, IR3-IA05 completion review, IR3-IA05 repair review, IR3-IA06 output, IR3-IA06 completion review, IR2 implementation proof pack, IR2 implementation completion review, or FSC2 planning coordination pack changes
+  = must: mark this state stale if IR3 source document, source manifest, canonical specification, slice surface, slice minting review, IR3-S01 output, IR3-S01 completion review, IR3-S02 output, IR3-S02 completion review, IR3-S03 output, IR3-S03 completion review, IR3-S04 output, IR3-S04 completion review, IR3-S05 output, IR3-S05 completion review, IR3 activation pack, IR3 completion review, IR3 implementation activation source manifest, activation canonical specification, activation slice surface, activation minting review, IR3-IA01 output, IR3-IA01 completion review, IR3-IA02 fixture material, IR3-IA02 completion review, IR3-IA03 output, IR3-IA03 completion review, IR3-IA04 output, IR3-IA04 completion review, IR3-IA04 repair review, IR3-IA05 output, IR3-IA05 completion review, IR3-IA05 repair review, IR3-IA06 output, IR3-IA06 completion review, IR3-IA07 proof pack, IR3 implementation completion review, IR2 implementation proof pack, IR2 implementation completion review, or FSC2 planning coordination pack changes
   = must: keep operations control and live machine control unauthorized

@@ -1,0 +1,122 @@
+Subject: IR3 Implementation Completion Review V1
+Date: 2026-05-26
+Review UUID: 8ebd03a5-daa8-43d1-836d-64be0aca2619
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [completed_review] docs/reviews/IR3_IA01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_IA02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_IA03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_IA04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_IA04_Repair_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_IA05_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_IA05_Repair_Review.v1.sop
+@ [completed_review] docs/reviews/IR3_IA06_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-IA07] is the final implementation completion review for IR3 operator harness implementation
+  + [slice_id] is IR3-IA07
+  + [slice_name] is implementation completion review and operator harness proof pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [completed_output] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR3 operator harness implementation accepted as fixture-scale implementation proof
+  + [downstream_gate_result] is IR4 downstream boundary or readiness work may open only through explicit deeper-reasoning slice or review
+  + [next_model_route] is requires deeper reasoning for IR4 boundary and authority/projection handoff; later bounded IR4 implementation may be GPT-5.3-Codex-Spark-suitable after slices are accepted
+
+  = must: treat this review and proof pack as gate-opening evidence for downstream IR4 boundary work only
+  = must: rerun IR3-IA07 if the proof pack, accepted implementation outputs, tests, generated-output proof, fixture material, or implementation completion reviews change
+  = must: keep operations control and live machine control unauthorized
+
+& [IR3ImplementationCompletionVerification] is the verification result for the full IR3 implementation proof pack
+  + [accepted_activation_slice] is IR3-IA01
+  + [accepted_activation_slice] is IR3-IA02
+  + [accepted_activation_slice] is IR3-IA03
+  + [accepted_activation_slice] is IR3-IA04
+  + [accepted_activation_slice] is IR3-IA05
+  + [accepted_activation_slice] is IR3-IA06
+  + [accepted_activation_slice] is IR3-IA07
+  + [activation_boundary_status] is accepted
+  + [fixture_material_status] is accepted
+  + [contract_model_status] is accepted
+  + [trace_model_status] is accepted
+  + [runner_status] is accepted_after_repair
+  + [fixture_runner_status] is accepted_after_repair
+  + [contract_tests_status] is accepted
+  + [generated_output_proof_status] is accepted
+  + [proof_pack_status] is accepted
+  + [targeted_test_result] is passed
+  + [baseline_test_result] is passed
+  + [compile_result] is passed
+  + [diff_hygiene_result] is passed_with_crlf_warnings_only
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [generated_projection_authority_leak_found] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3ImplementationCompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+
+& [SupportDelta: IR3-IA07] is the support delta produced by IR3 implementation completion
+  + [new_support_record] is IR3OperatorHarnessImplementationProofPackV1 supports downstream IR4 boundary or readiness work
+  + [new_support_record] is accepted operator harness implementation provides fixture-scale request validation, trace identity, runner classification, fixture runner path policy, generated-output proof, and contract tests
+  + [new_support_record] is downstream handoff remains slice-first and proof-first rather than direct runtime expansion
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA07] is the requirement delta produced by IR3 implementation completion
+  + [requirement_delta] is downstream IR4 boundary work may open and requires deeper reasoning for authority/projection handoff
+  + [requirement_delta] is future bounded IR4 implementation work is GPT-5.3-Codex-Spark-suitable only after IR4 slices are minted and accepted gates open
+  + [requirement_delta] is no LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized by IR3 completion
+  + [requirement_delta] is no rebake required for IR3 closure
+
+& [StalenessAndContradictionReview: IR3-IA07] is the final staleness review for IR3 implementation
+  + [stale_activation_source_found] is false
+  + [stale_accepted_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [false_ready_IR4_implementation_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3 implementation proof stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-IA07] is the final fault review for IR3 implementation
+  + [generated_projection_authority_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [unlisted_code_file_created] is false
+  + [unlisted_test_file_created] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3IA07Accepted] is accepted
+    @ [support] [IR3ImplementationCompletionVerification]
+    @ [support] [SupportDelta: IR3-IA07]
+    @ [support] [RequirementDelta: IR3-IA07]
+    @ [support] [StalenessAndContradictionReview: IR3-IA07]
+    @ [support] [FaultReview: IR3-IA07]
+
+& [NextChunkGate: IR4] is opened_as_boundary_work_only
+  + [opened_chunk] is downstream IR4 boundary or readiness selection
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [activation_state] is ready_for_downstream_boundary_minting_or_readiness_review
+  + [model_route] is requires deeper reasoning for downstream boundary and authority/projection handoff
+  + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after downstream slices are accepted and implementation tasks are bounded
+  + [safety_limit] is no live operations control authorized
+
+  = must: mint or accept downstream boundary work before implementing runtime, surface, adapter, or operations simulator layers
+  = must: keep downstream dependencies outside IR3 until the next accepted boundary imports IR3 proof
+  = must: keep operations control and live machine control unauthorized

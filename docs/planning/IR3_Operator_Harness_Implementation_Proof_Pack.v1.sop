@@ -1,0 +1,110 @@
+Subject: IR3 Operator Harness Implementation Proof Pack V1
+Date: 2026-05-26
+Proof Pack UUID: 5d7fe481-37f6-4ea5-9d95-ff78f7053d37
+
+@ [completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [IR3_activation_pack] docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+@ [generated_output_proof] docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+@ [implementation_tests] tests/test_ir3_operator_harness_contracts.py
+
+& [ImplementationProofPack: IR3OperatorHarnessImplementationProofPackV1] is the accepted operator harness implementation proof pack exported by IR3 after completion review acceptance
+  + [proof_pack_id] is ir3-operator-harness-implementation-proof-pack-v1
+  + [proof_pack_uuid] is 5d7fe481-37f6-4ea5-9d95-ff78f7053d37
+  + [source_chunk] is IR3 bounded operator harness implementation activation
+  + [export_status] is accepted_boundary_input_after_IR3_implementation_completion_review
+  + [consumer_work] is downstream IR4 planning or runtime-shape selection after explicit deeper-reasoning gate
+  + [implementation_effect] is fixture-scale operator contract validation, trace identity construction, contract-driven runner classification, fixture runner policy enforcement, generated-output proof, and contract tests are accepted as bounded IR3 implementation proof
+  + [safety_limit] is no live operations control authorized
+
+  = must: preserve generated traces, reports, manifests, caches, and fixture outputs as projection-only evidence
+  = must: require downstream IR4 slice minting or readiness review before any LangGraph runtime, surface adapter, queue, or operations simulator implementation starts
+  = must: keep operations control and live machine control outside this pack
+
+& [AcceptedIR3ImplementationDigestSet] is the accepted hash ledger exported by IR3 implementation proof
+  + [accepted_code_output] is src/langsop/operators/contracts.py
+  + [accepted_code_output_sha256] is 1576193CE3A35AE394DA1625BE304519650F7E772BB0A27EFE7CD57866DFBEEC
+  + [accepted_code_output] is src/langsop/operators/traces.py
+  + [accepted_code_output_sha256] is C00556D4000DFAB34BBA64CB86642F99DC525F1A307C0A89C0A0E5275552D21D
+  + [accepted_code_output] is src/langsop/operators/runner.py
+  + [accepted_code_output_sha256] is 43F0002369847AF255380D6F664CC8B4F800F0D64836089FE3891B6FA6526ECE
+  + [accepted_code_output] is src/langsop/operators/__init__.py
+  + [accepted_code_output_sha256] is 58AF4B1960F430F24C77E3CE6C90C51B171A308FC860957D9760FF5C5FC3A952
+  + [accepted_code_output] is src/langsop/operators/fixture_runner.py
+  + [accepted_code_output_sha256] is 1A7CB6CF74C89C2B5E697FC4B9BAE28774DAE40F72A2FE39D4D82CAAD7A9D1B6
+  + [accepted_test_output] is tests/test_ir3_operator_harness_contracts.py
+  + [accepted_test_output_sha256] is 7FAC963B47B7C52362027D0C17569322E3DDF33B69B0F3636AC03E5A982B8630
+  + [accepted_proof_output] is docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+  + [accepted_proof_output_sha256] is B14179EAAEC82403B148F74B814ACECC9287C756883C139E64A31FE56C92F9DF
+
+  = must: mark this proof pack stale if any listed hash changes
+
+& [AcceptedIR3ImplementationReviewDigestSet] is the accepted review hash ledger for implementation activation
+  + [accepted_review] is docs/reviews/IR3_IA01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is C3E02BFE6FC8EBF2D48DDC8814CE0A32F390A03189220CA3343E67E2061EBAB6
+  + [accepted_review] is docs/reviews/IR3_IA02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 9B63A3BAD3B45AA40EF924CA10CE04092067AE28728B3C3EFBB90B45316A1D0A
+  + [accepted_review] is docs/reviews/IR3_IA03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 03BF95879EEB0CF947761EF42BD98334B3B871024FFDA40E10ECA08305B679DD
+  + [accepted_review] is docs/reviews/IR3_IA04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is C07F4A906C658ED86FAC2782E5A7A0484068D2D8A4C5A0D76D4E7E949D6FAB2B
+  + [accepted_review] is docs/reviews/IR3_IA04_Repair_Review.v1.sop
+  + [accepted_review_sha256] is 95A8D3AE52B93DD9760E412D232743379878588FD5AFE642188B119D57AA613A
+  + [accepted_review] is docs/reviews/IR3_IA05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 2B038BB37A6AB58B87482450B792A8DD3ACF65F6E188E13C6B3048D936B712FE
+  + [accepted_review] is docs/reviews/IR3_IA05_Repair_Review.v1.sop
+  + [accepted_review_sha256] is 27E032126607AECD8A7DCA45C957ADCCF1CF189CB0DF170B241168E40069334F
+  + [accepted_review] is docs/reviews/IR3_IA06_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 2AF0F90660E8E3A66E1EFE106E649D15666433ABB043EBC831B57E2BF9789CFC
+
+  = must: mark this proof pack stale if any listed review changes
+
+& [ImplementationProofCommandSet] is the accepted command evidence for IR3 operator harness implementation
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [targeted_test_command] is python -m unittest tests.test_ir3_operator_harness_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 5
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [baseline_test_count] is 14
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed_with_crlf_warnings_only
+
+& [ImplementationProofCoverage] is the accepted behavior coverage for IR3 operator harness implementation
+  + [covered_behavior] is operator requests parse into validated contract-bound request records without throwing for malformed fixture input
+  + [covered_behavior] is stale authority produces blocked_output with stale_refusal and no operator_result
+  + [covered_behavior] is missing contract version produces blocked_output with missing_contract_version
+  + [covered_behavior] is undeclared output produces fault_output with operator_contract_violation
+  + [covered_behavior] is generated projection presented as authority produces fault_output with generated_trace_authority_confusion
+  + [covered_behavior] is ambiguous input identity produces sop_first_interrupt with ambiguous_identity
+  + [covered_behavior] is unsupported scope produces blocked_output with unsupported_scope
+  + [covered_behavior] is unsafe operations requests produce fault_output with unsupported_operations_control and no live dispatch output
+  + [covered_behavior] is deterministic replay mismatch is represented as a fixture-level fault proof
+  + [covered_behavior] is generated output path escape and source mutation attempts are refused before writes
+  + [covered_behavior] is generated output write is accepted only under ignored generated roots
+  + [covered_behavior] is authority discovery excludes tests/fixtures/generated/ir3_operator_harness paths
+  + [covered_behavior] is generated test outputs are cleaned after tests and remain reproducible
+
+  = must: require a future slice before widening fixture cases, output paths, dependency set, or authority semantics
+
+& [DownstreamIR4GateExport] is the downstream gate exported by this proof pack
+  + [IR4_state] is may_open_only_after_IR3_implementation_completion_review_accepts_this_pack
+  + [IR4_entry_model_route] is requires deeper reasoning for downstream boundary and authority/projection handoff
+  + [future_spark_suitable_work] is GPT-5.3-Codex-Spark-suitable only after IR4 slices define bounded implementation work
+  + [safety_limit] is no live operations control authorized
+
+  = must: open IR4 by minting or accepting a downstream boundary, not by directly adding LangGraph runtime, surface adapter, queue, operations simulator, operations control, or live machine control
+  = must: preserve IR3 operator harness proof as boundary input for future coordination/runtime work
+
+& [IR3ImplementationProofPackInvalidationRuleSet] is the staleness contract for IR3OperatorHarnessImplementationProofPackV1
+  + [invalidated_by] is change to any accepted implementation output hash
+  + [invalidated_by] is change to any accepted fixture source or expected-ledger hash
+  + [invalidated_by] is change to generated-output proof or contract tests
+  + [invalidated_by] is change to IR3-IA01 through IR3-IA06 completion or repair reviews that affects support, requirements, or gates
+  + [invalidated_by] is generated projection promoted to source authority
+  + [invalidated_by] is source fixture, expected ledger, source code, platform authority, or docs authority mutated by runtime code or tests
+  + [invalidated_by] is dependency installation without authorizing slice
+  + [invalidated_by] is operations control or live machine control leak
+
+  = must: rerun IR3-IA07 or rebake the relevant surface after invalidation before downstream work consumes this proof pack
