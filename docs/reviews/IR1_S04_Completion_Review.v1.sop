@@ -1,0 +1,104 @@
+Subject: IR1-S04 Completion Review V1
+Date: 2026-05-26
+Review UUID: 84d8b915-6898-4088-b906-2bd8aea91f37
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+@ [accepted_input] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_input] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [accepted_input] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+
+& [CompletedWorkReview: IR1-S04] is the completion review for test harness and fixture execution shape
+  + [slice_id] is IR1-S04
+  + [slice_name] is test harness and fixture execution shape
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+  + [completed_output_sha256] is 8BC81195EC5FEDFCE0DD693B69C4B3B88F59DC950E8B764C19DDB7DD8AB31F58
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR1-S05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable
+
+  = must: treat this review as the gate-opening evidence for IR1-S05
+  = must: rerun review if IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop changes
+
+& [VerificationOracleResult: IR1-S04] is the verification result for test harness shape coverage
+  + [test_command_contract_present] is TestCommandContract
+  + [fixture_directory_policy_present] is FixtureDirectoryPolicy
+  + [expected_output_ledger_shape_present] is ExpectedOutputLedgerShape
+  + [operator_trace_fixture_boundary_present] is OperatorTraceFixtureBoundary
+  + [generated_test_artifact_policy_present] is GeneratedTestArtifactPolicy
+  + [harness_verification_coverage_list_present] is IR1HarnessVerificationCoverageList
+  + [future_test_command] is python -m pytest
+  + [test_runner_installed] is false
+  + [test_harness_implemented] is false
+  + [test_files_created] is false
+  + [generated_test_artifact_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [forbidden_scope_absent] is executable harness implementation
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR1S04VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+
+& [SupportDelta: IR1-S04] is the support delta produced by this slice
+  + [new_support_record] is IR1TestHarnessAndFixtureExecutionShapeV1 supports IR1-S05 scaffold execution plan and placeholder scope
+  + [new_support_record] is ExpectedOutputLedgerShape supports future fixture runner design
+  + [new_support_record] is GeneratedTestArtifactPolicy supports scaffold .gitignore requirements
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1-S04] is the requirement delta produced by this slice
+  + [requirement_delta] is IR1-S05 must create scaffold file inventory, placeholder module boundary, package metadata plan, no-op test plan, generated artifact exclusions, and scaffold-only proof checklist
+  + [requirement_delta] is IR1-S05 is GPT-5.3-Codex-Spark-suitable after IR1-S01 through IR1-S04 are accepted
+  + [requirement_delta] is IR1-S05 must remain a plan only unless later IR1-S06 activates scaffold authority
+  + [requirement_delta] is no executable harness implementation, parser implementation, SQLite builder implementation, LangGraph implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR1-S04] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [test_runner_installation_leak_found] is false
+  + [test_harness_implementation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [generated_test_artifact_creation_leak_found] is false
+  + [parser_implementation_leak_found] is false
+  + [sqlite_builder_implementation_leak_found] is false
+  + [langgraph_implementation_leak_found] is false
+  + [surface_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR1S04Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR1-S04]
+    @ [support] [SupportDelta: IR1-S04]
+    @ [support] [RequirementDelta: IR1-S04]
+    @ [support] [FaultReview: IR1-S04]
+
+& [NextSliceGate: IR1-S05] is opened
+  + [opened_slice] is IR1-S05 scaffold execution plan and placeholder scope
+  + [accepted_input] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [accepted_input] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [accepted_input_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
+  + [accepted_input] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [accepted_input_sha256] is CDE97B898024E6FDAFF19CCD33895ABC47B0AEB9B96C108DADC8FF2B3F2AC688
+  + [accepted_input] is docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+  + [accepted_input_sha256] is 8BC81195EC5FEDFCE0DD693B69C4B3B88F59DC950E8B764C19DDB7DD8AB31F58
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is scaffold planning is bounded by accepted substrate, tooling, layout, and harness shape contracts
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR1-S05 next unless user redirects or a new fault invalidates this review

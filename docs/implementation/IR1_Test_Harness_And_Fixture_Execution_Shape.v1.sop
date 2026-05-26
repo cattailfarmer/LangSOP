@@ -1,0 +1,135 @@
+Subject: IR1 Test Harness And Fixture Execution Shape V1
+Date: 2026-05-26
+Contract UUID: dd6a4b93-829c-490b-b448-c47b3d26e028
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [substrate_boundary] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [tooling_decision] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [layout_policy] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+@ [foundation_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [IR1TestHarnessAndFixtureExecutionShapeV1] is the IR1-S04 contract for test harness and fixture execution shape
+  + [contract_id] is ir1-test-harness-fixture-execution-shape-v1
+  + [contract_uuid] is dd6a4b93-829c-490b-b448-c47b3d26e028
+  + [slice_id] is IR1-S04
+  + [contract_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is harness and fixture execution shape only
+
+  = must: define how future tests and fixtures prove conformance without implementing the harness in this slice
+  = must: preserve source SOP authority files and expected ledgers as tracked inputs while keeping execution outputs generated and non-authoritative
+  = must: avoid executable harness implementation, parser implementation, SQLite builder implementation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control in this slice
+
+& [TestCommandContract] is the future test command contract
+  + [future_test_command] is python -m pytest
+  + [future_test_command_status] is candidate_only_until_scaffold_activation
+  + [test_runner_dependency] is pytest may be added only by a future dependency-authorizing slice
+  + [test_runner_dependency_status] is not_installed_by_IR1-S04
+  + [test_invocation_boundary] is tests execute against fixture records and expected outputs
+  + [test_invocation_boundary] is tests may create generated outputs under .langsop/ or pytest cache paths
+  + [forbidden_test_effect] is modifying docs/source/
+  + [forbidden_test_effect] is modifying docs/canonical/
+  + [forbidden_test_effect] is modifying accepted completion reviews
+  + [forbidden_test_effect] is treating generated SQLite, cache, checkpoint, or snapshot output as authority
+  + [forbidden_test_effect] is opening network listeners or accessing credentials
+  + [forbidden_test_effect] is launching processes, GPU workloads, jobs, or model runtimes
+
+  = must: require future test commands to be explicit about generated output paths and authority limits
+
+& [FixtureDirectoryPolicy] is the fixture directory policy for future tests
+  + [fixture_root] is tests/fixtures/
+  + [fixture_source_records] is tests/fixtures/sop/
+  + [fixture_expected_records] is tests/fixtures/expected/
+  + [fixture_generated_outputs] is tests/fixtures/generated/
+  + [fixture_generated_outputs_status] is generated_projection_only
+  + [fixture_source_policy] is fixture source records cite accepted docs/ authority inputs
+  + [fixture_expected_policy] is expected records encode stable expected output shape and hash ledgers
+  + [fixture_generated_policy] is generated outputs may be deleted and rebuilt
+
+  = must: keep tracked fixture sources and expected ledgers distinct from generated fixture outputs
+
+& [ExpectedOutputLedgerShape] is the expected-output ledger shape for fixture verification
+  + [required_field] is fixture_id
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is input_record_ref_set
+  + [required_field] is expected_output_record_kind
+  + [required_field] is expected_status
+  + [required_field] is expected_authority_notice
+  + [required_field] is expected_freshness_state
+  + [required_field] is expected_refusal_or_interrupt
+  + [required_field] is expected_generated_artifact_set
+  + [required_field] is forbidden_effect_set
+  + [required_field] is acceptance_status
+
+  = must: make expected-output ledgers reviewable as tracked fixture authority
+  = must: prevent generated test outputs from replacing expected-output ledgers
+
+& [OperatorTraceFixtureBoundary] is the fixture boundary for future operator trace tests
+  + [trace_input_kind] is authority_artifact
+  + [trace_input_kind] is support_record
+  + [trace_input_kind] is support_gap
+  + [trace_input_kind] is readiness_projection
+  + [trace_input_kind] is work_packet
+  + [trace_input_kind] is completion_review
+  + [trace_output_kind] is operator_trace
+  + [trace_output_kind] is proof_result
+  + [trace_output_kind] is fault_record
+  + [trace_requirement] is input_hash_set recorded
+  + [trace_requirement] is output_hash_set recorded when tracked output exists
+  + [trace_requirement] is generated_artifact_set recorded as projection-only
+  + [trace_requirement] is interrupt_or_refusal recorded when preconditions fail
+
+  = must: require future operator tests to prove hidden-write prevention and blocked-output behavior
+
+& [GeneratedTestArtifactPolicy] is the generated test artifact policy
+  + [generated_test_artifact] is .pytest_cache/
+  + [generated_test_artifact] is .coverage
+  + [generated_test_artifact] is htmlcov/
+  + [generated_test_artifact] is tests/fixtures/generated/
+  + [generated_test_artifact] is .langsop/snapshots/
+  + [generated_test_artifact] is .langsop/checkpoints/
+  + [generated_test_artifact] is .langsop/sqlite/
+  + [generated_test_artifact] is .langsop/indexes/
+  + [authority_status] is projection_only
+  + [required_gitignore_policy] is ignore generated test artifacts by default
+
+  = must: delete or rebuild generated test artifacts when accepted source or expected-output hashes change
+
+& [IR1HarnessVerificationCoverageList] is the minimum future harness coverage list
+  + [coverage_case] is valid_signature
+  + [coverage_case] is missing_signature
+  + [coverage_case] is stale_source
+  + [coverage_case] is broken_lineage
+  + [coverage_case] is ready_capability
+  + [coverage_case] is blocked_capability
+  + [coverage_case] is false_ready_next_gate
+  + [coverage_case] is stale_claim
+  + [coverage_case] is hidden_write_prevention
+  + [coverage_case] is generated_artifact_non_authority
+  + [coverage_case] is operations_control_refusal
+
+  = must: treat this list as minimum coverage for future harness implementation planning
+
+& [IR1S04CoverageReview] is the coverage checklist for IR1-S04
+  + [test_command_contract_present] is TestCommandContract
+  + [fixture_directory_policy_present] is FixtureDirectoryPolicy
+  + [expected_output_ledger_shape_present] is ExpectedOutputLedgerShape
+  + [operator_trace_fixture_boundary_present] is OperatorTraceFixtureBoundary
+  + [generated_test_artifact_policy_present] is GeneratedTestArtifactPolicy
+  + [harness_verification_coverage_list_present] is IR1HarnessVerificationCoverageList
+  + [test_runner_installed] is false
+  + [test_harness_implemented] is false
+  + [test_files_created] is false
+  + [generated_test_artifact_created] is false
+  + [forbidden_scope_absent] is executable harness implementation
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: open IR1-S05 only after this harness shape is accepted by completion review
