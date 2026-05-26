@@ -14,12 +14,14 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
 @ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
 @ [ir5_implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
 @ [ir5_work_state] docs/state/IR5_Work_State.v1.sop
+@ [accepted_output] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [completion_review] docs/reviews/IR6_S01_Completion_Review.v1.sop
 
 & [IR6WorkStateV1] is the current derived work state for IR6 coordination mailbox and claim projection prototype planning
   + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
-  + [state_basis] is docs/reviews/IR6_Final_Slice_Minting_Review.v1.sop
-  + [state_basis_sha256] is 78D74F146BF4E3A690776B76E9FBF3730FA12E148E545A5F2DBF5A347CA86DAE
-  + [surface_status] is IR6_final_slices_accepted_and_IR6-S01_open
+  + [state_basis] is docs/reviews/IR6_S01_Completion_Review.v1.sop
+  + [state_basis_sha256] is 6E4B360FB69656A67D9EC13B5D827F21764206620C4ABBFBD793B66A7EA94276
+  + [surface_status] is IR6-S01_accepted_and_IR6-S02_open
   + [source_document] is docs/source/2026-05-26_ir6_final_slices/Derived_IR6_Final_Slices_Source.sop
   + [source_document_sha256] is ABB5882E6E23A50B4A40A7F4E6D270F46E500D31F2649F69F44AD2F98A383B53
   + [source_manifest] is docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
@@ -46,19 +48,23 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [accepted_boundary_input_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
   + [accepted_boundary_input] is docs/state/IR5_Work_State.v1.sop
   + [accepted_boundary_input_sha256] is CD2F0E23A2485897E9E7722B5DBCE677E169C05C4295F754D8243B3019BB899A
-  + [current_ready_slice] is IR6-S01
-  + [current_ready_slice_name] is coordination boundary import and invariant reconciliation
+  + [accepted_slice] is IR6-S01
+  + [accepted_output] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_output_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+  + [accepted_completion_review] is docs/reviews/IR6_S01_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 6E4B360FB69656A67D9EC13B5D827F21764206620C4ABBFBD793B66A7EA94276
+  + [current_ready_slice] is IR6-S02
+  + [current_ready_slice_name] is claim identity and work-boundary projection contract
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is coordination identity and claim authority boundaries affect downstream mailbox and multi-agent semantics
+  + [current_ready_slice_model_route_reason] is identity and claim compatibility decide when projected work boundaries may guide action without becoming authority
   + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after IR6 implementation activation slices are accepted and implementation tasks are bounded
-  + [gated_slice] is IR6-S02
   + [gated_slice] is IR6-S03
   + [gated_slice] is IR6-S04
   + [gated_slice] is IR6-S05
   + [gated_slice] is IR6-S06
   + [gated_slice] is IR6-S07
   + [implementation_code_creation_authorized_by_current_slice] is false
-  + [claim_projection_contract_creation_authorized_by_current_slice] is false
+  + [claim_projection_contract_creation_authorized_by_current_slice] is true
   + [mailbox_projection_contract_creation_authorized_by_current_slice] is false
   + [conflict_review_contract_creation_authorized_by_current_slice] is false
   + [fixture_plan_document_creation_authorized_by_current_slice] is false
@@ -66,7 +72,7 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [expected_ledger_creation_authorized_by_current_slice] is false
   + [implementation_plan_document_creation_authorized_by_current_slice] is false
   + [activation_pack_creation_authorized_by_current_slice] is false
-  + [boundary_document_creation_authorized_by_current_slice] is true
+  + [boundary_document_creation_authorized_by_current_slice] is false
   + [generated_output_creation_authorized_by_current_slice] is false
   + [dependency_installation_authorized_by_current_slice] is false
   + [mailbox_transport_implementation_authorized] is false
@@ -77,12 +83,12 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [coordination_claim_authority_status] is work_boundary_record_only
   + [rendezvous_packet_authority_status] is carrier_context_only
   + [mailbox_authority_status] is carrier_context_only
-  + [IR6_state] is ready_for_IR6-S01_coordination_boundary_import
+  + [IR6_state] is ready_for_IR6-S02_claim_identity_and_work_boundary_projection_contract
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR6-S01 before IR6-S02 through IR6-S07 are assigned
-  = must: limit IR6-S01 work to coordination boundary import and invariant reconciliation unless a completion review or rebake changes the boundary
+  = must: execute IR6-S02 before IR6-S03 through IR6-S07 are assigned
+  = must: limit IR6-S02 work to claim identity and work-boundary projection contract unless a completion review or rebake changes the boundary
   = must: keep downstream IR7 gated until IR6 planning and implementation proof are accepted or a future rebake explicitly reclassifies IR7 scope
   = must: keep coordination claims, rendezvous packets, mailboxes, IRC, Matrix, web, terminal, Codex, Langflow, generated projection, and generated report state non-authoritative
-  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
+  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, IR6-S01 output, IR6-S01 completion review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
   = must: keep agent dispatch, operations control, and live machine control unauthorized

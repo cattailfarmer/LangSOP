@@ -1,0 +1,242 @@
+Subject: IR6 Coordination Boundary Import And Invariant Reconciliation V1
+Date: 2026-05-26
+Boundary Map UUID: 96e051f8-8ecb-4947-ad72-9c00928ab1d2
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+@ [ir5_work_state] docs/state/IR5_Work_State.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [narrative_debug_contracts] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+@ [conversation_adapter_contracts] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+@ [operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [live_control_prohibition] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+
+& [IR6CoordinationBoundaryImportAndInvariantReconciliationV1] is the IR6-S01 boundary map for coordination mailbox and claim projection prototype planning
+  + [boundary_map_id] is ir6-coordination-boundary-import-and-invariant-reconciliation-v1
+  + [boundary_map_uuid] is 96e051f8-8ecb-4947-ad72-9c00928ab1d2
+  + [slice_id] is IR6-S01
+  + [source_chunk] is IR6 coordination mailbox and claim projection prototype
+  + [authority_scope] is imported coordination contracts, imported surface projection contracts, imported operations safety contracts, imported IR5 implementation proof, claim authority ladder, mailbox carrier non-authority boundary, identity preservation rules, stale triggers, and forbidden mutation boundaries
+  + [implementation_scope] is boundary import and invariant reconciliation only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: import accepted coordination, surface, operations, and IR5 proof boundaries before defining claim identity, mailbox carrier, conflict review, fixture, or implementation contracts
+  = must: preserve coordination claims as work-boundary records, not source authority, dispatch authority, completion authority, or live-control authority
+  = must: preserve rendezvous packets, mailbox messages, IRC logs, Matrix events, web events, terminal output, Codex state, Langflow diagrams, and generated projections as carrier or projection context only
+  = must: preserve conversation identity, claimant identity, claim basis, file and artifact scope, release context, and conflict lineage before any downstream projection suggests action
+  = must: preserve dry-run-only operations semantics and live-control refusal when coordination requests resemble dispatch, process control, job control, GPU control, or machine-control authority
+  - never: implement executable coordination code, mailbox transport, chat adapters, claim storage, fixture files, expected ledgers, generated output writers, dependency installation, operations simulator code, agent dispatch, operations control, or live machine control in this slice
+
+& [ImportedIR6BoundaryDigestSet] is the accepted boundary input hash ledger for IR6-S01
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [accepted_boundary_input] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is D42450F6F518E270A0AEE584C55EEF8950CE726BAB10C78A5464D840800C6F17
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [accepted_boundary_input] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [accepted_boundary_input] is docs/state/IR5_Work_State.v1.sop
+  + [accepted_boundary_input_sha256] is CD2F0E23A2485897E9E7722B5DBCE677E169C05C4295F754D8243B3019BB899A
+  + [accepted_contract] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_contract_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [accepted_contract] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [accepted_contract_sha256] is CC5C7AF6E6CDD98F3FDA32204A7A4BA24A07366BE61F52843E91E7B01DA09E06
+  + [accepted_contract] is docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+  + [accepted_contract_sha256] is FFA0FF7BD2C2479C65B5D98AD53E70D580BA13555C40A03DA79E6AFC358A9665
+  + [accepted_contract] is docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+  + [accepted_contract_sha256] is CCB8ADC3D4315DE28901EA155B72C20EA949F21BD8F5A4E6508A6E6F4CE4FE75
+  + [accepted_contract] is docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+  + [accepted_contract_sha256] is 57FB23C910825FB370210E3E54FFE2C71A4255933F0FC3808A1C44BBFDCBAD7B
+  + [accepted_contract] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_contract_sha256] is 4C7F2B224A3CD4D9497DD28ABEDC3750CA4979EB132D3DE0DAD2DF5D0E564024
+  + [accepted_contract] is docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [accepted_contract_sha256] is 12ACEBB9B110F3572F5B6E087D4B8D50273D135A6C887047932A58B32357BF54
+
+  = must: mark IR6-S01 and downstream IR6 slices stale if any listed boundary input or accepted contract hash changes
+
+& [ReconciledIR6InvariantSet] is the reconciled invariant set for IR6 coordination mailbox and claim projection prototype planning
+  + [invariant] is SOP source documents, accepted canonical specifications, accepted packs, accepted proofs, accepted completion reviews, accepted human override records, and SJS-signed artifacts remain source authority
+  + [invariant] is coordination claims coordinate work boundaries only and never validate source specifications, accept completed work, assign agents, dispatch jobs, authorize dependencies, or authorize operations control
+  + [invariant] is every coordination claim must preserve claimant_ref, conversation_ref, work_packet_ref, scope_subject_ref, file_scope_set, artifact_scope_set, intended_output_set, authority_basis_ref_set, claim_state, freshness_rule, conflict_policy, and release_condition
+  + [invariant] is proposed, active, contested, stale, released, superseded, and invalidated claims remain visible as lineage rather than being deleted or merged silently
+  + [invariant] is incompatible active write claims cannot both be projected as current and must emit contested claim or SOP-first interrupt context before follow-on work proceeds
+  + [invariant] is compatible parallel claims require explicit non-overlap or read-only classification and must preserve separate conversation identities
+  + [invariant] is stale claims block readiness only until review can classify refresh, release, supersession, invalidation, or rebake route
+  + [invariant] is rendezvous packets and mailbox messages carry durable context but are not signed authority by themselves
+  + [invariant] is mailbox read cursors and inbox timestamps are freshness evidence only and cannot erase unread context, source authority, or claim lineage
+  + [invariant] is inbound claim, release, conflict, review, human override, or mailbox action requests from any carrier must be classified before an authority-sensitive route can run
+  + [invariant] is ambiguous identity, missing claimant, missing conversation, hidden scope expansion, stale basis, unsupported scope, authority conflict, contested claim, or human override requirement routes to SOP-first interrupt, coordination review, completion review, or rebake rather than silent mutation
+  + [invariant] is IR5 surface projections may display coordination state only as authority-noticed projection evidence over accepted records and cannot open gates directly
+  + [invariant] is operation-like or dispatch-like coordination requests are operation request records, refusal records, dry-run planning records, or safety review requests only
+  + [invariant] is broad approval, projected user intent, mailbox notice, active claim, dry-run success, fixture success, or carrier state cannot authorize live control
+  + [invariant] is generated-output roots, fixture roots, expected ledgers, mailbox carrier paths, adapter queues, and surface caches stay outside source authority unless a later accepted slice explicitly defines a bounded generated-output policy
+
+  = must: preserve these invariants through IR6-S02 through IR6-S07
+  = must: route invariant contradictions through completion review and rebake rather than silent edits
+
+& [CoordinationAuthorityLadder: IR6] is the authority ladder that all downstream IR6 projections must preserve
+  + [authority_tier] is source_authority
+  + [source_authority_member] is preserved source specification
+  + [source_authority_member] is accepted canonical specification
+  + [source_authority_member] is accepted SJS satisfaction signature
+  + [source_authority_member] is accepted proof pack
+  + [source_authority_member] is accepted completion review
+  + [source_authority_member] is explicit accepted human override record with authority notice
+  + [authority_tier] is coordination_boundary_record
+  + [coordination_boundary_record_member] is accepted work_packet
+  + [coordination_boundary_record_member] is active coordination_claim
+  + [coordination_boundary_record_member] is contested coordination_claim
+  + [coordination_boundary_record_member] is stale coordination_claim
+  + [coordination_boundary_record_member] is release, supersession, or invalidation notice accepted by reviewable route
+  + [authority_tier] is accepted_execution_evidence
+  + [accepted_execution_evidence_member] is operator_trace accepted through proof or completion review
+  + [accepted_execution_evidence_member] is coordination_conflict_signal accepted through proof or completion review
+  + [authority_tier] is generated_projection_evidence
+  + [generated_projection_evidence_member] is generated coordination projection
+  + [generated_projection_evidence_member] is generated mailbox projection
+  + [generated_projection_evidence_member] is generated report
+  + [generated_projection_evidence_member] is fixture output
+  + [authority_tier] is carrier_context
+  + [carrier_context_member] is mailbox file path
+  + [carrier_context_member] is inbox timestamp
+  + [carrier_context_member] is read cursor
+  + [carrier_context_member] is chat message
+  + [carrier_context_member] is Codex thread state
+  + [carrier_context_member] is terminal output
+  + [carrier_context_member] is IRC log
+  + [carrier_context_member] is Matrix event
+  + [carrier_context_member] is web request state
+  + [carrier_context_member] is Langflow diagram
+
+  = must: display lower authority tier and trust limit anywhere lower-tier records may influence action
+  = must: prevent lower tiers from satisfying source-authority obligations without accepted promotion through proof, SJS, human override, or completion review
+
+& [ClaimAndMailboxBoundaryImportMap: IR6] is the imported coordination contract map for downstream IR6 projection work
+  + [projection_family] is claim identity projection imports CoordinationClaimLifecycle, CoordinationClaimBoundary, StaleClaimRuleSet, MultiAgentWorkBoundaryInvariant, AuthorityNoticeContract, and FalseReadyPreventionRule
+  + [projection_family] is claim conflict projection imports coordination_conflict_signal, contested claim blocker, hidden scope expansion fault, ambiguous identity interrupt, stale claim refresh route, and completion review gate
+  + [projection_family] is rendezvous packet projection imports RendezvousPacketContract, authority_notice, requested_response, stale_after, source_ref_set, lineage_edge_set, and carrier-only transport policy
+  + [projection_family] is mailbox projection imports mailbox file path, inbox timestamp, read cursor, unread notice set, addressed_to_ref, sender_ref, conversation_ref, related_work_packet_ref, related_coordination_claim_ref, and carrier-only status
+  + [projection_family] is manager coordination projection imports ManagerProjectionContract, ClaimVisibilityRule, SupportRequirementDeltaVisibilityRule, current_ready_slice_or_chunk, contested_claim_set, pending_review_set, and supported_action_route_set
+  + [projection_family] is narrative reentry projection imports CompactionReentryProjectionRule, rendezvous_packet_ref_set, coordination_claim_ref_set, unresolved frontier set, stale trigger set, and conversation identity preservation
+  + [projection_family] is conversation adapter projection imports InboundActionClassificationRule, AdapterMutationThroughOperatorGate, MultiSurfaceDivergenceRule, and CarrierContextRule
+  + [projection_family] is operations safety projection imports machine-control non-authority and live-control prohibition for dispatch-like or operation-like coordination requests
+
+  = must: require IR6-S02 to define claim identity and work-boundary projection before mailbox carrier contracts, fixtures, implementation activation plans, or generated outputs are created
+  = must: refuse any projection family that cannot preserve authority notice, freshness, lineage, claim state, identity separation, and stop-state visibility
+
+& [IR5SurfaceProjectionProofHandoffForIR6] is the handoff from accepted IR5 surface projection implementation proof into IR6 coordination planning
+  + [handoff_source] is IR5SurfaceProjectionPrototypeImplementationProofPackV1
+  + [usable_evidence] is authority display model preserving authority notice, lineage, freshness, and stop-state visibility
+  + [usable_evidence] is projection state model preserving projected status, invalidation references, blocked items, contested claims, fault items, and pending reviews
+  + [usable_evidence] is action route classifier refusing direct mutation, direct completion acceptance, live control, and direct claim acceptance
+  + [usable_evidence] is fixture runner proof that generated outputs remain disposable and non-authoritative
+  + [handoff_limit] is IR5 projection proof may inform coordination projection state but may not become claim authority, mailbox authority, dispatch authority, operation authority, or live-control authority
+
+  = must: show IR5-derived projection state as projection evidence unless accepted by completion review
+  = must: fault or interrupt any future coordination surface that treats projection state as claim, source, dispatch, or mailbox authority
+
+& [OperationsSafetyHandoffForIR6] is the handoff from accepted FSC5 operations safety into IR6 coordination planning
+  + [handoff_source] is FSC5OperationsSafetyPackV1
+  + [usable_evidence] is operation request schema
+  + [usable_evidence] is intended effect classification
+  + [usable_evidence] is resource target classification
+  + [usable_evidence] is refusal output contract
+  + [usable_evidence] is machine-control non-authority rule
+  + [usable_evidence] is live-control prohibition gate
+  + [handoff_limit] is coordination surfaces may display or request dry-run planning records only; no command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network exposure mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized
+
+  = must: convert dispatch-like or operation-like coordination requests into classified requests, refusal records, or SOP-first interrupt contexts
+  = must: keep human approval display separate from live-control permission until a separate future live-control authority is source-preserved, SJS-processed, and accepted
+
+& [IR6GeneratedOutputAndFixtureBoundary] is the generated-output and fixture boundary for IR6-S01
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [generated_projection_output_creation_authorized] is false
+  + [mailbox_transport_output_creation_authorized] is false
+  + [future_fixture_slice] is IR6-S05 after IR6-S01 through IR6-S04 acceptance
+  + [future_generated_output_policy_slice] is IR6-S06 after IR6-S05 acceptance
+  + [current_generated_output_role] is none_created_by_this_slice
+  + [future_generated_output_default_authority] is non_authoritative_projection_only
+
+  = must: reject IR6-S01 completion if fixture sources, expected ledgers, generated output files, mailbox files, adapter queues, carrier caches, or projection reports are created
+  = must: require later accepted generated-output policy before any generated coordination projection root can be trusted even as disposable evidence
+
+& [ForbiddenIR6S01MutationList] is the forbidden mutation set for IR6-S01
+  + [forbidden_mutation] is editing accepted FSC2, FSC4, FSC5, IR5, or IR6 authority inputs to make reconciliation easier
+  + [forbidden_mutation] is treating coordination claims as source authority, dispatch authority, completion authority, or operations authority
+  + [forbidden_mutation] is treating rendezvous packets or mailbox messages as signed authority by themselves
+  + [forbidden_mutation] is treating carrier context as a claim state transition without accepted coordination operator or completion review evidence
+  + [forbidden_mutation] is collapsing claimant identity, conversation identity, or work-packet identity across participants
+  + [forbidden_mutation] is hiding contested claims, stale claims, ambiguous identities, hidden scope expansion, human override context, or pending review state
+  + [forbidden_mutation] is resolving incompatible claims silently
+  + [forbidden_mutation] is deleting stale, released, superseded, or invalidated claim lineage
+  + [forbidden_mutation] is implementing mailbox transport, IRC, Matrix, web, terminal, Codex, Langflow, or chat adapter behavior
+  + [forbidden_mutation] is installing dependencies or mutating package metadata
+  + [forbidden_mutation] is creating fixture source files
+  + [forbidden_mutation] is creating expected ledger files
+  + [forbidden_mutation] is creating generated output files
+  + [forbidden_mutation] is implementing operations simulator code
+  + [forbidden_mutation] is dispatching agents, jobs, commands, processes, GPU work, model runtimes, or persistent operations automation
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR6-S01 review if any forbidden mutation appears in the output
+
+& [DownstreamStaleTriggerList: IR6] is the stale trigger set for downstream IR6 work
+  + [stale_trigger] is IR6 canonical specification hash changes
+  + [stale_trigger] is IR6 final slice surface changes
+  + [stale_trigger] is IR6 minting review changes
+  + [stale_trigger] is FSC2 planning coordination pack hash changes
+  + [stale_trigger] is coordination claim and rendezvous contract hash changes
+  + [stale_trigger] is FSC4 surface projection pack hash changes
+  + [stale_trigger] is FSC5 operations safety pack hash changes
+  + [stale_trigger] is IR5 implementation proof pack hash changes
+  + [stale_trigger] is IR5 implementation completion review changes
+  + [stale_trigger] is IR5 work state changes
+  + [stale_trigger] is authority notice contract changes
+  + [stale_trigger] is manager, worker, narrative, debug, conversation, or adapter projection contract changes
+  + [stale_trigger] is operations safety or live-control prohibition contract changes
+  + [stale_trigger] is missing authority_notice detected in downstream coordination display contract
+  + [stale_trigger] is hidden contested claim, stale claim, ambiguous identity, hidden scope expansion, interrupted path, faulted path, or pending-review state detected
+  + [stale_trigger] is generated projection, carrier context, mailbox path, inbox timestamp, read cursor, dry-run, fixture result, or human approval display treated as source authority
+  + [stale_trigger] is operation-like projection or coordination request treated as permission for dispatch, command execution, or live-control effect
+
+  = must: mark affected downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review and rebake rather than silent edits
+
+& [IR6S01CoverageReview] is the coverage checklist for IR6-S01
+  + [boundary_digest_set_present] is true
+  + [reconciled_invariant_set_present] is true
+  + [coordination_authority_ladder_present] is true
+  + [claim_and_mailbox_boundary_import_map_present] is true
+  + [ir5_surface_projection_proof_handoff_present] is true
+  + [operations_safety_handoff_present] is true
+  + [generated_output_and_fixture_boundary_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [coordination_implementation_code_created] is false
+  + [mailbox_transport_code_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR6-S01 only when all checklist items are satisfied
+  = must: open IR6-S02 only after this boundary map is reviewed in a completion review
