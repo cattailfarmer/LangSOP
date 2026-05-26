@@ -6,14 +6,16 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
 @ [slice_minting_review] docs/reviews/IR2_Final_Slice_Minting_Review.v1.sop
 @ [completion_review] docs/reviews/IR2_S01_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/IR2_S02_Completion_Review.v1.sop
 @ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
 @ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
 @ [accepted_output] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_output] docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
 
 & [IR2WorkStateV1] is the current derived work state for IR2 authority-file parser and SQLite projection builder
   + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
-  + [state_basis] is docs/reviews/IR2_S01_Completion_Review.v1.sop
-  + [surface_status] is accepted_for_IR2-S02_execution
+  + [state_basis] is docs/reviews/IR2_S02_Completion_Review.v1.sop
+  + [surface_status] is accepted_for_IR2-S03_execution
   + [source_manifest] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
   + [canonical_specification] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
@@ -21,11 +23,13 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [slice_surface] is docs/slices/IR2_Final_Slices.v1.sop
   + [slice_surface_sha256] is 3B77355A83AE6066FD56DBB0A179D1775FCA479300925F2BA1B9C09791DF34D2
   + [accepted_slice] is IR2-S01
+  + [accepted_slice] is IR2-S02
   + [accepted_output] is docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is 2432A53A7EA00CC6526BD31096A8D51D0CC9612227745F1F9D2AADE837A8337E
-  + [current_ready_slice] is IR2-S02
+  + [accepted_output] is docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+  + [accepted_output_sha256] is 6709231B30068A911A20ABFF64EF90D6FBF8374B9C63816F404055AC75A92574
+  + [current_ready_slice] is IR2-S03
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is IR2-S03
   + [gated_slice] is IR2-S04
   + [gated_slice] is IR2-S05
   + [gated_slice] is IR2-S06
@@ -37,6 +41,6 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run IR2-S02 before treating SOP artifact discovery or parser profile behavior as authorized
+  = must: run IR2-S03 before treating KernelRecord extraction or validation mapping as authorized
   = must: keep generated SQLite, cache, index, fixture output, and projection artifacts non-authoritative
-  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 output, or IR2-S01 completion review changes
+  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S02 outputs, or IR2-S01 through IR2-S02 completion reviews change

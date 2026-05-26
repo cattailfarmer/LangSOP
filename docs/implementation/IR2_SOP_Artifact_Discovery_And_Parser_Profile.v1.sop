@@ -1,0 +1,199 @@
+Subject: IR2 SOP Artifact Discovery And Parser Profile V1
+Date: 2026-05-26
+Contract UUID: 00f43729-e573-4a1a-b1b8-d9392e9be7f9
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [boundary_map] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [sop_markdown_source] ../platform/source/SOP_Markdown.md
+
+& [IR2SOPArtifactDiscoveryAndParserProfileV1] is the IR2-S02 contract for SOP artifact discovery and structural parser profile
+  + [contract_id] is ir2-sop-artifact-discovery-parser-profile-v1
+  + [contract_uuid] is 00f43729-e573-4a1a-b1b8-d9392e9be7f9
+  + [slice_id] is IR2-S02
+  + [contract_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is discovery and parser profile contract only
+
+  = must: define which files future parser implementation may discover as authority candidates
+  = must: define a structural SOP parser profile that preserves raw text, line markers, indentation scope, anchors, and recoverable faults
+  = must: keep parser output descriptive and non-authoritative until later validation and review
+  - never: implement parser code in this slice
+  - never: mutate source files, generate SQLite rows, or infer durable semantic truth from successful parsing alone
+
+& [AuthorityArtifactDiscoveryScope] is the discoverable authority candidate set for IR2
+  + [include_glob] is docs/**/*.sop
+  + [include_glob] is tests/fixtures/sop/**/*.sop when fixture source records exist
+  + [include_glob] is tests/fixtures/expected/**/*.sop when expected-output ledgers exist
+  + [include_file_role] is docs/source/**/*.sop are preserved source or source manifests
+  + [include_file_role] is docs/canonical/**/*.sop are signed canonical authority candidates
+  + [include_file_role] is docs/slices/**/*.sop are slice-surface authority candidates
+  + [include_file_role] is docs/planning/**/*.sop are planning pack and readiness-surface candidates
+  + [include_file_role] is docs/schema/**/*.sop are logical schema authority candidates
+  + [include_file_role] is docs/operators/**/*.sop are operator contract candidates
+  + [include_file_role] is docs/decisions/**/*.sop are accepted decision candidates
+  + [include_file_role] is docs/reviews/**/*.sop are completion and proof review candidates
+  + [include_file_role] is docs/fixtures/**/*.sop are fixture plan or expected-ledger candidates unless under generated output paths
+  + [include_file_role] is docs/runtime/**/*.sop are runtime contract candidates
+  + [include_file_role] is docs/surfaces/**/*.sop are surface projection contract candidates
+  + [include_file_role] is docs/operations/**/*.sop are operations safety contract candidates
+  + [include_file_role] is docs/coordination/**/*.sop are coordination contract candidates
+  + [include_file_role] is docs/state/**/*.sop are derived current-state candidates
+
+  = must: include source-preserved documents without promoting them to processed authority
+  = must: preserve each discovered file path, path role, file hash, and discovery rule version
+  = must: classify discovered files as authority candidates, not accepted authority, until signature, lineage, and freshness validation runs
+
+& [DiscoveryExclusionScope] is the excluded path set for IR2 discovery
+  + [exclude_glob] is .git/**
+  + [exclude_glob] is .langsop/**
+  + [exclude_glob] is .venv/**
+  + [exclude_glob] is __pycache__/**
+  + [exclude_glob] is .pytest_cache/**
+  + [exclude_glob] is .mypy_cache/**
+  + [exclude_glob] is .ruff_cache/**
+  + [exclude_glob] is dist/**
+  + [exclude_glob] is build/**
+  + [exclude_glob] is *.egg-info/**
+  + [exclude_glob] is tests/fixtures/generated/**
+  + [exclude_glob] is *.sqlite3
+  + [exclude_glob] is *.db
+  + [exclude_reason] is generated, cache, build, virtual environment, or projection-only artifact
+
+  = must: reject generated projection paths as authority candidates
+  = must: preserve excluded-path matches in diagnostics when exclusion affects an expected source
+
+& [LegacyAndExternalReferenceRule] is the rule for non-SOP or external references
+  + [legacy_markdown] is .md files are not discovered as SOP authority candidates by default
+  + [legacy_markdown_exception] is .md may be cited as source_ref when an accepted SOP manifest or artifact explicitly references it
+  + [external_platform_reference] is ../platform/**/*.sop or ../platform/**/*.md may be referenced by anchors but is outside the LangSOP repository discovery set until explicitly imported by a future source manifest
+  + [code_file_reference] is src/**/*.py and tests/**/*.py may be cited as implementation evidence or proof targets but are not SOP authority artifacts
+
+  = must: keep references inspectable without expanding discovery scope silently
+  = must: require a future reprocessing step before external platform files become indexed authority artifacts in LangSOP
+
+| [SOPLineMarkerKind] is (
+  subject_declaration |
+  local_term |
+  directive |
+  constraint |
+  function_declaration |
+  condition |
+  anchor |
+  claim |
+  assumption |
+  enum_declaration |
+  pants_decomposition |
+  pants_composition |
+  comment |
+  blank |
+  continuation |
+  range_closure |
+  unknown
+)
+
+& [SOPStructuralParserProfile] is the structural parser subset for future IR2 parser implementation
+  + [profile_id] is sop-structural-parser-profile-v1
+  + [profile_basis] is ../platform/source/SOP_Markdown.md
+  + [recognized_line_marker] is &
+  + [recognized_line_marker] is +
+  + [recognized_line_marker] is =
+  + [recognized_line_marker] is -
+  + [recognized_line_marker] is ^
+  + [recognized_line_marker] is ?
+  + [recognized_line_marker] is @
+  + [recognized_line_marker] is !
+  + [recognized_line_marker] is ~
+  + [recognized_line_marker] is |
+  + [recognized_line_marker] is /
+  + [recognized_line_marker] is *
+  + [recognized_line_marker] is #
+  + [scope_rule] is indentation declares parent membership against nearest previous line with lower indentation
+  + [range_rule] is scoped range closure ends only the range it opened and does not determine parent scope by its own column
+  + [identity_anchor_rule] is bracketed text after a marker is preserved as label text without resolving identity
+  + [tail_text_rule] is all text after the marker and optional bracket label is preserved as raw tail text
+  + [comment_rule] is comment lines are parse events and do not alter declared structure
+  + [blank_rule] is blank lines are preserved as line events but do not alter scope
+
+  = must: parse structure without deciding whether claims are true
+  = must: preserve unsupported claims, assumptions, uncertainty, and fault material as structural events for later validation
+  = must: preserve original line number, raw text, indentation count, marker kind, label text, tail text, parent line reference, and parse status
+
+& [ParseEventShape] is the structural event shape emitted by future parser implementation
+  + [required_field] is source_path
+  + [required_field] is source_hash
+  + [required_field] is line_number
+  + [required_field] is raw_text
+  + [required_field] is indentation_column
+  + [required_field] is marker_text
+  + [required_field] is marker_kind
+  + [required_field] is bracket_label
+  + [required_field] is tail_text
+  + [required_field] is parent_line_ref
+  + [required_field] is active_range_ref
+  + [required_field] is parse_status
+  + [required_field] is parse_fault_ref_set
+
+  = must: preserve raw input even when marker classification fails
+  = must: permit downstream extraction to ignore comments or blanks without losing line-number provenance
+  = must: treat parse_event records as projection material until reviewed into SOP proof artifacts
+
+& [RecoverableParseFaultShape] is the recoverable fault shape for parser profile failures
+  + [fault_kind] is unknown_marker
+  + [fault_kind] is bracket_label_parse_failure
+  + [fault_kind] is indentation_without_parent
+  + [fault_kind] is inconsistent_indentation
+  + [fault_kind] is unclosed_scoped_range
+  + [fault_kind] is unmatched_range_closure
+  + [fault_kind] is malformed_enum_declaration
+  + [fault_kind] is malformed_pants_decomposition
+  + [fault_kind] is malformed_pants_composition
+  + [fault_kind] is unsupported_inline_structure
+  + [fault_kind] is text_encoding_fault
+  + [fault_field] is fault_id
+  + [fault_field] is source_path
+  + [fault_field] is source_hash
+  + [fault_field] is line_number
+  + [fault_field] is raw_text
+  + [fault_field] is fault_kind
+  + [fault_field] is fault_severity
+  + [fault_field] is recovery_action
+  + [fault_field] is downstream_effect
+
+  = must: preserve recoverable faults as fault records or parse diagnostics rather than dropping the affected source line
+  = must: block authority classification when parse faults affect signature, source lineage, subject identity, or structural scope
+
+& [ParserNonMutationRule] is the source-safety rule for future parser behavior
+  + [read_rule] is future parser implementation may read tracked source files selected by discovery rules
+  + [write_rule] is future parser implementation may write only generated projection artifacts under accepted generated paths
+  + [forbidden_write_target] is docs/source/**
+  + [forbidden_write_target] is docs/canonical/**
+  + [forbidden_write_target] is docs/slices/**
+  + [forbidden_write_target] is docs/schema/**
+  + [forbidden_write_target] is docs/operators/**
+  + [forbidden_write_target] is docs/decisions/**
+  + [forbidden_write_target] is docs/reviews/**
+  + [forbidden_write_target] is any tracked authority artifact not explicitly authorized as a completed output by the active slice
+
+  = must: treat attempted source mutation as a fault
+  = must: preserve parser diagnostics separately from source text
+  - never: repair malformed SOP source silently during parser execution
+
+& [IR2S02CoverageReview] is the coverage checklist for IR2-S02
+  + [authority_artifact_discovery_scope_present] is AuthorityArtifactDiscoveryScope
+  + [discovery_exclusion_scope_present] is DiscoveryExclusionScope
+  + [legacy_and_external_reference_rule_present] is LegacyAndExternalReferenceRule
+  + [line_marker_vocabulary_present] is SOPLineMarkerKind
+  + [structural_parser_profile_present] is SOPStructuralParserProfile
+  + [parse_event_shape_present] is ParseEventShape
+  + [recoverable_parse_fault_shape_present] is RecoverableParseFaultShape
+  + [parser_non_mutation_rule_present] is ParserNonMutationRule
+  + [parser_code_created] is false
+  + [sqlite_code_created] is false
+  + [generated_projection_created] is false
+  + [source_mutation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-S02 only when all checklist items are satisfied
+  = must: open IR2-S03 only after this parser profile contract is reviewed in a completion review
