@@ -1,0 +1,93 @@
+Subject: LangSOP IR6 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR6FinalSlices] is the processed planning authority for IR6 final work slices
+  + [canonical_uuid] is de2a711c-a802-4074-90d5-781058cf0863
+  + [source_manifest_uuid] is a6dfef5d-ad42-4d0e-873b-91fb593e82d2
+  + [slice_surface_uuid] is 7c3b6843-80f7-42d3-9367-6293e67d2019
+  + [authority_scope] is IR6 slice order, gates, expected outputs, model routing, coordination claim projection boundaries, rendezvous packet projection boundaries, mailbox carrier non-authority policy, conflict signal proof, implementation activation boundary, and forbidden live operations scope
+  + [implementation_scope] is coordination mailbox and claim projection prototype planning plus gated implementation activation
+  + [depends_on] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [depends_on] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [depends_on] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [depends_on] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [depends_on] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+  = must: use docs/slices/IR6_Final_Slices.v1.sop as the current IR6 slice surface
+  = must: execute IR6-S01 first
+  = must: run completion review after each IR6 slice before opening the next gated slice
+  = must: keep coordination claims, rendezvous packets, mailbox messages, IRC logs, Matrix events, web events, terminal output, Codex state, Langflow diagrams, generated projections, and generated reports non-authoritative
+  - never: treat IR6 slices as permission for agent dispatch, mailbox transport implementation, chat adapter implementation, dependency installation, operations simulator implementation, operations control, or live machine control
+
+& [CanonicalIR6SliceSet] is the final IR6 slice sequence
+  + [slice] is IR6-S01 coordination boundary import and invariant reconciliation
+  + [slice] is IR6-S02 claim identity and work-boundary projection contract
+  + [slice] is IR6-S03 rendezvous packet and mailbox carrier projection contract
+  + [slice] is IR6-S04 conflict, stale-claim, and human-override review contract
+  + [slice] is IR6-S05 coordination mailbox fixture plan and expected ledger plan
+  + [slice] is IR6-S06 coordination mailbox projection prototype implementation plan and generated-output boundary
+  + [slice] is IR6-S07 IR6 completion review and implementation activation pack
+
+  = must: preserve this order unless completion review rebakes IR6
+
+& [CanonicalIR6ExecutionGate] is the activation rule for IR6
+  + [current_ready_slice] is IR6-S01
+  + [gated_slice] is IR6-S02 until IR6-S01 accepted
+  + [gated_slice] is IR6-S03 until IR6-S02 accepted
+  + [gated_slice] is IR6-S04 until IR6-S03 accepted
+  + [gated_slice] is IR6-S05 until IR6-S04 accepted
+  + [gated_slice] is IR6-S06 until IR6-S05 accepted
+  + [gated_slice] is IR6-S07 until IR6-S06 accepted
+  + [completion_gate] is IR6 implementation activation pack accepted after IR6-S07
+
+& [CanonicalIR6ModelRouting] is the model-routing record
+  + [IR6-S01] is requires deeper reasoning
+  + [IR6-S02] is requires deeper reasoning
+  + [IR6-S03] is requires deeper reasoning
+  + [IR6-S04] is requires deeper reasoning
+  + [IR6-S05] is GPT-5.3-Codex-Spark-suitable after IR6-S01 through IR6-S04 acceptance
+  + [IR6-S06] is requires deeper reasoning
+  + [IR6-S07] is requires deeper reasoning
+
+  = must: keep identity semantics, contested claim policy, mailbox carrier authority, human override, and final activation under deeper reasoning
+  = must: treat bounded fixture planning as Spark-suitable only after claim, rendezvous, mailbox, and conflict contracts are accepted
+
+& [SatisfactionSignature: IR6FinalSlices] is the valid SJS satisfaction signature for the IR6 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is bade69c5-bcf6-4591-a406-a7b64062474c
+  + [signed_subject] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is ABB5882E6E23A50B4A40A7F4E6D270F46E500D31F2649F69F44AD2F98A383B53
+  + [source_sha256] is F1A7DDE0C169A90DC9B0D178E12D629B7B4E083E7E147B1C300B5778685372DD
+  + [source_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [source_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [source_sha256] is D42450F6F518E270A0AEE584C55EEF8950CE726BAB10C78A5464D840800C6F17
+  + [source_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [source_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [source_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [source_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [source_sha256] is CD2F0E23A2485897E9E7722B5DBCE677E169C05C4295F754D8243B3019BB899A
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR6_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR5_gate_imported, FSC2_coordination_contracts_imported, FSC4_surface_contracts_imported, FSC5_safety_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR6_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR6 final slices; no live operations control authorized
+
+& [RegistryRecord: IR6FinalSlices] is the durable identity ledger for the IR6 final slice surface
+  + [registry_uuid] is 81cf131c-4298-4a90-a45b-5fec74bcb51b
+  + [manifest_node_uuid] is a6dfef5d-ad42-4d0e-873b-91fb593e82d2
+  + [canonical_node_uuid] is de2a711c-a802-4074-90d5-781058cf0863
+  + [slice_surface_uuid] is 7c3b6843-80f7-42d3-9367-6293e67d2019
+  + [signature_uuid] is bade69c5-bcf6-4591-a406-a7b64062474c
+  + [closure_review_uuid] is d933a014-997f-48c2-9f95-7f55eebf21fe

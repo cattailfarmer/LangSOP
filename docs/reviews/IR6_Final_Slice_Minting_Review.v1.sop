@@ -1,0 +1,107 @@
+Subject: IR6 Final Slice Minting Review V1
+Date: 2026-05-26
+Review UUID: d933a014-997f-48c2-9f95-7f55eebf21fe
+
+@ [source_manifest] docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR6-Final-Slice-Minting] is the completed-work review for minting IR6 final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir6_final_slices/Derived_IR6_Final_Slices_Source.sop
+  + [completed_output_sha256] is ABB5882E6E23A50B4A40A7F4E6D270F46E500D31F2649F69F44AD2F98A383B53
+  + [completed_output] is docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is F1A7DDE0C169A90DC9B0D178E12D629B7B4E083E7E147B1C300B5778685372DD
+  + [completed_output] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [completed_output_sha256] is B4BA2A31235EF88D1C5A02D9436C48BED6593A503011F0BEBEC6182DBE6DCFBE
+  + [completed_output] is docs/slices/IR6_Final_Slices.v1.sop
+  + [completed_output_sha256] is 7C622C2102BB03E44512D7CF91B74102A6ADECA383B770BD35028310FF7D84D8
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6 final slice surface and open IR6-S01
+  + [next_gate_result] is IR6-S01 may open
+  + [next_model_route] is requires deeper reasoning for IR6-S01
+
+  = must: treat this review as gate-opening evidence for IR6-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, or IR5 implementation completion review changes
+  = must: keep executable coordination implementation, mailbox transport implementation, adapter implementation, dependency installation, generated output creation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR6FinalSliceMintingVerification] is the verification result for IR6 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [slice_count] is 7
+  + [current_ready_slice] is IR6-S01
+  + [gated_slice] is IR6-S02
+  + [gated_slice] is IR6-S03
+  + [gated_slice] is IR6-S04
+  + [gated_slice] is IR6-S05
+  + [gated_slice] is IR6-S06
+  + [gated_slice] is IR6-S07
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [mailbox_transport_implemented] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR6_Final_Slices.v1.sop
+
+& [SupportDelta: IR6-Final-Slice-Minting] is the support delta produced by minted IR6 final slices
+  + [new_support_record] is IR6-S01 may import and reconcile coordination, surface projection, operations safety, and IR5 surface implementation boundaries
+  + [new_support_record] is IR6-S02 through IR6-S07 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded IR6-S05 fixture planning after IR6-S01 through IR6-S04 are accepted
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-Final-Slice-Minting] is the requirement delta produced by minted IR6 final slices
+  + [requirement_delta] is IR6-S01 requires deeper reasoning
+  + [requirement_delta] is no executable coordination code, mailbox transport, chat adapter, dependency installation, generated output, agent dispatch, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every IR6 slice
+
+& [FaultReview: IR6-Final-Slice-Minting] is the fault review for minted IR6 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [coordination_implementation_leak_found] is false
+  + [mailbox_transport_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6FinalSlicesAccepted] is accepted
+    @ [support] [IR6FinalSliceMintingVerification]
+    @ [support] [SupportDelta: IR6-Final-Slice-Minting]
+    @ [support] [RequirementDelta: IR6-Final-Slice-Minting]
+    @ [support] [FaultReview: IR6-Final-Slice-Minting]
+
+& [NextSliceGate: IR6-S01] is opened
+  + [opened_slice] is IR6-S01 coordination boundary import and invariant reconciliation
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [accepted_boundary_input] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is D42450F6F518E270A0AEE584C55EEF8950CE726BAB10C78A5464D840800C6F17
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is coordination identity and claim authority boundaries affect downstream mailbox and multi-agent semantics
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-S01 next unless user redirects or a new fault invalidates this review

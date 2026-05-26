@@ -1,0 +1,40 @@
+Subject: IR6 Final Slices Source Document Manifest
+Date: 2026-05-26
+Manifest UUID: a6dfef5d-ad42-4d0e-873b-91fb593e82d2
+
+@ [source_document] docs/source/2026-05-26_ir6_final_slices/Derived_IR6_Final_Slices_Source.sop
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+@ [ir5_work_state] docs/state/IR5_Work_State.v1.sop
+
+& [SourceDocumentManifest: IR6FinalSlices] is the preserved source manifest for IR6 final-slice minting
+  + [manifest_uuid] is a6dfef5d-ad42-4d0e-873b-91fb593e82d2
+  + [source_document] is docs/source/2026-05-26_ir6_final_slices/Derived_IR6_Final_Slices_Source.sop
+  + [source_document_sha256] is ABB5882E6E23A50B4A40A7F4E6D270F46E500D31F2649F69F44AD2F98A383B53
+  + [boundary_input] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [boundary_input_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [boundary_input_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [boundary_input] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [boundary_input_sha256] is D42450F6F518E270A0AEE584C55EEF8950CE726BAB10C78A5464D840800C6F17
+  + [boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [boundary_input_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [boundary_input] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [boundary_input_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [boundary_input] is docs/state/IR5_Work_State.v1.sop
+  + [boundary_input_sha256] is CD2F0E23A2485897E9E7722B5DBCE677E169C05C4295F754D8243B3019BB899A
+  + [preservation_status] is source_preserved
+  + [processing_route] is Specification_Justification_Solution_to_canonical_IR6_final_slice_surface
+
+  = must: preserve this manifest as provenance for canonical IR6 final slices
+  = must: treat downstream IR6 implementation as gated until slice surface and completion review open a bounded implementation step
+  - never: use this manifest to authorize mailbox transport, agent dispatch, adapter implementation, dependency installation, operations control, or live machine control

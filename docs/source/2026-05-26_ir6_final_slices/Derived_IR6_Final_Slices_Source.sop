@@ -1,0 +1,42 @@
+Subject: Derived IR6 Final Slices Source
+Date: 2026-05-26
+Source UUID: ba52f0cd-afcd-4604-b1d9-e83533f04f10
+
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+@ [ir5_work_state] docs/state/IR5_Work_State.v1.sop
+
+& [DerivedIR6FinalSlicesSource] is the preserved source specification for IR6 final slice minting
+  + [source_kind] is manager-derived implementation-readiness rebake source
+  + [origin] is post-FSC5 implementation readiness surface rebaked through accepted IR5 surface projection implementation proof
+  + [chunk_id] is IR6
+  + [chunk_name] is coordination mailbox and claim projection prototype
+  + [activation_gate] is IR5 implementation completion accepted
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [accepted_boundary_input] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [expected_output_set] is coordination boundary import and invariant reconciliation
+  + [expected_output_set] is claim identity and work-boundary projection contract
+  + [expected_output_set] is rendezvous packet and mailbox carrier projection contract
+  + [expected_output_set] is conflict, stale-claim, and human-override review contract
+  + [expected_output_set] is coordination mailbox fixture plan and expected ledger plan
+  + [expected_output_set] is coordination mailbox projection prototype implementation plan and generated-output boundary
+  + [expected_output_set] is IR6 completion review and implementation activation pack
+  + [model_route] is requires deeper reasoning for identity, conflict, stale claim, mailbox-carrier, multi-user, and multi-agent coordination semantics
+  + [future_spark_suitable_work] is GPT-5.3-Codex-Spark-suitable for bounded fixture files and deterministic projection prototype implementation only after IR6 planning contracts are accepted
+  + [forbidden_scope] is dispatching agents, assigning users, collapsing conversation identities, implementing mailbox transport, implementing chat adapters, treating mailbox carriers as signed authority, accepting completed work through claims, operations simulator implementation, operations control, and live machine control
+
+  = must: mint IR6 final slices before writing coordination implementation code, mailbox transport, fixture source files, expected ledgers, adapters, generated outputs, dependency changes, or UI implementation
+  = must: preserve coordination claims as work-boundary records that never override source specifications, work packets, operator traces, or completion reviews
+  = must: preserve rendezvous packets, inbox messages, IRC, Matrix, web, terminal, Codex, Langflow, and mailbox paths as carriers or projections only
+  = must: show contested claims, stale claims, ambiguous identities, mailbox freshness, human override context, and completion-review gates in coordination projections
+  = must: route claim changes through accepted coordination operators, SOP-first interrupt, human override, or completion review paths rather than direct projection writes
+  = must: preserve dry-run and no-live-control operations safety inherited from FSC5

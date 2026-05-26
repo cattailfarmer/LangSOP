@@ -1,0 +1,154 @@
+Subject: IR6 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 7c3b6843-80f7-42d3-9367-6293e67d2019
+
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir5_surface_projection_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+& [IR6FinalSliceSurfaceV1] is the executable slice surface for IR6 coordination mailbox and claim projection prototype planning
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [chunk_boundary] is coordination boundary import, claim identity contract, rendezvous and mailbox carrier contract, conflict and human override review contract, fixture plan, implementation plan, activation pack, and completion review
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [accepted_boundary_input] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR6-S01
+  + [gated_slice_set] is IR6-S02, IR6-S03, IR6-S04, IR6-S05, IR6-S06, and IR6-S07
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR6-S01 before creating claim projection contracts, mailbox projection contracts, conflict fixtures, implementation activation plans, dependency changes, executable coordination code, mailbox transport, or generated outputs
+  = must: run completed-work review after each IR6 slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes coordination claims, mailbox carriers, rendezvous packets, chat logs, IRC logs, Matrix events, web events, terminal output, Codex state, Langflow diagrams, generated traces, or generated reports to source authority
+
+& [FinalWorkSlice: IR6-S01-CoordinationBoundaryImportAndInvariantReconciliation] is ready
+  + [slice_id] is IR6-S01
+  + [slice_name] is coordination boundary import and invariant reconciliation
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [portion_ref] is coordination boundary and IR5 surface projection proof handoff
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [activation_gate] is IR5 implementation completion accepted
+  + [internal_dependency_set] is accepted FSC2 planning coordination pack, accepted FSC4 surface projection pack, accepted FSC5 operations safety pack, and accepted IR5 surface projection implementation proof pack
+  + [expected_output_set] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [verification_oracle] is boundary map imports coordination claim contracts, rendezvous packet contracts, surface projection authority notices, generated-output non-authority rules, dry-run safety, forbidden mutations, and stale triggers without implementing coordination code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is coordination identity and claim authority boundaries affect every downstream mailbox, projection, and multi-agent semantics
+  + [forbidden_scope] is executable coordination implementation, mailbox transport implementation, adapter implementation, dependency installation, fixture creation, generated output creation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-S02-ClaimIdentityAndWorkBoundaryProjectionContract] is gated
+  + [slice_id] is IR6-S02
+  + [slice_name] is claim identity and work-boundary projection contract
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [portion_ref] is claim identity and work-boundary semantics
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [activation_gate] is IR6-S01 accepted
+  + [internal_dependency_set] is IR6-S01 output and accepted FSC2 coordination contracts
+  + [expected_output_set] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [verification_oracle] is contract defines conversation identity, claimant identity, claim scope, compatibility relation, conflict basis, release and supersession visibility, and refusal behavior without implementing claim mutation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is identity and claim compatibility decide when projected work boundaries may guide action without becoming authority
+  + [forbidden_scope] is claim storage implementation, mailbox transport, agent assignment, fixture creation, generated output creation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-S03-RendezvousPacketAndMailboxCarrierProjectionContract] is gated
+  + [slice_id] is IR6-S03
+  + [slice_name] is rendezvous packet and mailbox carrier projection contract
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [portion_ref] is durable coordination notices and carrier projection semantics
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [activation_gate] is IR6-S02 accepted
+  + [internal_dependency_set] is IR6-S01 through IR6-S02 accepted outputs and accepted rendezvous packet contract
+  + [expected_output_set] is docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+  + [verification_oracle] is contract defines notice kinds, addressing, freshness, inbox/outbox projection, carrier lineage, mailbox non-authority, read cursor visibility, and authority-sensitive route refusal without implementing transport
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is mailbox and rendezvous carriers must preserve conversation continuity without becoming signed authority or dispatch channels
+  + [forbidden_scope] is mailbox file writing implementation, IRC implementation, Matrix implementation, web transport implementation, adapter implementation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-S04-ConflictStaleClaimAndHumanOverrideReviewContract] is gated
+  + [slice_id] is IR6-S04
+  + [slice_name] is conflict, stale-claim, and human-override review contract
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [portion_ref] is coordination conflict and review policy
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [activation_gate] is IR6-S03 accepted
+  + [internal_dependency_set] is IR6-S01 through IR6-S03 accepted outputs
+  + [expected_output_set] is docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+  + [verification_oracle] is contract defines contested claim detection, stale claim review, ambiguous identity interrupt, hidden scope expansion fault, human override route, release notice obligations, and completion-review gate without resolving conflicts silently
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is conflict and human override rules decide whether multi-agent work pauses, rebakes, interrupts, or proceeds
+  + [forbidden_scope] is automatic conflict resolution, claim deletion, assignment, dispatch, mailbox transport implementation, generated output creation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-S05-CoordinationMailboxFixturePlanAndExpectedLedgerPlan] is gated
+  + [slice_id] is IR6-S05
+  + [slice_name] is coordination mailbox fixture plan and expected ledger plan
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [portion_ref] is coordination mailbox fixtures
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [activation_gate] is IR6-S04 accepted
+  + [internal_dependency_set] is IR6-S01 through IR6-S04 accepted outputs
+  + [expected_output_set] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [verification_oracle] is fixture plan covers valid claim, compatible parallel claims, conflicting claim, stale claim, release notice, superseded claim, ambiguous conversation identity, inbox unread notice, read cursor staleness, mailbox carrier authority refusal, human override request, hidden scope expansion, and completion gate refusal
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR6-S01 through IR6-S04 acceptance
+  + [model_route_reason] is fixture planning is bounded by accepted claim, mailbox, conflict, and human override contracts
+  + [forbidden_scope] is fixture source file creation, expected ledger file creation, generated output creation, executable coordination implementation, mailbox transport implementation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-S06-CoordinationMailboxProjectionPrototypeImplementationPlanAndGeneratedOutputBoundary] is gated
+  + [slice_id] is IR6-S06
+  + [slice_name] is coordination mailbox projection prototype implementation plan and generated-output boundary
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [portion_ref] is implementation planning and generated-output boundary
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [activation_gate] is IR6-S05 accepted
+  + [internal_dependency_set] is IR6-S01 through IR6-S05 accepted outputs
+  + [expected_output_set] is docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+  + [verification_oracle] is implementation plan defines future file inventory, dependency decision boundary, generated coordination projection roots, fixture runner boundary, mailbox carrier boundary, command plan, and proof checklist without code or dependency changes
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation and generated-output policy affect coordination authority, mailbox carrier semantics, and downstream operations readiness
+  + [forbidden_scope] is executable coordination implementation, mailbox transport implementation, adapter implementation, dependency installation, fixture file creation, generated output creation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-S07-CompletionReviewAndImplementationActivationPack] is gated
+  + [slice_id] is IR6-S07
+  + [slice_name] is IR6 completion review and implementation activation pack
+  + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
+  + [portion_ref] is implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [activation_gate] is IR6-S06 accepted
+  + [internal_dependency_set] is IR6-S01 through IR6-S06 accepted outputs
+  + [expected_output_set] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [verification_oracle] is completion review accepts only bounded IR6 planning proof and opens implementation activation only if no identity collapse, claim authority promotion, mailbox carrier authority promotion, dependency, generated output, dispatch, operations control, or live-control fault is present
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR6 planning acceptance affects implementation activation and downstream IR7 operations readiness
+  + [forbidden_scope] is executable coordination implementation, mailbox transport implementation, adapter implementation, dependency installation, operations simulator implementation, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR6FinalSliceClosureReview] is the dependency audit for minted IR6 final slices
+  + [FSC2_planning_coordination_pack_status] is accepted
+  + [coordination_contract_status] is accepted
+  + [FSC4_surface_projection_pack_status] is accepted
+  + [FSC5_operations_safety_pack_status] is accepted
+  + [IR5_surface_projection_implementation_proof_pack_status] is accepted
+  + [IR5_implementation_completion_review_status] is accepted
+  + [current_ready_slice_set] is IR6-S01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR6-S02 through IR6-S07 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

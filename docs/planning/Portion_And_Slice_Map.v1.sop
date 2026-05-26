@@ -108,19 +108,24 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: never let surfaces mutate canonical authority directly
   = should: route bounded projection rendering to GPT-5.3-Codex-Spark after fixture records exist
 
-& [Portion: P7CoordinationAndMultiAgentGovernance] is blocked
+& [Portion: P7CoordinationAndMultiAgentGovernance] is ready_for_IR6_boundary_slice
   + [portion_id] is P7
   + [portion_name] is coordination and multi-agent governance
   + [purpose] is preserve claims, ownership, conversation identity, rendezvous packets, mailbox messages, conflicts, and human overrides
   + [dependency_set] is P2
   + [dependency_set] is P4
-  + [support_gap] is coordination record schemas not yet bound into authority kernel
+  + [support_record] is docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/IR6_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/IR6_Final_Slice_Minting_Review.v1.sop
+  + [support_gap] is IR6-S01 coordination boundary import not yet executed
+  + [support_gap] is coordination record schemas not yet rebound into the IR6 implementation boundary
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
   + [slice_family] is rendezvous-packet-fixtures
   + [slice_family] is mailbox-projection-integration
 
   = must: preserve conversation identity and work boundaries before multi-agent dispatch
+  = must: keep implementation, mailbox transport, agent dispatch, operations control, and live machine control gated until future IR6 activation proof explicitly opens bounded work
 
 & [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_slice_family
   + [portion_id] is P8
