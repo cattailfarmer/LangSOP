@@ -1,0 +1,48 @@
+Subject: Derived IR5 Implementation Activation Source
+Date: 2026-05-26
+Source UUID: 44867f21-b915-4463-930b-c2244681e4f6
+
+@ [activation_pack] docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR5_Completion_Review.v1.sop
+@ [work_state] docs/state/IR5_Work_State.v1.sop
+
+& [DerivedIR5ImplementationActivationSource] is the preserved source for minting IR5 implementation activation slices
+  + [source_basis] is accepted IR5 final planning completion
+  + [source_basis] is docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+  + [source_basis] is docs/reviews/IR5_Completion_Review.v1.sop
+  + [source_intent] is convert the accepted future implementation activation shape into dependency-closed implementation activation slices
+  + [target_chunk] is IR5 surface projection prototype implementation activation
+  + [source_status] is preserved_before_canonical_processing
+
+  = must: preserve accepted IR5 final planning outputs as boundary inputs
+  = must: mint implementation activation slices before creating code, fixture files, expected ledgers, generated outputs, dependencies, package metadata changes, adapters, UI, operations simulator code, operations control, or live machine control
+  = must: open only IR5-IA01 after minting review acceptance
+  = must: keep future bounded fixture, model, projector, runner, generated-output proof, and test slices GPT-5.3-Codex-Spark-suitable only after activation boundaries isolate scope
+  = must: keep activation minting, dependency decisions, adapter boundaries, generated-output boundaries, operations safety changes, and live-control boundaries under deeper reasoning
+  - never: treat this source as implementation permission by itself
+
+& [DerivedIR5ImplementationActivationShape] is the intended activation slice shape from the accepted IR5 activation pack
+  + [future_activation_slice] is IR5-IA01 bounded surface implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR5-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR5-IA03 authority display and projection state model implementation
+  + [future_activation_slice] is IR5-IA04 projector and action route implementation
+  + [future_activation_slice] is IR5-IA05 generated path policy and fixture runner implementation
+  + [future_activation_slice] is IR5-IA06 contract tests and generated-output proof
+  + [future_activation_slice] is IR5-IA07 dependency-authorized adapter and Langflow decision or deferral review
+  + [future_activation_slice] is IR5-IA08 implementation completion review and proof pack
+
+& [DerivedIR5ImplementationActivationSafetyBoundary] is the safety boundary preserved for activation slice minting
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [UI_implementation_initial_state] is gated
+  + [operations_simulator_initial_state] is gated
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+
+  = must: preserve FSC5 dry-run-only and live-control prohibition in every future surface implementation slice

@@ -1,0 +1,24 @@
+Subject: IR5 Implementation Activation Source Document Manifest
+Date: 2026-05-26
+Manifest UUID: a38f95ea-65bb-4034-9a17-34c532dca444
+
+@ [source_document] docs/source/2026-05-26_ir5_implementation_activation/Derived_IR5_Implementation_Activation_Source.sop
+@ [activation_pack] docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR5_Completion_Review.v1.sop
+@ [work_state] docs/state/IR5_Work_State.v1.sop
+
+& [SourceDocumentManifest: IR5ImplementationActivation] is the source manifest for IR5 implementation activation slice minting
+  + [manifest_uuid] is a38f95ea-65bb-4034-9a17-34c532dca444
+  + [source_document] is docs/source/2026-05-26_ir5_implementation_activation/Derived_IR5_Implementation_Activation_Source.sop
+  + [source_document_sha256] is B9BF8BA2E5FDEEC5D0091385425C4324BB37D64D3E598348B8187D10024B26F5
+  + [boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+  + [boundary_input_sha256] is BDC96ADF5854DAE8B514FB4B9EFEEA1BB848811D337198E025D18A4FA911F5F8
+  + [boundary_input] is docs/reviews/IR5_Completion_Review.v1.sop
+  + [boundary_input_sha256] is D0E8A322725D5E2F822D770E51A4A27FE1F9243524100600129D4D4FB5BBBAF2
+  + [boundary_input] is docs/state/IR5_Work_State.v1.sop
+  + [boundary_input_sha256] is C224EA85C80DEB41719DEA63FD4FC3018D71411FACB2775670C3BB7F9500CBA2
+  + [manifest_scope] is IR5 implementation activation slice minting only
+
+  = must: preserve the source document unchanged as provenance
+  = must: treat this manifest as stale if any listed source or boundary input hash changes
+  = must: run canonical processing before trusting activation slices as processed authority

@@ -1,0 +1,82 @@
+Subject: LangSOP IR5 Implementation Activation Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir5_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR5_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR5ImplementationActivation] is the processed planning authority for IR5 implementation activation slices
+  + [canonical_uuid] is d64aaf48-c3aa-4361-a8db-72be89e7f12b
+  + [source_manifest_uuid] is a38f95ea-65bb-4034-9a17-34c532dca444
+  + [slice_surface_uuid] is 4dd2f3df-3bf6-4047-89fa-850e1b2eb56d
+  + [authority_scope] is IR5 implementation activation slice order, gates, expected outputs, model routing, dependency boundaries, generated-output boundaries, adapter boundaries, operations safety limits, and proof pack requirements
+  + [implementation_scope] is activation slice minting only
+  + [depends_on] is docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR5_Completion_Review.v1.sop
+
+  = must: use docs/slices/IR5_Implementation_Activation_Slices.v1.sop as the current IR5 implementation activation slice surface
+  = must: execute IR5-IA01 first
+  = must: run completion review after each IR5 implementation activation slice before opening the next gated slice
+  = must: keep operations control and live machine control unauthorized
+  - never: treat this canonical specification as permission to skip activation slices or directly implement code, fixtures, expected ledgers, generated outputs, dependencies, adapters, UI, operations simulator code, operations control, or live machine control
+
+& [CanonicalIR5ImplementationActivationSliceSet] is the final IR5 implementation activation slice sequence
+  + [slice] is IR5-IA01 bounded surface implementation activation boundary and dependency decision
+  + [slice] is IR5-IA02 fixture source and expected-ledger seed material
+  + [slice] is IR5-IA03 authority display and projection state model implementation
+  + [slice] is IR5-IA04 projector and action route implementation
+  + [slice] is IR5-IA05 generated path policy and fixture runner implementation
+  + [slice] is IR5-IA06 contract tests and generated-output proof
+  + [slice] is IR5-IA07 dependency-authorized adapter and Langflow decision or deferral review
+  + [slice] is IR5-IA08 implementation completion review and proof pack
+
+  = must: preserve this order unless completion review rebakes IR5 implementation activation
+
+& [CanonicalIR5ImplementationActivationGate] is the activation rule for IR5 implementation work
+  + [current_ready_slice] is IR5-IA01
+  + [gated_slice] is IR5-IA02 until IR5-IA01 accepted
+  + [gated_slice] is IR5-IA03 until IR5-IA02 accepted
+  + [gated_slice] is IR5-IA04 until IR5-IA03 accepted
+  + [gated_slice] is IR5-IA05 until IR5-IA04 accepted
+  + [gated_slice] is IR5-IA06 until IR5-IA05 accepted
+  + [gated_slice] is IR5-IA07 until IR5-IA06 accepted
+  + [gated_slice] is IR5-IA08 until IR5-IA07 accepted
+
+& [CanonicalIR5ImplementationActivationModelRouting] is the model-routing record
+  + [IR5-IA01] is requires deeper reasoning
+  + [IR5-IA02] is GPT-5.3-Codex-Spark-suitable after IR5-IA01 acceptance
+  + [IR5-IA03] is GPT-5.3-Codex-Spark-suitable after IR5-IA02 acceptance
+  + [IR5-IA04] is GPT-5.3-Codex-Spark-suitable after IR5-IA03 acceptance unless action-route semantics change
+  + [IR5-IA05] is GPT-5.3-Codex-Spark-suitable after IR5-IA04 acceptance
+  + [IR5-IA06] is GPT-5.3-Codex-Spark-suitable after IR5-IA05 acceptance
+  + [IR5-IA07] is requires deeper reasoning
+  + [IR5-IA08] is requires deeper reasoning
+
+  = must: keep activation boundary, dependency decisions, adapter/Langflow decisions, proof pack closure, operations safety changes, and live-control boundaries under deeper reasoning
+  = must: treat bounded fixture, model, projector, runner, generated-output proof, and test implementation as Spark-suitable only after upstream activation gates are accepted
+
+& [SatisfactionSignature: IR5ImplementationActivation] is the valid SJS satisfaction signature for the IR5 implementation activation slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is c7ee0c81-1b50-4e6e-b838-61b30136afbb
+  + [signed_subject] is docs/canonical/LangSOP_IR5_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir5_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is B9BF8BA2E5FDEEC5D0091385425C4324BB37D64D3E598348B8187D10024B26F5
+  + [source_sha256] is C702F786E3ABD11FC8E9DC14C2A6E67D736ABCD780DF24223770C1F10A1A24D1
+  + [source_sha256] is BDC96ADF5854DAE8B514FB4B9EFEEA1BB848811D337198E025D18A4FA911F5F8
+  + [source_sha256] is D0E8A322725D5E2F822D770E51A4A27FE1F9243524100600129D4D4FB5BBBAF2
+  + [source_sha256] is C224EA85C80DEB41719DEA63FD4FC3018D71411FACB2775670C3BB7F9500CBA2
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR5_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, activation_pack_imported, completion_review_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR5_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR5 implementation activation slices; no live operations control authorized
+
+& [RegistryRecord: IR5ImplementationActivation] is the durable identity ledger for the IR5 implementation activation slice surface
+  + [registry_uuid] is 71bbedc4-f8c7-4816-8b8f-e45713f5ef49
+  + [manifest_node_uuid] is a38f95ea-65bb-4034-9a17-34c532dca444
+  + [canonical_node_uuid] is d64aaf48-c3aa-4361-a8db-72be89e7f12b
+  + [slice_surface_uuid] is 4dd2f3df-3bf6-4047-89fa-850e1b2eb56d
+  + [signature_uuid] is c7ee0c81-1b50-4e6e-b838-61b30136afbb
+  + [closure_review_uuid] is bbb4f42e-f218-4bd8-84e6-24e291445658

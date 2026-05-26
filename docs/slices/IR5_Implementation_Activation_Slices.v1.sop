@@ -1,0 +1,135 @@
+Subject: IR5 Implementation Activation Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 4dd2f3df-3bf6-4047-89fa-850e1b2eb56d
+
+@ [canonical_specification] docs/canonical/LangSOP_IR5_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir5_implementation_activation/Source_Document_Manifest.sop
+@ [activation_pack] docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR5_Completion_Review.v1.sop
+
+& [IR5ImplementationActivationSliceSurfaceV1] is the executable slice surface for IR5 surface projection prototype implementation activation
+  + [chunk_ref] is IR5 surface projection prototype implementation activation
+  + [chunk_boundary] is activation boundary, fixture material, authority and projection models, projector and route implementation, generated path and fixture runner implementation, contract tests, dependency decision, proof pack, and completion review
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is BDC96ADF5854DAE8B514FB4B9EFEEA1BB848811D337198E025D18A4FA911F5F8
+  + [accepted_boundary_input] is docs/reviews/IR5_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is D0E8A322725D5E2F822D770E51A4A27FE1F9243524100600129D4D4FB5BBBAF2
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR5-IA01
+  + [gated_slice_set] is IR5-IA02, IR5-IA03, IR5-IA04, IR5-IA05, IR5-IA06, IR5-IA07, and IR5-IA08
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR5-IA01 before creating fixture source files, expected ledgers, implementation code, generated outputs, dependency changes, adapters, UI, operation simulator code, operations control, or live machine control
+  = must: run completed-work review after each IR5 implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes surface state, adapter state, carrier state, runtime graph output, generated projection, dry-run output, or human approval display to source authority
+
+& [FinalWorkSlice: IR5-IA01-BoundedSurfaceImplementationActivationBoundaryAndDependencyDecision] is ready
+  + [slice_id] is IR5-IA01
+  + [slice_name] is bounded surface implementation activation boundary and dependency decision
+  + [chunk_ref] is IR5 surface projection prototype implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR5_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR5 final planning completion accepted
+  + [expected_output_set] is docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is activation boundary confirms file inventory, fixture inventory, expected ledger inventory, generated-output roots, dependency boundary, adapter boundary, command plan, and proof gates without creating implementation code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary and dependency decision control future implementation authority
+  + [forbidden_scope] is implementation code creation, fixture source creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-IA02-FixtureSourceAndExpectedLedgerSeedMaterial] is gated
+  + [slice_id] is IR5-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [activation_gate] is IR5-IA01 accepted
+  + [expected_output_set] is tests/fixtures/sop/ir5_surface_projection/
+  + [expected_output_set] is tests/fixtures/expected/ir5_surface_projection/
+  + [expected_output_set] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [verification_oracle] is tracked fixture source and expected ledgers cover all 13 accepted fixture cases without implementation code or generated outputs
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR5-IA01 acceptance
+  + [model_route_reason] is fixture and expected-ledger material is bounded by accepted fixture plan and activation boundary
+  + [forbidden_scope] is implementation code creation, generated output creation, dependency installation, adapter implementation, UI implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-IA03-AuthorityDisplayAndProjectionStateModelImplementation] is gated
+  + [slice_id] is IR5-IA03
+  + [slice_name] is authority display and projection state model implementation
+  + [activation_gate] is IR5-IA02 accepted
+  + [expected_output_set] is src/langsop/surfaces/__init__.py
+  + [expected_output_set] is src/langsop/surfaces/authority.py
+  + [expected_output_set] is src/langsop/surfaces/projection_state.py
+  + [verification_oracle] is models validate authority display envelope, projection state envelope, freshness, stop state, refusal, and no-authority-promotion behavior over accepted fixtures
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR5-IA02 acceptance
+  + [model_route_reason] is model implementation is bounded by accepted contracts and fixture material
+  + [forbidden_scope] is projector implementation, fixture runner implementation, generated output creation, dependency installation, adapter implementation, UI implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-IA04-ProjectorAndActionRouteImplementation] is gated
+  + [slice_id] is IR5-IA04
+  + [slice_name] is projector and action route implementation
+  + [activation_gate] is IR5-IA03 accepted
+  + [expected_output_set] is src/langsop/surfaces/projectors.py
+  + [expected_output_set] is src/langsop/surfaces/action_routes.py
+  + [verification_oracle] is projectors and action route classifier produce manager, worker, narrative, debug, conversation, adapter, Langflow, runtime handoff, and operation projections without source mutation or authority promotion
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR5-IA03 acceptance unless action-route semantics change
+  + [model_route_reason] is implementation is bounded when accepted models and fixtures are stable; semantic changes require deeper reasoning
+  + [forbidden_scope] is fixture runner implementation, generated output creation, dependency installation, adapter transport implementation, UI implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-IA05-GeneratedPathPolicyAndFixtureRunnerImplementation] is gated
+  + [slice_id] is IR5-IA05
+  + [slice_name] is generated path policy and fixture runner implementation
+  + [activation_gate] is IR5-IA04 accepted
+  + [expected_output_set] is src/langsop/surfaces/generated_paths.py
+  + [expected_output_set] is src/langsop/surfaces/fixture_runner.py
+  + [verification_oracle] is fixture runner reads only accepted fixture source and expected ledgers, writes only generated projection/report outputs under accepted roots, and refuses path escapes
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR5-IA04 acceptance
+  + [model_route_reason] is runner and generated path policy are bounded by accepted implementation plan
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-IA06-ContractTestsAndGeneratedOutputProof] is gated
+  + [slice_id] is IR5-IA06
+  + [slice_name] is contract tests and generated-output proof
+  + [activation_gate] is IR5-IA05 accepted
+  + [expected_output_set] is tests/test_ir5_surface_projection_contracts.py
+  + [expected_output_set] is docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+  + [verification_oracle] is tests cover all 13 fixture cases, no-authority promotion, path refusal, and generated output disposability without mutating source or expected ledgers
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR5-IA05 acceptance
+  + [model_route_reason] is tests and generated-output proof are bounded by accepted implementation and fixture runner behavior
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-IA07-DependencyAuthorizedAdapterAndLangflowDecisionOrDeferralReview] is gated
+  + [slice_id] is IR5-IA07
+  + [slice_name] is dependency-authorized adapter and Langflow decision or deferral review
+  + [activation_gate] is IR5-IA06 accepted
+  + [expected_output_set] is docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+  + [verification_oracle] is decision either defers all external dependencies or explicitly authorizes narrowly scoped adapter/Langflow dependency work without live transports, UI launch, operations control, or source authority promotion
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, Langflow, transport, and UI boundaries affect authority and safety semantics
+  + [forbidden_scope] is unreviewed dependency installation, adapter transport implementation, UI implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-IA08-ImplementationCompletionReviewAndProofPack] is gated
+  + [slice_id] is IR5-IA08
+  + [slice_name] is implementation completion review and proof pack
+  + [activation_gate] is IR5-IA07 accepted
+  + [expected_output_set] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [verification_oracle] is proof pack accepts only bounded implementation outputs with hashes, fixture and expected ledger ledgers, generated-output proof, dependency decision, command evidence, support deltas, requirement deltas, and no authority or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream IR6 readiness
+  + [forbidden_scope] is new implementation work, dependency installation, adapter implementation, UI implementation, operations simulator implementation, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR5ImplementationActivationClosureReview] is the dependency audit for minted IR5 implementation activation slices
+  + [IR5_activation_pack_status] is accepted
+  + [IR5_completion_review_status] is accepted
+  + [current_ready_slice_set] is IR5-IA01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR5-IA02 through IR5-IA08 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

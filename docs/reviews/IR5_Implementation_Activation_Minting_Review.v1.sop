@@ -1,0 +1,109 @@
+Subject: IR5 Implementation Activation Minting Review V1
+Date: 2026-05-26
+Review UUID: bbb4f42e-f218-4bd8-84e6-24e291445658
+
+@ [source_manifest] docs/source/2026-05-26_ir5_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR5_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR5_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR5-Implementation-Activation-Minting] is the completed-work review for minting IR5 implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir5_implementation_activation/Derived_IR5_Implementation_Activation_Source.sop
+  + [completed_output_sha256] is B9BF8BA2E5FDEEC5D0091385425C4324BB37D64D3E598348B8187D10024B26F5
+  + [completed_output] is docs/source/2026-05-26_ir5_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is C702F786E3ABD11FC8E9DC14C2A6E67D736ABCD780DF24223770C1F10A1A24D1
+  + [completed_output] is docs/canonical/LangSOP_IR5_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is 1D46E4F5D04C380C52952F5A22CE6F15FE605840039F4220661027BE04BBA750
+  + [completed_output] is docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is 0C024869D736C54DB9EB73FCA0EF1FF8C764795AA21F1410BF7C85F82961A13F
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5 implementation activation slice surface and open IR5-IA01
+  + [next_gate_result] is IR5-IA01 may open
+  + [next_model_route] is requires deeper reasoning for IR5-IA01 activation boundary and dependency decision
+
+  = must: treat this review as gate-opening evidence for IR5-IA01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, IR5 activation pack, IR5 completion review, or IR5 work state changes
+  = must: keep fixture source files, expected ledgers, implementation code, generated outputs, dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator implementation, operations control, and live machine control gated until explicit activation slices open them
+
+& [IR5ImplementationActivationMintingVerification] is the verification result for IR5 implementation activation slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [slice_count] is 8
+  + [current_ready_slice] is IR5-IA01
+  + [gated_slice] is IR5-IA02
+  + [gated_slice] is IR5-IA03
+  + [gated_slice] is IR5-IA04
+  + [gated_slice] is IR5-IA05
+  + [gated_slice] is IR5-IA06
+  + [gated_slice] is IR5-IA07
+  + [gated_slice] is IR5-IA08
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5ImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: IR5-Implementation-Activation-Minting] is the support delta produced by minted IR5 implementation activation slices
+  + [new_support_record] is IR5-IA01 may define bounded surface implementation activation boundary and dependency decision
+  + [new_support_record] is IR5-IA02 through IR5-IA08 remain gated until upstream completion reviews accept each output
+  + [new_support_record] is Spark-suitable IR5 implementation work is limited to bounded IR5-IA02 through IR5-IA06 work after each upstream gate is accepted
+  + [new_support_record] is dependency, adapter, Langflow, proof-pack, operations safety, and live-control boundary work remains deeper-reasoning work
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-Implementation-Activation-Minting] is the requirement delta produced by minted IR5 implementation activation slices
+  + [requirement_delta] is IR5-IA01 requires deeper reasoning
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every IR5 implementation activation slice
+
+& [FaultReview: IR5-Implementation-Activation-Minting] is the fault review for minted IR5 implementation activation slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [implementation_leak_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5ImplementationActivationSlicesAccepted] is accepted
+    @ [support] [IR5ImplementationActivationMintingVerification]
+    @ [support] [SupportDelta: IR5-Implementation-Activation-Minting]
+    @ [support] [RequirementDelta: IR5-Implementation-Activation-Minting]
+    @ [support] [FaultReview: IR5-Implementation-Activation-Minting]
+
+& [NextSliceGate: IR5-IA01] is opened
+  + [opened_slice] is IR5-IA01 bounded surface implementation activation boundary and dependency decision
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is BDC96ADF5854DAE8B514FB4B9EFEEA1BB848811D337198E025D18A4FA911F5F8
+  + [accepted_boundary_input] is docs/reviews/IR5_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is D0E8A322725D5E2F822D770E51A4A27FE1F9243524100600129D4D4FB5BBBAF2
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary and dependency decision control future implementation authority
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-IA01 next unless user redirects or a new fault invalidates this review
