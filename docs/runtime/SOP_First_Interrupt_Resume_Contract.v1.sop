@@ -1,0 +1,118 @@
+Subject: SOP First Interrupt Resume Contract V1
+Date: 2026-05-26
+Interrupt Contract UUID: bb985c95-1b85-4e3b-a90b-60b33df54171
+
+@ [slice_surface] docs/slices/FSC3_Final_Slices.v1.sop
+@ [runtime_boundary] docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+@ [graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+
+& [SOPFirstInterruptResumeContractV1] is the FSC3 contract for runtime interrupt, handoff, and resume behavior
+  + [contract_id] is sop-first-interrupt-resume-contract-v1
+  + [contract_uuid] is bb985c95-1b85-4e3b-a90b-60b33df54171
+  + [slice_id] is FSC3-S03
+  + [authority_scope] is interrupt kind map, required context packet, human/deeper-model handoff, resume condition contract, no-hidden-mutation rule, and retry policy
+  + [implementation_scope] is runtime interrupt contract only
+  + [graph_dependency] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+
+  = must: pause graph mutation when runtime state exceeds accepted contract authority
+  = must: preserve enough context for SOP-first reconsideration, SJS processing, human review, or deeper model judgment
+  = must: resume only from accepted source, proof, decision, claim resolution, or human override records
+  - never: implement interrupt handlers, UI prompts, transport, or runtime code in this contract
+
+& [InterruptKindMap] is the interrupt kind map for WholeFieldPlannerGraph
+  + [interrupt_kind] is ambiguous_identity
+  + [interrupt_kind] is authority_conflict
+  + [interrupt_kind] is stale_input
+  + [interrupt_kind] is missing_proof_route
+  + [interrupt_kind] is contested_coordination_claim
+  + [interrupt_kind] is unsupported_scope
+  + [interrupt_kind] is high_risk_operation
+  + [interrupt_kind] is human_override_required
+  + [interrupt_kind] is checkpoint_authority_confusion
+
+  = must: classify any unknown authority-sensitive stop as sop_first_interrupt rather than success
+  = must: preserve interrupt_kind in operator_trace and graph terminal state
+
+& [InterruptContextPacket] is the required context carried out of a graph interrupt
+  + [required_field] is interrupt_id
+  + [required_field] is interrupt_kind
+  + [required_field] is graph_state_ref
+  + [required_field] is active_work_packet_ref
+  + [required_field] is current_node_id
+  + [required_field] is input_record_ref_set
+  + [required_field] is output_record_ref_set
+  + [required_field] is operator_trace_ref_set
+  + [required_field] is checkpoint_ref
+  + [required_field] is source_context_ref_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is unresolved_question
+  + [required_field] is mutation_blocked_set
+  + [required_field] is required_resolution
+  + [required_field] is stale_after
+
+  = must: be sufficient for another conversation or model to reconstruct the reason for the pause
+  = must: avoid embedding unreviewed source mutations as if they were authority
+
+& [HandoffPolicy] is the policy for routing interrupt context to the right authority layer
+  + [handoff_target] is SOP reconsideration for semantic ambiguity, authority conflict, unsupported scope, and missing proof route
+  + [handoff_target] is SJS processing when a source specification or canonical authority must be reprocessed
+  + [handoff_target] is human review for human_override_required and high_risk_operation
+  + [handoff_target] is coordination review for contested_coordination_claim
+  + [handoff_target] is freshness review for stale_input and checkpoint_authority_confusion
+
+  = must: keep the original graph conversation identity and claimant context available during handoff
+  = must: treat transport or UI carrier as projection only
+
+& [ResumeConditionContract] is the accepted condition set required before a graph may resume
+  + [resume_condition] is accepted source clarification for ambiguous_identity
+  + [resume_condition] is accepted authority decision for authority_conflict
+  + [resume_condition] is refreshed input or accepted stale handling for stale_input
+  + [resume_condition] is proof_result or accepted blocked route for missing_proof_route
+  + [resume_condition] is released, superseded, or accepted contested coordination claim resolution for contested_coordination_claim
+  + [resume_condition] is accepted scope change or packet rebake for unsupported_scope
+  + [resume_condition] is explicit human override plus authority notice for high_risk_operation
+  + [resume_condition] is accepted checkpoint invalidation or refreshed checkpoint context for checkpoint_authority_confusion
+
+  = must: require source_ref_set and lineage_edge_set for every resume decision
+  = must: force completion_review_delta_gate when the resume condition changes packet, requirement, support, coordination, or model-route assumptions
+
+& [NoHiddenMutationRule] is the no-hidden-mutation rule for interrupts and resumes
+  + [blocked_mutation] is source specification edit
+  + [blocked_mutation] is accepted boundary pack edit
+  + [blocked_mutation] is canonical authority edit
+  + [blocked_mutation] is checkpoint authority promotion
+  + [blocked_mutation] is work packet scope expansion
+  + [blocked_mutation] is coordination claim resolution
+  + [blocked_mutation] is next gate opening
+
+  = must: preserve attempted mutation as trace, support_gap, stale_projection, fault_record, or completion_review blocker
+  = must: require explicit accepted authority before retry or resume
+
+& [RetryAndResumePolicy] is the retry policy for graph terminal interrupt states
+  + [retry_allowed_when] is interrupt context is accepted and still fresh
+  + [retry_allowed_when] is required resolution record exists and is current
+  + [retry_allowed_when] is checkpoint context is current or deliberately rebuilt from accepted records
+  + [retry_forbidden_when] is accepted boundary pack changed without revalidation
+  + [retry_forbidden_when] is work_packet is stale
+  + [retry_forbidden_when] is coordination claim is contested
+  + [retry_forbidden_when] is support_delta or requirement_delta requires rebake
+
+  = must: retry through the graph contract path rather than jumping to a later node silently
+
+& [InterruptResumeCoverageReview] is the FSC3-S03 coverage checklist
+  + [interrupt_kind_map_present] is InterruptKindMap
+  + [context_packet_present] is InterruptContextPacket
+  + [handoff_policy_present] is HandoffPolicy
+  + [resume_condition_contract_present] is ResumeConditionContract
+  + [no_hidden_mutation_rule_present] is NoHiddenMutationRule
+  + [retry_policy_present] is RetryAndResumePolicy
+  + [forbidden_scope_absent] is runtime interrupt handler implementation
+  + [forbidden_scope_absent] is UI prompt implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC3-S03 if interrupt can resume without accepted resolution
+  = must: open FSC3-S04 only after this contract is accepted by completion review
