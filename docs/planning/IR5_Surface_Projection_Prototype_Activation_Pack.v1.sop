@@ -1,0 +1,131 @@
+Subject: IR5 Surface Projection Prototype Activation Pack V1
+Date: 2026-05-26
+Activation Pack UUID: 7b1bd532-c3b5-4160-aa70-6416a42bbe47
+
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [surface_boundary_import] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [implementation_plan] docs/implementation/IR5_Surface_Projection_Prototype_Implementation_Plan.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR5SurfaceProjectionPrototypeActivationPackV1] is the activation pack for future bounded IR5 surface projection prototype implementation
+  + [activation_pack_id] is ir5-surface-projection-prototype-activation-pack-v1
+  + [activation_pack_uuid] is 7b1bd532-c3b5-4160-aa70-6416a42bbe47
+  + [source_chunk] is IR5 surface projection prototype final planning
+  + [activation_pack_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation pack only
+  + [safety_limit] is no live operations control authorized
+
+  = must: require a future implementation activation slice surface before creating code, fixture files, expected ledgers, generated outputs, dependency changes, UI, adapters, transports, operation simulator code, or package metadata changes
+  = must: keep every future surface output projection-only unless accepted by explicit source authority, proof, human override, or completion review
+  = must: keep UI frameworks, transport clients, Langflow installation, IRC/Matrix clients, and web surfaces behind future dependency and adapter authorization
+  - never: implement surface code, install dependencies, create fixtures, create expected ledgers, write generated projections, authorize operations control, or authorize live machine control in this pack
+
+& [AcceptedIR5FinalPlanningDigestSet] is the accepted hash ledger exported by IR5 final planning
+  + [accepted_output] is docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_output_sha256] is 60EF5679FBAC2AB6037696C59E078498F079E188B63564D1DE43C9A570B4CB56
+  + [accepted_output] is docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+  + [accepted_output_sha256] is 1F091339BCC35A4B1EA089FAF3735875CC763611CBDDBA85DCEF728B436F3469
+  + [accepted_output] is docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is 09A95489B8B0EF99934FFC9B38BAAD56910025B02AE0767A754C2A2EEE2D410F
+  + [accepted_output] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is 8EF02388B359C506FBBF06035DC191DDA14FCAC0BDB8DBC50F158F91B5CB9002
+  + [accepted_output] is docs/implementation/IR5_Surface_Projection_Prototype_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is F3FE8F771E6F37DA45B57D10B8A1B77EBED897BD767B83CF43125D7F7644B60C
+
+  = must: mark this activation pack stale if any listed output changes
+
+& [AcceptedIR5FinalPlanningReviewDigestSet] is the accepted completion review hash ledger
+  + [accepted_review] is docs/reviews/IR5_Final_Slice_Minting_Review.v1.sop
+  + [accepted_review_sha256] is DECCE2D3F3D835EF12592D326EDE7BFC380D1B2E2D3F17FBBE929B347DEB3938
+  + [accepted_review] is docs/reviews/IR5_S01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 00BE63F373D4B6CA7F0E45ACCAC7B2D06FF75BD51C73BD00112006285F187FCE
+  + [accepted_review] is docs/reviews/IR5_S02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 2E83CA53A7D8A889866004E179A12F2240DF0168CFA734BA183BA2B4A834A832
+  + [accepted_review] is docs/reviews/IR5_S03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is ECB433CBCE13F95A21C910C417B54C36479D617012EFB7922C40D8299D184925
+  + [accepted_review] is docs/reviews/IR5_S04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is E1189C2A79E80955094CB25D2111C00FFD27D31AFB099380F296E8F8E79FEDD0
+
+  = must: mark this activation pack stale if any listed review changes
+
+& [FutureIR5ImplementationActivationShape] is the recommended future activation slice shape
+  + [future_activation_slice] is IR5-IA01 bounded surface implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR5-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR5-IA03 authority display and projection state model implementation
+  + [future_activation_slice] is IR5-IA04 projector and action route implementation
+  + [future_activation_slice] is IR5-IA05 generated path policy and fixture runner implementation
+  + [future_activation_slice] is IR5-IA06 contract tests and generated-output proof
+  + [future_activation_slice] is IR5-IA07 dependency-authorized adapter and Langflow decision or deferral review
+  + [future_activation_slice] is IR5-IA08 implementation completion review and proof pack
+
+  = must: mint implementation activation slices before writing code or fixture files
+  = must: keep package installation gated until the dependency-authorized adapter and Langflow decision or deferral review
+  = must: allow GPT-5.3-Codex-Spark-suitable work only after an activation slice isolates bounded fixture, model, projector, runner, or test work
+  = must: require deeper reasoning for activation minting, dependency decisions, adapter boundary changes, generated-output policy changes, operations safety changes, or live-control boundary changes
+
+& [FutureImplementationSafetyBoundary: IR5SurfaceProjectionPrototype] is the safety boundary for future implementation activation
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [UI_implementation_initial_state] is gated
+  + [operations_simulator_initial_state] is gated
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+  + [allowed_dependency_route] is future dependency-authorizing activation slice only
+  + [allowed_generated_output_route] is future generated-output proof slice only
+  + [allowed_adapter_route] is future adapter boundary and dependency decision slice only
+
+  = must: fail any future activation review that silently installs dependencies, opens transports, starts UI services, writes generated outputs outside accepted roots, or exposes live-control APIs
+  = must: preserve FSC5 dry-run-only and live-control prohibition in every future surface implementation slice
+
+& [FutureIR5ImplementationProofTarget] is the target proof pack shape for future IR5 implementation completion
+  + [future_proof_pack] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [future_completion_review] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [required_proof] is accepted implementation output hash ledger
+  + [required_proof] is accepted fixture source and expected ledger hash ledger
+  + [required_proof] is generated output proof showing projections and reports are ignored, disposable, reproducible, and non-authoritative
+  + [required_proof] is dependency decision or deferral review
+  + [required_proof] is command evidence for compile, baseline tests, targeted tests, and diff hygiene
+  + [required_proof] is support and requirement delta review before downstream IR6 can open
+
+  = must: keep downstream IR6 gated until the future IR5 implementation proof pack and implementation completion review are accepted, unless a future rebake explicitly reclassifies the readiness boundary
+
+& [DownstreamIR6GateExport] is the downstream readiness boundary exported by IR5 final planning
+  + [IR6_state] is gated_until_IR5_surface_projection_implementation_review_is_accepted_or_a_rebake_reclassifies_IR6_scope
+  + [IR6_model_route] is requires deeper reasoning for coordination mailbox, claim projection, and multi-agent work-boundary semantics
+  + [IR6_boundary_input_future] is IR5 implementation proof pack after future implementation activation completion
+  + [IR6_current_permission] is none_from_IR5_final_planning
+
+  = must: prevent false-ready IR6 coordination mailbox or claim projection work before IR5 surface projection implementation proof exists
+  = must: keep multi-user and multi-agent coordination surfaces projection-only until accepted implementation proof exists
+
+& [IR5ActivationPackCoverageReview] is the coverage checklist for IR5 activation pack
+  + [accepted_final_planning_digest_set_present] is true
+  + [accepted_review_digest_set_present] is true
+  + [future_activation_shape_present] is true
+  + [future_implementation_safety_boundary_present] is true
+  + [future_implementation_proof_target_present] is true
+  + [downstream_IR6_gate_export_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept this activation pack only when all checklist items are satisfied
