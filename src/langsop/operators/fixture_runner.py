@@ -372,7 +372,16 @@ def _fixture_preflight_path_policy(
     fields = fixture.field_map
     requested_generated = _first_optional_field(fields, "requested_generated_output_root")
     if requested_generated:
-        return validate_generated_output_path(requested_generated, workspace_root=workspace_root)
+        policy = validate_generated_output_path(requested_generated, workspace_root=workspace_root)
+        if not policy.accepted:
+            return FixturePathPolicyResult(
+                requested_path=policy.requested_path,
+                accepted=False,
+                normalized_path=policy.normalized_path,
+                matched_root=policy.matched_root,
+                refusal_reason="generated_output_path_escape",
+            )
+        return policy
     requested_write = _first_optional_field(fields, "requested_write_root")
     if requested_write:
         return validate_generated_output_path(requested_write, workspace_root=workspace_root)

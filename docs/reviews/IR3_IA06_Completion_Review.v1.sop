@@ -1,0 +1,92 @@
+Subject: IR3 IA06 Completion Review V1
+Date: 2026-05-26
+Review UUID: 8f3218d6-6a26-4518-8c66-b82a723e5b58
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] tests/test_ir3_operator_harness_contracts.py
+@ [completed_output] docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+@ [fixture_runner_repair_review] docs/reviews/IR3_IA05_Repair_Review.v1.sop
+@ [previous_review] docs/reviews/IR3_IA05_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-IA06] is the completed-work review for IR3 contract test integration and generated-output proof
+  + [slice_id] is IR3-IA06
+  + [slice_name] is contract test integration and generated-output proof
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is tests/test_ir3_operator_harness_contracts.py
+  + [completed_output_sha256] is 7FAC963B47B7C52362027D0C17569322E3DDF33B69B0F3636AC03E5A982B8630
+  + [completed_output] is docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+  + [completed_output_sha256] is B14179EAAEC82403B148F74B814ACECC9287C756883C139E64A31FE56C92F9DF
+  + [supporting_repair_review] is docs/reviews/IR3_IA05_Repair_Review.v1.sop
+  + [supporting_repair_review_sha256] is 27E032126607AECD8A7DCA45C957ADCCF1CF189CB0DF170B241168E40069334F
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR3-IA05 acceptance and IA05 repair
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-IA06 as contract tests and generated-output proof
+  + [next_gate_result] is IR3-IA07 may open
+  + [next_model_route] is requires deeper reasoning after IR3-IA06 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR3-IA07 only
+  = must: rerun this review if tests, generated-output proof, fixture runner, runner, contracts, trace models, fixture source, expected ledgers, discovery exclusions, or generated path policy changes
+  = must: keep LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR3IA06Verification] is the verification result for contract test integration and generated-output proof
+  + [targeted_test_file_created] is true
+  + [generated_output_proof_created] is true
+  + [targeted_test_command] is python -m unittest tests.test_ir3_operator_harness_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 5
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [baseline_test_count] is 14
+  + [compile_result] is passed
+  + [generated_output_write_exercised] is true
+  + [generated_output_discovery_excluded] is true
+  + [generated_output_left_after_tests] is false
+  + [source_fixture_mutated] is false
+  + [expected_ledger_mutated] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3IA06VerificationSatisfied] is accepted
+    @ [support] tests/test_ir3_operator_harness_contracts.py
+    @ [support] docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+
+& [SupportDelta: IR3-IA06] is the support delta produced by accepted contract tests and generated-output proof
+  + [new_support_record] is IR3 operator harness has passing targeted tests for success, refusal, fault, interrupt, fixture corpus coverage, generated path policy, generated write policy, and discovery exclusion
+  + [new_support_record] is generated outputs are exercised only under ignored roots, cleaned after tests, and not discovered as authority candidates
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA06] is the requirement delta produced by accepted tests and proof
+  + [requirement_delta] is IR3-IA07 may create docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop and docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+  + [requirement_delta] is IR3-IA07 requires deeper reasoning because final implementation acceptance affects downstream readiness and authority/projection proof boundaries
+  + [requirement_delta] is no rebake required before IR3-IA07
+
+& [FaultReview: IR3-IA06] is the fault review for test integration and generated-output proof
+  + [generated_authority_promotion_found] is false
+  + [tracked_generated_artifact_found] is false
+  + [source_mutation_leak_found] is false
+  + [expected_ledger_mutation_leak_found] is false
+  + [dependency_installation_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3IA06Accepted] is accepted
+    @ [support] [IR3IA06Verification]
+    @ [support] [SupportDelta: IR3-IA06]
+    @ [support] [RequirementDelta: IR3-IA06]
+    @ [support] [FaultReview: IR3-IA06]
+
+& [NextSliceGate: IR3-IA07] is opened
+  + [opened_slice] is IR3-IA07 implementation completion review and operator harness proof pack
+  + [accepted_boundary_input] is tests/test_ir3_operator_harness_contracts.py
+  + [accepted_boundary_input_sha256] is 7FAC963B47B7C52362027D0C17569322E3DDF33B69B0F3636AC03E5A982B8630
+  + [accepted_boundary_input] is docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+  + [accepted_boundary_input_sha256] is B14179EAAEC82403B148F74B814ACECC9287C756883C139E64A31FE56C92F9DF
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream readiness and authority/projection proof boundaries
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-IA07 next unless user redirects or a new fault invalidates this review

@@ -1,0 +1,93 @@
+Subject: IR3 Operator Harness Generated Output Proof V1
+Date: 2026-05-26
+Proof UUID: e08f3b1e-2771-4886-a4a0-3ef2eab4814d
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [active_slice] IR3-IA06
+@ [fixture_runner_repair_review] docs/reviews/IR3_IA05_Repair_Review.v1.sop
+@ [contract_tests] tests/test_ir3_operator_harness_contracts.py
+@ [fixture_runner] src/langsop/operators/fixture_runner.py
+@ [discovery] src/langsop/authority/discovery.py
+@ [gitignore] .gitignore
+
+& [IR3OperatorHarnessGeneratedOutputProofV1] is the generated-output proof for IR3-IA06
+  + [slice_id] is IR3-IA06
+  + [proof_subject] is contract test integration and generated-output proof
+  + [contract_test_file] is tests/test_ir3_operator_harness_contracts.py
+  + [contract_test_file_sha256] is 7FAC963B47B7C52362027D0C17569322E3DDF33B69B0F3636AC03E5A982B8630
+  + [fixture_runner_file] is src/langsop/operators/fixture_runner.py
+  + [fixture_runner_file_sha256] is 1A7CB6CF74C89C2B5E697FC4B9BAE28774DAE40F72A2FE39D4D82CAAD7A9D1B6
+  + [fixture_runner_repair_review] is docs/reviews/IR3_IA05_Repair_Review.v1.sop
+  + [fixture_runner_repair_review_sha256] is 27E032126607AECD8A7DCA45C957ADCCF1CF189CB0DF170B241168E40069334F
+  + [generated_output_root_exercised] is tests/fixtures/generated/ir3_operator_harness/reports/proof_report.json
+  + [generated_output_status] is generated_projection_only
+  + [generated_output_left_after_tests] is false
+  + [generated_output_discovery_status] is excluded_from_authority_discovery
+  + [generated_output_git_status] is ignored_by_tests/fixtures/generated/
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR3-IA05 acceptance and IA05 repair
+
+  = must: treat this proof as generated-output behavior evidence, not source authority replacement
+  = must: rerun this proof if tests, fixture runner, discovery exclusions, gitignore, generated path policy, fixture source, or expected ledgers change
+  = must: keep operations control and live machine control unauthorized
+
+& [ContractTestProof] is the command proof for IR3 operator harness tests
+  + [targeted_test_command] is python -m unittest tests.test_ir3_operator_harness_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 5
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [baseline_test_count] is 14
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed_with_crlf_warning_on_fixture_runner_only_before_final_state_docs
+
+  ! [IR3ContractTestsSatisfied] is accepted
+    @ [support] tests/test_ir3_operator_harness_contracts.py
+
+& [GeneratedOutputSeparationProof] is the generated-output authority separation proof
+  + [write_function] is write_generated_output
+  + [write_target] is tests/fixtures/generated/ir3_operator_harness/reports/proof_report.json
+  + [write_policy_result] is accepted_under_generated_root
+  + [payload_non_authority_warning] is present
+  + [authority_discovery_check] is discover_sop_artifacts does not return tests/fixtures/generated/ir3_operator_harness paths
+  + [cleanup_check] is test tearDown removes generated root after the test
+  + [post_test_generated_root_exists] is false
+  + [authority_promotion_found] is false
+
+  = must: keep generated test artifacts disposable and reproducible
+  = must: reject generated artifacts as source_manifest, canonical specification, or SOP authority inputs unless rewritten as tracked SOP artifacts and reviewed
+
+& [FixtureCorpusProof] is the accepted fixture corpus proof for IR3 tests
+  + [fixture_source_count] is 12
+  + [fixture_corpus_result] is all fixture comparison reports passed
+  + [success_fixture_covered] is true
+  + [stale_refusal_fixture_covered] is true
+  + [missing_contract_version_fixture_covered] is true
+  + [undeclared_output_fault_fixture_covered] is true
+  + [generated_projection_authority_fault_fixture_covered] is true
+  + [ambiguous_identity_interrupt_fixture_covered] is true
+  + [unsupported_scope_refusal_fixture_covered] is true
+  + [unsafe_operations_fault_fixture_covered] is true
+  + [invalid_shape_fault_fixture_covered] is true
+  + [deterministic_replay_mismatch_fixture_covered] is true
+  + [generated_output_path_escape_fixture_covered] is true
+  + [source_mutation_refusal_fixture_covered] is true
+
+  ! [IR3FixtureCorpusSatisfied] is accepted
+    @ [support] tests/fixtures/sop/ir3_operator_harness/
+
+& [FaultReview: IR3-Generated-Output-Proof] is the generated-output proof fault review
+  + [source_fixture_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [tracked_generated_artifact_found] is false
+  + [generated_authority_promotion_found] is false
+  + [dependency_installation_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3GeneratedOutputProofAccepted] is accepted
+    @ [support] [ContractTestProof]
+    @ [support] [GeneratedOutputSeparationProof]
+    @ [support] [FixtureCorpusProof]
+    @ [support] [FaultReview: IR3-Generated-Output-Proof]

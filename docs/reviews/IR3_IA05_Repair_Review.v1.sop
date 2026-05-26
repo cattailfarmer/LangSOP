@@ -1,0 +1,54 @@
+Subject: IR3 IA05 Repair Review V1
+Date: 2026-05-26
+Review UUID: 3c1c2bc6-d287-4cef-85f0-09822eb5f210
+
+@ [activation_completion_review] docs/reviews/IR3_IA05_Completion_Review.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [repaired_output] src/langsop/operators/fixture_runner.py
+@ [active_slice] IR3-IA06
+
+& [RepairReview: IR3-IA05] is the repair review for fixture-runner path-refusal vocabulary
+  + [slice_id] is IR3-IA05
+  + [repair_reason] is fixture-level requested_generated_output_root refusals must report generated_output_path_escape while direct write requests to tracked authority roots continue to report source_mutation_refusal
+  + [previous_output] is src/langsop/operators/fixture_runner.py
+  + [previous_output_sha256] is E1BAE288DFCDA30A6302F6666A8A763D32E6B2772A05C88BA71ABE35F91C91C5
+  + [repaired_output] is src/langsop/operators/fixture_runner.py
+  + [repaired_output_sha256] is 1A7CB6CF74C89C2B5E697FC4B9BAE28774DAE40F72A2FE39D4D82CAAD7A9D1B6
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable repair during IR3-IA06 test integration
+  + [review_result] is accepted
+  + [next_gate_result] is IR3-IA06 remains open
+
+  = must: treat this review as superseding the fixture_runner.py hash recorded in IR3_IA05_Completion_Review.v1.sop
+  = must: keep IR3-IA06 bounded to tests/test_ir3_operator_harness_contracts.py and docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+  = must: keep dependency installation, operations control, and live machine control unauthorized
+
+& [IR3IA05RepairVerification] is the verification result for the IA05 repair
+  + [generated_root_escape_fixture_reason] is generated_output_path_escape
+  + [direct_source_write_reason] is source_mutation_refusal
+  + [targeted_contract_test_result] is passed
+  + [compile_result] is passed
+  + [baseline_test_result] is passed
+  + [diff_hygiene_result] is passed_with_crlf_warnings_only
+  + [generated_file_left_after_tests] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3IA05RepairAccepted] is accepted
+    @ [support] src/langsop/operators/fixture_runner.py
+    @ [support] [IR3IA05RepairVerification]
+
+& [SupportDelta: IR3-IA05-Repair] is the support delta produced by the repair
+  + [new_support_record] is path-policy reporting now distinguishes generated output root escape from direct source mutation attempts
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA05-Repair] is the requirement delta produced by the repair
+  + [requirement_delta] is IR3-IA06 remains the current ready slice
+  + [requirement_delta] is no rebake required before completing IR3-IA06
+
+& [FaultReview: IR3-IA05-Repair] is the repair fault review
+  + [scope_expansion_found] is false
+  + [generated_authority_promotion_found] is false
+  + [source_mutation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
