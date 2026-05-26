@@ -1,0 +1,98 @@
+Subject: IR4 IA04 Completion Review V1
+Date: 2026-05-26
+Review UUID: e76ee30a-945b-412f-8661-ddf4d3eccb99
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [graph_model_review] docs/reviews/IR4_IA03_Completion_Review.v1.sop
+@ [checkpoints] src/langsop/runtime/checkpoints.py
+@ [interrupts] src/langsop/runtime/interrupts.py
+
+& [CompletedWorkReview: IR4-IA04] is the completed-work review for IR4 checkpoint and SOP-first interrupt model implementation
+  + [slice_id] is IR4-IA04
+  + [slice_name] is checkpoint and SOP-first interrupt model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/runtime/checkpoints.py
+  + [completed_output_sha256] is CD8A9C27A7C8D4CF4B32B9D491A64CF03F02F43FA20B48FAC047F60FACA1AA36
+  + [completed_output] is src/langsop/runtime/interrupts.py
+  + [completed_output_sha256] is B8755AC57C1E3EF11B54D370EFC6668FAF651E4B8064555E3DCFEC5438B4E2C9
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-IA03 acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-IA04 as pure checkpoint and SOP-first interrupt model implementation
+  + [next_gate_result] is IR4-IA05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA04 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR4-IA05 only
+  = must: rerun this review if checkpoint models, interrupt models, graph state models, or activation slice surface changes
+  = must: keep runner code, fixture runner code, generated outputs, tests, dependencies, package metadata changes, operations control, and live machine control gated until their specific slices open
+
+& [IR4IA04Verification] is the verification result for checkpoint and interrupt models
+  + [checkpoint_envelope_model_present] is true
+  + [checkpoint_freshness_validation_present] is true
+  + [checkpoint_authority_confusion_validation_present] is true
+  + [deterministic_checkpoint_id_present] is true
+  + [interrupt_context_packet_model_present] is true
+  + [interrupt_context_validation_present] is true
+  + [interrupt_kind_mapping_present] is true
+  + [deterministic_interrupt_id_present] is true
+  + [standard_library_only] is true
+  + [side_effect_free] is true
+  + [runner_code_created] is false
+  + [fixture_runner_code_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [compile_check] is python -m compileall -q src tests passed
+  + [baseline_test] is python -m unittest discover -s tests passed 14 tests
+  + [diff_hygiene] is git diff --check passed
+
+  ! [IR4IA04VerificationSatisfied] is accepted
+    @ [support] src/langsop/runtime/checkpoints.py
+    @ [support] src/langsop/runtime/interrupts.py
+    @ [support] compile_check
+    @ [support] baseline_test
+    @ [support] diff_hygiene
+
+& [SupportDelta: IR4-IA04] is the support delta produced by accepted checkpoint and interrupt models
+  + [new_support_record] is checkpoint freshness and checkpoint authority confusion can be classified without persisting checkpoint files
+  + [new_support_record] is SOP-first interrupt context packets can be built and validated without claiming authority
+  + [new_support_record] is IR4-IA05 is GPT-5.3-Codex-Spark-suitable because pure graph runner implementation is bounded by accepted graph, checkpoint, interrupt, fixture, and expected-ledger contracts
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-IA04] is the requirement delta produced by accepted checkpoint and interrupt models
+  + [requirement_delta] is IR4-IA05 may create graph_runner.py and update runtime __init__.py according to accepted boundaries
+  + [requirement_delta] is fixture runner code, generated outputs, tests, dependency installation, package metadata mutation, operations control, and live machine control remain unauthorized by IR4-IA04
+  + [requirement_delta] is no rebake required before IR4-IA05
+
+& [FaultReview: IR4-IA04] is the fault review for checkpoint and interrupt model implementation
+  + [checkpoint_persistence_leak_found] is false
+  + [generated_checkpoint_creation_leak_found] is false
+  + [runner_implementation_leak_found] is false
+  + [fixture_runner_implementation_leak_found] is false
+  + [external_dependency_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [checkpoint_authority_promotion_found] is false
+  + [interrupt_packet_authority_promotion_found] is false
+
+  ! [IR4IA04Accepted] is accepted
+    @ [support] [IR4IA04Verification]
+    @ [support] [SupportDelta: IR4-IA04]
+    @ [support] [RequirementDelta: IR4-IA04]
+    @ [support] [FaultReview: IR4-IA04]
+
+& [NextSliceGate: IR4-IA05] is opened
+  + [opened_slice] is IR4-IA05 pure graph runner implementation without external LangGraph dependency
+  + [accepted_boundary_input] is src/langsop/runtime/graph_state.py
+  + [accepted_boundary_input] is src/langsop/runtime/graph_contracts.py
+  + [accepted_boundary_input] is src/langsop/runtime/checkpoints.py
+  + [accepted_boundary_input] is src/langsop/runtime/interrupts.py
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA04 acceptance
+  + [model_route_reason] is pure graph runner implementation is bounded by accepted state, contract, checkpoint, interrupt, fixture, and expected-ledger material
+  + [safety_limit] is no operations control or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-IA05 next unless user redirects or a new fault invalidates this review
