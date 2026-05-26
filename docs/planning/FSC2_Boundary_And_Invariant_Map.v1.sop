@@ -1,0 +1,130 @@
+Subject: FSC2 Boundary And Invariant Map V1
+Date: 2026-05-26
+Map UUID: 70f90319-0da6-4705-bcfb-3e4eff80926a
+
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [kernel_record_core] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schemas] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+@ [fixture_plan] docs/fixtures/Foundation_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/Foundation_Fixture_Index.v1.sop
+
+& [BoundaryImportMap: FSC2BoundaryAndInvariantMapV1] is the imported boundary map for FSC2 planning coordination
+  + [slice_id] is FSC2-S01
+  + [source_chunk] is FSC1 foundation contracts
+  + [target_chunk] is FSC2 planning coordination
+  + [accepted_boundary_input] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
+  + [import_policy] is read_only_import
+  + [refinement_policy] is FSC2 may define new planning-coordination contracts that consume imported records and operators without mutating FSC1 outputs
+  + [implementation_policy] is no runtime implementation is authorized by this map alone
+
+  = must: treat imported FSC1 outputs as accepted boundary inputs, not editable local drafts
+  = must: keep readiness, packetization, coordination, and completion-delta dependencies inside FSC2
+  = must: route meaning, authority, ambiguity, stale support, and conflict resolution back through SOP-first review
+  - never: let projection surfaces, chat logs, runtime graphs, or generated SQLite rows outrank SOP authority records
+
+& [ImportedRecordKindInventory] is the FSC1 record inventory imported into FSC2
+  + [record_kind] is source_log
+  + [record_kind] is log_entry
+  + [record_kind] is citation_ref
+  + [record_kind] is narrative_node
+  + [record_kind] is understanding_anchor
+  + [record_kind] is capability_node
+  + [record_kind] is requirement_record
+  + [record_kind] is support_record
+  + [record_kind] is support_gap
+  + [record_kind] is authority_artifact
+  + [record_kind] is coordination_claim
+  + [record_kind] is operator_contract
+  + [record_kind] is operator_trace
+  + [record_kind] is work_packet
+  + [record_kind] is completion_review
+  + [record_kind] is readiness_projection
+  + [record_kind] is stale_projection
+  + [record_kind] is proof_result
+  + [record_kind] is fault_record
+  + [record_kind_count] is 19
+
+  = must: preserve imported common fields record_id, record_kind, natural_key, subject_ref, authority_state, source_ref_set, lineage_edge_set, freshness_rule, and status
+  = must: preserve source/projection distinctions when FSC2 creates derived readiness, packet, claim, trace, review, proof, stale, or fault records
+  = must: use imported natural-key and lifecycle rules unless an FSC2 completion review explicitly routes a rebake request upstream
+
+& [ImportedOperatorAndStorageInventory] is the FSC1 operator and storage inventory imported into FSC2
+  + [operator_template] is OperatorContractTemplateV1
+  + [foundation_operator_contract] is signature_validation
+  + [foundation_operator_contract] is support_readiness_recompute
+  + [foundation_operator_contract] is work_packet_generation v1_stub
+  + [storage_pattern] is hybrid SOP authority files plus rebuildable SQLite derived index
+  + [fixture_basis] is FoundationFixturePlanV1
+  + [fixture_basis] is FoundationFixtureIndexV1
+
+  = must: use OperatorContractTemplateV1 for FSC2 operator contracts
+  = must: treat support_readiness_recompute as the foundation readiness contract that FSC2 refines for planning coordination
+  = must: refine work_packet_generation beyond v1_stub inside FSC2 before a packet can be treated as accepted work authority
+  = must: keep SQLite rebuildable from SOP authority and operator traces
+
+& [FSC2OwnedInvariantSet] is the invariant set owned by FSC2
+  + [invariant] is imported FSC1 outputs are read-only boundary inputs
+  + [invariant] is readiness projection never creates work packets by itself
+  + [invariant] is work packets require accepted readiness, dependency closure, support_delta obligations, requirement_delta obligations, and coordination prerequisites
+  + [invariant] is coordination claims coordinate ownership and conflict signals but do not override source specification authority
+  + [invariant] is completion reviews must classify support_delta and requirement_delta before opening the next work slice
+  + [invariant] is blocked, stale, contradicted, ambiguous, and faulted states cannot produce ready work packets
+  + [invariant] is generated indexes, chat surfaces, runtime checkpoints, and adapters are projections unless separately promoted through SOP authority
+  + [invariant] is every FSC2 operator must emit operator_trace, proof_result, stale_projection, support_gap, or fault_record as appropriate when it refuses mutation
+
+  = must: preserve these invariants through FSC2-S02 through FSC2-S07
+  = must: mark downstream FSC2 slices stale when any invariant changes
+
+& [ForbiddenMutationList: FSC2] is the forbidden mutation set for FSC2-S01
+  + [forbidden_mutation] is editing accepted FSC1 output files to make FSC2 easier
+  + [forbidden_mutation] is changing imported record schemas or natural-key lifecycle rules
+  + [forbidden_mutation] is changing foundation operator semantics in place
+  + [forbidden_mutation] is treating work_packet_generation v1_stub as production packetization
+  + [forbidden_mutation] is implementing LangGraph runtime nodes
+  + [forbidden_mutation] is implementing IRC, Matrix, web, Codex, terminal, or Langflow adapters
+  + [forbidden_mutation] is implementing mailbox transport
+  + [forbidden_mutation] is dispatching real work from an unaccepted packet
+  + [forbidden_mutation] is granting operations-manager authority
+  + [forbidden_mutation] is treating generated SQLite files as source authority
+
+  = must: fail FSC2-S01 review if any forbidden mutation appears in the output
+
+& [DownstreamStaleTriggerList: FSC2] is the stale trigger set for FSC2 downstream work
+  + [stale_trigger] is FSC1 foundation contract pack hash changes
+  + [stale_trigger] is FSC2 final slice surface changes
+  + [stale_trigger] is imported record schema or natural-key matrix changes
+  + [stale_trigger] is imported operator template or foundation operator contract changes
+  + [stale_trigger] is storage decision changes source/projection authority
+  + [stale_trigger] is readiness contract changes after packet contract work starts
+  + [stale_trigger] is packet contract changes after coordination contract work starts
+  + [stale_trigger] is coordination claim contract changes after completion-review gate work starts
+  + [stale_trigger] is completion-review gate changes after fixture planning starts
+  + [stale_trigger] is unresolved support_delta or requirement_delta appears in completed work review
+  + [stale_trigger] is false-ready work packet, false-ready next gate, or unresolved coordination conflict is detected
+
+  = must: mark affected downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review rather than silent edits
+
+& [FSC2S01AcceptanceChecklist] is the verification checklist for FSC2-S01
+  + [required_component] is imported record-kind inventory
+  + [required_component] is imported operator contract inventory
+  + [required_component] is storage and fixture import inventory
+  + [required_component] is FSC2-owned invariant set
+  + [required_component] is forbidden mutation list
+  + [required_component] is downstream stale trigger list
+  + [forbidden_scope_absent] is FSC1 source edit
+  + [forbidden_scope_absent] is readiness operator finalization
+  + [forbidden_scope_absent] is packetization operator finalization
+  + [forbidden_scope_absent] is coordination claim finalization
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: accept FSC2-S01 only when the boundary imports are mapped without mutating their authority

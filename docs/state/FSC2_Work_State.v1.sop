@@ -5,15 +5,19 @@ State UUID: 57dd2c14-4401-4669-96b6-97750e5d6492
 @ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
 @ [canonical_specification] docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
 @ [accepted_boundary_input] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [completion_review] docs/reviews/FSC2_S01_Completion_Review.v1.sop
+@ [accepted_output] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
 
 & [FSC2WorkStateV1] is the current derived work state for FSC2 planning coordination
   + [chunk_ref] is FSC2 planning coordination
-  + [state_basis] is docs/slices/FSC2_Final_Slices.v1.sop
+  + [state_basis] is docs/reviews/FSC2_S01_Completion_Review.v1.sop
   + [accepted_boundary_input] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
-  + [current_ready_slice] is FSC2-S01
+  + [accepted_slice] is FSC2-S01
+  + [accepted_output] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is B7C59160EEA6C46F0567AF16BEFB0315FDB46CB12BD5B1D46C24CF8064C29B5B
+  + [current_ready_slice] is FSC2-S02
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is FSC2-S02 until FSC2-S01 accepted
   + [gated_slice] is FSC2-S03 until FSC2-S02 accepted
   + [gated_slice] is FSC2-S04 until FSC2-S03 accepted
   + [gated_slice] is FSC2-S05 until FSC2-S02, FSC2-S03, and FSC2-S04 accepted
@@ -24,5 +28,5 @@ State UUID: 57dd2c14-4401-4669-96b6-97750e5d6492
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run FSC2-S01 before any later FSC2 slice
-  = must: mark this state stale if the FSC1 foundation contract pack or FSC2 final slice surface changes
+  = must: run FSC2-S02 before FSC2-S03 or later FSC2 slices
+  = must: mark this state stale if the FSC1 foundation contract pack, FSC2 final slice surface, FSC2-S01 output, or FSC2-S01 review changes

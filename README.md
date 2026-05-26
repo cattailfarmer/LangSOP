@@ -25,4 +25,4 @@ The working development pattern is "whole-pie first": keep the product overview 
 
 The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is accepted as a boundary input, FSC2 planning coordination has been minted into final slices, and downstream chunks stay gated until their upstream contract packs are accepted.
 
-FSC1 has been minted, executed, reviewed, and accepted through `FSC1-S07`. The accepted boundary output is `docs/planning/FSC1_Foundation_Contract_Pack.v1.sop`. The current ready slice is `FSC2-S01` imported boundary and invariant map.
+FSC1 has been minted, executed, reviewed, and accepted through `FSC1-S07`. The accepted boundary output is `docs/planning/FSC1_Foundation_Contract_Pack.v1.sop`. `FSC2-S01` is accepted, and the current ready slice is `FSC2-S02` planning readiness operator contract.
