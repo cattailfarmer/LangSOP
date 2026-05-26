@@ -1,0 +1,95 @@
+Subject: IR4 IA03 Completion Review V1
+Date: 2026-05-26
+Review UUID: fa359ae7-ceb6-4656-9ccd-f033c3b2b173
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [fixture_review] docs/reviews/IR4_IA02_Completion_Review.v1.sop
+@ [graph_state] src/langsop/runtime/graph_state.py
+@ [graph_contracts] src/langsop/runtime/graph_contracts.py
+
+& [CompletedWorkReview: IR4-IA03] is the completed-work review for IR4 graph state and graph contract model implementation
+  + [slice_id] is IR4-IA03
+  + [slice_name] is graph state and graph contract model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/runtime/graph_state.py
+  + [completed_output_sha256] is 52AB8625DFCC51E0FFAFF2E939632A8DD8C76BE5EC9F53AF60422F085D1F222E
+  + [completed_output] is src/langsop/runtime/graph_contracts.py
+  + [completed_output_sha256] is A335F12491FD5A0A252B11284112E0D295990D38FE716CD52328AB22188634FB
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-IA02 acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-IA03 as pure graph state and graph contract model implementation
+  + [next_gate_result] is IR4-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA03 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR4-IA04 only
+  = must: rerun this review if graph_state.py, graph_contracts.py, fixture source, expected ledgers, or activation slice surface changes
+  = must: keep checkpoint model code, interrupt model code, runner code, fixture runner code, generated outputs, tests, dependencies, package metadata changes, operations control, and live machine control gated until their specific slices open
+
+& [IR4IA03Verification] is the verification result for graph state and graph contract models
+  + [graph_state_models_present] is true
+  + [graph_contract_models_present] is true
+  + [terminal_outcome_classifier_present] is true
+  + [node_precondition_helper_present] is true
+  + [success_postcondition_helper_present] is true
+  + [edge_transition_validator_present] is true
+  + [standard_library_only] is true
+  + [side_effect_free] is true
+  + [runner_code_created] is false
+  + [checkpoint_model_code_created] is false
+  + [interrupt_model_code_created] is false
+  + [fixture_runner_code_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [compile_check] is python -m compileall -q src tests passed
+  + [baseline_test] is python -m unittest discover -s tests passed 14 tests
+  + [diff_hygiene] is git diff --check passed
+
+  ! [IR4IA03VerificationSatisfied] is accepted
+    @ [support] src/langsop/runtime/graph_state.py
+    @ [support] src/langsop/runtime/graph_contracts.py
+    @ [support] compile_check
+    @ [support] baseline_test
+    @ [support] diff_hygiene
+
+& [SupportDelta: IR4-IA03] is the support delta produced by accepted graph state and contract models
+  + [new_support_record] is GraphState, NodeResult, TerminalOutcomeRecord, GraphIssue, and validation results exist as side-effect-free execution-state records
+  + [new_support_record] is WholeFieldPlannerGraphContract, node contracts, edge contracts, precondition validation, postcondition validation, and transition validation exist as pure helpers
+  + [new_support_record] is IR4-IA04 is GPT-5.3-Codex-Spark-suitable because checkpoint and interrupt models are bounded by accepted graph state models and checkpoint policy
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-IA03] is the requirement delta produced by accepted graph state and contract models
+  + [requirement_delta] is IR4-IA04 may create only checkpoints.py and interrupts.py according to accepted boundaries
+  + [requirement_delta] is runner code, fixture runner code, generated outputs, tests, dependency installation, package metadata mutation, operations control, and live machine control remain unauthorized by IR4-IA03
+  + [requirement_delta] is no rebake required before IR4-IA04
+
+& [FaultReview: IR4-IA03] is the fault review for graph state and contract model implementation
+  + [external_dependency_found] is false
+  + [runner_implementation_leak_found] is false
+  + [checkpoint_persistence_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [graph_state_authority_promotion_found] is false
+
+  ! [IR4IA03Accepted] is accepted
+    @ [support] [IR4IA03Verification]
+    @ [support] [SupportDelta: IR4-IA03]
+    @ [support] [RequirementDelta: IR4-IA03]
+    @ [support] [FaultReview: IR4-IA03]
+
+& [NextSliceGate: IR4-IA04] is opened
+  + [opened_slice] is IR4-IA04 checkpoint and SOP-first interrupt model implementation
+  + [accepted_boundary_input] is src/langsop/runtime/graph_state.py
+  + [accepted_boundary_input] is src/langsop/runtime/graph_contracts.py
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA03 acceptance
+  + [model_route_reason] is checkpoint and interrupt models are bounded by accepted graph model files and checkpoint policy
+  + [safety_limit] is no operations control or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-IA04 next unless user redirects or a new fault invalidates this review
