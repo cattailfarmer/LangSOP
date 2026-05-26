@@ -1,0 +1,131 @@
+Subject: Machine Control NonAuthority And Live Control Prohibition V1
+Date: 2026-05-26
+Contract UUID: ecd2dbfa-36c2-4b85-a858-c44880b94782
+
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [dry_run_contract] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [resource_safety_contract] docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+@ [operations_safety_spec] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+
+& [MachineControlNonAuthorityAndLiveControlProhibitionV1] is the FSC5 contract for machine-control non-authority and live-control prohibition gates
+  + [contract_id] is machine-control-nonauthority-live-control-prohibition-v1
+  + [contract_uuid] is ecd2dbfa-36c2-4b85-a858-c44880b94782
+  + [slice_id] is FSC5-S04
+  + [authority_scope] is machine-control non-authority rule, live-control prohibition gate, refused effect map, future authority escalation path, and safety proof checklist
+  + [implementation_scope] is safety prohibition contract only
+  + [boundary_dependency] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [dry_run_dependency] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+  + [resource_safety_dependency] is docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+
+  = must: prove that FSC5 outputs cannot authorize live control
+  = must: preserve future escalation as a separate source-preserved and SJS-processed authority path
+  = must: refuse live-control effects as records, not commands
+  - never: execute operations, mutate machine state, or treat this prohibition contract as live-control permission
+
+& [MachineControlNonAuthorityRule] is the rule that prevents planning artifacts from becoming machine-control authority
+  + [non_authority_artifact] is surface projection
+  + [non_authority_artifact] is adapter carrier event
+  + [non_authority_artifact] is operation request
+  + [non_authority_artifact] is dry_run_result
+  + [non_authority_artifact] is human approval request
+  + [non_authority_artifact] is human approval record
+  + [non_authority_artifact] is fixture case
+  + [non_authority_artifact] is fixture success
+  + [non_authority_artifact] is FSC5 safety pack
+  + [non_authority_artifact] is completion review without explicit future live-control authority
+
+  = must: treat every listed artifact as insufficient for live machine control
+  = must: require separate future safety source and acceptance before live-control authority can be reconsidered
+
+& [LiveControlProhibitionGate] is the gate that blocks live machine effects
+  + [blocked_effect] is live_process_start
+  + [blocked_effect] is live_process_stop
+  + [blocked_effect] is live_process_priority_change
+  + [blocked_effect] is gpu_workload_launch
+  + [blocked_effect] is gpu_workload_cancel
+  + [blocked_effect] is gpu_scheduler_mutation
+  + [blocked_effect] is model_runtime_start
+  + [blocked_effect] is model_runtime_stop
+  + [blocked_effect] is model_runtime_install
+  + [blocked_effect] is model_runtime_upgrade
+  + [blocked_effect] is model_runtime_configuration_mutation
+  + [blocked_effect] is job_dispatch
+  + [blocked_effect] is job_cancellation
+  + [blocked_effect] is credential_mutation
+  + [blocked_effect] is network_exposure_mutation
+  + [blocked_effect] is destructive_filesystem_action
+  + [blocked_effect] is persistent_operations_automation
+
+  = must: block listed effects regardless of dry-run success or human approval request
+  = must: emit refused_live_control rather than executing effects
+
+& [RefusedEffectMap] is the mapping from blocked live effects to refusal outputs
+  + [blocked_effect_kind] is process_control
+  + [refusal_output] is refused_live_process_control
+  + [blocked_effect_kind] is gpu_control
+  + [refusal_output] is refused_gpu_control
+  + [blocked_effect_kind] is model_runtime_control
+  + [refusal_output] is refused_model_runtime_control
+  + [blocked_effect_kind] is job_control
+  + [refusal_output] is refused_job_control
+  + [blocked_effect_kind] is credential_control
+  + [refusal_output] is refused_credential_control
+  + [blocked_effect_kind] is network_control
+  + [refusal_output] is refused_network_control
+  + [blocked_effect_kind] is destructive_filesystem_control
+  + [refusal_output] is refused_destructive_filesystem_control
+  + [blocked_effect_kind] is operations_automation
+  + [refusal_output] is refused_operations_automation
+
+  = must: preserve requested effect, actor, carrier surface, authority notice, and refusal reason in each refusal output
+
+& [FutureAuthorityEscalationPath] is the only path by which live-control authority may be reconsidered later
+  + [required_future_step] is preserve new live-control source document
+  + [required_future_step] is SJS-process new source into canonical safety authority
+  + [required_future_step] is define target host inventory and resource API boundaries
+  + [required_future_step] is define least-privilege credential boundary
+  + [required_future_step] is define live-control dry-run and rollback proof
+  + [required_future_step] is define explicit human approval and expiration rule
+  + [required_future_step] is run completion review that explicitly accepts live-control scope
+  + [forbidden_shortcut] is reusing FSC5 safety pack as live-control approval
+  + [forbidden_shortcut] is relying on broad human approval
+  + [forbidden_shortcut] is relying on dry-run fixture success
+  + [forbidden_shortcut] is relying on projected surface intent
+
+  = must: require a future, separate authority path for any live-control capability
+  = must: keep current FSC5 work non-live even after FSC5 completion
+
+& [SafetyProofChecklist] is the proof checklist for live-control prohibition
+  + [proof_check] is no output authorizes process control
+  + [proof_check] is no output authorizes GPU control
+  + [proof_check] is no output authorizes model runtime mutation
+  + [proof_check] is no output authorizes job dispatch
+  + [proof_check] is no output authorizes credential mutation
+  + [proof_check] is no output authorizes network exposure mutation
+  + [proof_check] is no output authorizes destructive filesystem action
+  + [proof_check] is no output authorizes operations automation
+  + [proof_check] is dry-run success cannot become live approval
+  + [proof_check] is human approval record cannot bypass future authority path
+  + [proof_check] is FSC5 safety pack cannot grant live-control permission
+
+  = must: fail FSC5-S04 if any proof check is not satisfied
+
+& [LiveControlProhibitionCoverageReview] is the FSC5-S04 coverage checklist
+  + [machine_control_non_authority_rule_present] is MachineControlNonAuthorityRule
+  + [live_control_prohibition_gate_present] is LiveControlProhibitionGate
+  + [refused_effect_map_present] is RefusedEffectMap
+  + [future_authority_escalation_path_present] is FutureAuthorityEscalationPath
+  + [safety_proof_checklist_present] is SafetyProofChecklist
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential mutation
+  + [forbidden_scope_absent] is network mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is live machine control
+
+  = must: reject FSC5-S04 if any artifact can authorize live control
+  = must: open FSC5-S05 only after this contract is accepted by completion review

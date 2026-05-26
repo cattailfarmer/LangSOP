@@ -1,0 +1,94 @@
+Subject: FSC5-S04 Completion Review V1
+Date: 2026-05-26
+Review UUID: 831e88fa-dd6b-40f3-bc4e-0db1341988f3
+
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [work_state] docs/state/FSC5_Work_State.v1.sop
+@ [completed_output] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+@ [accepted_input] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [accepted_input] docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+
+& [CompletedWorkReview: FSC5-S04] is the completion review for machine-control non-authority and live-control prohibition gates
+  + [slice_id] is FSC5-S04
+  + [slice_name] is machine-control non-authority and live-control prohibition gates
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [completed_output_sha256] is 12ACEBB9B110F3572F5B6E087D4B8D50273D135A6C887047932A58B32357BF54
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is FSC5-S05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after FSC5-S01 through FSC5-S04 are accepted
+
+  = must: treat this review as the gate-opening evidence for FSC5-S05
+  = must: rerun review if Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop changes
+  = should: route FSC5-S05 to GPT-5.3-Codex-Spark when available because dry-run fixture drafting is bounded by accepted safety contracts
+
+& [VerificationOracleResult: FSC5-S04] is the verification result for live-control prohibition coverage
+  + [machine_control_non_authority_rule_present] is MachineControlNonAuthorityRule
+  + [live_control_prohibition_gate_present] is LiveControlProhibitionGate
+  + [refused_effect_map_present] is RefusedEffectMap
+  + [future_authority_escalation_path_present] is FutureAuthorityEscalationPath
+  + [safety_proof_checklist_present] is SafetyProofChecklist
+  + [fsc5_pack_live_control_permission_forbidden] is true
+  + [dry_run_success_live_approval_forbidden] is true
+  + [human_approval_bypass_forbidden] is true
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential mutation
+  + [forbidden_scope_absent] is network mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is live machine control
+
+  ! [FSC5S04VerificationSatisfied] is accepted
+    @ [support] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+
+& [SupportDelta: FSC5-S04] is the support delta produced by this slice
+  + [new_support_record] is MachineControlNonAuthorityAndLiveControlProhibitionV1 supports FSC5-S05 operations dry-run fixture plan
+  + [new_support_record] is FutureAuthorityEscalationPath preserves separate future source and SJS requirement for any live-control reconsideration
+  + [new_support_record] is SafetyProofChecklist supports final FSC5 completion review
+  + [support_status] is accepted
+
+& [RequirementDelta: FSC5-S04] is the requirement delta produced by this slice
+  + [requirement_delta] is FSC5-S05 must cover dry-run resource request, blocked live control, GPU contention, model runtime unavailable, credential boundary, network exposure refusal, destructive command refusal, missing authority notice, stale human approval, and dry-run success not live approval
+  + [requirement_delta] is FSC5-S05 is GPT-5.3-Codex-Spark-suitable after accepted FSC5-S01 through FSC5-S04 inputs
+  + [requirement_delta] is no command execution, process/GPU/model/job/credential/network/filesystem mutation, operations automation, or live machine control authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: FSC5-S04] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [gpu_control_leak_found] is false
+  + [model_runtime_mutation_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_mutation_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [fsc5_pack_live_control_path_found] is false
+
+  ! [FSC5S04Accepted] is accepted
+    @ [support] [VerificationOracleResult: FSC5-S04]
+    @ [support] [SupportDelta: FSC5-S04]
+    @ [support] [RequirementDelta: FSC5-S04]
+    @ [support] [FaultReview: FSC5-S04]
+
+& [NextSliceGate: FSC5-S05] is opened
+  + [opened_slice] is FSC5-S05 operations dry-run fixture plan
+  + [accepted_input] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+  + [accepted_input_sha256] is 19D818B72B680AEEB9897A819F4DAD294627F226B9F1E7E2AEB65E90D42EFF57
+  + [accepted_input] is docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+  + [accepted_input_sha256] is 45B49390D2AB8CE5B85B809128865D4B689A8113BCE87D1AC329153D5DEBDD01
+  + [accepted_input] is docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [accepted_input_sha256] is 12ACEBB9B110F3572F5B6E087D4B8D50273D135A6C887047932A58B32357BF54
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture drafting is bounded by accepted operations safety, dry-run, resource safety, and live-control prohibition contracts
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute FSC5-S05 next unless user redirects or a new fault invalidates this review
