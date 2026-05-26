@@ -1,0 +1,156 @@
+Subject: LangSOP IR2 Implementation Activation Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 7a6698a5-7638-4811-8608-8e843e82bc5a
+
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir2_implementation_activation/Source_Document_Manifest.sop
+@ [IR2_completion_review] docs/reviews/IR2_Completion_Review.v1.sop
+@ [IR2_authority_projection_pack] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+
+& [IR2ImplementationActivationSliceSurfaceV1] is the executable slice surface for IR2 bounded parser/projection implementation activation
+  + [chunk_ref] is IR2 bounded parser/projection implementation activation
+  + [chunk_boundary] is activation boundary, fixture source, expected ledgers, parser/projection implementation, tests, generated-output proof, and final implementation proof pack
+  + [accepted_boundary_input] is docs/reviews/IR2_Completion_Review.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [accepted_boundary_input] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+  + [accepted_boundary_input] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR2-IA01
+  + [gated_slice_set] is IR2-IA02, IR2-IA03, IR2-IA04, IR2-IA05, IR2-IA06, and IR2-IA07
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR2-IA01 before creating code, fixtures, expected ledgers, generated outputs, or tests
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: reject any output that promotes generated SQLite, generated fixture output, parser cache, index, report, LangGraph checkpoint, or surface state to source authority
+
+& [FinalWorkSlice: IR2-IA01-BoundedImplementationActivationBoundary] is ready
+  + [slice_id] is IR2-IA01
+  + [slice_name] is bounded implementation activation boundary and file inventory confirmation
+  + [chunk_ref] is IR2 implementation activation
+  + [portion_ref] is implementation activation gate
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [boundary_input_set] is docs/reviews/IR2_Completion_Review.v1.sop
+  + [boundary_input_set] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/implementation/IR2_Bounded_Implementation_Activation_Boundary.v1.sop
+  + [expected_output_set] is confirmed file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, command plan, and proof gate for implementation slices
+  + [verification_oracle] is activation boundary confirms exact file creation scope without writing implementation code, fixtures, expected ledgers, generated outputs, dependencies, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is this slice authorizes bounded implementation scope and must preserve source/projection authority distinctions
+  + [forbidden_scope] is implementation code creation, fixture file creation, expected-ledger creation, generated output creation, dependency installation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-IA02-FixtureSourceAndExpectedLedgerSeedMaterial] is gated
+  + [slice_id] is IR2-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [chunk_ref] is IR2 implementation activation
+  + [portion_ref] is fixture and expected-ledger material
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR2-IA01 accepted
+  + [internal_dependency_set] is IR2-IA01 accepted output
+  + [expected_output_set] is docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+  + [expected_output_set] is tests/fixtures/sop/ir2_parser_projection/*.sop
+  + [expected_output_set] is tests/fixtures/expected/ir2_parser_projection/*.sop
+  + [verification_oracle] is fixture source and expected ledgers cover accepted IR2 fixture cases without generated database files, parser implementation, source mutation, or authority promotion
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA01 acceptance
+  + [model_route_reason] is fixture and expected-ledger creation is bounded by accepted fixture plan and activation boundary
+  + [forbidden_scope] is parser implementation, SQLite implementation, generated output creation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-IA03-AuthorityDiscoveryAndSOPParserImplementation] is gated
+  + [slice_id] is IR2-IA03
+  + [slice_name] is authority discovery and SOP parser implementation
+  + [chunk_ref] is IR2 implementation activation
+  + [portion_ref] is discovery and parser implementation
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR2-IA02 accepted
+  + [internal_dependency_set] is IR2-IA01 and IR2-IA02 accepted outputs
+  + [expected_output_set] is src/langsop/authority/discovery.py
+  + [expected_output_set] is src/langsop/authority/sop_parser.py
+  + [verification_oracle] is discovery and parser code reads allowed SOP sources, preserves raw evidence and recoverable parse faults, avoids source mutation, and uses Python standard library only
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA02 acceptance
+  + [model_route_reason] is parser implementation is bounded by accepted parser profile, fixture sources, and expected ledgers
+  + [forbidden_scope] is extraction implementation, validation implementation, SQLite implementation, dependency installation, source mutation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-IA04-KernelRecordExtractionAndValidationImplementation] is gated
+  + [slice_id] is IR2-IA04
+  + [slice_name] is KernelRecord extraction and validation implementation
+  + [chunk_ref] is IR2 implementation activation
+  + [portion_ref] is extraction and validation implementation
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR2-IA03 accepted
+  + [internal_dependency_set] is IR2-IA01 through IR2-IA03 accepted outputs
+  + [expected_output_set] is src/langsop/authority/extraction.py
+  + [expected_output_set] is src/langsop/authority/validation.py
+  + [verification_oracle] is extraction and validation code maps parse evidence to KernelRecord candidates, blocks unresolved or invalid authority, validates hashes and SJS protocol, and emits visible proof or fault records
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA03 acceptance
+  + [model_route_reason] is extraction and validation implementation is bounded by accepted mappings, parser output shape, and expected validation ledgers
+  + [forbidden_scope] is SQLite implementation, dependency installation, semantic changes to authority rules, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-IA05-SQLiteProjectionSchemaWriterAndRebuildImplementation] is gated
+  + [slice_id] is IR2-IA05
+  + [slice_name] is SQLite projection schema, writer, and rebuild implementation
+  + [chunk_ref] is IR2 implementation activation
+  + [portion_ref] is projection implementation
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR2-IA04 accepted
+  + [internal_dependency_set] is IR2-IA01 through IR2-IA04 accepted outputs
+  + [expected_output_set] is src/langsop/projections/sqlite_schema.py
+  + [expected_output_set] is src/langsop/projections/sqlite_projection.py
+  + [expected_output_set] is src/langsop/projections/rebuild.py
+  + [verification_oracle] is projection implementation writes only generated projection artifacts to accepted roots, preserves source hashes and authority states, and can rebuild without treating SQLite as authority
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA04 acceptance
+  + [model_route_reason] is projection implementation is bounded by accepted schema, generated path policy, and validation reports
+  + [forbidden_scope] is dependency installation, generated projection authority promotion, source mutation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-IA06-ContractTestIntegrationAndGeneratedOutputProof] is gated
+  + [slice_id] is IR2-IA06
+  + [slice_name] is parser/projection contract test integration and generated-output proof
+  + [chunk_ref] is IR2 implementation activation
+  + [portion_ref] is test integration and proof
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR2-IA05 accepted
+  + [internal_dependency_set] is IR2-IA01 through IR2-IA05 accepted outputs
+  + [expected_output_set] is tests/test_ir2_parser_projection_contracts.py
+  + [expected_output_set] is docs/reviews/IR2_Parser_Projection_Generated_Output_Proof.v1.sop
+  + [verification_oracle] is contract tests pass, compile check passes, generated outputs stay ignored and reproducible, and source files are not mutated by runtime code or tests
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance
+  + [model_route_reason] is test integration and proof update are bounded by accepted fixtures and implementation outputs
+  + [forbidden_scope] is dependency installation, unreviewed fixture expansion, generated projection authority promotion, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-IA07-ImplementationCompletionReviewAndProofPack] is gated
+  + [slice_id] is IR2-IA07
+  + [slice_name] is implementation completion review and parser/projection proof pack
+  + [chunk_ref] is IR2 implementation activation
+  + [portion_ref] is implementation closure
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR2-IA06 accepted
+  + [internal_dependency_set] is IR2-IA01 through IR2-IA06 accepted outputs
+  + [expected_output_set] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+  + [expected_output_set] is acceptance record for implementation files, fixtures, tests, generated-output proof, stale outputs, contradictions, unresolved proof gaps, and downstream IR3 implementation readiness
+  + [verification_oracle] is completion review accepts only parser/projection implementation proof and opens IR3 implementation only if no false authority, mutation, dependency, generated output, or safety fault is present
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream IR3 readiness and authority/projection proof boundaries
+  + [forbidden_scope] is LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR2ImplementationActivationSliceClosureReview] is the dependency audit for minted IR2 implementation activation slices
+  + [slice_surface_uuid] is 7a6698a5-7638-4811-8608-8e843e82bc5a
+  + [IR2_boundary_input_set] is docs/reviews/IR2_Completion_Review.v1.sop
+  + [IR2_boundary_input_set] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [IR2_boundary_input_set] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+  + [IR2_boundary_input_set] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is IR2-IA01
+  + [safety_limit] is no live operations control authorized
+
+  = must: rerun this closure review after every IR2 implementation activation completion review

@@ -1,0 +1,27 @@
+Subject: IR2 Implementation Activation Source Manifest
+Date: 2026-05-26
+Manifest UUID: dcf9737f-dccc-4b6d-b7f2-762a73011483
+
+& [SourceDocumentManifest: IR2ImplementationActivation] is the source preservation manifest for minting IR2 bounded implementation activation slices
+  + [derived_source] is docs/source/2026-05-26_ir2_implementation_activation/Derived_IR2_Implementation_Activation_Source.sop
+    + [sha256] is 78678AF34EA8CEA49793185224DAED92909FDFA8FB2FF89087BDE8FB92AD96A1
+    + [source_role] is preserved manager-derived source for IR2 implementation activation slice minting
+  + [authority_source] is docs/reviews/IR2_Completion_Review.v1.sop
+    + [sha256] is 53144B11206F8504EC5174805E4AF0F6BF4C6449C3069B25A9B926A7778978AD
+    + [source_role] is accepted IR2 completion review and activation gate
+  + [authority_source] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+    + [sha256] is F716C3DFA819B956195F1C5D7920FE5AEFB408EE7E57A06099F8893E2DE223B2
+    + [source_role] is accepted IR2 authority projection pack
+  + [authority_source] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+    + [sha256] is 7C7E64450E032757EC68CAEE613EDDBE953FD6869CFEF07065CC78E24DCA552F
+    + [source_role] is accepted future implementation inventory and proof checklist
+  + [authority_source] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+    + [sha256] is 2936610DB09439A0C8D7379F8D201B4790E1700D915F1F3661AC983063245A25
+    + [source_role] is accepted fixture and expected-ledger plan
+  + [canonical_target] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [slice_surface_target] is docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for IR2 bounded implementation activation slices
+  = must: invalidate IR2 implementation activation slices if a cited source hash changes without reprocessing
+  = must: keep implementation activation bounded to accepted IR2 parser/projection inventory, fixtures, tests, and proof pack
+  - never: use this manifest to authorize LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control

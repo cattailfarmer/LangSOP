@@ -1,0 +1,111 @@
+Subject: LangSOP IR2 Implementation Activation Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir2_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [IR2_completion_review] docs/reviews/IR2_Completion_Review.v1.sop
+@ [IR2_authority_projection_pack] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+@ [IR2_implementation_plan] docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+@ [IR2_fixture_plan] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+
+& [CanonicalRecord: IR2ImplementationActivation] is the processed planning authority for IR2 bounded implementation activation slices
+  + [canonical_uuid] is 418bcf74-48cf-4d72-90f3-670d0698b0d1
+  + [source_manifest_uuid] is dcf9737f-dccc-4b6d-b7f2-762a73011483
+  + [slice_surface_uuid] is 7a6698a5-7638-4811-8608-8e843e82bc5a
+  + [authority_scope] is IR2 implementation activation slice order, gates, file inventory, fixture creation boundary, test/proof boundary, model routing, generated artifact limits, and downstream gate preservation
+  + [implementation_scope] is bounded parser/projection implementation and proof work only
+  + [depends_on] is docs/reviews/IR2_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [depends_on] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+  + [depends_on] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+
+  = must: use docs/slices/IR2_Implementation_Activation_Slices.v1.sop as the current IR2 implementation activation slice surface
+  = must: execute IR2-IA01 before creating implementation or fixture files
+  = must: run completion review after each activation or implementation slice before opening the next gated slice
+  = must: preserve accepted IR2 authority semantics; implementation slices may encode accepted behavior but may not change parser, extraction, validation, projection, fixture, or generated artifact policy
+  = must: keep all generated artifacts non-authoritative and rebuildable
+  - never: treat these activation slices as permission for LangGraph runtime work, surface work, adapter work, operations simulator work, operations control, or live machine control
+
+& [CanonicalIR2ImplementationActivationSliceSet] is the bounded implementation activation slice sequence
+  + [slice] is IR2-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [slice] is IR2-IA02 fixture source and expected-ledger seed material
+  + [slice] is IR2-IA03 authority discovery and SOP parser implementation
+  + [slice] is IR2-IA04 KernelRecord extraction and validation implementation
+  + [slice] is IR2-IA05 SQLite projection schema, writer, and rebuild implementation
+  + [slice] is IR2-IA06 parser/projection contract test integration and generated-output proof
+  + [slice] is IR2-IA07 implementation completion review and parser/projection proof pack
+
+  = must: preserve this order unless a completion review rebakes IR2 implementation activation
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+& [CanonicalIR2ImplementationActivationGate] is the activation rule for bounded implementation work
+  + [current_ready_slice] is IR2-IA01
+  + [gated_slice] is IR2-IA02 until IR2-IA01 accepted
+  + [gated_slice] is IR2-IA03 until IR2-IA02 accepted
+  + [gated_slice] is IR2-IA04 until IR2-IA03 accepted
+  + [gated_slice] is IR2-IA05 until IR2-IA04 accepted
+  + [gated_slice] is IR2-IA06 until IR2-IA05 accepted
+  + [gated_slice] is IR2-IA07 until IR2-IA06 accepted
+  + [completion_gate] is parser/projection implementation proof pack accepted after IR2-IA07
+
+  = must: expose only IR2-IA01 as ready right now
+  = must: keep code and fixture file creation gated until IR2-IA01 confirms the activation boundary
+
+& [CanonicalIR2ImplementationActivationModelRouting] is the model-routing record
+  + [IR2-IA01] is requires deeper reasoning
+  + [IR2-IA02] is GPT-5.3-Codex-Spark-suitable after IR2-IA01 acceptance because fixture and expected-ledger seed material is bounded by accepted contracts
+  + [IR2-IA03] is GPT-5.3-Codex-Spark-suitable after IR2-IA02 acceptance because discovery and parser implementation is bounded by accepted parser profile and fixture expectations
+  + [IR2-IA04] is GPT-5.3-Codex-Spark-suitable after IR2-IA03 acceptance because extraction and validation implementation is bounded by accepted mappings and expected ledgers
+  + [IR2-IA05] is GPT-5.3-Codex-Spark-suitable after IR2-IA04 acceptance because SQLite projection implementation is bounded by accepted schema and generated artifact policy
+  + [IR2-IA06] is GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance because contract tests and generated-output proof are bounded by accepted fixture and implementation outputs
+  + [IR2-IA07] is requires deeper reasoning
+
+  = must: state Spark suitability explicitly for bounded implementation, fixture, test, and proof-update work
+  = must: preserve deeper reasoning for activation boundary confirmation, final proof acceptance, and any semantic or downstream-gate change
+
+& [CanonicalIR2ImplementationActivationForbiddenScope] is the forbidden scope record
+  + [forbidden_scope] is external dependency addition
+  + [forbidden_scope] is implementation file outside accepted inventory
+  + [forbidden_scope] is source authority mutation
+  + [forbidden_scope] is generated projection authority promotion
+  + [forbidden_scope] is LangGraph runtime implementation
+  + [forbidden_scope] is UI or surface implementation
+  + [forbidden_scope] is adapter implementation
+  + [forbidden_scope] is operations simulator implementation
+  + [forbidden_scope] is operations control
+  + [forbidden_scope] is live machine control
+
+  = must: fail any slice review that detects forbidden scope
+
+& [SatisfactionSignature: IR2ImplementationActivation] is the valid SJS satisfaction signature for the IR2 implementation activation surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 73265da9-dc8e-4a00-9450-4bd8e457ea1f
+  + [signed_subject] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir2_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is 78678AF34EA8CEA49793185224DAED92909FDFA8FB2FF89087BDE8FB92AD96A1
+  + [source_sha256] is 53144B11206F8504EC5174805E4AF0F6BF4C6449C3069B25A9B926A7778978AD
+  + [source_sha256] is F716C3DFA819B956195F1C5D7920FE5AEFB408EE7E57A06099F8893E2DE223B2
+  + [source_sha256] is 7C7E64450E032757EC68CAEE613EDDBE953FD6869CFEF07065CC78E24DCA552F
+  + [source_sha256] is 2936610DB09439A0C8D7379F8D201B4790E1700D915F1F3661AC983063245A25
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR2_completion_review_imported, IR2_pack_imported, implementation_plan_imported, fixture_plan_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, forbidden_scope_preserved, completion_reviews_required, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR2_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR2 bounded implementation activation; no live operations control authorized
+  + [invalidation_condition] is source_hash_change, IR2_pack_change, completion_review_change, implementation_plan_change, fixture_plan_change, missing_completion_review, generated_projection_promoted_to_authority, forbidden_scope_leak, operations_control_leak, or implementation_contradiction
+
+  = must: reprocess when IR2 implementation activation slice order, boundary, expected outputs, model routing, or verification materially change
+
+& [RegistryRecord: IR2ImplementationActivation] is the durable identity ledger for the IR2 implementation activation surface
+  + [registry_uuid] is 7650a917-9ce0-4186-ba97-d62d76e3bff7
+  + [manifest_node_uuid] is dcf9737f-dccc-4b6d-b7f2-762a73011483
+  + [canonical_node_uuid] is 418bcf74-48cf-4d72-90f3-670d0698b0d1
+  + [slice_surface_uuid] is 7a6698a5-7638-4811-8608-8e843e82bc5a
+  + [signature_uuid] is 73265da9-dc8e-4a00-9450-4bd8e457ea1f
+  + [closure_review_uuid] is efb88208-deec-49ac-87e8-c058ab7dbac5
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for IR2 implementation activation execution records and completion reviews

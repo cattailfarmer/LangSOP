@@ -1,0 +1,102 @@
+Subject: IR2 Implementation Activation Minting Review V1
+Date: 2026-05-26
+Review UUID: efb88208-deec-49ac-87e8-c058ab7dbac5
+
+@ [source_manifest] docs/source/2026-05-26_ir2_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [IR2_completion_review] docs/reviews/IR2_Completion_Review.v1.sop
+@ [IR2_authority_projection_pack] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+
+& [SliceMintingReview: IR2ImplementationActivation] is the completed-work review for minting IR2 bounded implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir2_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 06AC7EA7356ACA0ABC1307B633BDD2BFBB4E0E6259E8176166BE83C2FF236F76
+  + [completed_output] is docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is 81B84B3B9BFCF3546CB8E02C50ED1175ADB6AF6251DAEACDF82F84AE156E84E8
+  + [completed_output] is docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is 46C2F0A485625368471192D364FEA06C4A5A7EDE4E677CBABC9E1A502AFF2D0A
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR2-IA01 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR2-IA01 only
+  = must: rerun this review if IR2 implementation activation source, canonical specification, or slice surface changes
+  = must: keep implementation code, fixture source, expected ledgers, generated outputs, dependencies, operations control, and live machine control gated until their specific slices open
+
+& [VerificationOracleResult: IR2ImplementationActivation] is the verification result for IR2 implementation activation slice minting
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [slice_count] is 7
+  + [ready_slice] is IR2-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [gated_slice] is IR2-IA02 fixture source and expected-ledger seed material
+  + [gated_slice] is IR2-IA03 authority discovery and SOP parser implementation
+  + [gated_slice] is IR2-IA04 KernelRecord extraction and validation implementation
+  + [gated_slice] is IR2-IA05 SQLite projection schema, writer, and rebuild implementation
+  + [gated_slice] is IR2-IA06 parser/projection contract test integration and generated-output proof
+  + [gated_slice] is IR2-IA07 implementation completion review and parser/projection proof pack
+  + [model_route_present] is IR2-IA01 requires deeper reasoning
+  + [model_route_present] is IR2-IA02 GPT-5.3-Codex-Spark-suitable after IR2-IA01 acceptance
+  + [model_route_present] is IR2-IA03 GPT-5.3-Codex-Spark-suitable after IR2-IA02 acceptance
+  + [model_route_present] is IR2-IA04 GPT-5.3-Codex-Spark-suitable after IR2-IA03 acceptance
+  + [model_route_present] is IR2-IA05 GPT-5.3-Codex-Spark-suitable after IR2-IA04 acceptance
+  + [model_route_present] is IR2-IA06 GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance
+  + [model_route_present] is IR2-IA07 requires deeper reasoning
+  + [forbidden_scope_absent] is external dependency addition
+  + [forbidden_scope_absent] is source authority mutation
+  + [forbidden_scope_absent] is generated projection authority promotion
+  + [forbidden_scope_absent] is LangGraph runtime implementation
+  + [forbidden_scope_absent] is UI or surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR2ImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+    @ [support] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: IR2ImplementationActivation] is the support delta produced by this slice minting pass
+  + [new_support_record] is IR2ImplementationActivationSliceSurfaceV1 supports IR2-IA01 execution
+  + [new_support_record] is IR2-IA02 through IR2-IA06 Spark suitability is gated by accepted upstream slices and bounded file scopes
+  + [new_support_record] is IR2-IA07 preserves deeper-reasoning final implementation proof acceptance
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2ImplementationActivation] is the requirement delta produced by this slice minting pass
+  + [requirement_delta] is IR2-IA01 must run first and requires deeper reasoning
+  + [requirement_delta] is no implementation code, fixture source, expected-ledger, generated output, or test integration files are authorized until IR2-IA01 confirms the activation boundary
+  + [requirement_delta] is future bounded implementation and fixture slices must explicitly state Spark suitability after their gates are accepted
+  + [requirement_delta] is no dependency installation, operations control, or live machine control authorized
+  + [requirement_delta] is no rebake required before IR2-IA01
+
+& [FaultReview: IR2ImplementationActivation] is the fault review for IR2 implementation activation slice minting
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_slice_found] is false
+
+  ! [IR2ImplementationActivationSlicesAccepted] is accepted
+    @ [support] [VerificationOracleResult: IR2ImplementationActivation]
+    @ [support] [SupportDelta: IR2ImplementationActivation]
+    @ [support] [RequirementDelta: IR2ImplementationActivation]
+    @ [support] [FaultReview: IR2ImplementationActivation]
+
+& [NextSliceGate: IR2-IA01] is opened
+  + [opened_slice] is IR2-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary confirms what bounded implementation may safely create
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR2-IA01 next unless user redirects or a new fault invalidates this review

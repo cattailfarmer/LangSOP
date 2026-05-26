@@ -1,0 +1,33 @@
+Subject: IR2 Implementation Activation Source
+Date: 2026-05-26
+Source UUID: 007cb882-ba49-424d-a98e-7ac32a968bc8
+
+& [SourcePrompt: IR2ImplementationActivation] is the preserved source for minting IR2 bounded implementation activation slices
+  + [source_kind] is manager-derived implementation activation source
+  + [origin] is accepted IR2 completion review and authority projection pack
+  + [purpose] is split IR2 parser/projection implementation into bounded reviewable slices after authority contracts and fixture plan are accepted
+  + [chunk_ref] is IR2 bounded parser/projection implementation activation
+  + [model_route] is requires deeper reasoning for activation slicing
+
+  = must: preserve IR2AuthorityProjectionPackV1 as the boundary authority for implementation activation
+  = must: create an activation slice surface before writing parser code, projection code, fixture source files, expected ledgers, or generated outputs
+  = must: keep implementation files inside the accepted ImplementationFileInventory unless a deeper-reasoning review changes the boundary
+  = must: keep dependency additions unauthorized; the first implementation pass uses Python standard library only
+  = must: create fixture source and expected ledgers before accepting parser/projection implementation behavior
+  = must: make generated SQLite, parser caches, fixture outputs, reports, and indexes disposable projection-only artifacts
+  = must: run completion review after every activation or implementation slice
+  = must: keep IR3 implementation gated until parser/projection implementation proof is accepted or a rebake reclassifies IR3 scope
+  = must: preserve no operations control and no live machine control authorized
+
+& [RequiredIR2ImplementationActivationSliceSet] is the source-level slice set for IR2 bounded implementation activation
+  + [slice_candidate] is IR2-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [slice_candidate] is IR2-IA02 fixture source and expected-ledger seed material
+  + [slice_candidate] is IR2-IA03 authority discovery and SOP parser implementation
+  + [slice_candidate] is IR2-IA04 KernelRecord extraction and validation implementation
+  + [slice_candidate] is IR2-IA05 SQLite projection schema, writer, and rebuild implementation
+  + [slice_candidate] is IR2-IA06 parser/projection contract test integration and generated-output proof
+  + [slice_candidate] is IR2-IA07 implementation completion review and parser/projection proof pack
+
+  = must: route IR2-IA01 and IR2-IA07 to deeper reasoning
+  = should: route IR2-IA02 through IR2-IA06 to GPT-5.3-Codex-Spark when their upstream gates are accepted because they are bounded implementation, fixture, and test slices
+  = must: preserve deeper reasoning for any semantic change to authority, parser profile, extraction mapping, validation contract, SQLite schema, generated artifact policy, dependency policy, or downstream gate
