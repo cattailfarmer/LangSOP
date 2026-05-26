@@ -11,6 +11,7 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [completion_review] docs/reviews/IR2_S04_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/IR2_S05_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/IR2_S06_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/IR2_S07_Completion_Review.v1.sop
 @ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
 @ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
 @ [accepted_output] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
@@ -19,11 +20,12 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [accepted_output] docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
 @ [accepted_output] docs/implementation/IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
 @ [accepted_output] docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+@ [accepted_output] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
 
 & [IR2WorkStateV1] is the current derived work state for IR2 authority-file parser and SQLite projection builder
   + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
-  + [state_basis] is docs/reviews/IR2_S06_Completion_Review.v1.sop
-  + [surface_status] is accepted_for_IR2-S07_execution
+  + [state_basis] is docs/reviews/IR2_S07_Completion_Review.v1.sop
+  + [surface_status] is accepted_for_IR2-S08_execution
   + [source_manifest] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
   + [canonical_specification] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
@@ -36,6 +38,7 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [accepted_slice] is IR2-S04
   + [accepted_slice] is IR2-S05
   + [accepted_slice] is IR2-S06
+  + [accepted_slice] is IR2-S07
   + [accepted_output] is docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is 2432A53A7EA00CC6526BD31096A8D51D0CC9612227745F1F9D2AADE837A8337E
   + [accepted_output] is docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
@@ -48,16 +51,17 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [accepted_output_sha256] is C15149C3709EAD1912A16DAFE577BF25FF9E5B41F587E9A0A89C7182FBF8F8F9
   + [accepted_output] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
   + [accepted_output_sha256] is 7C7E64450E032757EC68CAEE613EDDBE953FD6869CFEF07065CC78E24DCA552F
-  + [current_ready_slice] is IR2-S07
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-S01 through IR2-S06 are accepted and fixture scope is bounded
-  + [gated_slice] is IR2-S08
+  + [accepted_output] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is 2936610DB09439A0C8D7379F8D201B4790E1700D915F1F3661AC983063245A25
+  + [current_ready_slice] is IR2-S08
+  + [current_ready_slice_model_route] is requires deeper reasoning
   + [safety_limit] is no live operations control authorized
   + [sqlite_authority_status] is derived_projection_only
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run IR2-S07 before treating parser/projection fixtures and expected-output ledgers as accepted
+  = must: run IR2-S08 before treating IR2 as accepted or downstream IR3 as open
   = must: keep code creation unauthorized until fixture plan and final activation pack or future explicit activation review opens bounded implementation
   = must: keep generated SQLite, cache, index, fixture output, and projection artifacts non-authoritative
-  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S06 outputs, or IR2-S01 through IR2-S06 completion reviews change
+  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S07 outputs, or IR2-S01 through IR2-S07 completion reviews change

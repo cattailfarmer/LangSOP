@@ -1,0 +1,151 @@
+Subject: IR2 Parser Projection Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: 7f178e8b-e8cb-4520-9e82-53a8254922f0
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [boundary_map] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [parser_profile] docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+@ [extraction_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+@ [validation_contract] docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+@ [projection_policy] docs/implementation/IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
+@ [implementation_plan] docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+
+& [IR2ParserProjectionFixturePlanV1] is the IR2-S07 fixture and expected-output ledger plan for parser/projection proof
+  + [fixture_plan_id] is ir2-parser-projection-fixture-plan-v1
+  + [fixture_plan_uuid] is 7f178e8b-e8cb-4520-9e82-53a8254922f0
+  + [slice_id] is IR2-S07
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR2-S01 through IR2-S06 are accepted and fixture scope is bounded
+  + [implementation_scope] is fixture and expected-ledger plan only
+
+  = must: define fixture source records, expected KernelRecord ledgers, expected SQLite projection ledgers, stale and invalid source cases, and no-authority-promotion proof checks
+  = must: keep fixture source and expected ledgers tracked as SOP authority while generated outputs remain disposable projections
+  - never: implement parser code, create generated SQLite databases, install dependencies, or authorize operations control in this slice
+
+& [FixtureDirectoryPlan] is the directory plan for future IR2 fixture material
+  + [fixture_source_root] is tests/fixtures/sop/ir2_parser_projection/
+  + [fixture_expected_root] is tests/fixtures/expected/ir2_parser_projection/
+  + [fixture_generated_root] is tests/fixtures/generated/ir2_parser_projection/
+  + [fixture_source_status] is tracked SOP fixture source
+  + [fixture_expected_status] is tracked SOP expected-output ledger
+  + [fixture_generated_status] is generated_projection_only
+
+  = must: track only fixture source and expected ledgers
+  = must: ignore generated outputs and make them rebuildable
+
+& [FixtureCaseSet] is the bounded fixture case set for first IR2 implementation proof
+  + [fixture_case] is valid_signed_canonical_artifact
+  + [fixture_case_purpose] is proves SJS signature, source hash, source manifest, and authority_artifact classification path
+  + [fixture_case] is source_only_unprocessed_artifact
+  + [fixture_case_purpose] is proves preserved source remains source_only without false signed_sjs promotion
+  + [fixture_case] is missing_signature_canonical_artifact
+  + [fixture_case_purpose] is proves missing signature blocks trust-bearing authority classification
+  + [fixture_case] is wrong_protocol_signature
+  + [fixture_case_purpose] is proves nonmatching signature protocol becomes fault output
+  + [fixture_case] is stale_source_hash
+  + [fixture_case_purpose] is proves hash mismatch produces stale_projection or invalidation output
+  + [fixture_case] is malformed_sop_structure
+  + [fixture_case_purpose] is proves parser faults preserve raw line evidence and block affected authority classification
+  + [fixture_case] is unresolved_natural_key
+  + [fixture_case_purpose] is proves unresolved identity remains blocked with rationale
+  + [fixture_case] is broken_lineage
+  + [fixture_case_purpose] is proves missing source manifest or registry edge produces fault output
+  + [fixture_case] is generated_projection_non_authority
+  + [fixture_case_purpose] is proves generated SQLite, cache, or parser output cannot satisfy authority requirements
+  + [fixture_case] is source_mutation_refusal
+  + [fixture_case_purpose] is proves parser/projection workflow refuses source mutation and reports a fault
+
+  = must: keep fixture cases small enough for deterministic review
+  = must: require a future review before adding cases outside this bounded set
+
+& [ExpectedKernelRecordLedgerShape] is the expected KernelRecord candidate ledger shape
+  + [required_field] is fixture_id
+  + [required_field] is input_source_ref_set
+  + [required_field] is expected_record_kind
+  + [required_field] is expected_record_id_pattern
+  + [required_field] is expected_natural_key_state
+  + [required_field] is expected_subject_ref_state
+  + [required_field] is expected_authority_state
+  + [required_field] is expected_source_ref_set_state
+  + [required_field] is expected_lineage_edge_set_state
+  + [required_field] is expected_freshness_state
+  + [required_field] is expected_record_status
+  + [required_field] is expected_blocked_or_fault_reason
+  + [required_field] is acceptance_status
+
+  = must: make expected candidate records reviewable without reading generated SQLite
+  = must: require explicit expected blocked or fault reason when extraction cannot safely complete
+
+& [ExpectedSQLiteProjectionLedgerShape] is the expected SQLite projection ledger shape
+  + [required_field] is fixture_id
+  + [required_field] is expected_projection_table_set
+  + [required_field] is expected_projection_row_count_by_table
+  + [required_field] is expected_source_hash_columns_present
+  + [required_field] is expected_authority_state_columns_present
+  + [required_field] is expected_freshness_state_columns_present
+  + [required_field] is expected_projection_status_columns_present
+  + [required_field] is expected_generated_artifact_set
+  + [required_field] is expected_non_authority_notice
+  + [required_field] is expected_rebuild_or_refusal_state
+  + [required_field] is acceptance_status
+
+  = must: treat expected SQLite ledgers as tracked SOP expectations, not the generated database
+  = must: prove generated database deletion and rebuild does not erase authority
+
+& [ExpectedValidationLedgerShape] is the expected validation ledger shape
+  + [required_field] is fixture_id
+  + [required_field] is validation_subject_ref
+  + [required_field] is expected_hash_check_status
+  + [required_field] is expected_signature_check_status
+  + [required_field] is expected_lineage_check_status
+  + [required_field] is expected_freshness_check_status
+  + [required_field] is expected_authority_classification
+  + [required_field] is expected_proof_result_status
+  + [required_field] is expected_fault_or_interrupt
+  + [required_field] is proof_limit
+  + [required_field] is acceptance_status
+
+  = must: distinguish structural validation from semantic truth
+  = must: make missing evidence, stale evidence, wrong protocol, and ambiguous identity visible
+
+& [NoAuthorityPromotionProofChecklist] is the fixture proof checklist for source/projection separation
+  + [proof_check] is source SOP fixture remains tracked authority
+  + [proof_check] is expected-output ledger remains tracked authority
+  + [proof_check] is generated parser output remains projection-only
+  + [proof_check] is generated SQLite output remains projection-only
+  + [proof_check] is generated cache or report output remains projection-only
+  + [proof_check] is generated projection cannot supply SJS satisfaction signature
+  + [proof_check] is generated projection cannot satisfy source_manifest requirement
+  + [proof_check] is source mutation attempt produces fault or refusal output
+  + [proof_check] is stale or invalid fixture case cannot become ready output
+  + [proof_check] is operations control and live machine control remain absent
+
+& [FixtureExecutionPolicy] is the future fixture execution policy
+  + [future_command] is python -m unittest tests.test_ir2_parser_projection_contracts
+  + [baseline_command] is python -m unittest discover -s tests
+  + [compile_command] is python -m compileall -q src tests
+  + [generated_output_policy] is future tests may write only tests/fixtures/generated/ir2_parser_projection/ and .langsop/ generated paths
+  + [cleanup_policy] is generated fixture outputs may be deleted and rebuilt
+
+  = must: require future implementation tests to prove no source mutation and no authority promotion
+  = must: fail fixture execution if generated outputs are required as source authority
+
+& [IR2S07CoverageReview] is the coverage checklist for IR2-S07
+  + [fixture_directory_plan_present] is FixtureDirectoryPlan
+  + [fixture_case_set_present] is FixtureCaseSet
+  + [expected_kernel_record_ledger_shape_present] is ExpectedKernelRecordLedgerShape
+  + [expected_sqlite_projection_ledger_shape_present] is ExpectedSQLiteProjectionLedgerShape
+  + [expected_validation_ledger_shape_present] is ExpectedValidationLedgerShape
+  + [no_authority_promotion_proof_checklist_present] is NoAuthorityPromotionProofChecklist
+  + [fixture_execution_policy_present] is FixtureExecutionPolicy
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+  + [implementation_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-S07 only when all checklist items are satisfied
+  = must: open IR2-S08 only after this fixture plan is reviewed in a completion review
