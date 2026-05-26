@@ -1,0 +1,127 @@
+Subject: FSC1 Foundation Contract Pack V1
+Date: 2026-05-26
+Pack UUID: f927e7d3-d3c6-4ecc-97f8-e65e1503edcd
+
+@ [completion_review] docs/reviews/FSC1_Completion_Review.v1.sop
+@ [slice_surface] docs/slices/FSC1_Final_Slices.v1.sop
+@ [foundation_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+@ [fixture_plan] docs/fixtures/Foundation_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/Foundation_Fixture_Index.v1.sop
+
+& [FoundationContractPack: FSC1FoundationContractPackV1] is the accepted boundary pack exported by FSC1
+  + [pack_id] is fsc1-foundation-contract-pack-v1
+  + [pack_uuid] is f927e7d3-d3c6-4ecc-97f8-e65e1503edcd
+  + [source_chunk] is FSC1 foundation contracts
+  + [export_status] is accepted_boundary_input
+  + [consumer_chunk] is FSC2 planning coordination
+  + [activation_effect] is FSC2 may be final-sliced
+  + [implementation_effect] is no runtime implementation is authorized by this pack alone
+
+  = must: preserve SOP files as authority records
+  = must: treat SQLite as a rebuildable projection only
+  = must: route derived readiness, packetization, and coordination behavior through explicit operator contracts
+  = must: require completion review before downstream slices claim acceptance
+  - never: treat any chat, web, IRC, Matrix, LangGraph, Langflow, terminal, or Codex surface as the source of truth
+
+& [ExportedSchemaContractSet] is the logical schema contract exported by FSC1
+  + [kernel_record_core] is accepted
+  + [record_schema_count] is 19
+  + [natural_key_matrix_entry_count] is 19
+  + [record_kind] is source_log
+  + [record_kind] is log_entry
+  + [record_kind] is citation_ref
+  + [record_kind] is narrative_node
+  + [record_kind] is understanding_anchor
+  + [record_kind] is capability_node
+  + [record_kind] is requirement_record
+  + [record_kind] is support_record
+  + [record_kind] is support_gap
+  + [record_kind] is authority_artifact
+  + [record_kind] is coordination_claim
+  + [record_kind] is operator_contract
+  + [record_kind] is operator_trace
+  + [record_kind] is work_packet
+  + [record_kind] is completion_review
+  + [record_kind] is readiness_projection
+  + [record_kind] is stale_projection
+  + [record_kind] is proof_result
+  + [record_kind] is fault_record
+
+  = must: require record_id, record_kind, natural_key, subject_ref, authority_state, source_ref_set, lineage_edge_set, freshness_rule, and status on every KernelRecord
+  = must: distinguish source records, authority artifacts, derived projections, proof results, traces, and faults by authority_state and lineage
+  = must: mark derived outputs stale when source hash, accepted authority, dependency, or operator contract assumptions change
+
+& [ExportedOperatorContractSet] is the operator contract set exported by FSC1
+  + [operator_template] is OperatorContractTemplateV1
+  + [foundation_operator_contract] is signature_validation
+  + [foundation_operator_contract] is support_readiness_recompute
+  + [foundation_operator_contract] is work_packet_generation v1_stub
+  + [trace_contract] is operator_trace records capture inputs, outputs, preconditions, postconditions, interrupts, faults, and authority writes
+  + [interrupt_contract] is ambiguous identity, authority conflict, stale input, contradicted support, and missing lineage stop mutation and require SOP-first resolution
+  + [blocked_output_contract] is a blocked result is recorded without pretending downstream readiness
+  + [fault_output_contract] is a fault result is recorded when an invariant violation or false-ready condition is found
+
+  = must: keep work_packet_generation as v1_stub until FSC2 accepts packetization semantics
+  = must: avoid dispatch, runtime graph implementation, and surface mutation from foundation contracts alone
+
+& [ExportedStorageContract] is the persistence contract exported by FSC1
+  + [selected_storage_pattern] is hybrid SOP authority files plus rebuildable SQLite derived index
+  + [source_of_truth] is Git-tracked SOP authority files
+  + [projection] is SQLite index rebuilt from accepted SOP authority and operator traces
+  + [deferred_storage_option] is Postgres after local concurrency, multi-user deployment, or query load requires it
+  + [invalidated_by] is SOP authority hash change
+  + [invalidated_by] is accepted operator contract change
+  + [invalidated_by] is fixture expectation change
+  + [invalidated_by] is false-ready projection proof
+
+  = must: ignore generated SQLite files as authority
+  = must: preserve queryability without letting projections outrank source files
+
+& [ExportedFixtureContractSet] is the verification fixture contract exported by FSC1
+  + [fixture_case_count] is 11
+  + [fixture_index_entry_count] is 11
+  + [fixture_case] is valid_signature
+  + [fixture_case] is missing_signature
+  + [fixture_case] is stale_source
+  + [fixture_case] is broken_lineage
+  + [fixture_case] is ready_capability
+  + [fixture_case] is blocked_capability
+  + [fixture_case] is stale_projection
+  + [fixture_case] is contradicted_support
+  + [fixture_case] is ambiguous_identity
+  + [fixture_case] is blocked_output
+  + [fixture_case] is fault_output
+
+  = must: use these fixtures as foundation cases for future executable harness design
+  = must: keep fixture planning distinct from runtime test implementation until a downstream slice authorizes it
+
+& [FSC2ActivationBoundary] is the boundary FSC2 receives from FSC1
+  + [activation_state] is open_for_slice_minting
+  + [accepted_boundary_input] is FSC1FoundationContractPackV1
+  + [must_import] is record schemas and natural-key matrix
+  + [must_import] is operator contract template
+  + [must_import] is foundation operator contracts
+  + [must_import] is SOP authority plus SQLite projection decision
+  + [must_import] is foundation fixture plan and index
+  + [must_refine_inside_FSC2] is readiness operator semantics for planning coordination
+  + [must_refine_inside_FSC2] is work packet generation beyond v1_stub
+  + [must_refine_inside_FSC2] is coordination claim and completion-review delta gate behavior
+  + [must_refine_inside_FSC2] is local FSC2 fixture plan
+
+  = must: mint FSC2 final slices before implementing FSC2
+  = must: keep all readiness, packetization, and coordination dependencies inside FSC2 after activation
+  = must: keep FSC3 runtime graph proof gated until FSC2 planning coordination pack is accepted
+
+& [FoundationPackInvalidationRuleSet] is the staleness contract for FSC1FoundationContractPackV1
+  + [invalidated_by] is change to any accepted FSC1 output hash
+  + [invalidated_by] is change to any FSC1-S01 through FSC1-S07 completion review
+  + [invalidated_by] is discovered contradiction among record schemas, operator contracts, storage decision, or fixture expectations
+  + [invalidated_by] is discovered forbidden external dependency in FSC1
+  + [invalidated_by] is false-ready FSC2 slice derived from this pack
+
+  = must: rerun FSC1-S07 after invalidation before FSC2 consumes this pack again
