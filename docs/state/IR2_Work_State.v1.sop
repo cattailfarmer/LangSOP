@@ -14,6 +14,7 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [completion_review] docs/reviews/IR2_S07_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/IR2_Completion_Review.v1.sop
 @ [activation_minting_review] docs/reviews/IR2_Implementation_Activation_Minting_Review.v1.sop
+@ [activation_completion_review] docs/reviews/IR2_IA01_Completion_Review.v1.sop
 @ [activation_canonical_specification] docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
 @ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
 @ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
@@ -26,12 +27,13 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [accepted_output] docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
 @ [accepted_output] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
 @ [accepted_output] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+@ [accepted_output] docs/implementation/IR2_Bounded_Implementation_Activation_Boundary.v1.sop
 
 & [IR2WorkStateV1] is the current derived work state for IR2 authority-file parser and SQLite projection builder
   + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
-  + [state_basis] is docs/reviews/IR2_Implementation_Activation_Minting_Review.v1.sop
-  + [state_basis_sha256] is 536E1B5A4CA6EC971F344108C4EA2EEB1103C2D01D383F7E3B11946A98E94A29
-  + [surface_status] is accepted_for_IR2-IA01_execution
+  + [state_basis] is docs/reviews/IR2_IA01_Completion_Review.v1.sop
+  + [state_basis_sha256] is 73CF7CDFE6B00CB1E6368081535B8B601E8575CFA8CBA9E7BE8D62503065D809
+  + [surface_status] is accepted_for_IR2-IA02_execution
   + [source_manifest] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
   + [canonical_specification] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
@@ -68,10 +70,15 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [activation_canonical_specification_sha256] is 81B84B3B9BFCF3546CB8E02C50ED1175ADB6AF6251DAEACDF82F84AE156E84E8
   + [activation_slice_surface] is docs/slices/IR2_Implementation_Activation_Slices.v1.sop
   + [activation_slice_surface_sha256] is 46C2F0A485625368471192D364FEA06C4A5A7EDE4E677CBABC9E1A502AFF2D0A
-  + [current_ready_slice] is IR2-IA01
-  + [current_ready_slice_name] is bounded implementation activation boundary and file inventory confirmation
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [future_bounded_code_model_route] is GPT-5.3-Codex-Spark-suitable only after explicit activation selects bounded implementation files
+  + [accepted_activation_slice] is IR2-IA01
+  + [accepted_activation_output] is docs/implementation/IR2_Bounded_Implementation_Activation_Boundary.v1.sop
+  + [accepted_activation_output_sha256] is 48AC73FE6A51E403D059184768FFAE25EDA2958BE981A8B6688F3C25BA4BFBFF
+  + [current_ready_slice] is IR2-IA02
+  + [current_ready_slice_name] is fixture source and expected-ledger seed material
+  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA01 acceptance
+  + [fixture_source_creation_authorized_by_current_slice] is true_for_confirmed_inventory_only
+  + [expected_ledger_creation_authorized_by_current_slice] is true_for_confirmed_inventory_only
+  + [future_bounded_code_model_route] is GPT-5.3-Codex-Spark-suitable only after IR2-IA02 is accepted and code-specific implementation slices open
   + [code_creation_authorized_by_current_state] is false
   + [IR3_planning_intake_state] is may_consume_IR2_authority_projection_pack
   + [IR3_implementation_state] is gated_until_IR2_bounded_parser_projection_implementation_review_is_accepted_or_a_rebake_reclassifies_IR3_scope
@@ -81,7 +88,8 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run IR2-IA01 before creating parser code, projection code, fixture source files, expected ledgers, generated SQLite outputs, or test integration files
+  = must: run IR2-IA02 before creating parser code, projection code, generated SQLite outputs, or test integration files
+  = must: keep IR2-IA02 bounded to confirmed fixture source files, expected ledgers, and fixture index only
   = must: keep IR3 implementation gated until parser/projection implementation proof is accepted or a rebake reclassifies IR3 scope
   = must: keep generated SQLite, cache, index, fixture output, and projection artifacts non-authoritative
-  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S08 outputs, IR2-S01 through IR2-S08 completion reviews, IR2 implementation activation source manifest, canonical specification, slice surface, or minting review change
+  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S08 outputs, IR2-S01 through IR2-S08 completion reviews, IR2 implementation activation source manifest, canonical specification, slice surface, minting review, IR2-IA01 output, or IR2-IA01 completion review change

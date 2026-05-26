@@ -1,0 +1,133 @@
+Subject: IR2 Bounded Implementation Activation Boundary V1
+Date: 2026-05-26
+Activation Boundary UUID: 72a84b5b-07a4-4b83-bb1f-21475fa44270
+
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
+@ [IR2_authority_projection_pack] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+
+& [IR2BoundedImplementationActivationBoundaryV1] is the IR2-IA01 activation boundary for future bounded parser/projection implementation work
+  + [activation_boundary_id] is ir2-bounded-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is 72a84b5b-07a4-4b83-bb1f-21475fa44270
+  + [slice_id] is IR2-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary only
+
+  = must: confirm future file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, command plan, and proof gate for implementation slices
+  = must: preserve accepted IR2 authority semantics without implementation code creation in this slice
+  = must: keep IR3 implementation gated until IR2 implementation proof is accepted
+  - never: create parser code, projection code, fixture source files, expected ledgers, generated outputs, dependencies, operations control, or live machine control in this slice
+
+& [ConfirmedImplementationFileInventory] is the maximum code file inventory for IR2 parser/projection implementation
+  + [future_code_file] is src/langsop/authority/discovery.py
+  + [future_code_file] is src/langsop/authority/sop_parser.py
+  + [future_code_file] is src/langsop/authority/extraction.py
+  + [future_code_file] is src/langsop/authority/validation.py
+  + [future_code_file] is src/langsop/projections/sqlite_schema.py
+  + [future_code_file] is src/langsop/projections/sqlite_projection.py
+  + [future_code_file] is src/langsop/projections/rebuild.py
+  + [future_test_file] is tests/test_ir2_parser_projection_contracts.py
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep code creation gated until the specific implementation slice opens
+
+& [ConfirmedFixtureSourceInventory] is the fixture source inventory opened by IR2-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/valid_signed_canonical_artifact.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/source_only_unprocessed_artifact.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/missing_signature_canonical_artifact.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/wrong_protocol_signature.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/stale_source_hash.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/malformed_sop_structure.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/unresolved_natural_key.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/broken_lineage.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/generated_projection_non_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir2_parser_projection/source_mutation_refusal.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to FixtureCaseSet
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory] is the expected ledger inventory opened by IR2-IA02 after this boundary is accepted
+  + [future_fixture_index] is docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir2_parser_projection/kernel_records_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir2_parser_projection/validation_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir2_parser_projection/sqlite_projection_expected.sop
+
+  = must: make expected ledgers reviewable without generated SQLite
+  = must: distinguish expected KernelRecord candidates, validation outcomes, and SQLite projection rows
+  = must: keep expected ledgers as tracked fixture authority only after IR2-IA02 completion review accepts them
+
+& [ConfirmedGeneratedOutputBoundary] is the generated-output boundary for future tests and projection rebuilds
+  + [generated_output_root] is .langsop/
+  + [generated_output_root] is tests/fixtures/generated/ir2_parser_projection/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is projection_only
+  + [source_authority_status] is docs/ and accepted tracked fixture source or expected ledgers only
+
+  = must: refuse writes outside accepted generated roots during runtime or test execution
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject generated SQLite, parser cache, generated index, generated report, or fixture output as source authority
+
+& [ConfirmedDependencyBoundary] is the dependency boundary for the first IR2 implementation pass
+  + [allowed_dependency_set] is Python standard library only
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is re
+  + [allowed_stdlib] is sqlite3
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+
+  = must: require a future dependency-authorizing slice before adding package dependencies or lockfiles
+
+& [ConfirmedCommandPlan] is the command and verification plan for future implementation slices
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [targeted_contract_test] is python -m unittest tests.test_ir2_parser_projection_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated outputs are ignored, disposable, and reproducible
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir2_parser_projection_contracts exists
+
+& [ImplementationSliceProofGate] is the proof gate opened by this activation boundary
+  + [IR2-IA02_opened_after_review] is fixture source and expected-ledger seed material
+  + [IR2-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA01 acceptance
+  + [IR2-IA02_scope] is fixture source files, expected ledger files, and fixture index only
+  + [code_creation_authorized_after_IR2-IA01] is false
+  + [fixture_creation_authorized_after_IR2-IA01] is true_for_IR2-IA02_only
+  + [expected_ledger_creation_authorized_after_IR2-IA01] is true_for_IR2-IA02_only
+  + [generated_output_creation_authorized_after_IR2-IA01] is false
+  + [dependency_installation_authorized_after_IR2-IA01] is false
+  + [operations_control_authorized_after_IR2-IA01] is false
+  + [live_machine_control_authorized_after_IR2-IA01] is false
+
+  = must: open only IR2-IA02 after this boundary is accepted
+  = must: keep parser and projection code gated until IR2-IA02 is reviewed and accepted
+
+& [IR2IA01CoverageReview] is the coverage checklist for IR2-IA01
+  + [confirmed_implementation_file_inventory_present] is ConfirmedImplementationFileInventory
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceInventory
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-IA01 only when all checklist items are satisfied
+  = must: open IR2-IA02 only after this activation boundary is reviewed in a completion review
