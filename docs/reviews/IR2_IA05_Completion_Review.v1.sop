@@ -1,0 +1,112 @@
+Subject: IR2-IA05 Completion Review V1
+Date: 2026-05-26
+Review UUID: d54e6bfd-e08d-44dd-8ac8-285b4f745fa7
+
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [completed_output] src/langsop/projections/sqlite_schema.py
+@ [completed_output] src/langsop/projections/sqlite_projection.py
+@ [completed_output] src/langsop/projections/rebuild.py
+@ [accepted_input] docs/reviews/IR2_IA04_Completion_Review.v1.sop
+@ [accepted_input] src/langsop/authority/extraction.py
+@ [accepted_input] src/langsop/authority/validation.py
+
+& [CompletedWorkReview: IR2-IA05] is the completion review for SQLite projection schema, writer, and rebuild implementation
+  + [slice_id] is IR2-IA05
+  + [slice_name] is SQLite projection schema, writer, and rebuild implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/projections/sqlite_schema.py
+  + [completed_output_sha256] is A57BF8354C33F4E97CA7CDB82E7AEC69398980043DC4A04B8E9A76094BB69B88
+  + [completed_output] is src/langsop/projections/sqlite_projection.py
+  + [completed_output_sha256] is BE9A4BD602E6B23103C58175011BB97E7C629D09489DF5349DF33F90B4334139
+  + [completed_output] is src/langsop/projections/rebuild.py
+  + [completed_output_sha256] is 0773A870D271B756B803B8724F428C14093C7CF2DBD4D36504891AFCA024B44C
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [review_result] is accepted
+  + [next_gate_result] is IR2-IA06 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR2-IA06 only
+  = must: rerun review if sqlite_schema.py, sqlite_projection.py, or rebuild.py changes
+  = must: keep generated output files, dependencies, operations control, and live machine control unauthorized until a test/proof slice explicitly opens bounded generated fixture output
+
+& [VerificationOracleResult: IR2-IA05] is the verification result for SQLite projection implementation
+  + [sqlite_schema_module_present] is true
+  + [sqlite_projection_module_present] is true
+  + [rebuild_module_present] is true
+  + [schema_api_present] is define_sqlite_projection_schema
+  + [writer_api_present] is write_validation_report
+  + [rebuild_api_present] is rebuild_sqlite_projection
+  + [in_memory_rebuild_api_present] is rebuild_sqlite_projection_in_memory
+  + [generated_path_guard_present] is is_allowed_generated_output_path
+  + [source_mutation_created] is false
+  + [generated_file_created] is false
+  + [external_dependency_added] is false
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed
+  + [smoke_check] is PYTHONPATH=src fixture pipeline through in-memory SQLite projection
+  + [smoke_candidate_rows_written] is 10
+  + [smoke_validation_rows_written] is 10
+  + [smoke_proof_rows_written] is 10
+  + [smoke_fault_rows_written] is 9
+  + [smoke_stale_rows_written] is 1
+  + [smoke_kernel_record_candidate_row_count] is 10
+  + [smoke_authority_notice] is generated_sqlite_non_authority
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR2IA05VerificationSatisfied] is accepted
+    @ [support] src/langsop/projections/sqlite_schema.py
+    @ [support] src/langsop/projections/sqlite_projection.py
+    @ [support] src/langsop/projections/rebuild.py
+
+& [SupportDelta: IR2-IA05] is the support delta produced by this slice
+  + [new_support_record] is define_sqlite_projection_schema declares rebuildable projection tables and indexes
+  + [new_support_record] is write_validation_report writes validation reports to an existing SQLite connection with projection-only notices
+  + [new_support_record] is rebuild_sqlite_projection guards generated output paths before file writes
+  + [new_support_record] is in-memory smoke proves projection rows can be built without creating generated database files during review
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2-IA05] is the requirement delta produced by this slice
+  + [requirement_delta] is IR2-IA06 may create parser/projection contract tests and generated-output proof only
+  + [requirement_delta] is IR2-IA06 is GPT-5.3-Codex-Spark-suitable because test integration and proof output are bounded by accepted fixtures and implementation outputs
+  + [requirement_delta] is generated fixture outputs may be created only under tests/fixtures/generated/ir2_parser_projection/ during IR2-IA06 test/proof work
+  + [requirement_delta] is dependency installation, operations control, and live machine control remain unauthorized
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR2-IA05] is the fault review for this slice
+  + [unlisted_code_file_created] is false
+  + [generated_file_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR2IA05Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR2-IA05]
+    @ [support] [SupportDelta: IR2-IA05]
+    @ [support] [RequirementDelta: IR2-IA05]
+    @ [support] [FaultReview: IR2-IA05]
+
+& [NextSliceGate: IR2-IA06] is opened
+  + [opened_slice] is IR2-IA06 parser/projection contract test integration and generated-output proof
+  + [accepted_input] is src/langsop/projections/sqlite_schema.py
+  + [accepted_input_sha256] is A57BF8354C33F4E97CA7CDB82E7AEC69398980043DC4A04B8E9A76094BB69B88
+  + [accepted_input] is src/langsop/projections/sqlite_projection.py
+  + [accepted_input_sha256] is BE9A4BD602E6B23103C58175011BB97E7C629D09489DF5349DF33F90B4334139
+  + [accepted_input] is src/langsop/projections/rebuild.py
+  + [accepted_input_sha256] is 0773A870D271B756B803B8724F428C14093C7CF2DBD4D36504891AFCA024B44C
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA05 acceptance
+  + [model_route_reason] is test integration and proof update are bounded by accepted fixtures and implementation outputs
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR2-IA06 next unless user redirects or a new fault invalidates this review
