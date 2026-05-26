@@ -1,0 +1,133 @@
+Subject: IR5 Surface Adapter And Langflow Dependency Decision V1
+Date: 2026-05-26
+Decision UUID: 6c53d4f5-8542-4902-896e-3e9c0d8c321f
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [ia06_completion_review] docs/reviews/IR5_IA06_Completion_Review.v1.sop
+@ [generated_output_proof] docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+@ [implementation_plan] docs/implementation/IR5_Surface_Projection_Prototype_Implementation_Plan.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [pyproject] pyproject.toml
+@ [official_langflow_overview_docs] https://docs.langflow.org/
+@ [official_langflow_visual_editor_docs] https://docs.langflow.org/concepts-overview
+@ [official_langflow_mcp_client_docs] https://docs.langflow.org/mcp-client
+
+& [IR5SurfaceAdapterAndLangflowDependencyDecisionV1] is the dependency-authorized adapter and Langflow decision or deferral review for IR5-IA07
+  + [slice_id] is IR5-IA07
+  + [slice_name] is dependency-authorized adapter and Langflow decision or deferral review
+  + [model_route_used] is requires deeper reasoning
+  + [decision_result] is defer_all_external_dependencies_and_adapter_implementation_for_current_IR5_proof_pass
+  + [langflow_dependency_candidate] is langflow
+  + [langflow_dependency_status] is deferred_to_future_explicit_surface_adapter_activation_slice
+  + [irc_client_dependency_status] is deferred_to_future_transport_activation_slice
+  + [matrix_client_dependency_status] is deferred_to_future_transport_activation_slice
+  + [web_ui_framework_dependency_status] is deferred_to_future_UI_activation_slice
+  + [package_metadata_mutation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [current_pure_surface_runner_status] is sufficient_for_IR5_bounded_surface_projection_proof
+  + [future_langflow_status] is useful_candidate_after_visual_surface_authority_boundary_is_specified
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve this decision as a deferral, not a rejection of Langflow, IRC, Matrix, web UI, or future transport adapters
+  = must: require a later explicit adapter or UI activation slice before adding package dependencies, lockfiles, imports from external adapter packages, web servers, Langflow exports, IRC or Matrix clients, socket listeners, MCP clients, MCP servers, or runtime requirements
+  = must: keep SOP, SJS, completion reviews, accepted decision documents, tracked fixture sources, expected ledgers, and canonical specifications as source authority
+  = must: treat Langflow flows, visual graphs, API calls, MCP calls, carrier events, chat messages, UI state, and transport state as projections until rewritten into accepted SOP authority by a later reviewed process
+
+& [DependencyEvidence: CurrentIR5ProofNeed] is the current proof sufficiency evidence for deferring external dependency installation
+  + [surface_model_output] is src/langsop/surfaces/authority.py
+  + [surface_model_output] is src/langsop/surfaces/projection_state.py
+  + [projector_output] is src/langsop/surfaces/projectors.py
+  + [action_route_output] is src/langsop/surfaces/action_routes.py
+  + [fixture_runner_output] is src/langsop/surfaces/fixture_runner.py
+  + [generated_path_policy_output] is src/langsop/surfaces/generated_paths.py
+  + [contract_test_output] is tests/test_ir5_surface_projection_contracts.py
+  + [generated_output_proof] is docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+  + [current_test_result] is python -m unittest discover -s tests passed 25 tests after IR5-IA06
+  + [current_targeted_test_result] is python -m unittest tests.test_ir5_surface_projection_contracts passed 6 tests after IR5-IA06
+  + [current_dependency_set] is empty
+  + [pyproject_dependency_list] is empty
+  + [pyproject_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+  + [current_surface_proof_need] is deterministic in-process proof of authority envelopes, projection state, projectors, action routes, path policy, fixture corpus coverage, generated-output disposability, no-authority promotion, and no live control
+  + [external_langflow_needed_for_current_proof] is false
+  + [external_transport_needed_for_current_proof] is false
+  + [external_UI_needed_for_current_proof] is false
+
+  ! [CurrentIR5ProofNeedSatisfiedWithoutDependency] is accepted
+    @ [support] docs/reviews/IR5_IA06_Completion_Review.v1.sop
+    @ [support] tests/test_ir5_surface_projection_contracts.py
+    @ [support] pyproject.toml
+
+& [LangflowFitAssessment: IR5SurfaceProjection] is the future visual surface fit assessment for Langflow
+  + [official_capability] is open source Python framework for building AI applications with a visual editor and components
+  + [official_capability] is flows can be built and tested through a visual editor
+  + [official_capability] is MCP client integration can connect Langflow agents to external MCP servers
+  + [fit_status] is strong_future_visual_projection_surface_candidate
+  + [fit_reason] is Langflow can represent workflows visually and may become a projection surface for humans to inspect agent collaboration flows
+  + [mismatch_status] is authority_boundary_mismatch_if_used_directly_as_truth
+  + [mismatch_reason] is Langflow flow state, component state, API calls, MCP calls, and visual graph layouts are carrier or execution projections rather than signed SOP authority
+  + [adapter_need] is map LangSOP source authority records into visual projection inputs and map Langflow interactions back into request, interrupt, or completion-review records before any authority mutation
+
+  = must: use Langflow only as a projection or adapter surface after a later boundary specifies source-to-surface and surface-to-SOP-review mappings
+  = must: prevent Langflow graph success, visual node state, API response, MCP tool output, or user click from satisfying readiness, completion review, source specification processing, or next-slice gates by itself
+
+& [FutureSurfaceAdapterActivationBoundary] is the required boundary for any later adapter, Langflow, IRC, Matrix, web, or MCP implementation slice
+  + [future_slice_required] is true
+  + [future_slice_must_authorize] is dependency installation
+  + [future_slice_must_authorize] is package metadata mutation
+  + [future_slice_must_authorize] is adapter module inventory
+  + [future_slice_must_authorize] is transport or UI module inventory
+  + [future_slice_must_authorize] is credential and secret boundary
+  + [future_slice_must_authorize] is socket, web server, MCP client, or MCP server boundary
+  + [future_slice_must_authorize] is generated carrier-state boundary
+  + [future_slice_must_authorize] is source-to-surface projection mapping
+  + [future_slice_must_authorize] is surface-to-SOP-review reentry mapping
+  + [future_slice_must_authorize] is fixture expansion or adapter fixture mapping
+  + [future_forbidden_without_slice] is langflow import
+  + [future_forbidden_without_slice] is lockfile mutation
+  + [future_forbidden_without_slice] is runtime requirements mutation
+  + [future_forbidden_without_slice] is web server launch
+  + [future_forbidden_without_slice] is socket listener
+  + [future_forbidden_without_slice] is IRC connection
+  + [future_forbidden_without_slice] is Matrix connection
+  + [future_forbidden_without_slice] is MCP client or server connection
+  + [future_forbidden_without_slice] is UI implementation
+  + [future_forbidden_without_slice] is live process control
+  + [future_forbidden_without_slice] is operations control
+  + [future_forbidden_without_slice] is live machine control
+
+  = must: require generated adapter outputs to remain ignored, disposable, and reproducible unless accepted by a later review
+  = must: require adapter tests to prove carrier state cannot open gates or mutate source authority
+  = must: require adapter tests to prove user or agent interactions route back to request records, SOP-first interrupts, or completion review rather than direct mutation
+
+& [DecisionConsequences: IR5-IA07] is the consequence ledger for the deferral decision
+  + [IR5_IA08_may_proceed_without_external_dependency] is true
+  + [IR5_IA08_must_record_dependency_deferral] is true
+  + [downstream_IR6_readiness_basis] is IR5 implementation proof pack plus dependency deferral
+  + [downstream_surface_adapter_work] is future_slice_after_IR5_implementation_completion_or_rebake
+  + [dependency_risk_reduced] is no unreviewed package, lockfile, UI runtime, network transport, MCP connection, or Langflow runtime enters current proof
+  + [architecture_option_preserved] is Langflow and other surfaces can be introduced later with explicit authority-preserving adapter boundaries
+
+& [IR5IA07FaultReview] is the fault review for the surface adapter and Langflow dependency decision
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [langflow_import_added] is false
+  + [web_server_created] is false
+  + [socket_listener_created] is false
+  + [MCP_client_or_server_created] is false
+  + [carrier_state_authority_promotion_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5SurfaceAdapterAndLangflowDependencyDecisionAccepted] is accepted
+    @ [support] [DependencyEvidence: CurrentIR5ProofNeed]
+    @ [support] [LangflowFitAssessment: IR5SurfaceProjection]
+    @ [support] [FutureSurfaceAdapterActivationBoundary]
+    @ [support] [DecisionConsequences: IR5-IA07]
+    @ [support] [IR5IA07FaultReview]

@@ -1,0 +1,84 @@
+Subject: IR5 IA07 Completion Review V1
+Date: 2026-05-26
+Review UUID: c1af768c-f703-4df3-8766-70984028c354
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+@ [previous_completion_review] docs/reviews/IR5_IA06_Completion_Review.v1.sop
+@ [generated_output_proof] docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+
+& [CompletedWorkReview: IR5-IA07] is the completed-work review for IR5-IA07 dependency-authorized adapter and Langflow decision or deferral review
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR5-IA07
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5-IA07 and open IR5-IA08
+  + [next_gate_result] is IR5-IA08 may open
+  + [next_model_route] is requires deeper reasoning for implementation completion review and proof pack
+  + [next_model_route_depth] is deeper reasoning required
+  + [completed_output] is docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+  + [completed_output_sha256] is 4E538FB3B1D27607F3709B55BCFE6A7E306B6B5F1D1B944C99C3FCC2C6019A9D
+
+  = must: treat this review as gate-opening evidence for IR5-IA08 only
+  = must: rerun this review if the dependency decision, IR5-IA06 completion review, generated-output proof, pyproject dependency list, or adapter boundary assumptions change
+  = must: keep dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR5IA07Verification] is the verification result for IR5-IA07
+  + [dependency_decision_present] is true
+  + [decision_result] is defer_all_external_dependencies_and_adapter_implementation_for_current_IR5_proof_pass
+  + [current_dependency_set] is empty
+  + [package_metadata_mutated] is false
+  + [dependency_installed] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [langflow_import_added] is false
+  + [web_server_created] is false
+  + [socket_listener_created] is false
+  + [MCP_client_or_server_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5IA07VerificationSatisfied] is accepted
+    @ [support] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+
+& [SupportDelta: IR5-IA07] is the support delta produced by IR5-IA07
+  + [new_support_record] is IR5 implementation proof can proceed with no external dependencies because the pure surface runner and contract tests satisfy current proof needs
+  + [new_support_record] is Langflow remains preserved as a future visual projection surface candidate behind a later authority-preserving adapter boundary
+  + [new_support_record] is IRC, Matrix, web UI, MCP, and transport work remain deferred to explicit future slices
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-IA07] is the requirement delta produced by IR5-IA07
+  + [requirement_delta] is IR5-IA08 may create only the implementation proof pack and implementation completion review named in the activation boundary
+  + [requirement_delta] is IR5-IA08 requires deeper reasoning because final implementation acceptance affects downstream IR6 readiness
+  + [requirement_delta] is no new implementation work, dependency installation, adapter implementation, UI implementation, operations simulator, operations control, or live machine control is authorized by IR5-IA07
+
+& [FaultReview: IR5-IA07] is the fault review for IR5-IA07
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5IA07Accepted] is accepted
+    @ [support] [IR5IA07Verification]
+    @ [support] [SupportDelta: IR5-IA07]
+    @ [support] [RequirementDelta: IR5-IA07]
+    @ [support] [FaultReview: IR5-IA07]
+
+& [NextSliceGate: IR5-IA08] is opened
+  + [opened_slice] is IR5-IA08 implementation completion review and proof pack
+  + [accepted_dependency] is docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+  + [accepted_dependency_sha256] is 4E538FB3B1D27607F3709B55BCFE6A7E306B6B5F1D1B944C99C3FCC2C6019A9D
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream IR6 readiness
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-IA08 next unless user redirects or a new fault invalidates this review
