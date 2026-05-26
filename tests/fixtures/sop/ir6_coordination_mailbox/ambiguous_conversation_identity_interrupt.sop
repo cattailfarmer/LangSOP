@@ -1,0 +1,21 @@
+Subject: IR6 Fixture Source Ambiguous Conversation Identity Interrupt
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+
+& [IR6FixtureSource: ambiguous_conversation_identity_interrupt] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-007-ambiguous-conversation-identity-interrupt
+  + [projection_kind] is sop_first_interrupt_context
+  + [conversation_ref_state] is ambiguous
+  + [claimant_ref_state] is conflicting
+  + [addressed_to_ref_state] is missing
+  + [carrier_context_state] is preserved
+  + [expected_status] is interrupted
+  + [required_route] is identity_clarification
+  + [required_route] is human_override
+  + [forbidden_action] is claim_state_transition
+
+  = expect: ambiguous identity blocks claim action
+  = expect: carrier context remains visible but non-authoritative

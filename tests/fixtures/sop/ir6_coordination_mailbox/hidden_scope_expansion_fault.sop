@@ -1,0 +1,21 @@
+Subject: IR6 Fixture Source Hidden Scope Expansion Fault
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: hidden_scope_expansion_fault] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-012-hidden-scope-expansion-fault
+  + [projection_kind] is coordination_fault_projection
+  + [fault_kind] is hidden_scope_expansion
+  + [claim_ref] is claim_fixture_seed_material
+  + [original_scope] is tests/fixtures/sop/ir6_coordination_mailbox/
+  + [expanded_scope] is src/langsop/coordination/
+  + [expected_status] is faulted
+  + [required_route] is fault_review
+  + [required_route] is packet_rebake
+  + [forbidden_action] is silent_scope_acceptance
+
+  = expect: hidden scope expansion invalidates ready state
+  = expect: fault remains visible until accepted repair

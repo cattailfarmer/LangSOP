@@ -1,0 +1,21 @@
+Subject: IR6 Fixture Source Release Notice With Lineage
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: release_notice_with_lineage] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-005-release-notice-with-lineage
+  + [projection_kind] is released_claim_lineage_projection
+  + [prior_claim_ref] is claim_fixture_seed_material
+  + [release_notice_ref] is rendezvous_release_notice_001
+  + [claim_state] is released
+  + [lineage_visibility] is prior_claim_preserved
+  + [expected_status] is accepted
+  + [forbidden_action] is claim_deletion
+  + [forbidden_action] is hidden_release_evidence
+  + [forbidden_action] is source_authority_mutation
+
+  = expect: released state does not erase active claim history
+  = expect: release notice is projection evidence, not completion authority

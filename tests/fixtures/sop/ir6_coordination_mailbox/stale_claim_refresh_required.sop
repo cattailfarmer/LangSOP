@@ -1,0 +1,23 @@
+Subject: IR6 Fixture Source Stale Claim Refresh Required
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: stale_claim_refresh_required] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-004-stale-claim-refresh-required
+  + [projection_kind] is stale_claim_projection
+  + [claim_ref] is claim_fixture_seed_material
+  + [stale_trigger] is authority_basis_hash_changed
+  + [stale_trigger] is completion_review_state_changed
+  + [freshness_state] is stale
+  + [expected_status] is stale
+  + [allowed_resolution] is refresh_claim
+  + [allowed_resolution] is release_claim
+  + [allowed_resolution] is supersede_claim
+  + [allowed_resolution] is rebake
+  + [forbidden_action] is ready_projection
+
+  = expect: stale claim blocks downstream ready state
+  = expect: lineage is preserved while refresh route is shown

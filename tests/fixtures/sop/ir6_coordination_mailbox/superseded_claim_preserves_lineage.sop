@@ -1,0 +1,21 @@
+Subject: IR6 Fixture Source Superseded Claim Preserves Lineage
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: superseded_claim_preserves_lineage] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-006-superseded-claim-preserves-lineage
+  + [projection_kind] is superseded_claim_lineage_projection
+  + [prior_claim_ref] is claim_old_fixture_seed
+  + [new_claim_ref] is claim_new_fixture_seed
+  + [supersession_reason] is narrowed_scope_after_review
+  + [claim_state] is superseded
+  + [lineage_visibility] is old_and_new_claims_visible
+  + [expected_status] is accepted
+  + [forbidden_action] is silent_merge
+  + [forbidden_action] is prior_claim_deletion
+
+  = expect: supersession preserves prior claim and reason
+  = expect: contested or stale evidence is not hidden

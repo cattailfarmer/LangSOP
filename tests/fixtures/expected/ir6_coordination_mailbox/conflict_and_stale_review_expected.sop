@@ -1,0 +1,38 @@
+Subject: IR6 Conflict And Stale Review Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedConflictAndStaleReviewLedger: IR6CoordinationMailbox] is the expected conflict, stale, and human override ledger
+  + [conflict_review_envelope_required] is true
+  + [stale_claim_review_envelope_required] is true
+  + [human_override_review_envelope_required] is true
+  + [completion_gate_interaction_required] is true
+  + [required_field] is involved_claim_ref_set
+  + [required_field] is evidence_ref_set
+  + [required_field] is stale_trigger_ref_set
+  + [required_field] is requested_override_scope
+  + [required_field] is forbidden_effect_set
+  + [required_field] is required_resolution
+
+& [ExpectedConflictAndStaleReviewCaseSet: IR6CoordinationMailbox] is the per-fixture review ledger
+  + [fixture_id] is conflicting_write_claims
+    + [expected_review_state] is contested
+    + [expected_downstream_gate_state] is blocked
+  + [fixture_id] is stale_claim_refresh_required
+    + [expected_review_state] is stale
+    + [expected_resolution_set] is refresh_release_supersede_or_rebake
+  + [fixture_id] is human_override_scope_review
+    + [expected_review_state] is pending_review
+    + [expected_forbidden_effect_set_visible] is true
+  + [fixture_id] is hidden_scope_expansion_fault
+    + [expected_review_state] is faulted
+    + [expected_ready_state] is blocked
+  + [fixture_id] is completion_gate_refusal_for_unresolved_claim
+    + [expected_review_state] is unresolved
+    + [expected_downstream_gate_state] is closed
+
+  = must: block unresolved contested, stale, hidden expansion, ambiguous identity, and human override states
+  = must: require completion review or rebake before downstream implementation gates open

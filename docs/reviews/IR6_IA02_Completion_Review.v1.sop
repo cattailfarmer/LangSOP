@@ -1,0 +1,141 @@
+Subject: IR6 IA02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 9c1ec085-ee07-4cad-9dc0-dfb74bdec608
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [previous_completion_review] docs/reviews/IR6_IA01_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR6-IA02] is the completed-work review for IR6-IA02 fixture source and expected-ledger seed material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-IA02
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-IA02 and open IR6-IA03
+  + [next_gate_result] is IR6-IA03 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for claim identity and work-boundary model implementation
+  + [next_model_route_depth] is Spark-suitable
+  + [completed_output] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [completed_output_sha256] is C046AC90227836D04847FCFEBB93F92CE1B6A9C88ED40382B0FD814AD618A3EB
+
+  = must: treat this review as gate-opening evidence for IR6-IA03 only
+  = must: rerun this review if any IR6-IA02 fixture source file, expected ledger file, fixture index, fixture plan, claim identity contract, mailbox carrier contract, conflict review contract, activation boundary, or IR6-IA01 completion review changes
+  = must: keep mailbox carrier models, conflict review models, action routes, generated path policy, fixture runner, generated outputs, dependency installation, package metadata mutation, mailbox IO, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control gated
+
+& [IR6IA02FixtureSourceOutputSet] is the accepted fixture source output set for IR6-IA02
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/valid_claim_projection.sop
+  + [fixture_source_sha256] is 402E7DD22E4038F2B0E55EB15CDE94D8DFAEC7D46333C593755D77BBB655FD5F
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/compatible_parallel_claims.sop
+  + [fixture_source_sha256] is C524190A32D6F765ACCE115A8835B51C92F81ACA35826A05AEAF562A214432EE
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/conflicting_write_claims.sop
+  + [fixture_source_sha256] is 8440772C8E1E36DBAB091D6C777FE6F5D5FA222D52A4BB2A33F825A24A59FF9D
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/stale_claim_refresh_required.sop
+  + [fixture_source_sha256] is 4DF8D01E337046BC3E3CCB4CC2012777FA4A8D3A78C696FDFA7E1ACDF8274FB0
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/release_notice_with_lineage.sop
+  + [fixture_source_sha256] is BE415F0B7DF86FAC0EF316B4164C7A5F2275BDC888DE058FF2F088ED15CBBFF4
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/superseded_claim_preserves_lineage.sop
+  + [fixture_source_sha256] is 1D246D6EC2D511ED1139280CC015D966E81FD4C148413C72D4FC354853C9D2D3
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/ambiguous_conversation_identity_interrupt.sop
+  + [fixture_source_sha256] is 9DE12F14C8A726E237C8C9AAFB539086ABAD46EE4B4A27A4B656EC46C097DEFE
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/inbox_unread_notice_blocks_ready.sop
+  + [fixture_source_sha256] is 874CC67154BB67CC8F13462AB9EFF97933B1FB4E1B04ADF683312CE8B6777DE4
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/read_cursor_stale_projection.sop
+  + [fixture_source_sha256] is AEE3F5875D97E35CFAAA35819B734DD8B1F60256C176D99D420C1962D73BE811
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/mailbox_carrier_authority_refusal.sop
+  + [fixture_source_sha256] is 3A1B9B243D550345649534589FA8D0DF7381845ECAFE5896934ACFD42C08FD3E
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/human_override_scope_review.sop
+  + [fixture_source_sha256] is 7E7ACC0997FFC4E37B0FAE0186D03EE13EFF928B9D4692432F9DEA0397985A3C
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/hidden_scope_expansion_fault.sop
+  + [fixture_source_sha256] is 50405C924D2F0BC5754809D662E0C031E1D256B3B1A407DF4161EB2DC133112F
+  + [fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/completion_gate_refusal_for_unresolved_claim.sop
+  + [fixture_source_sha256] is B0658D941F39951DC4F027DB9B421C7D43A240A8E7065C6CF18C5470E8867F9F
+  + [fixture_source_file_count] is 13
+
+& [IR6IA02ExpectedLedgerOutputSet] is the accepted expected ledger output set for IR6-IA02
+  + [expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/claim_identity_expected.sop
+  + [expected_ledger_sha256] is 9A85A6CDD7454103796E05537C718AA6C0379ABFC09AA83A04B26934E6630105
+  + [expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/work_boundary_expected.sop
+  + [expected_ledger_sha256] is 49F94C11D815D40C41443C225AC3B9302FFBE94B71ABF6FBF7596EF82A362869
+  + [expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/mailbox_carrier_expected.sop
+  + [expected_ledger_sha256] is 97E450528B44E76048E8F2854B34926CD44F61C3BC1A2127B07D1F0B32631496
+  + [expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/conflict_and_stale_review_expected.sop
+  + [expected_ledger_sha256] is 1E43F42C58C5EEC740FB866C678CC46A169E01D6F4E20D7BB282059BF661A069
+  + [expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/no_authority_promotion_expected.sop
+  + [expected_ledger_sha256] is 238B136ACDBFEB111C27E16855BE3264CCAD6F2632ADC31D19AE5A81449A1FEB
+  + [expected_ledger_file_count] is 5
+
+& [IR6IA02Verification] is the verification result for IR6-IA02
+  + [fixture_source_file_count] is 13
+  + [expected_ledger_file_count] is 5
+  + [fixture_index_updated] is true
+  + [fixture_source_root] is tests/fixtures/sop/ir6_coordination_mailbox/
+  + [expected_ledger_root] is tests/fixtures/expected/ir6_coordination_mailbox/
+  + [generated_projection_created] is false
+  + [generated_report_created] is false
+  + [implementation_code_created] is false
+  + [test_file_created] is false
+  + [mailbox_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6IA02VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+    @ [support] tests/fixtures/sop/ir6_coordination_mailbox/
+    @ [support] tests/fixtures/expected/ir6_coordination_mailbox/
+
+& [SupportDelta: IR6-IA02] is the support delta produced by IR6-IA02
+  + [new_support_record] is IR6 has tracked fixture source records for every accepted coordination mailbox fixture case
+  + [new_support_record] is IR6 has expected ledgers for claim identity, work boundary, mailbox carrier, conflict and stale review, and no-authority-promotion semantics
+  + [new_support_record] is fixture index now carries exact source and expected-ledger paths and hashes
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-IA02] is the requirement delta produced by IR6-IA02
+  + [requirement_delta] is IR6-IA03 may implement only the claim identity and work-boundary model files named in the activation boundary
+  + [requirement_delta] is IR6-IA03 remains GPT-5.3-Codex-Spark-suitable because model implementation is bounded by accepted contracts and fixture ledgers
+  + [requirement_delta] is no mailbox carrier model, conflict review model, action route, fixture runner, generated output, dependency installation, mailbox IO, adapter implementation, transport implementation, UI implementation, operations simulator, agent dispatch, operations control, or live machine control is authorized by IR6-IA02
+
+& [FaultReview: IR6-IA02] is the fault review for IR6-IA02
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [generated_output_leak_found] is false
+  + [implementation_code_leak_found] is false
+  + [test_file_leak_found] is false
+  + [mailbox_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6IA02Accepted] is accepted
+    @ [support] [IR6IA02Verification]
+    @ [support] [SupportDelta: IR6-IA02]
+    @ [support] [RequirementDelta: IR6-IA02]
+    @ [support] [FaultReview: IR6-IA02]
+
+& [NextSliceGate: IR6-IA03] is opened
+  + [opened_slice] is IR6-IA03 claim identity and work-boundary model implementation
+  + [accepted_dependency] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [accepted_dependency_sha256] is C046AC90227836D04847FCFEBB93F92CE1B6A9C88ED40382B0FD814AD618A3EB
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is claim identity and work-boundary model implementation is bounded by accepted contracts, fixture sources, and expected ledgers
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-IA03 next unless user redirects or a new fault invalidates this review

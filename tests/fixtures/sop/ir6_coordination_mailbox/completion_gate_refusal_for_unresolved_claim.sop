@@ -1,0 +1,20 @@
+Subject: IR6 Fixture Source Completion Gate Refusal For Unresolved Claim
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [conflict_review_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: completion_gate_refusal_for_unresolved_claim] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-013-completion-gate-refusal-for-unresolved-claim
+  + [projection_kind] is completion_gate_refusal_projection
+  + [attempted_gate] is open_follow_on_implementation_slice
+  + [unresolved_review_ref] is contested_claim_review_001
+  + [unresolved_review_ref] is pending_human_override_001
+  + [expected_status] is blocked
+  + [downstream_gate_state] is closed
+  + [required_resolution] is resolve_or_rebake_coordination_review
+  + [forbidden_action] is completion_acceptance
+
+  = expect: unresolved claim blocks downstream gate
+  = expect: implementation remains gated until review is resolved

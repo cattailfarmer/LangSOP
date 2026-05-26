@@ -1,0 +1,24 @@
+Subject: IR6 Fixture Source Compatible Parallel Claims
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: compatible_parallel_claims] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-002-compatible-parallel-claims
+  + [projection_kind] is claim_compatibility_projection
+  + [claim_ref] is claim_A_fixture_source_root
+  + [claim_ref] is claim_B_expected_ledger_root
+  + [scope_relation] is non_overlapping_write_scope
+  + [conversation_identity_state] is separated
+  + [claimant_identity_state] is separated
+  + [authority_notice_state] is present
+  + [expected_status] is accepted
+  + [expected_projection_record] is compatible parallel claim projection
+  + [forbidden_action] is silent_scope_merge
+  + [forbidden_action] is agent_assignment
+  + [forbidden_action] is completion_acceptance
+
+  = expect: compatible claims remain separately visible
+  = expect: projection never collapses claimant or conversation identity

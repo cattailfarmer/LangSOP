@@ -1,0 +1,53 @@
+Subject: IR6 No Authority Promotion Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedNoAuthorityPromotionLedger: IR6CoordinationMailbox] is the expected source/projection separation ledger
+  + [tracked_fixture_source_status] is source_fixture_authority_after_IR6-IA02_review_acceptance
+  + [tracked_expected_ledger_status] is expected_output_authority_after_IR6-IA02_review_acceptance
+  + [generated_projection_status] is projection_only
+  + [generated_report_status] is projection_only
+  + [mailbox_carrier_status] is carrier_context_only
+  + [read_cursor_status] is projection_context_only
+  + [irc_log_status] is carrier_context_only
+  + [matrix_event_status] is carrier_context_only
+  + [langflow_graph_status] is explanatory_projection_only
+  + [checkpoint_status] is execution_state_only
+  + [human_override_status] is scoped_approval_record_only_not_dispatch_or_live_control
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+& [ExpectedNoAuthorityPromotionCaseSet: IR6CoordinationMailbox] is the expected no-authority-promotion case ledger
+  + [fixture_id] is valid_claim_projection
+    + [expected_source_mutation] is false
+  + [fixture_id] is compatible_parallel_claims
+    + [expected_identity_collapse] is false
+  + [fixture_id] is conflicting_write_claims
+    + [expected_conflict_auto_resolution] is false
+  + [fixture_id] is stale_claim_refresh_required
+    + [expected_stale_claim_auto_refresh] is false
+  + [fixture_id] is release_notice_with_lineage
+    + [expected_claim_deletion] is false
+  + [fixture_id] is superseded_claim_preserves_lineage
+    + [expected_prior_claim_deletion] is false
+  + [fixture_id] is ambiguous_conversation_identity_interrupt
+    + [expected_carrier_authority_promotion] is false
+  + [fixture_id] is inbox_unread_notice_blocks_ready
+    + [expected_mailbox_delivery_authority] is false
+  + [fixture_id] is read_cursor_stale_projection
+    + [expected_read_cursor_authority] is false
+  + [fixture_id] is mailbox_carrier_authority_refusal
+    + [expected_carrier_authority_promotion] is false
+  + [fixture_id] is human_override_scope_review
+    + [expected_dispatch_authorized] is false
+  + [fixture_id] is hidden_scope_expansion_fault
+    + [expected_scope_expansion_accepted_silently] is false
+  + [fixture_id] is completion_gate_refusal_for_unresolved_claim
+    + [expected_gate_opened_by_projection] is false
+
+  = must: reject generated output, carrier state, mailbox files, read cursors, Langflow graphs, checkpoint state, or human approval displays as source authority
+  = must: fail future implementation if any projection opens a gate, dispatches work, or mutates source authority directly

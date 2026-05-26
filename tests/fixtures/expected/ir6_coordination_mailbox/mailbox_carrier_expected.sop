@@ -1,0 +1,35 @@
+Subject: IR6 Mailbox Carrier Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedMailboxCarrierLedger: IR6CoordinationMailbox] is the expected mailbox carrier ledger
+  + [mailbox_carrier_envelope_required] is true
+  + [carrier_authority_status] is carrier_context_only
+  + [mailbox_file_read_authorized] is false
+  + [mailbox_file_write_authorized] is false
+  + [read_cursor_persistence_authorized] is false
+  + [required_field] is carrier_surface
+  + [required_field] is mailbox_last_modified_ms
+  + [required_field] is read_cursor_ms
+  + [required_field] is freshness_state
+  + [required_field] is authority_notice_ref
+  + [required_field] is required_route_set
+
+& [ExpectedMailboxCarrierCaseSet: IR6CoordinationMailbox] is the per-fixture mailbox carrier ledger
+  + [fixture_id] is release_notice_with_lineage
+    + [expected_carrier_status] is rendezvous_projection_only
+  + [fixture_id] is inbox_unread_notice_blocks_ready
+    + [expected_freshness_state] is pending_review
+    + [expected_ready_state] is blocked
+  + [fixture_id] is read_cursor_stale_projection
+    + [expected_freshness_state] is stale
+    + [expected_read_cursor_authority] is false
+  + [fixture_id] is mailbox_carrier_authority_refusal
+    + [expected_carrier_authority_status] is carrier_context_only
+    + [expected_status] is refused
+
+  = must: preserve mailbox paths, timestamps, cursor ids, and message ids as carrier context only
+  = must: fail future implementation that creates, reads, writes, or mutates platform mailbox files without explicit authorization

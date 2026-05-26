@@ -1,0 +1,20 @@
+Subject: IR6 Fixture Source Read Cursor Stale Projection
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: read_cursor_stale_projection] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-009-read-cursor-stale-projection
+  + [projection_kind] is stale_mailbox_projection
+  + [read_cursor_state] is stale
+  + [stale_trigger] is inbox_last_modified_newer_than_cursor
+  + [stale_trigger] is missing_message_hash
+  + [expected_status] is stale
+  + [expected_refusal] is read_cursor_authority
+  + [expected_refusal] is mailbox_delivery_authority
+  + [expected_refusal] is claim_transition_authority
+
+  = expect: stale read cursor cannot authorize claim transition
+  = expect: stale trigger refs remain visible

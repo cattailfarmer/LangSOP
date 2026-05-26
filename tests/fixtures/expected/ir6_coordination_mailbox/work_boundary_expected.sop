@@ -1,0 +1,36 @@
+Subject: IR6 Work Boundary Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedWorkBoundaryLedger: IR6CoordinationMailbox] is the expected work-boundary ledger
+  + [dependency_closed_status_allowed] is true_when_fresh_supported_and_uncontested
+  + [dependency_closed_status_forbidden] is true_when_conflicting
+  + [dependency_closed_status_forbidden] is true_when_stale
+  + [dependency_closed_status_forbidden] is true_when_ambiguous_identity
+  + [dependency_closed_status_forbidden] is true_when_hidden_scope_expansion
+  + [dependency_closed_status_forbidden] is true_when_unresolved_human_override
+  + [required_field] is scope_relation
+  + [required_field] is compatibility_relation
+  + [required_field] is stale_trigger_ref_set
+  + [required_field] is unresolved_review_ref_set
+  + [required_field] is downstream_gate_state
+
+& [ExpectedWorkBoundaryCaseSet: IR6CoordinationMailbox] is the per-fixture work-boundary ledger
+  + [fixture_id] is valid_claim_projection
+    + [expected_boundary_status] is dependency_closed
+  + [fixture_id] is compatible_parallel_claims
+    + [expected_boundary_status] is compatible_parallel
+  + [fixture_id] is conflicting_write_claims
+    + [expected_boundary_status] is blocked
+  + [fixture_id] is stale_claim_refresh_required
+    + [expected_boundary_status] is stale
+  + [fixture_id] is hidden_scope_expansion_fault
+    + [expected_boundary_status] is faulted
+  + [fixture_id] is completion_gate_refusal_for_unresolved_claim
+    + [expected_boundary_status] is blocked
+
+  = must: refuse ready projection when conflict, staleness, ambiguity, hidden expansion, or unresolved review evidence exists
+  = must: keep downstream gates closed until required coordination review is resolved

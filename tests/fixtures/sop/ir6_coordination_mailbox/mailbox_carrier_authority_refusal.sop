@@ -1,0 +1,21 @@
+Subject: IR6 Fixture Source Mailbox Carrier Authority Refusal
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [IR6FixtureSource: mailbox_carrier_authority_refusal] is a coordination mailbox fixture source
+  + [fixture_case] is IR6X-010-mailbox-carrier-authority-refusal
+  + [projection_kind] is refused_carrier_projection
+  + [carrier_surface] is SOP_mailbox
+  + [attempted_effect] is directly_activate_claim
+  + [attempted_effect] is assign_agent
+  + [carrier_authority_status] is carrier_context_only
+  + [expected_status] is refused
+  + [required_route] is coordination_operator
+  + [required_route] is SOP_first_interrupt
+  + [forbidden_action] is direct_source_authority_mutation
+
+  = expect: carrier message cannot directly activate claim
+  = expect: refusal reason is visible with carrier context preserved
