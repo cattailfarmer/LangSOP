@@ -1,0 +1,77 @@
+Subject: IR4 S03 Completion Review V1
+Date: 2026-05-26
+Review UUID: 540e21cf-00d5-4f91-9055-38b8e1b04641
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [completed_output] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+@ [previous_review] docs/reviews/IR4_S02_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR4-S03] is the completed-work review for checkpoint and SOP-first interrupt policy
+  + [slice_id] is IR4-S03
+  + [slice_name] is checkpoint and SOP-first interrupt policy
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+  + [completed_output_sha256] is F6DDB19E169F354D750837BA60B007C7A655600564AF588F14F1FA30904549DE
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-S03 checkpoint and SOP-first interrupt policy and open IR4-S04
+  + [next_gate_result] is IR4-S04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR4-S01 through IR4-S03 acceptance
+
+  = must: treat this review as gate-opening evidence for IR4-S04 only
+  = must: rerun this review if checkpoint policy, graph implementation contract, IR4-S01 boundary, or slice surface changes
+  = must: keep executable graph implementation, dependency installation, checkpoint persistence, generated checkpoints, surface implementation, adapter implementation, operations control, and live machine control gated
+
+& [IR4S03Verification] is the verification result for checkpoint and interrupt policy
+  + [checkpoint_freshness_policy_present] is true
+  + [interrupt_context_packet_contract_present] is true
+  + [interrupt_kind_set_present] is true
+  + [resume_condition_contract_present] is true
+  + [checkpoint_no_mutation_rule_present] is true
+  + [generated_output_boundary_present] is true
+  + [checkpoint_persistence_created] is false
+  + [generated_checkpoint_created] is false
+  + [executable_graph_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR4S03VerificationSatisfied] is accepted
+    @ [support] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+
+& [SupportDelta: IR4-S03] is the support delta produced by accepted checkpoint and interrupt policy
+  + [new_support_record] is IR4-S04 may plan runtime graph fixtures and expected trace ledgers against accepted graph, checkpoint, interrupt, resume, and generated-output boundaries
+  + [new_support_record] is generated checkpoint output roots are declared as future projection-only roots but not authorized for writing by IR4-S03
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-S03] is the requirement delta produced by accepted checkpoint and interrupt policy
+  + [requirement_delta] is IR4-S04 is GPT-5.3-Codex-Spark-suitable because fixture planning is bounded by accepted IR4-S01 through IR4-S03 outputs
+  + [requirement_delta] is no executable graph implementation, dependency installation, generated checkpoint, operations control, or live machine control is authorized by IR4-S03
+  + [requirement_delta] is no rebake required before IR4-S04
+
+& [FaultReview: IR4-S03] is the fault review for checkpoint and interrupt policy
+  + [source_overwrite_found] is false
+  + [checkpoint_persistence_leak_found] is false
+  + [generated_checkpoint_creation_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4S03Accepted] is accepted
+    @ [support] [IR4S03Verification]
+    @ [support] [SupportDelta: IR4-S03]
+    @ [support] [RequirementDelta: IR4-S03]
+    @ [support] [FaultReview: IR4-S03]
+
+& [NextSliceGate: IR4-S04] is opened
+  + [opened_slice] is IR4-S04 runtime graph fixture plan and expected trace ledger plan
+  + [accepted_boundary_input] is docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+  + [accepted_boundary_input_sha256] is F6DDB19E169F354D750837BA60B007C7A655600564AF588F14F1FA30904549DE
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-S01 through IR4-S03 acceptance
+  + [model_route_reason] is fixture planning is bounded by accepted graph, checkpoint, interrupt, and trace contracts
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-S04 next unless user redirects or a new fault invalidates this review

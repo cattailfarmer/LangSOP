@@ -1,0 +1,129 @@
+Subject: IR4 Checkpoint And SOP First Interrupt Policy V1
+Date: 2026-05-26
+Policy UUID: 15fc6093-2166-4e2a-b4b6-c919ca166870
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [runtime_boundary_import] docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [graph_implementation_contract] docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+@ [fsc3_interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [ir4_s02_review] docs/reviews/IR4_S02_Completion_Review.v1.sop
+
+& [IR4CheckpointAndSOPFirstInterruptPolicyV1] is the IR4-S03 checkpoint and interrupt policy for future graph runtime implementation
+  + [policy_id] is ir4-checkpoint-and-sop-first-interrupt-policy-v1
+  + [policy_uuid] is 15fc6093-2166-4e2a-b4b6-c919ca166870
+  + [slice_id] is IR4-S03
+  + [authority_scope] is checkpoint freshness, checkpoint non-authority limits, resume packet contract, SOP-first interrupt context, stale checkpoint refusal, checkpoint authority confusion faults, and no source-authority mutation
+  + [implementation_scope] is checkpoint and interrupt policy only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: define checkpoint and interrupt behavior before fixture planning or implementation activation
+  = must: keep checkpoint state generated execution state only
+  = must: route unresolved semantic or authority judgment through SOP-first interrupt
+  = must: require accepted resume evidence before any interrupted path continues
+  - never: implement checkpoint persistence, create checkpoints, implement graph nodes, install dependencies, mutate source authority, authorize operations control, or authorize live machine control in this slice
+
+& [CheckpointFreshnessPolicy: IR4] is the future checkpoint freshness policy
+  + [checkpoint_state] is generated_execution_state_only
+  + [checkpoint_freshness_basis] is active_work_packet_ref hash or stable source ref
+  + [checkpoint_freshness_basis] is accepted_boundary_pack_ref_set hashes
+  + [checkpoint_freshness_basis] is graph implementation contract hash
+  + [checkpoint_freshness_basis] is operator contract and operator harness proof hashes
+  + [checkpoint_freshness_basis] is trace schema version
+  + [checkpoint_freshness_basis] is pending_interrupt_ref when present
+  + [freshness_result] is current when all freshness basis refs match accepted state
+  + [freshness_result] is stale_checkpoint when any freshness basis ref changes or cannot be proven
+  + [freshness_result] is checkpoint_authority_confusion when checkpoint state is presented as source authority, accepted decision, completion review, or proof result by itself
+
+  = must: prefer stale terminal state over resume when freshness cannot be proven
+  = must: fault checkpoint authority confusion rather than silently accepting checkpoint contents
+
+& [InterruptContextPacketContract: IR4] is the context packet contract for SOP-first interrupts
+  + [required_field] is interrupt_id
+  + [required_field] is interrupt_kind
+  + [required_field] is originating_node_id
+  + [required_field] is graph_phase
+  + [required_field] is active_work_packet_ref
+  + [required_field] is input_record_ref_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is operator_trace_ref_set
+  + [required_field] is fault_record_ref_set when available
+  + [required_field] is stale_projection_ref_set when available
+  + [required_field] is contested_claim_ref_set when available
+  + [required_field] is required_judgment
+  + [required_field] is allowed_resume_route_set
+  + [required_field] is non_authority_warning
+  + [packet_status] is generated_projection_only_until_rewritten_as_reviewed_SOP_artifact
+
+  = must: preserve enough context for another conversation, model, or human to decide the resume route
+  = must: avoid embedding credentials, live machine state, process lists, GPU state, or network state as authority
+
+& [SOPFirstInterruptKindSet: IR4] is the allowed interrupt kind set for future graph runtime
+  + [interrupt_kind] is ambiguous_identity
+  + [interrupt_kind] is authority_conflict
+  + [interrupt_kind] is stale_input
+  + [interrupt_kind] is missing_proof_route
+  + [interrupt_kind] is contested_coordination_claim
+  + [interrupt_kind] is unsupported_scope
+  + [interrupt_kind] is high_risk_operation
+  + [interrupt_kind] is human_override_required
+  + [interrupt_kind] is checkpoint_authority_confusion
+  + [interrupt_kind] is hidden_write_cannot_be_ruled_out
+
+  = must: route unsupported or novel interrupt kinds to fault_record unless a future review accepts the new kind
+
+& [ResumeConditionContract: IR4] is the accepted resume condition contract
+  + [resume_condition] is accepted SOP decision with source_ref_set and completion review when authority interpretation was ambiguous
+  + [resume_condition] is refreshed source authority when stale_input or stale_checkpoint was proven
+  + [resume_condition] is accepted proof route when missing_proof_route blocked execution
+  + [resume_condition] is resolved coordination claim when contested_coordination_claim blocked execution
+  + [resume_condition] is human override artifact when human_override_required is the interrupt kind
+  + [resume_condition] is accepted repair review when checkpoint_authority_confusion or hidden_write_cannot_be_ruled_out occurred
+  + [resume_forbidden] is raw checkpoint state alone
+  + [resume_forbidden] is chat message alone
+  + [resume_forbidden] is terminal scrollback alone
+  + [resume_forbidden] is generated trace or report alone
+
+  = must: require resume evidence to cite source authority or accepted review artifacts
+  = must: preserve interrupted terminal state if resume evidence is absent
+
+& [CheckpointNoMutationRule: IR4] is the no-mutation rule for checkpoint and interrupt handling
+  + [read_allowed] is accepted source authority and generated checkpoint state
+  + [write_allowed_after_future_activation] is generated checkpoint roots only
+  + [write_forbidden] is docs/
+  + [write_forbidden] is src/
+  + [write_forbidden] is tests/fixtures/sop/
+  + [write_forbidden] is tests/fixtures/expected/
+  + [write_forbidden] is platform/
+  + [write_forbidden] is .git/
+  + [mutation_fault] is source_mutation_refusal
+  + [mutation_fault] is hidden_write_cannot_be_ruled_out
+
+  = must: refuse checkpoint handling that would write source authority, expected ledgers, or repository metadata
+
+& [CheckpointGeneratedOutputBoundary: IR4] is the future generated checkpoint output boundary
+  + [future_generated_checkpoint_root] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
+  + [future_generated_trace_root] is tests/fixtures/generated/ir4_runtime_graph/traces/
+  + [future_runtime_checkpoint_root] is .langsop/checkpoints/ir4_runtime_graph/
+  + [future_runtime_trace_root] is .langsop/traces/ir4_runtime_graph/
+  + [generated_output_status] is projection_only
+  + [current_slice_write_authorized] is false
+
+  = must: require a later implementation activation slice before writing generated checkpoints
+  = must: require generated outputs to be ignored, disposable, and reproducible
+
+& [IR4S03CoverageReview] is the coverage checklist for IR4-S03
+  + [checkpoint_freshness_policy_present] is true
+  + [interrupt_context_packet_contract_present] is true
+  + [interrupt_kind_set_present] is true
+  + [resume_condition_contract_present] is true
+  + [checkpoint_no_mutation_rule_present] is true
+  + [generated_output_boundary_present] is true
+  + [checkpoint_persistence_created] is false
+  + [generated_checkpoint_created] is false
+  + [executable_graph_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR4-S03 only when all checklist items are satisfied
+  = must: open IR4-S04 only after this checkpoint and SOP-first interrupt policy is reviewed in a completion review
