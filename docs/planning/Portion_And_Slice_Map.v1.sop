@@ -1,0 +1,183 @@
+Subject: LangSOP Portion And Slice Map V1
+Date: 2026-05-25
+Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
+
+@ [canonical_pattern] docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+@ [product_overview] docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+@ [capability_field] docs/planning/Capability_Field.v2.sop
+
+& [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
+  + [map_state] is ready_for_deeper_reasoning_design_slices
+  + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
+  + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
+
+  = must: load this map before minting LangSOP development slices
+  = must: update this map after completed work changes support or requirements
+  = must: keep blocked portions visible but unsliced except for blocker-resolution or preparation work
+
+& [Portion: P1SemanticAuthorityAndSourceLineage] is supported
+  + [portion_id] is P1
+  + [portion_name] is semantic authority and source lineage
+  + [purpose] is preserve SOP source, SJS signatures, source snapshots, canonical authority, and soft-wire reconsideration
+  + [dependency_set] is none for planning use
+  + [support_record] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [support_record] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [proof_route] is signature validation over source manifests and satisfaction signatures
+  + [surface_ref] is manager, narrative, debug, and worker packet authority notices
+  + [slice_family] is source-preservation-and-signature-validation
+
+  = must: remain loaded as authority context for every other portion
+
+& [Portion: P2AuthorityKernelAndRecordSchemas] is ready_for_slice_family
+  + [portion_id] is P2
+  + [portion_name] is authority kernel and record schemas
+  + [purpose] is define logical records, natural keys, lineage, authority states, readiness states, and freshness rules
+  + [dependency_set] is P1
+  + [support_record] is CanonicalKernelRecordContractV2
+  + [support_gap] is record-specific schemas not yet drafted
+  + [support_gap] is natural-key matrix not yet accepted
+  + [support_gap] is physical storage not yet chosen
+  + [proof_route] is schema fixtures for valid, stale, blocked, contradicted, and invalid records
+  + [slice_family] is kernel-record-schema-design
+  + [slice_family] is natural-key-and-state-matrix
+  + [slice_family] is storage-decision-after-logical-schema
+
+  = must: start with deeper-reasoning slices
+
+& [Portion: P3CompiledSOPOperatorContracts] is ready_for_slice_family
+  + [portion_id] is P3
+  + [portion_name] is compiled SOP operator contracts
+  + [purpose] is define the common operator contract that lets stable SOP duties become traceable mechanical operators
+  + [dependency_set] is P1
+  + [dependency_set] is P2 for implementation
+  + [support_record] is CanonicalOperatorContractV2
+  + [support_gap] is template not yet authored
+  + [support_gap] is first operator examples not yet accepted
+  + [proof_route] is example contracts for signature_validation and support_readiness_recompute
+  + [slice_family] is operator-contract-template-design
+  + [slice_family] is signature-validation-operator-contract
+  + [slice_family] is support-readiness-operator-contract
+
+  = must: keep template design in deeper-reasoning mode
+  = should: make later operator examples GPT-5.3-Codex-Spark-suitable after template acceptance
+
+& [Portion: P4WholeFieldPlanningAndPacketization] is blocked
+  + [portion_id] is P4
+  + [portion_name] is whole-field planning and packetization
+  + [purpose] is derive readiness projections, packet candidates, blocker-resolution slices, and completion-review gates
+  + [dependency_set] is P2
+  + [dependency_set] is P3
+  + [support_gap] is readiness operator not yet defined
+  + [support_gap] is work-packet generator not yet proved
+  + [proof_route] is fixture capability field that produces ready, blocked, stale, unsupported, and verified cases
+  + [slice_family] is support-readiness-operator
+  + [slice_family] is work-packet-generator
+  + [slice_family] is completion-review-delta-gate
+
+  = must: not mint implementation slices until readiness and packetization contracts exist
+  = may: mint preparation slices to define those contracts
+
+& [Portion: P5LangGraphProcedureRuntime] is blocked
+  + [portion_id] is P5
+  + [portion_name] is LangGraph procedure runtime
+  + [purpose] is execute compiled operators over kernel records with checkpointed procedure state and judgment interrupts
+  + [dependency_set] is P2
+  + [dependency_set] is P3
+  + [dependency_set] is P8 fixture pack
+  + [support_gap] is graph proof-of-shape not implemented
+  + [proof_route] is graph run over fixture records with expected operator traces
+  + [slice_family] is whole-field-planner-graph-proof
+  + [slice_family] is graph-interrupt-fixtures
+
+  = must: keep LangGraph checkpoint state non-authoritative
+  = should: route graph proof implementation to GPT-5.3-Codex-Spark after contracts and fixtures stabilize
+
+& [Portion: P6SurfaceProjectionSystem] is blocked
+  + [portion_id] is P6
+  + [portion_name] is surface projection system
+  + [purpose] is render manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow projections from kernel records
+  + [dependency_set] is P2
+  + [dependency_set] is P4
+  + [dependency_set] is P8 fixture pack
+  + [support_gap] is projection fixtures not yet generated
+  + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
+  + [slice_family] is manager-worker-debug-surface-projections
+  + [slice_family] is chat-and-adapter-projection-contracts
+  + [slice_family] is langflow-export-prototype
+
+  = must: never let surfaces mutate canonical authority directly
+  = should: route bounded projection rendering to GPT-5.3-Codex-Spark after fixture records exist
+
+& [Portion: P7CoordinationAndMultiAgentGovernance] is blocked
+  + [portion_id] is P7
+  + [portion_name] is coordination and multi-agent governance
+  + [purpose] is preserve claims, ownership, conversation identity, rendezvous packets, mailbox messages, conflicts, and human overrides
+  + [dependency_set] is P2
+  + [dependency_set] is P4
+  + [support_gap] is coordination record schemas not yet bound into authority kernel
+  + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
+  + [slice_family] is coordination-claim-schema
+  + [slice_family] is rendezvous-packet-fixtures
+  + [slice_family] is mailbox-projection-integration
+
+  = must: preserve conversation identity and work boundaries before multi-agent dispatch
+
+& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_slice_family
+  + [portion_id] is P8
+  + [portion_name] is proof, fixtures, evaluation, and faults
+  + [purpose] is provide deterministic evidence for schema validation, operator behavior, packet readiness, surface projections, and fault routing
+  + [dependency_set] is P2 for schema fixtures
+  + [dependency_set] is P3 for operator fixtures
+  + [support_gap] is fixture pack not yet authored
+  + [support_gap] is false-ready and stale-slice fault examples not yet encoded
+  + [proof_route] is fixture validation tests and expected trace records
+  + [slice_family] is fixture-pack-generation
+  + [slice_family] is stale-and-false-ready-fault-cases
+  + [slice_family] is proof-output-ledger
+
+  = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
+
+& [Portion: P9OperationsManagerSafety] is deferred
+  + [portion_id] is P9
+  + [portion_name] is operations-manager safety and future machine control
+  + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
+  + [dependency_set] is P2 through P8
+  + [support_gap] is safety specification not yet authored
+  + [support_gap] is dry-run operations fixture model not yet defined
+  + [proof_route] is signed safety specification plus dry-run proof before live resource operations
+  + [slice_family] is operations-manager-safety-specification
+  + [slice_family] is dry-run-resource-control-fixtures
+
+  = must: remain deferred until core kernel, graph, surfaces, coordination, and proof portions mature
+  = must: require deeper reasoning when opened
+
+& [InitialSliceQueue] is the first clean subdivision sequence
+  + [slice_candidate] is kernel-record-schema-design
+    + [portion_ref] is P2
+    + [model_route] is requires deeper reasoning
+    + [reason] is natural keys, authority states, and source/projection distinction are architecture-level decisions
+    + [verification_oracle] is schema review against valid, stale, blocked, contradicted, and invalid fixture cases
+  + [slice_candidate] is operator-contract-template-design
+    + [portion_ref] is P3
+    + [model_route] is requires deeper reasoning
+    + [reason] is compiled SOP duty boundaries are authority-sensitive
+    + [verification_oracle] is template review against signature_validation and support_readiness_recompute examples
+  + [slice_candidate] is storage-backend-decision
+    + [portion_ref] is P2
+    + [model_route] is requires deeper reasoning
+    + [reason] is physical model affects source preservation, query, concurrency, Git workflow, and LangGraph integration
+    + [verification_oracle] is decision record with tradeoffs and invalidation conditions
+    + [precondition] is logical schema draft exists
+  + [slice_candidate] is fixture-pack-generation
+    + [portion_ref] is P8
+    + [model_route] is GPT-5.3-Codex-Spark-suitable after schema and operator contracts stabilize
+    + [reason] is bounded fixture generation with clear expected states
+    + [verification_oracle] is fixture validation tests
+  + [slice_candidate] is manager-worker-debug-surface-projections
+    + [portion_ref] is P6
+    + [model_route] is GPT-5.3-Codex-Spark-suitable after fixture records exist
+    + [reason] is bounded projection work with snapshot tests
+    + [verification_oracle] is projection fixtures with authority_notice and freshness checks
+
+  = must: complete deeper-reasoning design slices before Spark-suitable implementation slices depend on them
+  = must: run completed-work review after each completed slice before choosing the next queue item

@@ -9,5 +9,10 @@ Current planning authority:
 - `docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop`
 - `docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop`
 - `docs/planning/Capability_Field.v2.sop`
+- `docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop`
+- `docs/product/LangSOP_Whole_Pie_Product_Overview.sop`
+- `docs/planning/Portion_And_Slice_Map.v1.sop`
 
 The v2 pass preserves the initial specification as source snapshots, expands it through a seven-fold specification explosion, and leaves the project ready for kernel schema and operator-contract design. Runtime code still requires solution records, fixtures, and proof before it can claim implementation authority.
+
+The working development pattern is "whole-pie first": keep the product overview and portion map current, mint slices from readiness only when support and proof routes are clear, review completed work for support and requirement deltas, then rebake the whole before the next slice when learning changes the shape of the system.

@@ -1,0 +1,152 @@
+Subject: LangSOP Whole Pie Working Pattern Exploded Specification
+Date: 2026-05-25
+Exploded Specification UUID: 3f620214-4da2-4d8a-96f2-74ee82097ba2
+
+@ [source_manifest] docs/source/2026-05-25_whole_pie_working_pattern/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-25_whole_pie_working_pattern/Dictated_Whole_Pie_Working_Pattern_Source.sop
+@ [source_exploded] docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop
+@ [source_canonical] docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+@ [source_capability_field] docs/planning/Capability_Field.v2.sop
+
+& [WholePieWorkingPatternExplosion] is the SJS processing trace that turns the v2 exploded specification into a slice-ready product and repeatable development pattern
+  + [root_subject] is LangSOP as a whole product whose full capability field is visible before individual work slices are minted
+  + [source_pressure] is prior cycles changed slightly because each cycle learned the system while writing it
+  + [resolution_pressure] is bake the whole product field first, then measure and slice from current readiness
+  + [result] is product overview, portion map, slice lifecycle, and rebake rule
+
+  = must: distinguish whole product, portion, slice family, slice, and task
+  = must: preserve blocked and deferred objectives inside the whole product map
+  = must: make slice readiness derived, stale-able, and recomputable
+  = must: require completion review before newly discovered knowledge changes the next slice
+
+## Fold 1: Whole Product Identity
+
+& [Fold1WholeProductIdentity] is the product boundary pass
+  + [whole_product] is LangSOP Manager Layer for multi-user, multi-agent AI collaboration across many conversation surfaces
+  + [primary_job] is maintain authority, narrative, coordination, readiness, packetization, execution trace, proof, and reentry across work cycles
+  + [primary_customer] is the human project owner coordinating Codex, worker agents, external tools, and future local machine operations
+  + [secondary_customer] is manager and worker agents that need stable packet authority, support evidence, and proof routes
+  + [surface_promise] is users see the state of the whole project, not merely a queue of tasks
+  + [authority_promise] is no surface, chat room, graph checkpoint, or worker packet silently becomes source of truth
+
+  = must: present the whole as a product even before all portions are implementation-ready
+  = must: keep the product overview slice-ready without pretending every portion is ready
+  - never: confuse broad product completeness with implementation completeness
+
+## Fold 2: Portion Model
+
+& [Fold2PortionModel] is the data design pass for portions
+  + [portion] is a large product territory with stable purpose, requirements, dependencies, blockers, proof route, and surface implications
+  + [portion_natural_key] is product_scope plus portion_id
+  + [portion_state] is desired, specified, supported, blocked, deferred, ready_for_slice_family, active, verified, stale, or superseded
+  + [portion_relation] is dependency, support, proof, projection, owner, or sequencing relation to another portion
+  + [portion_boundary] is the line preventing adjacent portions from collapsing into a vague epic
+
+  = must: define portions before generating slice families
+  = must: attach support_gap records to portions when readiness is missing
+  = must: keep blocked portions visible but not automatically sliced
+  = must: recompute portion_state after completed work changes requirements, support, or proof
+
+& [PortionRecordContract] is the logical record shape for a product portion
+  + [portion_id] is stable inside LangSOP
+  + [portion_name] is human-readable
+  + [product_ref] is LangSOP whole product
+  + [purpose] is why the portion exists
+  + [requirement_set] is requirements owned by the portion
+  + [dependency_set] is required portions, decisions, tools, proof, data, or environment
+  + [support_record_set] is current support evidence
+  + [support_gap_set] is unresolved missing or stale support
+  + [proof_route] is how the portion will be validated
+  + [surface_ref_set] is manager, worker, narrative, debug, chat, or adapter surfaces affected
+  + [slice_family_set] is generated or candidate subdivisions
+  + [freshness_rule] is when the portion must be reviewed
+
+## Fold 3: Slice Family And Slice Model
+
+& [Fold3SliceModel] is the decomposition pass from portion to slice family to slice
+  + [slice_family] is a reusable subdivision of a portion around one coherent kind of work
+  + [slice] is a bounded work packet generated from a ready slice_family and current readiness projection
+  + [task] is an execution step inside a slice, not an authority-bearing planning unit
+  + [slice_natural_key] is slice_family_id plus slice_revision
+  + [slice_state] is candidate, blocked, ready, assigned, in_progress, completed, verified, stale, superseded, or invalidated
+
+  = must: mint slices only from ready or explicitly preparation-oriented slice families
+  = must: include authority_basis, expected_output_set, verification_oracle, and completion_review_required on every slice
+  = must: expire or supersede slices when source, support, dependency, or proof state changes
+  = must: keep tasks disposable and regenerate them from slice context when needed
+  - never: let a task become the durable substitute for a slice record
+
+& [SliceRecordContract] is the logical record shape for a slice
+  + [slice_id] is durable identifier
+  + [slice_family_ref] is the subdivision family that produced it
+  + [portion_ref_set] is one or more portions served by the slice
+  + [requirement_ref_set] is atomic requirements the slice may satisfy or alter
+  + [authority_basis] is source, canonical spec, proof, or human override that authorizes the slice
+  + [precondition_set] is the required state before execution
+  + [expected_output_set] is records, files, tests, decisions, or proofs expected
+  + [verification_oracle] is how completion is checked
+  + [model_route] is GPT-5.3-Codex-Spark-suitable or requires deeper reasoning, with reason
+  + [completion_review_required] is true
+
+## Fold 4: Readiness And Slicing Rules
+
+& [Fold4ReadinessRules] is the readiness pass
+  + [readiness_input] is authority_state, support_records, support_gaps, dependencies, proof_route, ownership, risk, freshness, and coordination state
+  + [readiness_projection] is derived state, never source authority
+  + [blocked_objective] is part of the baked whole but cannot become a normal implementation slice until its blocker is resolved
+  + [preparation_slice] is a valid slice whose purpose is to remove a support gap or resolve uncertainty
+
+  = must: produce preparation slices for unresolved support gaps when they are independently actionable
+  = must: block implementation slices while required support gaps remain
+  = must: mark slices stale when freshness_rule fails
+  = must: run completed-work review before selecting the next slice from a changed portion
+  = should: keep more slice families ready than there are active workers
+
+## Fold 5: Working Cycle
+
+& [Fold5WorkingCycle] is the repeatable development pattern
+  + [cycle_step] is load whole product overview and current portion map
+  + [cycle_step] is choose a portion or support gap by frontier, risk, and readiness
+  + [cycle_step] is recompute portion readiness and slice-family readiness
+  + [cycle_step] is mint one or more slices with authority basis and verification oracle
+  + [cycle_step] is execute the slice and produce proof or explicit absence proof
+  + [cycle_step] is complete support_delta and requirement_delta review
+  + [cycle_step] is update portion map and product overview when learning changes the whole
+  + [cycle_step] is supersede stale slices and mint the next clean slice
+
+  = must: allow the whole product to be rebaked as learning arrives
+  = must: keep slice creation just-in-time when readiness depends on mutable support
+  = must: keep completed work from silently changing future slice assumptions
+
+## Fold 6: Surface Implications
+
+& [Fold6SurfaceImplications] is the product surface pass
+  + [manager_surface] is whole product, portion map, blocker map, ready slice families, active slices, proof state, and frontier view
+  + [worker_surface] is one slice with authority basis, expected outputs, verification oracle, and forbidden scope
+  + [narrative_surface] is product story, portion story, decision lineage, dead ends, and reentry anchors
+  + [debug_surface] is stale slice, false-ready slice, support gap, operator trace, and projection lineage inspection
+  + [chat_surface] is conversation projection that can cite portions and slices but cannot own truth
+
+  = must: make the whole visible to the manager even when only one slice is active
+  = must: make blocked portions visible without creating noisy fake work
+  = must: show authority_notice and freshness state on slice-producing surfaces
+
+## Fold 7: Model Routing And Frontier Control
+
+& [Fold7ModelRoutingAndFrontierControl] is the labor-routing pass
+  + [requires_deeper_reasoning] is whole-product rebake, portion boundary changes, schema/natural-key design, authority semantics, storage decision, ambiguous faults, and operations safety
+  + [GPT-5.3-Codex-Spark-suitable] is bounded implementation, fixtures, tests, lint fixes, ledger updates, projection rendering, and proof updates after contracts stabilize
+  + [frontier_rule] is frontiers 1 through 3 remain deeper-reasoning work until schema and operator contracts stabilize
+  + [safety_rule] is live operations-manager work remains deferred until a signed operations safety specification exists
+
+  = must: include model_route on every slice
+  = must: send Spark-suitable work to GPT-5.3-Codex-Spark only after its authority, inputs, outputs, and verification oracle are stable
+  = must: reserve deeper reasoning for architecture, authority, ambiguity, unstable requirements, and high-risk design
+
+& [WorkingPatternConclusion] is the result of this pass
+  + [ready_for] is using product overview plus portion map as the normal LangSOP development entrypoint
+  + [ready_for] is minting first deeper-reasoning design slices for schema, operator contracts, and storage decision
+  + [not_ready_for] is autonomous runtime dispatch, production surface deployment, or live machine control
+  + [remaining_uncertainty] is exact physical storage, first implementation language package layout, and detailed operations safety boundary
+
+  = must: promote the canonical working pattern only with satisfaction signature and source lineage

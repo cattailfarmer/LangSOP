@@ -1,0 +1,26 @@
+Subject: Whole Pie Working Pattern Source Manifest
+Date: 2026-05-25
+Manifest UUID: d5a78c55-233b-4b03-b3ce-a79ef26067bd
+
+& [SourceDocumentManifest: WholePieWorkingPattern] is the source preservation manifest for the LangSOP whole-pie development pattern
+  + [dictated_source] is docs/source/2026-05-25_whole_pie_working_pattern/Dictated_Whole_Pie_Working_Pattern_Source.sop
+    + [sha256] is 86F343A88B73415D9CF7B7D157D27A340F09BB893BE0C3A078918A77182F0226
+    + [source_role] is new user-directed build specification
+  + [authority_source] is docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop
+    + [sha256] is 9798D0DB90A9F6DADD53DBDE0E2F3195003F4F1851ACA9D7C3CE4CFA5E45C123
+    + [source_role] is current seven-fold exploded planning source
+  + [authority_source] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+    + [sha256] is D31925DEB0063F93376933089162FA5F128F05DEB72B29CE3D7DE8F4926D38AD
+    + [source_role] is current signed planning authority
+  + [authority_source] is docs/planning/Capability_Field.v2.sop
+    + [sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+    + [source_role] is current whole-field planning seed
+  + [exploded_target] is docs/exploded/LangSOP_Whole_Pie_Working_Pattern.exploded.sop
+  + [canonical_target] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [product_target] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+  + [portion_slice_target] is docs/planning/Portion_And_Slice_Map.v1.sop
+
+  = must: treat dictated_source and authority_source records as the source set for this processing pass
+  = must: invalidate this pattern if a cited source hash changes without reprocessing
+  = must: preserve the source instruction separately from product, planning, and canonical outputs
+  - never: treat product overview prose as authority without its canonical working-pattern record

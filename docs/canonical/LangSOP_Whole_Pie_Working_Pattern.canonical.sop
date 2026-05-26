@@ -1,0 +1,113 @@
+Subject: LangSOP Whole Pie Working Pattern Canonical Specification
+Date: 2026-05-25
+
+@ [source_manifest] docs/source/2026-05-25_whole_pie_working_pattern/Source_Document_Manifest.sop
+@ [exploded_specification] docs/exploded/LangSOP_Whole_Pie_Working_Pattern.exploded.sop
+@ [product_overview] docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+@ [portion_slice_map] docs/planning/Portion_And_Slice_Map.v1.sop
+
+& [CanonicalRecord: WholePieWorkingPattern] is the processed planning authority for LangSOP whole-pie development
+  + [canonical_uuid] is ecc5770f-e6a6-40cc-b5a2-b07e5853c69b
+  + [source_manifest_uuid] is d5a78c55-233b-4b03-b3ce-a79ef26067bd
+  + [exploded_uuid] is 3f620214-4da2-4d8a-96f2-74ee82097ba2
+  + [product_uuid] is ee4fda0b-8433-4301-8c6f-648da69f4b7f
+  + [portion_slice_map_uuid] is 7f03db1d-3818-4acd-a42f-a306e26e4a39
+  + [authority_scope] is product overview, portion model, slice-family model, slice lifecycle, rebake cycle, surface implications, and model-routing pattern
+  + [implementation_scope] is planning and decomposition authority only
+  + [depends_on] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+
+  = must: use whole-pie development as the default LangSOP planning pattern
+  = must: keep product overview and portion map loaded before slice minting
+  = must: treat slices as generated derived work packets, not source truth
+  = must: require completion review before newly completed work influences the next slice
+  = must: preserve blocked portions inside the whole product map
+  - never: create implementation slices from blocked portions except blocker-resolution or preparation slices
+
+& [CanonicalWholePieProductContract] is the product-level planning contract
+  + [whole_product] is LangSOP Manager Layer
+  + [product_job] is preserve authority, narrative, coordination, readiness, packetization, proof, and reentry across multi-user and multi-agent work
+  + [source_of_truth] is SOP source, signed canonical artifacts, proof-backed kernel records, and explicit human overrides
+  + [projection_set] is manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow surfaces
+
+  = must: expose whole-product state before local slice execution
+  = must: keep surfaces as projections with visible authority and freshness notices
+  = must: keep LangGraph as procedure over kernel records, not source authority
+
+& [CanonicalPortionContract] is the product portion contract
+  + [portion] is a large product territory with stable purpose, boundary, requirements, dependencies, support gaps, proof route, surface implications, and slice families
+  + [portion_state_set] is desired, specified, supported, blocked, deferred, ready_for_slice_family, active, verified, stale, and superseded
+  + [portion_record_contract] is PortionRecordContract from the exploded specification
+
+  = must: define and review portions before slice families are minted
+  = must: keep dependencies and support gaps explicit
+  = must: allow a portion to remain baked into the whole while unsliced
+  = must: rebake portion state when completed work changes support or requirements
+
+& [CanonicalSliceContract] is the work-slice contract
+  + [slice_family] is the reusable subdivision of a portion around coherent work
+  + [slice] is a generated work packet with authority basis, preconditions, expected outputs, verification oracle, model route, and completion-review requirement
+  + [task] is an execution detail inside a slice
+  + [slice_state_set] is candidate, blocked, ready, assigned, in_progress, completed, verified, stale, superseded, and invalidated
+
+  = must: mint slices from current readiness projections
+  = must: mark stale slices stale when source, support, dependency, proof, or freshness changes
+  = must: attach verification_oracle and model_route to every slice
+  = must: classify each slice as GPT-5.3-Codex-Spark-suitable or requires deeper reasoning
+  - never: let task lists carry authority that belongs on the slice record
+
+& [CanonicalRebakeCycle] is the repeatable development loop
+  + [step_1] is load product overview, portion map, and current capability field
+  + [step_2] is choose portion or support gap by frontier order, risk, readiness, and user priority
+  + [step_3] is recompute readiness from support, dependencies, proof, freshness, ownership, and coordination
+  + [step_4] is mint slices with authority basis, forbidden scope, expected outputs, and verification oracle
+  + [step_5] is execute slice and capture proof, notes, faults, and changed artifacts
+  + [step_6] is review completed work for support_delta and requirement_delta
+  + [step_7] is update product overview, portion map, capability field, and stale slice markers
+  + [step_8] is mint the next clean slice or rebake the whole when learning changes product shape
+
+  = must: apply this cycle whenever LangSOP work decomposes from product intent into executable work
+  = must: treat rebake as expected learning, not planning failure
+  = must: update or supersede stale slices rather than carrying them forward silently
+
+& [CanonicalModelRoutingPattern] is the model-routing authority for the working pattern
+  + [requires_deeper_reasoning] is whole-product rebake, portion boundary changes, schema and natural-key design, authority semantics, storage decision, ambiguous fault handling, and operations safety
+  + [GPT-5.3-Codex-Spark-suitable] is bounded implementation, fixtures, tests, lint fixes, ledger updates, projection rendering, and proof updates after contracts stabilize
+
+  = must: state whether each proposed slice is GPT-5.3-Codex-Spark-suitable or requires deeper reasoning
+  = must: reserve deeper reasoning for architecture, ambiguous debugging, cross-system integration, unstable specifications, and high-risk design choices
+
+& [SatisfactionSignature: WholePieWorkingPattern] is the valid SJS satisfaction signature for the whole-pie development pattern
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 61fa61ac-66fe-4d41-9f13-21fa702542b8
+  + [signed_subject] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [source_manifest] is docs/source/2026-05-25_whole_pie_working_pattern/Source_Document_Manifest.sop
+  + [source_sha256] is 86F343A88B73415D9CF7B7D157D27A340F09BB893BE0C3A078918A77182F0226
+  + [source_sha256] is 9798D0DB90A9F6DADD53DBDE0E2F3195003F4F1851ACA9D7C3CE4CFA5E45C123
+  + [source_sha256] is D31925DEB0063F93376933089162FA5F128F05DEB72B29CE3D7DE8F4926D38AD
+  + [source_sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+  + [exploded_specification] is docs/exploded/LangSOP_Whole_Pie_Working_Pattern.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [processed_stage_set] is source_preserved, lineage_bound, product_baked, portion_modeled, slice_modeled, readiness_modeled, rebake_cycle_defined, surface_implications_checked, model_route_defined, justified, and signed
+  + [exhaustion_state] is phase_locked_for_whole_pie_development_pattern_use
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for LangSOP decomposition workflow; runtime implementation still requires solution records and proof
+  + [invalidation_condition] is source_hash_change, product_boundary_change, hidden_authority_state, stale_portion_map, false_ready_slice, missing_completion_review, or implementation_contradiction
+
+  = must: treat this canonical file as the current working pattern for LangSOP decomposition
+  = must: reprocess through SJS when the whole-pie model changes materially
+
+& [RegistryRecord: WholePieWorkingPattern] is the durable identity ledger for this working-pattern specification family
+  + [registry_uuid] is aaa4daf9-177b-478b-9b98-4ef106ff89d5
+  + [manifest_node_uuid] is d5a78c55-233b-4b03-b3ce-a79ef26067bd
+  + [exploded_node_uuid] is 3f620214-4da2-4d8a-96f2-74ee82097ba2
+  + [canonical_node_uuid] is ecc5770f-e6a6-40cc-b5a2-b07e5853c69b
+  + [product_node_uuid] is ee4fda0b-8433-4301-8c6f-648da69f4b7f
+  + [portion_slice_map_uuid] is 7f03db1d-3818-4acd-a42f-a306e26e4a39
+  + [signature_uuid] is 61fa61ac-66fe-4d41-9f13-21fa702542b8
+  + [edge] is manifest_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid signs product_node_uuid
+  + [edge] is canonical_node_uuid signs portion_slice_map_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve registry edges for future rebake and supersession

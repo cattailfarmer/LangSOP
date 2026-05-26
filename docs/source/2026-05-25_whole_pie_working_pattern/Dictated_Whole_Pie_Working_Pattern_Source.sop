@@ -1,0 +1,15 @@
+Subject: Dictated Whole Pie Working Pattern Source
+Date: 2026-05-25
+
+& [DictatedSource: WholePieWorkingPattern] is the preserved source instruction for establishing the LangSOP whole-pie product and development pattern
+  + [dictated_request] is from the exploded specification, write an overview "whole-pie baked" product that is slice-ready
+  + [dictated_request] is divide out portions that then get subdivided into slices as work proceeds
+  + [dictated_request] is establish that as a working pattern for developing the system
+  + [source_context] is docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop
+  + [source_context] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [source_context] is docs/planning/Capability_Field.v2.sop
+
+  = must: preserve whole-product intent before creating slice-level work
+  = must: keep blocked objectives visible as part of the whole even when not slice-ready
+  = must: let portions subdivide into slices only as readiness, support, and proof routes become clear
+  = must: establish the pattern as reusable development authority for LangSOP

@@ -1,0 +1,77 @@
+Subject: LangSOP Whole Pie Product Overview
+Date: 2026-05-25
+Product UUID: ee4fda0b-8433-4301-8c6f-648da69f4b7f
+
+@ [canonical_pattern] docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+@ [source_canonical] docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+@ [source_exploded] docs/exploded/LangSOP_Initial_Workflow.v2.exploded.sop
+
+& [Product: LangSOPManagerLayer] is the baked whole-pie product for LangSOP
+  + [product_name] is LangSOP Manager Layer
+  + [product_kind] is multi-user, multi-agent collaboration management platform
+  + [primary_purpose] is coordinate AI collaboration by preserving authority, narrative, readiness, work packetization, execution trace, proof, faults, and reentry across conversation surfaces
+  + [operational_style] is SOP-first authority with compiled operators and LangGraph procedures for stable mechanical duties
+  + [whole_pie_state] is slice-ready for schema and operator-contract design, not implementation-complete
+  + [manager_promise] is the manager sees the whole capability field, blockers, ready slice families, active slices, proofs, and next frontiers before dispatching work
+  + [worker_promise] is each worker receives a bounded slice with authority basis, expected outputs, forbidden scope, and verification oracle
+  + [human_promise] is the project owner can see why work is ready, blocked, stale, or unsafe before approving direction
+
+  = must: keep the whole product visible even when development is executing only one slice
+  = must: separate source truth, derived projections, graph execution, and UI surfaces
+  = must: make blocked objectives visible without pretending they are ready work
+  = must: route source or authority changes through SJS before they redefine the product
+
+& [ProductExperience] is the target user-visible experience
+  + [manager_view] is mission-control view over portions, blockers, slice families, current work, proof state, coordination claims, and frontier order
+  + [worker_packet_view] is one bounded assignment with authority, context, constraints, expected artifacts, proof route, and completion review fields
+  + [narrative_view] is project story with anchors of understanding, decisions, dead ends, unresolved frontiers, and reentry packets
+  + [debug_view] is trace inspection for sources, operators, projections, stale records, false-ready slices, and faults
+  + [conversation_view] is chat projection across Codex, terminal, IRC, Matrix, web, and future surfaces, with citations back to kernel records
+  + [flow_view] is optional Langflow or visual graph projection for understanding operator shape, not source authority
+
+  = must: let every decision-making surface show authority_notice and freshness state
+  = must: let surfaces submit changes only through validated operators or source-preserving intake
+  = must: keep chat useful as a conversation layer without making chat the canonical memory model
+
+& [WholePiePortionSet] is the first stable product portion map
+  + [portion] is P1 semantic authority and source lineage
+  + [portion] is P2 authority kernel and record schemas
+  + [portion] is P3 compiled SOP operator contracts
+  + [portion] is P4 whole-field planning and packetization
+  + [portion] is P5 LangGraph procedure runtime
+  + [portion] is P6 surface projection system
+  + [portion] is P7 coordination and multi-agent governance
+  + [portion] is P8 proof, fixtures, evaluation, and fault handling
+  + [portion] is P9 operations-manager safety and future machine control
+
+  = must: maintain this set as the product overview until superseded by a rebake
+  = must: allow portions to be active, blocked, deferred, or unsliced without disappearing from the product
+  = must: route portion boundary changes through whole-pie rebake
+
+& [ProductReadiness] is the current product readiness statement
+  + [ready_now] is P1 semantic authority and source lineage as a planning authority
+  + [ready_now] is P2 schema design as a deeper-reasoning slice family
+  + [ready_now] is P3 operator-contract template design as a deeper-reasoning slice family
+  + [ready_next] is P4 readiness and packetization after schema and operator contracts stabilize
+  + [ready_next] is P8 fixture pack after schema and operator contracts stabilize
+  + [blocked] is P5 LangGraph runtime until operator contracts and fixture records exist
+  + [blocked] is P6 production surfaces until kernel fixtures and projection contracts exist
+  + [blocked] is P7 runtime coordination until record schemas and claim protocols exist
+  + [deferred] is P9 operations-manager safety until frontiers 1 through 7 mature
+
+  = must: start with deeper-reasoning work for schema, operator contracts, and storage decision
+  = must: classify fixture and projection implementation as GPT-5.3-Codex-Spark-suitable only after contract stabilization
+  = must: not begin live process, GPU, or job-control operations without a signed safety specification
+
+& [WholePieDefinitionOfHealthyDevelopment] is the standing product-development standard
+  + [healthy_state] is whole product overview current
+  + [healthy_state] is portion map current
+  + [healthy_state] is support gaps explicit
+  + [healthy_state] is ready slices generated from current readiness
+  + [healthy_state] is completed work reviewed for support_delta and requirement_delta
+  + [healthy_state] is stale slices superseded promptly
+  + [healthy_state] is proof and faults recorded where they can shape future slices
+
+  = must: treat rebaking the whole as a normal response to learning
+  = must: treat slice churn without completion review as a process fault
+  = must: prefer preparation slices over forcing implementation through unresolved uncertainty
