@@ -9,20 +9,23 @@ State UUID: 57dd2c14-4401-4669-96b6-97750e5d6492
 @ [completion_review] docs/reviews/FSC2_S02_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC2_S03_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC2_S04_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/FSC2_S05_Completion_Review.v1.sop
 @ [accepted_output] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
 @ [accepted_output] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
 @ [accepted_output] docs/operators/Work_Packet_Generation_Contract.v1.sop
 @ [accepted_output] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [accepted_output] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
 
 & [FSC2WorkStateV1] is the current derived work state for FSC2 planning coordination
   + [chunk_ref] is FSC2 planning coordination
-  + [state_basis] is docs/reviews/FSC2_S04_Completion_Review.v1.sop
+  + [state_basis] is docs/reviews/FSC2_S05_Completion_Review.v1.sop
   + [accepted_boundary_input] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
   + [accepted_slice] is FSC2-S01
   + [accepted_slice] is FSC2-S02
   + [accepted_slice] is FSC2-S03
   + [accepted_slice] is FSC2-S04
+  + [accepted_slice] is FSC2-S05
   + [accepted_output] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is B7C59160EEA6C46F0567AF16BEFB0315FDB46CB12BD5B1D46C24CF8064C29B5B
   + [accepted_output] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
@@ -31,14 +34,15 @@ State UUID: 57dd2c14-4401-4669-96b6-97750e5d6492
   + [accepted_output_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
   + [accepted_output] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
   + [accepted_output_sha256] is D42450F6F518E270A0AEE584C55EEF8950CE726BAB10C78A5464D840800C6F17
-  + [current_ready_slice] is FSC2-S05
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is FSC2-S06 until FSC2-S05 accepted
+  + [accepted_output] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+  + [accepted_output_sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
+  + [current_ready_slice] is FSC2-S06
+  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
   + [gated_slice] is FSC2-S07 until FSC2-S06 accepted
   + [downstream_gate] is FSC3 remains gated until FSC2-S07 accepts FSC2_Planning_Coordination_Pack.v1.sop
   + [unresolved_external_dependency_set] is empty_after_gate
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run FSC2-S05 before FSC2-S06 or later FSC2 slices
-  = must: mark this state stale if the FSC1 foundation contract pack, FSC2 final slice surface, FSC2-S01 through FSC2-S04 outputs, or their completion reviews change
+  = must: run FSC2-S06 before FSC2-S07
+  = must: mark this state stale if the FSC1 foundation contract pack, FSC2 final slice surface, FSC2-S01 through FSC2-S05 outputs, or their completion reviews change

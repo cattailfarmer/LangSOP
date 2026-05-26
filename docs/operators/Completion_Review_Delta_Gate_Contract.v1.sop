@@ -1,0 +1,150 @@
+Subject: Completion Review Delta Gate Contract V1
+Date: 2026-05-26
+Operator Contract UUID: d0ef7d98-5eac-49f6-a821-36e3cb2c9e44
+
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [boundary_map] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+
+& [CompletionReviewDeltaGateContractV1] is the FSC2 contract for completed-work review and next-slice gate control
+  + [contract_id] is completion-review-delta-gate-contract-v1
+  + [contract_uuid] is d0ef7d98-5eac-49f6-a821-36e3cb2c9e44
+  + [slice_id] is FSC2-S05
+  + [authority_scope] is support_delta review, requirement_delta review, stale packet detection, contradiction detection, coordination blocker detection, next-slice gate update, and rebake triggers
+  + [implementation_scope] is operator contract only
+  + [readiness_dependency] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+  + [packet_dependency] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [coordination_dependency] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+
+  = must: prevent completed work from opening follow-on work until deltas and blockers are classified
+  = must: preserve stale, contradiction, conflict, and rebake causes as records or review fields
+  = must: allow next-slice gate opening only through accepted completion_review evidence
+  - never: implement review automation, mutate source files silently, run runtime graphs, render surfaces, or authorize operations control
+
+& [OperatorContract: completion_review_delta_gate] is the contract for classifying completed-work deltas before opening downstream work
+  + [operator_id] is completion_review_delta_gate
+  + [operator_version] is v1
+  + [operator_name] is Completion Review Delta Gate
+  + [operator_purpose] is evaluate completed work, packet obligations, support_delta, requirement_delta, stale outputs, contradictions, coordination blockers, and rebake triggers before a next slice or chunk may open
+  + [source_sop_ref] is platform/refinement/Feature_Requirement_Support.sop
+  + [source_sop_ref] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [source_sop_ref] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [source_sop_ref] is docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+  + [authority_basis_ref_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [authority_basis_ref_set] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [input_record_kind_set] is completion_review, work_packet, readiness_projection, coordination_claim, support_record, support_gap, requirement_record, proof_result, stale_projection, fault_record, authority_artifact, and operator_trace
+  + [output_record_kind_set] is completion_review, readiness_projection, support_gap, proof_result, stale_projection, fault_record, coordination_claim, and operator_trace
+  + [precondition_set] is completed work has a bounded work_packet or slice authority reference
+  + [precondition_set] is completed output hash or reviewed artifact identity is present
+  + [precondition_set] is support_delta is explicitly classified as accepted, blocked, stale, contradicted, not_applicable, or rebake_required
+  + [precondition_set] is requirement_delta is explicitly classified as accepted, blocked, stale, contradicted, not_applicable, or rebake_required
+  + [precondition_set] is packet stale_trigger_set has been checked
+  + [precondition_set] is coordination claims are active, compatible, released, or explicitly not required
+  + [precondition_set] is unresolved fault_record set is empty or the next gate remains blocked
+  + [precondition_set] is next-slice activation gate and model_route are explicit
+  + [postcondition_set] is accepted completion_review may open the next slice only when support_delta and requirement_delta are safe and no stale, contradiction, unresolved conflict, or fault blocker remains
+  + [postcondition_set] is blocked completion_review preserves required_resolution and keeps next gate closed
+  + [postcondition_set] is stale_projection appears when completed output, packet, readiness, authority, or coordination claim is stale
+  + [postcondition_set] is fault_record appears when false-ready next gate, hidden authority drift, invalid input shape, or operator contract violation is proven
+  + [postcondition_set] is rebake_required is recorded when requirement_delta changes the shape of downstream work
+  + [interrupt_condition_set] is authority_conflict, ambiguous_identity, missing_proof_route, stale_input, unsupported_scope, high_risk_operation, and human_override_required
+  + [fault_condition_set] is unreviewed_completion, false_ready_packet, stale_projection, invalid_input_shape, hidden_authority_drift, checkpoint_authority_confusion, forbidden_external_dependency, and operator_contract_violation
+  + [blocked_output_contract] is completion_review blocked with blocker_ref_set and required_resolution
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is clean_completion, support_delta_gap, requirement_delta_rebake, stale_packet, stale_output, contradicted_support, unresolved_claim_conflict, missing_review_hash, false_ready_next_gate, and hidden_authority_drift
+  + [forbidden_scope] is implementing review automation, running tests or commands, mutating source or completed outputs, assigning work, dispatching agents, implementing LangGraph nodes, rendering surfaces, or authorizing operations control
+
+  = must: never open a next gate when support_delta is blocked, stale, contradicted, or rebake_required
+  = must: never open a next gate when requirement_delta is blocked, stale, contradicted, or rebake_required
+  = must: never open a next gate while unresolved contested coordination_claim blocks the packet
+  = must: emit fault_record for false-ready next gate attempts
+
+& [DeltaClassificationMatrix] is the classification matrix for support_delta and requirement_delta
+  + [classification] is accepted when delta is reviewed, supported, non-stale, non-contradicted, and compatible with downstream assumptions
+  + [classification] is blocked when required support, proof, review hash, or coordination resolution is missing
+  + [classification] is stale when delta relies on stale source, stale packet, stale readiness, stale claim, or stale authority
+  + [classification] is contradicted when delta conflicts with accepted requirements, support, authority, packet obligations, or coordination claims
+  + [classification] is not_applicable when completed work produces no meaningful delta for that dimension
+  + [classification] is rebake_required when delta changes slice boundary, packet shape, dependency closure, model route, fixture expectations, or downstream chunk activation assumptions
+
+  = must: record support_delta and requirement_delta independently
+  = must: treat unknown delta as blocked rather than accepted
+
+& [NextGateDecisionMatrix] is the decision matrix for opening follow-on work
+  + [decision_case] is open_next_slice when completion_review is accepted, support_delta accepted or not_applicable, requirement_delta accepted or not_applicable, no stale output exists, no contradiction exists, no contested claim blocks the packet, no unresolved fault remains, and next gate target is explicit
+  + [decision_case] is keep_gate_blocked when support, requirement, proof, review hash, packet, or coordination evidence is incomplete
+  + [decision_case] is mark_stale when any accepted input, packet, readiness, output, proof, or claim freshness fails
+  + [decision_case] is mark_contradicted when completed work conflicts with accepted authority or packet obligations
+  + [decision_case] is rebake_before_next when work changes downstream boundary, expected outputs, fixture obligations, or model route
+  + [decision_case] is fault_false_ready when gate would open despite an active blocker
+
+  = must: preserve gate decision as completion_review, proof_result, stale_projection, or fault_record
+  = must: keep next gate closed unless open_next_slice is proven
+
+& [CompletionReviewRequiredFieldSet] is the required field set for completion_review records evaluated by this gate
+  + [required_field] is review_id
+  + [required_field] is reviewed_packet_ref or reviewed_slice_ref
+  + [required_field] is completed_output_ref_set
+  + [required_field] is completed_output_hash_set
+  + [required_field] is support_delta_classification
+  + [required_field] is requirement_delta_classification
+  + [required_field] is stale_output_review
+  + [required_field] is contradiction_review
+  + [required_field] is coordination_claim_review
+  + [required_field] is fault_review
+  + [required_field] is next_gate_decision
+  + [required_field] is model_route_for_next_work
+  + [required_field] is rebake_decision
+
+  = must: reject completion_review gate acceptance when any required field is absent
+
+& [RebakeTriggerSet] is the rebake trigger set for FSC2 completion reviews
+  + [rebake_trigger] is requirement_delta changes work boundary
+  + [rebake_trigger] is requirement_delta changes expected outputs
+  + [rebake_trigger] is requirement_delta changes fixture obligations
+  + [rebake_trigger] is support_delta invalidates readiness assumptions
+  + [rebake_trigger] is completed output introduces forbidden external dependency
+  + [rebake_trigger] is coordination conflict changes ownership boundary
+  + [rebake_trigger] is model_route changes from Spark-suitable to requires deeper reasoning or the reverse
+  + [rebake_trigger] is stale accepted input invalidates downstream packetization
+
+  = must: record rebake_required before minting or executing follow-on work
+
+& [FixtureObligationSet: completion_review_delta_gate] is the fixture requirement set for completion_review_delta_gate
+  + [fixture] is clean_completion expects accepted completion_review and open_next_slice
+  + [fixture] is support_delta_gap expects blocked completion_review and closed gate
+  + [fixture] is requirement_delta_rebake expects rebake_required and closed gate
+  + [fixture] is stale_packet expects stale_projection and closed gate
+  + [fixture] is stale_output expects stale_projection and closed gate
+  + [fixture] is contradicted_support expects fault_output or contradicted review and closed gate
+  + [fixture] is unresolved_claim_conflict expects blocked completion_review and closed gate
+  + [fixture] is missing_review_hash expects blocked_output
+  + [fixture] is false_ready_next_gate expects fault_output
+  + [fixture] is hidden_authority_drift expects fault_output
+
+& [CompletionReviewDeltaGateCoverageReview] is the FSC2-S05 coverage checklist
+  + [contract_present] is completion_review_delta_gate
+  + [delta_matrix_present] is DeltaClassificationMatrix
+  + [next_gate_matrix_present] is NextGateDecisionMatrix
+  + [required_field_set_present] is CompletionReviewRequiredFieldSet
+  + [rebake_trigger_set_present] is RebakeTriggerSet
+  + [fixture_obligation_set_present] is FixtureObligationSet:completion_review_delta_gate
+  + [requires_support_delta_classification] is true
+  + [requires_requirement_delta_classification] is true
+  + [requires_stale_output_review] is true
+  + [requires_contradiction_review] is true
+  + [requires_coordination_claim_review] is true
+  + [requires_fault_review] is true
+  + [forbidden_scope_absent] is review automation implementation
+  + [forbidden_scope_absent] is source mutation
+  + [forbidden_scope_absent] is dispatch implementation
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC2-S05 if a next gate can open without support_delta and requirement_delta classification
+  = must: open FSC2-S06 only after this contract is accepted by completion review
