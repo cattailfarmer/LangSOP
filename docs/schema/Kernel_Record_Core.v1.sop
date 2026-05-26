@@ -1,0 +1,315 @@
+Subject: Kernel Record Core V1
+Date: 2026-05-26
+Schema UUID: 2c9dc156-4d5d-49bc-a500-ebe06db00c10
+
+@ [slice_authority] docs/slices/FSC1_Final_Slices.v1.sop
+@ [canonical_slice_authority] docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+@ [v2_canonical_authority] docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+
+& [SchemaRecord: KernelRecordCoreV1] is the accepted common logical schema for LangSOP authority-kernel records
+  + [schema_id] is kernel-record-core-v1
+  + [schema_uuid] is 2c9dc156-4d5d-49bc-a500-ebe06db00c10
+  + [slice_id] is FSC1-S01
+  + [authority_scope] is common KernelRecord fields, shared enumerations, lineage invariants, freshness invariants, and acceptance checklist
+  + [implementation_scope] is logical schema only
+  + [next_dependent_slice] is FSC1-S02 record-specific schema and natural-key matrix
+
+  = must: define the common field contract before record-specific schemas are finalized
+  = must: distinguish source records, derived projections, accepted authority, proof-backed records, stale records, contradicted records, and invalidated records
+  = must: preserve source_ref_set for every claim-bearing or derived record
+  = must: preserve lineage_edge_set for every derived, projected, superseded, contradicted, invalidated, reviewed, or proof-backed record
+  = must: preserve stale, contradicted, and invalidated records as trace
+  = must: route unresolved identity, authority conflict, or freshness uncertainty to a blocked or fault-bearing record rather than hiding it
+  - never: choose physical storage in this schema
+  - never: define record-specific payload fields in this schema
+  - never: implement LangGraph nodes, UI surfaces, dispatch, or operations control from this schema alone
+
+| [KernelRecordKind] is (
+  source_log |
+  log_entry |
+  citation_ref |
+  narrative_node |
+  understanding_anchor |
+  capability_node |
+  requirement_record |
+  support_record |
+  support_gap |
+  authority_artifact |
+  coordination_claim |
+  operator_contract |
+  operator_trace |
+  work_packet |
+  completion_review |
+  readiness_projection |
+  stale_projection |
+  proof_result |
+  fault_record
+)
+
+| [AuthorityState] is (
+  none |
+  source_only |
+  narrative_projection |
+  accepted_decision |
+  signed_sjs |
+  proof_backed |
+  stale_projection |
+  contradicted |
+  invalidated |
+  human_override
+)
+
+| [ReadinessState] is (
+  not_applicable |
+  desired |
+  source_preserved |
+  specified |
+  supported |
+  blocked |
+  deferred |
+  ready_to_packetize |
+  packetized |
+  assigned |
+  implemented |
+  verified |
+  stale |
+  superseded |
+  contradicted
+)
+
+| [RecordStatus] is (
+  draft |
+  active |
+  accepted |
+  gated |
+  blocked |
+  completed |
+  verified |
+  stale |
+  superseded |
+  contradicted |
+  invalidated
+)
+
+| [NaturalKeyState] is (
+  accepted |
+  candidate |
+  composite |
+  not_applicable |
+  unresolved |
+  superseded
+)
+
+| [FreshnessState] is (
+  current |
+  stale |
+  unknown |
+  not_applicable |
+  invalidated
+)
+
+| [LineageEdgeKind] is (
+  source_of |
+  derived_from |
+  projected_from |
+  cites |
+  supports |
+  contradicts |
+  supersedes |
+  invalidates |
+  proved_by |
+  reviewed_by |
+  gates |
+  activates |
+  generated |
+  assigned_to
+)
+
+& [KernelRecord] is the common logical record envelope for every authority-kernel record
+  + [record_id] is the durable surrogate identifier for one record instance
+  + [record_kind] is one KernelRecordKind value
+  + [natural_key] is the domain-meaning identity descriptor when meaningful, or a declared not_applicable or unresolved identity descriptor
+  + [subject_ref] is the bounded subject the record is about
+  + [authority_state] is one AuthorityState value
+  + [source_ref_set] is the source, evidence, proof, or authority artifact references supporting the record
+  + [lineage_edge_set] is the derivation, projection, citation, support, contradiction, supersession, invalidation, proof, review, gate, activation, generation, or assignment relation set
+  + [freshness_rule] is the rule that classifies the record as current, stale, unknown, not_applicable, or invalidated
+  + [status] is one RecordStatus value
+
+  = must: include all nine common fields on every KernelRecord
+  = must: reject a record envelope that omits record_id, record_kind, natural_key, subject_ref, authority_state, source_ref_set, lineage_edge_set, freshness_rule, or status
+  = must: treat payload fields as record-kind-specific material owned by FSC1-S02 or later slices
+  = must: keep common fields stable enough that physical storage can change without changing logical meaning
+
+& [FieldContract: record_id] is the durable surrogate identity field
+  + [field_name] is record_id
+  + [field_requirement] is required
+  + [field_value] is an immutable string unique inside the LangSOP authority-kernel namespace
+  + [recommended_format] is krn:{record_kind}:{uuid}
+  + [identity_role] is technical reference, not domain truth
+
+  = must: remain stable for the lifetime of the record
+  = must: be distinct from natural_key
+  = must: survive physical storage migration unchanged
+  - never: treat record_id as the only meaningful identity when a domain natural_key exists
+
+& [FieldContract: record_kind] is the closed vocabulary field for record category
+  + [field_name] is record_kind
+  + [field_requirement] is required
+  + [field_value] is one KernelRecordKind value
+  + [schema_role] is selects the record-specific payload contract and lifecycle interpretation
+
+  = must: be set before validating record-specific payload
+  = must: be changed only by superseding the record, not by mutating the record in place
+  - never: overload one record_kind to carry unrelated payload shapes
+
+& [FieldContract: natural_key] is the domain identity descriptor
+  + [field_name] is natural_key
+  + [field_requirement] is required
+  + [common_shape] is namespace, value, key_state, stability_window, identity_authority, and rationale
+  + [key_state] is one NaturalKeyState value
+
+  = must: preserve domain identity when it exists and remains meaningful
+  = must: use key_state unresolved when identity is not yet known
+  = must: use key_state not_applicable only with rationale
+  = must: preserve prior natural_key through lineage when natural identity changes
+  = must: defer record-specific natural-key rules to FSC1-S02
+  - never: erase meaningful natural identity by relying only on record_id
+
+& [FieldContract: subject_ref] is the bounded subject reference
+  + [field_name] is subject_ref
+  + [field_requirement] is required
+  + [common_shape] is subject_namespace, subject_id, subject_label, and subject_scope
+  + [scope_role] is identifies what the record is about without embedding the whole subject payload
+
+  = must: point to a bounded subject, not a vague project area
+  = must: preserve subject_scope when a record concerns a slice, chunk, capability, source, artifact, operator, surface, or proof
+  = must: emit ambiguous_identity fault or blocked status when subject_ref cannot be resolved
+
+& [FieldContract: authority_state] is the authority classification field
+  + [field_name] is authority_state
+  + [field_requirement] is required
+  + [field_value] is one AuthorityState value
+  + [default_for_nonclaim_records] is none
+
+  = must: use none for purely mechanical or non-claim-bearing records
+  = must: use source_only for preserved source that has not been interpreted into authority
+  = must: use narrative_projection for narrative meaning that is derived but not governing implementation alone
+  = must: use accepted_decision only when a decision has an explicit source_ref_set and scope
+  = must: use signed_sjs only when a valid satisfaction signature with protocol UUID ad10f10f-d506-48ef-a805-f8b0a133766c is present
+  = must: use proof_backed only when proof_result support is present or an explicit validated absence proof applies
+  = must: use stale_projection when freshness_rule fails on derived material
+  = must: use contradicted when support or proof conflicts with the record
+  = must: use invalidated when the record no longer governs current work
+  = must: use human_override only with explicit user source, scope, and override limit
+
+& [FieldContract: source_ref_set] is the evidence and authority reference set
+  + [field_name] is source_ref_set
+  + [field_requirement] is required
+  + [common_shape] is one or more SourceRef entries or an explicit empty_allowed rationale
+  + [empty_allowed] is only for records whose authority_state is none and whose record_kind is mechanical trace material without claim-bearing content
+
+  = must: be non-empty for source_only, narrative_projection, accepted_decision, signed_sjs, proof_backed, stale_projection, contradicted, invalidated, or human_override records
+  = must: cite the preserved source for source-derived records
+  = must: cite proof_result records for proof_backed records
+  = must: cite invalidating or contradicting records when authority_state is contradicted or invalidated
+  - never: accept trust-bearing records with silent or implied sources
+
+& [SourceRef] is one source, proof, artifact, or authority reference
+  + [source_ref_id] is a stable local reference identifier
+  + [source_kind] is file, record, signature, proof, conversation_log, human_override, external_url, command_output, or explicit_absence
+  + [source_locator] is path, record_id, URL, command name, or absence declaration
+  + [source_hash] is required when the referenced file or generated artifact is intended to be immutable for validation
+  + [source_scope] is the part of the source that supports the record
+
+  = must: include enough locator material for later review
+  = must: include hash when cited source stability matters to authority
+  = must: preserve explicit_absence only when absence has been checked and recorded
+
+& [FieldContract: lineage_edge_set] is the record relation set
+  + [field_name] is lineage_edge_set
+  + [field_requirement] is required
+  + [common_shape] is zero or more LineageEdge entries
+  + [empty_allowed] is only for root source records that cite preserved source in source_ref_set and have no derivation relation yet
+
+  = must: be non-empty for derived projections, operator outputs, work packets, completion reviews, proof-backed records, stale projections, superseded records, contradicted records, and invalidated records
+  = must: preserve derivation and projection edges separately
+  = must: preserve contradiction, invalidation, and supersession edges as trace
+  - never: collapse lineage into prose-only explanation when an edge can be declared
+
+& [LineageEdge] is one typed relation from a record to another record, source, artifact, proof, or subject
+  + [edge_kind] is one LineageEdgeKind value
+  + [from_ref] is the record, source, artifact, proof, or subject where the relation begins
+  + [to_ref] is the record, source, artifact, proof, or subject where the relation lands
+  + [edge_scope] is the claim, field, payload, or state the relation concerns
+  + [edge_rationale] is why the relation exists
+
+  = must: preserve direction
+  = must: cite source_ref_set when edge_rationale depends on external evidence
+  = must: use invalidates, contradicts, or supersedes explicitly instead of replacing older records silently
+
+& [FieldContract: freshness_rule] is the record currentness rule
+  + [field_name] is freshness_rule
+  + [field_requirement] is required
+  + [common_shape] is freshness_state, freshness_subject_set, trigger_set, stale_action, and last_checked_ref
+  + [freshness_state] is one FreshnessState value
+
+  = must: define what makes the record stale or invalidated
+  = must: use not_applicable only for immutable root records that cannot become stale under current authority rules
+  = must: use unknown when no adequate freshness rule has been defined
+  = must: mark derived projections stale when any source subject in freshness_subject_set changes
+  = must: emit stale_projection or fault_record when stale_action cannot be safely applied
+
+& [FieldContract: status] is the lifecycle status field
+  + [field_name] is status
+  + [field_requirement] is required
+  + [field_value] is one RecordStatus value
+  + [status_role] is operational lifecycle, distinct from authority_state and readiness_state
+
+  = must: keep status distinct from authority_state
+  = must: keep status distinct from readiness_state
+  = must: preserve stale, superseded, contradicted, and invalidated states rather than deleting records
+  = must: use blocked when required identity, authority, source, lineage, or freshness data is unresolved
+
+& [KernelRecordInvariantSet] is the cross-record invariant set for KernelRecordCoreV1
+  + [invariant] is all records include the nine common fields
+  + [invariant] is record_id is immutable after creation
+  + [invariant] is record_kind changes require supersession
+  + [invariant] is natural_key does not replace record_id and record_id does not replace natural_key
+  + [invariant] is claim-bearing and derived records require source_ref_set
+  + [invariant] is derived, projected, proof-backed, stale, superseded, contradicted, and invalidated records require lineage_edge_set
+  + [invariant] is freshness_rule must be explicit even when freshness_state is not_applicable
+  + [invariant] is status, authority_state, and readiness_state are separate concepts
+  + [invariant] is records are superseded or invalidated rather than rewritten when identity, authority, or proof changes materially
+
+& [SchemaAcceptanceChecklist: KernelRecordCoreV1] is the FSC1-S01 verification checklist
+  + [required_field_present] is record_id
+  + [required_field_present] is record_kind
+  + [required_field_present] is natural_key
+  + [required_field_present] is subject_ref
+  + [required_field_present] is authority_state
+  + [required_field_present] is source_ref_set
+  + [required_field_present] is lineage_edge_set
+  + [required_field_present] is freshness_rule
+  + [required_field_present] is status
+  + [enum_present] is KernelRecordKind
+  + [enum_present] is AuthorityState
+  + [enum_present] is ReadinessState
+  + [invariant_present] is lineage and freshness invariants
+  + [forbidden_scope_absent] is physical storage decision
+  + [forbidden_scope_absent] is runtime graph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations-control decision
+
+  = must: accept FSC1-S01 only when all checklist items are satisfied
+  = must: open FSC1-S02 only after this checklist is reviewed in a completion review
+
+& [FSC1S01OutputBoundary] is the handoff boundary from FSC1-S01 to FSC1-S02
+  + [accepted_output] is Kernel_Record_Core.v1.sop
+  + [enables] is record-specific schema and natural-key matrix drafting
+  + [does_not_enable] is storage backend decision without FSC1-S02 and FSC1-S03
+  + [does_not_enable] is operator contract finalization without FSC1-S02
+  + [does_not_enable] is runtime graph, surface, dispatch, or operations work
+
+  = must: treat this file as a logical schema input, not runtime proof
