@@ -1,0 +1,107 @@
+Subject: IR4 LangGraph Proof Runtime Activation Pack V1
+Date: 2026-05-26
+Activation Pack UUID: b7c0be35-ad14-408c-8d89-f3fb4e8edc3f
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [runtime_boundary_import] docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [graph_implementation_contract] docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+@ [checkpoint_interrupt_policy] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+@ [fixture_plan] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+@ [implementation_plan] docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+
+& [IR4LangGraphProofRuntimeActivationPackV1] is the activation pack for future bounded IR4 runtime graph implementation
+  + [activation_pack_id] is ir4-langgraph-proof-runtime-activation-pack-v1
+  + [activation_pack_uuid] is b7c0be35-ad14-408c-8d89-f3fb4e8edc3f
+  + [source_chunk] is IR4 LangGraph proof runtime final planning
+  + [activation_pack_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation pack only
+  + [safety_limit] is no live operations control authorized
+
+  = must: require a future implementation activation slice surface before creating code, fixture files, expected ledgers, generated outputs, or dependency changes
+  = must: keep true LangGraph package installation behind an explicit dependency-authorizing activation slice
+  = must: keep checkpoint and graph state non-authoritative
+  - never: implement runtime graph code, install dependencies, create fixtures, create expected ledgers, create generated checkpoints, authorize operations control, or authorize live machine control in this pack
+
+& [AcceptedIR4FinalPlanningDigestSet] is the accepted hash ledger exported by IR4 final planning
+  + [accepted_output] is docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_output_sha256] is A96BC39A063B9598E66D5F812F2917C0915A1E80596F8364A03F49F788AEC2C0
+  + [accepted_output] is docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+  + [accepted_output_sha256] is AF1C1813832D16BE02609223CF4E67415170991408D32407B4D002EAE219FEBB
+  + [accepted_output] is docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+  + [accepted_output_sha256] is F6DDB19E169F354D750837BA60B007C7A655600564AF588F14F1FA30904549DE
+  + [accepted_output] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is 749FB2E2ECCCE7DB86921DDAFD7AC90E4E49F879FF705E84205F8E1064346E97
+  + [accepted_output] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is D2B3D58DBFFAA0C12FF561441F01F11ECDFBA89C1E362D933BE1EF60FAD54EC3
+  + [accepted_output] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is 638BF71EFBCEB6BF76C18ACE3AC2C5930775C2C72002FA7CF0A655AE59EDADB8
+
+  = must: mark this activation pack stale if any listed output changes
+
+& [AcceptedIR4FinalPlanningReviewDigestSet] is the accepted completion review hash ledger
+  + [accepted_review] is docs/reviews/IR4_Final_Slice_Minting_Review.v1.sop
+  + [accepted_review_sha256] is 365272FCE3EE0E4CBFC3C0ACE731B5E9C73491FBA1BED74F25AF6A670BD23B9E
+  + [accepted_review] is docs/reviews/IR4_S01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 4353D844916D90138A63D05C76A8234B676358CAFDAB61D81079F88317D655F4
+  + [accepted_review] is docs/reviews/IR4_S02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 4F094813C494CE9A2AA0CD2D239C675D313646B62AB1F293997307AFA4766FC4
+  + [accepted_review] is docs/reviews/IR4_S03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 478C00F69B9EE0BC5CCDBFB758BFD4DB592721DAF240EBC65C34D8F77BF34557
+  + [accepted_review] is docs/reviews/IR4_S04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is AA5004F85EF76487C0E41FC9940D58FC91C44FC9FA53CB2F0C0DBCF46B480E5B
+  + [accepted_review] is docs/reviews/IR4_S05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is FC880C46B328253BB6E5209DA3862B6989EE6556153E7413464906A017E51B7B
+
+  = must: mark this activation pack stale if any listed review changes
+
+& [FutureIR4ImplementationActivationShape] is the recommended future activation slice shape
+  + [future_activation_slice] is IR4-IA01 bounded implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR4-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR4-IA03 graph state and contract model implementation
+  + [future_activation_slice] is IR4-IA04 checkpoint and interrupt model implementation
+  + [future_activation_slice] is IR4-IA05 pure graph runner implementation without external LangGraph dependency
+  + [future_activation_slice] is IR4-IA06 fixture runner and generated path policy implementation
+  + [future_activation_slice] is IR4-IA07 contract tests and generated-output proof
+  + [future_activation_slice] is IR4-IA08 dependency-authorized LangGraph adapter decision or deferral review
+  + [future_activation_slice] is IR4-IA09 implementation completion review and proof pack
+
+  = must: mint implementation activation slices before writing code
+  = must: keep package installation gated until the dependency-authorized adapter decision or deferral review
+
+& [FutureImplementationSafetyBoundary: IR4LangGraphProofRuntime] is the safety boundary for future implementation activation
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+  + [allowed_dependency_route] is future dependency-authorizing activation slice only
+  + [allowed_generated_output_route] is future generated-output proof slice only
+
+  = must: fail any future activation review that silently installs dependencies or exposes live-control APIs
+
+& [DownstreamIR5GateExport] is the downstream readiness boundary exported by IR4 final planning
+  + [IR5_state] is gated_until_IR4_bounded_runtime_graph_implementation_review_is_accepted_or_a_rebake_reclassifies_IR5_scope
+  + [IR5_model_route] is requires deeper reasoning for surface projection authority display conflicts, then GPT-5.3-Codex-Spark-suitable for bounded surface fixtures after IR4 proof exists
+  + [IR5_boundary_input_future] is IR4 implementation proof pack after future implementation activation completion
+
+  = must: prevent false-ready IR5 surface work before runtime graph implementation proof exists
+
+& [IR4ActivationPackCoverageReview] is the coverage checklist for IR4 activation pack
+  + [accepted_final_planning_digest_set_present] is true
+  + [accepted_review_digest_set_present] is true
+  + [future_activation_shape_present] is true
+  + [future_implementation_safety_boundary_present] is true
+  + [downstream_IR5_gate_export_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept this activation pack only when all checklist items are satisfied

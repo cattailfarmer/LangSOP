@@ -1,0 +1,110 @@
+Subject: IR4 Completion Review V1
+Date: 2026-05-26
+Review UUID: 0b708c6f-22a0-44d9-9965-ff19b2a74e15
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [completed_output] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+@ [completed_review] docs/reviews/IR4_S01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_S02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_S03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_S04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_S05_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR4-S06] is the final planning completion review for IR4 LangGraph proof runtime
+  + [slice_id] is IR4-S06
+  + [slice_name] is completion review and implementation activation pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [completed_output_sha256] is 60ABF65E6B81CF5FA4AE8883D03CD6B1751F4A5A3EE38BA17FB9A1F172FAA9BD
+  + [completed_output] is docs/reviews/IR4_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR4 final planning accepted and implementation activation slice minting may open
+  + [next_gate_result] is IR4 implementation activation slice minting may open
+  + [next_model_route] is requires deeper reasoning for implementation activation slice minting; later bounded slices may be GPT-5.3-Codex-Spark-suitable when scope is isolated
+
+  = must: treat this review and activation pack as gate-opening evidence for IR4 implementation activation slice minting only
+  = must: rerun IR4-S06 if the activation pack, accepted IR4 outputs, fixture plan, implementation plan, or completion reviews change
+  = must: keep implementation code, fixture source, expected ledger, generated output, dependency installation, operations control, and live machine control unauthorized until explicit implementation activation slices open them
+
+& [IR4CompletionVerification] is the verification result for the full IR4 final planning pass
+  + [accepted_final_slice] is IR4-S01
+  + [accepted_final_slice] is IR4-S02
+  + [accepted_final_slice] is IR4-S03
+  + [accepted_final_slice] is IR4-S04
+  + [accepted_final_slice] is IR4-S05
+  + [accepted_final_slice] is IR4-S06
+  + [runtime_boundary_import_status] is accepted
+  + [graph_implementation_contract_status] is accepted
+  + [checkpoint_interrupt_policy_status] is accepted
+  + [fixture_plan_status] is accepted
+  + [implementation_plan_status] is accepted
+  + [activation_pack_status] is accepted
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR4CompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+
+& [SupportDelta: IR4-S06] is the support delta produced by IR4 final planning completion
+  + [new_support_record] is IR4 final planning supports implementation activation slice minting for bounded runtime graph proof work
+  + [new_support_record] is dependency installation remains gated until a future dependency-authorizing activation slice
+  + [new_support_record] is downstream IR5 remains gated until future IR4 implementation proof is accepted
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-S06] is the requirement delta produced by IR4 final planning completion
+  + [requirement_delta] is IR4 implementation activation slice minting may open and requires deeper reasoning
+  + [requirement_delta] is future bounded runtime model, fixture, and test implementation slices may be GPT-5.3-Codex-Spark-suitable only after activation slices isolate scope
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, generated output, dependency installation, operations control, or live machine control is authorized by IR4 final planning completion
+  + [requirement_delta] is no rebake required before implementation activation slice minting
+
+& [StalenessAndContradictionReview: IR4-S06] is the final staleness review for IR4 final planning
+  + [stale_source_found] is false
+  + [stale_accepted_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [false_ready_implementation_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR4 final planning stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR4-S06] is the final fault review for IR4 final planning
+  + [generated_projection_authority_leak_found] is false
+  + [checkpoint_authority_promotion_found] is false
+  + [dependency_installation_leak_found] is false
+  + [implementation_code_leak_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4S06Accepted] is accepted
+    @ [support] [IR4CompletionVerification]
+    @ [support] [SupportDelta: IR4-S06]
+    @ [support] [RequirementDelta: IR4-S06]
+    @ [support] [StalenessAndContradictionReview: IR4-S06]
+    @ [support] [FaultReview: IR4-S06]
+
+& [NextChunkGate: IR4-Implementation-Activation] is opened_as_slice_minting_only
+  + [opened_chunk] is IR4 implementation activation slice minting
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 60ABF65E6B81CF5FA4AE8883D03CD6B1751F4A5A3EE38BA17FB9A1F172FAA9BD
+  + [activation_state] is ready_for_implementation_activation_slice_minting
+  + [model_route] is requires deeper reasoning
+  + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after implementation activation slices are accepted and implementation tasks are bounded
+  + [safety_limit] is no live operations control authorized
+
+  = must: mint IR4 implementation activation slices before writing runtime graph code or installing dependencies
+  = must: keep operations control and live machine control unauthorized
