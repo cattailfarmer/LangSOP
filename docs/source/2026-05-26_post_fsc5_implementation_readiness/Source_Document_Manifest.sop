@@ -1,0 +1,39 @@
+Subject: Post FSC5 Implementation Readiness Source Manifest
+Date: 2026-05-26
+Manifest UUID: 01566e74-a8ac-40e8-abc6-bb4e77e1dc87
+
+& [SourceDocumentManifest: PostFSC5ImplementationReadiness] is the source preservation manifest for the post-FSC5 implementation readiness specification
+  + [dictated_source] is docs/source/2026-05-26_post_fsc5_implementation_readiness/Post_FSC5_Implementation_Readiness_Source.sop
+    + [sha256] is 092A113E1CF5797CCCF305D520274E191FE8F4A8DF9027811CD24074F1AD3323
+    + [source_role] is preserved manager-derived rebake source after FSC1 through FSC5 acceptance
+  + [authority_source] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+    + [sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
+    + [source_role] is accepted foundation contract pack
+  + [authority_source] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+    + [sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+    + [source_role] is accepted planning coordination pack
+  + [authority_source] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+    + [sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+    + [source_role] is accepted runtime graph proof pack
+  + [authority_source] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+    + [sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+    + [source_role] is accepted surface projection pack
+  + [authority_source] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+    + [sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+    + [source_role] is accepted operations safety pack
+  + [authority_source] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+    + [sha256] is CFD6DE0F1C0C1DF20917B2B9CBC2B80AE9C48EF6B79B7386BEFF40C124EC7402
+    + [source_role] is whole-pie product overview
+  + [authority_source] is docs/planning/Portion_And_Slice_Map.v1.sop
+    + [sha256] is 8601CDC316761D6C42731EEFC4727ED66883CD8F17FDA3822B8BE8280344E8CE
+    + [source_role] is portion and slice map
+  + [authority_source] is docs/planning/Capability_Field.v2.sop
+    + [sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+    + [source_role] is capability field
+  + [canonical_target] is docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+  + [surface_target] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+
+  = must: preserve this manifest as source lineage for post-FSC5 implementation readiness planning
+  = must: invalidate the post-FSC5 readiness surface if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not implementation authority
+  - never: use this manifest to authorize operations control or live machine control

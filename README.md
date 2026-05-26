@@ -25,6 +25,8 @@ Current planning authority:
 - `docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop`
 - `docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop`
 - `docs/slices/FSC5_Final_Slices.v1.sop`
+- `docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop`
+- `docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop`
 
 The v2 pass preserves the initial specification as source snapshots, expands it through a seven-fold specification explosion, and leaves the project ready for kernel schema and operator-contract design. Runtime code still requires solution records, fixtures, and proof before it can claim implementation authority.
 
@@ -32,4 +34,4 @@ The working development pattern is "whole-pie first": keep the product overview 
 
 The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is accepted as a boundary input, FSC2 planning coordination has been minted into final slices, and downstream chunks stay gated until their upstream contract packs are accepted.
 
-FSC1, FSC2, FSC3, FSC4, and FSC5 have been minted, executed, reviewed, and accepted. The current accepted boundary output is `docs/planning/FSC5_Operations_Safety_Pack.v1.sop`. FSC5 is a safety boundary for future operations implementation planning only; no operations control or live machine control is authorized.
+FSC1, FSC2, FSC3, FSC4, and FSC5 have been minted, executed, reviewed, and accepted. The current accepted boundary output is `docs/planning/FSC5_Operations_Safety_Pack.v1.sop`. The post-FSC5 implementation readiness surface is accepted for `IR1` final-slice minting, which requires deeper reasoning. No operations control or live machine control is authorized.

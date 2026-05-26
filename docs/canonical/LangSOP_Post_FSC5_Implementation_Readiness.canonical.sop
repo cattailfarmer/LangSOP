@@ -1,0 +1,88 @@
+Subject: LangSOP Post FSC5 Implementation Readiness Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_post_fsc5_implementation_readiness/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-26_post_fsc5_implementation_readiness/Post_FSC5_Implementation_Readiness_Source.sop
+@ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [foundation_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [runtime_graph_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [CanonicalRecord: PostFSC5ImplementationReadiness] is the processed planning authority for the post-FSC5 implementation readiness surface
+  + [canonical_uuid] is df137ce3-6355-45d2-bec3-e0fadb97dab4
+  + [source_manifest_uuid] is 01566e74-a8ac-40e8-abc6-bb4e77e1dc87
+  + [surface_uuid] is 0608e6ff-ecb3-4ded-86a5-3b8d59670410
+  + [authority_scope] is post-FSC5 implementation chunk order, chunk readiness, gating rules, model routing, forbidden scope, expected outputs, and verification obligations
+  + [implementation_scope] is implementation-readiness planning authority only
+  + [depends_on] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [depends_on] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [depends_on] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [depends_on] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [depends_on] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+  = must: use docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop as the current post-FSC5 readiness surface
+  = must: mint implementation slices before writing runtime code
+  = must: preserve accepted SOP contract packs as boundary inputs
+  = must: preserve that implementation planning does not authorize live operations control
+  - never: treat post-FSC5 readiness records as machine-control permission
+
+& [CanonicalImplementationReadinessChunkSet] is the post-FSC5 implementation chunk set
+  + [chunk] is IR1 implementation substrate and repository scaffold
+  + [chunk] is IR2 authority-file parser and SQLite projection builder
+  + [chunk] is IR3 operator harness and fixture runner
+  + [chunk] is IR4 LangGraph proof runtime implementation
+  + [chunk] is IR5 surface projection prototype
+  + [chunk] is IR6 coordination mailbox and claim projection prototype
+  + [chunk] is IR7 operations dry-run request simulator
+
+  = must: preserve this order unless completion review rebakes the implementation surface
+  = must: mark downstream chunks stale when an upstream accepted output changes
+
+& [CanonicalImplementationReadinessModelRouting] is the model-routing record
+  + [IR1] is requires deeper reasoning for repository shape, language/runtime choices, authority boundaries, and generated-artifact policy
+  + [IR2] is requires deeper reasoning for parser correctness and projection authority boundaries; GPT-5.3-Codex-Spark-suitable for bounded parser fixtures after IR2 contracts are accepted
+  + [IR3] is GPT-5.3-Codex-Spark-suitable after IR1 and IR2 accepted if fixture runner scope is bounded by accepted contracts
+  + [IR4] is requires deeper reasoning for LangGraph integration and interrupt semantics; GPT-5.3-Codex-Spark-suitable for bounded graph fixture implementation after proof contracts are accepted
+  + [IR5] is GPT-5.3-Codex-Spark-suitable for bounded projection prototype after fixture records exist, with deeper reasoning for authority display conflicts
+  + [IR6] is requires deeper reasoning for multi-agent coordination identity and conflict semantics
+  + [IR7] is requires deeper reasoning for operations dry-run simulator boundaries; no live operations control authorized
+
+  = must: state Spark suitability or deeper-reasoning requirement in every future work packet
+
+& [SatisfactionSignature: PostFSC5ImplementationReadiness] is the valid SJS satisfaction signature for the post-FSC5 implementation readiness specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is e11667f4-2ee1-4208-bba9-03a432479cb9
+  + [signed_subject] is docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_post_fsc5_implementation_readiness/Source_Document_Manifest.sop
+  + [source_sha256] is 092A113E1CF5797CCCF305D520274E191FE8F4A8DF9027811CD24074F1AD3323
+  + [source_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
+  + [source_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [source_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [source_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [source_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [source_sha256] is CFD6DE0F1C0C1DF20917B2B9CBC2B80AE9C48EF6B79B7386BEFF40C124EC7402
+  + [source_sha256] is 8601CDC316761D6C42731EEFC4727ED66883CD8F17FDA3822B8BE8280344E8CE
+  + [source_sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+  + [canonical_source_specification] is docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+  + [implementation_readiness_surface] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [processed_stage_set] is source_preserved, FSC1_boundary_imported, FSC2_boundary_imported, FSC3_boundary_imported, FSC4_boundary_imported, FSC5_boundary_imported, implementation_chunks_defined, gates_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for post-FSC5 implementation readiness; no live operations control authorized
+  + [invalidation_condition] is source_hash_change, accepted_pack_change, forbidden_external_dependency_found, missing_completion_review, live_control_leak, or implementation_contradiction
+
+  = must: reprocess when implementation chunk order, boundary inputs, safety limits, or required outputs materially change
+
+& [RegistryRecord: PostFSC5ImplementationReadiness] is the durable identity ledger for the post-FSC5 implementation readiness surface
+  + [registry_uuid] is 109a0f09-2dea-43a0-9786-3400e2f2af50
+  + [manifest_node_uuid] is 01566e74-a8ac-40e8-abc6-bb4e77e1dc87
+  + [canonical_node_uuid] is df137ce3-6355-45d2-bec3-e0fadb97dab4
+  + [surface_uuid] is 0608e6ff-ecb3-4ded-86a5-3b8d59670410
+  + [signature_uuid] is e11667f4-2ee1-4208-bba9-03a432479cb9
+  + [closure_review_uuid] is 026649f5-0dea-44b6-a2b7-9691ec42a344
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for implementation readiness slice minting and completion reviews

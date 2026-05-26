@@ -1,0 +1,90 @@
+Subject: Post FSC5 Implementation Readiness Rebake Review V1
+Date: 2026-05-26
+Review UUID: 026649f5-0dea-44b6-a2b7-9691ec42a344
+
+@ [source_manifest] docs/source/2026-05-26_post_fsc5_implementation_readiness/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [work_state] docs/state/Post_FSC5_Implementation_Readiness_State.v1.sop
+
+& [RebakeReview: PostFSC5ImplementationReadiness] is the completed-work review for the post-FSC5 implementation readiness rebake
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_post_fsc5_implementation_readiness/Source_Document_Manifest.sop
+  + [completed_output_sha256] is AA20C0A8AB369545DC599B51D7AAAE7BC1C04070EA934EADC96441408E6A9B20
+  + [completed_output] is docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+  + [completed_output_sha256] is EA3EF2515A90CCAC96ACA76E199C96FF39BDC9AA1568C253B3C33E1807A2EA0B
+  + [completed_output] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [completed_output_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR1 may be final-sliced
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR1 final-slice minting
+  = must: rerun this rebake if any accepted FSC1 through FSC5 pack or the implementation readiness source changes
+
+& [VerificationOracleResult: PostFSC5ImplementationReadiness] is the verification result for implementation readiness rebake coverage
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [accepted_pack_imported] is FSC1FoundationContractPackV1
+  + [accepted_pack_imported] is FSC2PlanningCoordinationPackV1
+  + [accepted_pack_imported] is FSC3RuntimeGraphProofPackV1
+  + [accepted_pack_imported] is FSC4SurfaceProjectionPackV1
+  + [accepted_pack_imported] is FSC5OperationsSafetyPackV1
+  + [ready_chunk] is IR1 implementation substrate and repository scaffold
+  + [gated_chunk] is IR2 authority-file parser and SQLite projection builder
+  + [gated_chunk] is IR3 operator harness and fixture runner
+  + [gated_chunk] is IR4 LangGraph proof runtime implementation
+  + [gated_chunk] is IR5 surface projection prototype
+  + [gated_chunk] is IR6 coordination mailbox and claim projection prototype
+  + [gated_chunk] is IR7 operations dry-run request simulator
+  + [forbidden_scope_absent] is runtime code implementation
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is live machine control
+
+  ! [PostFSC5ImplementationReadinessVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+    @ [support] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+
+& [SupportDelta: PostFSC5ImplementationReadiness] is the support delta produced by this rebake
+  + [new_support_record] is PostFSC5ImplementationReadinessSurfaceV1 replaces stale FinalSlicingSurfaceV1 as the current manager view after FSC5 closure
+  + [new_support_record] is IR1 is ready for final-slice minting
+  + [new_support_record] is IR2 through IR7 are visible and gated
+  + [support_status] is accepted
+
+& [RequirementDelta: PostFSC5ImplementationReadiness] is the requirement delta produced by this rebake
+  + [requirement_delta] is IR1 must split repository scaffold work into final slices before code scaffolding
+  + [requirement_delta] is IR1 requires deeper reasoning
+  + [requirement_delta] is every future work packet must state Spark suitability or deeper-reasoning requirement
+  + [requirement_delta] is no live operations control authorized
+  + [requirement_delta] is no rebake required before IR1 slice minting
+
+& [FaultReview: PostFSC5ImplementationReadiness] is the fault review for this rebake
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [runtime_implementation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [stale_final_surface_visible_without_replacement_found] is false
+
+  ! [PostFSC5ImplementationReadinessAccepted] is accepted
+    @ [support] [VerificationOracleResult: PostFSC5ImplementationReadiness]
+    @ [support] [SupportDelta: PostFSC5ImplementationReadiness]
+    @ [support] [RequirementDelta: PostFSC5ImplementationReadiness]
+    @ [support] [FaultReview: PostFSC5ImplementationReadiness]
+
+& [NextSliceGate: IR1] is opened
+  + [opened_chunk] is IR1 implementation substrate and repository scaffold
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is repository shape, package/runtime choices, generated-artifact policy, and authority boundaries affect all downstream implementation
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: mint IR1 final slices next unless user redirects or a new fault invalidates this review

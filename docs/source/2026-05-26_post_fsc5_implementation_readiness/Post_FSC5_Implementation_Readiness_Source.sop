@@ -1,0 +1,31 @@
+Subject: Post FSC5 Implementation Readiness Source
+Date: 2026-05-26
+Source UUID: edcb1139-b8cf-4167-bfba-29bd4154491c
+
+& [SourcePrompt: PostFSC5ImplementationReadiness] is the preserved manager-derived source for the post-FSC5 implementation rebake
+  + [source_kind] is manager-derived rebake source
+  + [origin] is long-haul project-manager session after FSC1 through FSC5 were accepted
+  + [purpose] is convert accepted contract packs into a new implementation-readiness slice surface without authorizing live operations control
+  + [reason] is the old final slicing surface names FSC1 as active and is stale after FSC1 through FSC5 closure
+
+  = must: preserve the accepted FSC1 through FSC5 packs as boundary inputs
+  = must: create a post-FSC5 implementation-readiness authority that distinguishes implementation scaffolding, executable harness work, runtime proof, projection adapters, and operations dry-run planning
+  = must: keep source SOP authority files as the source of truth and SQLite or generated indexes as rebuildable projections
+  = must: require implementation slices to be minted before code is written
+  = must: preserve LangGraph checkpoint state as execution state, not authority
+  = must: preserve surfaces as projections with authority_notice and freshness state
+  = must: preserve operations safety: no command execution, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent operations automation, or live machine control is authorized
+  = must: route future implementation slice families according to model routing: deeper reasoning for architecture, ambiguous authority, persistence, integration, and high-risk design; GPT-5.3-Codex-Spark-suitable for bounded fixtures, scaffold files, tests, lint, ledgers, and proof updates after boundary contracts are accepted
+
+& [RequiredPostFSC5ImplementationChunkSet] is the source-level chunk set for the next development stage
+  + [chunk_candidate] is IR1 implementation substrate and repository scaffold
+  + [chunk_candidate] is IR2 authority-file parser and SQLite projection builder
+  + [chunk_candidate] is IR3 operator harness and fixture runner
+  + [chunk_candidate] is IR4 LangGraph proof runtime implementation
+  + [chunk_candidate] is IR5 surface projection prototype
+  + [chunk_candidate] is IR6 coordination mailbox and claim projection prototype
+  + [chunk_candidate] is IR7 operations dry-run request simulator
+
+  = must: keep each implementation chunk dependency-closed or explicitly gated by accepted upstream outputs
+  = must: keep IR7 dry-run-only and non-mutating unless a separate future live-control authority is source-preserved, SJS-processed, and accepted
+  = must: emit completion reviews before downstream chunks consume completed implementation work
