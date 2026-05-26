@@ -20,6 +20,7 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
 @ [activation_completion_review] docs/reviews/IR3_IA02_Completion_Review.v1.sop
 @ [activation_completion_review] docs/reviews/IR3_IA03_Completion_Review.v1.sop
 @ [activation_completion_review] docs/reviews/IR3_IA04_Completion_Review.v1.sop
+@ [activation_repair_review] docs/reviews/IR3_IA04_Repair_Review.v1.sop
 @ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
 @ [IR2_completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
 @ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
@@ -38,9 +39,9 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
 
 & [IR3WorkStateV1] is the current derived work state for IR3 operator harness and fixture runner
   + [chunk_ref] is IR3 operator harness and fixture runner
-  + [state_basis] is docs/reviews/IR3_IA04_Completion_Review.v1.sop
-  + [state_basis_sha256] is C07F4A906C658ED86FAC2782E5A7A0484068D2D8A4C5A0D76D4E7E949D6FAB2B
-  + [surface_status] is IR3_IA04_contract_runner_accepted_for_IR3_IA05_execution
+  + [state_basis] is docs/reviews/IR3_IA04_Repair_Review.v1.sop
+  + [state_basis_sha256] is 95A8D3AE52B93DD9760E412D232743379878588FD5AFE642188B119D57AA613A
+  + [surface_status] is IR3_IA04_repaired_contract_runner_accepted_for_IR3_IA05_execution
   + [source_document] is docs/source/2026-05-26_ir3_final_slices/Derived_IR3_Final_Slices_Source.sop
   + [source_document_sha256] is 34DC5C164C20CBFD9EE3E8D53FEF4E768BB902B78D4F592A34F37C49B3C424C2
   + [source_manifest] is docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
@@ -112,11 +113,13 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
   + [accepted_activation_completion_review_sha256] is 03BF95879EEB0CF947761EF42BD98334B3B871024FFDA40E10ECA08305B679DD
   + [accepted_activation_slice] is IR3-IA04
   + [accepted_code_output] is src/langsop/operators/runner.py
-  + [accepted_code_output_sha256] is E41AA14D949FB4CBB7DB7AA4B9C8D5B76A34AD350C80D52B590A473481DEC268
+  + [accepted_code_output_sha256] is 43F0002369847AF255380D6F664CC8B4F800F0D64836089FE3891B6FA6526ECE
   + [accepted_code_output] is src/langsop/operators/__init__.py
   + [accepted_code_output_sha256] is 58AF4B1960F430F24C77E3CE6C90C51B171A308FC860957D9760FF5C5FC3A952
   + [accepted_activation_completion_review] is docs/reviews/IR3_IA04_Completion_Review.v1.sop
   + [accepted_activation_completion_review_sha256] is C07F4A906C658ED86FAC2782E5A7A0484068D2D8A4C5A0D76D4E7E949D6FAB2B
+  + [accepted_activation_repair_review] is docs/reviews/IR3_IA04_Repair_Review.v1.sop
+  + [accepted_activation_repair_review_sha256] is 95A8D3AE52B93DD9760E412D232743379878588FD5AFE642188B119D57AA613A
   + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
   + [accepted_boundary_input] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
@@ -144,5 +147,5 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
   = must: treat this file as derived current state, not replacement canonical authority
   = must: execute IR3-IA05 before creating generated traces or tests
   = must: keep generated traces, caches, fixture outputs, projection files, and runner reports non-authoritative
-  = must: mark this state stale if IR3 source document, source manifest, canonical specification, slice surface, slice minting review, IR3-S01 output, IR3-S01 completion review, IR3-S02 output, IR3-S02 completion review, IR3-S03 output, IR3-S03 completion review, IR3-S04 output, IR3-S04 completion review, IR3-S05 output, IR3-S05 completion review, IR3 activation pack, IR3 completion review, IR3 implementation activation source manifest, activation canonical specification, activation slice surface, activation minting review, IR3-IA01 output, IR3-IA01 completion review, IR3-IA02 fixture material, IR3-IA02 completion review, IR3-IA03 output, IR3-IA03 completion review, IR3-IA04 output, IR3-IA04 completion review, IR2 implementation proof pack, IR2 implementation completion review, or FSC2 planning coordination pack changes
+  = must: mark this state stale if IR3 source document, source manifest, canonical specification, slice surface, slice minting review, IR3-S01 output, IR3-S01 completion review, IR3-S02 output, IR3-S02 completion review, IR3-S03 output, IR3-S03 completion review, IR3-S04 output, IR3-S04 completion review, IR3-S05 output, IR3-S05 completion review, IR3 activation pack, IR3 completion review, IR3 implementation activation source manifest, activation canonical specification, activation slice surface, activation minting review, IR3-IA01 output, IR3-IA01 completion review, IR3-IA02 fixture material, IR3-IA02 completion review, IR3-IA03 output, IR3-IA03 completion review, IR3-IA04 output, IR3-IA04 completion review, IR3-IA04 repair review, IR2 implementation proof pack, IR2 implementation completion review, or FSC2 planning coordination pack changes
   = must: keep operations control and live machine control unauthorized

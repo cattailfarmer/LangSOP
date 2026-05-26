@@ -1,0 +1,59 @@
+Subject: IR3 IA04 Repair Review V1
+Date: 2026-05-26
+Review UUID: 86e5ba14-a5ee-407a-a908-51bbd7f6f9e1
+
+@ [activation_completion_review] docs/reviews/IR3_IA04_Completion_Review.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [repaired_output] src/langsop/operators/runner.py
+@ [next_slice_gate] IR3-IA05
+
+& [RepairReview: IR3-IA04] is the repair review for contract-driven operator runner public issue classification
+  + [slice_id] is IR3-IA04
+  + [repair_reason] is public fault/refusal/interrupt labels must select the primary issue matching the final outcome severity when validation yields mixed severities
+  + [previous_output] is src/langsop/operators/runner.py
+  + [previous_output_sha256] is E41AA14D949FB4CBB7DB7AA4B9C8D5B76A34AD350C80D52B590A473481DEC268
+  + [repaired_output] is src/langsop/operators/runner.py
+  + [repaired_output_sha256] is 43F0002369847AF255380D6F664CC8B4F800F0D64836089FE3891B6FA6526ECE
+  + [unchanged_output] is src/langsop/operators/__init__.py
+  + [unchanged_output_sha256] is 58AF4B1960F430F24C77E3CE6C90C51B171A308FC860957D9760FF5C5FC3A952
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable repair after IR3-IA04 acceptance
+  + [review_result] is accepted
+  + [next_gate_result] is IR3-IA05 remains open
+
+  = must: treat this review as superseding the runner.py hash recorded in IR3_IA04_Completion_Review.v1.sop
+  = must: keep IR3-IA05 bounded to fixture runner implementation only
+  = must: keep generated trace file creation, test file creation, dependency installation, operations control, and live machine control unauthorized
+
+& [IR3IA04RepairVerification] is the verification result for the IA04 repair
+  + [primary_issue_selection_matches_outcome_severity] is true
+  + [generated_projection_as_authority_fault_label] is generated_trace_authority_confusion
+  + [compile_result] is passed
+  + [baseline_test_result] is passed
+  + [repair_smoke_result] is passed
+  + [diff_hygiene_result] is passed_with_crlf_warnings_only
+  + [fixture_runner_created] is false
+  + [generated_trace_file_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3IA04RepairAccepted] is accepted
+    @ [support] src/langsop/operators/runner.py
+    @ [support] [IR3IA04RepairVerification]
+
+& [SupportDelta: IR3-IA04-Repair] is the support delta produced by the repair
+  + [new_support_record] is mixed-severity validation now returns the public label for the severity that determines the final outcome
+  + [new_support_record] is generated projection promoted as authority returns fault kind generated_trace_authority_confusion even when authority freshness is also blocked
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA04-Repair] is the requirement delta produced by the repair
+  + [requirement_delta] is IR3-IA05 remains the current ready slice
+  + [requirement_delta] is no rebake required before IR3-IA05
+
+& [FaultReview: IR3-IA04-Repair] is the repair fault review
+  + [scope_expansion_found] is false
+  + [fixture_runner_leak_found] is false
+  + [generated_trace_file_creation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false

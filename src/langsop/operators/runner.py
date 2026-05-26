@@ -315,11 +315,7 @@ def _blocked_or_fault_result(
     input_ref_set: tuple[str, ...],
     authority_basis_ref_set: tuple[str, ...],
 ) -> OperatorRunResult:
-    primary_issue = issues[0] if issues else ContractIssue(
-        ContractIssueKind.INVALID_FIELD,
-        IssueSeverity.FAULT,
-        "operator request was not accepted",
-    )
+    primary_issue = _primary_issue_for_outcome(issues, outcome_kind)
     if outcome_kind == OutcomeKind.SOP_FIRST_INTERRUPT:
         interrupt = SopFirstInterrupt(
             interrupt_id=f"sop_first_interrupt:{trace.trace_id}",
@@ -380,6 +376,31 @@ def _outcome_from_validation(validation: ContractValidationResult) -> OutcomeKin
     if validation.has_blocker:
         return OutcomeKind.BLOCKED_OUTPUT
     return OutcomeKind.SUCCESS
+
+
+def _primary_issue_for_outcome(
+    issues: tuple[ContractIssue, ...],
+    outcome_kind: OutcomeKind,
+) -> ContractIssue:
+    if outcome_kind == OutcomeKind.FAULT_OUTPUT:
+        severity = IssueSeverity.FAULT
+    elif outcome_kind == OutcomeKind.SOP_FIRST_INTERRUPT:
+        severity = IssueSeverity.INTERRUPT
+    elif outcome_kind == OutcomeKind.BLOCKED_OUTPUT:
+        severity = IssueSeverity.BLOCKED
+    else:
+        severity = IssueSeverity.FAULT
+
+    for issue in issues:
+        if issue.severity == severity:
+            return issue
+    if issues:
+        return issues[0]
+    return ContractIssue(
+        ContractIssueKind.INVALID_FIELD,
+        IssueSeverity.FAULT,
+        "operator request was not accepted",
+    )
 
 
 def _success_output_kind(request: OperatorRequest, contract: OperatorContract) -> str:
