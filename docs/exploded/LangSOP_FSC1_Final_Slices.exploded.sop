@@ -1,0 +1,81 @@
+Subject: LangSOP FSC1 Final Slices Exploded Specification
+Date: 2026-05-26
+Exploded Specification UUID: 02499add-d02d-4a1a-bd20-8e3abcbe3b17
+
+@ [source_manifest] docs/source/2026-05-26_fsc1_final_slices/Source_Document_Manifest.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC1FinalSlicesExplosion] is the processing pass that mints final work slices inside FSC1 foundation contracts
+  + [root_subject] is FSC1 foundation contracts
+  + [chunk_state] is final_slice_ready
+  + [boundary_input] is FSC0 accepted authority baseline
+  + [unresolved_external_dependency_set] is empty
+  + [slice_strategy] is order slices so each later slice depends only on FSC0 or accepted outputs from earlier FSC1 slices
+  + [result] is seven final slices, one ready now and six gated inside FSC1
+
+  = must: preserve no unresolved dependency outside FSC1
+  = must: make each slice contiguous by expected output and verification oracle
+  = must: run completed-work review after each completed slice
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+## Fold 1: Boundary And Inputs
+
+& [Fold1BoundaryAndInputs] is the boundary check for FSC1 final slices
+  + [inside_boundary] is P2 authority kernel schemas, P3 compiled SOP operator contracts, and P8a foundation fixtures
+  + [accepted_boundary_input] is FSC0 authority baseline
+  + [forbidden_external_dependency] is unresolved FSC2 readiness implementation, FSC3 runtime graph proof, FSC4 surfaces, FSC5 operations safety, live machine control, and production dispatch
+
+  = must: treat FSC0 as accepted authority input
+  = must: forbid downstream runtime or surface implementation inside FSC1 slices
+  = must: keep all schema, operator-template, storage-decision, and foundation-fixture dependencies inside FSC1
+
+## Fold 2: Slice Chain
+
+& [Fold2SliceChain] is the ordered final slice chain
+  + [FSC1-S01] is kernel record core schema
+  + [FSC1-S02] is record-specific schema and natural-key matrix
+  + [FSC1-S03] is operator contract template
+  + [FSC1-S04] is foundation operator contracts
+  + [FSC1-S05] is storage backend decision
+  + [FSC1-S06] is foundation fixture plan
+  + [FSC1-S07] is FSC1 completion review and activation packet
+
+  = must: keep FSC1-S01 as the only ready slice at first minting
+  = must: activate later slices only when their inside-FSC1 inputs are accepted
+
+## Fold 3: Model Routing
+
+& [Fold3ModelRouting] is the route classification for FSC1 slices
+  + [FSC1-S01] is requires deeper reasoning
+  + [FSC1-S02] is requires deeper reasoning
+  + [FSC1-S03] is requires deeper reasoning
+  + [FSC1-S04] is requires deeper reasoning
+  + [FSC1-S05] is requires deeper reasoning
+  + [FSC1-S06] is GPT-5.3-Codex-Spark-suitable after FSC1-S01 through FSC1-S05 are accepted
+  + [FSC1-S07] is requires deeper reasoning
+
+  = must: state model route on every slice
+  = must: keep architecture, authority semantics, natural keys, operator boundaries, storage decision, and final acceptance in deeper-reasoning mode
+  = should: route fixture drafting to GPT-5.3-Codex-Spark only after contracts stabilize
+
+## Fold 4: Readiness And Gates
+
+& [Fold4ReadinessAndGates] is the current FSC1 readiness pass
+  + [ready_slice] is FSC1-S01
+  + [gated_slice] is FSC1-S02 until FSC1-S01 accepted
+  + [gated_slice] is FSC1-S03 until FSC1-S02 accepted
+  + [gated_slice] is FSC1-S04 until FSC1-S03 accepted
+  + [gated_slice] is FSC1-S05 until FSC1-S02 and FSC1-S03 accepted
+  + [gated_slice] is FSC1-S06 until FSC1-S04 and FSC1-S05 accepted
+  + [gated_slice] is FSC1-S07 until FSC1-S06 accepted
+
+  = must: not start a gated slice until its activation gate is accepted
+  = must: run completion review before opening the next slice
+
+& [FSC1FinalSlicesConclusion] is the result of this pass
+  + [ready_for] is execution of FSC1-S01 kernel record core schema
+  + [not_ready_for] is FSC2 final slicing, runtime graph implementation, surface implementation, and operations safety work
+  + [remaining_uncertainty] is schema outcome, operator contract shape, storage decision, and fixture details
+
+  = must: promote the final slice surface only with satisfaction signature and source lineage

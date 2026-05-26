@@ -1,0 +1,94 @@
+Subject: LangSOP FSC1 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_fsc1_final_slices/Source_Document_Manifest.sop
+@ [exploded_specification] docs/exploded/LangSOP_FSC1_Final_Slices.exploded.sop
+@ [slice_surface] docs/slices/FSC1_Final_Slices.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [CanonicalRecord: FSC1FinalSlices] is the processed planning authority for FSC1 final work slices
+  + [canonical_uuid] is 4c6e84da-002c-4b05-8f3a-3c6e97f51834
+  + [source_manifest_uuid] is 0ac1b1f3-b31f-4601-9414-f39a7243e74d
+  + [exploded_uuid] is 02499add-d02d-4a1a-bd20-8e3abcbe3b17
+  + [slice_surface_uuid] is 060f6f10-0a74-4873-bad8-274b27d4f7eb
+  + [authority_scope] is FSC1 slice order, slice readiness, slice gates, model routing, expected outputs, and verification oracles
+  + [implementation_scope] is final slice planning authority only
+  + [depends_on] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+  = must: use docs/slices/FSC1_Final_Slices.v1.sop as the current FSC1 slice surface
+  = must: execute FSC1-S01 first
+  = must: run completion review after each slice before opening the next gated slice
+  = must: keep downstream FSC2 through FSC5 work gated until FSC1-S07 accepts the foundation contract pack
+  - never: treat FSC1 slice records as implementation proof
+
+& [CanonicalFSC1SliceSet] is the final FSC1 slice sequence
+  + [slice] is FSC1-S01 kernel record core schema
+  + [slice] is FSC1-S02 record-specific schema and natural-key matrix
+  + [slice] is FSC1-S03 operator contract template
+  + [slice] is FSC1-S04 foundation operator contracts
+  + [slice] is FSC1-S05 storage backend decision
+  + [slice] is FSC1-S06 foundation fixture plan
+  + [slice] is FSC1-S07 FSC1 completion review and activation packet
+
+  = must: preserve this order unless completion review rebakes FSC1
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+& [CanonicalFSC1ExecutionGate] is the activation rule for FSC1
+  + [current_ready_slice] is FSC1-S01
+  + [gated_slice] is FSC1-S02 until FSC1-S01 accepted
+  + [gated_slice] is FSC1-S03 until FSC1-S02 accepted
+  + [gated_slice] is FSC1-S04 until FSC1-S03 accepted
+  + [gated_slice] is FSC1-S05 until FSC1-S02 and FSC1-S03 accepted
+  + [gated_slice] is FSC1-S06 until FSC1-S04 and FSC1-S05 accepted
+  + [gated_slice] is FSC1-S07 until FSC1-S06 accepted
+  + [completion_gate] is FSC1 foundation contract pack accepted after FSC1-S07
+
+  = must: expose only FSC1-S01 as ready right now
+  = must: keep all later slices gated inside FSC1
+
+& [CanonicalFSC1ModelRouting] is the model-routing record
+  + [FSC1-S01] is requires deeper reasoning
+  + [FSC1-S02] is requires deeper reasoning
+  + [FSC1-S03] is requires deeper reasoning
+  + [FSC1-S04] is requires deeper reasoning
+  + [FSC1-S05] is requires deeper reasoning
+  + [FSC1-S06] is GPT-5.3-Codex-Spark-suitable after FSC1-S01 through FSC1-S05 are accepted
+  + [FSC1-S07] is requires deeper reasoning
+
+  = must: keep schema, natural keys, authority states, operator contract boundaries, storage decision, and final acceptance under deeper reasoning
+  = should: route FSC1-S06 to GPT-5.3-Codex-Spark only after the contract inputs are accepted and stable
+
+& [SatisfactionSignature: FSC1FinalSlices] is the valid SJS satisfaction signature for the FSC1 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 310486a0-7d11-4432-bb89-caf5c723b97b
+  + [signed_subject] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_fsc1_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 11BC82FCA7C56C78CBE09FD6EC4E0C64684853980FABD5CE903A2439AB31E114
+  + [source_sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+  + [source_sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+  + [source_sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+  + [exploded_specification] is docs/exploded/LangSOP_FSC1_Final_Slices.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/FSC1_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, FSC1_boundary_checked, slices_minted, gates_defined, outputs_defined, verification_oracles_defined, model_routes_defined, completion_reviews_required, justified, and signed
+  + [exhaustion_state] is phase_locked_for_FSC1_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for FSC1 final slices; slice execution still requires solution records and proof
+  + [invalidation_condition] is source_hash_change, FSC1_boundary_change, forbidden_external_dependency_found, upstream_slice_contradiction, missing_completion_review, or implementation_contradiction
+
+  = must: reprocess when FSC1 slice order, boundary, or required outputs materially change
+
+& [RegistryRecord: FSC1FinalSlices] is the durable identity ledger for the FSC1 final slice surface
+  + [registry_uuid] is c2f52b59-8a55-4324-b13b-dd44428eadb0
+  + [manifest_node_uuid] is 0ac1b1f3-b31f-4601-9414-f39a7243e74d
+  + [exploded_node_uuid] is 02499add-d02d-4a1a-bd20-8e3abcbe3b17
+  + [canonical_node_uuid] is 4c6e84da-002c-4b05-8f3a-3c6e97f51834
+  + [slice_surface_uuid] is 060f6f10-0a74-4873-bad8-274b27d4f7eb
+  + [signature_uuid] is 310486a0-7d11-4432-bb89-caf5c723b97b
+  + [closure_review_uuid] is a8195f16-00ae-4725-80ef-2cce393b384e
+  + [edge] is manifest_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for slice execution records and completion reviews

@@ -1,0 +1,15 @@
+Subject: Dictated FSC1 Final Slices Source
+Date: 2026-05-26
+
+& [DictatedSource: FSC1FinalSlices] is the preserved source instruction for minting the FSC1 final slices
+  + [dictated_request] is make it so
+  + [interpreted_request] is mint the actual FSC1 foundation-contract final slices from the final slicing surface
+  + [source_context] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [source_context] is docs/planning/Final_Slicing_Surface.v1.sop
+  + [source_context] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+
+  = must: create concrete slice records for FSC1 foundation contracts
+  = must: include authority_basis, chunk_ref, boundary_input_set, internal_dependency_set, expected_output_set, verification_oracle, model_route, forbidden_scope, and completion_review_required
+  = must: leave no unresolved dependency outside FSC1
+  = must: mark downstream slices gated until their inside-FSC1 activation inputs are accepted
+  = must: classify every slice as Spark-suitable or requiring deeper reasoning

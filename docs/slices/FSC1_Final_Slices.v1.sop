@@ -1,0 +1,164 @@
+Subject: LangSOP FSC1 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 060f6f10-0a74-4873-bad8-274b27d4f7eb
+
+@ [canonical_specification] docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC1FinalSliceSurfaceV1] is the executable final-slice surface for FSC1 foundation contracts
+  + [chunk_ref] is FSC1 foundation contracts
+  + [chunk_boundary] is P2 authority kernel schemas, P3 compiled SOP operator contracts, and P8a foundation fixtures
+  + [accepted_boundary_input] is FSC0 authority baseline
+  + [unresolved_external_dependency_set] is empty
+  + [current_ready_slice] is FSC1-S01
+  + [gated_slice_set] is FSC1-S02, FSC1-S03, FSC1-S04, FSC1-S05, FSC1-S06, and FSC1-S07
+
+  = must: execute FSC1-S01 before any other FSC1 slice
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: keep FSC2 through FSC5 gated until FSC1-S07 accepts the foundation contract pack
+
+& [FinalWorkSlice: FSC1-S01-KernelRecordCoreSchema] is ready
+  + [slice_id] is FSC1-S01
+  + [slice_name] is kernel record core schema
+  + [chunk_ref] is FSC1
+  + [portion_ref] is P2 authority kernel and record schemas
+  + [authority_basis] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+  + [authority_basis] is docs/planning/Final_Slicing_Surface.v1.sop
+  + [boundary_input_set] is FSC0 authority baseline
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/schema/Kernel_Record_Core.v1.sop
+  + [expected_output_set] is common KernelRecord field contract, KernelRecordKind handling rule, AuthorityState handling rule, ReadinessState handling rule, lineage and freshness invariants, and schema acceptance checklist
+  + [verification_oracle] is review output for required fields record_id, record_kind, natural_key, subject_ref, authority_state, source_ref_set, lineage_edge_set, freshness_rule, and status
+  + [verification_oracle] is no physical storage, runtime graph, surface implementation, or operations-control decision appears in the output
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is natural keys, authority states, and source/projection distinction are foundational architecture decisions
+  + [forbidden_scope] is record-specific schema finalization, operator contract finalization, storage backend choice, runtime code, LangGraph implementation, surface implementation, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC1-S02-RecordSpecificSchemaAndNaturalKeyMatrix] is gated
+  + [slice_id] is FSC1-S02
+  + [slice_name] is record-specific schema and natural-key matrix
+  + [chunk_ref] is FSC1
+  + [portion_ref] is P2 authority kernel and record schemas
+  + [authority_basis] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [boundary_input_set] is FSC0 authority baseline
+  + [activation_gate] is FSC1-S01 accepted
+  + [internal_dependency_set] is FSC1-S01 Kernel_Record_Core.v1.sop
+  + [expected_output_set] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [expected_output_set] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [expected_output_set] is record-specific schemas for source_log, log_entry, citation_ref, narrative_node, understanding_anchor, capability_node, requirement_record, support_record, support_gap, authority_artifact, coordination_claim, operator_contract, operator_trace, work_packet, completion_review, readiness_projection, stale_projection, proof_result, and fault_record
+  + [verification_oracle] is every record kind has natural_key rule, source_ref rule, lifecycle state rule, freshness rule, and invalidation behavior
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is record identity and lifecycle choices determine all downstream kernel and operator behavior
+  + [forbidden_scope] is physical storage choice, operator implementation, readiness implementation, runtime graph code, and surface rendering
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC1-S03-OperatorContractTemplate] is gated
+  + [slice_id] is FSC1-S03
+  + [slice_name] is operator contract template
+  + [chunk_ref] is FSC1
+  + [portion_ref] is P3 compiled SOP operator contracts
+  + [authority_basis] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [boundary_input_set] is FSC0 authority baseline
+  + [activation_gate] is FSC1-S02 accepted
+  + [internal_dependency_set] is FSC1-S01 Kernel_Record_Core.v1.sop
+  + [internal_dependency_set] is FSC1-S02 Authority_Kernel_Record_Schemas.v1.sop
+  + [expected_output_set] is docs/operators/Operator_Contract_Template.v1.sop
+  + [expected_output_set] is common fields for operator_id, source_sop_ref, input_record_kind_set, output_record_kind_set, precondition_set, postcondition_set, interrupt_condition_set, fault_condition_set, trace_schema, fixture_set, blocked_output, and SOP-first interrupt
+  + [verification_oracle] is template can express success, blocked output, fault output, stale input, ambiguous identity, and authority conflict without hidden writes
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is compiled SOP duty boundaries are authority-sensitive and define how later code may act
+  + [forbidden_scope] is implementing operators, writing LangGraph nodes, choosing storage, or adding surface UI
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC1-S04-FoundationOperatorContracts] is gated
+  + [slice_id] is FSC1-S04
+  + [slice_name] is foundation operator contracts
+  + [chunk_ref] is FSC1
+  + [portion_ref] is P3 compiled SOP operator contracts
+  + [authority_basis] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [boundary_input_set] is FSC0 authority baseline
+  + [activation_gate] is FSC1-S03 accepted
+  + [internal_dependency_set] is FSC1-S02 Authority_Kernel_Record_Schemas.v1.sop
+  + [internal_dependency_set] is FSC1-S03 Operator_Contract_Template.v1.sop
+  + [expected_output_set] is docs/operators/Foundation_Operator_Contracts.v1.sop
+  + [expected_output_set] is signature_validation operator contract
+  + [expected_output_set] is support_readiness_recompute operator contract
+  + [expected_output_set] is work_packet_generation contract stub limited to contract inputs and outputs
+  + [verification_oracle] is each operator contract states input records, output records, preconditions, postconditions, interrupts, faults, trace schema, fixtures, and stale/ambiguous behavior
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is authority validation and readiness semantics decide what later agents may trust as work-ready
+  + [forbidden_scope] is executable operator implementation, LangGraph node implementation, production packet dispatch, and FSC2 coordination rules
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC1-S05-StorageBackendDecision] is gated
+  + [slice_id] is FSC1-S05
+  + [slice_name] is storage backend decision
+  + [chunk_ref] is FSC1
+  + [portion_ref] is P2 authority kernel and record schemas
+  + [authority_basis] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [boundary_input_set] is FSC0 authority baseline
+  + [activation_gate] is FSC1-S02 accepted
+  + [activation_gate] is FSC1-S03 accepted
+  + [internal_dependency_set] is FSC1-S02 Authority_Kernel_Record_Schemas.v1.sop
+  + [internal_dependency_set] is FSC1-S03 Operator_Contract_Template.v1.sop
+  + [expected_output_set] is docs/decisions/Storage_Backend_Decision.v1.sop
+  + [expected_output_set] is tradeoff table for SOP-only files, SQLite, Postgres, and hybrid storage
+  + [expected_output_set] is source/projection preservation rules, query needs, concurrency needs, migration rule, Git workflow effect, and invalidation conditions
+  + [verification_oracle] is decision preserves SOP authority, separates source from projection, supports operator traces, and states why rejected options remain invalid or deferred
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is physical storage affects source authority, queryability, concurrency, migration path, and LangGraph integration
+  + [forbidden_scope] is database implementation, migration scripts, runtime service code, and surface implementation
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC1-S06-FoundationFixturePlan] is gated
+  + [slice_id] is FSC1-S06
+  + [slice_name] is foundation fixture plan
+  + [chunk_ref] is FSC1
+  + [portion_ref] is P8a foundation schema and operator contract fixtures
+  + [authority_basis] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [boundary_input_set] is FSC0 authority baseline
+  + [activation_gate] is FSC1-S04 accepted
+  + [activation_gate] is FSC1-S05 accepted
+  + [internal_dependency_set] is FSC1-S02 Authority_Kernel_Record_Schemas.v1.sop
+  + [internal_dependency_set] is FSC1-S04 Foundation_Operator_Contracts.v1.sop
+  + [internal_dependency_set] is FSC1-S05 Storage_Backend_Decision.v1.sop
+  + [expected_output_set] is docs/fixtures/Foundation_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/Foundation_Fixture_Index.v1.sop
+  + [expected_output_set] is fixture cases for valid signature, missing signature, stale source, broken lineage, ready capability, blocked capability, stale projection, contradicted support, ambiguous identity, blocked output, and fault output
+  + [verification_oracle] is fixture plan maps every case to schema records, operator contract behavior, expected trace, and acceptance status
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after FSC1-S01 through FSC1-S05 are accepted
+  + [model_route_reason] is fixture drafting becomes bounded once schemas, operator contracts, and storage decision are accepted
+  + [forbidden_scope] is changing schemas, changing operator semantics, executable test harness implementation, runtime graph code, and surface UI
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC1-S07-FSC1CompletionReviewAndActivationPacket] is gated
+  + [slice_id] is FSC1-S07
+  + [slice_name] is FSC1 completion review and activation packet
+  + [chunk_ref] is FSC1
+  + [portion_ref] is P2, P3, and P8a
+  + [authority_basis] is docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+  + [boundary_input_set] is FSC0 authority baseline
+  + [activation_gate] is FSC1-S06 accepted
+  + [internal_dependency_set] is FSC1-S01 through FSC1-S06 accepted outputs
+  + [expected_output_set] is docs/reviews/FSC1_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [expected_output_set] is acceptance record for logical schema, natural-key matrix, operator template, foundation operator contracts, storage decision, and foundation fixture plan
+  + [expected_output_set] is activation recommendation for FSC2 planning coordination
+  + [verification_oracle] is completion review classifies support_delta, requirement_delta, stale outputs, contradictions, unresolved support gaps, and FSC2 activation readiness
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance changes downstream boundary inputs and may activate FSC2
+  + [forbidden_scope] is implementing FSC2, runtime graph, surfaces, operations control, or silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [FSC1SliceClosureReview] is the dependency audit for minted FSC1 slices
+  + [slice_surface_uuid] is 060f6f10-0a74-4873-bad8-274b27d4f7eb
+  + [FSC1_boundary_input_set] is FSC0 authority baseline
+  + [unresolved_external_dependency_set] is empty
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is FSC1-S01
+  + [downstream_gate] is FSC2 remains gated until FSC1-S07 accepts FSC1_Foundation_Contract_Pack.v1.sop
+
+  = must: rerun this closure review after every FSC1 completion review
