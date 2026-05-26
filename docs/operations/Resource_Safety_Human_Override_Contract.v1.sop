@@ -1,0 +1,165 @@
+Subject: Resource Safety Human Override Contract V1
+Date: 2026-05-26
+Contract UUID: 91f64464-227d-40bc-aa48-29680432162a
+
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [dry_run_contract] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [operations_safety_spec] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+
+& [ResourceSafetyHumanOverrideContractV1] is the FSC5 contract for resource safety, blast radius, and human override records
+  + [contract_id] is resource-safety-human-override-contract-v1
+  + [contract_uuid] is 91f64464-227d-40bc-aa48-29680432162a
+  + [slice_id] is FSC5-S03
+  + [authority_scope] is resource risk classification, blast radius contract, credential boundary, network boundary, rollback and abort route, human approval record, expiration and stale rule, and override refusal rule
+  + [implementation_scope] is safety contract only
+  + [boundary_dependency] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [dry_run_dependency] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+
+  = must: require explicit, fresh, scoped human approval for high-risk future operations paths
+  = must: preserve credential, network, destructive, GPU, model runtime, process, and job queue risk boundaries
+  = must: refuse broad, stale, ambiguous, or mismatched approvals
+  - never: implement approval UI, execute operations, mutate resources, access credentials, expose networks, or authorize live machine control in this contract
+
+& [ResourceRiskClassification] is the risk classification contract for operation requests
+  + [risk_level] is low
+  + [risk_level] is medium
+  + [risk_level] is high
+  + [risk_level] is critical
+  + [risk_level] is unknown
+  + [critical_when] is credential_or_secret_boundary_touched
+  + [critical_when] is network_exposure_requested
+  + [critical_when] is destructive_action_possible
+  + [critical_when] is live_process_or_gpu_or_model_runtime_mutation_requested
+  + [critical_when] is job_dispatch_or_cancellation_requested
+  + [critical_when] is rollback_or_abort_route_missing
+  + [critical_when] is authority_notice_missing_or_stale
+  + [critical_when] is blast_radius_uncertain
+
+  = must: classify unknown risk as high or critical until reviewed
+  = must: require human approval for high or critical risk before any future live-control reconsideration
+
+& [BlastRadiusContract] is the blast radius contract for operation requests
+  + [required_field] is affected_resource_set
+  + [required_field] is expected_duration
+  + [required_field] is cost_or_utilization_estimate
+  + [required_field] is possible_side_effect_set
+  + [required_field] is rollback_or_abort_route
+  + [required_field] is monitoring_requirement
+  + [required_field] is stale_after
+  + [unknown_blast_radius_effect] is require_human_review
+  + [unknown_blast_radius_effect] is block_live_control
+
+  = must: prevent high-risk operation requests from proceeding with unknown blast radius
+  = must: preserve blast radius evidence for completion review and fixtures
+
+& [CredentialBoundaryContract] is the credential and secret boundary contract
+  + [protected_resource] is GitHub token
+  + [protected_resource] is API key
+  + [protected_resource] is SSH key
+  + [protected_resource] is local credential store
+  + [protected_resource] is environment secret
+  + [protected_resource] is service account
+  + [blocked_effect] is reveal secret
+  + [blocked_effect] is mutate secret
+  + [blocked_effect] is persist secret into projection
+  + [blocked_effect] is use secret for unapproved live control
+
+  = must: route credential or secret boundary contact to critical risk review
+  = must: preserve secret references without exposing secret values
+
+& [NetworkBoundaryContract] is the network exposure boundary contract
+  + [protected_effect] is open listener
+  + [protected_effect] is change firewall
+  + [protected_effect] is expose service
+  + [protected_effect] is publish endpoint
+  + [protected_effect] is run remote-access helper
+  + [protected_effect] is change router or tunnel state
+
+  = must: block network exposure changes before explicit accepted future authority
+  = must: require human approval, blast radius, and rollback route for any future network exposure reconsideration
+
+& [RollbackAbortRouteContract] is the rollback and abort route contract
+  + [required_field] is abort_condition_set
+  + [required_field] is rollback_step_set
+  + [required_field] is safe_shutdown_condition
+  + [required_field] is monitoring_signal_set
+  + [required_field] is owner_or_human_contact_ref
+  + [required_field] is stale_after
+  + [missing_route_effect] is block_operation_request
+  + [missing_route_effect] is require_human_review
+
+  = must: refuse any high-risk request that lacks a rollback or abort route
+
+& [HumanApprovalRecordContract] is the contract for explicit human approval records
+  + [required_field] is human_approval_id
+  + [required_field] is approved_by
+  + [required_field] is approved_at
+  + [required_field] is approved_operation_request_ref
+  + [required_field] is approved_intended_effect
+  + [required_field] is approved_resource_target
+  + [required_field] is authority_notice_ref
+  + [required_field] is risk_classification
+  + [required_field] is blast_radius_ref
+  + [required_field] is rollback_or_abort_route_ref
+  + [required_field] is expiration_or_stale_after
+  + [required_field] is explicit_limit_set
+  + [forbidden_approval_shape] is broad standing approval
+  + [forbidden_approval_shape] is approval without operation_request_ref
+  + [forbidden_approval_shape] is approval without expiration
+  + [forbidden_approval_shape] is approval for mismatched resource target
+  + [forbidden_approval_shape] is approval that bypasses completion review
+
+  = must: keep human approval scoped, fresh, explicit, and tied to a concrete request
+  = must: prevent approval records from becoming blanket operations authority
+
+& [ApprovalExpirationAndStaleRule] is the stale rule for human approvals
+  + [stale_when] is expiration_or_stale_after passed
+  + [stale_when] is operation_request changed
+  + [stale_when] is resource_target changed
+  + [stale_when] is intended_effect changed
+  + [stale_when] is risk_classification changed
+  + [stale_when] is blast_radius changed
+  + [stale_when] is rollback_or_abort_route changed
+  + [stale_when] is boundary pack changed
+  + [stale_effect] is approval_invalid
+  + [stale_effect] is require_new_human_approval
+
+  = must: reject stale approvals before any future live-control reconsideration
+
+& [OverrideRefusalRule] is the refusal rule for unsafe human override paths
+  + [refusal_reason] is broad_standing_approval
+  + [refusal_reason] is stale_approval
+  + [refusal_reason] is mismatched_intended_effect
+  + [refusal_reason] is mismatched_resource_target
+  + [refusal_reason] is missing_blast_radius
+  + [refusal_reason] is missing_rollback_or_abort_route
+  + [refusal_reason] is missing_authority_notice
+  + [refusal_reason] is credential_boundary_unreviewed
+  + [refusal_reason] is network_boundary_unreviewed
+  + [refusal_output] is refused_human_override
+  + [refusal_output] is blocked_operation_request
+  + [refusal_output] is required_human_review
+  + [refusal_output] is sop_first_interrupt_context
+
+  = must: refuse unsafe overrides as records, not commands
+  = must: preserve refusal evidence for live-control prohibition and fixture planning
+
+& [ResourceSafetyHumanOverrideCoverageReview] is the FSC5-S03 coverage checklist
+  + [resource_risk_classification_present] is ResourceRiskClassification
+  + [blast_radius_contract_present] is BlastRadiusContract
+  + [credential_boundary_contract_present] is CredentialBoundaryContract
+  + [network_boundary_contract_present] is NetworkBoundaryContract
+  + [rollback_abort_route_contract_present] is RollbackAbortRouteContract
+  + [human_approval_record_contract_present] is HumanApprovalRecordContract
+  + [approval_expiration_stale_rule_present] is ApprovalExpirationAndStaleRule
+  + [override_refusal_rule_present] is OverrideRefusalRule
+  + [forbidden_scope_absent] is approval UI implementation
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is credential access
+  + [forbidden_scope_absent] is network exposure mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is live machine control
+
+  = must: reject FSC5-S03 if broad, stale, ambiguous, or mismatched approval can authorize operations
+  = must: open FSC5-S04 only after this contract is accepted by completion review
