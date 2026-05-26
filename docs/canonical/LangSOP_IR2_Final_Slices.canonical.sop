@@ -1,0 +1,110 @@
+Subject: LangSOP IR2 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+@ [kernel_record_core] docs/schema/Kernel_Record_Core.v1.sop
+@ [authority_kernel_schemas] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+
+& [CanonicalRecord: IR2FinalSlices] is the processed planning authority for IR2 final work slices
+  + [canonical_uuid] is a54c15ea-4b50-4220-82e9-4cbba29201ce
+  + [source_manifest_uuid] is b42d31c9-3da8-4f2f-909e-e6d16a21d57c
+  + [slice_surface_uuid] is a98f03a1-5470-4fd9-bf01-736343ea191e
+  + [authority_scope] is IR2 slice order, slice readiness, slice gates, model routing, expected outputs, verification oracles, implementation boundaries, and forbidden downstream scope
+  + [implementation_scope] is authority-file parser and SQLite projection builder planning plus gated implementation slices
+  + [depends_on] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+  + [depends_on] is docs/schema/Kernel_Record_Core.v1.sop
+  + [depends_on] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [depends_on] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [depends_on] is docs/decisions/Storage_Backend_Decision.v1.sop
+
+  = must: use docs/slices/IR2_Final_Slices.v1.sop as the current IR2 slice surface
+  = must: execute IR2-S01 first
+  = must: run completion review after each IR2 slice before opening the next gated slice
+  = must: preserve SOP files as authority and SQLite as derived, rebuildable projection
+  = must: reject any output that treats generated SQLite, cache, index, extracted projection, or LangGraph checkpoint state as source authority
+  - never: treat IR2 slice records as permission for operations control or live machine control
+
+& [CanonicalIR2SliceSet] is the final IR2 slice sequence
+  + [slice] is IR2-S01 parser and projection boundary and invariant map
+  + [slice] is IR2-S02 SOP artifact discovery and parser profile contract
+  + [slice] is IR2-S03 KernelRecord extraction and validation mapping
+  + [slice] is IR2-S04 hash ledger, signature, and freshness validation contract
+  + [slice] is IR2-S05 SQLite projection schema and rebuild policy
+  + [slice] is IR2-S06 parser and projection implementation plan
+  + [slice] is IR2-S07 parser/projection fixtures and expected-output ledgers
+  + [slice] is IR2-S08 IR2 completion review and authority projection pack
+
+  = must: preserve this order unless completion review rebakes IR2
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+& [CanonicalIR2ExecutionGate] is the activation rule for IR2
+  + [current_ready_slice] is IR2-S01
+  + [gated_slice] is IR2-S02 until IR2-S01 accepted
+  + [gated_slice] is IR2-S03 until IR2-S02 accepted
+  + [gated_slice] is IR2-S04 until IR2-S03 accepted
+  + [gated_slice] is IR2-S05 until IR2-S04 accepted
+  + [gated_slice] is IR2-S06 until IR2-S05 accepted
+  + [gated_slice] is IR2-S07 until IR2-S06 accepted
+  + [gated_slice] is IR2-S08 until IR2-S07 accepted
+  + [completion_gate] is IR2 authority projection pack accepted after IR2-S08
+
+  = must: expose only IR2-S01 as ready right now
+  = must: keep all later slices gated inside IR2
+
+& [CanonicalIR2ModelRouting] is the model-routing record
+  + [IR2-S01] is requires deeper reasoning
+  + [IR2-S02] is requires deeper reasoning
+  + [IR2-S03] is requires deeper reasoning
+  + [IR2-S04] is requires deeper reasoning
+  + [IR2-S05] is requires deeper reasoning
+  + [IR2-S06] is requires deeper reasoning
+  + [IR2-S07] is GPT-5.3-Codex-Spark-suitable after IR2-S01 through IR2-S06 are accepted and fixture scope is bounded
+  + [IR2-S08] is requires deeper reasoning
+
+  = must: keep parser semantics, projection schema, source/projection boundary, and final activation under deeper reasoning
+  = should: route bounded fixture records and expected-output ledgers to GPT-5.3-Codex-Spark only after parser and projection contracts stabilize
+
+& [SatisfactionSignature: IR2FinalSlices] is the valid SJS satisfaction signature for the IR2 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 8595ef46-a569-4833-8dba-e575374fba2b
+  + [signed_subject] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is D4C0299F041247119AF8B3F1F40AD844E67A8B6984122FA8BDFC51320BB1CF09
+  + [source_sha256] is BB07889B944EF8725579A05F15A52C17529D626068D73BCF01D779F6E28F6774
+  + [source_sha256] is C2722DF110D05C9FA3EF411DCEBBEC59DAEC018DBBB7C99A7DFDE15045E02B05
+  + [source_sha256] is 6753E72D5E8A446B6263864800C1AF7C406AA40E38A1F28EF00FC4BF1563A320
+  + [source_sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+  + [source_sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+  + [source_sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+  + [source_sha256] is CFECB48599185245D402D729877E4FDD48F59CF60229CA4BDF45C4F3FD6ADC33
+  + [source_sha256] is 784694C5D92857E796707F9BCFA1E5E07A0DAC162417E30B4BE68EBF38FDF462
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR2_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR1_gate_imported, scaffold_review_imported, kernel_schema_imported, storage_decision_imported, slices_minted, gates_defined, outputs_defined, verification_oracles_defined, model_routes_defined, completion_reviews_required, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR2_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR2 final slices; no live operations control authorized
+  + [invalidation_condition] is source_hash_change, IR1_pack_change, scaffold_review_change, schema_change, storage_decision_change, missing_completion_review, generated_projection_promoted_to_authority, operations_control_leak, or implementation_contradiction
+
+  = must: reprocess when IR2 slice order, boundary, expected outputs, or required verification materially change
+
+& [RegistryRecord: IR2FinalSlices] is the durable identity ledger for the IR2 final slice surface
+  + [registry_uuid] is 36b28273-704a-45fa-b106-04e3924d4212
+  + [manifest_node_uuid] is b42d31c9-3da8-4f2f-909e-e6d16a21d57c
+  + [canonical_node_uuid] is a54c15ea-4b50-4220-82e9-4cbba29201ce
+  + [slice_surface_uuid] is a98f03a1-5470-4fd9-bf01-736343ea191e
+  + [signature_uuid] is 8595ef46-a569-4833-8dba-e575374fba2b
+  + [closure_review_uuid] is 2681b491-3ad5-405c-94a5-25b2f2551049
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for IR2 slice execution records and completion reviews
+

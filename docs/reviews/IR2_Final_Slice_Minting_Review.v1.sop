@@ -1,0 +1,99 @@
+Subject: IR2 Final Slice Minting Review V1
+Date: 2026-05-26
+Review UUID: 2681b491-3ad5-405c-94a5-25b2f2551049
+
+@ [source_manifest] docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+
+& [SliceMintingReview: IR2FinalSlices] is the completed-work review for minting IR2 final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
+  + [completed_output] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [completed_output_sha256] is C9953A2E39B35A5FE01B3186767CCCF84B3EEA99A99444DBB8ACE6C8419EB9BB
+  + [completed_output] is docs/slices/IR2_Final_Slices.v1.sop
+  + [completed_output_sha256] is 3B77355A83AE6066FD56DBB0A179D1775FCA479300925F2BA1B9C09791DF34D2
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR2-S01 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR2-S01
+  = must: rerun this review if IR2 source, canonical specification, or slice surface changes
+
+& [VerificationOracleResult: IR2FinalSlices] is the verification result for IR2 slice minting
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [slice_count] is 8
+  + [ready_slice] is IR2-S01 parser and projection boundary and invariant map
+  + [gated_slice] is IR2-S02 SOP artifact discovery and parser profile contract
+  + [gated_slice] is IR2-S03 KernelRecord extraction and validation mapping
+  + [gated_slice] is IR2-S04 hash ledger, signature, and freshness validation contract
+  + [gated_slice] is IR2-S05 SQLite projection schema and rebuild policy
+  + [gated_slice] is IR2-S06 parser and projection implementation plan
+  + [gated_slice] is IR2-S07 parser/projection fixtures and expected-output ledgers
+  + [gated_slice] is IR2-S08 IR2 completion review and authority projection pack
+  + [model_route_present] is IR2-S01 requires deeper reasoning
+  + [model_route_present] is IR2-S02 requires deeper reasoning
+  + [model_route_present] is IR2-S03 requires deeper reasoning
+  + [model_route_present] is IR2-S04 requires deeper reasoning
+  + [model_route_present] is IR2-S05 requires deeper reasoning
+  + [model_route_present] is IR2-S06 requires deeper reasoning
+  + [model_route_present] is IR2-S07 GPT-5.3-Codex-Spark-suitable after IR2-S01 through IR2-S06 are accepted and fixture scope is bounded
+  + [model_route_present] is IR2-S08 requires deeper reasoning
+  + [forbidden_scope_absent] is generated projection authority promotion
+  + [forbidden_scope_absent] is LangGraph runtime implementation
+  + [forbidden_scope_absent] is UI or surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR2FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+    @ [support] docs/slices/IR2_Final_Slices.v1.sop
+
+& [SupportDelta: IR2FinalSlices] is the support delta produced by this slice minting pass
+  + [new_support_record] is IR2FinalSliceSurfaceV1 supports IR2-S01 execution
+  + [new_support_record] is IR2-S07 Spark suitability is gated until IR2-S01 through IR2-S06 are accepted
+  + [new_support_record] is IR2-S08 preserves deeper-reasoning final activation
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2FinalSlices] is the requirement delta produced by this slice minting pass
+  + [requirement_delta] is IR2-S01 must run first and requires deeper reasoning
+  + [requirement_delta] is no parser or SQLite projection implementation authorized until IR2-S01 through IR2-S05 contracts are accepted and IR2-S06 implementation plan opens that work
+  + [requirement_delta] is no generated SQLite, cache, index, fixture output, or projection may be treated as source authority
+  + [requirement_delta] is no LangGraph runtime, surface, adapter, operations simulator, operations control, or live-control behavior authorized
+  + [requirement_delta] is no rebake required before IR2-S01
+
+& [FaultReview: IR2FinalSlices] is the fault review for IR2 slice minting
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [parser_implementation_leak_found] is false
+  + [sqlite_projection_implementation_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_slice_found] is false
+
+  ! [IR2FinalSlicesAccepted] is accepted
+    @ [support] [VerificationOracleResult: IR2FinalSlices]
+    @ [support] [SupportDelta: IR2FinalSlices]
+    @ [support] [RequirementDelta: IR2FinalSlices]
+    @ [support] [FaultReview: IR2FinalSlices]
+
+& [NextSliceGate: IR2-S01] is opened
+  + [opened_slice] is IR2-S01 parser and projection boundary and invariant map
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is parser/projection boundaries decide what authority-bearing implementation may safely begin
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR2-S01 next unless user redirects or a new fault invalidates this review
+

@@ -1,0 +1,175 @@
+Subject: LangSOP IR2 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: a98f03a1-5470-4fd9-bf01-736343ea191e
+
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+@ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+@ [kernel_record_core] docs/schema/Kernel_Record_Core.v1.sop
+@ [authority_kernel_schemas] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+
+& [IR2FinalSliceSurfaceV1] is the executable final-slice surface for IR2 authority-file parser and SQLite projection builder
+  + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
+  + [chunk_boundary] is parser/projection contracts, implementation plan, fixtures, and authority projection pack
+  + [accepted_boundary_input] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+  + [accepted_boundary_input] is docs/schema/Kernel_Record_Core.v1.sop
+  + [accepted_boundary_input] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [accepted_boundary_input] is docs/decisions/Storage_Backend_Decision.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR2-S01
+  + [gated_slice_set] is IR2-S02, IR2-S03, IR2-S04, IR2-S05, IR2-S06, IR2-S07, and IR2-S08
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR2-S01 before any other IR2 slice
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: reject any output that promotes SQLite, generated indexes, generated fixtures, or parser caches to source authority
+
+& [FinalWorkSlice: IR2-S01-ParserProjectionBoundaryAndInvariantMap] is ready
+  + [slice_id] is IR2-S01
+  + [slice_name] is parser and projection boundary and invariant map
+  + [chunk_ref] is IR2
+  + [portion_ref] is parser/projection authority boundary
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [boundary_input_set] is docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+  + [boundary_input_set] is docs/schema/Kernel_Record_Core.v1.sop
+  + [boundary_input_set] is docs/decisions/Storage_Backend_Decision.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is authority boundary, source/projection invariant set, allowed generated artifact set, implementation file ownership, stale trigger list, and forbidden scope list
+  + [verification_oracle] is all IR2 implementation boundaries are mapped without parser code, SQLite-writing code, LangGraph runtime code, surface implementation, operations simulation, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is parser/projection boundaries decide what authority-bearing implementation may safely begin
+  + [forbidden_scope] is parser implementation, SQLite projection implementation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-S02-SOPArtifactDiscoveryAndParserProfileContract] is gated
+  + [slice_id] is IR2-S02
+  + [slice_name] is SOP artifact discovery and parser profile contract
+  + [chunk_ref] is IR2
+  + [portion_ref] is parser input contract
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [activation_gate] is IR2-S01 accepted
+  + [internal_dependency_set] is IR2-S01 accepted output
+  + [expected_output_set] is docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+  + [expected_output_set] is authority file discovery rules, source directory inclusion/exclusion rules, SOP line/profile grammar subset, parse event shape, recoverable parse fault shape, and parser non-mutation rule
+  + [verification_oracle] is parser contract can discover authority artifacts and describe parseable structures without mutating source files or treating generated artifacts as authority
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is parser input semantics determine which SOP files become authority candidates and how ambiguity is preserved
+  + [forbidden_scope] is implementing parser code, writing generated indexes, modifying docs/source, silently skipping malformed authority, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-S03-KernelRecordExtractionAndValidationMapping] is gated
+  + [slice_id] is IR2-S03
+  + [slice_name] is KernelRecord extraction and validation mapping
+  + [chunk_ref] is IR2
+  + [portion_ref] is authority record extraction
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [activation_gate] is IR2-S02 accepted
+  + [internal_dependency_set] is IR2-S01 and IR2-S02 accepted outputs
+  + [expected_output_set] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [expected_output_set] is mapping from parsed SOP subjects to KernelRecord envelopes, source_ref_set rules, lineage_edge_set rules, natural_key resolution rules, validation failure records, and blocked-output behavior
+  + [verification_oracle] is extraction mapping covers every KernelRecord common field and refuses hidden source, hidden authority, unresolved identity, and missing freshness rules
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is extraction mapping translates SOP authority into typed kernel records and must preserve meaning and provenance
+  + [forbidden_scope] is implementing extraction code, SQLite writing, LangGraph runtime behavior, surface behavior, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-S04-HashLedgerSignatureAndFreshnessValidationContract] is gated
+  + [slice_id] is IR2-S04
+  + [slice_name] is hash ledger, signature, and freshness validation contract
+  + [chunk_ref] is IR2
+  + [portion_ref] is source validation and staleness
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [activation_gate] is IR2-S03 accepted
+  + [internal_dependency_set] is IR2-S01 through IR2-S03 accepted outputs
+  + [expected_output_set] is docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+  + [expected_output_set] is source hash ledger rules, satisfaction signature validation inputs, stale projection trigger rules, invalidation records, proof_result shape, and fault escalation rules
+  + [verification_oracle] is validation contract identifies current, stale, invalid, contradicted, missing-signature, and unsupported artifacts without rewriting authority files
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is hash and signature validation governs trust-bearing source classification
+  + [forbidden_scope] is implementing validation code, issuing new SJS signatures, mutating source files, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-S05-SQLiteProjectionSchemaAndRebuildPolicy] is gated
+  + [slice_id] is IR2-S05
+  + [slice_name] is SQLite projection schema and rebuild policy
+  + [chunk_ref] is IR2
+  + [portion_ref] is rebuildable projection storage
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [activation_gate] is IR2-S04 accepted
+  + [internal_dependency_set] is IR2-S01 through IR2-S04 accepted outputs
+  + [expected_output_set] is docs/implementation/IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
+  + [expected_output_set] is SQLite table plan, index plan, source hash columns, projection freshness columns, rebuild sequence, generated artifact path policy, and projection fault behavior
+  + [verification_oracle] is schema can rebuild query indexes from SOP authority and accepted traces while preserving SQLite as non-authoritative projection
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is projection schema affects authority visibility, query correctness, cache staleness, and migration path
+  + [forbidden_scope] is writing SQLite implementation code, creating database files, installing dependencies, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-S06-ParserAndProjectionImplementationPlan] is gated
+  + [slice_id] is IR2-S06
+  + [slice_name] is parser and projection implementation plan
+  + [chunk_ref] is IR2
+  + [portion_ref] is implementation execution plan
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [activation_gate] is IR2-S05 accepted
+  + [internal_dependency_set] is IR2-S01 through IR2-S05 accepted outputs
+  + [expected_output_set] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+  + [expected_output_set] is implementation file inventory, public API boundary, no-mutation source reader policy, generated SQLite writer policy, command/test plan, and proof checklist
+  + [verification_oracle] is implementation plan can be executed without adding external dependencies, modifying SOP authority files, or allowing generated projections to become authority
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is this plan opens parser/projection implementation and must preserve all accepted authority boundaries
+  + [forbidden_scope] is writing code in this slice unless a future completion review explicitly activates implementation, LangGraph runtime implementation, surface implementation, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-S07-ParserProjectionFixturesAndExpectedOutputLedgers] is gated
+  + [slice_id] is IR2-S07
+  + [slice_name] is parser/projection fixtures and expected-output ledgers
+  + [chunk_ref] is IR2
+  + [portion_ref] is parser/projection proof fixtures
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [activation_gate] is IR2-S06 accepted
+  + [internal_dependency_set] is IR2-S01 through IR2-S06 accepted outputs
+  + [expected_output_set] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+  + [expected_output_set] is fixture source list, expected KernelRecord ledger shape, expected SQLite projection ledger shape, stale and invalid source cases, and no-authority-promotion proof checklist
+  + [verification_oracle] is fixtures cover valid authority, missing signature, stale source hash, malformed SOP subject, unresolved natural key, and generated projection rebuild cases
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-S01 through IR2-S06 are accepted and fixture scope is bounded
+  + [model_route_reason] is fixture planning becomes bounded after parser, validation, and projection contracts stabilize
+  + [forbidden_scope] is implementing parser code, creating generated database files, mutating authority files, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR2-S08-IR2CompletionReviewAndAuthorityProjectionPack] is gated
+  + [slice_id] is IR2-S08
+  + [slice_name] is IR2 completion review and authority projection pack
+  + [chunk_ref] is IR2
+  + [portion_ref] is IR2 closure
+  + [authority_basis] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [activation_gate] is IR2-S07 accepted
+  + [internal_dependency_set] is IR2-S01 through IR2-S07 accepted outputs
+  + [expected_output_set] is docs/reviews/IR2_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [expected_output_set] is acceptance record for parser contract, extraction mapping, hash validation, SQLite schema, implementation plan, fixture plan, stale outputs, contradictions, unresolved proof gaps, and downstream IR3 activation readiness
+  + [verification_oracle] is completion review accepts only IR2 parser/projection readiness and keeps IR3 implementation gated until IR2 pack is accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance opens operator harness and fixture runner work while preserving source/projection authority boundaries
+  + [forbidden_scope] is implementing LangGraph runtime, surface prototype, adapter, operations simulator, operations control, live machine control, or silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR2SliceClosureReview] is the dependency audit for minted IR2 slices
+  + [slice_surface_uuid] is a98f03a1-5470-4fd9-bf01-736343ea191e
+  + [IR2_boundary_input_set] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [IR2_boundary_input_set] is docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+  + [IR2_boundary_input_set] is docs/schema/Kernel_Record_Core.v1.sop
+  + [IR2_boundary_input_set] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [IR2_boundary_input_set] is docs/decisions/Storage_Backend_Decision.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is IR2-S01
+  + [safety_limit] is no live operations control authorized
+
+  = must: rerun this closure review after every IR2 completion review

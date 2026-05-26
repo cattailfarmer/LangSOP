@@ -29,6 +29,8 @@ Current planning authority:
 - `docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop`
 - `docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop`
 - `docs/slices/IR1_Final_Slices.v1.sop`
+- `docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop`
+- `docs/slices/IR2_Final_Slices.v1.sop`
 
 The v2 pass preserves the initial specification as source snapshots, expands it through a seven-fold specification explosion, and leaves the project ready for kernel schema and operator-contract design. Runtime code still requires solution records, fixtures, and proof before it can claim implementation authority.
 
@@ -36,4 +38,4 @@ The working development pattern is "whole-pie first": keep the product overview 
 
 The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is accepted as a boundary input, FSC2 planning coordination has been minted into final slices, and downstream chunks stay gated until their upstream contract packs are accepted.
 
-FSC1, FSC2, FSC3, FSC4, FSC5, and IR1 have been minted, executed, reviewed, and accepted. The inert Python scaffold has been created from the accepted IR1 inventory and reviewed in `docs/reviews/IR1_Scaffold_Creation_Review.v1.sop`. The current next work is IR2 authority-file parser and SQLite projection builder planning, which requires deeper reasoning; bounded fixtures and implementation after those contracts are accepted will be GPT-5.3-Codex-Spark-suitable. No operations control or live machine control is authorized.
+FSC1, FSC2, FSC3, FSC4, FSC5, and IR1 have been minted, executed, reviewed, and accepted. The inert Python scaffold has been created from the accepted IR1 inventory and reviewed in `docs/reviews/IR1_Scaffold_Creation_Review.v1.sop`. IR2 final slices have been minted and reviewed; the current ready slice is `IR2-S01` parser and projection boundary and invariant map, which requires deeper reasoning. No operations control or live machine control is authorized.

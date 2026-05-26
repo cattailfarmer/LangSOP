@@ -1,0 +1,39 @@
+Subject: IR2 Work State V1
+Date: 2026-05-26
+State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [slice_minting_review] docs/reviews/IR2_Final_Slice_Minting_Review.v1.sop
+@ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+
+& [IR2WorkStateV1] is the current derived work state for IR2 authority-file parser and SQLite projection builder
+  + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
+  + [state_basis] is docs/reviews/IR2_Final_Slice_Minting_Review.v1.sop
+  + [surface_status] is accepted_for_IR2-S01_execution
+  + [source_manifest] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
+  + [canonical_specification] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is C9953A2E39B35A5FE01B3186767CCCF84B3EEA99A99444DBB8ACE6C8419EB9BB
+  + [slice_surface] is docs/slices/IR2_Final_Slices.v1.sop
+  + [slice_surface_sha256] is 3B77355A83AE6066FD56DBB0A179D1775FCA479300925F2BA1B9C09791DF34D2
+  + [current_ready_slice] is IR2-S01
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [gated_slice] is IR2-S02
+  + [gated_slice] is IR2-S03
+  + [gated_slice] is IR2-S04
+  + [gated_slice] is IR2-S05
+  + [gated_slice] is IR2-S06
+  + [gated_slice] is IR2-S07
+  + [gated_slice] is IR2-S08
+  + [safety_limit] is no live operations control authorized
+  + [sqlite_authority_status] is derived_projection_only
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: run IR2-S01 before treating parser or projection implementation as authorized
+  = must: keep generated SQLite, cache, index, fixture output, and projection artifacts non-authoritative
+  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, or storage decision changes
+

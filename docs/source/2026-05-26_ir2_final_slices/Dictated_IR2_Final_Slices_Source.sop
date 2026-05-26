@@ -1,0 +1,36 @@
+Subject: IR2 Final Slices Source
+Date: 2026-05-26
+Source UUID: 31f631cc-e215-461e-8f8f-0b96fbd3e6d9
+
+& [SourcePrompt: IR2FinalSlices] is the preserved source for minting IR2 final slices
+  + [source_kind] is manager-derived implementation-readiness slice source
+  + [origin] is accepted IR1 implementation substrate pack and reviewed inert scaffold creation
+  + [purpose] is split IR2 authority-file parser and SQLite projection builder into clean final slices before parser or projection implementation begins
+  + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
+  + [model_route] is requires deeper reasoning
+
+  = must: create an IR2 final slice surface that can be executed without depending on unsliced downstream chunks
+  = must: preserve SOP files as authority and SQLite as a rebuildable derived projection
+  = must: define parser and projection behavior before implementing parser or SQLite builder code
+  = must: define source artifact discovery, parser profile, KernelRecord extraction mapping, hash ledger validation, and stale projection handling
+  = must: define SQLite projection schema and rebuild policy before creating database-writing code
+  = must: define fixtures and expected-output ledgers before accepting parser/projection implementation
+  = must: require completion review after every IR2 slice
+  = must: keep LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control out of IR2
+  = must: keep generated SQLite files, caches, indexes, and extracted projections non-authoritative
+  = must: preserve no live operations control authorized
+
+& [RequiredIR2SliceSet] is the source-level slice set for IR2
+  + [slice_candidate] is IR2-S01 parser and projection boundary and invariant map
+  + [slice_candidate] is IR2-S02 SOP artifact discovery and parser profile contract
+  + [slice_candidate] is IR2-S03 KernelRecord extraction and validation mapping
+  + [slice_candidate] is IR2-S04 hash ledger, signature, and freshness validation contract
+  + [slice_candidate] is IR2-S05 SQLite projection schema and rebuild policy
+  + [slice_candidate] is IR2-S06 parser and projection implementation plan
+  + [slice_candidate] is IR2-S07 parser/projection fixtures and expected-output ledgers
+  + [slice_candidate] is IR2-S08 IR2 completion review and authority projection pack
+
+  = must: keep IR2-S01 through IR2-S05 deeper-reasoning slices
+  = must: route IR2-S06 to deeper reasoning if implementation plan changes authority, parser, projection, or storage semantics
+  = should: route IR2-S07 to GPT-5.3-Codex-Spark only after IR2-S01 through IR2-S06 are accepted and fixtures are bounded
+  = must: route IR2-S08 to deeper reasoning because it accepts parser/projection implementation readiness and opens IR3

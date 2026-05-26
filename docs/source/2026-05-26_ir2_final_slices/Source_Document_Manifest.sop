@@ -1,0 +1,40 @@
+Subject: IR2 Final Slices Source Manifest
+Date: 2026-05-26
+Manifest UUID: b42d31c9-3da8-4f2f-909e-e6d16a21d57c
+
+& [SourceDocumentManifest: IR2FinalSlices] is the source preservation manifest for minting IR2 final slices
+  + [dictated_source] is docs/source/2026-05-26_ir2_final_slices/Dictated_IR2_Final_Slices_Source.sop
+    + [sha256] is D4C0299F041247119AF8B3F1F40AD844E67A8B6984122FA8BDFC51320BB1CF09
+    + [source_role] is preserved manager-derived source for IR2 final slice minting
+  + [authority_source] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+    + [sha256] is BB07889B944EF8725579A05F15A52C17529D626068D73BCF01D779F6E28F6774
+    + [source_role] is accepted implementation substrate pack and IR2 gate input
+  + [authority_source] is docs/reviews/IR1_Completion_Review.v1.sop
+    + [sha256] is C2722DF110D05C9FA3EF411DCEBBEC59DAEC018DBBB7C99A7DFDE15045E02B05
+    + [source_role] is IR1 closure review
+  + [authority_source] is docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+    + [sha256] is 6753E72D5E8A446B6263864800C1AF7C406AA40E38A1F28EF00FC4BF1563A320
+    + [source_role] is scaffold review opening IR2 planning
+  + [authority_source] is docs/schema/Kernel_Record_Core.v1.sop
+    + [sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+    + [source_role] is accepted common KernelRecord schema
+  + [authority_source] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+    + [sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+    + [source_role] is accepted record-specific KernelRecord schema inventory
+  + [authority_source] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+    + [sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+    + [source_role] is accepted identity, lifecycle, freshness, and invalidation matrix
+  + [authority_source] is docs/operators/Foundation_Operator_Contracts.v1.sop
+    + [sha256] is CFECB48599185245D402D729877E4FDD48F59CF60229CA4BDF45C4F3FD6ADC33
+    + [source_role] is accepted foundation operator contract basis
+  + [authority_source] is docs/decisions/Storage_Backend_Decision.v1.sop
+    + [sha256] is 784694C5D92857E796707F9BCFA1E5E07A0DAC162417E30B4BE68EBF38FDF462
+    + [source_role] is accepted hybrid SOP plus rebuildable SQLite decision
+  + [canonical_target] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/IR2_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for IR2 final slices
+  = must: invalidate IR2 final slices if a cited source hash changes without reprocessing
+  = must: keep IR2 bounded to authority-file parser and SQLite projection builder planning and implementation
+  - never: use this manifest to authorize LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control
+
