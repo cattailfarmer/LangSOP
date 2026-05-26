@@ -1,0 +1,178 @@
+Subject: IR2 Completion Review V1
+Date: 2026-05-26
+Review UUID: f5a480b4-bd4f-4592-8fed-fb19828b6b15
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [completed_output] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+@ [completed_review] docs/reviews/IR2_S01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_S02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_S03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_S04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_S05_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_S06_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR2_S07_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR2-S08] is the final completion review for IR2 authority-file parser and SQLite projection builder planning
+  + [slice_id] is IR2-S08
+  + [slice_name] is IR2 completion review and authority projection pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/reviews/IR2_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [completed_output] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [completed_output_sha256] is F716C3DFA819B956195F1C5D7920FE5AEFB408EE7E57A06099F8893E2DE223B2
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR2 accepted as authority projection planning pack
+  + [code_activation_result] is bounded implementation activation may be planned next but code creation is not authorized by this review alone
+  + [downstream_gate_result] is IR3 planning intake may cite this pack, while IR3 implementation remains gated until IR2 bounded implementation proof is accepted or a rebake reclassifies IR3 scope
+  + [source_phrase_resolution] is IR2 language about opening IR3 is interpreted as opening IR3 planning intake, not IR3 implementation authority, because no IR2 parser/projection implementation proof exists yet
+  + [next_model_route] is requires deeper reasoning for implementation activation planning; future bounded code slices are GPT-5.3-Codex-Spark-suitable only after explicit activation
+
+  = must: treat this review and the authority projection pack as the gate evidence for IR2 implementation activation planning only
+  = must: rerun IR2-S08 if the IR2 authority projection pack, any accepted IR2 output, or any IR2 slice completion review changes
+  = must: keep operations control and live machine control unauthorized
+
+& [AcceptedOutputDigestSet: IR2] is the accepted hash ledger for IR2 outputs and reviews
+  + [accepted_boundary_input] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+  + [accepted_boundary_input_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
+  + [accepted_boundary_input] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [accepted_boundary_input_sha256] is C9953A2E39B35A5FE01B3186767CCCF84B3EEA99A99444DBB8ACE6C8419EB9BB
+  + [accepted_boundary_input] is docs/slices/IR2_Final_Slices.v1.sop
+  + [accepted_boundary_input_sha256] is 3B77355A83AE6066FD56DBB0A179D1775FCA479300925F2BA1B9C09791DF34D2
+  + [accepted_output] is docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is 2432A53A7EA00CC6526BD31096A8D51D0CC9612227745F1F9D2AADE837A8337E
+  + [accepted_output] is docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+  + [accepted_output_sha256] is 6709231B30068A911A20ABFF64EF90D6FBF8374B9C63816F404055AC75A92574
+  + [accepted_output] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [accepted_output_sha256] is A5A5A9C6647D7CE7D16C29FAEA83B77F21E71D92E7248DCC370EF69D94F079B6
+  + [accepted_output] is docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+  + [accepted_output_sha256] is EFE9D40A6EDC1E2EA6D8D4851E42D9ECE2BCBD92462F6183B804260330E3564F
+  + [accepted_output] is docs/implementation/IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
+  + [accepted_output_sha256] is C15149C3709EAD1912A16DAFE577BF25FF9E5B41F587E9A0A89C7182FBF8F8F9
+  + [accepted_output] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is 7C7E64450E032757EC68CAEE613EDDBE953FD6869CFEF07065CC78E24DCA552F
+  + [accepted_output] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is 2936610DB09439A0C8D7379F8D201B4790E1700D915F1F3661AC983063245A25
+  + [accepted_output] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [accepted_output_sha256] is F716C3DFA819B956195F1C5D7920FE5AEFB408EE7E57A06099F8893E2DE223B2
+  + [accepted_review] is docs/reviews/IR2_S01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is D729820227A820739607276E8FE60D46D01FFB87287632B1E6D3668821F81E4B
+  + [accepted_review] is docs/reviews/IR2_S02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 4EF790FCD68B6AD370DDFE8C9E3C62EAE83F7FD20AA11CFC64D5473CE3F83511
+  + [accepted_review] is docs/reviews/IR2_S03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 614E506F3A2473A39872D24C79DDBA451F1D986A4DDF8D8579F71011818F2AFC
+  + [accepted_review] is docs/reviews/IR2_S04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 327F6430FCB7A2A4646A68C4344F5605B38663FC91067960A7E6DEC2F647D59F
+  + [accepted_review] is docs/reviews/IR2_S05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 241A8DFF7D6D6F8213D7353A0E4FF44770C4200C1646655608ED85FB0DD037E1
+  + [accepted_review] is docs/reviews/IR2_S06_Completion_Review.v1.sop
+  + [accepted_review_sha256] is E1AAD76DABDA8CB162F3D81876E074AAC05E1647400BAD3C8F2C0AEDE302B6EE
+  + [accepted_review] is docs/reviews/IR2_S07_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 66EFF6A8D63948AC507981F54A56D3923648B07EF4AC71FDB18111E592C4709A
+
+  = must: mark this completion review stale if any listed hash changes
+
+& [IR2CompletionVerification] is the verification result for the full authority projection pack
+  + [accepted_slice] is IR2-S01 parser and projection boundary and invariant map
+  + [accepted_slice] is IR2-S02 SOP artifact discovery and parser profile contract
+  + [accepted_slice] is IR2-S03 KernelRecord extraction and validation mapping
+  + [accepted_slice] is IR2-S04 hash ledger, signature, and freshness validation contract
+  + [accepted_slice] is IR2-S05 SQLite projection schema and rebuild policy
+  + [accepted_slice] is IR2-S06 parser and projection implementation plan
+  + [accepted_slice] is IR2-S07 parser/projection fixtures and expected-output ledgers
+  + [accepted_slice] is IR2-S08 IR2 completion review and authority projection pack
+  + [boundary_map_status] is accepted
+  + [parser_profile_status] is accepted
+  + [extraction_mapping_status] is accepted
+  + [validation_contract_status] is accepted
+  + [projection_policy_status] is accepted
+  + [implementation_plan_status] is accepted
+  + [fixture_plan_status] is accepted
+  + [authority_projection_pack_status] is accepted
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [generated_projection_authority_leak_found] is false
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_sqlite_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR2CompletionVerificationSatisfied] is accepted
+    @ [support] docs/reviews/IR2_S01_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR2_S02_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR2_S03_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR2_S04_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR2_S05_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR2_S06_Completion_Review.v1.sop
+    @ [support] docs/reviews/IR2_S07_Completion_Review.v1.sop
+    @ [support] docs/planning/IR2_Authority_Projection_Pack.v1.sop
+
+& [SupportDelta: IR2-S08] is the support delta produced by IR2 completion
+  + [new_support_record] is IR2AuthorityProjectionPackV1 supports explicit bounded IR2 implementation activation planning
+  + [new_support_record] is accepted parser, extraction, validation, projection, implementation-plan, and fixture-plan contracts support future parser/projection implementation proof
+  + [new_support_record] is DownstreamGateExport allows IR3 planning intake while preventing false-ready IR3 implementation
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2-S08] is the requirement delta produced by IR2 completion
+  + [requirement_delta] is the next ready work is IR2 bounded parser/projection implementation activation surface, which requires deeper reasoning
+  + [requirement_delta] is future bounded implementation slices are GPT-5.3-Codex-Spark-suitable only after explicit activation selects their scope
+  + [requirement_delta] is code creation, fixture source creation, expected-ledger creation, generated SQLite output, dependency installation, operations control, and live machine control remain unauthorized until a later accepted slice explicitly opens the relevant bounded work
+  + [requirement_delta] is IR3 planning may consume this pack, but IR3 implementation remains gated until IR2 bounded parser/projection implementation proof is accepted or a rebake reclassifies IR3 scope
+  + [requirement_delta] is downstream activation language must distinguish planning intake from implementation authority whenever accepted proof does not yet include executable behavior
+  + [requirement_delta] is no rebake required for IR2 closure
+
+& [StalenessAndContradictionReview: IR2-S08] is the final staleness review for IR2
+  + [stale_source_manifest_found] is false
+  + [stale_canonical_specification_found] is false
+  + [stale_slice_surface_found] is false
+  + [stale_accepted_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [false_ready_IR3_implementation_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR2 closure stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR2-S08] is the final fault review for IR2
+  + [parser_implementation_leak_found] is false
+  + [sqlite_projection_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR2S08Accepted] is accepted
+    @ [support] [IR2CompletionVerification]
+    @ [support] [SupportDelta: IR2-S08]
+    @ [support] [RequirementDelta: IR2-S08]
+    @ [support] [StalenessAndContradictionReview: IR2-S08]
+    @ [support] [FaultReview: IR2-S08]
+
+& [NextWorkGate: IR2ImplementationActivation] is opened
+  + [opened_work] is IR2 bounded parser/projection implementation activation surface
+  + [accepted_boundary_input] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is F716C3DFA819B956195F1C5D7920FE5AEFB408EE7E57A06099F8893E2DE223B2
+  + [activation_state] is ready_for_activation_planning
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is the activation surface must select code and fixture slices without changing authority semantics or opening false downstream runtime work
+  + [future_code_model_route] is GPT-5.3-Codex-Spark-suitable only after activation selects bounded file edits from the accepted inventory
+  + [downstream_gate] is IR3 implementation remains gated until parser/projection implementation proof is accepted
+  + [safety_limit] is no live operations control authorized
+
+  = must: plan activation before writing parser, projection, fixture, or expected-ledger files
+  = must: keep implementation completion review mandatory for every future code slice

@@ -1,0 +1,138 @@
+Subject: IR2 Authority Projection Pack V1
+Date: 2026-05-26
+Pack UUID: cf0c6b08-ed31-4d1e-b28c-2fe4b890a0d8
+
+@ [completion_review] docs/reviews/IR2_Completion_Review.v1.sop
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [boundary_map] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [parser_profile] docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+@ [extraction_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+@ [validation_contract] docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+@ [projection_policy] docs/implementation/IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
+@ [implementation_plan] docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+
+& [AuthorityProjectionPack: IR2AuthorityProjectionPackV1] is the accepted boundary pack exported by IR2 after completion review acceptance
+  + [pack_id] is ir2-authority-projection-pack-v1
+  + [pack_uuid] is cf0c6b08-ed31-4d1e-b28c-2fe4b890a0d8
+  + [source_chunk] is IR2 authority-file parser and SQLite projection builder
+  + [export_status] is accepted_boundary_input_after_IR2_completion_review
+  + [consumer_work] is IR2 bounded parser/projection implementation activation and downstream IR3 planning intake
+  + [activation_effect] is IR2 bounded implementation activation may be planned from accepted contracts, file inventory, and fixture plan
+  + [implementation_effect] is no parser code, SQLite projection code, fixture source files, expected ledgers, generated database files, dependencies, operations control, or live machine control is authorized by this pack alone
+
+  = must: preserve SOP files as source authority and SQLite, parser caches, generated indexes, reports, and fixture outputs as projection-only
+  = must: require explicit bounded implementation activation before creating or editing IR2 implementation files
+  = must: require completion review after any future implementation slice before its output becomes accepted
+  - never: treat this pack as permission to control processes, GPUs, model runtimes, jobs, credentials, networks, destructive filesystem actions, or live machines
+
+& [AcceptedIR2DigestSet] is the accepted hash ledger exported by IR2
+  + [accepted_boundary_input] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
+  + [accepted_boundary_input_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
+  + [accepted_boundary_input] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+  + [accepted_boundary_input_sha256] is C9953A2E39B35A5FE01B3186767CCCF84B3EEA99A99444DBB8ACE6C8419EB9BB
+  + [accepted_boundary_input] is docs/slices/IR2_Final_Slices.v1.sop
+  + [accepted_boundary_input_sha256] is 3B77355A83AE6066FD56DBB0A179D1775FCA479300925F2BA1B9C09791DF34D2
+  + [accepted_output] is docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is 2432A53A7EA00CC6526BD31096A8D51D0CC9612227745F1F9D2AADE837A8337E
+  + [accepted_output] is docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+  + [accepted_output_sha256] is 6709231B30068A911A20ABFF64EF90D6FBF8374B9C63816F404055AC75A92574
+  + [accepted_output] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [accepted_output_sha256] is A5A5A9C6647D7CE7D16C29FAEA83B77F21E71D92E7248DCC370EF69D94F079B6
+  + [accepted_output] is docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+  + [accepted_output_sha256] is EFE9D40A6EDC1E2EA6D8D4851E42D9ECE2BCBD92462F6183B804260330E3564F
+  + [accepted_output] is docs/implementation/IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
+  + [accepted_output_sha256] is C15149C3709EAD1912A16DAFE577BF25FF9E5B41F587E9A0A89C7182FBF8F8F9
+  + [accepted_output] is docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is 7C7E64450E032757EC68CAEE613EDDBE953FD6869CFEF07065CC78E24DCA552F
+  + [accepted_output] is docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is 2936610DB09439A0C8D7379F8D201B4790E1700D915F1F3661AC983063245A25
+
+  = must: mark this authority projection pack stale if any listed hash changes
+
+& [ExportedParserProjectionContractSet] is the IR2 contract set available to bounded implementation activation
+  + [boundary_contract] is IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+  + [parser_contract] is IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+  + [extraction_contract] is IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [validation_contract] is IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+  + [projection_contract] is IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
+  + [contract_status] is accepted_for_bounded_implementation_activation
+
+  = must: preserve raw source references, hashes, satisfaction signatures, lineage, natural key status, authority classification, freshness state, and projection status in future implementation outputs
+  = must: emit blocked or fault records rather than silently dropping ambiguous or invalid authority material
+
+& [ExportedImplementationCandidateSet] is the bounded future implementation inventory exported by IR2
+  + [future_file] is src/langsop/authority/discovery.py
+  + [future_file] is src/langsop/authority/sop_parser.py
+  + [future_file] is src/langsop/authority/extraction.py
+  + [future_file] is src/langsop/authority/validation.py
+  + [future_file] is src/langsop/projections/sqlite_schema.py
+  + [future_file] is src/langsop/projections/sqlite_projection.py
+  + [future_file] is src/langsop/projections/rebuild.py
+  + [future_file] is tests/test_ir2_parser_projection_contracts.py
+  + [dependency_boundary] is Python standard library only for the first implementation pass
+  + [public_api_boundary] is the API set defined in PublicAPIBoundary from docs/implementation/IR2_Parser_Projection_Implementation_Plan.v1.sop
+  + [generated_write_boundary] is .langsop/ and tests/fixtures/generated/ only
+  + [implementation_status] is candidate_only_until_explicit_activation
+
+  = must: require deeper reasoning before changing this inventory, API boundary, dependency boundary, or generated write boundary
+  = should: route bounded implementation of this accepted inventory to GPT-5.3-Codex-Spark after explicit activation because that work is Spark-suitable once contracts and fixtures are locked
+
+& [ExportedFixtureAndLedgerCandidateSet] is the future fixture proof boundary exported by IR2
+  + [fixture_source_root] is tests/fixtures/sop/ir2_parser_projection/
+  + [fixture_expected_root] is tests/fixtures/expected/ir2_parser_projection/
+  + [fixture_generated_root] is tests/fixtures/generated/ir2_parser_projection/
+  + [fixture_case_set] is valid_signed_canonical_artifact, source_only_unprocessed_artifact, missing_signature_canonical_artifact, wrong_protocol_signature, stale_source_hash, malformed_sop_structure, unresolved_natural_key, broken_lineage, generated_projection_non_authority, and source_mutation_refusal
+  + [expected_ledger_shape_set] is ExpectedKernelRecordLedgerShape, ExpectedSQLiteProjectionLedgerShape, and ExpectedValidationLedgerShape
+  + [fixture_status] is candidate_only_until_explicit_activation
+
+  = must: track fixture source and expected ledgers as reviewable SOP material when a future activation slice creates them
+  = must: keep generated fixture outputs disposable and non-authoritative
+
+& [AuthorityProjectionBoundary] is the source/projection authority boundary exported by IR2
+  + [source_authority_root] is docs/
+  + [tracked_fixture_authority_root] is tests/fixtures/sop/ and tests/fixtures/expected/ only after fixture creation is explicitly activated
+  + [generated_projection_root] is .langsop/
+  + [generated_test_projection_root] is tests/fixtures/generated/
+  + [sqlite_authority_status] is derived_projection_only
+  + [langgraph_checkpoint_authority_status] is execution_state_only
+  + [surface_state_authority_status] is projection_only
+  + [chat_protocol_authority_status] is projection_or_carrier_only
+
+  = must: reject generated SQLite, cache, parser output, LangGraph checkpoint, surface projection, IRC, Matrix, terminal, Codex, or web chat state as source authority unless a future source-preserved and SJS-processed record explicitly imports it
+  = must: preserve source mutation refusal as a first implementation proof obligation
+
+& [CodeActivationBoundaryExport] is the activation boundary exported by IR2
+  + [code_creation_authorized_by_this_pack] is false
+  + [code_creation_precondition_satisfied] is IR2-S01 through IR2-S08 accepted
+  + [next_ready_work] is IR2 bounded parser/projection implementation activation surface
+  + [next_ready_work_model_route] is requires deeper reasoning
+  + [future_bounded_code_route] is GPT-5.3-Codex-Spark-suitable after explicit activation selects a bounded implementation slice
+  + [deeper_reasoning_required_for] is authority semantics, parser profile, extraction mapping, validation contract, SQLite schema, generated artifact policy, dependency additions, and downstream gate changes
+
+  = must: use a future activation review or minted implementation slice before writing code, creating fixture files, creating expected ledgers, or generating SQLite outputs
+  = must: keep implementation completion review mandatory before accepting any code or fixture output
+
+& [DownstreamGateExport] is the downstream readiness boundary exported by IR2
+  + [IR3_planning_intake_state] is may_consume_IR2_authority_projection_pack_after_completion_review
+  + [IR3_implementation_state] is gated_until_IR2_bounded_parser_projection_implementation_review_is_accepted_or_a_rebake_reclassifies_IR3_scope
+  + [IR3_model_route] is GPT-5.3-Codex-Spark-suitable only for bounded operator harness and fixture runner work after required parser/projection proof exists
+  + [IR3_deeper_reasoning_required_for] is any change to authority, checkpoint, operator trace, interrupt, or downstream activation semantics
+  + [safety_limit] is no live operations control authorized
+
+  = must: prevent a false-ready IR3 implementation signal while allowing downstream planning to cite the accepted IR2 contract pack
+  = must: treat a desire to skip IR2 implementation proof as a rebake candidate, not an implicit activation
+
+& [IR2PackInvalidationRuleSet] is the staleness contract for IR2AuthorityProjectionPackV1
+  + [invalidated_by] is change to IR2 source manifest, canonical specification, slice surface, or SJS signature basis
+  + [invalidated_by] is change to any accepted IR2-S01 through IR2-S07 output hash
+  + [invalidated_by] is change to any IR2-S01 through IR2-S08 completion review that affects support, requirements, or gates
+  + [invalidated_by] is parser, validation, projection, fixture, generated artifact, or dependency behavior exceeding the exported boundaries
+  + [invalidated_by] is generated projection promoted to source authority
+  + [invalidated_by] is silent mutation of SOP authority files by parser/projection implementation
+  + [invalidated_by] is operations control or live machine control leak
+
+  = must: rerun IR2-S08 or rebake the relevant surface after invalidation before downstream work consumes this pack again
