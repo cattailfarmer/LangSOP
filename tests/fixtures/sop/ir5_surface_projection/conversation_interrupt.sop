@@ -1,0 +1,31 @@
+Subject: IR5 Fixture Source Conversation Interrupt
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+
+& [IR5FixtureSource: conversation_interrupt] is a surface projection fixture source
+  + [fixture_case] is IR5X-006-conversation-interrupt
+  + [projection_kind] is conversation_projection
+  + [carrier_surface] is conversation_surface
+  + [authority_tier] is carrier_context
+  + [trust_limit] is preserved conversation context only
+  + [source_authority_ref] is docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is interrupted
+  + [projected_status] is interrupted
+  + [interrupt_context_ref] is ambiguous_authority_sensitive_user_action
+  + [conversation_lineage_ref_set_state] is visible
+  + [visible_blocked_stale_fault_interrupt_set_state] is visible
+  + [supported_action_route] is request_interrupt_resolution
+  + [supported_action_route] is SOP-first interrupt
+  + [forbidden_action] is participant_identity_collapse
+  + [forbidden_action] is direct_authority_mutation
+  + [forbidden_action] is direct_claim_acceptance
+  + [expected_projection_record] is conversation interrupt context with visible authority notice
+  + [expected_refusal] is direct authority mutation from carrier context
+
+  = expect: carrier context is preserved without authority promotion
+  = expect: SOP-first interrupt route is visible
+  = expect: no source authority mutation

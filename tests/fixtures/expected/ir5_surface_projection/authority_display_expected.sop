@@ -1,0 +1,81 @@
+Subject: IR5 Authority Display Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+
+& [ExpectedAuthorityDisplayLedger: IR5SurfaceProjection] is the expected authority display ledger
+  + [authority_display_envelope_required] is true
+  + [visible_before_action_required] is true
+  + [required_field] is display_projection_id
+  + [required_field] is projected_subject_ref
+  + [required_field] is carrier_surface
+  + [required_field] is authority_tier
+  + [required_field] is trust_limit
+  + [required_field] is source_authority_ref_set
+  + [required_field] is derived_from_ref_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is risk_reason
+  + [required_field] is permitted_action_set
+  + [required_field] is forbidden_action_set
+  + [required_field] is required_route_set
+  + [required_field] is mutation_boundary_ref
+  + [required_field] is visible_before_action
+
+& [ExpectedAuthorityDisplayCaseSet: IR5SurfaceProjection] is the per-fixture authority display ledger
+  + [fixture_id] is manager_ready_packet
+    + [expected_authority_tier] is source_authority
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is accepted IR5 work state and completion reviews only
+  + [fixture_id] is worker_blocked_packet
+    + [expected_authority_tier] is source_authority
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is accepted work packet evidence only
+  + [fixture_id] is stale_projection
+    + [expected_authority_tier] is generated_projection_evidence
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is stale display evidence only
+  + [fixture_id] is narrative_lineage
+    + [expected_authority_tier] is source_authority
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is accepted narrative and completion review refs only
+  + [fixture_id] is debug_fault_trace
+    + [expected_authority_tier] is generated_projection_evidence
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is debug evidence display only
+  + [fixture_id] is conversation_interrupt
+    + [expected_authority_tier] is carrier_context
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is preserved conversation context only
+  + [fixture_id] is adapter_mutation_refusal
+    + [expected_authority_tier] is carrier_context
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is inbound carrier context only
+  + [fixture_id] is missing_authority_notice
+    + [expected_authority_tier] is generated_projection_evidence
+    + [expected_authority_notice] is missing
+    + [expected_refusal_reason] is missing_authority_notice
+  + [fixture_id] is langflow_non_authority_projection
+    + [expected_authority_tier] is generated_projection_evidence
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is explanatory projection only
+  + [fixture_id] is multi_surface_divergence
+    + [expected_authority_tier] is carrier_context
+    + [expected_authority_notice] is mismatched
+    + [expected_trust_limit] is divergent carrier evidence only
+  + [fixture_id] is completion_gate_refusal
+    + [expected_authority_tier] is generated_projection_evidence
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is gate display only
+  + [fixture_id] is ir4_runtime_graph_proof_handoff
+    + [expected_authority_tier] is accepted_execution_evidence
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is accepted IR4 completion evidence only
+  + [fixture_id] is dry_run_success_not_live_control
+    + [expected_authority_tier] is generated_projection_evidence
+    + [expected_authority_notice] is present
+    + [expected_trust_limit] is non-live dry-run evidence only
+
+  = must: reject any decision-making projection that omits required authority display fields
+  = must: preserve lower-tier labels even when projections summarize accepted work

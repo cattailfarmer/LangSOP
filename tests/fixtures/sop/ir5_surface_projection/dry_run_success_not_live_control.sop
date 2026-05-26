@@ -1,0 +1,39 @@
+Subject: IR5 Fixture Source Dry Run Success Not Live Control
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR5FixtureSource: dry_run_success_not_live_control] is a surface projection fixture source
+  + [fixture_case] is IR5X-013-dry-run-success-not-live-control
+  + [projection_kind] is operation_projection
+  + [carrier_surface] is operations_preview_surface
+  + [authority_tier] is generated_projection_evidence
+  + [trust_limit] is non-live dry-run evidence only
+  + [source_authority_ref] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is blocked
+  + [projected_status] is blocked
+  + [dry_run_display] is non_live_simulation_only
+  + [dry_run_result] is success
+  + [no_live_effect_notice] is visible
+  + [risk_classification] is operation_like_request
+  + [completion_review_required] is true
+  + [forbidden_action] is command_execution
+  + [forbidden_action] is process_control
+  + [forbidden_action] is GPU_control
+  + [forbidden_action] is model_runtime_mutation
+  + [forbidden_action] is job_dispatch
+  + [forbidden_action] is credential_mutation
+  + [forbidden_action] is network_mutation
+  + [forbidden_action] is destructive_filesystem_action
+  + [forbidden_action] is operations_automation
+  + [forbidden_action] is operations_control
+  + [forbidden_action] is live_machine_control
+  + [expected_projection_record] is refused operation request with no-live-effect notice
+  + [expected_refusal] is live control from dry-run success
+
+  = expect: dry-run success never authorizes live control
+  = expect: human approval display remains scoped and non-live
+  = expect: no source authority mutation

@@ -1,0 +1,29 @@
+Subject: IR5 Fixture Source Completion Gate Refusal
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+
+& [IR5FixtureSource: completion_gate_refusal] is a surface projection fixture source
+  + [fixture_case] is IR5X-011-completion-gate-refusal
+  + [projection_kind] is blocked_projection
+  + [carrier_surface] is gate_projection_surface
+  + [authority_tier] is generated_projection_evidence
+  + [trust_limit] is gate display only
+  + [source_authority_ref] is docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is blocked
+  + [projected_status] is blocked
+  + [completion_review_ref] is missing
+  + [downstream_gate] is closed
+  + [required_resolution] is accepted IR5-IA02 completion review
+  + [supported_action_route] is request_completion_review
+  + [forbidden_action] is open_IR5-IA03
+  + [forbidden_action] is accept_completion_from_projection
+  + [forbidden_action] is create_implementation_code_before_review
+  + [expected_projection_record] is blocked projection with completion review missing
+  + [expected_refusal] is next gate mutation before accepted review
+
+  = expect: downstream implementation remains gated
+  = expect: accepted completion review is required before next slice opens
+  = expect: no source authority mutation

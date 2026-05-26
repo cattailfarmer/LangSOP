@@ -1,0 +1,31 @@
+Subject: IR5 Fixture Source Debug Fault Trace
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [ir4_runtime_graph_proof] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+
+& [IR5FixtureSource: debug_fault_trace] is a surface projection fixture source
+  + [fixture_case] is IR5X-005-debug-fault-trace
+  + [projection_kind] is debug_trace_projection
+  + [carrier_surface] is debug_surface
+  + [authority_tier] is generated_projection_evidence
+  + [trust_limit] is debug evidence display only
+  + [source_authority_ref] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is faulted
+  + [projected_status] is faulted
+  + [fault_record_ref] is hidden_write_evidence
+  + [trace_path_summary_state] is visible
+  + [checkpoint_context_ref_set_state] is visible
+  + [hidden_write_check_summary_state] is visible
+  + [unresolved_debug_question_set_state] is visible
+  + [forbidden_action] is fault_repair_from_projection
+  + [forbidden_action] is trace_mutation
+  + [forbidden_action] is checkpoint_authority_promotion
+  + [expected_projection_record] is debug trace projection with fault evidence
+  + [expected_refusal] is checkpoint or trace as authority
+
+  = expect: fault context remains visible
+  = expect: runtime terminal outcome remains generated evidence unless accepted by review
+  = expect: no source authority mutation

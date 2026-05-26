@@ -1,0 +1,61 @@
+Subject: IR5 No Authority Promotion Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedNoAuthorityPromotionLedger: IR5SurfaceProjection] is the expected source/projection separation ledger
+  + [tracked_fixture_source_status] is source_fixture_authority_after_IR5-IA02_review_acceptance
+  + [tracked_expected_ledger_status] is expected_output_authority_after_IR5-IA02_review_acceptance
+  + [generated_projection_status] is projection_only
+  + [generated_report_status] is projection_only
+  + [carrier_surface_status] is carrier_context_only
+  + [langflow_graph_status] is explanatory_projection_only
+  + [checkpoint_status] is execution_state_only
+  + [dry_run_status] is non_live_simulation_only
+  + [human_approval_status] is scoped_approval_record_only_not_live_control
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+& [ExpectedNoAuthorityPromotionCaseSet: IR5SurfaceProjection] is the expected no-authority-promotion case ledger
+  + [fixture_id] is manager_ready_packet
+    + [expected_source_mutation] is false
+  + [fixture_id] is worker_blocked_packet
+    + [expected_source_mutation] is false
+  + [fixture_id] is stale_projection
+    + [expected_source_mutation] is false
+  + [fixture_id] is narrative_lineage
+    + [expected_source_mutation] is false
+  + [fixture_id] is debug_fault_trace
+    + [expected_checkpoint_authority_promotion] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is conversation_interrupt
+    + [expected_carrier_authority_promotion] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is adapter_mutation_refusal
+    + [expected_carrier_authority_promotion] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is missing_authority_notice
+    + [expected_fault_record_authority_promotion] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is langflow_non_authority_projection
+    + [expected_graph_authority_promotion] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is multi_surface_divergence
+    + [expected_carrier_authority_promotion] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is completion_gate_refusal
+    + [expected_gate_opened_by_projection] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is ir4_runtime_graph_proof_handoff
+    + [expected_checkpoint_authority_promotion] is false
+    + [expected_generated_trace_authority_promotion] is false
+    + [expected_source_mutation] is false
+  + [fixture_id] is dry_run_success_not_live_control
+    + [expected_dry_run_authority_promotion] is false
+    + [expected_live_control_authorized] is false
+    + [expected_source_mutation] is false
+
+  = must: reject generated output, carrier state, Langflow graphs, checkpoint state, dry-run success, or human approval displays as source authority
+  = must: fail future implementation if any projection opens a gate or mutates source authority directly

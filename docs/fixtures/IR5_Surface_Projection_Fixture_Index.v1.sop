@@ -7,17 +7,25 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 @ [boundary_import] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
 @ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
 @ [authority_display_review] docs/reviews/IR5_S02_Completion_Review.v1.sop
+@ [implementation_activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [implementation_activation_review] docs/reviews/IR5_IA01_Completion_Review.v1.sop
 
 & [FixtureIndex: IR5SurfaceProjectionFixtureIndexV1] is the fixture index for IR5 surface projection fixtures
   + [slice_id] is IR5-S03
+  + [implementation_activation_slice_id] is IR5-IA02
   + [fixture_plan] is docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
   + [fixture_count] is 13
   + [model_route] is GPT-5.3-Codex-Spark-suitable
-  + [fixture_source_files_created] is false
-  + [expected_ledger_files_created] is false
+  + [fixture_source_files_created] is true
+  + [expected_ledger_files_created] is true
+  + [fixture_source_root] is tests/fixtures/sop/ir5_surface_projection/
+  + [expected_ledger_root] is tests/fixtures/expected/ir5_surface_projection/
+  + [generated_output_created] is false
 
 & [FixtureIndexEntry: IR5X-001] is manager_ready_packet
   + [fixture_case] is IR5X-001-manager-ready-packet
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/manager_ready_packet.sop
+  + [fixture_source_sha256] is 14343F182DD8158BDC29CF205FCAB9968C0B9CB792F98ABE3AE6F251CE90DC18
   + [primary_contract] is AuthorityDisplayEnvelope
   + [secondary_contract] is SurfaceFamilyDisplayObligationSet
   + [expected_status] is accepted
@@ -25,6 +33,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-002] is worker_blocked_packet
   + [fixture_case] is IR5X-002-worker-blocked-packet
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/worker_blocked_packet.sop
+  + [fixture_source_sha256] is 433F9A940997D153DCCB6DDDCEC4F443DBB14A9916A231D1D6CF2416181A6A5F
   + [primary_contract] is ProjectionStateEnvelope
   + [secondary_contract] is StopStateDisplayContract
   + [expected_status] is blocked
@@ -32,6 +42,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-003] is stale_projection
   + [fixture_case] is IR5X-003-stale-projection
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/stale_projection.sop
+  + [fixture_source_sha256] is E6B16C3C6EBC0DA7BBA7187852B29F324F2C339D4AB54BE3876E260CF9FA0ACE
   + [primary_contract] is FreshnessAndLineageDisplayContract
   + [secondary_contract] is ProjectionRefusalDisplayContract
   + [expected_status] is stale
@@ -39,6 +51,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-004] is narrative_lineage
   + [fixture_case] is IR5X-004-narrative-lineage
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/narrative_lineage.sop
+  + [fixture_source_sha256] is BADD3DD4268E08D4C9A12AA642556AB7CBDA27300B624E6C1E06A23972E1D70F
   + [primary_contract] is SurfaceFamilyDisplayObligationSet
   + [secondary_contract] is CompletionGateAndOverrideDisplayRule
   + [expected_status] is accepted
@@ -46,6 +60,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-005] is debug_fault_trace
   + [fixture_case] is IR5X-005-debug-fault-trace
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/debug_fault_trace.sop
+  + [fixture_source_sha256] is 2C09EDF8F94A6B55D1B1C75D5026A09328B2D8B1CAE61DF5A0B80C23E56231F6
   + [primary_contract] is IR4RuntimeAndFSC5SafetyDisplayBridge
   + [secondary_contract] is StopStateDisplayContract
   + [expected_status] is blocked
@@ -53,6 +69,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-006] is conversation_interrupt
   + [fixture_case] is IR5X-006-conversation-interrupt
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/conversation_interrupt.sop
+  + [fixture_source_sha256] is B08F24321C1AF51EB22D47323C0F0BD2AD32489613C85A4AD7C7F8E9C97EFE88
   + [primary_contract] is ActionRouteDisplayContract
   + [secondary_contract] is SurfaceFamilyDisplayObligationSet
   + [expected_status] is interrupted
@@ -60,6 +78,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-007] is adapter_mutation_refusal
   + [fixture_case] is IR5X-007-adapter-mutation-refusal
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/adapter_mutation_refusal.sop
+  + [fixture_source_sha256] is C23AB70EFD0ED7D777E49408A4B14F2573FA16DB5FC0D1DC070E2168A4A6B889
   + [primary_contract] is ActionRouteDisplayContract
   + [secondary_contract] is ProjectionRefusalDisplayContract
   + [expected_status] is blocked
@@ -67,6 +87,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-008] is missing_authority_notice
   + [fixture_case] is IR5X-008-missing-authority-notice
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/missing_authority_notice.sop
+  + [fixture_source_sha256] is E2ED71A6FCF57D760B83D86262EA3CAA8E4A72F9FB02F82116724F245CE87186
   + [primary_contract] is AuthorityDisplayEnvelope
   + [secondary_contract] is ProjectionRefusalDisplayContract
   + [expected_status] is faulted
@@ -74,6 +96,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-009] is langflow_non_authority_projection
   + [fixture_case] is IR5X-009-langflow-non-authority-projection
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/langflow_non_authority_projection.sop
+  + [fixture_source_sha256] is E95566D0C4B25380564BAA6AE55AF1ACCCA2445D285B4AE2DA137E9A73B4AAA6
   + [primary_contract] is SurfaceFamilyDisplayObligationSet
   + [secondary_contract] is ProjectionAuthorityLadder
   + [expected_status] is accepted
@@ -81,6 +105,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-010] is multi_surface_divergence
   + [fixture_case] is IR5X-010-multi-surface-divergence
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/multi_surface_divergence.sop
+  + [fixture_source_sha256] is 01989E2DA44A4E218EF8701D799BBB3CB299FA7E4033843E91A730043B02CAAE
   + [primary_contract] is ProjectionRefusalDisplayContract
   + [secondary_contract] is FreshnessAndLineageDisplayContract
   + [expected_status] is stale
@@ -88,6 +114,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-011] is completion_gate_refusal
   + [fixture_case] is IR5X-011-completion-gate-refusal
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/completion_gate_refusal.sop
+  + [fixture_source_sha256] is 07993277226035C83561C87B9CF10EC3D14B5E59D5C3906E3206C1785367D906
   + [primary_contract] is CompletionGateAndOverrideDisplayRule
   + [secondary_contract] is ActionRouteDisplayContract
   + [expected_status] is blocked
@@ -95,6 +123,8 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-012] is ir4_runtime_graph_proof_handoff
   + [fixture_case] is IR5X-012-ir4-runtime-graph-proof-handoff
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/ir4_runtime_graph_proof_handoff.sop
+  + [fixture_source_sha256] is 11FB2DA744F3776980E9E52FBD2200E174B8702F090B9DA6BC5B4AC064575F42
   + [primary_contract] is IR4RuntimeAndFSC5SafetyDisplayBridge
   + [secondary_contract] is ProjectionStateEnvelope
   + [expected_status] is accepted
@@ -102,10 +132,27 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
 
 & [FixtureIndexEntry: IR5X-013] is dry_run_success_not_live_control
   + [fixture_case] is IR5X-013-dry-run-success-not-live-control
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/dry_run_success_not_live_control.sop
+  + [fixture_source_sha256] is 5AB58C8BC0DB3EB1C8EA46AEA158DFA43350D151A438577B4A8B717FF347C91B
   + [primary_contract] is IR4RuntimeAndFSC5SafetyDisplayBridge
   + [secondary_contract] is ActionRouteDisplayContract
   + [expected_status] is blocked
   + [required_notice] is authority_notice_ref
+
+& [ExpectedLedgerIndex: IR5SurfaceProjection] is the expected ledger index for IR5-IA02
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/authority_display_expected.sop
+  + [expected_ledger_sha256] is 24E08EC31E0F46FAECF4968037590FCB98DBEFB50841C8E13478854B937DF5A7
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/projection_state_expected.sop
+  + [expected_ledger_sha256] is 094D40AC423F914EE33D2942A8976C46CEFFD11EEDE29F3E2ECAAB910F295B65
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/action_route_refusal_expected.sop
+  + [expected_ledger_sha256] is 17828600D7CF383F531B3F331F4E45389701120C3D8753834E29F7A6A759D9E1
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/runtime_and_operations_boundary_expected.sop
+  + [expected_ledger_sha256] is 80E9BDF1A8DDEFB5049897CAF015759F203CCDA5B34E9F3DC8B433138DFF4BE2
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/no_authority_promotion_expected.sop
+  + [expected_ledger_sha256] is D447A0764840569E9C624B4D8692AEA1FE53949111395B6F98FAE8C893B7B696
+
+  = must: keep expected ledgers reviewable without generated projections, generated reports, carrier state, runtime state, or live control
+  = must: treat expected ledgers as tracked fixture authority only after IR5-IA02 completion review accepts them
 
 & [FixtureIndexCoverage: IR5-S03] is the fixture index coverage assertion
   + [fixture_count] is 13
@@ -122,9 +169,10 @@ Fixture Index UUID: ab36824c-46ac-4bea-a7ee-9b44ab332463
   + [covered_projection] is ir4_runtime_graph_proof_handoff
   + [covered_projection] is dry_run_success_not_live_control
   + [covered_projection] is blocked_projection
-  + [fixture_source_files_created] is false
-  + [expected_ledger_files_created] is false
+  + [fixture_source_files_created] is true
+  + [expected_ledger_files_created] is true
   + [generated_output_created] is false
 
   = must: reject IR5-S03 if fixture_count is less than 13
-  = must: reject IR5-S03 if fixture source files, expected ledgers, or generated outputs are created
+  = must: reject IR5-IA02 if fixture source files or expected ledgers are missing from accepted roots
+  = must: reject IR5-IA02 if generated outputs are created

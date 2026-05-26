@@ -1,0 +1,29 @@
+Subject: IR5 Fixture Source Multi Surface Divergence
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+
+& [IR5FixtureSource: multi_surface_divergence] is a surface projection fixture source
+  + [fixture_case] is IR5X-010-multi-surface-divergence
+  + [projection_kind] is divergence_notice
+  + [carrier_surface] is multi_surface_comparison
+  + [authority_tier] is carrier_context
+  + [trust_limit] is divergent carrier evidence only
+  + [source_authority_ref] is docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+  + [authority_notice_state] is mismatched
+  + [freshness_state] is stale
+  + [projected_status] is stale
+  + [divergence_ref] is authority_notice_mismatch
+  + [divergence_ref] is inconsistent_claim_state
+  + [invalidation_ref] is carrier_ordering_conflict
+  + [supported_action_route] is request_interrupt_resolution
+  + [supported_action_route] is request_rebake
+  + [required_resolution] is reconcile_source_freshness_claim_state_lineage_or_authority_notice
+  + [forbidden_action] is authority_sensitive_action_before_reconciliation
+  + [expected_projection_record] is divergence notice plus stale projection or SOP-first interrupt context
+  + [expected_refusal] is authority-sensitive action before reconciliation
+
+  = expect: per-surface evidence and invalidation refs remain visible
+  = expect: divergence blocks authority-sensitive action
+  = expect: no source authority mutation

@@ -1,0 +1,34 @@
+Subject: IR5 Fixture Source Adapter Mutation Refusal
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+
+& [IR5FixtureSource: adapter_mutation_refusal] is a surface projection fixture source
+  + [fixture_case] is IR5X-007-adapter-mutation-refusal
+  + [projection_kind] is adapter_event_projection
+  + [carrier_surface] is adapter_event_surface
+  + [authority_tier] is carrier_context
+  + [trust_limit] is inbound carrier context only
+  + [source_authority_ref] is docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is blocked
+  + [projected_status] is blocked
+  + [inbound_action_classification_ref] is work_request_attempting_direct_authority_mutation
+  + [mutation_gate_ref] is action_route_display_contract
+  + [supported_action_route] is action_request
+  + [supported_action_route] is coordination_request
+  + [supported_action_route] is completion_review_request
+  + [blocked_route] is direct_source_write
+  + [blocked_route] is direct_accepted_pack_write
+  + [blocked_route] is direct_completion_review_acceptance
+  + [blocked_route] is direct_agent_dispatch
+  + [blocked_route] is direct_command_execution
+  + [blocked_route] is operations_command
+  + [expected_projection_record] is adapter event projection with blocked mutation evidence
+  + [expected_refusal] is direct source write and operations command
+
+  = expect: inbound adapter event is classified before any route is offered
+  = expect: carrier context cannot mutate authority
+  = expect: no source authority mutation

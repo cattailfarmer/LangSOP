@@ -1,0 +1,33 @@
+Subject: IR5 Fixture Source IR4 Runtime Graph Proof Handoff
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [ir4_runtime_graph_proof] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir4_completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+
+& [IR5FixtureSource: ir4_runtime_graph_proof_handoff] is a surface projection fixture source
+  + [fixture_case] is IR5X-012-ir4-runtime-graph-proof-handoff
+  + [projection_kind] is debug_trace_projection
+  + [projection_kind] is manager_summary_projection
+  + [carrier_surface] is runtime_proof_handoff_surface
+  + [authority_tier] is accepted_execution_evidence
+  + [trust_limit] is accepted IR4 completion evidence only
+  + [source_authority_ref] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+  + [derived_from_ref] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is fresh
+  + [projected_status] is ready
+  + [runtime_terminal_outcome_display] is terminal_success
+  + [generated_trace_display] is generated_projection_evidence
+  + [checkpoint_display] is execution_state_only
+  + [invalidation_ref_set_state] is visible
+  + [forbidden_action] is checkpoint_readiness_authority
+  + [forbidden_action] is generated_trace_authority
+  + [forbidden_action] is generated_report_authority
+  + [expected_projection_record] is runtime proof handoff projection with evidence tier separation
+  + [expected_refusal] is checkpoint or generated trace authority promotion
+
+  = expect: terminal outcome is displayed with trace and stop-state context
+  = expect: accepted execution evidence remains distinct from source authority
+  = expect: no source authority mutation

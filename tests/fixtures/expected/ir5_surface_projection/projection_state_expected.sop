@@ -1,0 +1,82 @@
+Subject: IR5 Projection State Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+
+& [ExpectedProjectionStateLedger: IR5SurfaceProjection] is the expected projection state ledger
+  + [projection_state_envelope_required] is true
+  + [required_field] is projection_id
+  + [required_field] is projection_kind
+  + [required_field] is projected_subject_ref
+  + [required_field] is source_record_ref_set
+  + [required_field] is lineage_edge_set
+  + [required_field] is generated_at
+  + [required_field] is projected_status
+  + [required_field] is freshness_state
+  + [required_field] is invalidation_ref_set
+  + [required_field] is blocker_ref_set
+  + [required_field] is stale_source_ref_set
+  + [required_field] is fault_record_ref_set
+  + [required_field] is interrupt_context_ref_set
+  + [required_field] is contested_claim_ref_set
+  + [required_field] is pending_review_ref_set
+  + [required_field] is supported_action_route_set
+  + [required_field] is refusal_reason_set
+
+& [ExpectedProjectionStateCaseSet: IR5SurfaceProjection] is the per-fixture projection state ledger
+  + [fixture_id] is manager_ready_packet
+    + [expected_projection_kind] is manager_summary_projection
+    + [expected_projected_status] is ready
+    + [expected_freshness_state] is fresh
+  + [fixture_id] is worker_blocked_packet
+    + [expected_projection_kind] is worker_packet_projection
+    + [expected_projected_status] is blocked
+    + [expected_freshness_state] is blocked
+  + [fixture_id] is stale_projection
+    + [expected_projection_kind] is stale_projection
+    + [expected_projected_status] is stale
+    + [expected_freshness_state] is stale
+  + [fixture_id] is narrative_lineage
+    + [expected_projection_kind] is narrative_projection
+    + [expected_projected_status] is ready
+    + [expected_freshness_state] is fresh
+  + [fixture_id] is debug_fault_trace
+    + [expected_projection_kind] is debug_trace_projection
+    + [expected_projected_status] is faulted
+    + [expected_freshness_state] is faulted
+  + [fixture_id] is conversation_interrupt
+    + [expected_projection_kind] is conversation_projection
+    + [expected_projected_status] is interrupted
+    + [expected_freshness_state] is interrupted
+  + [fixture_id] is adapter_mutation_refusal
+    + [expected_projection_kind] is adapter_event_projection
+    + [expected_projected_status] is blocked
+    + [expected_freshness_state] is blocked
+  + [fixture_id] is missing_authority_notice
+    + [expected_projection_kind] is blocked_projection
+    + [expected_projected_status] is faulted
+    + [expected_freshness_state] is unknown
+  + [fixture_id] is langflow_non_authority_projection
+    + [expected_projection_kind] is langflow_graph_projection
+    + [expected_projected_status] is ready
+    + [expected_freshness_state] is fresh
+  + [fixture_id] is multi_surface_divergence
+    + [expected_projection_kind] is divergence_notice
+    + [expected_projected_status] is stale
+    + [expected_freshness_state] is stale
+  + [fixture_id] is completion_gate_refusal
+    + [expected_projection_kind] is blocked_projection
+    + [expected_projected_status] is blocked
+    + [expected_freshness_state] is blocked
+  + [fixture_id] is ir4_runtime_graph_proof_handoff
+    + [expected_projection_kind] is debug_trace_projection or manager_summary_projection
+    + [expected_projected_status] is ready
+    + [expected_freshness_state] is fresh
+  + [fixture_id] is dry_run_success_not_live_control
+    + [expected_projection_kind] is operation_projection
+    + [expected_projected_status] is blocked
+    + [expected_freshness_state] is blocked
+
+  = must: prevent ready status when blocker, stale, fault, interrupt, pending review, or refusal evidence exists
+  = must: preserve projection identity distinct from source record identity

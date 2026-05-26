@@ -1,0 +1,57 @@
+Subject: IR5 Action Route Refusal Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+
+& [ExpectedActionRouteRefusalLedger: IR5SurfaceProjection] is the expected action route and refusal ledger
+  + [allowed_route] is observe
+  + [allowed_route] is comment
+  + [allowed_route] is propose
+  + [authority_sensitive_route] is request_work_packet
+  + [authority_sensitive_route] is request_claim
+  + [authority_sensitive_route] is request_review
+  + [authority_sensitive_route] is request_rebake
+  + [authority_sensitive_route] is request_interrupt_resolution
+  + [authority_sensitive_route] is request_human_override
+  + [authority_sensitive_route] is request_dry_run
+  + [authority_sensitive_route] is request_completion_review
+  + [blocked_route] is direct_source_authority_write
+  + [blocked_route] is direct_accepted_pack_write
+  + [blocked_route] is direct_completion_review_acceptance
+  + [blocked_route] is direct_claim_acceptance
+  + [blocked_route] is direct_agent_dispatch
+  + [blocked_route] is direct_command_execution
+  + [blocked_route] is direct_operations_command
+
+& [ExpectedActionRouteRefusalCaseSet: IR5SurfaceProjection] is the per-fixture action route and refusal ledger
+  + [fixture_id] is worker_blocked_packet
+    + [expected_allowed_route] is request_rebake
+    + [expected_refusal] is completion_claim_action
+  + [fixture_id] is stale_projection
+    + [expected_allowed_route] is request_rebake
+    + [expected_refusal] is stale_projection_use_as_ready_authority
+  + [fixture_id] is conversation_interrupt
+    + [expected_allowed_route] is request_interrupt_resolution
+    + [expected_refusal] is direct_authority_mutation_from_carrier_context
+  + [fixture_id] is adapter_mutation_refusal
+    + [expected_allowed_route] is action_request
+    + [expected_allowed_route] is coordination_request
+    + [expected_allowed_route] is completion_review_request
+    + [expected_refusal] is direct_source_write_and_operations_command
+  + [fixture_id] is missing_authority_notice
+    + [expected_allowed_route] is repair_projection_contract_output_before_use
+    + [expected_refusal] is missing_authority_notice
+  + [fixture_id] is multi_surface_divergence
+    + [expected_allowed_route] is request_interrupt_resolution
+    + [expected_allowed_route] is request_rebake
+    + [expected_refusal] is authority_sensitive_action_before_reconciliation
+  + [fixture_id] is completion_gate_refusal
+    + [expected_allowed_route] is request_completion_review
+    + [expected_refusal] is next_gate_mutation_before_accepted_review
+  + [fixture_id] is dry_run_success_not_live_control
+    + [expected_allowed_route] is request_completion_review
+    + [expected_refusal] is live_control_from_dry_run_success
+
+  = must: display allowed and blocked routes before any authority-sensitive action
+  = must: emit request or interrupt records instead of mutating authority from display state

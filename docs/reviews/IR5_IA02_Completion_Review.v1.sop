@@ -1,0 +1,135 @@
+Subject: IR5 IA02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 4f7d448f-8694-4f3e-923f-3e9c91f139d7
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [previous_completion_review] docs/reviews/IR5_IA01_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR5-IA02] is the completed-work review for IR5-IA02 fixture source and expected-ledger seed material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR5-IA02
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5-IA02 and open IR5-IA03
+  + [next_gate_result] is IR5-IA03 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for authority display and projection state model implementation
+  + [next_model_route_depth] is Spark-suitable
+  + [completed_output] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [completed_output_sha256] is 4AF290221AF1E317ED738D7D530D1CC1456F2E0C406D87B748154438A6BF68EF
+
+  = must: treat this review as gate-opening evidence for IR5-IA03 only
+  = must: rerun this review if any IR5-IA02 fixture source file, expected ledger file, fixture index, fixture plan, authority display contract, activation boundary, or IR5-IA01 completion review changes
+  = must: keep projectors, action routes, generated path policy, fixture runner, generated outputs, dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR5IA02FixtureSourceOutputSet] is the accepted fixture source output set for IR5-IA02
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/manager_ready_packet.sop
+  + [fixture_source_sha256] is 14343F182DD8158BDC29CF205FCAB9968C0B9CB792F98ABE3AE6F251CE90DC18
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/worker_blocked_packet.sop
+  + [fixture_source_sha256] is 433F9A940997D153DCCB6DDDCEC4F443DBB14A9916A231D1D6CF2416181A6A5F
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/stale_projection.sop
+  + [fixture_source_sha256] is E6B16C3C6EBC0DA7BBA7187852B29F324F2C339D4AB54BE3876E260CF9FA0ACE
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/narrative_lineage.sop
+  + [fixture_source_sha256] is BADD3DD4268E08D4C9A12AA642556AB7CBDA27300B624E6C1E06A23972E1D70F
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/debug_fault_trace.sop
+  + [fixture_source_sha256] is 2C09EDF8F94A6B55D1B1C75D5026A09328B2D8B1CAE61DF5A0B80C23E56231F6
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/conversation_interrupt.sop
+  + [fixture_source_sha256] is B08F24321C1AF51EB22D47323C0F0BD2AD32489613C85A4AD7C7F8E9C97EFE88
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/adapter_mutation_refusal.sop
+  + [fixture_source_sha256] is C23AB70EFD0ED7D777E49408A4B14F2573FA16DB5FC0D1DC070E2168A4A6B889
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/missing_authority_notice.sop
+  + [fixture_source_sha256] is E2ED71A6FCF57D760B83D86262EA3CAA8E4A72F9FB02F82116724F245CE87186
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/langflow_non_authority_projection.sop
+  + [fixture_source_sha256] is E95566D0C4B25380564BAA6AE55AF1ACCCA2445D285B4AE2DA137E9A73B4AAA6
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/multi_surface_divergence.sop
+  + [fixture_source_sha256] is 01989E2DA44A4E218EF8701D799BBB3CB299FA7E4033843E91A730043B02CAAE
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/completion_gate_refusal.sop
+  + [fixture_source_sha256] is 07993277226035C83561C87B9CF10EC3D14B5E59D5C3906E3206C1785367D906
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/ir4_runtime_graph_proof_handoff.sop
+  + [fixture_source_sha256] is 11FB2DA744F3776980E9E52FBD2200E174B8702F090B9DA6BC5B4AC064575F42
+  + [fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/dry_run_success_not_live_control.sop
+  + [fixture_source_sha256] is 5AB58C8BC0DB3EB1C8EA46AEA158DFA43350D151A438577B4A8B717FF347C91B
+  + [fixture_source_file_count] is 13
+
+& [IR5IA02ExpectedLedgerOutputSet] is the accepted expected ledger output set for IR5-IA02
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/authority_display_expected.sop
+  + [expected_ledger_sha256] is 24E08EC31E0F46FAECF4968037590FCB98DBEFB50841C8E13478854B937DF5A7
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/projection_state_expected.sop
+  + [expected_ledger_sha256] is 094D40AC423F914EE33D2942A8976C46CEFFD11EEDE29F3E2ECAAB910F295B65
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/action_route_refusal_expected.sop
+  + [expected_ledger_sha256] is 17828600D7CF383F531B3F331F4E45389701120C3D8753834E29F7A6A759D9E1
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/runtime_and_operations_boundary_expected.sop
+  + [expected_ledger_sha256] is 80E9BDF1A8DDEFB5049897CAF015759F203CCDA5B34E9F3DC8B433138DFF4BE2
+  + [expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/no_authority_promotion_expected.sop
+  + [expected_ledger_sha256] is D447A0764840569E9C624B4D8692AEA1FE53949111395B6F98FAE8C893B7B696
+  + [expected_ledger_file_count] is 5
+
+& [IR5IA02Verification] is the verification result for IR5-IA02
+  + [fixture_source_file_count] is 13
+  + [expected_ledger_file_count] is 5
+  + [fixture_index_updated] is true
+  + [fixture_source_root] is tests/fixtures/sop/ir5_surface_projection/
+  + [expected_ledger_root] is tests/fixtures/expected/ir5_surface_projection/
+  + [generated_projection_created] is false
+  + [generated_report_created] is false
+  + [implementation_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5IA02VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+    @ [support] tests/fixtures/sop/ir5_surface_projection/
+    @ [support] tests/fixtures/expected/ir5_surface_projection/
+
+& [SupportDelta: IR5-IA02] is the support delta produced by IR5-IA02
+  + [new_support_record] is IR5 has tracked fixture source records for every accepted surface projection fixture case
+  + [new_support_record] is IR5 has expected ledgers for authority display, projection state, action-route refusal, runtime and operations boundary, and no-authority-promotion semantics
+  + [new_support_record] is fixture index now carries exact source and expected-ledger paths and hashes
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-IA02] is the requirement delta produced by IR5-IA02
+  + [requirement_delta] is IR5-IA03 may implement only the authority display and projection state model files named in the activation boundary
+  + [requirement_delta] is IR5-IA03 remains GPT-5.3-Codex-Spark-suitable because model implementation is bounded by accepted contracts and fixture ledgers
+  + [requirement_delta] is no projector, action route, fixture runner, generated output, dependency installation, adapter implementation, UI implementation, operations simulator, operations control, or live machine control is authorized by IR5-IA02
+
+& [FaultReview: IR5-IA02] is the fault review for IR5-IA02
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [generated_output_leak_found] is false
+  + [implementation_code_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5IA02Accepted] is accepted
+    @ [support] [IR5IA02Verification]
+    @ [support] [SupportDelta: IR5-IA02]
+    @ [support] [RequirementDelta: IR5-IA02]
+    @ [support] [FaultReview: IR5-IA02]
+
+& [NextSliceGate: IR5-IA03] is opened
+  + [opened_slice] is IR5-IA03 authority display and projection state model implementation
+  + [accepted_dependency] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [accepted_dependency_sha256] is 4AF290221AF1E317ED738D7D530D1CC1456F2E0C406D87B748154438A6BF68EF
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is authority display and projection state model implementation is bounded by accepted contracts, fixture sources, and expected ledgers
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-IA03 next unless user redirects or a new fault invalidates this review

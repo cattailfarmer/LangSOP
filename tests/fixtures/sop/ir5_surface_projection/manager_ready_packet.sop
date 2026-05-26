@@ -1,0 +1,34 @@
+Subject: IR5 Fixture Source Manager Ready Packet
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+
+& [IR5FixtureSource: manager_ready_packet] is a surface projection fixture source
+  + [fixture_case] is IR5X-001-manager-ready-packet
+  + [projection_kind] is manager_summary_projection
+  + [carrier_surface] is manager_dashboard
+  + [authority_tier] is source_authority
+  + [trust_limit] is accepted IR5 work state and completion reviews only
+  + [source_authority_ref] is docs/state/IR5_Work_State.v1.sop
+  + [source_authority_ref] is docs/reviews/IR5_IA01_Completion_Review.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is fresh
+  + [projected_status] is ready
+  + [support_delta_state] is visible
+  + [requirement_delta_state] is visible
+  + [completion_review_ref_state] is visible
+  + [supported_action_route] is request_work_packet
+  + [supported_action_route] is request_review
+  + [forbidden_action] is direct_agent_dispatch
+  + [forbidden_action] is direct_completion_acceptance
+  + [forbidden_action] is direct_source_authority_mutation
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [expected_projection_record] is manager summary projection with authority and state envelope
+  + [expected_refusal] is none
+
+  = expect: authority display envelope is visible before action
+  = expect: current ready slice is visible without authorizing dispatch
+  = expect: no source authority mutation

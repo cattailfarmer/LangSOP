@@ -1,0 +1,41 @@
+Subject: IR5 Runtime And Operations Boundary Expected Ledger
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [ir4_runtime_graph_proof] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [ExpectedRuntimeAndOperationsBoundaryLedger: IR5SurfaceProjection] is the expected runtime and operations boundary ledger
+  + [runtime_terminal_success_display] is generated_projection_evidence unless accepted by completion review
+  + [runtime_terminal_blocked_display] is blocked projection with blocker evidence
+  + [runtime_terminal_stale_display] is stale projection with stale source refs
+  + [runtime_terminal_fault_display] is faulted projection with fault record refs
+  + [runtime_terminal_interrupt_display] is interrupted projection with SOP-first interrupt context
+  + [checkpoint_display] is execution_state_only
+  + [generated_trace_display] is generated_projection_evidence
+  + [dry_run_display] is non_live_simulation_only
+  + [operation_refusal_display] is refused_operation_request
+  + [human_approval_display] is scoped_approval_record_only_not_live_control
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+& [ExpectedRuntimeAndOperationsBoundaryCaseSet: IR5SurfaceProjection] is the per-fixture runtime and operations boundary ledger
+  + [fixture_id] is debug_fault_trace
+    + [expected_projected_status] is faulted
+    + [expected_checkpoint_authority] is false
+    + [expected_generated_trace_authority] is false
+  + [fixture_id] is ir4_runtime_graph_proof_handoff
+    + [expected_authority_tier] is accepted_execution_evidence
+    + [expected_checkpoint_display] is execution_state_only
+    + [expected_generated_trace_display] is generated_projection_evidence
+  + [fixture_id] is dry_run_success_not_live_control
+    + [expected_dry_run_display] is non_live_simulation_only
+    + [expected_operation_refusal_display] is refused_operation_request
+    + [expected_live_machine_control_authorized] is false
+  + [fixture_id] is langflow_non_authority_projection
+    + [expected_runtime_execution_authorized] is false
+    + [expected_dependency_installation_authorized] is false
+
+  = must: prevent terminal success, checkpoint freshness, generated trace, dry-run success, or human approval display from satisfying source authority
+  = must: show live-control prohibition when operation-like requests are visible

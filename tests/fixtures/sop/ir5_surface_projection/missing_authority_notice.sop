@@ -1,0 +1,28 @@
+Subject: IR5 Fixture Source Missing Authority Notice
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+
+& [IR5FixtureSource: missing_authority_notice] is a surface projection fixture source
+  + [fixture_case] is IR5X-008-missing-authority-notice
+  + [projection_kind] is blocked_projection
+  + [carrier_surface] is incomplete_projection_surface
+  + [authority_tier] is generated_projection_evidence
+  + [trust_limit] is invalid until required authority notice is repaired
+  + [source_authority_ref] is missing
+  + [authority_notice_state] is missing
+  + [freshness_state] is unknown
+  + [projected_status] is faulted
+  + [fault_record_ref] is missing_authority_notice
+  + [refusal_reason] is missing_source_ref_set
+  + [refusal_reason] is missing_authority_notice
+  + [refusal_reason] is missing_required_route_set
+  + [required_resolution] is repair_projection_contract_output_before_use
+  + [forbidden_action] is decision_making_projection_use
+  + [expected_projection_record] is projection fault record or blocked projection
+  + [expected_refusal] is missing authority notice
+
+  = expect: missing authority notice is the visible refusal reason before action
+  = expect: projection cannot be used until repaired
+  = expect: no source authority mutation

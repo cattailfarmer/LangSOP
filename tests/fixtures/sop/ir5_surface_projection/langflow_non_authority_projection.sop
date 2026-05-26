@@ -1,0 +1,31 @@
+Subject: IR5 Fixture Source Langflow Non Authority Projection
+Date: 2026-05-26
+
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+
+& [IR5FixtureSource: langflow_non_authority_projection] is a surface projection fixture source
+  + [fixture_case] is IR5X-009-langflow-non-authority-projection
+  + [projection_kind] is langflow_graph_projection
+  + [carrier_surface] is langflow_diagram_surface
+  + [authority_tier] is generated_projection_evidence
+  + [trust_limit] is explanatory projection only
+  + [source_authority_ref] is docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+  + [authority_notice_state] is present
+  + [freshness_state] is fresh
+  + [projected_status] is ready
+  + [explanatory_projection_only] is true
+  + [lineage_edge_set_state] is visible
+  + [blocked_direct_execution_route] is visible
+  + [forbidden_action] is Langflow_installation
+  + [forbidden_action] is Langflow_export_implementation
+  + [forbidden_action] is runtime_execution
+  + [forbidden_action] is source_mutation
+  + [forbidden_action] is operations_control
+  + [expected_projection_record] is Langflow graph projection with non-authority notice
+  + [expected_refusal] is direct execution route
+
+  = expect: executable-looking flow cannot be mistaken for authority
+  = expect: no dependency, export, runtime, or operations action occurs
+  = expect: no source authority mutation
