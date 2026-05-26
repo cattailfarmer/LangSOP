@@ -1,0 +1,100 @@
+Subject: IR5 IA06 Completion Review V1
+Date: 2026-05-26
+Review UUID: 56d3e5d2-a00a-44a3-91a2-9f759d57df95
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [generated_output_proof] docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+@ [contract_tests] tests/test_ir5_surface_projection_contracts.py
+@ [previous_completion_review] docs/reviews/IR5_IA05_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR5-IA06] is the completed-work review for IR5-IA06 contract tests and generated-output proof
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR5-IA06
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5-IA06 and open IR5-IA07
+  + [next_gate_result] is IR5-IA07 may open
+  + [next_model_route] is requires deeper reasoning for dependency-authorized adapter and Langflow decision or deferral review
+  + [next_model_route_depth] is deeper reasoning required
+  + [completed_output] is tests/test_ir5_surface_projection_contracts.py
+  + [completed_output_sha256] is 122513C31776EE12FCFFDDCF0AB59AADB83E954D67B3B8B35EB5BFA914732A45
+  + [completed_output] is docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+  + [completed_output_sha256] is C11F6211181D8638E79643B84C689B5EADEEBB70DA81FE7F94948B468DD4F9F3
+
+  = must: treat this review as gate-opening evidence for IR5-IA07 only
+  = must: rerun this review if contract tests, generated-output proof, fixture runner, generated path policy, fixture source set, expected ledger set, or IR5-IA05 completion review changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR5IA06Verification] is the verification result for IR5-IA06
+  + [contract_test_file_present] is true
+  + [generated_output_proof_present] is true
+  + [fixture_corpus_covered] is 13
+  + [missing_authority_notice_refusal_covered] is true
+  + [ready_with_stop_state_refusal_covered] is true
+  + [direct_mutation_refusal_covered] is true
+  + [live_control_refusal_covered] is true
+  + [path_escape_refusal_covered] is true
+  + [source_mutation_refusal_covered] is true
+  + [expected_ledger_mutation_refusal_covered] is true
+  + [generated_report_disposability_covered] is true
+  + [generated_report_discovered_as_authority] is false
+  + [baseline_compile_command] is passed
+  + [targeted_contract_test] is 6 tests passed
+  + [baseline_test_command] is 25 tests passed
+  + [generated_output_present_after_tests] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5IA06VerificationSatisfied] is accepted
+    @ [support] tests/test_ir5_surface_projection_contracts.py
+    @ [support] docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+
+& [SupportDelta: IR5-IA06] is the support delta produced by IR5-IA06
+  + [new_support_record] is IR5 surface projection contract tests cover all 13 fixture cases and key refusal semantics
+  + [new_support_record] is generated reports are disposable, ignored, and not discovered as SOP authority
+  + [new_support_record] is generated output path policy refuses path escapes, source mutation, and expected ledger mutation
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-IA06] is the requirement delta produced by IR5-IA06
+  + [requirement_delta] is IR5-IA07 requires deeper reasoning because dependency, adapter, Langflow, transport, and UI decisions affect authority and safety semantics
+  + [requirement_delta] is IR5-IA07 may create only the dependency decision or deferral review document named in the activation boundary
+  + [requirement_delta] is no dependency installation, adapter implementation, UI implementation, operations simulator, operations control, or live machine control is authorized by IR5-IA06
+
+& [FaultReview: IR5-IA06] is the fault review for IR5-IA06
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [generated_output_tracked_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5IA06Accepted] is accepted
+    @ [support] [IR5IA06Verification]
+    @ [support] [SupportDelta: IR5-IA06]
+    @ [support] [RequirementDelta: IR5-IA06]
+    @ [support] [FaultReview: IR5-IA06]
+
+& [NextSliceGate: IR5-IA07] is opened
+  + [opened_slice] is IR5-IA07 dependency-authorized adapter and Langflow decision or deferral review
+  + [accepted_dependency] is docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+  + [accepted_dependency_sha256] is C11F6211181D8638E79643B84C689B5EADEEBB70DA81FE7F94948B468DD4F9F3
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, Langflow, transport, and UI boundaries affect authority and safety semantics
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-IA07 next unless user redirects or a new fault invalidates this review

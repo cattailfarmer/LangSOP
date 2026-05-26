@@ -1,0 +1,70 @@
+Subject: IR5 Surface Projection Generated Output Proof V1
+Date: 2026-05-26
+Proof UUID: d23f95c7-9d47-4c83-b5b3-4376a143a2a2
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [fixture_runner] src/langsop/surfaces/fixture_runner.py
+@ [generated_path_policy] src/langsop/surfaces/generated_paths.py
+@ [contract_tests] tests/test_ir5_surface_projection_contracts.py
+
+& [GeneratedOutputProof: IR5SurfaceProjection] is the generated-output proof for IR5-IA06
+  + [proof_status] is accepted_by_test_evidence_pending_completion_review
+  + [test_file] is tests/test_ir5_surface_projection_contracts.py
+  + [test_file_sha256] is 122513C31776EE12FCFFDDCF0AB59AADB83E954D67B3B8B35EB5BFA914732A45
+  + [generated_output_root] is .langsop/projections/ir5_surface_projection/
+  + [generated_output_root] is .langsop/reports/ir5_surface_projection/
+  + [generated_output_root] is tests/fixtures/generated/ir5_surface_projection/
+  + [generated_output_root] is tests/fixtures/generated/ir5_surface_projection/projections/
+  + [generated_output_root] is tests/fixtures/generated/ir5_surface_projection/reports/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_report_status] is generated_projection_only
+  + [generated_output_disposable] is true
+  + [generated_output_present_after_tests] is false
+  + [source_authority_status] is docs/ and tracked fixture source or expected ledger files only
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: reject generated projection, generated report, cache, carrier state, runtime state, dry-run output, or human approval display as source authority
+  = must: keep generated output deletion and rebuild independent from tracked source authority
+  = must: refuse writes outside accepted generated roots
+
+& [GeneratedOutputProofCommandEvidence: IR5SurfaceProjection] is the command evidence for IR5-IA06 generated-output proof
+  + [command] is python -m compileall -q src tests
+  + [result] is passed
+  + [command] is python -m unittest tests.test_ir5_surface_projection_contracts
+  + [result] is 6 tests passed
+  + [command] is python -m unittest discover -s tests
+  + [result] is 25 tests passed
+
+& [GeneratedOutputProofCoverage: IR5SurfaceProjection] is the coverage evidence for IR5-IA06
+  + [fixture_corpus_covered] is 13
+  + [covered_fixture] is manager_ready_packet
+  + [covered_fixture] is worker_blocked_packet
+  + [covered_fixture] is stale_projection
+  + [covered_fixture] is narrative_lineage
+  + [covered_fixture] is debug_fault_trace
+  + [covered_fixture] is conversation_interrupt
+  + [covered_fixture] is adapter_mutation_refusal
+  + [covered_fixture] is missing_authority_notice
+  + [covered_fixture] is langflow_non_authority_projection
+  + [covered_fixture] is multi_surface_divergence
+  + [covered_fixture] is completion_gate_refusal
+  + [covered_fixture] is ir4_runtime_graph_proof_handoff
+  + [covered_fixture] is dry_run_success_not_live_control
+  + [path_escape_refusal_covered] is true
+  + [source_mutation_refusal_covered] is true
+  + [expected_ledger_mutation_refusal_covered] is true
+  + [missing_authority_notice_refusal_covered] is true
+  + [ready_with_stop_state_refusal_covered] is true
+  + [direct_mutation_refusal_covered] is true
+  + [live_control_refusal_covered] is true
+  + [generated_report_disposability_covered] is true
+  + [generated_report_discovery_as_authority] is false
+
+  ! [IR5GeneratedOutputProofAccepted] is accepted
+    @ [support] tests/test_ir5_surface_projection_contracts.py
+    @ [support] src/langsop/surfaces/generated_paths.py
+    @ [support] src/langsop/surfaces/fixture_runner.py
