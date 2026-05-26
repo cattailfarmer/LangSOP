@@ -1,0 +1,117 @@
+Subject: IR4 IA06 Completion Review V1
+Date: 2026-05-26
+Review UUID: 5355effb-1b00-474e-a1d3-ce20682dede8
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [graph_runner_review] docs/reviews/IR4_IA05_Completion_Review.v1.sop
+@ [fixture_runner] src/langsop/runtime/fixture_runner.py
+
+& [CompletedWorkReview: IR4-IA06] is the completed-work review for IR4 fixture runner and generated path policy implementation
+  + [slice_id] is IR4-IA06
+  + [slice_name] is fixture runner and generated path policy implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/runtime/fixture_runner.py
+  + [completed_output_sha256] is 258F5C51134F8A5DE136DCC9904F5190F202D58EB312FB2B43583D166B05B696
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-IA05 acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-IA06 as fixture runner and generated path policy implementation
+  + [next_gate_result] is IR4-IA07 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA06 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR4-IA07 only
+  = must: rerun this review if fixture runner, fixture source, expected ledgers, graph runner, checkpoint policy, interrupt policy, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, operations control, and live machine control gated until their specific slices open
+
+& [IR4IA06Verification] is the verification result for fixture runner and generated path policy implementation
+  + [fixture_runner_present] is true
+  + [tracked_fixture_source_loader_present] is true
+  + [tracked_expected_ledger_loader_present] is true
+  + [fixture_to_graph_state_mapping_present] is true
+  + [fixture_to_checkpoint_mapping_present] is true
+  + [fixture_to_operator_request_mapping_present] is true
+  + [runtime_fixture_corpus_runner_present] is true
+  + [generated_path_policy_present] is true
+  + [generated_report_writer_guarded_by_path_policy] is true
+  + [accepted_generated_root_set] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
+  + [accepted_generated_root_set] is tests/fixtures/generated/ir4_runtime_graph/traces/
+  + [accepted_generated_root_set] is tests/fixtures/generated/ir4_runtime_graph/reports/
+  + [accepted_generated_root_set] is .langsop/checkpoints/ir4_runtime_graph/
+  + [accepted_generated_root_set] is .langsop/traces/ir4_runtime_graph/
+  + [accepted_generated_root_set] is .langsop/reports/ir4_runtime_graph/
+  + [forbidden_write_root_set] is docs/
+  + [forbidden_write_root_set] is src/
+  + [forbidden_write_root_set] is platform/
+  + [forbidden_write_root_set] is .git/
+  + [forbidden_write_root_set] is tests/fixtures/sop/ir4_runtime_graph/
+  + [forbidden_write_root_set] is tests/fixtures/expected/ir4_runtime_graph/
+  + [fixture_corpus_smoke] is run_runtime_graph_fixture_corpus passed 10 of 10 accepted IR4 fixture cases
+  + [generated_path_policy_smoke] is escape refused, source mutation refused, accepted generated report path accepted
+  + [generated_output_created_during_validation] is false
+  + [source_or_expected_ledger_mutated] is false
+  + [external_langgraph_dependency_installed] is false
+  + [standard_library_only_for_runtime_fixture_code] is true
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [compile_check] is python -m compileall -q src tests passed
+  + [baseline_test] is python -m unittest discover -s tests passed 14 tests
+  + [diff_hygiene] is git diff --check passed
+
+  ! [IR4IA06VerificationSatisfied] is accepted
+    @ [support] src/langsop/runtime/fixture_runner.py
+    @ [support] tests/fixtures/sop/ir4_runtime_graph/
+    @ [support] tests/fixtures/expected/ir4_runtime_graph/
+    @ [support] compile_check
+    @ [support] baseline_test
+    @ [support] fixture_corpus_smoke
+    @ [support] generated_path_policy_smoke
+    @ [support] diff_hygiene
+
+& [SupportDelta: IR4-IA06] is the support delta produced by accepted fixture runner and generated path policy implementation
+  + [new_support_record] is run_runtime_graph_fixture loads tracked fixture source and expected ledgers, then compares generated execution projection facts against reviewed expectations
+  + [new_support_record] is run_runtime_graph_fixture_corpus executes the accepted 10-case fixture corpus without writing generated outputs by default
+  + [new_support_record] is validate_generated_runtime_path refuses source, expected-ledger, docs, src, platform, .git, and workspace escape writes while accepting only reviewed generated roots
+  + [new_support_record] is write_generated_runtime_report is guarded by generated path policy and writes only generated_projection_only reports when explicitly called
+  + [new_support_record] is IR4-IA07 is GPT-5.3-Codex-Spark-suitable because contract tests and generated-output proof are bounded by accepted fixture runner, fixtures, ledgers, and generated path policy
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-IA06] is the requirement delta produced by accepted fixture runner and generated path policy implementation
+  + [requirement_delta] is IR4-IA07 may create tests/test_ir4_runtime_graph_contracts.py and docs/reviews/IR4_Runtime_Graph_Generated_Output_Proof.v1.sop only
+  + [requirement_delta] is generated output creation may occur only as disposable projection proof under accepted generated roots during IR4-IA07 tests or proof runs
+  + [requirement_delta] is dependency installation, package metadata mutation, adapter implementation, operations control, and live machine control remain unauthorized by IR4-IA06
+  + [requirement_delta] is no rebake required before IR4-IA07
+
+& [FaultReview: IR4-IA06] is the fault review for fixture runner and generated path policy implementation
+  + [source_mutation_leak_found] is false
+  + [expected_ledger_mutation_leak_found] is false
+  + [generated_output_authority_promotion_found] is false
+  + [checkpoint_authority_promotion_found] is false
+  + [graph_state_authority_promotion_found] is false
+  + [test_file_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4IA06Accepted] is accepted
+    @ [support] [IR4IA06Verification]
+    @ [support] [SupportDelta: IR4-IA06]
+    @ [support] [RequirementDelta: IR4-IA06]
+    @ [support] [FaultReview: IR4-IA06]
+
+& [NextSliceGate: IR4-IA07] is opened
+  + [opened_slice] is IR4-IA07 contract tests and generated-output proof
+  + [accepted_boundary_input] is src/langsop/runtime/fixture_runner.py
+  + [accepted_boundary_input] is src/langsop/runtime/graph_runner.py
+  + [accepted_boundary_input] is tests/fixtures/sop/ir4_runtime_graph/
+  + [accepted_boundary_input] is tests/fixtures/expected/ir4_runtime_graph/
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA06 acceptance
+  + [model_route_reason] is contract tests and generated-output proof are bounded by accepted fixture runner, path policy, fixture source, expected ledgers, and pure runner behavior
+  + [safety_limit] is no operations control or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-IA07 next unless user redirects or a new fault invalidates this review
