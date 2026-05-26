@@ -1,0 +1,191 @@
+Subject: Conversation Adapter Projection Contracts V1
+Date: 2026-05-26
+Contract UUID: a08921c9-0920-4bbc-aa76-8fc975d68968
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [narrative_debug_contracts] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+
+& [ConversationAdapterProjectionContractsV1] is the FSC4 contract set for conversation and adapter projections
+  + [contract_id] is conversation-adapter-projection-contracts-v1
+  + [contract_uuid] is a08921c9-0920-4bbc-aa76-8fc975d68968
+  + [slice_id] is FSC4-S05
+  + [authority_scope] is conversation projection contract, adapter projection contract set, inbound action classification rule, outbound projection rule, mutation-through-operator gate, multi-surface divergence rule, and carrier context rule
+  + [implementation_scope] is projection contract only
+  + [boundary_dependency] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [authority_notice_dependency] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [narrative_debug_dependency] is docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+
+  = must: treat chat, Codex, terminal, IRC, Matrix, web, and Langflow surfaces as projection carriers
+  = must: classify inbound actions before any authority-sensitive mutation route can run
+  = must: keep outbound projections traceable to accepted records, authority notices, freshness state, and carrier context
+  - never: implement transports, open sockets, install Langflow, write UI, dispatch agents, accept completion, or authorize operations in this contract
+
+& [ConversationProjectionContract] is the projection contract for conversation surfaces
+  + [projection_kind] is conversation_projection
+  + [required_input] is conversation_uuid
+  + [required_input] is participant_ref_set
+  + [required_input] is message_ref_set
+  + [required_input] is source_record_ref_set
+  + [required_input] is projected_work_state_ref
+  + [required_input] is authority_notice_ref
+  + [required_input] is freshness_state
+  + [required_input] is coordination_claim_ref_set
+  + [required_input] is interrupt_context_ref_set
+  + [required_input] is narrative_reentry_ref
+  + [required_output_field] is projection_id
+  + [required_output_field] is carrier_surface
+  + [required_output_field] is conversation_lineage_ref_set
+  + [required_output_field] is visible_authority_notice
+  + [required_output_field] is visible_freshness_state
+  + [required_output_field] is visible_blocked_stale_fault_interrupt_set
+  + [required_output_field] is available_action_route_set
+  + [forbidden_effect] is treating chat transcript as accepted source authority
+  + [forbidden_effect] is treating conversation projection as completion review
+  + [forbidden_effect] is silently collapsing participant or conversation identity
+
+  = must: preserve conversation identity and participant context through projection and action requests
+  = must: make work-state and authority limits visible where conversation participants can act
+
+& [AdapterProjectionContractSet] is the contract set for supported adapter projections
+  + [adapter_projection] is chat_adapter_projection
+  + [adapter_projection] is codex_thread_projection
+  + [adapter_projection] is terminal_projection
+  + [adapter_projection] is irc_channel_projection
+  + [adapter_projection] is matrix_room_projection
+  + [adapter_projection] is web_surface_projection
+  + [adapter_projection] is langflow_graph_projection
+  + [required_field] is adapter_projection_id
+  + [required_field] is carrier_surface
+  + [required_field] is external_event_ref
+  + [required_field] is projected_record_ref_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is inbound_action_classification_ref
+  + [required_field] is outbound_projection_rule_ref
+  + [required_field] is mutation_gate_ref
+  + [authority_limit] is adapter projection is carrier context only
+  + [authority_limit] is Langflow graph projection is explanatory only unless separately authorized
+
+  = must: keep adapter projection identity distinct from source record identity
+  = must: reject adapter projections that cannot preserve authority notice, freshness, and lineage
+
+& [InboundActionClassificationRule] is the rule for classifying user, agent, and external surface inputs
+  + [inbound_action_kind] is observation
+  + [inbound_action_kind] is comment
+  + [inbound_action_kind] is proposal
+  + [inbound_action_kind] is clarification
+  + [inbound_action_kind] is work_request
+  + [inbound_action_kind] is claim_request
+  + [inbound_action_kind] is review_request
+  + [inbound_action_kind] is interrupt_resolution_request
+  + [inbound_action_kind] is human_override_request
+  + [inbound_action_kind] is unsupported_or_ambiguous
+  + [authority_sensitive_action] is work_request
+  + [authority_sensitive_action] is claim_request
+  + [authority_sensitive_action] is review_request
+  + [authority_sensitive_action] is interrupt_resolution_request
+  + [authority_sensitive_action] is human_override_request
+  + [classification_context] is carrier_surface
+  + [classification_context] is actor_ref
+  + [classification_context] is conversation_uuid
+  + [classification_context] is source_message_ref
+  + [classification_context] is intended_subject_ref
+  + [classification_context] is projected_authority_notice_ref
+  + [classification_context] is freshness_state
+
+  = must: classify unsupported_or_ambiguous action as SOP-first interrupt when authority-sensitive
+  = must: preserve carrier context as evidence without promoting it to authority
+
+& [OutboundProjectionRule] is the rule for projecting authority-bearing records into carriers
+  + [required_output_context] is source_record_ref_set
+  + [required_output_context] is lineage_edge_set
+  + [required_output_context] is authority_notice_ref
+  + [required_output_context] is freshness_state
+  + [required_output_context] is blocked_stale_fault_interrupt_state
+  + [required_output_context] is available_action_route_set
+  + [required_output_context] is projection_generated_at
+  + [required_output_context] is invalidation_ref_set
+  + [projection_may_omit] is decorative_layout
+  + [projection_must_not_omit] is authority_notice
+  + [projection_must_not_omit] is freshness_state
+  + [projection_must_not_omit] is blocked_or_faulted_state
+  + [projection_must_not_omit] is interruption_state
+  + [projection_must_not_omit] is pending_review_state
+
+  = must: preserve trust and stop-state context across all carriers
+  = must: refuse projection when carrier limits would hide required authority or freshness context
+
+& [AdapterMutationThroughOperatorGate] is the mutation gate for adapter-originated actions
+  + [gate_input] is inbound_action_classification
+  + [gate_input] is authority_notice_ref
+  + [gate_input] is freshness_state
+  + [gate_input] is actor_ref
+  + [gate_input] is carrier_surface
+  + [gate_input] is source_message_ref
+  + [gate_input] is intended_mutation_ref
+  + [allowed_route] is accepted operator contract
+  + [allowed_route] is coordination review
+  + [allowed_route] is SOP-first interrupt
+  + [allowed_route] is SJS reprocessing
+  + [allowed_route] is human override record with authority_notice
+  + [allowed_route] is completion_review_delta_gate
+  + [blocked_route] is direct source specification write
+  + [blocked_route] is direct canonical specification write
+  + [blocked_route] is direct accepted pack write
+  + [blocked_route] is direct completion review acceptance
+  + [blocked_route] is direct job dispatch
+  + [blocked_route] is direct operations command
+
+  = must: emit action_request, coordination_request, interrupt_context, or completion_review_request records rather than mutate authority directly
+  = must: block stale or unsupported carrier actions until accepted route evidence exists
+
+& [MultiSurfaceDivergenceRule] is the rule for conflicting projections across carriers
+  + [divergence_kind] is stale_projection
+  + [divergence_kind] is authority_notice_mismatch
+  + [divergence_kind] is hidden_fault_state
+  + [divergence_kind] is inconsistent_claim_state
+  + [divergence_kind] is carrier_ordering_conflict
+  + [divergence_kind] is missing_lineage
+  + [required_output] is divergence_notice
+  + [required_output] is stale_projection
+  + [required_output] is coordination_conflict_signal
+  + [required_output] is sop_first_interrupt_context
+
+  = must: mark divergent projections stale or interrupted before any authority-sensitive action proceeds
+  = must: preserve the per-surface evidence set for completion review and fixture planning
+
+& [CarrierContextRule] is the rule for preserving carrier metadata without granting authority
+  + [carrier_context_field] is carrier_surface
+  + [carrier_context_field] is carrier_message_or_event_ref
+  + [carrier_context_field] is actor_ref
+  + [carrier_context_field] is observed_at
+  + [carrier_context_field] is conversation_uuid
+  + [carrier_context_field] is thread_or_channel_ref
+  + [carrier_context_field] is adapter_projection_id
+  + [authority_limit] is carrier context is evidence and routing context only
+  + [authority_limit] is carrier context requires accepted route before authority mutation
+
+  = must: preserve carrier context for traceability and dispute resolution
+  = must: prevent carrier metadata from substituting for signed source, accepted proof, or completion review
+
+& [ConversationAdapterProjectionCoverageReview] is the FSC4-S05 coverage checklist
+  + [conversation_projection_contract_present] is ConversationProjectionContract
+  + [adapter_projection_contract_set_present] is AdapterProjectionContractSet
+  + [inbound_action_classification_rule_present] is InboundActionClassificationRule
+  + [outbound_projection_rule_present] is OutboundProjectionRule
+  + [adapter_mutation_gate_present] is AdapterMutationThroughOperatorGate
+  + [multi_surface_divergence_rule_present] is MultiSurfaceDivergenceRule
+  + [carrier_context_rule_present] is CarrierContextRule
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is Langflow installation or export implementation
+  + [forbidden_scope_absent] is agent dispatch implementation
+  + [forbidden_scope_absent] is completion acceptance implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC4-S05 if adapter projections can mutate authority, hide authority notices, hide freshness, collapse conversation identity, or bypass accepted routes
+  = must: open FSC4-S06 only after this contract is accepted by completion review
