@@ -31,6 +31,8 @@ State UUID: 600befa1-5587-48c0-a42c-b16fd94b2c26
 @ [completion_review] docs/reviews/IR5_IA06_Completion_Review.v1.sop
 @ [dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
 @ [completion_review] docs/reviews/IR5_IA07_Completion_Review.v1.sop
+@ [implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [implementation_completion_review] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
 @ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
 @ [fsc4_surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
 @ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
@@ -40,9 +42,9 @@ State UUID: 600befa1-5587-48c0-a42c-b16fd94b2c26
 
 & [IR5WorkStateV1] is the current derived work state for IR5 surface projection prototype planning
   + [chunk_ref] is IR5 surface projection prototype
-  + [state_basis] is docs/reviews/IR5_IA07_Completion_Review.v1.sop
-  + [state_basis_sha256] is 62B7DABC26E359B9DA459F12A4EF596A0F2A7AD40767AC566F62B9D2FC43C8A3
-  + [surface_status] is IR5-IA07_accepted_and_IR5-IA08_may_open
+  + [state_basis] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [state_basis_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [surface_status] is IR5_implementation_accepted_and_IR6_pending_rebake
   + [source_document] is docs/source/2026-05-26_ir5_final_slices/Derived_IR5_Final_Slices_Source.sop
   + [source_document_sha256] is 6FD9CEDE8FF16ED646A3A3497277B9B6116F42896F4BB32C13DECD8E83016924
   + [source_manifest] is docs/source/2026-05-26_ir5_final_slices/Source_Document_Manifest.sop
@@ -155,20 +157,25 @@ State UUID: 600befa1-5587-48c0-a42c-b16fd94b2c26
   + [accepted_output_sha256] is 4E538FB3B1D27607F3709B55BCFE6A7E306B6B5F1D1B944C99C3FCC2C6019A9D
   + [accepted_completion_review] is docs/reviews/IR5_IA07_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 62B7DABC26E359B9DA459F12A4EF596A0F2A7AD40767AC566F62B9D2FC43C8A3
-  + [current_ready_slice] is IR5-IA08
-  + [current_ready_slice_name] is implementation completion review and proof pack
+  + [accepted_slice] is IR5-IA08
+  + [accepted_output] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_output_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [accepted_completion_review] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [current_ready_slice] is none_pending_future_rebake
+  + [current_ready_slice_name] is downstream IR6 readiness review or rebake
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is final implementation acceptance affects downstream IR6 readiness
+  + [current_ready_slice_model_route_reason] is downstream readiness affects next implementation campaign boundaries
   + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after implementation activation slices are accepted and implementation tasks are bounded
-  + [downstream_IR6_state] is gated_until_IR5_implementation_proof_acceptance_or_future_rebake
+  + [downstream_IR6_state] is pending_future_readiness_review_or_rebake
   + [implementation_code_creation_authorized_by_current_slice] is false
   + [projector_and_action_route_code_authorized_by_current_slice] is false
   + [generated_path_policy_and_fixture_runner_code_authorized_by_current_slice] is false
   + [implementation_plan_document_creation_authorized_by_current_slice] is false
   + [generated_output_proof_document_creation_authorized_by_current_slice] is false
   + [dependency_decision_document_creation_authorized_by_current_slice] is false
-  + [implementation_proof_pack_creation_authorized_by_current_slice] is true
-  + [implementation_completion_review_creation_authorized_by_current_slice] is true
+  + [implementation_proof_pack_creation_authorized_by_current_slice] is false
+  + [implementation_completion_review_creation_authorized_by_current_slice] is false
   + [activation_pack_creation_authorized_by_current_slice] is false
   + [activation_boundary_document_creation_authorized_by_current_slice] is false
   + [implementation_activation_slice_minting_opened] is completed
@@ -184,12 +191,11 @@ State UUID: 600befa1-5587-48c0-a42c-b16fd94b2c26
   + [live_machine_control_authorized] is false
   + [checkpoint_authority_status] is execution_state_only
   + [generated_projection_authority_status] is derived_projection_only
-  + [IR5_state] is ready_for_IR5-IA08_implementation_completion_review_and_proof_pack
+  + [IR5_state] is implementation_complete_pending_future_rebake
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR5-IA08 before downstream IR6 readiness is opened
-  = must: limit IR5-IA08 work to implementation proof pack and implementation completion review unless a new completion review or rebake changes the boundary
-  = must: keep downstream IR6 gated until IR5 implementation proof acceptance or future rebake explicitly reclassifies IR6 scope
+  = must: require a future readiness review or rebake before downstream IR6 work is assigned
+  = must: keep downstream IR6 gated until future rebake explicitly reclassifies IR6 scope
   = must: keep surface, adapter, chat, terminal, IRC, Matrix, web, Langflow, Codex, generated projection, generated report, and runtime graph output state non-authoritative
-  = must: mark this state stale if IR5 source document, IR5 source manifest, IR5 canonical specification, IR5 slice surface, IR5 minting review, IR5-S01 output, IR5-S01 completion review, IR5-S02 output, IR5-S02 completion review, IR5-S03 fixture plan, IR5-S03 fixture index, IR5-S03 completion review, IR5-S04 implementation plan, IR5-S04 completion review, IR5-S05 activation pack, IR5 completion review, IR5 implementation activation source, IR5 implementation activation source manifest, IR5 implementation activation canonical specification, IR5 implementation activation slice surface, IR5 implementation activation minting review, IR5-IA01 activation boundary, IR5-IA01 completion review, IR5-IA02 fixture source set, IR5-IA02 expected ledger set, IR5-IA02 completion review, IR5-IA03 authority display model, IR5-IA03 projection state model, IR5-IA03 completion review, IR5-IA04 projectors, IR5-IA04 action routes, IR5-IA04 completion review, IR5-IA05 generated path policy, IR5-IA05 fixture runner, IR5-IA05 completion review, IR5-IA06 contract tests, IR5-IA06 generated output proof, IR5-IA06 completion review, IR5-IA07 dependency decision, IR5-IA07 completion review, Post-FSC5 readiness surface, FSC4 surface projection pack, FSC5 operations safety pack, IR4 runtime graph implementation proof pack, IR4 implementation completion review, or IR4 work state changes
+  = must: mark this state stale if IR5 source document, IR5 source manifest, IR5 canonical specification, IR5 slice surface, IR5 minting review, IR5-S01 output, IR5-S01 completion review, IR5-S02 output, IR5-S02 completion review, IR5-S03 fixture plan, IR5-S03 fixture index, IR5-S03 completion review, IR5-S04 implementation plan, IR5-S04 completion review, IR5-S05 activation pack, IR5 completion review, IR5 implementation activation source, IR5 implementation activation source manifest, IR5 implementation activation canonical specification, IR5 implementation activation slice surface, IR5 implementation activation minting review, IR5-IA01 activation boundary, IR5-IA01 completion review, IR5-IA02 fixture source set, IR5-IA02 expected ledger set, IR5-IA02 completion review, IR5-IA03 authority display model, IR5-IA03 projection state model, IR5-IA03 completion review, IR5-IA04 projectors, IR5-IA04 action routes, IR5-IA04 completion review, IR5-IA05 generated path policy, IR5-IA05 fixture runner, IR5-IA05 completion review, IR5-IA06 contract tests, IR5-IA06 generated output proof, IR5-IA06 completion review, IR5-IA07 dependency decision, IR5-IA07 completion review, IR5-IA08 implementation proof pack, IR5 implementation completion review, Post-FSC5 readiness surface, FSC4 surface projection pack, FSC5 operations safety pack, IR4 runtime graph implementation proof pack, IR4 implementation completion review, or IR4 work state changes
   = must: keep operations control and live machine control unauthorized

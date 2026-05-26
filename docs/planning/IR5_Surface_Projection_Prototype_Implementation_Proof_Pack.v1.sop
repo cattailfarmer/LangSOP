@@ -1,0 +1,122 @@
+Subject: IR5 Surface Projection Prototype Implementation Proof Pack V1
+Date: 2026-05-26
+Proof Pack UUID: 7b05c6bc-8719-4e54-9388-c971a58e5a4a
+
+@ [implementation_activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [generated_output_proof] docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+@ [dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+@ [contract_tests] tests/test_ir5_surface_projection_contracts.py
+
+& [ImplementationProofPack: IR5SurfaceProjectionPrototype] is the final implementation proof pack for IR5-IA08
+  + [proof_pack_status] is accepted_by_pack_pending_completion_review
+  + [model_route_used] is requires deeper reasoning
+  + [activation_boundary] is docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+  + [activation_boundary_sha256] is C8558D32BC2F5FC53BB3BDEC505D38C3E014A595830B74D0CAD652156CBBAA34
+  + [fixture_index] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [fixture_index_sha256] is 4AF290221AF1E317ED738D7D530D1CC1456F2E0C406D87B748154438A6BF68EF
+  + [fixture_source_count] is 13
+  + [expected_ledger_count] is 5
+  + [code_file_count] is 7
+  + [test_file_count] is 1
+  + [external_dependency_set] is empty
+  + [package_metadata_mutated] is false
+  + [dependency_installation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this pack as proof of bounded IR5 surface projection implementation only
+  = must: keep downstream IR6 gated until completion review accepts this proof pack
+  = must: preserve all generated outputs as ignored, disposable, and non-authoritative
+
+& [ImplementationOutputLedger: IR5SurfaceProjectionPrototype] is the code and test output ledger
+  + [implemented_output] is src/langsop/surfaces/__init__.py
+  + [implemented_output_sha256] is 7EB74E8E200B6613FA7F21E43DB97DEC083EE886C3A4D15792C5F0E393DDF913
+  + [implemented_output] is src/langsop/surfaces/authority.py
+  + [implemented_output_sha256] is 060CEBED5E4E20551E9DB29117E07A31ACDE42772235BBE2EF45A19FC2CFBEDF
+  + [implemented_output] is src/langsop/surfaces/projection_state.py
+  + [implemented_output_sha256] is 3B1AAED73D0F249AA9AC7250AB965B27AA1FD818612CC05A9A184666057B8CEB
+  + [implemented_output] is src/langsop/surfaces/projectors.py
+  + [implemented_output_sha256] is EC4E3084A5FBE0DDD22C12F6C5788A933779CF250B6F420C01E08A181EA97CD5
+  + [implemented_output] is src/langsop/surfaces/action_routes.py
+  + [implemented_output_sha256] is 29F46619E5F7576DC1B909C6B756A5730319240D015BF8B95FF7169BEA6EE5E4
+  + [implemented_output] is src/langsop/surfaces/generated_paths.py
+  + [implemented_output_sha256] is 7E4A5C53079F7BA4621496694650F8A4EAC66ED1337D13544FF9AE7784EBD67D
+  + [implemented_output] is src/langsop/surfaces/fixture_runner.py
+  + [implemented_output_sha256] is 588151532488B2CA89B960CA109A17E09928D631BAA98AF875D9BAB898743E32
+  + [test_output] is tests/test_ir5_surface_projection_contracts.py
+  + [test_output_sha256] is 122513C31776EE12FCFFDDCF0AB59AADB83E954D67B3B8B35EB5BFA914732A45
+
+& [ReviewLedger: IR5SurfaceProjectionPrototype] is the implementation activation review ledger
+  + [completion_review] is docs/reviews/IR5_IA01_Completion_Review.v1.sop
+  + [completion_review_sha256] is A9322F4F4F42EC0EA997930190D7B9A719DC0D10518273E407BCE0683EF1C20E
+  + [completion_review] is docs/reviews/IR5_IA02_Completion_Review.v1.sop
+  + [completion_review_sha256] is 7BC622EF5E4525DFD5B1A67DFC0503B756EF080392EB094BBF75C1D7D2A3FFBF
+  + [completion_review] is docs/reviews/IR5_IA03_Completion_Review.v1.sop
+  + [completion_review_sha256] is 4F2F964FFEE0742347B6A490132B3009A8B3F9DD1857C5D7F1B92927368D9B21
+  + [completion_review] is docs/reviews/IR5_IA04_Completion_Review.v1.sop
+  + [completion_review_sha256] is 0A744CA94CA45CC89C272466174C5E121424D8B6B1362835F072DD7CACB0D313
+  + [completion_review] is docs/reviews/IR5_IA05_Completion_Review.v1.sop
+  + [completion_review_sha256] is 713478B430018D21B2A985C7FC6F82A2C76984A9C785A6D92583B6484ABF43EA
+  + [completion_review] is docs/reviews/IR5_IA06_Completion_Review.v1.sop
+  + [completion_review_sha256] is 2303180DD357FFED576261F5BBA16065A6A0407EF6A7487C3D33CC6767CB9F2E
+  + [completion_review] is docs/reviews/IR5_IA07_Completion_Review.v1.sop
+  + [completion_review_sha256] is 62B7DABC26E359B9DA459F12A4EF596A0F2A7AD40767AC566F62B9D2FC43C8A3
+
+& [GeneratedOutputAndDependencyLedger: IR5SurfaceProjectionPrototype] is the generated-output and dependency proof ledger
+  + [generated_output_proof] is docs/reviews/IR5_Surface_Projection_Generated_Output_Proof.v1.sop
+  + [generated_output_proof_sha256] is C11F6211181D8638E79643B84C689B5EADEEBB70DA81FE7F94948B468DD4F9F3
+  + [dependency_decision] is docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+  + [dependency_decision_sha256] is 4E538FB3B1D27607F3709B55BCFE6A7E306B6B5F1D1B944C99C3FCC2C6019A9D
+  + [pyproject] is pyproject.toml
+  + [pyproject_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+  + [generated_output_present_after_tests] is false
+  + [generated_output_discovered_as_authority] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+
+& [CommandEvidence: IR5SurfaceProjectionPrototype] is the command evidence for the final proof pack
+  + [command] is python -m compileall -q src tests
+  + [result] is passed
+  + [command] is python -m unittest tests.test_ir5_surface_projection_contracts
+  + [result] is 6 tests passed
+  + [command] is python -m unittest discover -s tests
+  + [result] is 25 tests passed
+  + [command] is git diff --check
+  + [result] is passed with LF-to-CRLF warnings only
+
+& [SupportDelta: IR5-IA08] is the support delta accepted by this proof pack
+  + [new_support_record] is IR5 surface projection implementation satisfies authority display, projection state, projector, action route, fixture runner, generated path, contract test, generated output, and dependency deferral proof obligations
+  + [new_support_record] is generated outputs remain ignored, disposable, and non-authoritative
+  + [new_support_record] is no operations control or live machine control is authorized
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-IA08] is the requirement delta accepted by this proof pack
+  + [requirement_delta] is downstream IR6 may be considered for future readiness only after implementation completion review accepts this proof pack
+  + [requirement_delta] is future Langflow, IRC, Matrix, MCP, web, adapter, UI, transport, dependency, operations simulator, operations control, or live machine control work requires a new explicit boundary
+
+& [FaultReview: IR5SurfaceProjectionPrototype] is the proof pack fault review
+  + [source_overwrite_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [generated_output_tracked_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5SurfaceProjectionImplementationProofPackAccepted] is accepted
+    @ [support] [ImplementationOutputLedger: IR5SurfaceProjectionPrototype]
+    @ [support] [ReviewLedger: IR5SurfaceProjectionPrototype]
+    @ [support] [GeneratedOutputAndDependencyLedger: IR5SurfaceProjectionPrototype]
+    @ [support] [CommandEvidence: IR5SurfaceProjectionPrototype]
+    @ [support] [SupportDelta: IR5-IA08]
+    @ [support] [RequirementDelta: IR5-IA08]
+    @ [support] [FaultReview: IR5SurfaceProjectionPrototype]
