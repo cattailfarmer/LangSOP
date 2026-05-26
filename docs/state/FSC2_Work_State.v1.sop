@@ -7,23 +7,27 @@ State UUID: 57dd2c14-4401-4669-96b6-97750e5d6492
 @ [accepted_boundary_input] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
 @ [completion_review] docs/reviews/FSC2_S01_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC2_S02_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/FSC2_S03_Completion_Review.v1.sop
 @ [accepted_output] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
 @ [accepted_output] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [accepted_output] docs/operators/Work_Packet_Generation_Contract.v1.sop
 
 & [FSC2WorkStateV1] is the current derived work state for FSC2 planning coordination
   + [chunk_ref] is FSC2 planning coordination
-  + [state_basis] is docs/reviews/FSC2_S02_Completion_Review.v1.sop
+  + [state_basis] is docs/reviews/FSC2_S03_Completion_Review.v1.sop
   + [accepted_boundary_input] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 5DEA75196054BAC4C3DFD2B1EAEEFC4C28316CEE7E5191B60C7F32CA4F03DEA8
   + [accepted_slice] is FSC2-S01
   + [accepted_slice] is FSC2-S02
+  + [accepted_slice] is FSC2-S03
   + [accepted_output] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is B7C59160EEA6C46F0567AF16BEFB0315FDB46CB12BD5B1D46C24CF8064C29B5B
   + [accepted_output] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
   + [accepted_output_sha256] is 41E337EB765B6B93B667DE160A99A46DDA92B7EF1EAF1D1527E7DC6A2389AAE0
-  + [current_ready_slice] is FSC2-S03
+  + [accepted_output] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [accepted_output_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
+  + [current_ready_slice] is FSC2-S04
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is FSC2-S04 until FSC2-S03 accepted
   + [gated_slice] is FSC2-S05 until FSC2-S02, FSC2-S03, and FSC2-S04 accepted
   + [gated_slice] is FSC2-S06 until FSC2-S05 accepted
   + [gated_slice] is FSC2-S07 until FSC2-S06 accepted
@@ -32,5 +36,5 @@ State UUID: 57dd2c14-4401-4669-96b6-97750e5d6492
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run FSC2-S03 before FSC2-S04 or later FSC2 slices
-  = must: mark this state stale if the FSC1 foundation contract pack, FSC2 final slice surface, FSC2-S01 output, FSC2-S02 output, or their completion reviews change
+  = must: run FSC2-S04 before FSC2-S05 or later FSC2 slices
+  = must: mark this state stale if the FSC1 foundation contract pack, FSC2 final slice surface, FSC2-S01 through FSC2-S03 outputs, or their completion reviews change

@@ -1,0 +1,171 @@
+Subject: Work Packet Generation Contract V1
+Date: 2026-05-26
+Operator Contract UUID: c952816f-64e7-47c5-9b50-264a9518a80a
+
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [boundary_map] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+
+& [WorkPacketGenerationContractV1] is the FSC2 packetization contract refining work_packet_generation beyond v1_stub
+  + [contract_id] is work-packet-generation-contract-v1
+  + [contract_uuid] is c952816f-64e7-47c5-9b50-264a9518a80a
+  + [slice_id] is FSC2-S03
+  + [authority_scope] is work_packet generation contract, packet validity matrix, blocked/fault output rules, trace obligations, and fixture obligations
+  + [implementation_scope] is operator contract only
+  + [template_dependency] is docs/operators/Operator_Contract_Template.v1.sop
+  + [readiness_dependency] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+
+  = must: consume accepted planning readiness rather than recomputing readiness silently
+  = must: create work_packet records only when dependency closure and review obligations are explicit
+  = must: preserve packet authority as a bounded work view, not an execution command
+  - never: dispatch work, assign ownership, run commands, implement queues, implement LangGraph nodes, render surfaces, or authorize operations control
+
+& [OperatorContract: work_packet_generation] is the FSC2 contract for generating bounded work packets from accepted readiness
+  + [operator_id] is work_packet_generation
+  + [operator_version] is v1
+  + [operator_name] is Work Packet Generation
+  + [operator_purpose] is generate a bounded work_packet from current ready_to_packetize readiness, accepted authority basis, closed dependencies, explicit verification oracle, model route, and completion-review obligations
+  + [source_sop_ref] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [source_sop_ref] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [source_sop_ref] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+  + [authority_basis_ref_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [authority_basis_ref_set] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [input_record_kind_set] is readiness_projection, capability_node, requirement_record, support_record, support_gap, proof_result, authority_artifact, coordination_claim, stale_projection, and fault_record
+  + [output_record_kind_set] is work_packet, support_gap, stale_projection, proof_result, fault_record, and operator_trace
+  + [precondition_set] is boundary map is accepted and current
+  + [precondition_set] is planning_readiness_recompute contract is accepted and current
+  + [precondition_set] is readiness_projection is current and ready_to_packetize
+  + [precondition_set] is readiness_projection cites the requirements, support, proof, and authority basis being packetized
+  + [precondition_set] is no blocking support_gap remains for the requested packet scope
+  + [precondition_set] is packet scope has dependency closure inside the packet boundary or accepted boundary input
+  + [precondition_set] is expected_output_set is explicit and bounded
+  + [precondition_set] is verification_oracle is explicit and reviewable
+  + [precondition_set] is model_route is explicit and includes Spark-suitable or requires deeper reasoning classification
+  + [precondition_set] is forbidden_scope is explicit
+  + [precondition_set] is completion_review_required is true
+  + [precondition_set] is support_delta and requirement_delta review obligations are included
+  + [precondition_set] is coordination prerequisite is declared as unclaimed_allowed, claim_required_before_execution, or claim_present
+  + [postcondition_set] is generated work_packet preserves capability_ref_set, requirement_ref_set, support_ref_set, authority_basis_ref_set, precondition_set, expected_output_set, verification_oracle, model_route, forbidden_scope, completion_review_required, support_delta_obligation, requirement_delta_obligation, and stale_trigger_set
+  + [postcondition_set] is generated work_packet has authority_state derived_projection or proof_backed, never source_only or signed_sjs
+  + [postcondition_set] is blocked output appears instead of work_packet when readiness is blocked, stale, contradicted, ambiguous, unsupported, or missing review obligations
+  + [postcondition_set] is fault_record appears when false-ready packet, dependency leak, hidden authority drift, invalid shape, or operator contract violation is proven
+  + [interrupt_condition_set] is authority_conflict, ambiguous_identity, missing_proof_route, stale_input, unsupported_scope, high_risk_operation, and human_override_required
+  + [fault_condition_set] is false_ready_packet, stale_projection, invalid_input_shape, hidden_authority_drift, forbidden_external_dependency, unsupported_operations_control, and operator_contract_violation
+  + [blocked_output_contract] is support_gap or blocked work_packet candidate explaining why packet was not generated
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is valid_packet, blocked_gap, stale_readiness, contradicted_readiness, ambiguous_readiness, missing_verification_oracle, dependency_leak, missing_completion_review, missing_model_route, authority_conflict, and high_risk_operation
+  + [forbidden_scope] is assigning work, claiming ownership, dispatching to agents, mutating files, running commands, implementing queues, implementing LangGraph nodes, rendering surfaces, or authorizing live operations
+
+  = must: never generate a work_packet from blocked, stale, contradicted, ambiguous, faulted, or unsupported readiness
+  = must: never generate a work_packet without completion_review_required true
+  = must: never generate a work_packet without explicit verification_oracle and model_route
+  = must: preserve trace and blocked/fault evidence when packet generation refuses
+
+& [OperatorIOBinding: work_packet_generation] is the input and output binding for FSC2 work_packet_generation
+  + [input_record_kind] is readiness_projection
+  + [input_role] is packet readiness source
+  + [input_record_kind] is capability_node
+  + [input_role] is packet capability scope
+  + [input_record_kind] is requirement_record
+  + [input_role] is packet obligations
+  + [input_record_kind] is support_record
+  + [input_role] is packet evidence
+  + [input_record_kind] is support_gap
+  + [input_role] is blocker check
+  + [input_record_kind] is proof_result
+  + [input_role] is verification evidence
+  + [input_record_kind] is authority_artifact
+  + [input_role] is packet authority basis
+  + [input_record_kind] is coordination_claim
+  + [input_role] is claim prerequisite context only
+  + [output_record_kind] is work_packet
+  + [output_role] is create bounded work view
+  + [output_record_kind] is support_gap
+  + [output_role] is block packet generation when support is missing
+  + [output_record_kind] is stale_projection
+  + [output_role] is mark stale readiness or stale packet candidate
+  + [output_record_kind] is proof_result
+  + [output_role] is prove packet validity when success occurs
+  + [output_record_kind] is fault_record
+  + [output_role] is emit false-ready, dependency, authority, or contract fault
+  + [output_record_kind] is operator_trace
+  + [output_role] is trace every invocation
+
+  = must: reject output that assigns, claims, dispatches, or executes work
+  = must: preserve lineage_edge_set from readiness_projection and all packet inputs
+
+& [PacketValidityMatrix] is the decision matrix for FSC2 work_packet_generation
+  + [decision_case] is valid_packet when readiness is ready_to_packetize, dependencies are closed, authority is current, no blocking gap remains, verification_oracle is explicit, model_route is explicit, completion review is required, and coordination prerequisite is declared
+  + [decision_case] is blocked_gap when readiness is ready but support_gap remains unresolved or packet obligations are incomplete
+  + [decision_case] is stale_readiness when readiness or authority basis is stale
+  + [decision_case] is contradicted_readiness when readiness depends on contradicted support
+  + [decision_case] is ambiguous_readiness when identity, requirement scope, authority basis, or packet boundary is ambiguous
+  + [decision_case] is dependency_leak when packet scope depends on work outside the packet boundary without accepted boundary input
+  + [decision_case] is missing_review_oracle when verification_oracle or completion_review_required is absent
+  + [decision_case] is missing_model_route when model_route is absent or does not state Spark-suitable versus requires deeper reasoning
+  + [decision_case] is faulted_false_ready when a packet would be generated from any non-ready readiness state
+
+  = must: prefer blocked output over packet generation when support or review obligations are incomplete
+  = must: prefer sop_first_interrupt when packet boundaries or authority basis are semantically ambiguous
+  = must: emit fault_record when false-ready packet generation is attempted
+
+& [WorkPacketRequiredFieldSet] is the required field set for generated work_packet records
+  + [required_field] is packet_id
+  + [required_field] is packet_uuid
+  + [required_field] is packet_subject_ref
+  + [required_field] is capability_ref_set
+  + [required_field] is requirement_ref_set
+  + [required_field] is support_ref_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is dependency_closure_set
+  + [required_field] is precondition_set
+  + [required_field] is expected_output_set
+  + [required_field] is verification_oracle
+  + [required_field] is model_route
+  + [required_field] is forbidden_scope
+  + [required_field] is completion_review_required
+  + [required_field] is support_delta_obligation
+  + [required_field] is requirement_delta_obligation
+  + [required_field] is stale_trigger_set
+  + [required_field] is coordination_prerequisite
+
+  = must: reject packet generation when any required field is absent
+  = must: keep generated packet field values traceable to input records or accepted boundary authority
+
+& [FixtureObligationSet: work_packet_generation] is the fixture requirement set for FSC2 work_packet_generation
+  + [fixture] is valid_packet expects success, work_packet output, proof_result, and operator_trace
+  + [fixture] is blocked_gap expects blocked_output and no work_packet
+  + [fixture] is stale_readiness expects stale_projection and no work_packet
+  + [fixture] is contradicted_readiness expects fault_output or blocked_output and no work_packet
+  + [fixture] is ambiguous_readiness expects sop_first_interrupt and no work_packet
+  + [fixture] is missing_verification_oracle expects blocked_output and no work_packet
+  + [fixture] is dependency_leak expects fault_output and no work_packet
+  + [fixture] is missing_completion_review expects blocked_output and no work_packet
+  + [fixture] is missing_model_route expects blocked_output and no work_packet
+  + [fixture] is authority_conflict expects sop_first_interrupt
+  + [fixture] is high_risk_operation expects sop_first_interrupt
+
+& [WorkPacketGenerationCoverageReview] is the FSC2-S03 coverage checklist
+  + [contract_present] is work_packet_generation v1
+  + [packet_validity_matrix_present] is PacketValidityMatrix
+  + [required_field_set_present] is WorkPacketRequiredFieldSet
+  + [fixture_obligation_set_present] is FixtureObligationSet:work_packet_generation
+  + [requires_readiness_state] is ready_to_packetize
+  + [requires_dependency_closure] is true
+  + [requires_verification_oracle] is true
+  + [requires_model_route] is true
+  + [requires_completion_review] is true
+  + [requires_support_delta_obligation] is true
+  + [requires_requirement_delta_obligation] is true
+  + [forbidden_scope_absent] is work assignment
+  + [forbidden_scope_absent] is dispatch implementation
+  + [forbidden_scope_absent] is LangGraph node implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC2-S03 if packet generation can dispatch or assign work
+  = must: open FSC2-S04 only after this contract is accepted by completion review
