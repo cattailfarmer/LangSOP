@@ -1,0 +1,151 @@
+Subject: FSC5 Operations Safety Pack V1
+Date: 2026-05-26
+Pack UUID: fe886df2-7b15-48ec-a2bf-473eb20793d8
+
+@ [completion_review] docs/reviews/FSC5_Completion_Review.v1.sop
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [operations_safety_spec] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+@ [operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [dry_run_contract] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [resource_safety_contract] docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+@ [live_control_prohibition] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+@ [fixture_plan] docs/fixtures/FSC5_Operations_Safety_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+
+& [OperationsSafetyPack: FSC5OperationsSafetyPackV1] is the accepted boundary pack exported by FSC5
+  + [pack_id] is fsc5-operations-safety-pack-v1
+  + [pack_uuid] is fe886df2-7b15-48ec-a2bf-473eb20793d8
+  + [source_chunk] is FSC5 operations safety envelope
+  + [export_status] is accepted_safety_boundary_input
+  + [consumer_chunk] is future operations implementation planning only
+  + [implementation_effect] is no operations control, live machine control, command execution, GPU control, model runtime mutation, job dispatch, credential mutation, network exposure mutation, destructive filesystem action, or persistent operations automation is authorized by this pack
+
+  = must: treat operations as typed requests, dry-run records, safety classifications, authority notices, human approval records, refusals, and completion reviews
+  = must: preserve dry-run-only semantics until a separate future live-control authority is source-preserved, SJS-processed, and accepted
+  = must: refuse live-control effects as records, not commands
+  - never: let fixture success, dry-run success, human approval request, human approval record, projection state, or this safety pack become live-control permission
+
+& [AcceptedOperationsSafetyDigestSet: FSC5] is the accepted hash ledger exported by FSC5
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [accepted_safety_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [accepted_safety_source_sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+  + [accepted_activation_review] is docs/reviews/FSC4_Completion_Review.v1.sop
+  + [accepted_activation_review_sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+  + [accepted_output] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is 4C7F2B224A3CD4D9497DD28ABEDC3750CA4979EB132D3DE0DAD2DF5D0E564024
+  + [accepted_output] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+  + [accepted_output_sha256] is 19D818B72B680AEEB9897A819F4DAD294627F226B9F1E7E2AEB65E90D42EFF57
+  + [accepted_output] is docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+  + [accepted_output_sha256] is 45B49390D2AB8CE5B85B809128865D4B689A8113BCE87D1AC329153D5DEBDD01
+  + [accepted_output] is docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [accepted_output_sha256] is 12ACEBB9B110F3572F5B6E087D4B8D50273D135A6C887047932A58B32357BF54
+  + [accepted_output] is docs/fixtures/FSC5_Operations_Safety_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is ABAED0A5A57225FF9473F2BF83201421A1797134424BE867C3858843C1EB35F7
+  + [accepted_output] is docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is 2C76D6B5A1609BE7AEC71C1C4C4887C1D528645B1DFF06E37D98FE7EE2041873
+
+  = must: mark this operations safety pack stale if any listed hash changes
+
+& [ExportedOperationsBoundaryContract] is the operations boundary exported by FSC5
+  + [operations_role] is safety_planning_and_non_mutating_dry_run_only
+  + [authority_source_role] is SOP files, accepted packs, accepted proofs, explicit future human approvals, and completion reviews remain source authority
+  + [request_role] is operation requests describe intended effects, resource targets, risk, authority notice, freshness, blast radius, rollback route, credential boundary, network boundary, human approval reference, and completion review reference
+  + [dry_run_role] is dry-run results simulate and classify without live effects
+  + [refusal_role] is refusal outputs preserve evidence and block unsafe operation requests
+  + [forbidden_mutation] is command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network exposure mutation, destructive filesystem action, persistent operations automation, or live machine control
+
+  = must: force future operations planning to distinguish described intent, simulated result, human approval state, and authorized live effect
+
+& [ExportedDryRunAndResourceSafetyContractSet] is the dry-run and resource safety contract set exported by FSC5
+  + [contract] is OperationRequestSchema
+  + [contract] is IntendedEffectClassification
+  + [contract] is ResourceTargetClassification
+  + [contract] is DryRunResultSchema
+  + [contract] is RefusalOutputContract
+  + [contract] is NoLiveEffectRule
+  + [contract] is ResourceRiskClassification
+  + [contract] is BlastRadiusContract
+  + [contract] is CredentialBoundaryContract
+  + [contract] is NetworkBoundaryContract
+  + [contract] is RollbackAbortRouteContract
+  + [contract] is HumanApprovalRecordContract
+  + [contract] is ApprovalExpirationAndStaleRule
+  + [contract] is OverrideRefusalRule
+
+  = must: require explicit, scoped, fresh, non-blanket human approval for any future high-risk reconsideration
+  = must: treat unknown risk, credential boundaries, network exposure, destructive effects, live process or GPU or model runtime mutation, and job control as high or critical risk
+  = must: keep every current dry-run result non-mutating with live_effect_performed false
+
+& [ExportedLiveControlProhibitionContract] is the live-control prohibition exported by FSC5
+  + [contract] is MachineControlNonAuthorityRule
+  + [contract] is LiveControlProhibitionGate
+  + [contract] is RefusedEffectMap
+  + [contract] is FutureAuthorityEscalationPath
+  + [contract] is SafetyProofChecklist
+  + [blocked_effect] is live_process_start
+  + [blocked_effect] is live_process_stop
+  + [blocked_effect] is live_process_priority_change
+  + [blocked_effect] is gpu_workload_launch
+  + [blocked_effect] is gpu_workload_cancel
+  + [blocked_effect] is gpu_scheduler_mutation
+  + [blocked_effect] is model_runtime_start
+  + [blocked_effect] is model_runtime_stop
+  + [blocked_effect] is model_runtime_install
+  + [blocked_effect] is model_runtime_upgrade
+  + [blocked_effect] is model_runtime_configuration_mutation
+  + [blocked_effect] is job_dispatch
+  + [blocked_effect] is job_cancellation
+  + [blocked_effect] is credential_mutation
+  + [blocked_effect] is network_exposure_mutation
+  + [blocked_effect] is destructive_filesystem_action
+  + [blocked_effect] is persistent_operations_automation
+
+  = must: block every listed live effect regardless of dry-run success, fixture success, broad approval, projected intent, or current FSC5 completion
+
+& [ExportedOperationsSafetyFixtureSet] is the fixture coverage exported by FSC5
+  + [fixture_case_count] is 10
+  + [fixture_index_entry_count] is 10
+  + [fixture_case] is dry_run_resource_request
+  + [fixture_case] is blocked_live_control
+  + [fixture_case] is gpu_contention
+  + [fixture_case] is model_runtime_unavailable
+  + [fixture_case] is credential_boundary
+  + [fixture_case] is network_exposure_refusal
+  + [fixture_case] is destructive_command_refusal
+  + [fixture_case] is missing_authority_notice
+  + [fixture_case] is stale_human_approval
+  + [fixture_case] is dry_run_success_not_live_approval
+
+  = must: use these fixtures as the minimum downstream proof set before executable operations-facing implementation or trust claims are accepted
+  = must: keep fixture planning distinct from executable test harness implementation until a later slice authorizes it
+
+& [FutureLiveControlAuthorityReconsiderationGate] is the only gate by which live-control authority may be reconsidered after FSC5
+  + [required_future_step] is preserve new live-control source document
+  + [required_future_step] is run SJS processing into separate canonical safety authority
+  + [required_future_step] is define target host inventory and resource API boundaries
+  + [required_future_step] is define least-privilege credential boundary
+  + [required_future_step] is define live-control dry-run and rollback proof
+  + [required_future_step] is define explicit human approval, expiration, and revocation rules
+  + [required_future_step] is define monitoring, abort, and fault capture routes
+  + [required_future_step] is run completion review that explicitly accepts live-control scope
+  + [forbidden_shortcut] is reusing FSC5 safety pack as live-control approval
+  + [forbidden_shortcut] is relying on broad human approval
+  + [forbidden_shortcut] is relying on dry-run success
+  + [forbidden_shortcut] is relying on fixture success
+  + [forbidden_shortcut] is relying on projected surface intent
+
+  = must: require a future, separate, source-preserved, SJS-processed, least-privilege authority path for any live-control capability
+  = must: keep current FSC5 work non-live after FSC5 completion
+
+& [OperationsSafetyPackInvalidationRuleSet] is the staleness contract for FSC5OperationsSafetyPackV1
+  + [invalidated_by] is change to FSC4 surface projection pack
+  + [invalidated_by] is change to operations safety source
+  + [invalidated_by] is change to any accepted FSC5 output hash
+  + [invalidated_by] is change to any FSC5-S01 through FSC5-S06 completion review
+  + [invalidated_by] is discovered contradiction among operations boundary, dry-run contract, resource safety contract, live-control prohibition, or fixture expectations
+  + [invalidated_by] is any output authorizing live control without separate accepted future authority
+  + [invalidated_by] is any dry-run or fixture success treated as live approval
+
+  = must: rerun FSC5-S06 after invalidation before downstream work consumes this pack again
