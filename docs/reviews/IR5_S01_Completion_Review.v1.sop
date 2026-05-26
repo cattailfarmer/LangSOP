@@ -1,0 +1,99 @@
+Subject: IR5 S01 Completion Review V1
+Date: 2026-05-26
+Review UUID: a6170bcf-c49e-41db-b79b-0bdeb67d3215
+
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [completed_output] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+@ [fsc4_surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR5-S01] is the completed-work review for IR5-S01 surface boundary import and invariant reconciliation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR5-S01
+  + [completed_output] is docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [completed_output_sha256] is 60EF5679FBAC2AB6037696C59E078498F079E188B63564D1DE43C9A570B4CB56
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5-S01 and open IR5-S02
+  + [next_gate_result] is IR5-S02 may open
+  + [next_model_route] is requires deeper reasoning for IR5-S02 authority display and projection-state contract
+
+  = must: treat this review as gate-opening evidence for IR5-S02 only
+  = must: rerun this review if the completed output, IR5 slice surface, FSC4 surface projection pack, FSC5 operations safety pack, IR4 runtime graph proof pack, or IR4 implementation completion review changes
+  = must: keep fixtures, expected ledgers, generated outputs, executable UI code, adapter code, dependency installation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR5S01Verification] is the verification result for IR5-S01
+  + [boundary_digest_set_present] is true
+  + [reconciled_invariant_set_present] is true
+  + [projection_authority_ladder_present] is true
+  + [surface_projection_boundary_import_map_present] is true
+  + [runtime_proof_handoff_present] is true
+  + [operations_safety_handoff_present] is true
+  + [generated_output_and_fixture_boundary_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [authority_notice_preserved] is true
+  + [freshness_and_lineage_preserved] is true
+  + [surface_projection_non_authority_preserved] is true
+  + [runtime_graph_non_authority_preserved] is true
+  + [dry_run_only_operations_preserved] is true
+  + [executable_ui_code_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5S01VerificationSatisfied] is accepted
+    @ [support] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+
+& [SupportDelta: IR5-S01] is the support delta produced by IR5-S01
+  + [new_support_record] is IR5 has a reconciled authority ladder distinguishing source authority, accepted execution evidence, generated projection evidence, and carrier context
+  + [new_support_record] is IR5 downstream surfaces must preserve authority notice, freshness, lineage, stop-state visibility, and mutation route before action
+  + [new_support_record] is IR4 runtime graph proof may inform surface projection state only as lower-authority generated or accepted execution evidence
+  + [new_support_record] is FSC5 operation-like surface actions remain dry-run request, refusal, or safety review records and cannot authorize live control
+  + [new_support_record] is IR5-S02 has enough support to define authority display and projection-state semantics without creating implementation code
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-S01] is the requirement delta produced by IR5-S01
+  + [requirement_delta] is IR5-S02 must define display semantics for authority tiers, trust limits, freshness, lineage, projected status, invalidation, refusal, and action-route visibility
+  + [requirement_delta] is IR5-S02 must preserve projection refusal when a carrier cannot show required authority or stop-state context
+  + [requirement_delta] is IR5-S03 remains gated and Spark-suitable only after IR5-S02 acceptance because fixture planning needs accepted display and projection-state semantics
+  + [requirement_delta] is no executable UI code, adapter code, fixture source, expected ledger, generated output, dependency installation, operations simulator, operations control, or live machine control is authorized by IR5-S01
+
+& [FaultReview: IR5-S01] is the fault review for IR5-S01
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_authority_notice_rule_found] is false
+  + [projection_authority_promotion_found] is false
+  + [runtime_checkpoint_authority_promotion_found] is false
+  + [generated_output_authority_promotion_found] is false
+  + [dry_run_to_live_control_promotion_found] is false
+  + [implementation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5S01Accepted] is accepted
+    @ [support] [IR5S01Verification]
+    @ [support] [SupportDelta: IR5-S01]
+    @ [support] [RequirementDelta: IR5-S01]
+    @ [support] [FaultReview: IR5-S01]
+
+& [NextSliceGate: IR5-S02] is opened
+  + [opened_slice] is IR5-S02 authority display and projection-state contract
+  + [accepted_dependency] is docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is 60EF5679FBAC2AB6037696C59E078498F079E188B63564D1DE43C9A570B4CB56
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is authority display conflicts decide when projected state may guide action without becoming authority
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-S02 next unless user redirects or a new fault invalidates this review
