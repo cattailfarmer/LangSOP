@@ -1,0 +1,83 @@
+Subject: LangSOP IR5 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir5_final_slices/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [fsc4_surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR5FinalSlices] is the processed planning authority for IR5 final work slices
+  + [canonical_uuid] is 7500a514-7365-40d2-834f-ee71e8114c61
+  + [source_manifest_uuid] is e03c6fa3-95aa-481c-b7c5-d01bbd619a23
+  + [slice_surface_uuid] is aaa535be-a7c4-4f05-bfc4-995322f624db
+  + [authority_scope] is IR5 slice order, gates, expected outputs, model routing, surface projection authority boundaries, authority notice obligations, fixture planning, implementation activation boundary, and forbidden live operations scope
+  + [implementation_scope] is surface projection prototype planning plus gated implementation activation
+  + [depends_on] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [depends_on] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [depends_on] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [depends_on] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+
+  = must: use docs/slices/IR5_Final_Slices.v1.sop as the current IR5 slice surface
+  = must: execute IR5-S01 first
+  = must: run completion review after each IR5 slice before opening the next gated slice
+  = must: keep surface, adapter, chat, terminal, IRC, Matrix, web, Langflow, Codex, generated projection, and runtime graph output state non-authoritative
+  - never: treat IR5 slices as permission for executable UI code, adapter implementation, dependency installation, operations simulator implementation, operations control, or live machine control
+
+& [CanonicalIR5SliceSet] is the final IR5 slice sequence
+  + [slice] is IR5-S01 surface boundary import and invariant reconciliation
+  + [slice] is IR5-S02 authority display and projection-state contract
+  + [slice] is IR5-S03 surface projection fixture plan and expected ledger plan
+  + [slice] is IR5-S04 surface projection prototype implementation plan and generated-output boundary
+  + [slice] is IR5-S05 IR5 completion review and implementation activation pack
+
+  = must: preserve this order unless completion review rebakes IR5
+
+& [CanonicalIR5ExecutionGate] is the activation rule for IR5
+  + [current_ready_slice] is IR5-S01
+  + [gated_slice] is IR5-S02 until IR5-S01 accepted
+  + [gated_slice] is IR5-S03 until IR5-S02 accepted
+  + [gated_slice] is IR5-S04 until IR5-S03 accepted
+  + [gated_slice] is IR5-S05 until IR5-S04 accepted
+  + [completion_gate] is IR5 implementation activation pack accepted after IR5-S05
+
+& [CanonicalIR5ModelRouting] is the model-routing record
+  + [IR5-S01] is requires deeper reasoning
+  + [IR5-S02] is requires deeper reasoning
+  + [IR5-S03] is GPT-5.3-Codex-Spark-suitable after IR5-S01 and IR5-S02 acceptance
+  + [IR5-S04] is requires deeper reasoning
+  + [IR5-S05] is requires deeper reasoning
+
+  = must: keep authority display conflicts, projection state semantics, adapter carrier boundaries, generated output policy, and final activation under deeper reasoning
+  = must: treat bounded fixture planning as Spark-suitable only after authority and projection contracts are accepted
+
+& [SatisfactionSignature: IR5FinalSlices] is the valid SJS satisfaction signature for the IR5 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 90975cf7-2615-43e3-a3ce-9cadee121bda
+  + [signed_subject] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir5_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 6FD9CEDE8FF16ED646A3A3497277B9B6116F42896F4BB32C13DECD8E83016924
+  + [source_sha256] is 0D03ECA3FF0A501D385BE2FD1DF0535D6D9943B689B657D9E8813EC59D9E2EDB
+  + [source_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [source_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [source_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [source_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [source_sha256] is 83B54B65C5029FEF898DB68A74F40A44E82A8356422EA5B97FF7A26FFE3F6BDA
+  + [source_sha256] is D3DA04489EAEBE635777017631A11F2C8BEE51536793F1F0F9F970CEBEB129E4
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR5_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR4_gate_imported, FSC4_surface_contracts_imported, FSC5_safety_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR5_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR5 final slices; no live operations control authorized
+
+& [RegistryRecord: IR5FinalSlices] is the durable identity ledger for the IR5 final slice surface
+  + [registry_uuid] is 8a4acd26-a7de-454f-bc3d-9de08898548d
+  + [manifest_node_uuid] is e03c6fa3-95aa-481c-b7c5-d01bbd619a23
+  + [canonical_node_uuid] is 7500a514-7365-40d2-834f-ee71e8114c61
+  + [slice_surface_uuid] is aaa535be-a7c4-4f05-bfc4-995322f624db
+  + [signature_uuid] is 90975cf7-2615-43e3-a3ce-9cadee121bda
+  + [closure_review_uuid] is 0f99f211-7386-4f28-9ea0-0123d16c693e

@@ -1,0 +1,34 @@
+Subject: IR5 Final Slices Source Document Manifest
+Date: 2026-05-26
+Manifest UUID: e03c6fa3-95aa-481c-b7c5-d01bbd619a23
+
+@ [source_document] docs/source/2026-05-26_ir5_final_slices/Derived_IR5_Final_Slices_Source.sop
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [fsc4_surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+@ [ir4_work_state] docs/state/IR4_Work_State.v1.sop
+
+& [SourceDocumentManifest: IR5FinalSlices] is the preserved source manifest for IR5 final-slice minting
+  + [manifest_uuid] is e03c6fa3-95aa-481c-b7c5-d01bbd619a23
+  + [source_document] is docs/source/2026-05-26_ir5_final_slices/Derived_IR5_Final_Slices_Source.sop
+  + [source_document_sha256] is 6FD9CEDE8FF16ED646A3A3497277B9B6116F42896F4BB32C13DECD8E83016924
+  + [boundary_input] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [boundary_input_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [boundary_input_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [boundary_input] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+  + [boundary_input_sha256] is 83B54B65C5029FEF898DB68A74F40A44E82A8356422EA5B97FF7A26FFE3F6BDA
+  + [boundary_input] is docs/state/IR4_Work_State.v1.sop
+  + [boundary_input_sha256] is D3DA04489EAEBE635777017631A11F2C8BEE51536793F1F0F9F970CEBEB129E4
+  + [preservation_status] is source_preserved
+  + [processing_route] is Specification_Justification_Solution_to_canonical_IR5_final_slice_surface
+
+  = must: preserve this manifest as provenance for canonical IR5 final slices
+  = must: treat downstream IR5 implementation as gated until slice surface and completion review open a bounded implementation step
+  - never: use this manifest to authorize executable surface prototype code, dependency installation, operations control, or live machine control

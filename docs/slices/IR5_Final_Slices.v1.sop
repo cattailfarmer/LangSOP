@@ -1,0 +1,118 @@
+Subject: IR5 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: aaa535be-a7c4-4f05-bfc4-995322f624db
+
+@ [canonical_specification] docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir5_final_slices/Source_Document_Manifest.sop
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [fsc4_surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+
+& [IR5FinalSliceSurfaceV1] is the executable slice surface for IR5 surface projection prototype planning
+  + [chunk_ref] is IR5 surface projection prototype
+  + [chunk_boundary] is surface boundary import, authority display and projection-state contract, fixture plan, implementation plan, activation pack, and completion review
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR5-S01
+  + [gated_slice_set] is IR5-S02, IR5-S03, IR5-S04, and IR5-S05
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR5-S01 before creating authority display contracts, fixtures, implementation activation plans, executable surface code, adapter code, dependency changes, or generated outputs
+  = must: run completed-work review after each IR5 slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes surface state, adapter state, chat state, terminal output, IRC logs, Matrix events, web events, Langflow diagrams, Codex state, generated traces, or generated reports to source authority
+
+& [FinalWorkSlice: IR5-S01-SurfaceBoundaryImportAndInvariantReconciliation] is ready
+  + [slice_id] is IR5-S01
+  + [slice_name] is surface boundary import and invariant reconciliation
+  + [chunk_ref] is IR5 surface projection prototype
+  + [portion_ref] is surface projection boundary and IR4 runtime proof handoff
+  + [authority_basis] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [activation_gate] is IR4 implementation completion accepted
+  + [internal_dependency_set] is accepted FSC4 surface projection pack, FSC5 operations safety pack, and accepted IR4 runtime graph implementation proof pack
+  + [expected_output_set] is docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [verification_oracle] is boundary map imports surface contracts, authority notices, runtime graph proof, generated-output non-authority rules, dry-run safety, forbidden mutations, and stale triggers without implementing surface code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface authority boundaries and runtime proof handoff affect every downstream projection and adapter semantics
+  + [forbidden_scope] is executable UI implementation, adapter implementation, dependency installation, fixture creation, generated output creation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-S02-AuthorityDisplayAndProjectionStateContract] is gated
+  + [slice_id] is IR5-S02
+  + [slice_name] is authority display and projection-state contract
+  + [chunk_ref] is IR5 surface projection prototype
+  + [portion_ref] is authority notice and projection-state semantics
+  + [authority_basis] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [activation_gate] is IR5-S01 accepted
+  + [internal_dependency_set] is IR5-S01 output and accepted FSC4 projection contracts
+  + [expected_output_set] is docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+  + [verification_oracle] is contract defines authority notices, freshness, lineage, blocked/stale/fault/interrupt display, completion gates, mutation-through-operator routes, and projection refusal behavior without executable UI code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is authority display conflicts decide when projected surface state may guide action without becoming authority
+  + [forbidden_scope] is executable UI implementation, adapter implementation, fixture creation, generated output creation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-S03-SurfaceProjectionFixturePlanAndExpectedLedgerPlan] is gated
+  + [slice_id] is IR5-S03
+  + [slice_name] is surface projection fixture plan and expected ledger plan
+  + [chunk_ref] is IR5 surface projection prototype
+  + [portion_ref] is surface projection fixtures
+  + [authority_basis] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [activation_gate] is IR5-S02 accepted
+  + [internal_dependency_set] is IR5-S01 through IR5-S02 accepted outputs
+  + [expected_output_set] is docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+  + [verification_oracle] is fixture plan covers manager ready packet, worker blocked packet, stale projection, narrative lineage, debug fault trace, conversation interrupt, adapter mutation refusal, missing authority notice, Langflow non-authority projection, multi-surface divergence, completion gate refusal, and IR4 runtime graph proof handoff
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR5-S01 and IR5-S02 acceptance
+  + [model_route_reason] is fixture planning is bounded by accepted surface boundary and authority display contracts
+  + [forbidden_scope] is fixture source file creation, expected ledger file creation, generated output creation, executable UI implementation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-S04-SurfaceProjectionPrototypeImplementationPlanAndGeneratedOutputBoundary] is gated
+  + [slice_id] is IR5-S04
+  + [slice_name] is surface projection prototype implementation plan and generated-output boundary
+  + [chunk_ref] is IR5 surface projection prototype
+  + [portion_ref] is implementation planning and generated-output boundary
+  + [authority_basis] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [activation_gate] is IR5-S03 accepted
+  + [internal_dependency_set] is IR5-S01 through IR5-S03 accepted outputs
+  + [expected_output_set] is docs/implementation/IR5_Surface_Projection_Prototype_Implementation_Plan.v1.sop
+  + [verification_oracle] is implementation plan defines future file inventory, dependency decision boundary, generated projection roots, fixture runner boundary, surface adapter boundaries, command plan, and proof checklist without code or dependency changes
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation and generated-output policy affect surface authority and downstream coordination readiness
+  + [forbidden_scope] is executable UI implementation, adapter implementation, dependency installation, fixture file creation, generated output creation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR5-S05-CompletionReviewAndImplementationActivationPack] is gated
+  + [slice_id] is IR5-S05
+  + [slice_name] is IR5 completion review and implementation activation pack
+  + [chunk_ref] is IR5 surface projection prototype
+  + [portion_ref] is implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [activation_gate] is IR5-S04 accepted
+  + [internal_dependency_set] is IR5-S01 through IR5-S04 accepted outputs
+  + [expected_output_set] is docs/planning/IR5_Surface_Projection_Prototype_Activation_Pack.v1.sop
+  + [verification_oracle] is completion review accepts only bounded IR5 planning proof and opens implementation activation only if no authority notice gap, projection authority promotion, dependency, generated output, operations control, or live-control fault is present
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR5 planning acceptance affects implementation activation and downstream IR6 readiness
+  + [forbidden_scope] is executable UI implementation, adapter implementation, dependency installation, operations simulator implementation, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR5FinalSliceClosureReview] is the dependency audit for minted IR5 final slices
+  + [FSC4_surface_projection_pack_status] is accepted
+  + [FSC5_operations_safety_pack_status] is accepted
+  + [IR4_runtime_graph_implementation_proof_pack_status] is accepted
+  + [IR4_implementation_completion_review_status] is accepted
+  + [current_ready_slice_set] is IR5-S01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR5-S02 through IR5-S05 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

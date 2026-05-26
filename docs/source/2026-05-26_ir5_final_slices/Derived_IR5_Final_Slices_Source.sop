@@ -1,0 +1,36 @@
+Subject: Derived IR5 Final Slices Source
+Date: 2026-05-26
+Source UUID: c4ec7d20-77c2-4621-8baa-9d42bc43fbf7
+
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [fsc4_surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+@ [ir4_work_state] docs/state/IR4_Work_State.v1.sop
+
+& [DerivedIR5FinalSlicesSource] is the preserved source specification for IR5 final slice minting
+  + [source_kind] is manager-derived implementation-readiness slice source
+  + [origin] is post-FSC5 implementation readiness surface rebaked through accepted IR4 runtime graph implementation proof
+  + [chunk_id] is IR5
+  + [chunk_name] is surface projection prototype
+  + [activation_gate] is IR4 implementation completion accepted
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+  + [expected_output_set] is surface runtime boundary import and invariant reconciliation
+  + [expected_output_set] is authority display, freshness, and projection-state contract
+  + [expected_output_set] is manager, worker, narrative, debug, conversation, adapter, and optional Langflow projection fixture plan
+  + [expected_output_set] is surface projection prototype implementation plan and generated-output boundary
+  + [expected_output_set] is IR5 completion review and implementation activation pack
+  + [model_route] is requires deeper reasoning for IR5 boundary, authority display conflicts, projection state semantics, adapter carrier boundaries, and downstream IR6 readiness
+  + [future_spark_suitable_work] is GPT-5.3-Codex-Spark-suitable for bounded fixture files and deterministic projection prototype implementation after IR5 planning contracts are accepted
+  + [forbidden_scope] is treating surface, adapter, chat, terminal, IRC, Matrix, web, Langflow, Codex state, generated projections, or generated runtime graph outputs as source authority
+  + [forbidden_scope] is executable UI implementation, adapter implementation, dependency installation, generated output creation, operations simulator implementation, operations control, and live machine control before a later activation slice explicitly opens bounded work
+
+  = must: mint IR5 final slices before writing surface prototype code, fixtures, expected ledgers, adapters, generated outputs, dependency changes, or UI implementation
+  = must: preserve that manager, worker, narrative, debug, conversation, adapter, Langflow, IRC, Matrix, web, Codex, and terminal surfaces are projections over typed collaboration records
+  = must: show authority notices, freshness, blocked/stale/fault/interrupt state, lineage, and completion-review gates in decision-making views
+  = must: route authority-sensitive mutations through accepted operator or SOP-first review paths rather than direct surface writes
+  = must: preserve dry-run and no-live-control operations safety inherited from FSC5

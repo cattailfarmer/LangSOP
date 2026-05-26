@@ -1,0 +1,74 @@
+Subject: IR5 Work State V1
+Date: 2026-05-26
+State UUID: 600befa1-5587-48c0-a42c-b16fd94b2c26
+
+@ [source_manifest] docs/source/2026-05-26_ir5_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/IR5_Final_Slice_Minting_Review.v1.sop
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [fsc4_surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+@ [ir4_work_state] docs/state/IR4_Work_State.v1.sop
+
+& [IR5WorkStateV1] is the current derived work state for IR5 surface projection prototype planning
+  + [chunk_ref] is IR5 surface projection prototype
+  + [state_basis] is docs/reviews/IR5_Final_Slice_Minting_Review.v1.sop
+  + [state_basis_sha256] is DECCE2D3F3D835EF12592D326EDE7BFC380D1B2E2D3F17FBBE929B347DEB3938
+  + [surface_status] is IR5_final_slices_accepted_and_IR5-S01_may_open
+  + [source_document] is docs/source/2026-05-26_ir5_final_slices/Derived_IR5_Final_Slices_Source.sop
+  + [source_document_sha256] is 6FD9CEDE8FF16ED646A3A3497277B9B6116F42896F4BB32C13DECD8E83016924
+  + [source_manifest] is docs/source/2026-05-26_ir5_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 0D03ECA3FF0A501D385BE2FD1DF0535D6D9943B689B657D9E8813EC59D9E2EDB
+  + [canonical_specification] is docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is E25306F6E2F91459169679045932A27DCBD6C3E718F67A4283C9BF7A0713BAA0
+  + [slice_surface] is docs/slices/IR5_Final_Slices.v1.sop
+  + [slice_surface_sha256] is 57821C4B9AA35BFC9E83BA447E46F97635CC5907436A6E818E2815F318B94602
+  + [slice_minting_review] is docs/reviews/IR5_Final_Slice_Minting_Review.v1.sop
+  + [slice_minting_review_sha256] is DECCE2D3F3D835EF12592D326EDE7BFC380D1B2E2D3F17FBBE929B347DEB3938
+  + [accepted_boundary_input] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [accepted_boundary_input] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 83B54B65C5029FEF898DB68A74F40A44E82A8356422EA5B97FF7A26FFE3F6BDA
+  + [accepted_boundary_input] is docs/state/IR4_Work_State.v1.sop
+  + [accepted_boundary_input_sha256] is D3DA04489EAEBE635777017631A11F2C8BEE51536793F1F0F9F970CEBEB129E4
+  + [current_ready_slice] is IR5-S01
+  + [current_ready_slice_name] is surface boundary import and invariant reconciliation
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is surface authority boundaries and runtime proof handoff affect every downstream projection and adapter semantic
+  + [gated_slice] is IR5-S02 authority display and projection-state contract
+  + [gated_slice_model_route] is requires deeper reasoning
+  + [gated_slice] is IR5-S03 surface projection fixture plan and expected ledger plan
+  + [gated_slice_model_route] is GPT-5.3-Codex-Spark-suitable only after IR5-S01 and IR5-S02 acceptance
+  + [gated_slice] is IR5-S04 surface projection prototype implementation plan and generated-output boundary
+  + [gated_slice_model_route] is requires deeper reasoning
+  + [gated_slice] is IR5-S05 IR5 completion review and implementation activation pack
+  + [gated_slice_model_route] is requires deeper reasoning
+  + [implementation_code_creation_authorized_by_current_slice] is false
+  + [test_file_creation_authorized_by_current_slice] is false
+  + [fixture_file_creation_authorized_by_current_slice] is false
+  + [expected_ledger_creation_authorized_by_current_slice] is false
+  + [generated_output_creation_authorized_by_current_slice] is false
+  + [dependency_installation_authorized_by_current_slice] is false
+  + [adapter_implementation_authorized_by_current_slice] is false
+  + [operations_simulator_implementation_authorized_by_current_slice] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [checkpoint_authority_status] is execution_state_only
+  + [generated_projection_authority_status] is derived_projection_only
+  + [IR5_state] is ready_for_IR5-S01_boundary_import_and_invariant_reconciliation
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute IR5-S01 before creating authority display contracts, fixtures, implementation activation plans, executable surface code, adapter code, dependency changes, generated outputs, operations simulator code, operations control, or live machine control layers
+  = must: run completed-work review after IR5-S01 before opening IR5-S02
+  = must: keep surface, adapter, chat, terminal, IRC, Matrix, web, Langflow, Codex, generated projection, generated report, and runtime graph output state non-authoritative
+  = must: mark this state stale if IR5 source document, IR5 source manifest, IR5 canonical specification, IR5 slice surface, IR5 minting review, Post-FSC5 readiness surface, FSC4 surface projection pack, FSC5 operations safety pack, IR4 runtime graph implementation proof pack, IR4 implementation completion review, or IR4 work state changes
+  = must: keep operations control and live machine control unauthorized
