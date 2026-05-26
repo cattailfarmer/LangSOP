@@ -1,0 +1,227 @@
+Subject: Operator Contract Template V1
+Date: 2026-05-26
+Operator Template UUID: b8cfbdbf-ce4a-42b1-8f7d-564e03c92b4a
+
+@ [slice_authority] docs/slices/FSC1_Final_Slices.v1.sop
+@ [canonical_slice_authority] docs/canonical/LangSOP_FSC1_Final_Slices.canonical.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+& [OperatorTemplate: OperatorContractTemplateV1] is the common logical contract for compiling stable SOP duties into traceable operators
+  + [template_id] is operator-contract-template-v1
+  + [template_uuid] is b8cfbdbf-ce4a-42b1-8f7d-564e03c92b4a
+  + [slice_id] is FSC1-S03
+  + [authority_scope] is operator contract fields, trace shape, preconditions, postconditions, interrupts, faults, blocked output, SOP-first interrupt, and fixture obligations
+  + [implementation_scope] is contract template only
+  + [input_schema_dependency] is docs/schema/Kernel_Record_Core.v1.sop
+  + [input_schema_dependency] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [input_schema_dependency] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+  = must: define operator contracts before any LangGraph node or executable operator implementation
+  = must: express success, blocked output, fault output, stale input, ambiguous identity, and authority conflict without hidden writes
+  = must: keep operator output as KernelRecord updates, operator_trace records, or SOP-first interrupts
+  = must: preserve traceability from source SOP authority to inputs, outputs, and proof fixtures
+  - never: implement an operator in this template
+  - never: implement LangGraph node behavior in this template
+  - never: let an operator mutate source or canonical authority silently
+
+| [OperatorOutcomeKind] is (
+  success |
+  blocked_output |
+  fault_output |
+  sop_first_interrupt
+)
+
+| [ConditionResult] is (
+  passed |
+  failed |
+  stale |
+  ambiguous |
+  not_applicable
+)
+
+| [InterruptKind] is (
+  authority_conflict |
+  ambiguous_identity |
+  missing_source_lineage |
+  missing_proof_route |
+  stale_input |
+  high_risk_operation |
+  unsupported_scope |
+  human_override_required
+)
+
+| [FaultKind] is (
+  invalid_input_shape |
+  forbidden_external_dependency |
+  hidden_authority_drift |
+  false_ready_packet |
+  stale_projection |
+  unreviewed_completion |
+  checkpoint_authority_confusion |
+  surface_truth_confusion |
+  unsupported_operations_control |
+  operator_contract_violation
+)
+
+& [OperatorContract] is the required contract shape for one compiled SOP duty
+  + [operator_id] is the stable operator identity
+  + [operator_version] is the contract version
+  + [operator_name] is the human-readable operator name
+  + [operator_purpose] is the duty the operator may perform
+  + [source_sop_ref] is the SOP authority or canonical artifact that justifies the operator
+  + [authority_basis_ref_set] is the signed or proof-backed authority allowing the operator to run
+  + [input_record_kind_set] is the allowed KernelRecordKind inputs
+  + [output_record_kind_set] is the allowed KernelRecordKind outputs
+  + [precondition_set] is the required authority, freshness, identity, lineage, and data-shape conditions before execution
+  + [postcondition_set] is the state guaranteed after success
+  + [interrupt_condition_set] is the condition set requiring SOP-first or human/deeper-model judgment
+  + [fault_condition_set] is the condition set that emits fault_output
+  + [blocked_output_contract] is the record shape returned when work cannot safely proceed but no fault is proven
+  + [trace_schema] is the OperatorTraceSchema required for every invocation
+  + [fixture_set] is the deterministic fixture obligations for the contract
+  + [forbidden_scope] is what the operator must not read, write, infer, mutate, or decide
+
+  = must: cite source_sop_ref before operator use
+  = must: declare all input and output record kinds before implementation
+  = must: declare interrupt_condition_set before implementation
+  = must: declare fixture_set before implementation
+  = must: reject runtime execution when input records fail common KernelRecord validation
+  = must: reject runtime execution when output_record_kind_set includes an undeclared kind
+
+& [OperatorIOBinding] is the relation between operator contracts and kernel records
+  + [input_record_kind] is one KernelRecordKind value
+  + [input_role] is source, authority, requirement, support, gap, projection, packet, proof, trace, review, coordination, or fault
+  + [input_cardinality] is one, zero_or_one, one_or_more, or zero_or_more
+  + [output_record_kind] is one KernelRecordKind value
+  + [output_role] is create, update_by_supersession, mark_stale, invalidate, contradict, prove, review, or block
+  + [write_policy] is create_new_record, supersede_existing_record, append_lineage_edge, or append_review
+
+  = must: prefer create_new_record or supersede_existing_record over silent mutation
+  = must: preserve lineage_edge_set for every derived output
+  = must: preserve source_ref_set for every claim-bearing output
+
+& [Precondition] is one required condition before an operator may run
+  + [precondition_id] is stable within operator_id
+  + [precondition_kind] is authority, freshness, identity, lineage, shape, support, proof, ownership, risk, or scope
+  + [record_ref] is the input record or set being checked
+  + [expected_state] is the required state
+  + [failure_result] is blocked_output, fault_output, or sop_first_interrupt
+  + [failure_reason] is the reason execution cannot proceed
+
+  = must: classify stale input as stale, blocked, or interrupt before any output is produced
+  = must: classify ambiguous identity as sop_first_interrupt unless the operator explicitly handles ambiguity
+  = must: classify authority conflict as sop_first_interrupt unless a fault is already proven
+
+& [Postcondition] is one guarantee after successful operator execution
+  + [postcondition_id] is stable within operator_id
+  + [output_record_ref] is the produced or superseded record
+  + [guaranteed_state] is the state after success
+  + [lineage_requirement] is the lineage edge that must exist
+  + [source_requirement] is the source_ref_set entry that must exist
+
+  = must: be testable by fixture or review
+  = must: not promise effects outside output_record_kind_set
+
+& [InterruptCondition] is one condition requiring SOP-first or human/deeper-model judgment
+  + [interrupt_id] is stable within operator_id
+  + [interrupt_kind] is one InterruptKind value
+  + [trigger] is the condition that opens the interrupt
+  + [required_context] is the records, sources, and traces needed for judgment
+  + [resume_condition] is the accepted decision, source change, proof, or human override that allows continuation
+
+  = must: pause operator flow when triggered
+  = must: preserve interrupt context in operator_trace
+  = must: return to SOP-first handling for semantic ambiguity, authority mutation, high-risk operation, or missing proof route
+
+& [FaultCondition] is one condition that emits a fault_record
+  + [fault_condition_id] is stable within operator_id
+  + [fault_kind] is one FaultKind value
+  + [trigger] is the evidence proving the fault
+  + [fault_output_kind] is fault_record
+  + [local_repair] is the bounded repair or blocker route when known
+  + [escalation_path] is the SOP-first or manager route for unresolved faults
+
+  = must: emit fault_record rather than hide unsafe unknown states
+  = must: block runtime escalation when critical fault conditions are active
+  = must: preserve prevention_story when a fault lesson should become reusable
+
+& [BlockedOutputContract] is the non-fault stop result for an operator
+  + [outcome_kind] is blocked_output
+  + [blocked_reason] is the unresolved condition preventing safe success
+  + [blocked_record_kind] is support_gap, work_packet, readiness_projection, completion_review, or fault_record when appropriate
+  + [required_resolution] is the support, source, proof, identity, authority, or review needed before retry
+  + [retry_rule] is when the operator may be retried
+
+  = must: use blocked_output when the operator lacks required support but no fault is proven
+  = must: preserve blocked output as a record or reviewable trace
+  - never: treat blocked_output as success
+
+& [SOPFirstInterruptContract] is the semantic escape hatch for compiled operators
+  + [outcome_kind] is sop_first_interrupt
+  + [interrupt_kind] is one InterruptKind value
+  + [source_context_ref_set] is the source and authority material needed for reconsideration
+  + [operator_context_ref] is the operator_trace record
+  + [decision_needed] is the precise unresolved judgment
+
+  = must: activate when meaning, authority, ambiguity, high risk, or source mutation exceeds the operator contract
+  = must: preserve enough context for SJS, human review, or deeper model judgment
+  = must: resume only after accepted decision, source reprocessing, proof, or scoped human override
+
+& [OperatorTraceSchema] is the required trace shape for every operator invocation
+  + [trace_record_kind] is operator_trace
+  + [trace_id] is operator_id plus invocation_id
+  + [operator_contract_ref] is the operator_contract version used
+  + [input_record_ref_set] is every input record read
+  + [output_record_ref_set] is every output record produced or superseded
+  + [precondition_result_set] is every precondition and its ConditionResult
+  + [postcondition_result_set] is every postcondition and its ConditionResult
+  + [interrupt_result_set] is every interrupt condition checked or triggered
+  + [fault_result_set] is every fault condition checked or triggered
+  + [outcome_kind] is one OperatorOutcomeKind value
+  + [started_at] is invocation start timestamp or logical event ref
+  + [completed_at] is invocation completion timestamp or logical event ref
+
+  = must: exist for success, blocked_output, fault_output, and sop_first_interrupt
+  = must: cite operator_contract and input records in source_ref_set
+  = must: preserve trace even when execution blocks or faults
+
+& [FixtureObligation] is the required deterministic evidence for an operator contract
+  + [fixture_id] is stable within operator_id
+  + [fixture_kind] is valid_success, invalid_input_shape, stale_input, blocked_output, fault_output, ambiguous_identity, authority_conflict, missing_source_lineage, or missing_proof_route
+  + [input_record_set] is the fixture input records
+  + [expected_outcome] is one OperatorOutcomeKind value
+  + [expected_output_record_set] is the expected records or explicit absence
+  + [expected_trace_assertion_set] is the trace facts that must hold
+
+  = must: include at least one valid_success fixture before implementation
+  = must: include stale_input, blocked_output, fault_output, ambiguous_identity, and authority_conflict fixtures for authority-sensitive operators
+  = must: prove hidden writes absent by checking output_record_ref_set and lineage_edge_set
+
+& [OperatorContractAcceptanceChecklist] is the FSC1-S03 verification checklist
+  + [required_field_present] is operator_id
+  + [required_field_present] is source_sop_ref
+  + [required_field_present] is input_record_kind_set
+  + [required_field_present] is output_record_kind_set
+  + [required_field_present] is precondition_set
+  + [required_field_present] is postcondition_set
+  + [required_field_present] is interrupt_condition_set
+  + [required_field_present] is fault_condition_set
+  + [required_field_present] is trace_schema
+  + [required_field_present] is fixture_set
+  + [required_capability] is success result can be represented
+  + [required_capability] is blocked output can be represented
+  + [required_capability] is fault output can be represented
+  + [required_capability] is stale input can be represented
+  + [required_capability] is ambiguous identity can be represented
+  + [required_capability] is authority conflict can be represented
+  + [required_capability] is SOP-first interrupt can be represented
+  + [forbidden_scope_absent] is executable operator implementation
+  + [forbidden_scope_absent] is LangGraph node implementation
+  + [forbidden_scope_absent] is storage backend choice
+  + [forbidden_scope_absent] is surface rendering
+
+  = must: accept FSC1-S03 only when all checklist items are satisfied
+  = must: open FSC1-S04 after this checklist is reviewed in a completion review
+  = may: open FSC1-S05 after this checklist because FSC1-S02 and FSC1-S03 then satisfy the storage decision gate
