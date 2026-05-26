@@ -1,0 +1,175 @@
+Subject: IR2 Hash Ledger Signature And Freshness Validation V1
+Date: 2026-05-26
+Contract UUID: 991912fa-0783-41d7-ae22-ec3548926f33
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [boundary_map] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [parser_profile] docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+@ [extraction_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [specification_governance] ../platform/refinement/Specification_Governance.sop
+
+& [IR2HashLedgerSignatureAndFreshnessValidationV1] is the IR2-S04 contract for source hash, signature, and freshness validation
+  + [contract_id] is ir2-hash-ledger-signature-freshness-validation-v1
+  + [contract_uuid] is 991912fa-0783-41d7-ae22-ec3548926f33
+  + [slice_id] is IR2-S04
+  + [contract_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is validation contract only
+
+  = must: define how future implementation validates source hashes, SJS satisfaction signatures, source lineage, freshness, stale projections, proof results, and authority faults
+  = must: preserve invalid, stale, missing-signature, wrong-protocol, and broken-lineage artifacts as records rather than discarding them
+  = must: keep validation output proof-backed only when evidence is explicit and reproducible
+  - never: implement validation code, issue SJS signatures, mutate source files, create SQLite projections, or authorize operations control in this slice
+
+& [SourceHashLedgerRuleSet] is the source hash ledger rule set for discovered and extracted artifacts
+  + [hash_algorithm] is SHA256
+  + [ledger_subject] is source file path, source role, source hash, hash algorithm, hash checked time, checker ref, and rule version
+  + [ledger_subject] is canonical artifact path, canonical hash, source manifest path, source manifest hash, signature UUID, and signature protocol UUID when present
+  + [ledger_subject] is completed output path, completed output hash, completion review path, and review hash when review evidence is needed
+  + [hash_match_result] is current when computed hash equals recorded hash and source role permits immutable comparison
+  + [hash_mismatch_result] is stale_projection or invalidated authority_artifact candidate according to authority role and validation scope
+  + [missing_hash_result] is blocked proof_result for trust-bearing records
+
+  = must: include source locator and hash in every trust-bearing proof_result
+  = must: treat generated projection hashes as projection evidence only, not source authority
+  = must: produce stale or blocked output when a referenced hash cannot be checked
+
+& [SatisfactionSignatureValidationInputSet] is the input set for SJS satisfaction signature validation
+  + [expected_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [required_input] is candidate authority_artifact path
+  + [required_input] is source_manifest reference
+  + [required_input] is source hash set
+  + [required_input] is signed_subject reference
+  + [required_input] is canonical_source_specification reference when present
+  + [required_input] is signature_uuid
+  + [required_input] is signature_status
+  + [required_input] is signature_limit
+  + [optional_input] is invalidation_condition set
+  + [optional_input] is registry record edge set
+
+  = must: validate protocol UUID before treating any signature as SJS satisfaction evidence
+  = must: require source_manifest and source hash evidence before signed_sjs can be emitted
+  = must: preserve wrong protocol, missing signature, missing source manifest, broken lineage, duplicate signature, and ambiguous artifact identity as blocked or fault output
+
+& [AuthorityClassificationResultSet] is the classification set produced by validation
+  + [classification] is valid_signed_sjs
+  + [classification] is accepted_decision_with_source
+  + [classification] is source_only_unprocessed
+  + [classification] is proof_backed_review
+  + [classification] is stale_projection_required
+  + [classification] is invalidated_authority
+  + [classification] is contradicted_authority
+  + [classification] is missing_signature
+  + [classification] is wrong_protocol_uuid
+  + [classification] is broken_lineage
+  + [classification] is ambiguous_identity
+  + [classification] is hidden_authority_drift
+
+  = must: map valid_signed_sjs to authority_artifact authority_state signed_sjs only when signature and source lineage both validate
+  = must: map missing, wrong, stale, contradicted, or ambiguous evidence to blocked, fault, stale, or invalidated records
+  = must: never classify a record as signed_sjs because it merely contains the expected protocol UUID text
+
+& [FreshnessValidationRuleSet] is the freshness validation rule set for extracted records and projections
+  + [freshness_input] is source_path and source_hash
+  + [freshness_input] is source_manifest hash
+  + [freshness_input] is canonical artifact hash
+  + [freshness_input] is schema version hash
+  + [freshness_input] is parser profile hash
+  + [freshness_input] is extraction mapping hash
+  + [freshness_input] is validation contract hash
+  + [freshness_input] is storage decision hash
+  + [freshness_input] is completion review hash
+  + [freshness_state] is current
+  + [freshness_state] is stale
+  + [freshness_state] is unknown
+  + [freshness_state] is not_applicable
+  + [freshness_state] is invalidated
+  + [stale_action] is emit stale_projection
+  + [stale_action] is block projection rebuild
+  + [stale_action] is require recompute before packetization
+  + [stale_action] is invalidate derived projection when source authority changes
+
+  = must: prefer stale or blocked status over false-current status when freshness evidence is incomplete
+  = must: preserve prior projection and explain the stale trigger instead of overwriting it
+
+& [InvalidationRecordRuleSet] is the invalidation rule set for authority and projection candidates
+  + [invalidation_condition] is source hash mismatch
+  + [invalidation_condition] is missing required source manifest
+  + [invalidation_condition] is missing satisfaction signature on processed authority
+  + [invalidation_condition] is signature protocol mismatch
+  + [invalidation_condition] is signature status not valid
+  + [invalidation_condition] is canonical signed subject mismatch
+  + [invalidation_condition] is broken registry or lineage edge
+  + [invalidation_condition] is completed output hash mismatch
+  + [invalidation_condition] is parser profile or extraction mapping change
+  + [invalidation_condition] is generated projection promoted to authority
+  + [invalidation_condition] is operations control or live machine control leak
+  + [record_behavior] is preserve invalidated record with invalidates lineage edge and evidence_ref_set
+
+  = must: preserve invalidation reason, source evidence, and affected record references
+  = must: route authority conflicts to SOP-first interrupt when mechanical validation cannot resolve meaning safely
+
+& [ValidationProofResultShape] is the proof_result shape for IR2 validation
+  + [proof_kind] is source_hash_check
+  + [proof_kind] is signature_protocol_check
+  + [proof_kind] is source_lineage_check
+  + [proof_kind] is freshness_check
+  + [proof_kind] is authority_classification_check
+  + [proof_kind] is projection_non_authority_check
+  + [proof_status] is verified
+  + [proof_status] is failed
+  + [proof_status] is blocked
+  + [proof_status] is stale
+  + [proof_field] is proof_id
+  + [proof_field] is proof_subject_ref
+  + [proof_field] is proof_kind
+  + [proof_field] is proof_method
+  + [proof_field] is input_ref_set
+  + [proof_field] is expected_hash_set
+  + [proof_field] is observed_hash_set
+  + [proof_field] is signature_ref
+  + [proof_field] is proof_status
+  + [proof_field] is proof_scope
+  + [proof_field] is proof_limit
+  + [proof_field] is checked_at
+
+  = must: include proof_limit whenever a proof validates structure but not semantic truth
+  = must: link failed proof_result to fault_record or invalidated authority candidate
+
+& [ValidationFaultEscalationRuleSet] is the fault escalation set for validation
+  + [fault_condition] is missing_source_lineage
+  + [fault_condition] is wrong_protocol_uuid
+  + [fault_condition] is stale_source_hash
+  + [fault_condition] is duplicate_signature
+  + [fault_condition] is broken_lineage
+  + [fault_condition] is ambiguous_artifact_identity
+  + [fault_condition] is hidden_authority_drift
+  + [fault_condition] is generated_projection_authority_promotion
+  + [fault_condition] is unsupported_operations_control
+  + [escalation] is fault_record for mechanical contract violation
+  + [escalation] is sop_first_interrupt for semantic authority conflict or ambiguous identity
+  + [escalation] is stale_projection for freshness failure
+  + [escalation] is blocked authority_artifact for missing evidence
+
+  = must: choose the least-authorizing safe output when validation is incomplete
+  = must: never repair authority lineage silently
+
+& [IR2S04CoverageReview] is the coverage checklist for IR2-S04
+  + [source_hash_ledger_rule_set_present] is SourceHashLedgerRuleSet
+  + [satisfaction_signature_validation_input_set_present] is SatisfactionSignatureValidationInputSet
+  + [authority_classification_result_set_present] is AuthorityClassificationResultSet
+  + [freshness_validation_rule_set_present] is FreshnessValidationRuleSet
+  + [invalidation_record_rule_set_present] is InvalidationRecordRuleSet
+  + [validation_proof_result_shape_present] is ValidationProofResultShape
+  + [validation_fault_escalation_rule_set_present] is ValidationFaultEscalationRuleSet
+  + [validation_code_created] is false
+  + [sqlite_code_created] is false
+  + [generated_projection_created] is false
+  + [source_mutation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-S04 only when all checklist items are satisfied
+  = must: open IR2-S05 only after this validation contract is reviewed in a completion review
