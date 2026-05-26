@@ -1,0 +1,157 @@
+Subject: Planning Readiness Operator Contracts V1
+Date: 2026-05-26
+Operator Contract Set UUID: 6750f61e-f80f-4047-97e4-e677f8207735
+
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [boundary_map] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+& [PlanningReadinessOperatorContractSetV1] is the FSC2 planning readiness operator contract set
+  + [contract_set_id] is planning-readiness-operator-contracts-v1
+  + [contract_set_uuid] is 6750f61e-f80f-4047-97e4-e677f8207735
+  + [slice_id] is FSC2-S02
+  + [authority_scope] is planning readiness recompute, readiness decision table, trace obligations, refusal outputs, and fixture obligations
+  + [implementation_scope] is operator contracts only
+  + [template_dependency] is docs/operators/Operator_Contract_Template.v1.sop
+  + [boundary_dependency] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+
+  = must: refine support_readiness_recompute for FSC2 planning coordination without editing FSC1 foundation contracts
+  = must: classify readiness before any packetization step may run
+  = must: preserve source/projection distinction and lineage for every readiness result
+  - never: generate work_packet records
+  - never: claim ownership, dispatch work, implement runtime graph nodes, or render surfaces
+
+& [OperatorContract: planning_readiness_recompute] is the FSC2 contract for deriving planning readiness from requirements and support
+  + [operator_id] is planning_readiness_recompute
+  + [operator_version] is v1
+  + [operator_name] is Planning Readiness Recompute
+  + [operator_purpose] is derive a readiness_projection for a capability or candidate work scope from requirements, support, support gaps, proof results, authority artifacts, stale projections, and coordination context
+  + [source_sop_ref] is platform/refinement/Feature_Requirement_Support.sop
+  + [source_sop_ref] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [source_sop_ref] is docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+  + [authority_basis_ref_set] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [authority_basis_ref_set] is docs/canonical/LangSOP_FSC2_Final_Slices.canonical.sop
+  + [input_record_kind_set] is capability_node, requirement_record, support_record, support_gap, proof_result, authority_artifact, coordination_claim, stale_projection, readiness_projection, and fault_record
+  + [output_record_kind_set] is readiness_projection, stale_projection, support_gap, proof_result, fault_record, and operator_trace
+  + [precondition_set] is boundary map is accepted and current
+  + [precondition_set] is capability_node subject_ref and natural_key are resolved
+  + [precondition_set] is requirement_record set is complete for the evaluated planning scope or missing scope is emitted as support_gap
+  + [precondition_set] is support_record and proof_result inputs preserve source_ref_set and lineage_edge_set
+  + [precondition_set] is existing support_gap records are current or explicitly superseded by accepted support
+  + [precondition_set] is authority_artifact basis is signed_sjs, proof_backed, accepted_decision, or explicitly source_only for preparation work
+  + [precondition_set] is coordination_claim inputs are treated as context and not as authority over readiness
+  + [postcondition_set] is ready_to_packetize readiness appears only when every requirement has current support or accepted non-blocking classification
+  + [postcondition_set] is blocked readiness appears when any blocking support_gap remains
+  + [postcondition_set] is stale_projection appears when imported authority, support, proof, or prior readiness freshness fails
+  + [postcondition_set] is contradicted readiness appears when support records and support gaps make incompatible claims
+  + [postcondition_set] is sop_first_interrupt appears when identity, authority, or semantic dependency cannot be decided inside the contract
+  + [postcondition_set] is fault_record appears when false-ready state, hidden authority drift, invalid shape, or operator contract violation is proven
+  + [interrupt_condition_set] is ambiguous_identity, authority_conflict, missing_proof_route, stale_input, unsupported_scope, and human_override_required
+  + [fault_condition_set] is false_ready_packet, stale_projection, invalid_input_shape, hidden_authority_drift, forbidden_external_dependency, and operator_contract_violation
+  + [blocked_output_contract] is readiness_projection with readiness_state blocked and blocker_ref_set, or support_gap when the blocker must be created
+  + [trace_schema] is OperatorTraceSchema from Operator_Contract_Template.v1.sop
+  + [fixture_set] is ready_capability, blocked_gap, stale_support, stale_boundary_input, contradicted_support, ambiguous_dependency, missing_proof_route, authority_conflict, false_ready_prevention, and forbidden_packet_output
+  + [forbidden_scope] is generating work packets, assigning work, claiming ownership, resolving support gaps silently, implementing queues, implementing LangGraph nodes, rendering surfaces, or authorizing operations control
+
+  = must: never emit ready_to_packetize while unresolved blocking support_gap remains
+  = must: never produce work_packet output
+  = must: return sop_first_interrupt when readiness depends on semantic judgment outside the contract
+  = must: preserve blocked, stale, contradicted, ambiguous, and faulted states as records or traceable refusal results
+
+& [OperatorIOBinding: planning_readiness_recompute] is the input and output binding for planning_readiness_recompute
+  + [input_record_kind] is capability_node
+  + [input_role] is planning scope subject
+  + [input_record_kind] is requirement_record
+  + [input_role] is obligations being evaluated
+  + [input_record_kind] is support_record
+  + [input_role] is evidence supporting requirements
+  + [input_record_kind] is support_gap
+  + [input_role] is blockers and missing support
+  + [input_record_kind] is proof_result
+  + [input_role] is verification evidence
+  + [input_record_kind] is authority_artifact
+  + [input_role] is authority basis
+  + [input_record_kind] is coordination_claim
+  + [input_role] is ownership context only
+  + [input_record_kind] is stale_projection
+  + [input_role] is stale derived state
+  + [output_record_kind] is readiness_projection
+  + [output_role] is create derived readiness state
+  + [output_record_kind] is stale_projection
+  + [output_role] is mark stale derived state
+  + [output_record_kind] is support_gap
+  + [output_role] is create or supersede missing support blocker
+  + [output_record_kind] is proof_result
+  + [output_role] is prove readiness classification when evidence is complete
+  + [output_record_kind] is fault_record
+  + [output_role] is emit false-ready, authority, shape, or contract fault
+  + [output_record_kind] is operator_trace
+  + [output_role] is trace every invocation
+
+  = must: reject output_record_kind work_packet as contract violation
+  = must: preserve source_ref_set and lineage_edge_set on every derived output
+
+& [PlanningReadinessDecisionTable] is the decision table for planning_readiness_recompute
+  + [decision_case] is ready_to_packetize when requirements are complete, support is current, proof route is present, no blocking support_gap remains, no contradiction is active, and boundary inputs are current
+  + [decision_case] is blocked when at least one required support_gap remains unresolved and no fault is proven
+  + [decision_case] is stale when an input source, support record, proof result, authority artifact, or readiness projection is out of date against its freshness rule
+  + [decision_case] is contradicted when support records, support gaps, or authority artifacts make incompatible claim-bearing statements
+  + [decision_case] is ambiguous when subject identity, requirement scope, source lineage, or authority basis cannot be resolved mechanically
+  + [decision_case] is faulted when the operator detects invalid input shape, hidden authority drift, forbidden external dependency, false-ready condition, or contract violation
+
+  = must: prefer blocked over success when support is insufficient
+  = must: prefer stale over success when freshness cannot be proven
+  = must: prefer sop_first_interrupt over guessing when semantic identity is ambiguous
+  = must: emit fault_record when false-ready readiness is proven
+
+& [ReadinessRefusalContract] is the refusal behavior for planning_readiness_recompute
+  + [blocked_output] is readiness_projection blocked plus blocker_ref_set or support_gap
+  + [stale_output] is stale_projection plus stale_source_ref_set and required_refresh
+  + [contradicted_output] is readiness_projection contradicted or fault_record with contradiction_ref_set
+  + [ambiguous_output] is sop_first_interrupt with required_context_ref_set
+  + [fault_output] is fault_record plus operator_trace
+
+  = must: return a traceable refusal rather than silently omitting output
+  = must: leave existing accepted readiness untouched unless supersession lineage is explicit
+
+& [FixtureObligationSet: planning_readiness_recompute] is the fixture requirement set for planning_readiness_recompute
+  + [fixture] is ready_capability expects success and readiness_projection ready_to_packetize
+  + [fixture] is blocked_gap expects blocked_output and support_gap or blocked readiness_projection
+  + [fixture] is stale_support expects stale_projection and no ready readiness
+  + [fixture] is stale_boundary_input expects stale_projection or fault_output
+  + [fixture] is contradicted_support expects readiness_projection contradicted or fault_output
+  + [fixture] is ambiguous_dependency expects sop_first_interrupt
+  + [fixture] is missing_proof_route expects blocked_output or sop_first_interrupt
+  + [fixture] is authority_conflict expects sop_first_interrupt
+  + [fixture] is false_ready_prevention expects fault_output and no ready readiness
+  + [fixture] is forbidden_packet_output expects fault_output if work_packet appears
+
+& [PlanningReadinessContractCoverageReview] is the FSC2-S02 coverage checklist
+  + [contract_present] is planning_readiness_recompute
+  + [decision_table_present] is PlanningReadinessDecisionTable
+  + [refusal_contract_present] is ReadinessRefusalContract
+  + [input_record_kind_present] is capability_node
+  + [input_record_kind_present] is requirement_record
+  + [input_record_kind_present] is support_record
+  + [input_record_kind_present] is support_gap
+  + [input_record_kind_present] is proof_result
+  + [input_record_kind_present] is authority_artifact
+  + [output_record_kind_present] is readiness_projection
+  + [output_record_kind_present] is stale_projection
+  + [output_record_kind_present] is support_gap
+  + [output_record_kind_present] is proof_result
+  + [output_record_kind_present] is fault_record
+  + [output_record_kind_present] is operator_trace
+  + [forbidden_output_absent] is work_packet
+  + [forbidden_scope_absent] is packet generation
+  + [forbidden_scope_absent] is coordination claim mutation
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC2-S02 if readiness can produce a work_packet
+  = must: open FSC2-S03 only after this contract is accepted by completion review
