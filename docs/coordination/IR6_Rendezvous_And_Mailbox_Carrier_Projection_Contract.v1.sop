@@ -1,0 +1,288 @@
+Subject: IR6 Rendezvous And Mailbox Carrier Projection Contract V1
+Date: 2026-05-26
+Contract UUID: d414f5af-a091-46fd-83c5-cb97bd7e33eb
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [boundary_import_review] docs/reviews/IR6_S01_Completion_Review.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [claim_identity_review] docs/reviews/IR6_S02_Completion_Review.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [narrative_debug_contracts] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+
+& [IR6RendezvousAndMailboxCarrierProjectionContractV1] is the IR6-S03 contract for rendezvous packet and mailbox carrier projection semantics
+  + [contract_id] is ir6-rendezvous-mailbox-carrier-projection-contract-v1
+  + [contract_uuid] is d414f5af-a091-46fd-83c5-cb97bd7e33eb
+  + [slice_id] is IR6-S03
+  + [authority_scope] is rendezvous packet projection envelope, mailbox carrier envelope, addressing and participant display, mailbox freshness and read cursor policy, carrier authority boundary, notice action routes, multi-carrier divergence, downstream conflict seed obligations, and fixture seed obligations
+  + [implementation_scope] is rendezvous and mailbox carrier projection contract only
+  + [model_route_used] is requires deeper reasoning
+  + [accepted_dependency] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+  + [accepted_dependency] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+
+  = must: define carrier semantics for durable coordination notices before conflict review, fixture planning, or implementation planning depends on mailbox projections
+  = must: keep rendezvous packets, mailbox paths, inbox timestamps, read cursors, chat logs, IRC logs, Matrix events, terminal output, Codex state, web events, and Langflow diagrams as carrier context only
+  = must: preserve deeper-reasoning routing for this contract because mailbox carriers must preserve conversation continuity without becoming signed authority or dispatch channels
+  - never: implement mailbox file writing, read cursors, inbox polling, IRC, Matrix, web, terminal, Codex, Langflow, chat adapters, fixture files, expected ledgers, generated output writers, dependency installation, agent dispatch, operations control, or live machine control in this contract
+
+& [RendezvousPacketProjectionEnvelope] is the required projection envelope for durable coordination notices
+  + [required_field] is rendezvous_projection_id
+  + [required_field] is rendezvous_packet_id
+  + [required_field] is packet_kind
+  + [required_field] is notice_kind
+  + [required_field] is addressed_to_ref
+  + [required_field] is sender_ref
+  + [required_field] is conversation_ref
+  + [required_field] is related_work_packet_ref
+  + [required_field] is related_coordination_claim_ref
+  + [required_field] is claim_identity_envelope_ref
+  + [required_field] is requested_response
+  + [required_field] is stale_after
+  + [required_field] is source_ref_set
+  + [required_field] is lineage_edge_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is carrier_surface
+  + [required_field] is trust_limit
+  + [required_field] is visible_before_action
+  + [packet_kind] is manager_notice
+  + [packet_kind] is claim_notice
+  + [packet_kind] is conflict_notice
+  + [packet_kind] is release_notice
+  + [packet_kind] is stale_notice
+  + [notice_kind] is informational
+  + [notice_kind] is action_requested
+  + [notice_kind] is review_requested
+  + [notice_kind] is response_required
+  + [notice_kind] is human_override_requested
+
+  = must: preserve enough context for another conversation to resume or negotiate without collapsing identities
+  = must: reject any rendezvous projection that lacks claim identity, source refs, lineage, authority notice, freshness, addressed recipient, sender, or requested response
+  = must: display rendezvous packets as carrier context unless accepted by source, proof, human override, or completion review route
+
+& [MailboxCarrierEnvelope] is the required carrier envelope for mailbox-backed projections
+  + [required_field] is mailbox_projection_id
+  + [required_field] is carrier_surface
+  + [required_field] is mailbox_ref
+  + [required_field] is inbox_ref
+  + [required_field] is outbox_ref
+  + [required_field] is message_file_ref
+  + [required_field] is message_filename_timestamp_ms
+  + [required_field] is message_sha256
+  + [required_field] is addressed_to_ref
+  + [required_field] is sender_ref
+  + [required_field] is conversation_ref
+  + [required_field] is related_rendezvous_packet_ref
+  + [required_field] is related_coordination_claim_ref
+  + [required_field] is last_modified_timestamp
+  + [required_field] is read_cursor_ref
+  + [required_field] is unread_notice_set
+  + [required_field] is freshness_state
+  + [required_field] is carrier_authority_status
+  + [carrier_surface] is sop_mailbox
+  + [carrier_surface] is irc
+  + [carrier_surface] is matrix
+  + [carrier_surface] is web
+  + [carrier_surface] is terminal
+  + [carrier_surface] is codex_thread
+  + [carrier_surface] is langflow_diagram
+  + [carrier_authority_status] is carrier_context_only
+
+  = must: make mailbox carrier status visible before any notice influences action
+  = must: preserve unread notices and read cursor lineage as freshness evidence only
+  = must: prevent mailbox file existence, filename timestamp, read cursor, or last-modified timestamp from changing claim state by itself
+
+& [AddressingAndParticipantDisplayRule] is the rule for displaying participants and message routing
+  + [participant_ref] is addressed_to_ref
+  + [participant_ref] is sender_ref
+  + [participant_ref] is claimant_ref
+  + [participant_ref] is conversation_ref
+  + [participant_ref] is human_override_ref when present
+  + [addressing_state] is addressed
+  + [addressing_state] is broadcast
+  + [addressing_state] is ambiguous
+  + [addressing_state] is misaddressed
+  + [addressing_state] is stale_recipient
+  + [required_context] is recipient_identity_basis
+  + [required_context] is sender_identity_basis
+  + [required_context] is related_claim_identity_envelope_ref
+  + [required_context] is related_work_packet_ref
+  + [required_context] is carrier_surface
+  + [required_context] is source_ref_set
+
+  = must: refuse or interrupt ambiguous, misaddressed, or stale-recipient notices before they influence claim action
+  = must: distinguish notice recipient, claim owner, conversation participant, and human override actor
+  = must: preserve participant identity through handoff, compaction, and mailbox reentry
+
+& [MailboxFreshnessAndReadCursorContract] is the contract for mailbox freshness and read cursor projection
+  + [freshness_state] is fresh
+  + [freshness_state] is stale
+  + [freshness_state] is unknown
+  + [freshness_state] is contested
+  + [freshness_state] is interrupted
+  + [freshness_state] is pending_review
+  + [freshness_input] is message_sha256
+  + [freshness_input] is message_filename_timestamp_ms
+  + [freshness_input] is inbox_last_modified_timestamp
+  + [freshness_input] is read_cursor_ref
+  + [freshness_input] is related_claim_freshness_state
+  + [freshness_input] is related_work_packet_hash
+  + [freshness_input] is authority_basis_hash_set
+  + [stale_when] is message hash changes after projection
+  + [stale_when] is unread message timestamp is greater than read cursor
+  + [stale_when] is related coordination claim becomes stale, contested, superseded, released, or invalidated
+  + [stale_when] is related work packet hash changes
+  + [stale_when] is addressed participant identity changes
+  + [stale_when] is authority basis hash changes
+  + [stale_when] is mailbox carrier cannot prove lineaged source_ref_set
+
+  = must: display unread notice state before next action recommendations
+  = must: treat read cursor as a projection cursor, not authority over message validity or claim state
+  = must: preserve read message files as durable carrier log when a later implementation slice authorizes actual mailbox IO
+
+& [CarrierAuthorityBoundaryRule] is the rule that prevents mailbox and rendezvous carriers from becoming source authority
+  + [carrier_context_member] is mailbox file path
+  + [carrier_context_member] is mailbox message body
+  + [carrier_context_member] is inbox timestamp
+  + [carrier_context_member] is outbox timestamp
+  + [carrier_context_member] is read cursor
+  + [carrier_context_member] is IRC log
+  + [carrier_context_member] is Matrix event
+  + [carrier_context_member] is web request state
+  + [carrier_context_member] is terminal output
+  + [carrier_context_member] is Codex thread state
+  + [carrier_context_member] is Langflow diagram
+  + [forbidden_promotion] is carrier context to source authority
+  + [forbidden_promotion] is carrier context to claim state transition
+  + [forbidden_promotion] is carrier context to completion acceptance
+  + [forbidden_promotion] is carrier context to agent dispatch
+  + [forbidden_promotion] is carrier context to operation authorization
+
+  = must: route carrier-originated authority-sensitive changes through coordination operator, SOP-first interrupt, human override, SJS, or completion review
+  = must: preserve authority notice and trust limit anywhere a carrier projection is displayed
+  = must: reject carrier projections that imply mailbox delivery equals agreement, assignment, completion, or permission
+
+& [NoticeActionRouteContract] is the contract for classifying actions requested by rendezvous packets or mailbox projections
+  + [low_authority_action] is observe_notice
+  + [low_authority_action] is comment_on_notice
+  + [low_authority_action] is propose_notice_response
+  + [authority_sensitive_action] is request_claim
+  + [authority_sensitive_action] is request_claim_release
+  + [authority_sensitive_action] is request_claim_supersession
+  + [authority_sensitive_action] is request_conflict_review
+  + [authority_sensitive_action] is request_stale_claim_refresh
+  + [authority_sensitive_action] is request_human_override
+  + [authority_sensitive_action] is request_completion_review
+  + [allowed_route] is coordination_claim_register contract
+  + [allowed_route] is coordination_conflict_signal contract
+  + [allowed_route] is SOP-first interrupt
+  + [allowed_route] is explicit human override record with authority_notice
+  + [allowed_route] is SJS reprocessing
+  + [allowed_route] is completion_review_delta_gate
+  + [blocked_route] is direct mailbox write as authority
+  + [blocked_route] is direct read cursor update as authority
+  + [blocked_route] is direct claim activation from notice
+  + [blocked_route] is direct completion acceptance
+  + [blocked_route] is direct agent assignment
+  + [blocked_route] is direct job dispatch
+  + [blocked_route] is direct operations control
+
+  = must: show allowed route and blocked route before presenting an authority-sensitive notice response
+  = must: emit traceable request records or interrupt context rather than mutating authority from carrier state
+  = must: classify dispatch-like or operation-like notice actions through refusal or safety review semantics before any further route is considered
+
+& [MultiCarrierDivergenceRule] is the rule for divergent carrier projections of the same coordination notice
+  + [divergence_kind] is inconsistent_claim_state
+  + [divergence_kind] is inconsistent_read_cursor
+  + [divergence_kind] is inconsistent_recipient
+  + [divergence_kind] is inconsistent_sender
+  + [divergence_kind] is missing_lineage
+  + [divergence_kind] is stale_mailbox_projection
+  + [divergence_kind] is carrier_ordering_conflict
+  + [required_output] is divergence_notice
+  + [required_output] is stale_projection
+  + [required_output] is coordination_conflict_signal
+  + [required_output] is sop_first_interrupt_context
+  + [required_output] is completion_review_request when downstream gate could be affected
+
+  = must: prevent divergent carrier projections from being smoothed into a single trusted state
+  = must: preserve all carrier refs, hashes, timestamps, and lineage refs needed for review
+  = must: block claim or mailbox action until divergence is reconciled or explicitly routed
+
+& [IR6S04ConflictReviewSeedSet] is the seed set exported by IR6-S03 for later conflict, stale-claim, and human-override review planning
+  + [contract_seed] is ambiguous_recipient_interrupt
+  + [contract_seed] is inconsistent_claim_state_conflict
+  + [contract_seed] is unread_notice_blocks_ready_projection
+  + [contract_seed] is read_cursor_stale_projection
+  + [contract_seed] is carrier_ordering_conflict
+  + [contract_seed] is mailbox_notice_requests_human_override
+  + [contract_seed] is dispatch_like_notice_refusal
+  + [contract_seed] is mailbox_carrier_authority_promotion_fault
+
+  = must: treat this as conflict review planning input only; no mailbox files, fixture source files, expected ledgers, or generated outputs are authorized by IR6-S03
+  = must: let IR6-S04 refine, accept, or prune these seeds under its own completion review
+
+& [ForbiddenIR6S03MutationList] is the forbidden mutation set for IR6-S03
+  + [forbidden_mutation] is editing accepted IR6-S01 or IR6-S02 outputs or reviews to make this contract easier
+  + [forbidden_mutation] is treating rendezvous packet or mailbox carrier state as source authority
+  + [forbidden_mutation] is treating mailbox file existence, filename timestamp, read cursor, or unread notice as claim state transition evidence without accepted route
+  + [forbidden_mutation] is collapsing addressed recipient, sender, claimant, conversation, work packet, claim, carrier, or source authority identities
+  + [forbidden_mutation] is hiding unread notices, stale read cursor, carrier divergence, ambiguous recipient, or missing lineage
+  + [forbidden_mutation] is creating mailbox files
+  + [forbidden_mutation] is implementing mailbox read/write, inbox polling, read cursor persistence, IRC, Matrix, web, terminal, Codex, Langflow, or chat adapter behavior
+  + [forbidden_mutation] is creating fixture source files
+  + [forbidden_mutation] is creating expected ledger files
+  + [forbidden_mutation] is creating generated output files
+  + [forbidden_mutation] is installing dependencies or mutating package metadata
+  + [forbidden_mutation] is dispatching agents, jobs, commands, processes, GPU work, model runtimes, or persistent operations automation
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR6-S03 review if any forbidden mutation appears in the output
+
+& [IR6S03DownstreamStaleTriggerList] is the stale trigger set exported by IR6-S03
+  + [stale_trigger] is IR6-S01 boundary import output changes
+  + [stale_trigger] is IR6-S02 claim identity contract changes
+  + [stale_trigger] is IR6-S02 completion review changes
+  + [stale_trigger] is rendezvous packet projection envelope changes
+  + [stale_trigger] is mailbox carrier envelope changes
+  + [stale_trigger] is addressing and participant display rule changes
+  + [stale_trigger] is mailbox freshness and read cursor contract changes
+  + [stale_trigger] is carrier authority boundary rule changes
+  + [stale_trigger] is notice action route contract changes
+  + [stale_trigger] is multi-carrier divergence rule changes
+  + [stale_trigger] is conflict review seed set changes after IR6-S04 begins
+  + [stale_trigger] is carrier state treated as source authority, claim state transition, assignment, dispatch, completion, operation, or live-control authority
+
+  = must: mark IR6-S04 and downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review and rebake rather than silent edits
+
+& [IR6S03CoverageReview] is the coverage checklist for IR6-S03
+  + [rendezvous_packet_projection_envelope_present] is true
+  + [mailbox_carrier_envelope_present] is true
+  + [addressing_and_participant_display_rule_present] is true
+  + [mailbox_freshness_and_read_cursor_contract_present] is true
+  + [carrier_authority_boundary_rule_present] is true
+  + [notice_action_route_contract_present] is true
+  + [multi_carrier_divergence_rule_present] is true
+  + [conflict_review_seed_set_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [coordination_implementation_code_created] is false
+  + [mailbox_file_created] is false
+  + [mailbox_transport_code_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR6-S03 only when all checklist items are satisfied
+  = must: open IR6-S04 only after this contract is reviewed in a completion review
