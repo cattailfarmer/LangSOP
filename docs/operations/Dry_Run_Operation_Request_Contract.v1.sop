@@ -1,0 +1,154 @@
+Subject: Dry Run Operation Request Contract V1
+Date: 2026-05-26
+Contract UUID: fa8ab601-ffb4-4f57-9abf-8d97c33fef8b
+
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [operations_safety_spec] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+
+& [DryRunOperationRequestContractV1] is the FSC5 contract for non-mutating operation requests and dry-run results
+  + [contract_id] is dry-run-operation-request-contract-v1
+  + [contract_uuid] is fa8ab601-ffb4-4f57-9abf-8d97c33fef8b
+  + [slice_id] is FSC5-S02
+  + [authority_scope] is operation request schema, intended effect classification, resource target classification, dry-run result schema, refusal output contract, and no-live-effect rule
+  + [implementation_scope] is safety contract only
+  + [boundary_dependency] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+
+  = must: let future operations be described and simulated without live effects
+  = must: preserve intended_effect, resource_target, authority_notice, freshness_state, blast_radius, rollback_or_abort_route, and human approval placeholders
+  = must: refuse requests that would mutate live resources before accepted future authority exists
+  - never: execute commands, mutate resources, dispatch jobs, change credentials, expose networks, or perform destructive filesystem actions in this contract
+
+& [OperationRequestSchema] is the required schema for dry-run operation requests
+  + [required_field] is operation_request_id
+  + [required_field] is requested_by
+  + [required_field] is carrier_surface
+  + [required_field] is source_ref_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is intended_effect
+  + [required_field] is resource_target
+  + [required_field] is risk_classification
+  + [required_field] is blast_radius
+  + [required_field] is dry_run_required
+  + [required_field] is rollback_or_abort_route
+  + [required_field] is credential_boundary_ref
+  + [required_field] is network_boundary_ref
+  + [required_field] is human_approval_ref
+  + [required_field] is completion_review_ref
+
+  = must: reject operation requests with missing authority_notice, freshness_state, intended_effect, resource_target, risk_classification, or rollback_or_abort_route
+  = must: keep human_approval_ref empty until explicit approval exists
+
+& [IntendedEffectClassification] is the intended effect classifier for operation requests
+  + [intended_effect_kind] is inspect
+  + [intended_effect_kind] is simulate
+  + [intended_effect_kind] is estimate_resource_use
+  + [intended_effect_kind] is classify_risk
+  + [intended_effect_kind] is prepare_dry_run
+  + [intended_effect_kind] is live_process_mutation
+  + [intended_effect_kind] is gpu_workload_mutation
+  + [intended_effect_kind] is model_runtime_mutation
+  + [intended_effect_kind] is job_dispatch
+  + [intended_effect_kind] is credential_mutation
+  + [intended_effect_kind] is network_exposure_mutation
+  + [intended_effect_kind] is destructive_filesystem_action
+  + [safe_pre_acceptance_effect] is inspect
+  + [safe_pre_acceptance_effect] is simulate
+  + [safe_pre_acceptance_effect] is estimate_resource_use
+  + [safe_pre_acceptance_effect] is classify_risk
+  + [safe_pre_acceptance_effect] is prepare_dry_run
+
+  = must: classify live mutation effects as blocked before any route can proceed
+  = must: preserve intended effect classification as traceable evidence
+
+& [ResourceTargetClassification] is the resource target classifier for operation requests
+  + [resource_target_kind] is workspace_file
+  + [resource_target_kind] is process
+  + [resource_target_kind] is gpu
+  + [resource_target_kind] is model_runtime
+  + [resource_target_kind] is job_queue
+  + [resource_target_kind] is credential_or_secret
+  + [resource_target_kind] is network_service
+  + [resource_target_kind] is filesystem_destructive_target
+  + [resource_target_kind] is unknown_or_ambiguous
+  + [high_risk_target] is process
+  + [high_risk_target] is gpu
+  + [high_risk_target] is model_runtime
+  + [high_risk_target] is job_queue
+  + [high_risk_target] is credential_or_secret
+  + [high_risk_target] is network_service
+  + [high_risk_target] is filesystem_destructive_target
+  + [high_risk_target] is unknown_or_ambiguous
+
+  = must: route high-risk or ambiguous targets to resource safety and human override review
+  = must: refuse live mutation of high-risk targets before accepted future live-control authority exists
+
+& [DryRunResultSchema] is the required schema for dry-run results
+  + [required_field] is dry_run_result_id
+  + [required_field] is operation_request_ref
+  + [required_field] is simulated_effect_summary
+  + [required_field] is resource_target_ref
+  + [required_field] is risk_classification
+  + [required_field] is estimated_resource_use
+  + [required_field] is predicted_side_effect_set
+  + [required_field] is refused_effect_set
+  + [required_field] is required_human_approval
+  + [required_field] is rollback_or_abort_route
+  + [required_field] is live_effect_performed
+  + [required_field] is completion_review_required
+
+  = must: set live_effect_performed to false for every dry-run result
+  = must: prevent dry_run_result from becoming live approval
+
+& [RefusalOutputContract] is the refusal output contract for unsafe operation requests
+  + [refusal_reason] is missing_required_safety_field
+  + [refusal_reason] is stale_authority_notice
+  + [refusal_reason] is stale_boundary_input
+  + [refusal_reason] is live_effect_requested
+  + [refusal_reason] is high_risk_target_without_review
+  + [refusal_reason] is missing_rollback_or_abort_route
+  + [refusal_reason] is credential_boundary_touched
+  + [refusal_reason] is network_exposure_requested
+  + [refusal_reason] is destructive_action_possible
+  + [refusal_output] is refused_operation
+  + [refusal_output] is blocked_operation_request
+  + [refusal_output] is sop_first_interrupt_context
+  + [refusal_output] is required_human_review
+
+  = must: refuse unsafe requests as records, not commands
+  = must: preserve enough evidence for resource safety review and fixture planning
+
+& [NoLiveEffectRule] is the no-live-effect rule for dry-run operation requests
+  + [blocked_live_effect] is process mutation
+  + [blocked_live_effect] is gpu workload mutation
+  + [blocked_live_effect] is model runtime mutation
+  + [blocked_live_effect] is job dispatch
+  + [blocked_live_effect] is credential mutation
+  + [blocked_live_effect] is network exposure mutation
+  + [blocked_live_effect] is destructive filesystem action
+  + [blocked_live_effect] is operations automation
+
+  = must: fail dry-run review if any live effect is performed
+  = must: require future separate authority before live effects can be reconsidered
+
+& [DryRunOperationRequestCoverageReview] is the FSC5-S02 coverage checklist
+  + [operation_request_schema_present] is OperationRequestSchema
+  + [intended_effect_classification_present] is IntendedEffectClassification
+  + [resource_target_classification_present] is ResourceTargetClassification
+  + [dry_run_result_schema_present] is DryRunResultSchema
+  + [refusal_output_contract_present] is RefusalOutputContract
+  + [no_live_effect_rule_present] is NoLiveEffectRule
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential mutation
+  + [forbidden_scope_absent] is network mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is live machine control
+
+  = must: reject FSC5-S02 if dry-run requests can perform live effects or if dry-run results can become live approval
+  = must: open FSC5-S03 only after this contract is accepted by completion review

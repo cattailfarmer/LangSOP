@@ -8,11 +8,13 @@ State UUID: a520ab3d-5dbd-4b6b-bc2f-397ca5062ce6
 @ [safety_source] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
 @ [activation_review] docs/reviews/FSC4_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC5_S01_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/FSC5_S02_Completion_Review.v1.sop
 @ [accepted_output] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_output] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
 
 & [FSC5WorkStateV1] is the current derived work state for FSC5 operations safety envelope
   + [chunk_ref] is FSC5 operations safety envelope
-  + [state_basis] is docs/reviews/FSC5_S01_Completion_Review.v1.sop
+  + [state_basis] is docs/reviews/FSC5_S02_Completion_Review.v1.sop
   + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
   + [safety_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
@@ -20,11 +22,13 @@ State UUID: a520ab3d-5dbd-4b6b-bc2f-397ca5062ce6
   + [activation_review] is docs/reviews/FSC4_Completion_Review.v1.sop
   + [activation_review_sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
   + [accepted_slice] is FSC5-S01
+  + [accepted_slice] is FSC5-S02
   + [accepted_output] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is 4C7F2B224A3CD4D9497DD28ABEDC3750CA4979EB132D3DE0DAD2DF5D0E564024
-  + [current_ready_slice] is FSC5-S02
+  + [accepted_output] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+  + [accepted_output_sha256] is 19D818B72B680AEEB9897A819F4DAD294627F226B9F1E7E2AEB65E90D42EFF57
+  + [current_ready_slice] is FSC5-S03
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is FSC5-S03 until FSC5-S02 accepted
   + [gated_slice] is FSC5-S04 until FSC5-S03 accepted
   + [gated_slice] is FSC5-S05 until FSC5-S04 accepted
   + [gated_slice] is FSC5-S06 until FSC5-S05 accepted
@@ -33,5 +37,5 @@ State UUID: a520ab3d-5dbd-4b6b-bc2f-397ca5062ce6
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run FSC5-S02 before FSC5-S03
-  = must: mark this state stale if the FSC4 surface projection pack, operations safety spec, FSC5 final slice surface, FSC5 canonical specification, FSC5-S01 output, or FSC5-S01 completion review changes
+  = must: run FSC5-S03 before FSC5-S04
+  = must: mark this state stale if the FSC4 surface projection pack, operations safety spec, FSC5 final slice surface, FSC5 canonical specification, FSC5-S01 through FSC5-S02 outputs, or their completion reviews change
