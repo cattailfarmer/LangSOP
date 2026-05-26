@@ -1,0 +1,189 @@
+Subject: IR3 Fixture Runner IO And Generated Trace Policy V1
+Date: 2026-05-26
+Fixture Policy UUID: 183f4de9-8ae2-4f15-acd9-0d19a7b61608
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [operator_boundary] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [runner_trace_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+@ [IR2_fixture_plan] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+@ [gitignore] .gitignore
+
+& [IR3FixtureRunnerIOAndGeneratedTracePolicyV1] is the IR3-S03 fixture runner input/output policy and generated trace boundary
+  + [policy_id] is ir3-fixture-runner-io-and-generated-trace-policy-v1
+  + [policy_uuid] is 183f4de9-8ae2-4f15-acd9-0d19a7b61608
+  + [slice_id] is IR3-S03
+  + [policy_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is fixture runner IO policy and generated trace boundary only
+
+  = must: define tracked fixture source roots, tracked expected ledger roots, generated trace roots, mutation policy, cleanup policy, and generated-output authority warnings
+  = must: keep fixture source and expected ledgers distinct from generated traces and generated reports
+  = must: preserve generated trace outputs as projection-only evidence
+  - never: create fixture files, expected ledgers, generated traces, implementation code, dependency installs, operations control, or live machine control in this slice
+
+& [FixtureDirectoryPolicy: IR3OperatorHarness] is the directory policy for future operator harness fixture material
+  + [future_fixture_source_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [future_fixture_expected_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [future_fixture_generated_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [future_generated_trace_root] is tests/fixtures/generated/ir3_operator_harness/traces/
+  + [future_generated_report_root] is tests/fixtures/generated/ir3_operator_harness/reports/
+  + [future_runtime_trace_root] is .langsop/traces/ir3_operator_harness/
+  + [future_runtime_report_root] is .langsop/reports/ir3_operator_harness/
+  + [fixture_source_status] is tracked_fixture_authority_after_future_completion_review
+  + [fixture_expected_status] is tracked_expected_ledger_after_future_completion_review
+  + [fixture_generated_status] is generated_projection_only
+  + [runtime_generated_status] is generated_projection_only
+
+  = must: track only fixture source and expected ledgers when a later slice creates them
+  = must: keep generated traces, reports, caches, and runtime manifests ignored and rebuildable
+  = must: reject generated output outside accepted generated roots
+
+& [FixtureInputClassPolicy] is the input class policy for future fixture runner work
+  + [fixture_input_class] is tracked_sop_fixture_source
+  + [fixture_input_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [fixture_input_authority_status] is source_fixture_authority_after_future_review
+  + [fixture_input_class] is tracked_expected_trace_ledger
+  + [fixture_input_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [fixture_input_authority_status] is expected_output_authority_after_future_review
+  + [fixture_input_class] is accepted_operator_contract
+  + [fixture_input_root] is docs/operators/
+  + [fixture_input_authority_status] is tracked_SOP_authority
+  + [fixture_input_class] is generated_IR2_projection
+  + [fixture_input_root] is .langsop/ and tests/fixtures/generated/
+  + [fixture_input_authority_status] is derived_projection_only
+
+  = must: require future fixture cases to cite accepted source and expected-ledger records
+  = must: treat generated IR2 projections as evidence only and require lineage back to tracked SOP authority
+
+& [GeneratedOutputClassPolicy] is the output class policy for future fixture runner work
+  + [generated_output_class] is operator_trace
+  + [allowed_generated_root] is tests/fixtures/generated/ir3_operator_harness/traces/
+  + [allowed_generated_root] is .langsop/traces/ir3_operator_harness/
+  + [generated_output_class] is fixture_comparison_report
+  + [allowed_generated_root] is tests/fixtures/generated/ir3_operator_harness/reports/
+  + [allowed_generated_root] is .langsop/reports/ir3_operator_harness/
+  + [generated_output_class] is generated_output_manifest
+  + [allowed_generated_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [allowed_generated_root] is .langsop/fixtures/ir3_operator_harness/
+  + [generated_output_status] is projection_only
+
+  = must: include non_authority_warning on generated output manifests, traces, reports, and comparison records
+  = must: keep generated output root values compatible with IR3OperatorTraceEventSchemaV1
+  = must: reject any generated output path that escapes accepted roots
+
+& [GeneratedTraceNamingPolicy] is the naming policy for future generated traces
+  + [path_component] is operator_contract_id
+  + [path_component] is fixture_case_id when running a fixture
+  + [path_component] is run_id
+  + [path_component] is trace_schema_version
+  + [file_suffix] is .sop or .json only after implementation activation selects concrete format
+  + [identity_requirement] is trace_id, trace_uuid, run_id, event_id, operator_contract_id, operator_contract_version, input_ref_set, authority_basis_ref_set, generated_output_root, and non_authority_warning
+  + [stability_requirement] is path must be deterministic for a fixed fixture case, run identity, source hash set, operator contract version, and trace schema version
+
+  = must: keep trace identity stable enough for expected-ledger comparison
+  = must: prefer stale generated output over silent overwrite when source hashes or contract versions change
+
+& [MutationAndWritePolicy: IR3FixtureRunner] is the mutation policy for future fixture runner work
+  + [read_only_root] is docs/
+  + [read_only_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [read_only_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [write_allowed_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [write_allowed_root] is .langsop/traces/ir3_operator_harness/
+  + [write_allowed_root] is .langsop/reports/ir3_operator_harness/
+  + [write_allowed_root] is .langsop/fixtures/ir3_operator_harness/
+  + [write_forbidden_root] is docs/
+  + [write_forbidden_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [write_forbidden_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [write_forbidden_root] is src/
+  + [write_forbidden_root] is platform/
+  + [write_forbidden_root] is .git/
+
+  = must: refuse future fixture execution that would mutate tracked authority, tracked expected ledgers, source code, platform authority, or repository metadata
+  = must: require later implementation code to resolve and validate generated paths before write
+  = must: preserve source mutation attempts as fault records
+
+& [CleanupAndRebuildPolicy: IR3FixtureRunner] is the cleanup policy for generated fixture and trace outputs
+  + [cleanup_allowed_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [cleanup_allowed_root] is .langsop/traces/ir3_operator_harness/
+  + [cleanup_allowed_root] is .langsop/reports/ir3_operator_harness/
+  + [cleanup_allowed_root] is .langsop/fixtures/ir3_operator_harness/
+  + [cleanup_forbidden_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [cleanup_forbidden_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [cleanup_forbidden_root] is docs/
+  + [cleanup_forbidden_root] is src/
+  + [cleanup_forbidden_root] is platform/
+  + [cleanup_forbidden_root] is .git/
+  + [rebuild_requirement] is generated outputs must be reproducible from accepted fixture source, expected ledgers, operator contracts, and implementation code
+  + [stale_cleanup_trigger] is source hash change, expected ledger change, operator contract version change, trace schema version change, implementation version change, or generated output policy change
+
+  = must: make generated output deletion safe
+  = must: refuse cleanup outside accepted generated roots
+
+& [ExpectedTraceLedgerBoundary] is the expected-ledger boundary for future IR3 fixture planning
+  + [expected_ledger_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [expected_ledger_status] is tracked SOP expectation after future review
+  + [expected_ledger_role] is human-reviewable oracle for trace identity, outcome kind, refusal/fault classification, non-authority warning, generated output manifest, and no-dispatch proof
+  + [generated_trace_role] is disposable evidence compared against expected ledger
+  + [authority_promotion_rule] is generated trace may influence a tracked expected-ledger update only through explicit SOP artifact edit and completion review
+
+  = must: keep expected ledger reviewable without reading generated runtime state as authority
+  = must: reject future fixtures whose expected result depends only on generated output without tracked expected-ledger authority
+
+& [GeneratedOutputAuthorityWarningPolicy: IR3FixtureRunner] is the warning policy for fixture runner generated outputs
+  + [warning_text] is generated IR3 fixture traces and reports are projection-only evidence and do not replace signed SOP authority
+  + [warning_required_on] is operator_trace
+  + [warning_required_on] is fixture_comparison_report
+  + [warning_required_on] is generated_output_manifest
+  + [warning_required_on] is runner_report
+  + [fault_when_absent] is generated_output_missing_non_authority_warning
+  + [fault_when_promoted] is generated_trace_authority_confusion
+
+  = must: require future generated outputs to carry non-authority warning
+  = must: flag any generated trace consumed as source authority as a fault
+
+& [FixtureRunnerIOStaleTriggerSet] is the staleness trigger set for future fixture runner generated outputs
+  + [stale_trigger] is fixture source file hash changes
+  + [stale_trigger] is expected trace ledger hash changes
+  + [stale_trigger] is operator contract hash changes
+  + [stale_trigger] is trace schema version changes
+  + [stale_trigger] is generated output policy changes
+  + [stale_trigger] is implementation version changes
+  + [stale_trigger] is IR2 proof pack changes when fixture input uses IR2 projection evidence
+  + [stale_trigger] is operations safety prohibition changes
+
+  = must: mark generated traces stale rather than reusing them when a stale trigger fires
+  = must: require future fixture runner proof to show stale generated outputs do not satisfy expected ledgers
+
+& [FixtureRunnerIOFutureExecutionPolicy] is the future execution policy boundary for IR3 fixtures
+  + [future_test_command] is python -m unittest tests.test_ir3_operator_harness_contracts
+  + [baseline_command] is python -m unittest discover -s tests
+  + [compile_command] is python -m compileall -q src tests
+  + [generated_output_policy] is future tests may write only tests/fixtures/generated/ir3_operator_harness/ and accepted .langsop/ generated paths
+  + [cleanup_policy] is generated fixture outputs may be deleted and rebuilt from accepted fixture source and expected ledgers
+  + [current_slice_execution_status] is not_authorized_to_run_future_fixture_command
+
+  = must: require future implementation tests to prove no source mutation and no authority promotion
+  = must: fail fixture execution if generated outputs are required as source authority
+  = must: keep actual command integration gated until implementation and fixture slices authorize it
+
+& [IR3S03CoverageReview] is the coverage checklist for IR3-S03
+  + [fixture_directory_policy_present] is FixtureDirectoryPolicy: IR3OperatorHarness
+  + [fixture_input_class_policy_present] is FixtureInputClassPolicy
+  + [generated_output_class_policy_present] is GeneratedOutputClassPolicy
+  + [generated_trace_naming_policy_present] is GeneratedTraceNamingPolicy
+  + [mutation_and_write_policy_present] is MutationAndWritePolicy: IR3FixtureRunner
+  + [cleanup_and_rebuild_policy_present] is CleanupAndRebuildPolicy: IR3FixtureRunner
+  + [expected_trace_ledger_boundary_present] is ExpectedTraceLedgerBoundary
+  + [generated_output_authority_warning_policy_present] is GeneratedOutputAuthorityWarningPolicy: IR3FixtureRunner
+  + [stale_trigger_set_present] is FixtureRunnerIOStaleTriggerSet
+  + [future_execution_policy_present] is FixtureRunnerIOFutureExecutionPolicy
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_trace_created] is false
+  + [implementation_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR3-S03 only when all checklist items are satisfied
+  = must: open IR3-S04 only after this fixture runner IO policy is reviewed in a completion review

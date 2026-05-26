@@ -1,0 +1,109 @@
+Subject: IR3 S03 Completion Review V1
+Date: 2026-05-26
+Review UUID: 71ecf479-062c-4e0b-ac1a-7cdf339ab6e0
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+@ [accepted_boundary] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [runner_trace_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+@ [previous_review] docs/reviews/IR3_S02_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-S03] is the completed-work review for IR3 fixture runner IO and generated trace policy
+  + [slice_id] is IR3-S03
+  + [slice_name] is fixture runner input/output policy and generated trace boundary
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+  + [completed_output_sha256] is 55CE5B02BDC2C06B9F31751A95B5D311B0AF6093684501B34D4FB932DD59B21E
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-S03 as the fixture IO, generated root, mutation, cleanup, expected-ledger, and generated-output authority warning policy for downstream implementation activation planning
+  + [next_gate_result] is IR3-S04 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR3-S04 only
+  = must: rerun this review if the fixture IO policy, IR3-S02 runner contract, IR3-S01 boundary, IR3 canonical specification, IR3 slice surface, or generated-output root policy changes
+  = must: keep implementation code, fixture source, expected ledgers, generated traces, operations control, and live machine control gated until their specific slices open
+
+& [IR3S03Verification] is the verification result for fixture runner IO and generated trace policy
+  + [fixture_directory_policy_present] is true
+  + [fixture_input_class_policy_present] is true
+  + [generated_output_class_policy_present] is true
+  + [generated_trace_naming_policy_present] is true
+  + [mutation_and_write_policy_present] is true
+  + [cleanup_and_rebuild_policy_present] is true
+  + [expected_trace_ledger_boundary_present] is true
+  + [generated_output_authority_warning_policy_present] is true
+  + [stale_trigger_set_present] is true
+  + [future_execution_policy_present] is true
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_trace_created] is false
+  + [implementation_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3S03VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+
+& [SupportDelta: IR3-S03] is the support delta produced by the accepted fixture runner IO policy
+  + [new_support_record] is IR3FixtureRunnerIOAndGeneratedTracePolicyV1 supports IR3-S04 implementation file inventory and activation planning
+  + [new_support_record] is future fixture source roots, expected ledger roots, generated trace roots, mutation policy, cleanup policy, and warning policy are defined
+  + [new_support_record] is generated traces and reports remain projection-only and safe to delete or rebuild
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-S03] is the requirement delta produced by the accepted fixture runner IO policy
+  + [requirement_delta] is IR3-S04 must list exact implementation and test file scope capable of enforcing generated path validation, source mutation refusal, cleanup limits, non-authority warnings, and stale generated-output behavior
+  + [requirement_delta] is future fixture plans must use tests/fixtures/sop/ir3_operator_harness/, tests/fixtures/expected/ir3_operator_harness/, and tests/fixtures/generated/ir3_operator_harness/ boundaries unless a reviewed rebake changes them
+  + [requirement_delta] is no implementation plan, code, fixture source, expected ledger, generated trace, dependency installation, operations control, or live machine control is authorized by IR3-S03
+  + [requirement_delta] is no rebake required before IR3-S04
+
+& [StalenessAndContradictionReview: IR3-S03] is the staleness review for this completion
+  + [stale_IR3_S02_runner_contract_found] is false
+  + [stale_IR3_S01_boundary_found] is false
+  + [stale_IR3_canonical_found] is false
+  + [stale_IR3_slice_surface_found] is false
+  + [contradicted_trace_authority_boundary_found] is false
+  + [contradicted_generated_root_policy_found] is false
+  + [false_ready_IR3_S04_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3-S03 stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-S03] is the fault review for fixture runner IO and generated trace policy
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [implementation_plan_creation_leak_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [source_mutation_policy_leak_found] is false
+  + [generated_output_authority_leak_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3S03Accepted] is accepted
+    @ [support] [IR3S03Verification]
+    @ [support] [SupportDelta: IR3-S03]
+    @ [support] [RequirementDelta: IR3-S03]
+    @ [support] [StalenessAndContradictionReview: IR3-S03]
+    @ [support] [FaultReview: IR3-S03]
+
+& [NextSliceGate: IR3-S04] is opened
+  + [opened_slice] is IR3-S04 implementation file inventory and activation plan
+  + [accepted_boundary_input] is docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+  + [accepted_boundary_input_sha256] is 55CE5B02BDC2C06B9F31751A95B5D311B0AF6093684501B34D4FB932DD59B21E
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation activation decides exact future code and test file scope and must preserve generated output and authority boundaries
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-S04 next unless user redirects or a new fault invalidates this review
