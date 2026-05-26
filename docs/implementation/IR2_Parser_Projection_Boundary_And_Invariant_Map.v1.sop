@@ -1,0 +1,131 @@
+Subject: IR2 Parser Projection Boundary And Invariant Map V1
+Date: 2026-05-26
+Boundary UUID: 87c1c461-41dc-4501-b647-78ceb2185cad
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+@ [kernel_record_core] docs/schema/Kernel_Record_Core.v1.sop
+@ [authority_kernel_schemas] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+
+& [IR2ParserProjectionBoundaryAndInvariantMapV1] is the IR2-S01 boundary map for authority-file parsing and SQLite projection work
+  + [boundary_id] is ir2-parser-projection-boundary-invariant-map-v1
+  + [boundary_uuid] is 87c1c461-41dc-4501-b647-78ceb2185cad
+  + [slice_id] is IR2-S01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is boundary and invariant map only
+
+  = must: define the maximum IR2 authority, parser, projection, artifact, and file-ownership boundaries before parser contracts or code begin
+  = must: preserve SOP files and accepted SOP artifacts as the authority store
+  = must: preserve SQLite, parser caches, extracted record sets, and generated indexes as rebuildable projections only
+  = must: keep every future projection row and extracted record traceable to SOP source path, source hash, schema version, and extraction rule version
+  - never: implement parser behavior or SQLite-writing behavior in this slice
+  - never: authorize LangGraph runtime, surface adapter, operations simulator, operations control, or live machine control behavior from this boundary
+
+& [AuthorityBoundary] is the trust boundary for IR2 parser and projection work
+  + [authority_store] is tracked SOP files under docs/ and accepted SOP artifacts cited by current source manifests, canonical specifications, slice surfaces, decisions, reviews, schemas, operators, fixtures, and planning packs
+  + [authority_class] is preserved source documents, source manifests, canonical SJS-signed specifications, accepted planning packs, accepted schema records, accepted decision records, accepted operator contracts, accepted slice surfaces, accepted fixture plans, and accepted completion reviews
+  + [projection_class] is parsed event streams, extracted KernelRecord candidates, validation reports, generated SQLite databases, generated indexes, generated caches, generated fixture outputs, and transient parser diagnostics
+  + [authority_promotion_rule] is projection output may become authority only when written as a tracked SOP artifact by an explicit future slice and reviewed as a completed output
+  + [authority_write_rule] is future parser/projection implementation reads authority inputs and writes generated projections; it does not mutate authority inputs
+
+  = must: reject any future IR2 output that treats parser output or SQLite rows as canonical source truth
+  = must: preserve invalid, stale, contradicted, or malformed source artifacts as reviewable inputs rather than silently dropping them
+
+& [SourceProjectionInvariantSet] is the invariant set that every IR2 slice must preserve
+  + [invariant] is SOP source files remain the source authority even when parsed, indexed, or cached
+  + [invariant] is parser outputs are evidence or projections until reviewed into SOP artifacts
+  + [invariant] is SQLite is a derived query index and may be deleted and rebuilt from tracked SOP authority and accepted traces
+  + [invariant] is every parsed subject, extracted record candidate, validation result, and SQLite row preserves source path and source hash when the source is stable enough to hash
+  + [invariant] is freshness state is explicit and never implied by successful parsing alone
+  + [invariant] is unresolved natural keys, ambiguous subjects, malformed SOP structures, missing signatures, and stale hashes produce blocked or fault-bearing records rather than silent success
+  + [invariant] is generated artifacts are ignored by default and may not satisfy source-manifest or SJS-signature requirements
+  + [invariant] is authority mutation happens through source-preserving SOP artifacts and completion review, not through generated projection writes
+  + [invariant] is parser/projection implementation must be deterministic for the same tracked input set and accepted extraction rules
+  + [invariant] is parser/projection faults must preserve enough evidence for manager review and future repair
+
+& [AllowedGeneratedArtifactSet] is the generated artifact boundary for IR2
+  + [generated_root] is .langsop/
+  + [allowed_generated_artifact] is .langsop/sqlite/
+  + [allowed_generated_artifact] is .langsop/indexes/
+  + [allowed_generated_artifact] is .langsop/parser/
+  + [allowed_generated_artifact] is .langsop/projections/
+  + [allowed_generated_artifact] is .langsop/reports/
+  + [allowed_generated_artifact] is tests/fixtures/generated/
+  + [artifact_status] is projection_only
+
+  = must: keep generated artifacts out of tracked authority unless a later source-preserving SOP record explicitly authorizes a tracked expected-output ledger
+  = must: make generated artifact deletion safe when source hashes or projection schemas change
+
+& [FutureImplementationFileOwnership] is the candidate file ownership boundary for later IR2 implementation slices
+  + [candidate_owned_file] is src/langsop/authority/discovery.py
+  + [candidate_owned_file_role] is source artifact discovery and inclusion/exclusion policy implementation
+  + [candidate_owned_file] is src/langsop/authority/sop_parser.py
+  + [candidate_owned_file_role] is SOP line/profile parser implementation after parser profile contract acceptance
+  + [candidate_owned_file] is src/langsop/authority/extraction.py
+  + [candidate_owned_file_role] is KernelRecord candidate extraction after extraction mapping acceptance
+  + [candidate_owned_file] is src/langsop/authority/validation.py
+  + [candidate_owned_file_role] is hash, signature, freshness, and validation result implementation after validation contract acceptance
+  + [candidate_owned_file] is src/langsop/projections/sqlite_schema.py
+  + [candidate_owned_file_role] is SQLite projection schema definition after schema policy acceptance
+  + [candidate_owned_file] is src/langsop/projections/sqlite_projection.py
+  + [candidate_owned_file_role] is rebuildable SQLite projection writer after projection policy acceptance
+  + [candidate_owned_file] is src/langsop/projections/rebuild.py
+  + [candidate_owned_file_role] is projection rebuild orchestration after implementation plan acceptance
+  + [candidate_owned_file] is tests/test_ir2_parser_projection_contracts.py
+  + [candidate_owned_file_role] is contract and fixture tests after fixture plan acceptance
+
+  = must: treat this ownership list as candidate planning material until IR2-S06 accepts an implementation plan
+  = must: require a new review before creating files outside this ownership boundary
+  = must: keep all future implementation side effects limited to generated projection paths unless a later accepted slice authorizes tracked expected ledgers
+
+& [ParserProjectionStaleTriggerSet] is the staleness trigger set for IR2 outputs
+  + [stale_trigger] is source file hash changes
+  + [stale_trigger] is source manifest changes
+  + [stale_trigger] is canonical satisfaction signature changes
+  + [stale_trigger] is KernelRecord common schema changes
+  + [stale_trigger] is record-specific schema inventory changes
+  + [stale_trigger] is natural-key or lifecycle matrix changes
+  + [stale_trigger] is storage backend decision changes
+  + [stale_trigger] is parser profile contract changes
+  + [stale_trigger] is extraction mapping changes
+  + [stale_trigger] is hash ledger and freshness validation contract changes
+  + [stale_trigger] is SQLite projection schema or rebuild policy changes
+  + [stale_trigger] is fixture expected-output ledger changes
+  + [stale_trigger] is operations safety prohibition changes
+
+  = must: produce stale_projection, projection rebuild required, blocked output, or completion-review fault when a stale trigger applies
+
+& [ForbiddenScopeSet: IR2-S01] is the forbidden scope list for this boundary
+  + [forbidden_scope] is parser implementation
+  + [forbidden_scope] is SQLite connection creation
+  + [forbidden_scope] is SQLite table creation
+  + [forbidden_scope] is projection writer implementation
+  + [forbidden_scope] is generated database file creation
+  + [forbidden_scope] is dependency installation
+  + [forbidden_scope] is LangGraph runtime implementation
+  + [forbidden_scope] is surface implementation
+  + [forbidden_scope] is adapter implementation
+  + [forbidden_scope] is operations simulator implementation
+  + [forbidden_scope] is process, GPU, model runtime, job, credential, network, destructive filesystem, or live machine control behavior
+
+& [IR2S01CoverageReview] is the coverage checklist for IR2-S01
+  + [authority_boundary_present] is AuthorityBoundary
+  + [source_projection_invariants_present] is SourceProjectionInvariantSet
+  + [allowed_generated_artifact_set_present] is AllowedGeneratedArtifactSet
+  + [implementation_file_ownership_present] is FutureImplementationFileOwnership
+  + [stale_trigger_set_present] is ParserProjectionStaleTriggerSet
+  + [forbidden_scope_set_present] is ForbiddenScopeSet: IR2-S01
+  + [parser_code_created] is false
+  + [sqlite_code_created] is false
+  + [generated_database_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-S01 only when all checklist items are satisfied
+  = must: open IR2-S02 only after this boundary is reviewed in a completion review

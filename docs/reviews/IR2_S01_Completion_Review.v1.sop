@@ -1,0 +1,101 @@
+Subject: IR2-S01 Completion Review V1
+Date: 2026-05-26
+Review UUID: 35cd86e4-fca5-431c-82fe-7a50524dc46c
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [IR1_scaffold_review] docs/reviews/IR1_Scaffold_Creation_Review.v1.sop
+@ [kernel_record_core] docs/schema/Kernel_Record_Core.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+
+& [CompletedWorkReview: IR2-S01] is the completion review for parser and projection boundary and invariant map
+  + [slice_id] is IR2-S01
+  + [slice_name] is parser and projection boundary and invariant map
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+  + [completed_output_sha256] is 2432A53A7EA00CC6526BD31096A8D51D0CC9612227745F1F9D2AADE837A8337E
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR2-S02 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR2-S02
+  = must: rerun review if IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop changes
+
+& [VerificationOracleResult: IR2-S01] is the verification result for boundary coverage
+  + [authority_boundary_present] is AuthorityBoundary
+  + [source_projection_invariant_set_present] is SourceProjectionInvariantSet
+  + [allowed_generated_artifact_set_present] is AllowedGeneratedArtifactSet
+  + [future_implementation_file_ownership_present] is FutureImplementationFileOwnership
+  + [stale_trigger_set_present] is ParserProjectionStaleTriggerSet
+  + [forbidden_scope_set_present] is ForbiddenScopeSet: IR2-S01
+  + [parser_code_created] is false
+  + [sqlite_connection_created] is false
+  + [sqlite_table_created] is false
+  + [generated_database_created] is false
+  + [dependency_installed] is false
+  + [generated_projection_authority_leak_found] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite projection implementation
+  + [forbidden_scope_absent] is LangGraph runtime implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR2S01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+
+& [SupportDelta: IR2-S01] is the support delta produced by this slice
+  + [new_support_record] is AuthorityBoundary defines SOP authority store, projection class, and authority promotion rule
+  + [new_support_record] is SourceProjectionInvariantSet supports IR2-S02 parser profile contract
+  + [new_support_record] is FutureImplementationFileOwnership defines candidate file ownership for later IR2 implementation planning
+  + [new_support_record] is ParserProjectionStaleTriggerSet defines stale triggers for future parser and projection outputs
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2-S01] is the requirement delta produced by this slice
+  + [requirement_delta] is IR2-S02 must define authority file discovery, source directory inclusion/exclusion, parser profile grammar subset, parse event shape, recoverable parse fault shape, and parser non-mutation rule
+  + [requirement_delta] is IR2-S02 requires deeper reasoning
+  + [requirement_delta] is parser implementation remains unauthorized
+  + [requirement_delta] is SQLite projection implementation remains unauthorized
+  + [requirement_delta] is generated SQLite, cache, index, and parser diagnostics remain projection-only
+  + [requirement_delta] is no dependency installation, LangGraph runtime, surface, adapter, operations simulator, operations control, or live machine control authorized
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR2-S01] is the fault review for this slice
+  + [parser_implementation_leak_found] is false
+  + [sqlite_connection_leak_found] is false
+  + [sqlite_table_creation_leak_found] is false
+  + [projection_writer_leak_found] is false
+  + [generated_database_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_adapter_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR2S01Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR2-S01]
+    @ [support] [SupportDelta: IR2-S01]
+    @ [support] [RequirementDelta: IR2-S01]
+    @ [support] [FaultReview: IR2-S01]
+
+& [NextSliceGate: IR2-S02] is opened
+  + [opened_slice] is IR2-S02 SOP artifact discovery and parser profile contract
+  + [accepted_input] is docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is 2432A53A7EA00CC6526BD31096A8D51D0CC9612227745F1F9D2AADE837A8337E
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is parser input semantics determine which SOP files become authority candidates and how ambiguity is preserved
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR2-S02 next unless user redirects or a new fault invalidates this review
+
