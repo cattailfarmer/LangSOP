@@ -1,0 +1,21 @@
+Subject: IR3 Implementation Activation Source Manifest
+Date: 2026-05-26
+Manifest UUID: 3245cdc2-4a4c-484c-a513-e95ea977e33f
+
+& [SourceDocumentManifest: IR3ImplementationActivation] is the source preservation manifest for minting IR3 implementation activation slices
+  + [derived_source] is docs/source/2026-05-26_ir3_implementation_activation/Derived_IR3_Implementation_Activation_Source.sop
+    + [source_uuid] is cccdea15-0dae-4e00-ab99-3a1650ca562b
+    + [source_role] is preserved manager-derived source for IR3 implementation activation slice minting
+    + [source_sha256] is B6276AEA5F8DAB0FC7A9BD2BF805598B19A0EC90E4664171F966FBADC866D92B
+  + [boundary_input] is docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+    + [source_role] is accepted IR3 activation pack and implementation activation gate input
+    + [source_sha256] is FE11F82D98497E670397D612E18EFDD1C4476951F79876EEEC6FBE163BAE6861
+  + [boundary_input] is docs/reviews/IR3_Completion_Review.v1.sop
+    + [source_role] is accepted IR3 completion review and implementation activation gate evidence
+    + [source_sha256] is 249B41E07AAA7D0DED0BBCB0872A40AEB42384725F99F5B7F274928FFF775A3B
+  + [canonical_target] is docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+  + [slice_surface_target] is docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for IR3 implementation activation slices
+  = must: invalidate IR3 implementation activation slices if a cited source hash changes without reprocessing
+  = must: keep implementation activation bounded to accepted IR3 operator harness contracts and proof obligations

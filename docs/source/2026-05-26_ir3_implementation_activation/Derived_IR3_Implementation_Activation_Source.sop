@@ -1,0 +1,30 @@
+Subject: IR3 Implementation Activation Source
+Date: 2026-05-26
+Source UUID: cccdea15-0dae-4e00-ab99-3a1650ca562b
+
+& [SourcePrompt: IR3ImplementationActivation] is the preserved source for minting IR3 bounded implementation activation slices
+  + [origin] is Codex project-manager session derived from accepted IR3 activation pack
+  + [user_intent] is continue long-haul project-manager work by preparing the implementation surface without prematurely writing code
+  + [purpose] is split IR3 bounded operator harness implementation activation into clean slices before implementation code, fixture source, expected ledgers, generated traces, or tests begin
+  + [chunk_ref] is IR3 bounded operator harness implementation activation
+  + [model_route] is requires deeper reasoning for activation slice minting; bounded future code, fixture, expected-ledger, generated-output, and test slices may be GPT-5.3-Codex-Spark-suitable after this activation surface is accepted
+  + [source_basis] is docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+  + [source_basis] is docs/reviews/IR3_Completion_Review.v1.sop
+
+  = must: preserve the accepted IR3 operator harness activation pack as boundary input
+  = must: keep activation slice minting distinct from code creation
+  = must: require completion review after every implementation activation slice
+  = must: keep generated traces, fixture outputs, reports, caches, and manifests non-authoritative
+  = must: keep LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control out of IR3 implementation activation
+
+& [RequiredIR3ImplementationActivationSliceSet] is the source-level slice set for IR3 implementation activation
+  + [slice_candidate] is IR3-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [slice_candidate] is IR3-IA02 fixture source and expected-ledger seed material
+  + [slice_candidate] is IR3-IA03 contracts and trace model implementation
+  + [slice_candidate] is IR3-IA04 contract-driven operator runner implementation
+  + [slice_candidate] is IR3-IA05 fixture runner implementation
+  + [slice_candidate] is IR3-IA06 contract test integration and generated-output proof
+  + [slice_candidate] is IR3-IA07 implementation completion review and operator harness proof pack
+
+  = must: route IR3-IA01 and IR3-IA07 to deeper reasoning
+  = should: route IR3-IA02 through IR3-IA06 to GPT-5.3-Codex-Spark after IR3-IA01 acceptance because their file scopes are bounded by the accepted activation boundary

@@ -1,0 +1,103 @@
+Subject: IR3 Implementation Activation Minting Review V1
+Date: 2026-05-26
+Review UUID: 753fce73-372b-4532-8608-8b7ad0706ce6
+
+@ [source_manifest] docs/source/2026-05-26_ir3_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [IR3_activation_pack] docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+@ [IR3_completion_review] docs/reviews/IR3_Completion_Review.v1.sop
+
+& [SliceMintingReview: IR3ImplementationActivation] is the completed-work review for minting IR3 bounded implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir3_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 4DC34E08F701D2567CB02C2F6890AE3F385D7F88DA9A4FF45510A6FD7D03C8F3
+  + [completed_output] is docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is 6E9B44269FB176F741935AD62542D3AC038C43499E625DABE45CED01BBB6C9A2
+  + [completed_output] is docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is 2409358C8902FA9B230C8A2A9C98BA5153E742DE3604185C0BAB307EEAA320FC
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR3-IA01 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR3-IA01 only
+  = must: rerun this review if IR3 implementation activation source, canonical specification, or slice surface changes
+  = must: keep implementation code, fixture source, expected ledgers, generated traces, tests, dependencies, operations control, and live machine control gated until their specific slices open
+
+& [VerificationOracleResult: IR3ImplementationActivation] is the verification result for IR3 implementation activation slice minting
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [slice_count] is 7
+  + [ready_slice] is IR3-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [gated_slice] is IR3-IA02 fixture source and expected-ledger seed material
+  + [gated_slice] is IR3-IA03 contracts and trace model implementation
+  + [gated_slice] is IR3-IA04 contract-driven operator runner implementation
+  + [gated_slice] is IR3-IA05 fixture runner implementation
+  + [gated_slice] is IR3-IA06 contract test integration and generated-output proof
+  + [gated_slice] is IR3-IA07 implementation completion review and operator harness proof pack
+  + [model_route_present] is IR3-IA01 requires deeper reasoning
+  + [model_route_present] is IR3-IA02 GPT-5.3-Codex-Spark-suitable after IR3-IA01 acceptance
+  + [model_route_present] is IR3-IA03 GPT-5.3-Codex-Spark-suitable after IR3-IA02 acceptance
+  + [model_route_present] is IR3-IA04 GPT-5.3-Codex-Spark-suitable after IR3-IA03 acceptance
+  + [model_route_present] is IR3-IA05 GPT-5.3-Codex-Spark-suitable after IR3-IA04 acceptance
+  + [model_route_present] is IR3-IA06 GPT-5.3-Codex-Spark-suitable after IR3-IA05 acceptance
+  + [model_route_present] is IR3-IA07 requires deeper reasoning
+  + [forbidden_scope_absent] is external dependency addition
+  + [forbidden_scope_absent] is source authority mutation
+  + [forbidden_scope_absent] is generated trace authority promotion
+  + [forbidden_scope_absent] is LangGraph runtime implementation
+  + [forbidden_scope_absent] is UI or surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR3ImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+    @ [support] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: IR3ImplementationActivation] is the support delta produced by this slice minting pass
+  + [new_support_record] is IR3ImplementationActivationSliceSurfaceV1 supports IR3-IA01 execution
+  + [new_support_record] is IR3-IA02 through IR3-IA06 Spark suitability is gated by accepted upstream slices and bounded file scopes
+  + [new_support_record] is IR3-IA07 preserves deeper-reasoning final implementation proof acceptance
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3ImplementationActivation] is the requirement delta produced by this slice minting pass
+  + [requirement_delta] is IR3-IA01 must run first and requires deeper reasoning
+  + [requirement_delta] is no implementation code, fixture source, expected-ledger, generated trace, or test files are authorized until IR3-IA01 confirms the activation boundary and their specific slice gates open
+  + [requirement_delta] is future bounded implementation and fixture slices must explicitly state Spark suitability after their gates are accepted
+  + [requirement_delta] is no dependency installation, operations control, or live machine control authorized
+  + [requirement_delta] is no rebake required before IR3-IA01
+
+& [FaultReview: IR3ImplementationActivation] is the fault review for IR3 implementation activation slice minting
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [generated_trace_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_slice_found] is false
+
+  ! [IR3ImplementationActivationSlicesAccepted] is accepted
+    @ [support] [VerificationOracleResult: IR3ImplementationActivation]
+    @ [support] [SupportDelta: IR3ImplementationActivation]
+    @ [support] [RequirementDelta: IR3ImplementationActivation]
+    @ [support] [FaultReview: IR3ImplementationActivation]
+
+& [NextSliceGate: IR3-IA01] is opened
+  + [opened_slice] is IR3-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary confirms what bounded implementation may safely create
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-IA01 next unless user redirects or a new fault invalidates this review

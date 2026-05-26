@@ -1,0 +1,77 @@
+Subject: LangSOP IR3 Implementation Activation Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir3_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [IR3_activation_pack] docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+@ [IR3_completion_review] docs/reviews/IR3_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR3ImplementationActivation] is the processed planning authority for IR3 bounded operator harness implementation activation slices
+  + [canonical_uuid] is 4e5c6c0b-c7cc-4480-9d4b-17f294f5b167
+  + [source_manifest_uuid] is 3245cdc2-4a4c-484c-a513-e95ea977e33f
+  + [slice_surface_uuid] is f5618b4a-78b8-4aef-8b18-c58f9083ee5a
+  + [authority_scope] is IR3 implementation activation slice order, gates, expected outputs, model routing, file inventory, fixture inventory, generated-output proof, implementation boundaries, and forbidden downstream scope
+  + [implementation_scope] is bounded operator harness implementation activation planning and gated implementation slices
+  + [depends_on] is docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR3_Completion_Review.v1.sop
+
+  = must: use docs/slices/IR3_Implementation_Activation_Slices.v1.sop as the current IR3 implementation activation surface
+  = must: execute IR3-IA01 first
+  = must: run completion review after each IR3 implementation activation slice before opening the next gated slice
+  = must: preserve generated traces, fixture outputs, reports, manifests, and caches as non-authoritative projections
+  - never: treat IR3 implementation activation as permission for LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control
+
+& [CanonicalIR3ImplementationActivationSliceSet] is the final IR3 implementation activation slice sequence
+  + [slice] is IR3-IA01 bounded implementation activation boundary and file inventory confirmation
+  + [slice] is IR3-IA02 fixture source and expected-ledger seed material
+  + [slice] is IR3-IA03 contracts and trace model implementation
+  + [slice] is IR3-IA04 contract-driven operator runner implementation
+  + [slice] is IR3-IA05 fixture runner implementation
+  + [slice] is IR3-IA06 contract test integration and generated-output proof
+  + [slice] is IR3-IA07 implementation completion review and operator harness proof pack
+
+  = must: preserve this order unless completion review rebakes IR3 implementation activation
+
+& [CanonicalIR3ImplementationActivationGate] is the activation rule for IR3 implementation
+  + [current_ready_slice] is IR3-IA01
+  + [gated_slice] is IR3-IA02 until IR3-IA01 accepted
+  + [gated_slice] is IR3-IA03 until IR3-IA02 accepted
+  + [gated_slice] is IR3-IA04 until IR3-IA03 accepted
+  + [gated_slice] is IR3-IA05 until IR3-IA04 accepted
+  + [gated_slice] is IR3-IA06 until IR3-IA05 accepted
+  + [gated_slice] is IR3-IA07 until IR3-IA06 accepted
+  + [completion_gate] is IR3 implementation proof pack accepted after IR3-IA07
+
+& [CanonicalIR3ImplementationActivationModelRouting] is the model-routing record
+  + [IR3-IA01] is requires deeper reasoning
+  + [IR3-IA02] is GPT-5.3-Codex-Spark-suitable after IR3-IA01 acceptance
+  + [IR3-IA03] is GPT-5.3-Codex-Spark-suitable after IR3-IA02 acceptance
+  + [IR3-IA04] is GPT-5.3-Codex-Spark-suitable after IR3-IA03 acceptance
+  + [IR3-IA05] is GPT-5.3-Codex-Spark-suitable after IR3-IA04 acceptance
+  + [IR3-IA06] is GPT-5.3-Codex-Spark-suitable after IR3-IA05 acceptance
+  + [IR3-IA07] is requires deeper reasoning
+
+  = must: route any authority semantics, trace identity, generated output policy, dependency, public API boundary, file inventory, or safety-boundary change to deeper reasoning
+
+& [SatisfactionSignature: IR3ImplementationActivation] is the valid SJS satisfaction signature for the IR3 implementation activation surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 5299ef0a-9e0b-45ea-b8a1-f4ee7cffa754
+  + [signed_subject] is docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir3_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is B6276AEA5F8DAB0FC7A9BD2BF805598B19A0EC90E4664171F966FBADC866D92B
+  + [source_sha256] is FE11F82D98497E670397D612E18EFDD1C4476951F79876EEEC6FBE163BAE6861
+  + [source_sha256] is 249B41E07AAA7D0DED0BBCB0872A40AEB42384725F99F5B7F274928FFF775A3B
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR3_gate_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR3_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR3 implementation activation slices; no live operations control authorized
+
+& [RegistryRecord: IR3ImplementationActivation] is the durable identity ledger for the IR3 implementation activation surface
+  + [registry_uuid] is 95e80ca6-750b-4ed6-a048-0dd6a0081ebc
+  + [manifest_node_uuid] is 3245cdc2-4a4c-484c-a513-e95ea977e33f
+  + [canonical_node_uuid] is 4e5c6c0b-c7cc-4480-9d4b-17f294f5b167
+  + [slice_surface_uuid] is f5618b4a-78b8-4aef-8b18-c58f9083ee5a
+  + [signature_uuid] is 5299ef0a-9e0b-45ea-b8a1-f4ee7cffa754
+  + [closure_review_uuid] is 753fce73-372b-4532-8608-8b7ad0706ce6
