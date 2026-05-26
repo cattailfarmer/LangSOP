@@ -1,0 +1,8 @@
+[project]
+name = "langsop"
+version = "0.0.0"
+description = "Subject-Oriented Programming authority kernel planning scaffold."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+

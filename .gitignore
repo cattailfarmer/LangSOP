@@ -1,7 +1,10 @@
 .venv/
+.langsop/
 __pycache__/
 *.pyc
 .pytest_cache/
+.coverage
+htmlcov/
 .mypy_cache/
 .ruff_cache/
 dist/
@@ -13,3 +16,4 @@ build/
 *.db
 runs/
 artifacts/
+tests/fixtures/generated/

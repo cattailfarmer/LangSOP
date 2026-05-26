@@ -1,0 +1,145 @@
+Subject: IR1 Scaffold Creation Review V1
+Date: 2026-05-26
+Review UUID: 2f0cd679-ad0f-4a8e-a7cb-0938d8ad69e2
+
+@ [substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [substrate_pack_review] docs/reviews/IR1_Completion_Review.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [scaffold_file] .gitignore
+@ [scaffold_file] pyproject.toml
+@ [scaffold_file] src/langsop/__init__.py
+@ [scaffold_file] src/langsop/authority/__init__.py
+@ [scaffold_file] src/langsop/kernel/__init__.py
+@ [scaffold_file] src/langsop/projections/__init__.py
+@ [scaffold_file] src/langsop/operators/__init__.py
+@ [scaffold_file] src/langsop/runtime/__init__.py
+@ [scaffold_file] src/langsop/surfaces/__init__.py
+@ [scaffold_file] src/langsop/coordination/__init__.py
+@ [scaffold_file] src/langsop/operations/__init__.py
+@ [scaffold_file] tests/test_scaffold_imports.py
+
+& [CompletedWorkReview: IR1-Scaffold-Creation] is the completion review for inert scaffold file creation
+  + [work_id] is IR1-Scaffold-Creation
+  + [work_name] is inert scaffold file creation from accepted IR1 inventory
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [review_result] is accepted
+  + [next_gate_result] is IR2 planning may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR2 planning, not parser implementation
+  = must: keep runtime behavior, authority parsing, SQLite projection building, LangGraph execution, surface adapters, operations simulation, operations control, and live machine control gated
+
+& [ScaffoldFileDigestSet] is the digest ledger for created scaffold files
+  + [scaffold_file] is .gitignore
+  + [scaffold_file_sha256] is D37491F3961C332D1B945CB0F8EE1E8554A2B3061D5EAC799EC04A589823FFEB
+  + [scaffold_file] is pyproject.toml
+  + [scaffold_file_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+  + [scaffold_file] is src/langsop/__init__.py
+  + [scaffold_file_sha256] is 9B5301477F5EF3405048682FBCF036F1CBADC8EC3D2BB00F80F09A9C337C1D61
+  + [scaffold_file] is src/langsop/authority/__init__.py
+  + [scaffold_file_sha256] is 29FD203BEE78935FF4BA932A2AF0F55615C565080EC63F9CC8A088ED1C1F9EB5
+  + [scaffold_file] is src/langsop/kernel/__init__.py
+  + [scaffold_file_sha256] is 0648FB30B615AF0957D7202191EABC9CF5F084C6241024A587C86AFF4408C1FB
+  + [scaffold_file] is src/langsop/projections/__init__.py
+  + [scaffold_file_sha256] is 0BFD42E83629252A9B6A30632AD8D0CE2A31D1322383D08E399B259D491C2098
+  + [scaffold_file] is src/langsop/operators/__init__.py
+  + [scaffold_file_sha256] is 5AFDF7E209EBD65ED6FA5194A0E03E3C2BAF1C6C5B738026DEA8F933402180F2
+  + [scaffold_file] is src/langsop/runtime/__init__.py
+  + [scaffold_file_sha256] is E72B29FFD7D3D54A3DB0987964BE614C9442B7EAF83E6B2719EF24A7E93E093A
+  + [scaffold_file] is src/langsop/surfaces/__init__.py
+  + [scaffold_file_sha256] is 014C62AC0FA98F4B63E4FB8ACBDAEA92DDAD7F60B97E802F77166C8CB79BE7D5
+  + [scaffold_file] is src/langsop/coordination/__init__.py
+  + [scaffold_file_sha256] is D667398B386D40345CAA0ACE8785A229A0189A147FB158E92FCCB9CE5ADBB6B2
+  + [scaffold_file] is src/langsop/operations/__init__.py
+  + [scaffold_file_sha256] is 591D860B281CFA63009FF792F05F4375B528D72DC15540F1C6889E4EAEB110ED
+  + [scaffold_file] is tests/test_scaffold_imports.py
+  + [scaffold_file_sha256] is 6AB396C28B82C767164F3ED1107B4707838E15D84B0D373C5E60571757D55013
+
+  = must: rerun this review if any scaffold file digest changes
+
+& [ScaffoldBoundaryVerification] is the verification result for scaffold scope
+  + [allowed_inventory_match] is true
+  + [package_metadata_created] is true
+  + [package_metadata_runtime_dependencies] is empty
+  + [inert_package_marker_created] is true
+  + [inert_authority_marker_created] is true
+  + [inert_kernel_marker_created] is true
+  + [inert_projection_marker_created] is true
+  + [inert_operator_marker_created] is true
+  + [inert_runtime_marker_created] is true
+  + [inert_surface_marker_created] is true
+  + [inert_coordination_marker_created] is true
+  + [inert_operations_marker_created] is true
+  + [no_op_smoke_test_created] is true
+  + [generated_artifact_ignore_rules_created] is true
+  + [dependency_installed] is false
+  + [parser_behavior_present] is false
+  + [sqlite_projection_behavior_present] is false
+  + [langgraph_behavior_present] is false
+  + [surface_adapter_behavior_present] is false
+  + [operations_simulator_behavior_present] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [ScaffoldBoundarySatisfied] is accepted
+    @ [support] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+    @ [support] [ScaffoldFileDigestSet]
+
+& [VerificationCommandResult] is the command verification record for scaffold creation
+  + [python_version] is Python 3.13.5
+  + [command] is python -m unittest discover
+  + [command_result] is no_tests_ran
+  + [command_status] is rejected_as_insufficient_discovery
+  + [command] is python -m unittest discover -s tests
+  + [command_result] is 3 tests ran OK
+  + [command_status] is accepted
+  + [command] is python -m compileall -q src tests
+  + [command_result] is OK
+  + [command_status] is accepted
+  + [scan_command] is rg -n "subprocess|sqlite|langgraph|requests|socket|credential|os\\.|open\\(|exec\\(|eval\\(|run\\(|control|gpu|job|network|dispatch|deploy" src tests pyproject.toml .gitignore
+  + [scan_result] is benign matches only in ignore rules, operations safety docstring, and forbidden-name smoke test
+  + [scan_status] is accepted
+
+& [SupportDelta: IR1-Scaffold-Creation] is the support delta produced by this work
+  + [new_support_record] is importable inert Python package scaffold exists
+  + [new_support_record] is generated artifact ignore rules include .langsop/ and test-generated outputs
+  + [new_support_record] is no-op smoke tests prove inert modules import and operations module exposes no live-control API
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1-Scaffold-Creation] is the requirement delta produced by this work
+  + [requirement_delta] is IR2 planning may open and requires deeper reasoning
+  + [requirement_delta] is parser implementation remains unauthorized until IR2 creates and reviews a parser authority boundary
+  + [requirement_delta] is SQLite projection implementation remains unauthorized until IR2 creates and reviews a projection authority boundary
+  + [requirement_delta] is dependency installation remains unauthorized until a dependency-authorizing slice accepts it
+  + [requirement_delta] is operations control and live machine control remain unauthorized
+
+& [FaultReview: IR1-Scaffold-Creation] is the fault review for scaffold creation
+  + [unlisted_file_created] is false
+  + [runtime_dependency_added] is false
+  + [parser_behavior_leak_found] is false
+  + [sqlite_projection_behavior_leak_found] is false
+  + [langgraph_behavior_leak_found] is false
+  + [surface_adapter_behavior_leak_found] is false
+  + [operations_simulator_behavior_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [generated_artifact_authority_leak_found] is false
+
+  ! [IR1ScaffoldCreationAccepted] is accepted
+    @ [support] [ScaffoldBoundaryVerification]
+    @ [support] [VerificationCommandResult]
+    @ [support] [SupportDelta: IR1-Scaffold-Creation]
+    @ [support] [RequirementDelta: IR1-Scaffold-Creation]
+    @ [support] [FaultReview: IR1-Scaffold-Creation]
+
+& [NextWorkGate: IR2-Planning] is opened
+  + [opened_work] is IR2 authority-file parser and SQLite projection builder planning
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is parser and projection behavior will become authority-bearing implementation and must preserve SOP provenance, signatures, data identity, generated-artifact boundaries, and safety prohibitions
+  + [spark_suitable_follow_on] is GPT-5.3-Codex-Spark-suitable only for bounded fixtures and implementation after IR2 contracts are accepted
+  + [safety_limit] is no operations control or live machine control authorized
+
+  = must: mint or rebake IR2 slices before implementing parser or projection behavior
