@@ -1,0 +1,123 @@
+Subject: Operator Trace Runtime Proof Contract V1
+Date: 2026-05-26
+Trace Proof Contract UUID: cbb85a23-d967-4fc3-92a4-cd75b393445e
+
+@ [slice_surface] docs/slices/FSC3_Final_Slices.v1.sop
+@ [runtime_boundary] docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+@ [graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [completion_gate_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+
+& [OperatorTraceRuntimeProofContractV1] is the FSC3 proof contract for graph runtime traces
+  + [contract_id] is operator-trace-runtime-proof-contract-v1
+  + [contract_uuid] is cbb85a23-d967-4fc3-92a4-cd75b393445e
+  + [slice_id] is FSC3-S04
+  + [authority_scope] is runtime trace assertions for graph node inputs, outputs, checkpoint reads, checkpoint writes, interrupts, faults, stale paths, blocked paths, and completion gate evidence
+  + [implementation_scope] is proof contract only
+  + [graph_dependency] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [interrupt_dependency] is docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+
+  = must: require trace evidence for every graph path before runtime output is trusted
+  = must: distinguish success, blocked, stale, fault, and interrupt traces
+  = must: prove hidden graph writes absent by comparing declared outputs with trace output references
+  - never: implement executable runtime, checkpoint persistence, test harnesses, surfaces, or operations control
+
+& [TraceAssertionContract] is the required assertion set for every runtime graph path
+  + [assertion] is graph_node_id is recorded
+  + [assertion] is graph_phase_before is recorded
+  + [assertion] is graph_phase_after is recorded
+  + [assertion] is active_work_packet_ref is recorded
+  + [assertion] is operator_contract_ref is recorded when node delegates to an operator
+  + [assertion] is input_record_ref_set is recorded
+  + [assertion] is output_record_ref_set is recorded
+  + [assertion] is checkpoint_read_ref_set is recorded
+  + [assertion] is checkpoint_write_ref_set is recorded
+  + [assertion] is interrupt_context_ref is recorded when interrupt occurs
+  + [assertion] is fault_record_ref is recorded when fault occurs
+  + [assertion] is stale_projection_ref is recorded when stale path occurs
+  + [assertion] is completion_review_ref is recorded when gate decision occurs
+  + [assertion] is outcome_kind is success, blocked_output, fault_output, stale_input, or sop_first_interrupt
+
+  = must: reject runtime proof when any assertion required by the outcome is missing
+
+& [CheckpointTraceAssertionSet] is the checkpoint trace assertion set
+  + [assertion] is checkpoint reads cite checkpoint_ref and source freshness context
+  + [assertion] is checkpoint writes cite graph_phase, current_node_id, active_work_packet_ref, and pending_interrupt_ref when present
+  + [assertion] is checkpoint writes do not write authority_state signed_sjs, proof_backed, accepted_decision, or source_only by themselves
+  + [assertion] is checkpoint resume validates accepted boundary pack freshness
+  + [assertion] is checkpoint authority confusion emits fault_record or sop_first_interrupt
+
+  = must: prove checkpoint state is execution state only
+  = must: mark checkpoint-derived output stale when accepted packs or packet assumptions changed
+
+& [InterruptTraceAssertionSet] is the interrupt trace assertion set
+  + [assertion] is interrupt_kind is one value from InterruptKindMap
+  + [assertion] is InterruptContextPacket fields are present
+  + [assertion] is mutation_blocked_set is present
+  + [assertion] is required_resolution is present
+  + [assertion] is resume_condition is absent until accepted resolution exists
+  + [assertion] is no output beyond trace, stale, fault, support_gap, or interrupt context is produced during interrupt
+
+  = must: prove hidden mutation absent during interrupt
+  = must: preserve enough context for SOP-first reconsideration
+
+& [FaultAndBlockedTraceAssertionSet] is the trace assertion set for blocked, stale, and faulted runtime paths
+  + [assertion] is blocked_output cites blocker_ref_set and required_resolution
+  + [assertion] is stale_input cites stale_source_ref_set and required_refresh
+  + [assertion] is fault_output cites fault_kind, fault evidence, local_repair, and escalation_path
+  + [assertion] is false_ready_checkpoint emits fault_record
+  + [assertion] is hidden_write_attempt emits fault_record
+  + [assertion] is missing_operator_trace emits fault_record
+
+  = must: preserve blocked, stale, and faulted runtime paths as inspectable proof, not silent runtime failure
+
+& [CompletionGateTraceAssertionSet] is the completion gate trace assertion set
+  + [assertion] is completion_review_delta_gate contract is cited
+  + [assertion] is support_delta_classification is recorded
+  + [assertion] is requirement_delta_classification is recorded
+  + [assertion] is stale_output_review is recorded
+  + [assertion] is contradiction_review is recorded
+  + [assertion] is coordination_claim_review is recorded
+  + [assertion] is next_gate_decision is recorded
+  + [assertion] is false-ready next gate emits fault_record
+
+  = must: reject runtime proof when completion gate evidence is missing but follow-on work is opened
+
+& [HiddenWritePreventionProof] is the hidden write prevention proof obligation
+  + [proof_check] is every output record appears in output_record_ref_set
+  + [proof_check] is every output record lineage_edge_set cites active input or operator_trace
+  + [proof_check] is no source specification, accepted pack, or canonical authority file is mutated by graph path
+  + [proof_check] is no checkpoint write is promoted to authority without separate proof_result or completion_review
+  + [proof_check] is no surface or transport projection is treated as source authority
+
+  = must: emit fault_record when hidden write cannot be ruled out
+
+& [RuntimeTraceFixtureObligationSet] is the fixture obligation set for operator trace runtime proof
+  + [fixture] is valid_graph_pass expects success trace, proof_result, and completion gate evidence
+  + [fixture] is blocked_readiness expects blocked trace and no follow-on gate
+  + [fixture] is stale_checkpoint expects stale_projection or fault_record
+  + [fixture] is ambiguous_interrupt expects sop_first_interrupt trace and no mutation
+  + [fixture] is authority_conflict_interrupt expects sop_first_interrupt trace
+  + [fixture] is contested_claim_interrupt expects sop_first_interrupt or blocked trace
+  + [fixture] is faulted_operator_trace expects fault_record
+  + [fixture] is hidden_write_prevention expects fault_record when output not declared
+  + [fixture] is false_ready_checkpoint expects fault_record
+  + [fixture] is completion_gate_refusal expects closed next gate and trace evidence
+
+& [OperatorTraceRuntimeProofCoverageReview] is the FSC3-S04 coverage checklist
+  + [trace_assertion_contract_present] is TraceAssertionContract
+  + [checkpoint_trace_assertions_present] is CheckpointTraceAssertionSet
+  + [interrupt_trace_assertions_present] is InterruptTraceAssertionSet
+  + [fault_blocked_trace_assertions_present] is FaultAndBlockedTraceAssertionSet
+  + [completion_gate_trace_assertions_present] is CompletionGateTraceAssertionSet
+  + [hidden_write_prevention_proof_present] is HiddenWritePreventionProof
+  + [fixture_obligation_set_present] is RuntimeTraceFixtureObligationSet
+  + [forbidden_scope_absent] is executable runtime implementation
+  + [forbidden_scope_absent] is checkpoint persistence implementation
+  + [forbidden_scope_absent] is test harness implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC3-S04 if hidden writes can evade operator_trace proof
+  = must: open FSC3-S05 only after this contract is accepted by completion review
