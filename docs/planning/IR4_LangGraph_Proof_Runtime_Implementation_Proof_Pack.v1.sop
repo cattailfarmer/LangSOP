@@ -1,0 +1,149 @@
+Subject: IR4 LangGraph Proof Runtime Implementation Proof Pack V1
+Date: 2026-05-26
+Proof Pack UUID: e06a7a46-b262-4f04-aa96-ec6dfae68411
+
+@ [completion_review] docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+@ [generated_output_proof] docs/reviews/IR4_Runtime_Graph_Generated_Output_Proof.v1.sop
+@ [dependency_decision] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+@ [implementation_tests] tests/test_ir4_runtime_graph_contracts.py
+
+& [ImplementationProofPack: IR4LangGraphProofRuntimeImplementationProofPackV1] is the accepted runtime graph implementation proof pack exported by IR4 after implementation completion review acceptance
+  + [proof_pack_id] is ir4-langgraph-proof-runtime-implementation-proof-pack-v1
+  + [proof_pack_uuid] is e06a7a46-b262-4f04-aa96-ec6dfae68411
+  + [source_chunk] is IR4 bounded LangGraph proof runtime implementation activation
+  + [export_status] is accepted_boundary_input_after_IR4_implementation_completion_review
+  + [consumer_work] is downstream IR5 surface authority/readiness work or future explicit LangGraph adapter activation after deeper-reasoning gate
+  + [implementation_effect] is bounded proof runtime for WholeFieldPlannerGraph state, contracts, checkpoint validation, SOP-first interrupts, pure graph runner, fixture runner, contract tests, generated-output proof, and dependency deferral
+  + [safety_limit] is no operations control or live machine control authorized
+
+  = must: preserve generated checkpoints, traces, reports, fixture outputs, graph state, and LangGraph adapter state as projection-only evidence unless later rewritten through accepted SOP review
+  = must: require downstream IR5 or future adapter slice minting before any surface adapter, queue, operations simulator, package dependency, or live runtime control work starts
+  = must: keep operations control and live machine control outside this pack
+
+& [AcceptedIR4ImplementationDigestSet] is the accepted hash ledger exported by IR4 implementation proof
+  + [accepted_code_output] is src/langsop/runtime/graph_state.py
+  + [accepted_code_output_sha256] is 52AB8625DFCC51E0FFAFF2E939632A8DD8C76BE5EC9F53AF60422F085D1F222E
+  + [accepted_code_output] is src/langsop/runtime/graph_contracts.py
+  + [accepted_code_output_sha256] is A335F12491FD5A0A252B11284112E0D295990D38FE716CD52328AB22188634FB
+  + [accepted_code_output] is src/langsop/runtime/checkpoints.py
+  + [accepted_code_output_sha256] is CD8A9C27A7C8D4CF4B32B9D491A64CF03F02F43FA20B48FAC047F60FACA1AA36
+  + [accepted_code_output] is src/langsop/runtime/interrupts.py
+  + [accepted_code_output_sha256] is B8755AC57C1E3EF11B54D370EFC6668FAF651E4B8064555E3DCFEC5438B4E2C9
+  + [accepted_code_output] is src/langsop/runtime/graph_runner.py
+  + [accepted_code_output_sha256] is D8D87F4B046618F55C475A69C3C287981E10308D2262373CEA8A0BE89034E222
+  + [accepted_code_output] is src/langsop/runtime/fixture_runner.py
+  + [accepted_code_output_sha256] is 258F5C51134F8A5DE136DCC9904F5190F202D58EB312FB2B43583D166B05B696
+  + [accepted_code_output] is src/langsop/runtime/__init__.py
+  + [accepted_code_output_sha256] is D1F973FAD528CADCF66475194A7F665F5D6EB7E1AE6CB103CBA0A1180E58F8F2
+  + [accepted_test_output] is tests/test_ir4_runtime_graph_contracts.py
+  + [accepted_test_output_sha256] is D02984D45E42A75C982B54C8CD64D11C3476E646DE1F6C9F9AB23E4B6F38DD74
+  + [accepted_proof_output] is docs/reviews/IR4_Runtime_Graph_Generated_Output_Proof.v1.sop
+  + [accepted_proof_output_sha256] is F199CA6414F872190447C73B6E52C69D58DCDAF97861F95DFDE874A81A862DF3
+  + [accepted_decision_output] is docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+  + [accepted_decision_output_sha256] is F44DC92F7E81152F3C761086C89B4CBD9397A0D1B34940C669004763180C9347
+  + [accepted_package_metadata] is pyproject.toml
+  + [accepted_package_metadata_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+
+  = must: mark this proof pack stale if any listed hash changes
+
+& [AcceptedIR4FixtureDigestSet] is the accepted fixture and expected ledger hash ledger exported by IR4 implementation proof
+  + [accepted_fixture_index] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [accepted_fixture_index_sha256] is 053F73C345A36DA42B635AA11ACDE7E9CD27C9995517FB4B681A2641DF50E5FE
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/ambiguous_interrupt.sop
+  + [accepted_fixture_source_sha256] is DBFF82DE443FC8325CAEB914D57B37CC5ED78C6DB7D61777855B885CBB631E80
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/authority_conflict_interrupt.sop
+  + [accepted_fixture_source_sha256] is 34F136CD408708BAFAB9DCADA14D7AEB2F934C5EB4A3745EABD749035DD535A2
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/blocked_readiness.sop
+  + [accepted_fixture_source_sha256] is 568D864E8F2B6C3B4FA8B2CE491D54FF9EC89413815531452EE32F7C264D377A
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/completion_gate_refusal.sop
+  + [accepted_fixture_source_sha256] is 3FF622E8FF099E350B2C4C705F470E80B7FC1B04332B8B0F575044ADC43040F7
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/contested_claim_interrupt.sop
+  + [accepted_fixture_source_sha256] is 3B14A969D97BEF333C23394646EF27097C316A2D0D21DE7DB948AB31AB304E3B
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/false_ready_checkpoint.sop
+  + [accepted_fixture_source_sha256] is 35A3C53D6CED74D56B39B9CA07B616742AE05F9C0DAC2EBDA25D0A30E7DD65DF
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/faulted_operator_trace.sop
+  + [accepted_fixture_source_sha256] is 7957CC466431A794676896629AFB6CB93DBC7F5A1F24A417CA0D96456B17E011
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/hidden_write_prevention.sop
+  + [accepted_fixture_source_sha256] is 6542D49361D44EE82E5E5450D57E208839C6AD0DC7A6FA6E8DD6681B4113C26E
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/stale_checkpoint.sop
+  + [accepted_fixture_source_sha256] is 9096F230D83E1F18B58A338C4B873C44D47EEB9478873E6991F02C1DD50BFB2E
+  + [accepted_fixture_source] is tests/fixtures/sop/ir4_runtime_graph/valid_graph_pass.sop
+  + [accepted_fixture_source_sha256] is 33E09C1CC98089CC1C8EFF8D433168FBA34C320822FD92E6CD95AF1F9E2485B3
+  + [accepted_expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/checkpoint_expected.sop
+  + [accepted_expected_ledger_sha256] is 4B2CFF58EAF52631220184DCFC4C673C73125C31116C1E65903206965834C97C
+  + [accepted_expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/graph_trace_expected.sop
+  + [accepted_expected_ledger_sha256] is A3EBC35A3C458DBC7AE567D756DBA78A50AEEEEAFFF3AA35BF79A80661166B39
+  + [accepted_expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/interrupt_fault_refusal_expected.sop
+  + [accepted_expected_ledger_sha256] is C9F1DA28CD5C11400203F59BA4ADA323A7A919FE28012600E37FB155B9E2E25D
+  + [accepted_expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/no_authority_promotion_expected.sop
+  + [accepted_expected_ledger_sha256] is C4F5C7E607A4E756D3F0AAE7F8E52FEDCFF874D5D90D0914234BF7AEEBA35DFD
+
+  = must: mark this proof pack stale if any fixture source, expected ledger, or fixture index hash changes
+
+& [AcceptedIR4ImplementationReviewDigestSet] is the accepted review hash ledger for implementation activation
+  + [accepted_review] is docs/reviews/IR4_IA01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is A32D870E894B03A67D4431CB339A62420499664208C1F4289E77FE1F6B165C6E
+  + [accepted_review] is docs/reviews/IR4_IA02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 800FABC0FFCDCE9FDED20DF91C69BEA9242ED61BDC61228FFABB98A4152202B2
+  + [accepted_review] is docs/reviews/IR4_IA03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is E5BEF56145BEF9735B3518469167A7FE4F8731C8A9711198248197AB95EA0951
+  + [accepted_review] is docs/reviews/IR4_IA04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is F5C866B460376116B5B5429E82C474BD57659C378676FB6BC3A9889220811951
+  + [accepted_review] is docs/reviews/IR4_IA05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 463CA38C0D2014B43A30A94D70C6B33F01E70517C1FDFDEB1EAAD7487A7FCE38
+  + [accepted_review] is docs/reviews/IR4_IA06_Completion_Review.v1.sop
+  + [accepted_review_sha256] is BA6BEE6D3A87EB46949A798DDE5BE8D351C5EF4337445B8EF8627B3E714B94F6
+  + [accepted_review] is docs/reviews/IR4_IA07_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 0F785A272A8C2D2637247A5FE6A08FBD07BC7CD383CF15A1B3496460C8AEA120
+  + [accepted_review] is docs/reviews/IR4_IA08_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 871B1EC431E098378409A2B800EEF6D9633DFF02E8F8DBBA82DC616A24ED37C0
+
+  = must: mark this proof pack stale if any listed review changes
+
+& [IR4ImplementationProofCommandSet] is the accepted command evidence for IR4 runtime graph implementation
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [targeted_test_command] is python -m unittest tests.test_ir4_runtime_graph_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 5
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [baseline_test_count] is 19
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed_with_crlf_warnings_only
+
+& [IR4ImplementationProofCoverage] is the accepted behavior coverage for IR4 runtime graph implementation
+  + [covered_behavior] is graph state and contract models validate missing authority, stale projection, hidden write attempts, node preconditions, edge contracts, and terminal outcomes
+  + [covered_behavior] is checkpoint validation classifies current, stale, authority confusion, and false-readiness checkpoint cases without trusting checkpoint state as authority
+  + [covered_behavior] is SOP-first interrupt context records ambiguous identity, authority conflict, contested coordination, stale input, missing proof, and forbidden context markers as generated projection packets
+  + [covered_behavior] is pure graph runner returns terminal_success, terminal_blocked, terminal_stale, terminal_fault, or terminal_interrupt without external LangGraph dependency or live control APIs
+  + [covered_behavior] is fixture runner loads only tracked fixture source and expected ledgers, compares all 10 accepted fixture cases, and refuses generated path escapes or source/expected-ledger mutation
+  + [covered_behavior] is generated runtime reports are ignored, disposable, cleaned after tests, and excluded from authority discovery
+  + [covered_behavior] is LangGraph dependency is deferred to a future explicit adapter activation slice while current proof remains dependency-free
+
+  = must: require a future slice before widening fixture cases, output paths, dependency set, adapter APIs, or authority semantics
+
+& [DownstreamIR5GateExport] is the downstream gate exported by this proof pack
+  + [IR5_state] is may_open_only_after_IR4_implementation_completion_review_accepts_this_pack
+  + [IR5_entry_model_route] is requires deeper reasoning for surface projection authority display conflicts and downstream readiness interpretation
+  + [future_spark_suitable_work] is GPT-5.3-Codex-Spark-suitable only after IR5 slices define bounded surface fixtures, display rules, or deterministic projection checks
+  + [future_langgraph_adapter_state] is gated_until_future_explicit_adapter_activation_slice
+  + [safety_limit] is no operations control or live machine control authorized
+
+  = must: open IR5 by minting or accepting downstream boundary work, not by directly adding surface runtime, queue, operations simulator, operations control, or live machine control
+  = must: preserve IR4 runtime graph proof as boundary input for future surface, coordination, narrative, or adapter work
+
+& [IR4ImplementationProofPackInvalidationRuleSet] is the staleness contract for IR4LangGraphProofRuntimeImplementationProofPackV1
+  + [invalidated_by] is change to any accepted implementation output hash
+  + [invalidated_by] is change to any accepted fixture source or expected-ledger hash
+  + [invalidated_by] is change to generated-output proof or contract tests
+  + [invalidated_by] is change to LangGraph adapter dependency decision
+  + [invalidated_by] is change to IR4-IA01 through IR4-IA08 completion reviews that affects support, requirements, or gates
+  + [invalidated_by] is generated projection promoted to source authority
+  + [invalidated_by] is source fixture, expected ledger, source code, platform authority, or docs authority mutated by runtime code or tests
+  + [invalidated_by] is dependency installation without authorizing slice
+  + [invalidated_by] is operations control or live machine control leak
+
+  = must: rerun IR4-IA09 or rebake the relevant surface after invalidation before downstream work consumes this proof pack

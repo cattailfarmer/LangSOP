@@ -1,0 +1,127 @@
+Subject: IR4 Implementation Completion Review V1
+Date: 2026-05-26
+Review UUID: 2b157779-7eb2-4540-a590-546c979ddd4d
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [completed_output] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [completed_review] docs/reviews/IR4_IA01_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_IA02_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_IA03_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_IA04_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_IA05_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_IA06_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_IA07_Completion_Review.v1.sop
+@ [completed_review] docs/reviews/IR4_IA08_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR4-IA09] is the final implementation completion review for IR4 runtime graph proof implementation
+  + [slice_id] is IR4-IA09
+  + [slice_name] is implementation completion review and runtime graph proof pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+  + [completed_output_hash_policy] is self hash omitted because the review record would become self-referential
+  + [completed_output] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR4 runtime graph implementation accepted as bounded proof-runtime implementation with LangGraph dependency deferred
+  + [downstream_gate_result] is IR5 downstream boundary or readiness work may open only through explicit deeper-reasoning slice or review
+  + [next_model_route] is requires deeper reasoning for IR5 boundary and surface authority/projection conflicts; later bounded IR5 fixtures may be GPT-5.3-Codex-Spark-suitable after slices are accepted
+
+  = must: treat this review and proof pack as gate-opening evidence for downstream IR5 boundary work only
+  = must: rerun IR4-IA09 if the proof pack, accepted implementation outputs, tests, generated-output proof, dependency decision, fixture material, or implementation completion reviews change
+  = must: keep operations control and live machine control unauthorized
+
+& [IR4ImplementationCompletionVerification] is the verification result for the full IR4 implementation proof pack
+  + [accepted_activation_slice] is IR4-IA01
+  + [accepted_activation_slice] is IR4-IA02
+  + [accepted_activation_slice] is IR4-IA03
+  + [accepted_activation_slice] is IR4-IA04
+  + [accepted_activation_slice] is IR4-IA05
+  + [accepted_activation_slice] is IR4-IA06
+  + [accepted_activation_slice] is IR4-IA07
+  + [accepted_activation_slice] is IR4-IA08
+  + [accepted_activation_slice] is IR4-IA09
+  + [activation_boundary_status] is accepted
+  + [fixture_material_status] is accepted
+  + [graph_model_status] is accepted
+  + [checkpoint_interrupt_model_status] is accepted
+  + [pure_runner_status] is accepted
+  + [fixture_runner_status] is accepted
+  + [contract_tests_status] is accepted
+  + [generated_output_proof_status] is accepted
+  + [dependency_decision_status] is accepted_deferral
+  + [proof_pack_status] is accepted
+  + [targeted_test_result] is passed
+  + [baseline_test_result] is passed
+  + [compile_result] is passed
+  + [diff_hygiene_result] is passed_with_crlf_warnings_only
+  + [unresolved_support_gap_count] is 0
+  + [stale_output_count] is 0
+  + [contradiction_count] is 0
+  + [generated_projection_authority_leak_found] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR4ImplementationCompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+
+& [SupportDelta: IR4-IA09] is the support delta produced by IR4 implementation completion
+  + [new_support_record] is IR4LangGraphProofRuntimeImplementationProofPackV1 supports downstream IR5 boundary or readiness work
+  + [new_support_record] is accepted runtime graph proof implementation provides graph state contracts, checkpoint and interrupt validation, pure graph running, fixture corpus execution, generated-output proof, and dependency deferral
+  + [new_support_record] is downstream handoff remains slice-first and proof-first rather than direct surface or operations expansion
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-IA09] is the requirement delta produced by IR4 implementation completion
+  + [requirement_delta] is downstream IR5 boundary work may open and requires deeper reasoning for surface authority display conflicts, projection status, and readiness interpretation
+  + [requirement_delta] is future bounded IR5 implementation work is GPT-5.3-Codex-Spark-suitable only after IR5 slices define bounded fixtures, display rules, or deterministic projection checks
+  + [requirement_delta] is future LangGraph adapter work remains gated until an explicit dependency-authorizing adapter activation slice
+  + [requirement_delta] is no surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized by IR4 completion
+  + [requirement_delta] is no rebake required for IR4 closure
+
+& [StalenessAndContradictionReview: IR4-IA09] is the final staleness review for IR4 implementation
+  + [stale_activation_source_found] is false
+  + [stale_accepted_output_found] is false
+  + [stale_completion_review_found] is false
+  + [contradicted_support_found] is false
+  + [false_ready_IR5_implementation_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR4 implementation proof stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR4-IA09] is the final fault review for IR4 implementation
+  + [generated_projection_authority_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [unlisted_code_file_created] is false
+  + [unlisted_test_file_created] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4IA09Accepted] is accepted
+    @ [support] [IR4ImplementationCompletionVerification]
+    @ [support] [SupportDelta: IR4-IA09]
+    @ [support] [RequirementDelta: IR4-IA09]
+    @ [support] [StalenessAndContradictionReview: IR4-IA09]
+    @ [support] [FaultReview: IR4-IA09]
+
+& [NextChunkGate: IR5] is opened_as_boundary_work_only
+  + [opened_chunk] is downstream IR5 boundary or readiness selection
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [activation_state] is ready_for_downstream_boundary_minting_or_readiness_review
+  + [model_route] is requires deeper reasoning for downstream surface authority/projection handoff
+  + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after downstream slices are accepted and implementation tasks are bounded
+  + [safety_limit] is no operations control or live machine control authorized
+
+  = must: mint or accept downstream boundary work before implementing surface, adapter, operations simulator, operations control, or live machine control layers
+  = must: keep downstream dependencies outside IR4 until the next accepted boundary imports IR4 proof
+  = must: keep operations control and live machine control unauthorized
