@@ -1,0 +1,118 @@
+Subject: IR5 IA04 Completion Review V1
+Date: 2026-05-26
+Review UUID: 67346e11-1558-41ee-9bd6-c7a5a99c577e
+
+@ [activation_slice_surface] docs/slices/IR5_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR5_Bounded_Surface_Implementation_Activation_Boundary.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [previous_completion_review] docs/reviews/IR5_IA03_Completion_Review.v1.sop
+@ [completed_output] src/langsop/surfaces/projectors.py
+@ [completed_output] src/langsop/surfaces/action_routes.py
+@ [completed_output] src/langsop/surfaces/__init__.py
+
+& [CompletedWorkReview: IR5-IA04] is the completed-work review for IR5-IA04 projector and action route implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR5-IA04
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR5-IA04 and open IR5-IA05
+  + [next_gate_result] is IR5-IA05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for generated path policy and fixture runner implementation
+  + [next_model_route_depth] is Spark-suitable
+  + [completed_output] is src/langsop/surfaces/projectors.py
+  + [completed_output_sha256] is EC4E3084A5FBE0DDD22C12F6C5788A933779CF250B6F420C01E08A181EA97CD5
+  + [completed_output] is src/langsop/surfaces/action_routes.py
+  + [completed_output_sha256] is 29F46619E5F7576DC1B909C6B756A5730319240D015BF8B95FF7169BEA6EE5E4
+  + [completed_output] is src/langsop/surfaces/__init__.py
+  + [completed_output_sha256] is 947D4FDFEFCE8A81A314831F465C16298064EBED42444E4BC0C6B88E1DB0D4A0
+
+  = must: treat this review as gate-opening evidence for IR5-IA05 only
+  = must: rerun this review if projector code, action route code, authority display models, projection state models, fixture index, or IR5-IA03 completion review changes
+  = must: keep tests, dependency installation, package metadata mutation, adapter implementation, UI implementation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR5IA04Verification] is the verification result for IR5-IA04
+  + [projector_module_present] is true
+  + [action_route_module_present] is true
+  + [manager_projection_supported] is true
+  + [worker_projection_supported] is true
+  + [stale_projection_supported] is true
+  + [narrative_projection_supported] is true
+  + [debug_projection_supported] is true
+  + [conversation_projection_supported] is true
+  + [adapter_event_projection_supported] is true
+  + [langflow_projection_supported] is true
+  + [divergence_notice_supported] is true
+  + [completion_gate_refusal_supported] is true
+  + [ir4_runtime_graph_handoff_supported] is true
+  + [operation_request_projection_supported] is true
+  + [direct_source_write_refusal_supported] is true
+  + [baseline_compile_command] is passed
+  + [baseline_test_command] is passed
+  + [manual_projector_smoke_validation] is passed
+  + [generated_path_policy_implemented] is false
+  + [fixture_runner_implemented] is false
+  + [generated_projection_created] is false
+  + [generated_report_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR5IA04VerificationSatisfied] is accepted
+    @ [support] src/langsop/surfaces/projectors.py
+    @ [support] src/langsop/surfaces/action_routes.py
+    @ [support] src/langsop/surfaces/__init__.py
+
+& [SupportDelta: IR5-IA04] is the support delta produced by IR5-IA04
+  + [new_support_record] is IR5 can build projection-only manager, worker, stale, narrative, debug, conversation, adapter, Langflow, divergence, completion gate, IR4 runtime handoff, and operation request records with validated authority and state envelopes
+  + [new_support_record] is IR5 action route classifier returns allowed, blocked, refused, or interrupt decisions without source mutation or live control
+  + [new_support_record] is direct mutation and live-control action classes are refused at the route layer
+  + [support_status] is accepted
+
+& [RequirementDelta: IR5-IA04] is the requirement delta produced by IR5-IA04
+  + [requirement_delta] is IR5-IA05 may implement only generated path policy and fixture runner files named in the activation boundary
+  + [requirement_delta] is IR5-IA05 remains GPT-5.3-Codex-Spark-suitable because generated path and fixture runner behavior is bounded by accepted projectors, action routes, and generated-output roots
+  + [requirement_delta] is no tests, dependency installation, adapter implementation, UI implementation, operations simulator, operations control, or live machine control is authorized by IR5-IA04
+
+& [FaultReview: IR5-IA04] is the fault review for IR5-IA04
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [generated_output_leak_found] is false
+  + [generated_path_policy_leak_found] is false
+  + [fixture_runner_code_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR5IA04Accepted] is accepted
+    @ [support] [IR5IA04Verification]
+    @ [support] [SupportDelta: IR5-IA04]
+    @ [support] [RequirementDelta: IR5-IA04]
+    @ [support] [FaultReview: IR5-IA04]
+
+& [NextSliceGate: IR5-IA05] is opened
+  + [opened_slice] is IR5-IA05 generated path policy and fixture runner implementation
+  + [accepted_dependency] is src/langsop/surfaces/projectors.py
+  + [accepted_dependency_sha256] is EC4E3084A5FBE0DDD22C12F6C5788A933779CF250B6F420C01E08A181EA97CD5
+  + [accepted_dependency] is src/langsop/surfaces/action_routes.py
+  + [accepted_dependency_sha256] is 29F46619E5F7576DC1B909C6B756A5730319240D015BF8B95FF7169BEA6EE5E4
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is generated path policy and fixture runner implementation is bounded by accepted roots and projection-only semantics
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR5-IA05 next unless user redirects or a new fault invalidates this review
