@@ -1,0 +1,174 @@
+Subject: Authority Notice Projection Contract V1
+Date: 2026-05-26
+Contract UUID: 9153d01d-72fa-4746-a59d-d0ce980da881
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [completion_gate_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [trace_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+
+& [AuthorityNoticeProjectionContractV1] is the FSC4 contract for projection records, authority notices, freshness, state visibility, and mutation routing
+  + [contract_id] is authority-notice-projection-contract-v1
+  + [contract_uuid] is 9153d01d-72fa-4746-a59d-d0ce980da881
+  + [slice_id] is FSC4-S02
+  + [authority_scope] is projection record schema, authority_notice contract, freshness display rule, state visibility rule, mutation-through-operator rule, and projection refusal contract
+  + [implementation_scope] is projection contract only
+  + [boundary_dependency] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+
+  = must: define the record shape every FSC4 projection contract consumes
+  = must: expose authority and freshness before projected state can be used for decisions
+  = must: route authority-sensitive actions through accepted operators, SOP-first interrupts, coordination review, human override, or completion review gates
+  - never: implement UI components, adapters, transports, Langflow export, runtime code, or operations control in this contract
+
+& [ProjectionRecordSchema] is the common record shape for projected surface records
+  + [required_field] is projection_id
+  + [required_field] is projection_kind
+  + [required_field] is projected_subject_ref
+  + [required_field] is source_record_ref_set
+  + [required_field] is lineage_edge_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_rule_ref
+  + [required_field] is freshness_state
+  + [required_field] is projected_status
+  + [required_field] is carrier_surface
+  + [required_field] is generated_at
+  + [required_field] is invalidation_ref_set
+  + [required_field] is supported_action_route_set
+  + [required_field] is forbidden_action_set
+  + [required_field] is mutation_boundary_ref
+  + [projection_kind] is manager_summary_projection
+  + [projection_kind] is worker_packet_projection
+  + [projection_kind] is narrative_projection
+  + [projection_kind] is debug_trace_projection
+  + [projection_kind] is conversation_projection
+  + [projection_kind] is adapter_event_projection
+  + [projection_kind] is langflow_graph_projection
+
+  = must: preserve source_ref_set and lineage_edge_set from the projected authority-bearing records
+  = must: keep generated projection identity distinct from source record identity
+
+& [AuthorityNoticeContract] is the authority notice contract for decision-making projections
+  + [required_field] is authority_notice_id
+  + [required_field] is notice_subject_ref
+  + [required_field] is projected_authority_state
+  + [required_field] is source_authority_ref_set
+  + [required_field] is derived_from_ref_set
+  + [required_field] is freshness_state
+  + [required_field] is trust_limit
+  + [required_field] is permitted_action_set
+  + [required_field] is forbidden_action_set
+  + [required_field] is required_route_set
+  + [required_field] is risk_reason
+  + [notice_required_when] is projection may influence human or agent decisions
+  + [notice_required_when] is projected state is derived, staleable, stale, ambiguous, blocked, faulted, interrupted, contested, pending review, or lower authority than the invited action
+  + [notice_required_when] is carrier surface accepts user or agent input
+  + [notice_required_when] is adapter output could be mistaken for accepted proof or completion
+  + [notice_required_when] is Langflow projection displays executable-looking graph structure
+
+  = must: make authority limits visible before action selection
+  = must: reject projections that omit required authority notices
+
+& [FreshnessDisplayRule] is the freshness rule for projected records
+  + [freshness_state] is fresh
+  + [freshness_state] is stale
+  + [freshness_state] is unknown
+  + [freshness_state] is contested
+  + [freshness_state] is interrupted
+  + [freshness_state] is blocked
+  + [freshness_state] is faulted
+  + [freshness_state] is pending_review
+  + [freshness_input] is source_record_ref_set
+  + [freshness_input] is lineage_edge_set
+  + [freshness_input] is accepted_boundary_pack_hash
+  + [freshness_input] is operator_trace_ref_set
+  + [freshness_input] is completion_review_ref
+  + [freshness_input] is coordination_claim_ref_set
+  + [freshness_input] is interrupt_context_ref
+  + [freshness_input] is invalidation_ref_set
+
+  = must: display non-fresh states before actions that depend on fresh authority
+  = must: force stale or unknown when source freshness cannot be proven from accepted records
+
+& [StateVisibilityRule] is the rule for blocked, stale, faulted, interrupted, contested, and pending-review projections
+  + [visible_state] is blocked
+  + [visible_state] is stale
+  + [visible_state] is faulted
+  + [visible_state] is interrupted
+  + [visible_state] is contested
+  + [visible_state] is pending_review
+  + [visible_state] is unsupported_scope
+  + [visible_state] is hidden_write_prevented
+  + [display_obligation] is blocker_ref_set
+  + [display_obligation] is required_resolution
+  + [display_obligation] is stale_source_ref_set
+  + [display_obligation] is fault_record_ref
+  + [display_obligation] is interrupt_context_ref
+  + [display_obligation] is coordination_claim_ref_set
+  + [display_obligation] is completion_review_ref
+
+  = must: prevent blocked, stale, faulted, interrupted, contested, or pending-review state from rendering as completed work
+  = must: preserve enough visible context for another user, agent, or conversation to understand the stop condition
+
+& [MutationThroughOperatorRule] is the mutation route contract for actions initiated from projections
+  + [action_kind] is observe
+  + [action_kind] is comment
+  + [action_kind] is propose
+  + [action_kind] is request_work_packet
+  + [action_kind] is request_claim
+  + [action_kind] is request_interrupt_resolution
+  + [action_kind] is request_human_override
+  + [action_kind] is request_completion_review
+  + [authority_sensitive_action] is request_work_packet
+  + [authority_sensitive_action] is request_claim
+  + [authority_sensitive_action] is request_interrupt_resolution
+  + [authority_sensitive_action] is request_human_override
+  + [authority_sensitive_action] is request_completion_review
+  + [allowed_route] is accepted operator contract
+  + [allowed_route] is SOP-first interrupt
+  + [allowed_route] is coordination review
+  + [allowed_route] is explicit human override record with authority_notice
+  + [allowed_route] is completion_review_delta_gate
+  + [blocked_route] is direct canonical specification write
+  + [blocked_route] is direct accepted pack write
+  + [blocked_route] is direct completion review acceptance
+  + [blocked_route] is direct source authority mutation
+  + [blocked_route] is direct operations command
+
+  = must: emit a traceable action request or interrupt context instead of mutating source authority directly
+  = must: classify unsupported or ambiguous actions as interrupted rather than successful
+
+& [ProjectionRefusalContract] is the refusal contract for unsafe projection states
+  + [refusal_reason] is missing_source_ref_set
+  + [refusal_reason] is missing_lineage_edge_set
+  + [refusal_reason] is missing_authority_notice
+  + [refusal_reason] is missing_freshness_rule
+  + [refusal_reason] is hidden_blocked_state
+  + [refusal_reason] is hidden_fault_state
+  + [refusal_reason] is hidden_interrupt_state
+  + [refusal_reason] is unsupported_action_route
+  + [refusal_output] is projection_fault_record
+  + [refusal_output] is stale_projection
+  + [refusal_output] is blocked_projection
+  + [refusal_output] is sop_first_interrupt_context
+
+  = must: refuse unsafe projection rather than showing a misleading usable surface
+  = must: preserve enough evidence for completion review and downstream fixture planning
+
+& [AuthorityNoticeProjectionCoverageReview] is the FSC4-S02 coverage checklist
+  + [projection_record_schema_present] is ProjectionRecordSchema
+  + [authority_notice_contract_present] is AuthorityNoticeContract
+  + [freshness_display_rule_present] is FreshnessDisplayRule
+  + [state_visibility_rule_present] is StateVisibilityRule
+  + [mutation_through_operator_rule_present] is MutationThroughOperatorRule
+  + [projection_refusal_contract_present] is ProjectionRefusalContract
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is Langflow export implementation
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC4-S02 if projections can hide authority, freshness, blocked, stale, faulted, interrupted, contested, or pending-review state
+  = must: open FSC4-S03 only after this contract is accepted by completion review

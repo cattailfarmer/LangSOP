@@ -1,0 +1,89 @@
+Subject: FSC4-S02 Completion Review V1
+Date: 2026-05-26
+Review UUID: a4a23825-8903-4e6d-9865-8b4f87ad1841
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [work_state] docs/state/FSC4_Work_State.v1.sop
+@ [completed_output] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [accepted_input] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_input] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+
+& [CompletedWorkReview: FSC4-S02] is the completion review for authority notice and projection record contract
+  + [slice_id] is FSC4-S02
+  + [slice_name] is authority notice and projection record contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [completed_output_sha256] is CC5C7AF6E6CDD98F3FDA32204A7A4BA24A07366BE61F52843E91E7B01DA09E06
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is FSC4-S03 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for FSC4-S03
+  = must: rerun review if Authority_Notice_Projection_Contract.v1.sop changes
+  = should: route FSC4-S03 to deeper reasoning because manager and worker projections can influence task assignment and completion judgment
+
+& [VerificationOracleResult: FSC4-S02] is the verification result for authority notice projection contract coverage
+  + [projection_record_schema_present] is ProjectionRecordSchema
+  + [authority_notice_contract_present] is AuthorityNoticeContract
+  + [freshness_display_rule_present] is FreshnessDisplayRule
+  + [state_visibility_rule_present] is StateVisibilityRule
+  + [mutation_through_operator_rule_present] is MutationThroughOperatorRule
+  + [projection_refusal_contract_present] is ProjectionRefusalContract
+  + [authority_notice_required_for_decision_projections] is true
+  + [freshness_state_required] is true
+  + [blocked_stale_fault_interrupt_visibility_required] is true
+  + [unsupported_action_interrupt_required] is true
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is Langflow export implementation
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is operations control
+
+  ! [FSC4S02VerificationSatisfied] is accepted
+    @ [support] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+
+& [SupportDelta: FSC4-S02] is the support delta produced by this slice
+  + [new_support_record] is AuthorityNoticeProjectionContractV1 supports FSC4-S03 manager and worker projection contracts
+  + [new_support_record] is ProjectionRecordSchema provides the common surface record basis for all FSC4 projection slices
+  + [new_support_record] is MutationThroughOperatorRule supports future conversation and adapter projection contracts
+  + [support_status] is accepted
+
+& [RequirementDelta: FSC4-S02] is the requirement delta produced by this slice
+  + [requirement_delta] is FSC4-S03 must consume ProjectionRecordSchema, AuthorityNoticeContract, FreshnessDisplayRule, StateVisibilityRule, and MutationThroughOperatorRule
+  + [requirement_delta] is manager projection cannot assign or dispatch by itself
+  + [requirement_delta] is worker projection cannot claim completion by itself
+  + [requirement_delta] is no UI, adapter, transport, Langflow, runtime, or operations implementation authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: FSC4-S02] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [ui_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [langflow_export_implementation_leak_found] is false
+  + [runtime_implementation_leak_found] is false
+  + [operations_scope_leak_found] is false
+  + [authority_notice_omission_found] is false
+  + [surface_authority_promotion_found] is false
+
+  ! [FSC4S02Accepted] is accepted
+    @ [support] [VerificationOracleResult: FSC4-S02]
+    @ [support] [SupportDelta: FSC4-S02]
+    @ [support] [RequirementDelta: FSC4-S02]
+    @ [support] [FaultReview: FSC4-S02]
+
+& [NextSliceGate: FSC4-S03] is opened
+  + [opened_slice] is FSC4-S03 manager and worker projection contracts
+  + [accepted_input] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [accepted_input] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [accepted_input_sha256] is CC5C7AF6E6CDD98F3FDA32204A7A4BA24A07366BE61F52843E91E7B01DA09E06
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager and worker projections can influence work selection, readiness judgment, and completion trust
+  + [completion_review_required] is true
+
+  = must: execute FSC4-S03 next unless user redirects or a new fault invalidates this review
