@@ -1,0 +1,97 @@
+Subject: IR1-S02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 18a9d197-6b95-4f9f-be69-a53a9dc5772e
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [completed_output] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [accepted_input] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+
+& [CompletedWorkReview: IR1-S02] is the completion review for language runtime and package tooling decision
+  + [slice_id] is IR1-S02
+  + [slice_name] is language runtime and package tooling decision
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [completed_output_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR1-S03 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR1-S03
+  = must: rerun review if IR1_Language_Runtime_And_Tooling_Decision.v1.sop changes
+
+& [VerificationOracleResult: IR1-S02] is the verification result for tooling decision coverage
+  + [selected_runtime_stack_present] is SelectedRuntimeStack
+  + [package_dependency_policy_present] is PackageAndDependencyPolicy
+  + [script_boundary_policy_present] is ScriptBoundaryPolicy
+  + [local_dev_command_policy_present] is LocalDevCommandPolicy
+  + [tooling_invalidation_conditions_present] is ToolingInvalidationConditionSet
+  + [primary_language] is Python
+  + [target_runtime] is Python 3.12 baseline compatibility target
+  + [local_runtime_observed] is Python 3.13.5
+  + [baseline_package_manager] is python -m venv plus python -m pip
+  + [uv_required] is false
+  + [package_installation_performed] is false
+  + [code_scaffold_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [forbidden_scope_absent] is package installation
+  + [forbidden_scope_absent] is code scaffolding
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR1S02VerificationSatisfied] is accepted
+    @ [support] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+
+& [SupportDelta: IR1-S02] is the support delta produced by this slice
+  + [new_support_record] is IR1LanguageRuntimeAndToolingDecisionV1 supports IR1-S03 repository layout and generated artifact policy
+  + [new_support_record] is PackageAndDependencyPolicy supports later scaffold and lockfile decisions without installing dependencies now
+  + [new_support_record] is ScriptBoundaryPolicy supports test harness and fixture execution shape
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1-S02] is the requirement delta produced by this slice
+  + [requirement_delta] is IR1-S03 must lay out Python project boundaries using pyproject.toml metadata and generated-artifact non-authority rules
+  + [requirement_delta] is IR1-S03 requires deeper reasoning
+  + [requirement_delta] is no package installation, code scaffolding, parser implementation, SQLite builder implementation, LangGraph implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR1-S02] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [package_installation_leak_found] is false
+  + [code_scaffolding_leak_found] is false
+  + [parser_implementation_leak_found] is false
+  + [sqlite_builder_implementation_leak_found] is false
+  + [langgraph_implementation_leak_found] is false
+  + [surface_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR1S02Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR1-S02]
+    @ [support] [SupportDelta: IR1-S02]
+    @ [support] [RequirementDelta: IR1-S02]
+    @ [support] [FaultReview: IR1-S02]
+
+& [NextSliceGate: IR1-S03] is opened
+  + [opened_slice] is IR1-S03 repository layout and generated artifact policy
+  + [accepted_input] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [accepted_input] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [accepted_input_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is layout controls authority/projection separation and downstream file ownership
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR1-S03 next unless user redirects or a new fault invalidates this review

@@ -1,0 +1,108 @@
+Subject: IR1 Language Runtime And Tooling Decision V1
+Date: 2026-05-26
+Decision UUID: a098a0e4-91db-4eb9-a4ae-25c0ad2cf70b
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [substrate_boundary] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [foundation_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [runtime_graph_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR1LanguageRuntimeAndToolingDecisionV1] is the IR1-S02 decision for language runtime and package tooling
+  + [decision_id] is ir1-language-runtime-and-tooling-decision-v1
+  + [decision_uuid] is a098a0e4-91db-4eb9-a4ae-25c0ad2cf70b
+  + [slice_id] is IR1-S02
+  + [decision_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is tooling decision only
+
+  = must: choose tooling that supports SOP authority files, rebuildable SQLite projection, fixture execution, LangGraph integration, and future surface prototypes without elevating generated artifacts to authority
+  = must: avoid package installation, code scaffolding, parser implementation, SQLite builder implementation, LangGraph runtime implementation, surface implementation, operations simulator implementation, operations control, and live machine control in this slice
+
+& [SelectedRuntimeStack] is the selected implementation stack for IR1
+  + [primary_language] is Python
+  + [target_runtime] is Python 3.12 as baseline compatibility target
+  + [local_runtime_observed] is Python 3.13.5
+  + [runtime_policy] is code should be authored to run on Python 3.12+ unless a later dependency forces a narrower target through completion review
+  + [package_metadata_format] is pyproject.toml using PEP 621 project metadata
+  + [baseline_package_manager] is python -m venv plus python -m pip
+  + [optional_accelerator] is uv may be adopted later by explicit slice if installed or intentionally added
+  + [optional_node_role] is Node may support future frontend or tooling surfaces but is not the primary runtime for kernel, parser, projection, or LangGraph work
+
+  = must: keep Python as the substrate for authority parsing, SQLite projection, operator harness, fixture runner, and LangGraph proof runtime unless a future rebake changes the decision
+  = must: keep Node out of core authority/runtime implementation until a surface-specific slice authorizes it
+
+& [PackageAndDependencyPolicy] is the package and dependency policy for IR1
+  + [dependency_start_state] is no external runtime dependency is required for initial scaffold placeholders
+  + [dependency_declaration] is pyproject.toml may declare project metadata before dependencies exist
+  + [dependency_addition_rule] is external dependencies may be added only by a slice whose expected output includes dependency declaration or installation
+  + [lockfile_policy] is no lockfile is required before external dependencies exist
+  + [lockfile_policy] is the first slice that adds external dependencies must define and review the lockfile mechanism
+  + [dependency_cache_policy] is dependency caches are generated artifacts and never authority
+  + [tool_installation_policy] is this decision does not install tools
+  + [uv_policy] is uv is optional and not required because it is not present in the current local environment
+
+  = must: preserve reproducibility through reviewed dependency declaration and completion review, not through hidden local environment state
+
+& [ScriptBoundaryPolicy] is the script boundary for future package metadata
+  + [allowed_script_class] is validation command
+  + [allowed_script_class] is test command
+  + [allowed_script_class] is fixture command
+  + [allowed_script_class] is projection rebuild command
+  + [allowed_script_class] is format or lint command
+  + [forbidden_script_effect] is mutate SOP authority without explicit source-preserving operator
+  + [forbidden_script_effect] is treat generated SQLite or cache output as source authority
+  + [forbidden_script_effect] is run LangGraph workflow before IR4 authorization
+  + [forbidden_script_effect] is open network listener
+  + [forbidden_script_effect] is access credentials or secrets
+  + [forbidden_script_effect] is launch process or GPU workload
+  + [forbidden_script_effect] is dispatch jobs
+  + [forbidden_script_effect] is perform destructive filesystem actions
+
+  = must: require every future script to state its authority limit and generated artifact policy before it is trusted
+
+& [LocalDevCommandPolicy] is the local development command policy for future scaffold work
+  + [candidate_command] is python -m venv .venv
+  + [candidate_command] is python -m pip install -e .[dev]
+  + [candidate_command] is python -m pytest
+  + [candidate_command] is python -m langsop_cli when a later slice creates an entry point
+  + [candidate_command_status] is candidate_only_until_IR1-S05_or_later_authorizes_scaffold_files
+  + [command_authority_limit] is local dev commands are convenience projections over accepted source files and tests
+
+  = must: not run package installation or scaffold commands in IR1-S02
+  = must: review local command effects before any future slice uses them as verification
+
+& [ToolingInvalidationConditionSet] is the invalidation set for this tooling decision
+  + [invalidated_by] is change to IR1-S01 substrate boundary
+  + [invalidated_by] is accepted dependency requiring runtime unsupported by Python 3.12+
+  + [invalidated_by] is LangGraph integration proof requiring a different runtime boundary
+  + [invalidated_by] is multi-user surface implementation requiring a separate frontend package boundary
+  + [invalidated_by] is generated artifact policy contradiction
+  + [invalidated_by] is package tooling creating hidden authority state
+  + [invalidated_by] is operations control or live machine control leak
+
+  = must: rerun IR1-S02 review if any invalidation condition is found
+
+& [IR1S02CoverageReview] is the coverage checklist for IR1-S02
+  + [selected_runtime_stack_present] is SelectedRuntimeStack
+  + [package_dependency_policy_present] is PackageAndDependencyPolicy
+  + [script_boundary_policy_present] is ScriptBoundaryPolicy
+  + [local_dev_command_policy_present] is LocalDevCommandPolicy
+  + [tooling_invalidation_conditions_present] is ToolingInvalidationConditionSet
+  + [python_runtime_selected] is true
+  + [pyproject_metadata_selected] is true
+  + [baseline_package_manager_selected] is python -m venv plus python -m pip
+  + [package_installation_performed] is false
+  + [code_scaffold_created] is false
+  + [forbidden_scope_absent] is package installation
+  + [forbidden_scope_absent] is code scaffolding
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: open IR1-S03 only after this decision is accepted by completion review
