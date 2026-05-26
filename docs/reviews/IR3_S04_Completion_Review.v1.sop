@@ -1,0 +1,110 @@
+Subject: IR3 S04 Completion Review V1
+Date: 2026-05-26
+Review UUID: ea8c77e4-464e-40b8-bfb8-fa2230006f78
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+@ [operator_boundary] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [runner_trace_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+@ [fixture_io_policy] docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+@ [previous_review] docs/reviews/IR3_S03_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-S04] is the completed-work review for IR3 implementation file inventory and activation plan
+  + [slice_id] is IR3-S04
+  + [slice_name] is implementation file inventory and activation plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+  + [completed_output_sha256] is 8B50973CE50BB0FD50200234B9D6094092D0ECDEC200CF99DFEA8B40435FA632
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-S04 as the exact future code and test file inventory, public API boundary, generated trace writer policy, fixture runner boundary, command plan, dependency boundary, proof checklist, and activation gate
+  + [next_gate_result] is IR3-S05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR3-S04 acceptance because fixture planning is bounded by accepted boundary, runner contract, fixture IO policy, and implementation activation plan
+
+  = must: treat this review as the gate-opening evidence for IR3-S05 only
+  = must: rerun this review if the implementation plan, IR3-S03 fixture IO policy, IR3-S02 runner contract, IR3-S01 boundary, IR3 canonical specification, or IR3 slice surface changes
+  = must: keep implementation code, fixture source, expected ledgers, generated traces, operations control, and live machine control gated until their specific slices open
+
+& [IR3S04Verification] is the verification result for implementation file inventory and activation plan
+  + [implementation_file_inventory_present] is true
+  + [allowed_standard_library_set_present] is true
+  + [public_api_boundary_present] is true
+  + [no_mutation_source_reader_policy_present] is true
+  + [generated_trace_writer_policy_present] is true
+  + [fixture_runner_implementation_boundary_present] is true
+  + [implementation_command_plan_present] is true
+  + [implementation_proof_checklist_present] is true
+  + [activation_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3S04VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+
+& [SupportDelta: IR3-S04] is the support delta produced by the accepted implementation activation plan
+  + [new_support_record] is IR3OperatorHarnessImplementationPlanV1 supports IR3-S05 fixture and expected trace ledger planning
+  + [new_support_record] is future implementation file inventory is bounded to src/langsop/operators/contracts.py, runner.py, traces.py, fixture_runner.py, src/langsop/operators/__init__.py, and tests/test_ir3_operator_harness_contracts.py
+  + [new_support_record] is dependency boundary is Python standard library only and external dependency set remains empty
+  + [new_support_record] is IR3-S05 is GPT-5.3-Codex-Spark-suitable because fixture planning is now bounded by accepted upstream contracts
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-S04] is the requirement delta produced by the accepted implementation activation plan
+  + [requirement_delta] is IR3-S05 must define fixture case matrix, expected trace ledger plan, acceptance/refusal/fault cases, generated-output cleanup expectations, and future implementation test oracle inside accepted roots
+  + [requirement_delta] is future code creation remains gated until IR3-S06 completion review and implementation activation pack, or a future explicit implementation activation review, opens bounded implementation
+  + [requirement_delta] is no code, fixture source, expected ledger, generated trace, dependency installation, operations control, or live machine control is authorized by IR3-S04
+  + [requirement_delta] is no rebake required before IR3-S05
+
+& [StalenessAndContradictionReview: IR3-S04] is the staleness review for this completion
+  + [stale_IR3_S03_fixture_io_policy_found] is false
+  + [stale_IR3_S02_runner_contract_found] is false
+  + [stale_IR3_S01_boundary_found] is false
+  + [stale_IR3_canonical_found] is false
+  + [stale_IR3_slice_surface_found] is false
+  + [contradicted_file_inventory_found] is false
+  + [contradicted_generated_output_policy_found] is false
+  + [false_ready_IR3_S05_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3-S04 stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-S04] is the fault review for implementation file inventory and activation plan
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [unbounded_file_inventory_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3S04Accepted] is accepted
+    @ [support] [IR3S04Verification]
+    @ [support] [SupportDelta: IR3-S04]
+    @ [support] [RequirementDelta: IR3-S04]
+    @ [support] [StalenessAndContradictionReview: IR3-S04]
+    @ [support] [FaultReview: IR3-S04]
+
+& [NextSliceGate: IR3-S05] is opened
+  + [opened_slice] is IR3-S05 operator harness fixture and expected trace ledger plan
+  + [accepted_boundary_input] is docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 8B50973CE50BB0FD50200234B9D6094092D0ECDEC200CF99DFEA8B40435FA632
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR3-S04 acceptance and bounded fixture scope
+  + [model_route_reason] is fixture planning is bounded by accepted operator boundary, runner trace contract, fixture IO policy, and implementation activation plan
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-S05 next unless user redirects or a new fault invalidates this review

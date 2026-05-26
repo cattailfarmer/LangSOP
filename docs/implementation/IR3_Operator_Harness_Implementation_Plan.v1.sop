@@ -1,0 +1,180 @@
+Subject: IR3 Operator Harness Implementation Plan V1
+Date: 2026-05-26
+Plan UUID: 9f943b75-4ea6-4b15-a63d-40afa4425314
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [operator_boundary] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [runner_trace_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+@ [fixture_io_policy] docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+@ [existing_scaffold] src/langsop/operators/__init__.py
+@ [existing_tests] tests/test_scaffold_imports.py
+
+& [IR3OperatorHarnessImplementationPlanV1] is the IR3-S04 plan for bounded operator harness implementation activation
+  + [plan_id] is ir3-operator-harness-implementation-plan-v1
+  + [plan_uuid] is 9f943b75-4ea6-4b15-a63d-40afa4425314
+  + [slice_id] is IR3-S04
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is implementation file inventory and activation plan only
+
+  = must: define future implementation files, public API boundaries, generated trace writer boundaries, fixture runner boundaries, command plan, dependency boundary, and proof checklist
+  = must: preserve that actual code creation remains gated until a later activation pack or implementation slice accepts it
+  = must: keep all future implementation side effects inside accepted generated output roots
+  - never: write operator harness code, fixture source, expected ledgers, generated traces, tests, dependencies, operations control, or live machine control in this slice
+
+& [ImplementationFileInventory: IR3OperatorHarness] is the future file inventory for bounded IR3 implementation
+  + [future_code_file] is src/langsop/operators/contracts.py
+  + [future_code_file_role] is define frozen dataclasses and validation helpers for operator contracts, operator requests, operator results, refusals, faults, and trace event envelopes
+  + [future_code_file] is src/langsop/operators/runner.py
+  + [future_code_file_role] is evaluate contract-driven operator requests against accepted contracts, input refs, safety limits, refusal rules, and fault rules without live dispatch
+  + [future_code_file] is src/langsop/operators/traces.py
+  + [future_code_file_role] is build non-authoritative trace events, non-authority warnings, deterministic trace identities, generated output manifests, and stale trace markers
+  + [future_code_file] is src/langsop/operators/fixture_runner.py
+  + [future_code_file_role] is load tracked fixture source and expected ledgers, run accepted in-process operator functions, write generated traces only under accepted roots, and compare trace facts to expected ledgers
+  + [future_code_file] is src/langsop/operators/__init__.py
+  + [future_code_file_role] is expose only bounded operator harness APIs after implementation activation and keep live-control names absent
+  + [future_test_file] is tests/test_ir3_operator_harness_contracts.py
+  + [future_test_file_role] is contract tests over runner request validation, refusal/fault outcomes, trace identity, generated path refusal, non-authority warnings, and no live-control API exposure
+
+  = must: treat this file inventory as the maximum implementation candidate set until IR3 completion review or a future rebake changes it
+  = must: require deeper reasoning review before creating or editing files outside this inventory for IR3 operator harness implementation
+  = must: keep implementation code creation gated until a later accepted implementation activation slice opens it
+
+& [AllowedStandardLibrarySet: IR3OperatorHarness] is the implementation dependency boundary for IR3 code
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+
+  = must: use Python standard library only for the first IR3 implementation pass
+  = must: require a dependency-authorizing slice before adding external packages or lockfiles
+
+& [PublicAPIBoundary: IR3OperatorHarness] is the future public API boundary for IR3 implementation
+  + [api] is validate_operator_request(request, contract_index, authority_index, policy) returns validation_result, refusal, or fault
+  + [api] is run_contract_operator(request, operator_function, input_records, policy) returns operator_result and operator_trace
+  + [api] is build_operator_trace(request, outcome, input_refs, output_refs, trace_policy) returns non-authoritative trace event
+  + [api] is validate_generated_output_path(path, generated_output_policy) returns accepted generated path or refusal
+  + [api] is run_operator_fixture(fixture_case, expected_ledger, runner_policy) returns generated fixture comparison report
+  + [api_status] is future implementation target only
+
+  = must: keep APIs pure or generated-output-bounded where possible
+  = must: make refusal, fault, stale, and non-authority status visible in return values
+  = must: return blocked or fault reports instead of throwing away ambiguous authority material
+  = must: avoid APIs named or shaped as live dispatch, job control, process control, GPU control, network control, or operations control
+
+& [NoMutationSourceReaderPolicy: IR3OperatorHarness] is the future source-reader safety policy
+  + [read_scope] is accepted docs/, accepted fixture source roots, accepted expected ledger roots, and generated projections with source lineage
+  + [write_scope] is generated roots accepted by IR3-S03 only
+  + [forbidden_write] is docs/**
+  + [forbidden_write] is README.md
+  + [forbidden_write] is pyproject.toml
+  + [forbidden_write] is platform/**
+  + [forbidden_write] is src/** during runtime execution
+  + [forbidden_write] is tests/fixtures/sop/**
+  + [forbidden_write] is tests/fixtures/expected/**
+  + [forbidden_write] is tests/** during runtime execution except future test-created generated output under tests/fixtures/generated/ir3_operator_harness/
+
+  = must: treat source mutation attempts as implementation faults
+  = must: keep validation and trace-building side-effect-free except for explicit generated diagnostics returned to caller
+
+& [GeneratedTraceWriterPolicy: IR3OperatorHarness] is the future generated trace writer policy
+  + [allowed_write_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [allowed_write_root] is tests/fixtures/generated/ir3_operator_harness/traces/
+  + [allowed_write_root] is tests/fixtures/generated/ir3_operator_harness/reports/
+  + [allowed_write_root] is .langsop/traces/ir3_operator_harness/
+  + [allowed_write_root] is .langsop/reports/ir3_operator_harness/
+  + [allowed_write_root] is .langsop/fixtures/ir3_operator_harness/
+  + [write_precondition] is operator_request validated
+  + [write_precondition] is operator contract version resolved
+  + [write_precondition] is authority basis and source hashes captured
+  + [write_precondition] is generated output root validated inside accepted root
+  + [write_precondition] is non_authority_warning present
+  + [write_result] is generated projection only
+
+  = must: refuse writes outside accepted generated roots
+  = must: preserve failed runner reports without mutating SOP authority
+  = must: make generated artifacts disposable and reproducible
+
+& [FixtureRunnerImplementationBoundary] is the future fixture runner boundary for IR3 implementation
+  + [allowed_fixture_source_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [allowed_expected_ledger_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [allowed_generated_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [fixture_execution_mode] is in_process_pure_operator_only
+  + [fixture_execution_forbidden] is shell execution
+  + [fixture_execution_forbidden] is subprocess control
+  + [fixture_execution_forbidden] is job dispatch
+  + [fixture_execution_forbidden] is network access
+  + [fixture_execution_forbidden] is credential access
+  + [fixture_execution_forbidden] is process control
+  + [fixture_execution_forbidden] is GPU control
+  + [fixture_execution_forbidden] is live machine control
+
+  = must: compare generated traces to tracked expected ledgers without promoting traces to authority
+  = must: fail closed when fixture source, expected ledger, or generated root is outside accepted policy
+
+& [ImplementationCommandPlan: IR3OperatorHarness] is the future command and verification plan for IR3 implementation
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [future_targeted_test] is python -m unittest tests.test_ir3_operator_harness_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [fixture_policy] is tests must use tracked fixture source and expected ledgers, with generated outputs under tests/fixtures/generated/ir3_operator_harness/
+  + [trace_policy] is tests may create generated trace files only under generated paths and must not track them
+
+  = must: run baseline tests and diff hygiene after every future implementation slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir3_operator_harness_contracts exists
+
+& [ImplementationProofChecklist: IR3OperatorHarness] is the proof checklist for later code activation
+  + [proof_check] is implementation files match ImplementationFileInventory: IR3OperatorHarness
+  + [proof_check] is external dependency set remains empty
+  + [proof_check] is operator_request validation rejects missing contract version, missing authority, undeclared output kinds, unsafe operations requests, and refusal_allowed false
+  + [proof_check] is runner returns refusal or fault records instead of silent success for stale, ambiguous, unsupported, or unsafe inputs
+  + [proof_check] is trace events preserve trace identity fields, source refs, generated output refs, and non-authority warnings
+  + [proof_check] is generated trace writer refuses writes outside accepted generated roots
+  + [proof_check] is fixture runner reads only tracked fixture source and expected ledgers and writes only generated outputs
+  + [proof_check] is generated traces and reports are ignored, disposable, and reproducible
+  + [proof_check] is source files, expected ledgers, and tracked SOP authority are not mutated by runtime code or tests
+  + [proof_check] is operations control and live machine control remain absent
+
+  = must: require completion review before any implementation output is accepted
+  = must: fail implementation review if any proof check fails
+
+& [ActivationGate: IR3OperatorHarnessImplementation] is the activation boundary created by this implementation plan
+  + [code_creation_authorized_by_this_slice] is false
+  + [fixture_creation_authorized_by_this_slice] is false
+  + [expected_ledger_creation_authorized_by_this_slice] is false
+  + [generated_trace_creation_authorized_by_this_slice] is false
+  + [next_slice_after_review] is IR3-S05 operator harness fixture and expected trace ledger plan
+  + [IR3-S05_model_route] is GPT-5.3-Codex-Spark-suitable after IR3-S04 acceptance because fixture planning is bounded by accepted boundaries
+  + [required_before_code_creation] is IR3-S05 fixture plan accepted
+  + [required_before_code_creation] is IR3-S06 completion review and implementation activation pack accepted or a future explicit implementation activation review opens bounded implementation
+  + [model_route_for_code_creation] is GPT-5.3-Codex-Spark-suitable only after IR3 contracts and fixtures are accepted and implementation task is bounded
+  + [deeper_reasoning_required_for_changes] is any change to authority semantics, trace identity, generated output policy, fixture IO policy, implementation file inventory, or safety boundary
+
+  = must: keep implementation code gated until evidence and fixtures are accepted
+  = must: preserve deeper reasoning for architecture, authority-boundary, or safety-boundary changes
+
+& [IR3S04CoverageReview] is the coverage checklist for IR3-S04
+  + [implementation_file_inventory_present] is ImplementationFileInventory: IR3OperatorHarness
+  + [allowed_standard_library_set_present] is AllowedStandardLibrarySet: IR3OperatorHarness
+  + [public_api_boundary_present] is PublicAPIBoundary: IR3OperatorHarness
+  + [no_mutation_source_reader_policy_present] is NoMutationSourceReaderPolicy: IR3OperatorHarness
+  + [generated_trace_writer_policy_present] is GeneratedTraceWriterPolicy: IR3OperatorHarness
+  + [fixture_runner_implementation_boundary_present] is FixtureRunnerImplementationBoundary
+  + [implementation_command_plan_present] is ImplementationCommandPlan: IR3OperatorHarness
+  + [implementation_proof_checklist_present] is ImplementationProofChecklist: IR3OperatorHarness
+  + [activation_gate_present] is ActivationGate: IR3OperatorHarnessImplementation
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR3-S04 only when all checklist items are satisfied
+  = must: open IR3-S05 only after this implementation plan is reviewed in a completion review
