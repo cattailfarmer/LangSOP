@@ -7,26 +7,30 @@ State UUID: 57c0d3bf-1623-4232-9315-d3dffcdf5ea9
 @ [completion_review] docs/reviews/FSC1_S02_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC1_S03_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC1_S04_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/FSC1_S05_Completion_Review.v1.sop
 @ [accepted_output] docs/schema/Kernel_Record_Core.v1.sop
 @ [accepted_output] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
 @ [accepted_output] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
 @ [accepted_output] docs/operators/Operator_Contract_Template.v1.sop
 @ [accepted_output] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [accepted_output] docs/decisions/Storage_Backend_Decision.v1.sop
 
 & [FSC1WorkStateV1] is the current derived work state for FSC1 foundation contracts
   + [chunk_ref] is FSC1 foundation contracts
-  + [state_basis] is docs/reviews/FSC1_S04_Completion_Review.v1.sop
+  + [state_basis] is docs/reviews/FSC1_S05_Completion_Review.v1.sop
   + [accepted_slice] is FSC1-S01
   + [accepted_slice] is FSC1-S02
   + [accepted_slice] is FSC1-S03
   + [accepted_slice] is FSC1-S04
-  + [current_ready_slice] is FSC1-S05
-  + [gated_slice] is FSC1-S06 until FSC1-S05 accepted
+  + [accepted_slice] is FSC1-S05
+  + [current_ready_slice] is FSC1-S06
+  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
   + [gated_slice] is FSC1-S07 until FSC1-S06 accepted
   + [downstream_gate] is FSC2 remains gated until FSC1-S07 accepts FSC1_Foundation_Contract_Pack.v1.sop
   + [unresolved_external_dependency_set] is empty
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run completion review after FSC1-S05 before opening FSC1-S06
-  = must: mark this state stale if any accepted FSC1-S01 through FSC1-S04 output or completion review changes
+  = must: run completion review after FSC1-S06 before opening FSC1-S07
+  = must: mark this state stale if any accepted FSC1-S01 through FSC1-S05 output or completion review changes
+  = should: route FSC1-S06 to GPT-5.3-Codex-Spark when available because it is Spark-suitable bounded fixture planning

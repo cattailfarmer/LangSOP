@@ -1,0 +1,180 @@
+Subject: Storage Backend Decision V1
+Date: 2026-05-26
+Decision UUID: c35e835b-f8ce-4084-b755-ba910a6f8f99
+
+@ [slice_authority] docs/slices/FSC1_Final_Slices.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+
+& [DecisionRecord: StorageBackendDecisionV1] is the initial physical storage decision for LangSOP authority-kernel records
+  + [decision_id] is storage-backend-decision-v1
+  + [decision_uuid] is c35e835b-f8ce-4084-b755-ba910a6f8f99
+  + [slice_id] is FSC1-S05
+  + [decision_status] is accepted
+  + [selected_backend] is hybrid SOP authority files plus rebuildable SQLite derived index
+  + [authority_store] is SOP files in Git-managed project directories
+  + [derived_index_store] is SQLite database generated from accepted SOP records and operator traces
+  + [implementation_scope] is decision only
+
+  = must: treat SOP files and signed/proof-backed SOP artifacts as authority
+  = must: treat SQLite as a derived projection, query index, and runtime convenience cache
+  = must: make SQLite rebuildable from authoritative SOP artifacts and accepted operator traces
+  = must: invalidate or rebuild SQLite projections when authority files, schema versions, or accepted traces change
+  = must: keep source/projection distinction visible in every later storage implementation
+  - never: let SQLite become canonical source authority in v1
+  - never: hide source edits, signature changes, or proof changes inside database-only state
+  - never: choose Postgres or service storage before local semantics and operator traces prove the need
+
+& [DecisionCriteria] is the comparison basis for storage options
+  + [criterion] is source preservation
+  + [criterion] is source/projection separation
+  + [criterion] is query needs for manager and operators
+  + [criterion] is local concurrency
+  + [criterion] is Git workflow
+  + [criterion] is migration cost
+  + [criterion] is LangGraph integration
+  + [criterion] is offline/local operation
+  + [criterion] is future service migration path
+
+  = must: prefer the option that preserves authority clarity over implementation convenience
+  = must: reject options that make source authority invisible or difficult to audit
+
+& [OptionAssessment: SOPOnlyFiles] is the assessment of SOP-only storage
+  + [fit] is strong for source preservation and Git diffability
+  + [fit] is weak for query speed, lineage traversal, stale projection detection, and concurrent runtime state
+  + [risk] is manager surfaces and operators would need repeated file scans or ad hoc indexes
+  + [decision] is rejected_as_complete_backend but retained_as_authority_store
+
+  = must: keep SOP files as the authority store
+  = must: not rely on SOP-only scans for runtime query surfaces once operator traces grow
+
+& [OptionAssessment: SQLiteOnly] is the assessment of SQLite-only storage
+  + [fit] is strong for local query, indexes, transactions, and small-team/runtime simplicity
+  + [fit] is weak for Git-readable source authority and original-shape source preservation
+  + [risk] is database rows could silently replace canonical SOP files as truth
+  + [decision] is rejected_as_authority_store but retained_as_derived_index
+
+  = must: use SQLite only as a projection/index unless a later SJS pass changes authority rules
+  = must: keep every indexed row traceable to SOP source or operator_trace source
+
+& [OptionAssessment: Postgres] is the assessment of Postgres-backed storage
+  + [fit] is strong for multi-process concurrency, networked agents, service deployment, and richer operational controls
+  + [fit] is weak for current local-first FSC1 needs because it adds service setup, migration, backup, and authority-confusion risk
+  + [risk] is premature service storage could pull design attention away from source/projection semantics
+  + [decision] is deferred
+
+  = may: reconsider Postgres after LangGraph runtime, multi-agent coordination, and operations-manager loads show concrete concurrency needs
+  = must: preserve the same authority/projection split if Postgres is later introduced
+
+& [OptionAssessment: HybridSOPAndSQLite] is the selected option
+  + [fit] is strong for source preservation, Git-readable authority, local query, rebuildable indexes, and gradual migration
+  + [risk] is projection staleness if SQLite refresh rules are weak
+  + [risk] is accidental authority drift if code reads SQLite without checking source/projection status
+  + [mitigation] is every SQLite row must retain source_ref_set, lineage_edge_set, authority_state, freshness_state, and source hash references
+  + [mitigation] is runtime readers must treat stale or missing projection rows as cache faults, not source truth
+  + [decision] is selected
+
+  ! [HybridStorageSelected] is accepted
+    @ [support] [DecisionCriteria]
+    @ [support] [OptionAssessment: HybridSOPAndSQLite]
+
+& [SourceProjectionPreservationRules] is the authority and projection storage rule set
+  + [source_rule] is source documents, source manifests, exploded specifications, canonical specifications, planning surfaces, slice surfaces, schema records, operator contracts, decisions, reviews, and fixture plans remain SOP files
+  + [projection_rule] is SQLite may index KernelRecord common fields, selected payload fields, lineage edges, source refs, freshness state, status, and operator trace summaries
+  + [projection_rule] is SQLite may cache manager, worker, narrative, debug, and graph lookup views only as recomputable projections
+  + [projection_rule] is every indexed projection row must cite source file path and source hash when the source file is stable enough to hash
+  + [write_rule] is authority mutation writes SOP artifact first, then updates SQLite projection
+  + [write_rule] is operator execution may emit SOP operator_trace/proof/review artifacts first, then update SQLite projection
+  + [stale_rule] is source hash, schema version, operator contract version, or accepted trace change marks dependent projection rows stale
+
+  = must: make source and projection status queryable
+  = must: rebuild projection rows when source/projection freshness fails
+  = must: prevent projection-only records from carrying signed_sjs or proof_backed authority unless backed by SOP source/proof refs
+
+& [QueryNeeds] is the first required query surface for derived indexing
+  + [query_need] is find records by record_id
+  + [query_need] is find records by record_kind
+  + [query_need] is find records by natural_key namespace and value
+  + [query_need] is find records by subject_ref
+  + [query_need] is find records by authority_state
+  + [query_need] is find records by status and freshness_state
+  + [query_need] is traverse lineage_edge_set by from_ref, to_ref, and edge_kind
+  + [query_need] is list work packets by readiness, assignment, and completion review state
+  + [query_need] is list stale projections and invalidated authority artifacts
+  + [query_need] is list operator traces by operator_id, input, output, fault, or interrupt state
+
+  = must: design SQLite projection tables from these query needs during implementation
+  = must: avoid adding tables that cannot be rebuilt from SOP authority or accepted traces
+
+& [ConcurrencyModel] is the initial local concurrency policy
+  + [expected_runtime] is local manager plus local workers and future LangGraph procedures
+  + [sqlite_mode] is single local SQLite database with transaction discipline and eventual WAL-mode consideration during implementation
+  + [authority_write_policy] is serialize authority file writes through manager/operator claim checks
+  + [projection_write_policy] is update SQLite in transactions after source artifact write succeeds
+  + [conflict_policy] is when projection write fails, preserve SOP artifact and mark projection rebuild required
+
+  = must: treat projection write failure as recoverable cache/index fault
+  = must: not let SQLite transaction success replace Git/SOP source persistence
+  = should: revisit Postgres only after concrete contention, remote agents, or service uptime requirements appear
+
+& [GitWorkflowEffect] is how the selected backend affects repository workflow
+  + [git_tracked] is SOP source, canonical, schema, operator contract, decision, review, slice, fixture plan, and migration specification files
+  + [git_ignored] is generated SQLite database files, SQLite WAL files, temporary import caches, and runtime projection rebuild artifacts
+  + [review_surface] is Git diffs remain meaningful for authority changes
+  + [rebuild_surface] is generated SQLite can be deleted and rebuilt from tracked authority artifacts
+
+  = must: keep authoritative changes reviewable as text
+  = must: document any future SQLite schema implementation separately before adding generated database files
+
+& [MigrationRule] is the migration policy for the selected backend
+  + [migration_source] is SOP schema and operator contract versions
+  + [migration_target] is SQLite projection schema version
+  + [migration_mode] is rebuild preferred until runtime data volume or uptime needs force in-place migration
+  + [migration_artifact] is future migration SOP decision or solution record
+  + [compatibility_rule] is old SOP authority artifacts remain readable even when projection schema changes
+
+  = must: prefer projection rebuild over complex migration in early local runtime
+  = must: preserve old projection schema versions as implementation trace when migrations appear
+
+& [LangGraphIntegrationRule] is the storage rule for future LangGraph procedures
+  + [graph_checkpoint_role] is execution state only
+  + [kernel_record_role] is truth-bearing state in SOP authority files plus SQLite projection index
+  + [graph_reference_rule] is graph state stores record_id and projection lookup refs, not canonical source truth
+  + [trace_rule] is graph node outputs become operator_trace, proof_result, readiness_projection, work_packet, or fault_record artifacts before projection update
+
+  = must: keep LangGraph checkpoints non-authoritative
+  = must: let LangGraph rebuild meaningful context from authority files and projection index
+
+& [InvalidationConditions] is the decision invalidation rule set
+  + [invalidation_condition] is source/projection distinction cannot be enforced by implementation
+  + [invalidation_condition] is SQLite projection cannot be rebuilt from SOP authority and traces
+  + [invalidation_condition] is local SQLite concurrency fails under real manager/worker load
+  + [invalidation_condition] is future remote multi-agent runtime requires service database semantics
+  + [invalidation_condition] is Git workflow becomes too noisy or too slow for authority review
+  + [invalidation_condition] is operator traces require transactional guarantees beyond local SQLite
+
+  = must: route invalidation through SJS reprocessing before replacing this decision
+
+& [StorageDecisionAcceptanceChecklist] is the FSC1-S05 verification checklist
+  + [decision_present] is selected_backend hybrid SOP authority files plus rebuildable SQLite derived index
+  + [tradeoff_present] is SOP-only files
+  + [tradeoff_present] is SQLite-only
+  + [tradeoff_present] is Postgres
+  + [tradeoff_present] is hybrid SOP and SQLite
+  + [rule_present] is source/projection preservation
+  + [rule_present] is query needs
+  + [rule_present] is local concurrency
+  + [rule_present] is Git workflow
+  + [rule_present] is migration
+  + [rule_present] is LangGraph integration
+  + [rule_present] is invalidation conditions
+  + [forbidden_scope_absent] is database implementation
+  + [forbidden_scope_absent] is migration script implementation
+  + [forbidden_scope_absent] is runtime service code
+  + [forbidden_scope_absent] is surface implementation
+
+  = must: accept FSC1-S05 only when all checklist items are satisfied
+  = must: open FSC1-S06 after this checklist is reviewed in a completion review
