@@ -1,0 +1,101 @@
+Subject: IR4 Runtime Graph Generated Output Proof V1
+Date: 2026-05-26
+Proof UUID: 166d28e8-5937-41fe-9103-045889f9aa36
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [ia06_completion_review] docs/reviews/IR4_IA06_Completion_Review.v1.sop
+@ [fixture_runner] src/langsop/runtime/fixture_runner.py
+@ [contract_tests] tests/test_ir4_runtime_graph_contracts.py
+@ [gitignore] .gitignore
+
+& [GeneratedOutputProof: IR4RuntimeGraph] is the generated-output proof for IR4-IA07 contract tests and generated-output proof
+  + [slice_id] is IR4-IA07
+  + [proof_status] is accepted_pending_completion_review
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-IA06 acceptance
+  + [fixture_runner_sha256] is 258F5C51134F8A5DE136DCC9904F5190F202D58EB312FB2B43583D166B05B696
+  + [contract_test_file] is tests/test_ir4_runtime_graph_contracts.py
+  + [contract_test_file_sha256] is D02984D45E42A75C982B54C8CD64D11C3476E646DE1F6C9F9AB23E4B6F38DD74
+  + [generated_output_path_tested] is tests/fixtures/generated/ir4_runtime_graph/reports/proof_report.json
+  + [generated_output_status] is generated_projection_only
+  + [generated_output_root_ignored_by_git] is tests/fixtures/generated/
+  + [generated_output_discovered_as_authority] is false
+  + [generated_output_exists_after_test_cleanup] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat generated checkpoints, traces, reports, fixture outputs, and graph state as projection-only disposable runtime material
+  = must: reject any generated output as source authority, expected ledger authority, completion review authority, or next-slice gate authority
+  = must: rerun this proof if fixture runner path policy, discovery rules, .gitignore, or generated-output tests change
+
+& [IR4GeneratedOutputBoundaryProof] is the boundary proof for runtime graph generated output roots
+  + [accepted_generated_root] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
+  + [accepted_generated_root] is tests/fixtures/generated/ir4_runtime_graph/traces/
+  + [accepted_generated_root] is tests/fixtures/generated/ir4_runtime_graph/reports/
+  + [accepted_generated_root] is .langsop/checkpoints/ir4_runtime_graph/
+  + [accepted_generated_root] is .langsop/traces/ir4_runtime_graph/
+  + [accepted_generated_root] is .langsop/reports/ir4_runtime_graph/
+  + [refused_generated_path] is outside/generated.sop
+  + [refused_generated_path_reason] is generated_runtime_path_escape
+  + [refused_source_mutation_path] is tests/fixtures/sop/ir4_runtime_graph/valid_graph_pass.sop
+  + [refused_source_mutation_reason] is source_mutation_refusal
+  + [refused_expected_ledger_mutation_path] is tests/fixtures/expected/ir4_runtime_graph/graph_trace_expected.sop
+  + [refused_expected_ledger_mutation_reason] is source_mutation_refusal
+  + [accepted_generated_report_path] is tests/fixtures/generated/ir4_runtime_graph/reports/report.json
+
+  ! [IR4GeneratedOutputBoundaryProofSatisfied] is accepted
+    @ [support] tests/test_ir4_runtime_graph_contracts.py
+    @ [support] src/langsop/runtime/fixture_runner.py
+    @ [support] .gitignore
+
+& [IR4GeneratedAuthorityDiscoveryProof] is the discovery proof for generated runtime output exclusion
+  + [discovery_function] is discover_sop_artifacts
+  + [generated_exclude_rule] is tests/fixtures/generated/**
+  + [generated_output_written_during_test] is tests/fixtures/generated/ir4_runtime_graph/reports/proof_report.json
+  + [generated_output_report_status] is generated_projection_only
+  + [generated_output_non_authority_warning] is present
+  + [generated_output_discovered_as_authority_candidate] is false
+  + [generated_output_removed_by_test_cleanup] is true
+
+  ! [IR4GeneratedAuthorityDiscoveryProofSatisfied] is accepted
+    @ [support] tests/test_ir4_runtime_graph_contracts.py
+    @ [support] src/langsop/authority/discovery.py
+    @ [support] .gitignore
+
+& [IR4RuntimeFixtureCoverageProof] is the fixture coverage proof for IR4 runtime graph contract tests
+  + [fixture_case_count] is 10
+  + [fixture_case_passed] is valid_graph_pass
+  + [fixture_case_passed] is blocked_readiness
+  + [fixture_case_passed] is stale_checkpoint
+  + [fixture_case_passed] is ambiguous_interrupt
+  + [fixture_case_passed] is authority_conflict_interrupt
+  + [fixture_case_passed] is contested_claim_interrupt
+  + [fixture_case_passed] is faulted_operator_trace
+  + [fixture_case_passed] is hidden_write_prevention
+  + [fixture_case_passed] is false_ready_checkpoint
+  + [fixture_case_passed] is completion_gate_refusal
+  + [expected_ledger_comparison_passed] is true
+  + [checkpoint_boundary_covered] is true
+  + [sop_first_interrupt_boundary_covered] is true
+  + [completion_gate_refusal_covered] is true
+  + [hidden_write_prevention_covered] is true
+
+  ! [IR4RuntimeFixtureCoverageProofSatisfied] is accepted
+    @ [support] tests/fixtures/sop/ir4_runtime_graph/
+    @ [support] tests/fixtures/expected/ir4_runtime_graph/
+    @ [support] tests/test_ir4_runtime_graph_contracts.py
+
+& [IR4GeneratedOutputFaultReview] is the fault review for generated output proof
+  + [source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [generated_output_authority_promotion_found] is false
+  + [generated_output_left_untracked_after_validation] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4RuntimeGraphGeneratedOutputProofAccepted] is accepted
+    @ [support] [IR4GeneratedOutputBoundaryProof]
+    @ [support] [IR4GeneratedAuthorityDiscoveryProof]
+    @ [support] [IR4RuntimeFixtureCoverageProof]
+    @ [support] [IR4GeneratedOutputFaultReview]
