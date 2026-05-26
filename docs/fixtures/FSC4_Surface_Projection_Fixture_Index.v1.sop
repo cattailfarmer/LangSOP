@@ -1,0 +1,96 @@
+Subject: FSC4 Surface Projection Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: c4bc37fe-e403-4b70-93c7-6a2f7b679592
+
+@ [fixture_plan] docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [conversation_adapter_contracts] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+
+& [FixtureIndex: FSC4SurfaceProjectionFixtureIndexV1] is the fixture index for FSC4 surface projection fixtures
+  + [slice_id] is FSC4-S06
+  + [fixture_plan] is docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+  + [fixture_count] is 11
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+
+& [FixtureIndexEntry: F4X-001] is manager_ready_packet
+  + [fixture_case] is F4X-001-manager-ready-packet
+  + [primary_contract] is ManagerProjectionContract
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-002] is worker_blocked_packet
+  + [fixture_case] is F4X-002-worker-blocked-packet
+  + [primary_contract] is WorkerPacketProjectionContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-003] is stale_projection
+  + [fixture_case] is F4X-003-stale-projection
+  + [primary_contract] is FreshnessDisplayRule
+  + [expected_status] is stale
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-004] is narrative_lineage
+  + [fixture_case] is F4X-004-narrative-lineage
+  + [primary_contract] is NarrativeProjectionContract
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-005] is debug_fault_trace
+  + [fixture_case] is F4X-005-debug-fault-trace
+  + [primary_contract] is DebugProjectionContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-006] is conversation_interrupt
+  + [fixture_case] is F4X-006-conversation-interrupt
+  + [primary_contract] is ConversationProjectionContract
+  + [expected_status] is interrupted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-007] is adapter_mutation_refusal
+  + [fixture_case] is F4X-007-adapter-mutation-refusal
+  + [primary_contract] is AdapterMutationThroughOperatorGate
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-008] is missing_authority_notice
+  + [fixture_case] is F4X-008-missing-authority-notice
+  + [primary_contract] is AuthorityNoticeContract
+  + [expected_status] is faulted
+  + [required_notice] is missing_authority_notice refusal
+
+& [FixtureIndexEntry: F4X-009] is langflow_non_authority_projection
+  + [fixture_case] is F4X-009-langflow-non-authority-projection
+  + [primary_contract] is AdapterProjectionContractSet
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-010] is multi_surface_divergence
+  + [fixture_case] is F4X-010-multi-surface-divergence
+  + [primary_contract] is MultiSurfaceDivergenceRule
+  + [expected_status] is stale
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexEntry: F4X-011] is completion_gate_refusal
+  + [fixture_case] is F4X-011-completion-gate-refusal
+  + [primary_contract] is completion_review_delta_gate
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref
+
+& [FixtureIndexCoverage: FSC4-S06] is the fixture index coverage assertion
+  + [fixture_count] is 11
+  + [covered_projection] is manager_summary_projection
+  + [covered_projection] is worker_packet_projection
+  + [covered_projection] is stale_projection
+  + [covered_projection] is narrative_projection
+  + [covered_projection] is debug_trace_projection
+  + [covered_projection] is conversation_projection
+  + [covered_projection] is adapter_event_projection
+  + [covered_projection] is langflow_graph_projection
+  + [covered_projection] is divergence_notice
+  + [covered_projection] is blocked_projection
+
+  = must: reject FSC4-S06 if fixture_count is less than 11

@@ -1,0 +1,118 @@
+Subject: FSC4-S06 Completion Review V1
+Date: 2026-05-26
+Review UUID: 7918958c-ca6a-43bd-afa0-666f36654393
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [work_state] docs/state/FSC4_Work_State.v1.sop
+@ [completed_output] docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+@ [completed_output] docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+@ [accepted_input] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [accepted_input] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [accepted_input] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+@ [accepted_input] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+
+& [CompletedWorkReview: FSC4-S06] is the completion review for surface projection fixture plan
+  + [slice_id] is FSC4-S06
+  + [slice_name] is surface projection fixture plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+  + [completed_output_sha256] is FD42E06849B93B92E25988AD6A27E3056EE7631CF03178D0EB9A0CD4689982D2
+  + [completed_output] is docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+  + [completed_output_sha256] is 3D3FB18A63F3E6ABEEA0D24C8915B745ACFEF12703C7E2FD676577C30D5AB6B1
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [review_result] is accepted
+  + [next_gate_result] is FSC4-S07 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for FSC4-S07
+  = must: rerun review if either FSC4 surface projection fixture output changes
+  = should: route FSC4-S07 to deeper reasoning because it finalizes the FSC4 surface projection pack and may activate FSC5
+
+& [VerificationOracleResult: FSC4-S06] is the verification result for surface projection fixture coverage
+  + [fixture_case_count] is 11
+  + [fixture_index_entry_count] is 11
+  + [fixture_case_present] is F4X-001-manager-ready-packet
+  + [fixture_case_present] is F4X-002-worker-blocked-packet
+  + [fixture_case_present] is F4X-003-stale-projection
+  + [fixture_case_present] is F4X-004-narrative-lineage
+  + [fixture_case_present] is F4X-005-debug-fault-trace
+  + [fixture_case_present] is F4X-006-conversation-interrupt
+  + [fixture_case_present] is F4X-007-adapter-mutation-refusal
+  + [fixture_case_present] is F4X-008-missing-authority-notice
+  + [fixture_case_present] is F4X-009-langflow-non-authority-projection
+  + [fixture_case_present] is F4X-010-multi-surface-divergence
+  + [fixture_case_present] is F4X-011-completion-gate-refusal
+  + [contract_coverage_present] is ProjectionRecordSchema
+  + [contract_coverage_present] is AuthorityNoticeContract
+  + [contract_coverage_present] is FreshnessDisplayRule
+  + [contract_coverage_present] is ManagerProjectionContract
+  + [contract_coverage_present] is WorkerPacketProjectionContract
+  + [contract_coverage_present] is NarrativeProjectionContract
+  + [contract_coverage_present] is DebugProjectionContract
+  + [contract_coverage_present] is ConversationProjectionContract
+  + [contract_coverage_present] is AdapterProjectionContractSet
+  + [contract_coverage_present] is AdapterMutationThroughOperatorGate
+  + [contract_coverage_present] is MultiSurfaceDivergenceRule
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is Langflow installation or export implementation
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is operations control
+
+  ! [FSC4S06VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+    @ [support] docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+
+& [SupportDelta: FSC4-S06] is the support delta produced by this slice
+  + [new_support_record] is FSC4SurfaceProjectionFixturePlanV1 supports FSC4-S07 completion review and activation packet
+  + [new_support_record] is FSC4SurfaceProjectionFixtureIndexV1 supports projection fixture coverage review
+  + [new_support_record] is fixture coverage supports downstream surface implementation planning without authorizing implementation
+  + [support_status] is accepted
+
+& [RequirementDelta: FSC4-S06] is the requirement delta produced by this slice
+  + [requirement_delta] is FSC4-S07 must include the fixture plan and fixture index hashes
+  + [requirement_delta] is FSC4-S07 must classify projection support, stale outputs, contradictions, unresolved proof gaps, and FSC5 activation readiness
+  + [requirement_delta] is no projection contract semantic change authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: FSC4-S06] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [ui_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [langflow_installation_or_export_leak_found] is false
+  + [test_harness_implementation_leak_found] is false
+  + [operations_scope_leak_found] is false
+  + [projection_contract_mutation_found] is false
+
+  ! [FSC4S06Accepted] is accepted
+    @ [support] [VerificationOracleResult: FSC4-S06]
+    @ [support] [SupportDelta: FSC4-S06]
+    @ [support] [RequirementDelta: FSC4-S06]
+    @ [support] [FaultReview: FSC4-S06]
+
+& [NextSliceGate: FSC4-S07] is opened
+  + [opened_slice] is FSC4-S07 FSC4 completion review and activation packet
+  + [accepted_input] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [accepted_input] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [accepted_input_sha256] is CC5C7AF6E6CDD98F3FDA32204A7A4BA24A07366BE61F52843E91E7B01DA09E06
+  + [accepted_input] is docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+  + [accepted_input_sha256] is FFA0FF7BD2C2479C65B5D98AD53E70D580BA13555C40A03DA79E6AFC358A9665
+  + [accepted_input] is docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+  + [accepted_input_sha256] is CCB8ADC3D4315DE28901EA155B72C20EA949F21BD8F5A4E6508A6E6F4CE4FE75
+  + [accepted_input] is docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+  + [accepted_input_sha256] is 57FB23C910825FB370210E3E54FFE2C71A4255933F0FC3808A1C44BBFDCBAD7B
+  + [accepted_input] is docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+  + [accepted_input_sha256] is FD42E06849B93B92E25988AD6A27E3056EE7631CF03178D0EB9A0CD4689982D2
+  + [accepted_input] is docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+  + [accepted_input_sha256] is 3D3FB18A63F3E6ABEEA0D24C8915B745ACFEF12703C7E2FD676577C30D5AB6B1
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance changes downstream boundary inputs and may activate FSC5
+  + [completion_review_required] is true
+
+  = must: execute FSC4-S07 next unless user redirects or a new fault invalidates this review

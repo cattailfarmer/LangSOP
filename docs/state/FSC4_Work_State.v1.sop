@@ -11,15 +11,18 @@ State UUID: 15958387-b9b7-45e1-a39b-19e298ca69cd
 @ [completion_review] docs/reviews/FSC4_S03_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC4_S04_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC4_S05_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/FSC4_S06_Completion_Review.v1.sop
 @ [accepted_output] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
 @ [accepted_output] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
 @ [accepted_output] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
 @ [accepted_output] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
 @ [accepted_output] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+@ [accepted_output] docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+@ [accepted_output] docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
 
 & [FSC4WorkStateV1] is the current derived work state for FSC4 surface projection
   + [chunk_ref] is FSC4 surface projection
-  + [state_basis] is docs/reviews/FSC4_S05_Completion_Review.v1.sop
+  + [state_basis] is docs/reviews/FSC4_S06_Completion_Review.v1.sop
   + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
   + [activation_review] is docs/reviews/FSC3_Completion_Review.v1.sop
@@ -29,6 +32,7 @@ State UUID: 15958387-b9b7-45e1-a39b-19e298ca69cd
   + [accepted_slice] is FSC4-S03
   + [accepted_slice] is FSC4-S04
   + [accepted_slice] is FSC4-S05
+  + [accepted_slice] is FSC4-S06
   + [accepted_output] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
   + [accepted_output] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
@@ -39,13 +43,16 @@ State UUID: 15958387-b9b7-45e1-a39b-19e298ca69cd
   + [accepted_output_sha256] is CCB8ADC3D4315DE28901EA155B72C20EA949F21BD8F5A4E6508A6E6F4CE4FE75
   + [accepted_output] is docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
   + [accepted_output_sha256] is 57FB23C910825FB370210E3E54FFE2C71A4255933F0FC3808A1C44BBFDCBAD7B
-  + [current_ready_slice] is FSC4-S06
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [gated_slice] is FSC4-S07 until FSC4-S06 accepted
+  + [accepted_output] is docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is FD42E06849B93B92E25988AD6A27E3056EE7631CF03178D0EB9A0CD4689982D2
+  + [accepted_output] is docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is 3D3FB18A63F3E6ABEEA0D24C8915B745ACFEF12703C7E2FD676577C30D5AB6B1
+  + [current_ready_slice] is FSC4-S07
+  + [current_ready_slice_model_route] is requires deeper reasoning
   + [downstream_gate] is FSC5 remains gated until FSC4-S07 accepts FSC4_Surface_Projection_Pack.v1.sop
   + [unresolved_external_dependency_set] is empty_after_gate
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run FSC4-S06 before FSC4-S07
-  = must: mark this state stale if the FSC3 runtime graph proof pack, FSC4 final slice surface, FSC4 canonical specification, FSC4-S01 through FSC4-S05 outputs, or their completion reviews change
+  = must: run FSC4-S07 completion review before activating FSC5
+  = must: mark this state stale if the FSC3 runtime graph proof pack, FSC4 final slice surface, FSC4 canonical specification, FSC4-S01 through FSC4-S06 outputs, or their completion reviews change

@@ -1,0 +1,120 @@
+Subject: FSC4 Surface Projection Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: f892eb99-d1d7-4ff1-a116-0c901dad7431
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [narrative_debug_contracts] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+@ [conversation_adapter_contracts] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+
+& [FixturePlan: FSC4SurfaceProjectionFixturePlanV1] is the bounded fixture plan for FSC4 surface projection
+  + [slice_id] is FSC4-S06
+  + [fixture_family] is surface-projection-authority-notice
+  + [fixture_case_count] is 11
+  + [fixture_index] is docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+
+  = must: treat this plan as fixture planning, not executable test harness implementation
+  = must: cover manager, worker, narrative, debug, conversation, adapter, Langflow, divergence, and completion gate projection paths
+  - never: implement UI, adapters, transports, Langflow export, runtime services, dispatch, or operations control here
+
+& [FixtureCase: F4X-001-manager-ready-packet] is the manager ready packet projection fixture
+  + [input_shape] is ready work state with accepted packet, fresh boundary input, no contested claim, and accepted completion review gate
+  + [expected_projection] is manager_summary_projection with authority_notice_ref, freshness_state fresh, current_ready_slice_or_chunk, source_lineage_ref_set, and available_action_route_set
+  + [expected_visibility] is readiness, support_delta, requirement_delta, claim state, and completion_review_ref visible
+  + [expected_refusal_absent] is assignment, dispatch, direct gate mutation, and completion acceptance
+  + [acceptance_status] is accepted
+
+& [FixtureCase: F4X-002-worker-blocked-packet] is the worker blocked packet projection fixture
+  + [input_shape] is work_packet_ref with unresolved support_gap or forbidden_scope mismatch
+  + [expected_projection] is worker_packet_projection with blocked_projection status, authority_notice_ref, blocker_ref_set, required_resolution, and forbidden_scope_set
+  + [expected_visibility] is no completion claim action and no false ready display
+  + [expected_route] is support repair, scope rebake, SOP-first interrupt, or completion review gate
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F4X-003-stale-projection] is the stale projection fixture
+  + [input_shape] is projection whose accepted boundary pack hash or source freshness fails
+  + [expected_projection] is stale_projection with freshness_state stale, stale_source_ref_set, invalidation_ref_set, and authority_notice_ref
+  + [expected_visibility] is stale state appears before any authority-sensitive action
+  + [expected_route] is refresh accepted input or rerun completion review
+  + [acceptance_status] is stale
+
+& [FixtureCase: F4X-004-narrative-lineage] is the narrative lineage projection fixture
+  + [input_shape] is narrative projection from project narrative, conversation surface, completion review, support delta, and reentry packet records
+  + [expected_projection] is narrative_projection with source_lineage_ref_set, open_frontier_set, blocked_or_stale_context_set, and reentry_packet_ref_set
+  + [expected_visibility] is stale or incomplete narrative context remains visible
+  + [expected_refusal_absent] is source narrative rewrite, canonical rewrite, completion acceptance, and gate mutation
+  + [acceptance_status] is accepted
+
+& [FixtureCase: F4X-005-debug-fault-trace] is the debug fault trace projection fixture
+  + [input_shape] is operator_trace_ref_set with fault_record_ref, missing trace field, or hidden_write_prevention evidence
+  + [expected_projection] is debug_trace_projection with trace_path_summary, fault_summary_set, unresolved_debug_question_set, and authority_notice_ref
+  + [expected_visibility] is missing trace fields become projection_fault or blocked debug projection
+  + [expected_refusal_absent] is fault repair, trace mutation, checkpoint authority promotion, and runtime execution
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F4X-006-conversation-interrupt] is the conversation interrupt projection fixture
+  + [input_shape] is conversation projection carrying ambiguous or authority-sensitive inbound action from a participant
+  + [expected_projection] is conversation_projection with interrupt_context_ref, visible_authority_notice, visible_freshness_state, carrier_surface, and conversation_lineage_ref_set
+  + [expected_route] is SOP-first interrupt with carrier context preserved
+  + [expected_refusal_absent] is participant identity collapse, direct authority mutation, and completion review acceptance
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: F4X-007-adapter-mutation-refusal] is the adapter mutation refusal fixture
+  + [input_shape] is adapter-originated work_request, claim_request, review_request, interrupt_resolution_request, or human_override_request attempting direct source mutation
+  + [expected_projection] is adapter_event_projection with inbound_action_classification, mutation_gate_ref, authority_notice_ref, and blocked_route evidence
+  + [expected_route] is action_request, coordination_request, interrupt_context, or completion_review_request
+  + [expected_refusal] is direct canonical write, accepted pack write, completion review acceptance, job dispatch, and operations command
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F4X-008-missing-authority-notice] is the missing authority notice fixture
+  + [input_shape] is decision-making projection without authority_notice_ref
+  + [expected_projection] is projection_fault_record or blocked_projection
+  + [expected_visibility] is missing_authority_notice appears as refusal reason
+  + [expected_route] is repair projection contract output before use
+  + [acceptance_status] is faulted
+
+& [FixtureCase: F4X-009-langflow-non-authority-projection] is the Langflow non-authority projection fixture
+  + [input_shape] is Langflow graph projection displaying executable-looking graph or operator flow
+  + [expected_projection] is langflow_graph_projection with authority_notice_ref, authority_limit explanatory only, freshness_state, and lineage_edge_set
+  + [expected_visibility] is graph projection cannot be mistaken for executable authority
+  + [expected_refusal_absent] is Langflow installation, Langflow export implementation, runtime execution, or source authority mutation
+  + [acceptance_status] is accepted
+
+& [FixtureCase: F4X-010-multi-surface-divergence] is the multi-surface divergence fixture
+  + [input_shape] is two or more carrier projections with authority_notice mismatch, hidden fault state, stale projection, inconsistent claim state, carrier ordering conflict, or missing lineage
+  + [expected_projection] is divergence_notice plus stale_projection, coordination_conflict_signal, or sop_first_interrupt_context
+  + [expected_visibility] is per-surface evidence set remains available
+  + [expected_route] is reconcile source freshness, claim state, lineage, or interrupt before authority-sensitive action
+  + [acceptance_status] is stale
+
+& [FixtureCase: F4X-011-completion-gate-refusal] is the completion gate refusal fixture
+  + [input_shape] is projected follow-on action attempting to open FSC5 without accepted FSC4 completion review and surface projection pack
+  + [expected_projection] is blocked_projection with completion_review_ref missing, required_resolution, authority_notice_ref, and downstream_gate closed
+  + [expected_visibility] is FSC5 remains gated
+  + [expected_route] is FSC4-S07 completion review and activation packet
+  + [acceptance_status] is blocked
+
+& [FixturePlanAcceptanceChecklist: FSC4-S06] is the acceptance checklist for FSC4 surface projection fixture plan
+  + [fixture_case_count] is 11
+  + [contract_coverage] is ProjectionRecordSchema
+  + [contract_coverage] is AuthorityNoticeContract
+  + [contract_coverage] is FreshnessDisplayRule
+  + [contract_coverage] is ManagerProjectionContract
+  + [contract_coverage] is WorkerPacketProjectionContract
+  + [contract_coverage] is NarrativeProjectionContract
+  + [contract_coverage] is DebugProjectionContract
+  + [contract_coverage] is ConversationProjectionContract
+  + [contract_coverage] is AdapterProjectionContractSet
+  + [contract_coverage] is AdapterMutationThroughOperatorGate
+  + [contract_coverage] is MultiSurfaceDivergenceRule
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is Langflow installation or export implementation
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC4-S06 if any required fixture case or contract coverage item is missing
