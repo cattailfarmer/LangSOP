@@ -1,0 +1,150 @@
+Subject: FSC3 Runtime Graph Proof Pack V1
+Date: 2026-05-26
+Pack UUID: 963b693e-d4ba-4821-8617-313b142d8ca5
+
+@ [completion_review] docs/reviews/FSC3_Completion_Review.v1.sop
+@ [slice_surface] docs/slices/FSC3_Final_Slices.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [runtime_boundary] docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+@ [graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [trace_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/FSC3_Runtime_Graph_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/FSC3_Runtime_Graph_Fixture_Index.v1.sop
+
+& [RuntimeGraphProofPack: FSC3RuntimeGraphProofPackV1] is the accepted boundary pack exported by FSC3
+  + [pack_id] is fsc3-runtime-graph-proof-pack-v1
+  + [pack_uuid] is 963b693e-d4ba-4821-8617-313b142d8ca5
+  + [source_chunk] is FSC3 runtime graph proof
+  + [export_status] is accepted_boundary_input
+  + [consumer_chunk] is FSC4 surface projection
+  + [activation_effect] is FSC4 may be final-sliced
+  + [implementation_effect] is no executable runtime graph implementation is authorized by this pack alone
+
+  = must: treat LangGraph and checkpoint state as runtime execution state, not source authority
+  = must: preserve SOP-first interrupt when ambiguity, authority conflict, stale input, missing proof, contested claim, high-risk operation, human override, or checkpoint authority confusion appears
+  = must: require operator_trace evidence before future surfaces trust runtime output
+  - never: let surface projection, adapter transport, or checkpoint state become signed authority by itself
+
+& [AcceptedRuntimeGraphDigestSet: FSC3] is the accepted hash ledger exported by FSC3
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [accepted_output] is docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is 28F060797DDF82E498F0A626D27106D88B2BCC4705E70DF312A33E5A9C5554A6
+  + [accepted_output] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [accepted_output_sha256] is 62E902F3CB461FE66271E58C34A1A42EF633331AA1A9428AD8909C6EC940083A
+  + [accepted_output] is docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+  + [accepted_output_sha256] is 58B041B9B1BEA5482B788CA1256FB217F36887C53C4E006C2166D56C9A89CFAA
+  + [accepted_output] is docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+  + [accepted_output_sha256] is 8FC7F0F78D006AE7B1441098554713BB0FBCC7E5DDE31E21B2262F28D62CAAA8
+  + [accepted_output] is docs/fixtures/FSC3_Runtime_Graph_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is FF745581EBD96565E18B52D68A8F7A572CDF50E880E5E0B229380F02980A59D4
+  + [accepted_output] is docs/fixtures/FSC3_Runtime_Graph_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is D6E892C3B3F3861FE6B9E346A3057F3E686865EC9B83DE9608ACA3FC9781D35C
+
+  = must: mark this runtime graph proof pack stale if any listed hash changes
+
+& [ExportedRuntimeBoundaryContract] is the runtime authority boundary exported by FSC3
+  + [graph_state_role] is execution_state_only
+  + [checkpoint_state_role] is execution_state_only
+  + [source_authority_role] is SOP files and accepted packs remain source of truth
+  + [forbidden_mutation] is accepted pack edit, canonical authority edit, checkpoint authority promotion, hidden graph write, surface authority promotion, or operations control
+  + [stale_trigger] is changed FSC2 pack, changed FSC3 slice surface, changed runtime invariant, changed graph contract, changed interrupt contract, changed trace proof, changed imported operator contract, false-ready checkpoint, hidden graph write, or missing operator_trace
+
+  = must: force downstream surface projection to display authority_notice when runtime output is derived or staleable
+
+& [ExportedWholeFieldPlannerGraphContract] is the graph contract exported by FSC3
+  + [graph_contract] is WholeFieldPlannerGraphContractV1
+  + [state_contract] is GraphStateContract
+  + [node_contract_set] is GraphNodeContractSet
+  + [edge_contract_set] is GraphEdgeContractSet
+  + [checkpoint_policy] is CheckpointPolicy
+  + [authority_policy] is RuntimeAuthorityReadWritePolicy
+  + [refusal_contract] is RuntimeRefusalContract
+  + [terminal_outcome] is terminal_success
+  + [terminal_outcome] is terminal_blocked
+  + [terminal_outcome] is terminal_stale
+  + [terminal_outcome] is terminal_fault
+  + [terminal_outcome] is terminal_interrupt
+
+  = must: keep blocked, stale, fault, and interrupt paths terminal until accepted retry or resume evidence exists
+  = must: make every future runtime implementation prove conformance before surface consumption
+
+& [ExportedSOPFirstInterruptContract] is the interrupt and resume contract exported by FSC3
+  + [interrupt_contract] is SOPFirstInterruptResumeContractV1
+  + [interrupt_kind] is ambiguous_identity
+  + [interrupt_kind] is authority_conflict
+  + [interrupt_kind] is stale_input
+  + [interrupt_kind] is missing_proof_route
+  + [interrupt_kind] is contested_coordination_claim
+  + [interrupt_kind] is unsupported_scope
+  + [interrupt_kind] is high_risk_operation
+  + [interrupt_kind] is human_override_required
+  + [interrupt_kind] is checkpoint_authority_confusion
+  + [required_context] is InterruptContextPacket
+  + [resume_condition_contract] is ResumeConditionContract
+  + [no_hidden_mutation_rule] is NoHiddenMutationRule
+
+  = must: prevent future projections from rendering an interrupted runtime path as completed work
+  = must: preserve enough context for another conversation, model, or human to decide the resume route
+
+& [ExportedOperatorTraceProofContract] is the trace proof contract exported by FSC3
+  + [trace_contract] is OperatorTraceRuntimeProofContractV1
+  + [assertion_set] is TraceAssertionContract
+  + [assertion_set] is CheckpointTraceAssertionSet
+  + [assertion_set] is InterruptTraceAssertionSet
+  + [assertion_set] is FaultAndBlockedTraceAssertionSet
+  + [assertion_set] is CompletionGateTraceAssertionSet
+  + [proof_obligation] is HiddenWritePreventionProof
+  + [fixture_obligation_set] is RuntimeTraceFixtureObligationSet
+
+  = must: require graph node, checkpoint, interrupt, fault, blocked, stale, and completion gate evidence before trust
+  = must: emit fault_record when hidden writes cannot be ruled out
+
+& [ExportedRuntimeGraphFixtureContractSet] is the fixture coverage exported by FSC3
+  + [fixture_case_count] is 10
+  + [fixture_index_entry_count] is 10
+  + [fixture_case] is valid_graph_pass
+  + [fixture_case] is blocked_readiness
+  + [fixture_case] is stale_checkpoint
+  + [fixture_case] is ambiguous_interrupt
+  + [fixture_case] is authority_conflict_interrupt
+  + [fixture_case] is contested_claim_interrupt
+  + [fixture_case] is faulted_operator_trace
+  + [fixture_case] is hidden_write_prevention
+  + [fixture_case] is false_ready_checkpoint
+  + [fixture_case] is completion_gate_refusal
+
+  = must: use these fixtures as the minimum downstream proof set before executable runtime or surface trust claims are accepted
+  = must: keep fixture planning distinct from executable test harness implementation until a later slice authorizes it
+
+& [FSC4ActivationBoundary] is the boundary FSC4 receives from FSC3
+  + [activation_state] is open_for_slice_minting
+  + [accepted_boundary_input] is FSC3RuntimeGraphProofPackV1
+  + [must_import] is FSC1 foundation contract pack
+  + [must_import] is FSC2 planning coordination pack
+  + [must_import] is FSC3 runtime boundary and invariant map
+  + [must_import] is WholeFieldPlannerGraph contract and checkpoint policy
+  + [must_import] is SOP-first interrupt and resume contract
+  + [must_import] is operator trace runtime proof contract
+  + [must_import] is runtime graph fixture plan and index
+  + [must_refine_inside_FSC4] is manager projection contract
+  + [must_refine_inside_FSC4] is worker projection contract
+  + [must_refine_inside_FSC4] is narrative projection contract
+  + [must_refine_inside_FSC4] is debug projection contract
+  + [must_refine_inside_FSC4] is conversation and adapter projection contracts
+  + [must_refine_inside_FSC4] is authority_notice fixture set
+
+  = must: mint FSC4 final slices before implementing FSC4
+  = must: preserve surfaces as projections of typed collaboration records and runtime traces
+  = must: keep FSC5 operations safety envelope gated until FSC4 surface projection pack is accepted
+
+& [RuntimeGraphProofPackInvalidationRuleSet] is the staleness contract for FSC3RuntimeGraphProofPackV1
+  + [invalidated_by] is change to the FSC2 planning coordination pack
+  + [invalidated_by] is change to any accepted FSC3 output hash
+  + [invalidated_by] is change to any FSC3-S01 through FSC3-S06 completion review
+  + [invalidated_by] is discovered contradiction among graph, checkpoint, interrupt, trace proof, or fixture expectations
+  + [invalidated_by] is false-ready FSC4 surface projection slice derived from this pack
+  + [invalidated_by] is any surface treating projection state as source authority
+
+  = must: rerun FSC3-S06 after invalidation before FSC4 consumes this pack again

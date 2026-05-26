@@ -27,4 +27,4 @@ The working development pattern is "whole-pie first": keep the product overview 
 
 The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is accepted as a boundary input, FSC2 planning coordination has been minted into final slices, and downstream chunks stay gated until their upstream contract packs are accepted.
 
-FSC1 and FSC2 have both been minted, executed, reviewed, and accepted. The current accepted boundary output is `docs/planning/FSC2_Planning_Coordination_Pack.v1.sop`. FSC3 runtime graph proof has been minted into final slices, `FSC3-S01` through `FSC3-S05` are accepted, and the current ready slice is `FSC3-S06` completion review and activation packet, which requires deeper reasoning.
+FSC1, FSC2, and FSC3 have been minted, executed, reviewed, and accepted. The current accepted boundary output is `docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop`. FSC4 surface projection is open for final-slice minting, which requires deeper reasoning; later bounded projection implementation is GPT-5.3-Codex-Spark-suitable only after fixtures exist.
