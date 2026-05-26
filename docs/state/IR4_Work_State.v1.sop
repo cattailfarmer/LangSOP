@@ -35,12 +35,14 @@ State UUID: a50cae40-026b-42bb-b4c9-543b30f1623e
 @ [completion_review] docs/reviews/IR4_IA06_Completion_Review.v1.sop
 @ [generated_output_proof] docs/reviews/IR4_Runtime_Graph_Generated_Output_Proof.v1.sop
 @ [completion_review] docs/reviews/IR4_IA07_Completion_Review.v1.sop
+@ [dependency_decision] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+@ [completion_review] docs/reviews/IR4_IA08_Completion_Review.v1.sop
 
 & [IR4WorkStateV1] is the current derived work state for IR4 LangGraph proof runtime planning
   + [chunk_ref] is IR4 LangGraph proof runtime implementation
-  + [state_basis] is docs/reviews/IR4_IA07_Completion_Review.v1.sop
-  + [state_basis_sha256] is 0F785A272A8C2D2637247A5FE6A08FBD07BC7CD383CF15A1B3496460C8AEA120
-  + [surface_status] is IR4-IA07_accepted_and_IR4-IA08_may_open
+  + [state_basis] is docs/reviews/IR4_IA08_Completion_Review.v1.sop
+  + [state_basis_sha256] is 871B1EC431E098378409A2B800EEF6D9633DFF02E8F8DBBA82DC616A24ED37C0
+  + [surface_status] is IR4-IA08_accepted_and_IR4-IA09_may_open
   + [source_document] is docs/source/2026-05-26_ir4_final_slices/Derived_IR4_Final_Slices_Source.sop
   + [source_document_sha256] is AE796BD62EB8A24C75911D6D4256E9EA20BE3F9362069EC919F02189BC289BD2
   + [source_manifest] is docs/source/2026-05-26_ir4_final_slices/Source_Document_Manifest.sop
@@ -140,20 +142,25 @@ State UUID: a50cae40-026b-42bb-b4c9-543b30f1623e
   + [accepted_output_sha256] is F199CA6414F872190447C73B6E52C69D58DCDAF97861F95DFDE874A81A862DF3
   + [accepted_completion_review] is docs/reviews/IR4_IA07_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 0F785A272A8C2D2637247A5FE6A08FBD07BC7CD383CF15A1B3496460C8AEA120
+  + [accepted_slice] is IR4-IA08
+  + [accepted_output] is docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+  + [accepted_output_sha256] is F44DC92F7E81152F3C761086C89B4CBD9397A0D1B34940C669004763180C9347
+  + [accepted_completion_review] is docs/reviews/IR4_IA08_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 871B1EC431E098378409A2B800EEF6D9633DFF02E8F8DBBA82DC616A24ED37C0
   + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
   + [accepted_boundary_input] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
   + [accepted_boundary_input_sha256] is C3CD25BF2B5891F56ED8D8BCBB1F49A0BE099E7EDA7140E1E296E172F3EE0578
   + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
-  + [current_ready_slice] is IR4-IA08
-  + [current_ready_slice_name] is dependency-authorized LangGraph adapter decision or deferral review
+  + [current_ready_slice] is IR4-IA09
+  + [current_ready_slice_name] is implementation completion review and runtime graph proof pack
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is IR4-IA09 implementation completion review and runtime graph proof pack
   + [completed_spark_suitable_slice] is IR4-S04 after IR4-S01 through IR4-S03 acceptance and fixture scope was bounded
   + [implementation_code_creation_authorized_by_current_slice] is false
   + [test_file_creation_authorized_by_current_slice] is false
-  + [decision_document_creation_authorized_by_current_slice] is true_for_IR4-IA08_dependency_decision_only
+  + [decision_document_creation_authorized_by_current_slice] is false
+  + [proof_pack_creation_authorized_by_current_slice] is true_for_IR4-IA09_implementation_proof_pack_only
   + [fixture_file_creation_authorized_by_current_slice] is false
   + [expected_ledger_creation_authorized_by_current_slice] is false
   + [generated_output_creation_authorized_by_current_slice] is false
@@ -165,7 +172,7 @@ State UUID: a50cae40-026b-42bb-b4c9-543b30f1623e
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR4-IA08 before creating adapter implementation, final proof packs, or downstream implementation readiness
+  = must: execute IR4-IA09 before opening downstream implementation readiness
   = must: keep LangGraph checkpoints, graph state, generated traces, reports, fixture outputs, and projection files non-authoritative
-  = must: mark this state stale if IR4 source document, source manifest, canonical specification, slice surface, minting review, IR4-S01 output, IR4-S01 completion review, IR4-S02 output, IR4-S02 completion review, IR4-S03 output, IR4-S03 completion review, IR4-S04 output, IR4-S04 completion review, IR4-S05 output, IR4-S05 completion review, IR4 activation pack, IR4 completion review, IR4 implementation activation source, IR4 implementation activation source manifest, IR4 implementation activation canonical specification, IR4 implementation activation slice surface, IR4 implementation activation minting review, IR4-IA01 activation boundary, IR4-IA01 completion review, IR4-IA02 fixture source, IR4-IA02 expected ledgers, IR4-IA02 completion review, IR4-IA03 graph models, IR4-IA03 completion review, IR4-IA04 checkpoint or interrupt models, IR4-IA04 completion review, IR4-IA05 graph runner, IR4-IA05 completion review, IR4-IA06 fixture runner, IR4-IA06 completion review, IR4-IA07 contract tests, IR4-IA07 generated-output proof, IR4-IA07 completion review, IR3 implementation proof pack, IR3 implementation completion review, or FSC3 runtime graph proof pack changes
+  = must: mark this state stale if IR4 source document, source manifest, canonical specification, slice surface, minting review, IR4-S01 output, IR4-S01 completion review, IR4-S02 output, IR4-S02 completion review, IR4-S03 output, IR4-S03 completion review, IR4-S04 output, IR4-S04 completion review, IR4-S05 output, IR4-S05 completion review, IR4 activation pack, IR4 completion review, IR4 implementation activation source, IR4 implementation activation source manifest, IR4 implementation activation canonical specification, IR4 implementation activation slice surface, IR4 implementation activation minting review, IR4-IA01 activation boundary, IR4-IA01 completion review, IR4-IA02 fixture source, IR4-IA02 expected ledgers, IR4-IA02 completion review, IR4-IA03 graph models, IR4-IA03 completion review, IR4-IA04 checkpoint or interrupt models, IR4-IA04 completion review, IR4-IA05 graph runner, IR4-IA05 completion review, IR4-IA06 fixture runner, IR4-IA06 completion review, IR4-IA07 contract tests, IR4-IA07 generated-output proof, IR4-IA07 completion review, IR4-IA08 dependency decision, IR4-IA08 completion review, IR3 implementation proof pack, IR3 implementation completion review, or FSC3 runtime graph proof pack changes
   = must: keep operations control and live machine control unauthorized

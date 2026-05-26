@@ -1,0 +1,111 @@
+Subject: IR4 LangGraph Adapter Dependency Decision V1
+Date: 2026-05-26
+Decision UUID: 03ea87eb-154c-4849-8e92-5a87348e33f6
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [ia07_completion_review] docs/reviews/IR4_IA07_Completion_Review.v1.sop
+@ [generated_output_proof] docs/reviews/IR4_Runtime_Graph_Generated_Output_Proof.v1.sop
+@ [implementation_plan] docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+@ [activation_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+@ [graph_contract] docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+@ [checkpoint_interrupt_policy] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+@ [official_langgraph_persistence_docs] https://docs.langchain.com/oss/python/langgraph/persistence
+@ [official_langgraph_durable_execution_docs] https://docs.langchain.com/oss/python/langgraph/durable-execution
+@ [official_langgraph_human_in_loop_docs] https://docs.langchain.com/oss/python/langgraph/human-in-the-loop
+
+& [IR4LangGraphAdapterDependencyDecisionV1] is the dependency-authorized adapter decision or deferral review for IR4-IA08
+  + [slice_id] is IR4-IA08
+  + [slice_name] is dependency-authorized LangGraph adapter decision or deferral review
+  + [model_route_used] is requires deeper reasoning
+  + [decision_result] is defer_external_langgraph_installation_for_current_IR4_proof_pass
+  + [langgraph_dependency_candidate] is langgraph
+  + [langgraph_dependency_status] is deferred_to_future_explicit_adapter_activation_slice
+  + [package_metadata_mutation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [current_pure_runner_status] is sufficient_for_IR4_bounded_runtime_graph_proof
+  + [future_adapter_status] is useful_candidate_after_adapter_authority_boundary_is_specified
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve this decision as a deferral, not a rejection of LangGraph as a future execution substrate
+  = must: require a later explicit adapter implementation slice before adding package dependencies, lockfiles, imports from external LangGraph packages, adapter modules, runtime requirements, or generated checkpoint stores
+  = must: keep SOP, SJS, completion reviews, accepted decision documents, and canonical specifications as the source of authority
+  = must: treat LangGraph state, checkpoints, threads, interrupts, and durable execution records as execution projections unless rewritten into accepted SOP authority by a later reviewed process
+
+& [DependencyEvidence: CurrentIR4ProofNeed] is the current proof sufficiency evidence for deferring LangGraph installation
+  + [pure_runner_output] is src/langsop/runtime/graph_runner.py
+  + [fixture_runner_output] is src/langsop/runtime/fixture_runner.py
+  + [contract_test_output] is tests/test_ir4_runtime_graph_contracts.py
+  + [generated_output_proof] is docs/reviews/IR4_Runtime_Graph_Generated_Output_Proof.v1.sop
+  + [current_test_result] is python -m unittest discover -s tests passed 19 tests after IR4-IA07
+  + [current_targeted_test_result] is python -m unittest tests.test_ir4_runtime_graph_contracts passed 5 tests after IR4-IA07
+  + [current_dependency_set] is empty
+  + [pyproject_dependency_list] is empty
+  + [current_runtime_proof_need] is deterministic in-process proof of graph states, checkpoint authority refusal, SOP-first interrupt projection, path policy, fixture corpus coverage, and no-authority-promotion behavior
+  + [external_langgraph_needed_for_current_proof] is false
+
+  ! [CurrentIR4ProofNeedSatisfiedWithoutDependency] is accepted
+    @ [support] docs/reviews/IR4_IA07_Completion_Review.v1.sop
+    @ [support] tests/test_ir4_runtime_graph_contracts.py
+    @ [support] pyproject.toml
+
+& [LangGraphFitAssessment] is the future adapter fit assessment for LangGraph
+  + [official_capability] is persistence saves graph state as checkpoints and supports human-in-the-loop workflows, conversational memory, time travel debugging, and fault-tolerant execution
+  + [official_capability] is durable execution resumes workflows from persisted progress and requires persistence plus thread identity
+  + [official_capability] is human-in-the-loop interrupts persist graph state and wait for explicit resume
+  + [fit_status] is strong_future_execution_substrate_candidate
+  + [fit_reason] is LangGraph provides durable execution, checkpointing, interrupts, and thread-oriented state that align with long-running multi-agent orchestration
+  + [mismatch_status] is authority_boundary_mismatch_if_used_directly_as_truth
+  + [mismatch_reason] is LangGraph checkpoint state is execution state, while LangSOP authority lives in signed SOP/SJS artifacts, accepted reviews, and event/narrative records
+  + [adapter_need] is map LangSOP authority records into LangGraph execution inputs and map LangGraph outputs back into non-authoritative projections until reviewed
+
+  = must: use LangGraph for execution shape only after adapter boundaries preserve authority distinctions
+  = must: prevent LangGraph checkpoints from satisfying readiness, completion review, no-hidden-write proof, source specification processing, or next-slice gates by themselves
+
+& [FutureAdapterActivationBoundary] is the required boundary for any later LangGraph adapter implementation slice
+  + [future_slice_required] is true
+  + [future_slice_must_authorize] is dependency installation
+  + [future_slice_must_authorize] is package metadata mutation
+  + [future_slice_must_authorize] is adapter module inventory
+  + [future_slice_must_authorize] is generated checkpoint store boundary
+  + [future_slice_must_authorize] is adapter API boundary
+  + [future_slice_must_authorize] is fixture expansion or adapter fixture mapping
+  + [future_slice_must_authorize] is source-to-execution projection mapping
+  + [future_slice_must_authorize] is execution-to-SOP-review reentry mapping
+  + [future_forbidden_without_slice] is langgraph import
+  + [future_forbidden_without_slice] is lockfile mutation
+  + [future_forbidden_without_slice] is runtime requirements mutation
+  + [future_forbidden_without_slice] is persistent checkpointer storage
+  + [future_forbidden_without_slice] is live process control
+  + [future_forbidden_without_slice] is operations control
+  + [future_forbidden_without_slice] is live machine control
+
+  = must: require generated adapter outputs to remain ignored, disposable, and reproducible unless accepted by a later review
+  = must: require adapter tests to prove checkpoint state cannot open gates or mutate source authority
+  = must: require adapter tests to prove interrupts route back to SOP-first review rather than silent graph resume
+
+& [DecisionConsequences: IR4-IA08] is the consequence ledger for the deferral decision
+  + [IR4_IA09_may_proceed_without_external_dependency] is true
+  + [IR4_IA09_must_record_dependency_deferral] is true
+  + [downstream_IR5_readiness_basis] is bounded_runtime_graph_proof_pack_plus_dependency_deferral
+  + [downstream_langgraph_adapter_work] is future_slice_after_IR4_implementation_completion_or_rebake
+  + [dependency_risk_reduced] is no unreviewed package, lockfile, or persistence backend enters current proof
+  + [architecture_option_preserved] is LangGraph adapter can be introduced later with explicit authority-preserving boundary
+
+& [IR4IA08FaultReview] is the fault review for the LangGraph adapter dependency decision
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [langgraph_import_added] is false
+  + [generated_checkpoint_store_created] is false
+  + [checkpoint_authority_promotion_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4LangGraphAdapterDependencyDecisionAccepted] is accepted
+    @ [support] [DependencyEvidence: CurrentIR4ProofNeed]
+    @ [support] [LangGraphFitAssessment]
+    @ [support] [FutureAdapterActivationBoundary]
+    @ [support] [DecisionConsequences: IR4-IA08]
+    @ [support] [IR4IA08FaultReview]

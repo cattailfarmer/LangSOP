@@ -1,0 +1,89 @@
+Subject: IR4 IA08 Completion Review V1
+Date: 2026-05-26
+Review UUID: e4c358c1-0fec-4ca5-b230-f28717a140cb
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [ia07_completion_review] docs/reviews/IR4_IA07_Completion_Review.v1.sop
+@ [dependency_decision] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+
+& [CompletedWorkReview: IR4-IA08] is the completed-work review for IR4 dependency-authorized LangGraph adapter decision or deferral review
+  + [slice_id] is IR4-IA08
+  + [slice_name] is dependency-authorized LangGraph adapter decision or deferral review
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+  + [completed_output_sha256] is F44DC92F7E81152F3C761086C89B4CBD9397A0D1B34940C669004763180C9347
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-IA08 as LangGraph adapter dependency deferral decision
+  + [next_gate_result] is IR4-IA09 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR4-IA09 only
+  = must: rerun this review if dependency decision, implementation plan, activation pack, graph contract, checkpoint policy, tests, or generated-output proof changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, operations control, and live machine control gated until a later explicit adapter activation slice accepts them
+
+& [IR4IA08Verification] is the verification result for dependency decision or deferral review
+  + [dependency_decision_present] is true
+  + [decision_result] is defer_external_langgraph_installation_for_current_IR4_proof_pass
+  + [future_adapter_candidate_preserved] is true
+  + [official_langgraph_docs_consulted] is true
+  + [current_pure_runner_sufficiency_recorded] is true
+  + [future_adapter_activation_boundary_recorded] is true
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [langgraph_import_added] is false
+  + [generated_checkpoint_store_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [compile_check] is python -m compileall -q src tests passed
+  + [baseline_test] is python -m unittest discover -s tests passed 19 tests
+  + [diff_hygiene] is git diff --check passed
+
+  ! [IR4IA08VerificationSatisfied] is accepted
+    @ [support] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+    @ [support] compile_check
+    @ [support] baseline_test
+    @ [support] diff_hygiene
+
+& [SupportDelta: IR4-IA08] is the support delta produced by accepted LangGraph adapter dependency decision
+  + [new_support_record] is current IR4 proof pack may close without external LangGraph dependency because pure runner, fixture runner, tests, and generated-output proof satisfy current proof needs
+  + [new_support_record] is LangGraph remains a strong future execution substrate candidate for durable execution, checkpointing, interrupts, and thread-oriented state
+  + [new_support_record] is future LangGraph adapter work must preserve SOP/SJS authority distinctions and cannot treat checkpoints as readiness, completion review, or gate authority
+  + [new_support_record] is IR4-IA09 requires deeper reasoning because final implementation acceptance affects downstream readiness and authority/projection proof boundaries
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-IA08] is the requirement delta produced by accepted LangGraph adapter dependency decision
+  + [requirement_delta] is IR4-IA09 may create docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop and docs/reviews/IR4_Implementation_Completion_Review.v1.sop only
+  + [requirement_delta] is IR4-IA09 must record dependency deferral and future adapter activation boundary in the implementation proof pack
+  + [requirement_delta] is dependency installation, package metadata mutation, adapter implementation, operations control, and live machine control remain unauthorized after IR4-IA08
+  + [requirement_delta] is no rebake required before IR4-IA09, but deeper reasoning is required
+
+& [FaultReview: IR4-IA08] is the fault review for dependency decision or deferral review
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [langgraph_import_leak_found] is false
+  + [generated_checkpoint_store_leak_found] is false
+  + [checkpoint_authority_promotion_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4IA08Accepted] is accepted
+    @ [support] [IR4IA08Verification]
+    @ [support] [SupportDelta: IR4-IA08]
+    @ [support] [RequirementDelta: IR4-IA08]
+    @ [support] [FaultReview: IR4-IA08]
+
+& [NextSliceGate: IR4-IA09] is opened
+  + [opened_slice] is IR4-IA09 implementation completion review and runtime graph proof pack
+  + [accepted_boundary_input] is docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR4_IA08_Completion_Review.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream readiness and authority/projection proof boundaries
+  + [safety_limit] is no operations control or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-IA09 next unless user redirects or a new fault invalidates this review
