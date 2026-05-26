@@ -1,0 +1,168 @@
+Subject: IR2 SQLite Projection Schema And Rebuild Policy V1
+Date: 2026-05-26
+Policy UUID: a6e22f02-7ef2-4850-bcff-c1272a656749
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [boundary_map] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [parser_profile] docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+@ [extraction_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+@ [validation_contract] docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+
+& [IR2SQLiteProjectionSchemaAndRebuildPolicyV1] is the IR2-S05 policy for SQLite projection schema and rebuild behavior
+  + [policy_id] is ir2-sqlite-projection-schema-rebuild-policy-v1
+  + [policy_uuid] is a6e22f02-7ef2-4850-bcff-c1272a656749
+  + [slice_id] is IR2-S05
+  + [policy_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is SQLite projection schema and rebuild policy only
+
+  = must: define a rebuildable SQLite projection schema that preserves source/projection separation
+  = must: define projection tables from accepted query needs and accepted IR2 extraction/validation contracts
+  = must: keep SQLite generated, disposable, and non-authoritative
+  - never: create SQLite files, open SQLite connections, implement migration code, or install dependencies in this slice
+  - never: let SQLite rows replace tracked SOP authority artifacts
+
+& [ProjectionDatabaseArtifactPolicy] is the generated artifact policy for future SQLite projection files
+  + [projection_database_path] is .langsop/sqlite/langsop_projection.sqlite3
+  + [projection_database_wal_path] is .langsop/sqlite/langsop_projection.sqlite3-wal
+  + [projection_database_shm_path] is .langsop/sqlite/langsop_projection.sqlite3-shm
+  + [temporary_rebuild_path] is .langsop/sqlite/rebuild/
+  + [artifact_status] is generated_projection_only
+  + [git_tracking_status] is ignored
+  + [authority_status] is non_authoritative
+
+  = must: allow deletion and rebuild of every projection database artifact
+  = must: require any tracked expected-output ledger to be SOP fixture authority, not the generated database itself
+
+& [ProjectionTablePlan] is the logical SQLite table plan for future implementation
+  + [table] is projection_metadata
+  + [table_role] is schema version, source set hash, extraction rule version, validation rule version, rebuild status, and built_at evidence
+  + [table] is source_artifacts
+  + [table_role] is discovered SOP file path, path role, source hash, hash algorithm, discovery rule version, and freshness state
+  + [table] is parse_events
+  + [table_role] is structural parse event rows with line number, raw text hash, marker kind, bracket label, parent line ref, parse status, and parse fault refs
+  + [table] is parse_faults
+  + [table_role] is recoverable parser profile fault rows linked to source_artifacts and parse_events
+  + [table] is kernel_record_candidates
+  + [table_role] is projected KernelRecord common envelope fields and selected payload summary fields
+  + [table] is source_refs
+  + [table_role] is source reference rows linked to projected record candidates and proof results
+  + [table] is lineage_edges
+  + [table_role] is typed relation rows for source_of, derived_from, cites, supports, reviewed_by, gates, invalidates, contradicts, supersedes, and generated edges
+  + [table] is validation_results
+  + [table_role] is authority classification, hash check, signature check, freshness check, invalidation, and blocked-output result rows
+  + [table] is proof_results
+  + [table_role] is proof_result projection rows for validation and future operator proof outputs
+  + [table] is projection_faults
+  + [table_role] is fault_record projection rows for parser, extraction, validation, freshness, and projection rebuild faults
+  + [table] is freshness_events
+  + [table_role] is stale trigger and recompute-required rows
+
+  = must: keep every table rebuildable from SOP authority, parser events, extraction rules, validation rules, and accepted traces
+  = must: avoid tables that require hidden runtime state or non-rebuildable authority
+
+& [RequiredProjectionColumnSet] is the minimum column set that preserves source/projection distinction
+  + [required_column] is projection_schema_version
+  + [required_column] is source_path
+  + [required_column] is source_hash
+  + [required_column] is source_hash_algorithm
+  + [required_column] is source_role
+  + [required_column] is source_line_number when row is line-derived
+  + [required_column] is extraction_rule_version
+  + [required_column] is validation_rule_version
+  + [required_column] is record_id when row projects a KernelRecord candidate
+  + [required_column] is record_kind when row projects a KernelRecord candidate
+  + [required_column] is natural_key_namespace when meaningful
+  + [required_column] is natural_key_value when meaningful
+  + [required_column] is natural_key_state
+  + [required_column] is subject_namespace when meaningful
+  + [required_column] is subject_id when meaningful
+  + [required_column] is authority_state
+  + [required_column] is freshness_state
+  + [required_column] is record_status
+  + [required_column] is projection_status
+  + [required_column] is proof_status when proof-backed
+  + [required_column] is last_checked_ref
+
+  = must: make source, authority, freshness, status, and projection state queryable without reading hidden process state
+  = must: mark records with unknown or stale freshness explicitly
+
+& [ProjectionIndexPlan] is the first index plan for query needs
+  + [index] is source_artifacts by source_path
+  + [index] is source_artifacts by source_hash
+  + [index] is kernel_record_candidates by record_id
+  + [index] is kernel_record_candidates by record_kind
+  + [index] is kernel_record_candidates by natural_key_namespace and natural_key_value
+  + [index] is kernel_record_candidates by subject_namespace and subject_id
+  + [index] is kernel_record_candidates by authority_state
+  + [index] is kernel_record_candidates by freshness_state and record_status
+  + [index] is lineage_edges by from_ref, to_ref, and edge_kind
+  + [index] is validation_results by classification and proof_status
+  + [index] is projection_faults by fault_kind and fault_subject_ref
+  + [index] is freshness_events by stale_record_ref and required_recompute_ref
+
+  = must: align index choices with accepted StorageBackendDecisionV1 query needs
+  = must: revisit indexes only when query evidence or runtime load justifies it
+
+& [ProjectionRebuildSequence] is the deterministic rebuild sequence for future implementation
+  + [step] is collect accepted discovery rules and input source roots
+  + [step] is compute source file hash ledger
+  + [step] is parse selected SOP files into parse_events and parse_faults
+  + [step] is extract KernelRecord candidates from parse events
+  + [step] is validate common envelope, source refs, lineage, natural keys, signatures, hash ledgers, and freshness
+  + [step] is write generated projection tables to temporary rebuild path
+  + [step] is run projection integrity checks against accepted expected-output ledgers when available
+  + [step] is mark old projection stale or replace generated projection atomically after successful validation
+  + [step] is emit rebuild proof_result or projection_fault record as SOP artifact only when a future slice explicitly authorizes tracked proof output
+
+  = must: fail closed when validation cannot prove source/projection boundaries
+  = must: leave tracked SOP authority unchanged when rebuild fails
+  = must: make rebuild repeatable for the same source hashes and accepted rule versions
+
+& [ProjectionFreshnessAndFaultPolicy] is the freshness and fault behavior for SQLite projection rows
+  + [freshness_fault] is source_hash_mismatch
+  + [freshness_fault] is source_manifest_changed
+  + [freshness_fault] is parser_profile_changed
+  + [freshness_fault] is extraction_mapping_changed
+  + [freshness_fault] is validation_contract_changed
+  + [freshness_fault] is projection_schema_changed
+  + [freshness_fault] is expected_output_ledger_changed
+  + [freshness_fault] is generated_projection_authority_promotion_attempt
+  + [fault_behavior] is mark affected projection rows stale
+  + [fault_behavior] is require rebuild before readiness or packetization consumes affected rows
+  + [fault_behavior] is preserve stale row evidence until rebuild supersedes it
+  + [fault_behavior] is produce projection_fault when rebuild cannot safely proceed
+
+  = must: treat stale or missing projection rows as cache/index faults, not authority loss
+  = must: route projection authority drift to fault_record and SOP-first review
+
+& [SQLiteConcurrencyAndMigrationPolicy] is the initial local SQLite policy
+  + [connection_scope] is future local process only
+  + [transaction_policy] is future projection writes occur in transactions after source validation succeeds
+  + [wal_policy] is WAL mode may be considered during implementation but is not required by this policy
+  + [migration_policy] is rebuild preferred over in-place migration while projection volume is small
+  + [migration_authority] is future migration SOP decision or solution record required before non-rebuild migration
+  + [postgres_reconsideration_gate] is concrete local contention, remote multi-agent requirement, or service uptime need
+
+  = must: keep projection write failure recoverable
+  = must: preserve SOP authority even if SQLite rebuild fails
+
+& [IR2S05CoverageReview] is the coverage checklist for IR2-S05
+  + [projection_database_artifact_policy_present] is ProjectionDatabaseArtifactPolicy
+  + [projection_table_plan_present] is ProjectionTablePlan
+  + [required_projection_column_set_present] is RequiredProjectionColumnSet
+  + [projection_index_plan_present] is ProjectionIndexPlan
+  + [projection_rebuild_sequence_present] is ProjectionRebuildSequence
+  + [projection_freshness_and_fault_policy_present] is ProjectionFreshnessAndFaultPolicy
+  + [sqlite_concurrency_and_migration_policy_present] is SQLiteConcurrencyAndMigrationPolicy
+  + [sqlite_file_created] is false
+  + [sqlite_connection_created] is false
+  + [projection_writer_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-S05 only when all checklist items are satisfied
+  = must: open IR2-S06 only after this projection policy is reviewed in a completion review
