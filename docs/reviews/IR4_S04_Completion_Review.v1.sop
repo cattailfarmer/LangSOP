@@ -1,0 +1,87 @@
+Subject: IR4 S04 Completion Review V1
+Date: 2026-05-26
+Review UUID: 0ae71941-42a5-4d88-9c57-d71426a1041f
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [completed_output] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+@ [completed_output] docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+@ [previous_review] docs/reviews/IR4_S03_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR4-S04] is the completed-work review for runtime graph fixture plan and expected trace ledger plan
+  + [slice_id] is IR4-S04
+  + [slice_name] is runtime graph fixture plan and expected trace ledger plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+  + [completed_output_sha256] is 749FB2E2ECCCE7DB86921DDAFD7AC90E4E49F879FF705E84205F8E1064346E97
+  + [completed_output] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [completed_output_sha256] is D2B3D58DBFFAA0C12FF561441F01F11ECDFBA89C1E362D933BE1EF60FAD54EC3
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-S01 through IR4-S03 acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-S04 fixture plan and index and open IR4-S05
+  + [next_gate_result] is IR4-S05 may open
+  + [next_model_route] is requires deeper reasoning for IR4-S05
+
+  = must: treat this review as gate-opening evidence for IR4-S05 only
+  = must: rerun this review if fixture plan, fixture index, checkpoint policy, graph implementation contract, or IR4 slice surface changes
+  = must: keep fixture source creation, expected ledger creation, generated output creation, executable graph implementation, dependency installation, operations control, and live machine control gated
+
+& [IR4S04Verification] is the verification result for runtime graph fixture planning
+  + [fixture_directory_plan_present] is true
+  + [fixture_case_matrix_present] is true
+  + [expected_graph_trace_ledger_shape_present] is true
+  + [expected_checkpoint_ledger_shape_present] is true
+  + [no_authority_promotion_proof_checklist_present] is true
+  + [future_fixture_execution_policy_present] is true
+  + [fixture_index_present] is true
+  + [fixture_source_count] is 10
+  + [expected_ledger_count] is 4
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+  + [implementation_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR4S04VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+    @ [support] docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+
+& [SupportDelta: IR4-S04] is the support delta produced by accepted runtime graph fixture planning
+  + [new_support_record] is IR4-S05 may define implementation file inventory, dependency boundary, generated checkpoint roots, and proof checklist against accepted fixture inventory
+  + [new_support_record] is future Spark-suitable fixture source and ledger creation can be bounded after implementation activation opens it
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-S04] is the requirement delta produced by accepted fixture planning
+  + [requirement_delta] is IR4-S05 requires deeper reasoning for dependency and implementation boundary decisions
+  + [requirement_delta] is no fixture source files, expected ledgers, generated outputs, executable graph code, dependencies, operations control, or live machine control are authorized by IR4-S04
+  + [requirement_delta] is no rebake required before IR4-S05
+
+& [FaultReview: IR4-S04] is the fault review for runtime graph fixture planning
+  + [fixture_source_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4S04Accepted] is accepted
+    @ [support] [IR4S04Verification]
+    @ [support] [SupportDelta: IR4-S04]
+    @ [support] [RequirementDelta: IR4-S04]
+    @ [support] [FaultReview: IR4-S04]
+
+& [NextSliceGate: IR4-S05] is opened
+  + [opened_slice] is IR4-S05 LangGraph proof runtime implementation plan and dependency boundary
+  + [accepted_boundary_input] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 749FB2E2ECCCE7DB86921DDAFD7AC90E4E49F879FF705E84205F8E1064346E97
+  + [accepted_boundary_input] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [accepted_boundary_input_sha256] is D2B3D58DBFFAA0C12FF561441F01F11ECDFBA89C1E362D933BE1EF60FAD54EC3
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency policy and implementation boundary affect runtime graph authority and fixture execution
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-S05 next unless user redirects or a new fault invalidates this review

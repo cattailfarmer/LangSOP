@@ -1,0 +1,62 @@
+Subject: IR4 Runtime Graph Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: 07020561-a967-4084-a10b-5796ec24f5c9
+
+@ [fixture_plan] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [checkpoint_interrupt_policy] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+
+& [IR4RuntimeGraphFixtureIndexV1] is the fixture inventory for future IR4 runtime graph implementation proof
+  + [fixture_index_id] is ir4-runtime-graph-fixture-index-v1
+  + [fixture_index_uuid] is 07020561-a967-4084-a10b-5796ec24f5c9
+  + [slice_id] is IR4-S04
+  + [fixture_source_root] is tests/fixtures/sop/ir4_runtime_graph/
+  + [expected_ledger_root] is tests/fixtures/expected/ir4_runtime_graph/
+  + [generated_output_root] is tests/fixtures/generated/ir4_runtime_graph/
+  + [fixture_source_count] is 10
+  + [expected_ledger_count] is 4
+  + [generated_output_status] is projection_only
+
+  = must: treat this index as a plan for future fixture material, not as created fixture source or expected ledgers
+  = must: keep generated checkpoint and trace outputs ignored, disposable, and non-authoritative
+
+& [FutureFixtureSourceInventory: IR4RuntimeGraph] is the planned fixture source inventory
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/valid_graph_pass.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/blocked_readiness.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/stale_checkpoint.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/ambiguous_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/authority_conflict_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/contested_claim_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/faulted_operator_trace.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/hidden_write_prevention.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/false_ready_checkpoint.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/completion_gate_refusal.sop
+
+& [FutureExpectedLedgerInventory: IR4RuntimeGraph] is the planned expected ledger inventory
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/terminal_outcome_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/operator_trace_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/checkpoint_policy_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/no_authority_promotion_expected.sop
+
+& [FutureGeneratedOutputInventory: IR4RuntimeGraph] is the planned generated output inventory
+  + [future_generated_root] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
+  + [future_generated_root] is tests/fixtures/generated/ir4_runtime_graph/traces/
+  + [future_generated_root] is tests/fixtures/generated/ir4_runtime_graph/reports/
+  + [future_generated_root] is .langsop/checkpoints/ir4_runtime_graph/
+  + [future_generated_root] is .langsop/traces/ir4_runtime_graph/
+  + [future_generated_root] is .langsop/reports/ir4_runtime_graph/
+
+  = must: reject generated outputs as source authority
+  = must: require cleanup and rebuild proof before implementation completion
+
+& [IR4FixtureIndexCoverageReview] is the coverage checklist for the fixture index
+  + [fixture_source_inventory_present] is true
+  + [expected_ledger_inventory_present] is true
+  + [generated_output_inventory_present] is true
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept this index only when it remains inventory-only

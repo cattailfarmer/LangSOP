@@ -1,0 +1,131 @@
+Subject: IR4 Runtime Graph Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: 407ea519-277c-4da7-8c2d-5bcf0f108cee
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [runtime_boundary_import] docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [graph_implementation_contract] docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+@ [checkpoint_interrupt_policy] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+@ [fsc3_fixture_plan] docs/fixtures/FSC3_Runtime_Graph_Fixture_Plan.v1.sop
+
+& [IR4RuntimeGraphFixturePlanV1] is the IR4-S04 fixture and expected trace ledger plan for future runtime graph proof
+  + [fixture_plan_id] is ir4-runtime-graph-fixture-plan-v1
+  + [fixture_plan_uuid] is 407ea519-277c-4da7-8c2d-5bcf0f108cee
+  + [slice_id] is IR4-S04
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-S01 through IR4-S03 acceptance
+  + [implementation_scope] is fixture and expected trace ledger plan only
+
+  = must: define future fixture case matrix, expected trace ledger shape, checkpoint proof expectations, no-hidden-write proof, and future implementation test oracle
+  = must: keep fixture source and expected ledgers tracked as future SOP authority while generated checkpoints, traces, and reports remain disposable projections
+  - never: create fixture source files, expected ledger files, generated checkpoints, generated traces, implementation code, dependencies, operations control, or live machine control in this slice
+
+& [FixtureDirectoryPlan: IR4RuntimeGraph] is the directory plan for future IR4 runtime graph fixture material
+  + [fixture_source_root] is tests/fixtures/sop/ir4_runtime_graph/
+  + [fixture_expected_root] is tests/fixtures/expected/ir4_runtime_graph/
+  + [fixture_generated_root] is tests/fixtures/generated/ir4_runtime_graph/
+  + [fixture_generated_checkpoint_root] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
+  + [fixture_generated_trace_root] is tests/fixtures/generated/ir4_runtime_graph/traces/
+  + [fixture_generated_report_root] is tests/fixtures/generated/ir4_runtime_graph/reports/
+  + [fixture_source_status] is tracked SOP fixture source after future review
+  + [fixture_expected_status] is tracked SOP expected-output ledger after future review
+  + [fixture_generated_status] is generated_projection_only
+
+  = must: track only fixture source and expected ledgers when a later slice creates them
+  = must: ignore generated outputs and make them rebuildable
+
+& [FixtureCaseMatrix: IR4RuntimeGraph] is the bounded fixture case set for first runtime graph implementation proof
+  + [fixture_case] is valid_graph_pass
+  + [fixture_case_purpose] is proves accepted work packet, readiness, coordination, operator invocation, trace recording, and completion gate produce terminal_success
+  + [fixture_case] is blocked_readiness
+  + [fixture_case_purpose] is proves non-ready or unsupported readiness produces terminal_blocked and no operator invocation
+  + [fixture_case] is stale_checkpoint
+  + [fixture_case_purpose] is proves stale checkpoint freshness produces terminal_stale and no resume
+  + [fixture_case] is ambiguous_interrupt
+  + [fixture_case_purpose] is proves ambiguous identity produces terminal_interrupt with interrupt context
+  + [fixture_case] is authority_conflict_interrupt
+  + [fixture_case_purpose] is proves authority conflict produces terminal_interrupt with accepted resume requirements
+  + [fixture_case] is contested_claim_interrupt
+  + [fixture_case_purpose] is proves contested coordination claim produces terminal_interrupt and does not resolve claim silently
+  + [fixture_case] is faulted_operator_trace
+  + [fixture_case_purpose] is proves missing or invalid operator_trace produces terminal_fault
+  + [fixture_case] is hidden_write_prevention
+  + [fixture_case_purpose] is proves hidden source or gate write attempt produces terminal_fault
+  + [fixture_case] is false_ready_checkpoint
+  + [fixture_case_purpose] is proves checkpoint readiness cannot open a gate without accepted completion review
+  + [fixture_case] is completion_gate_refusal
+  + [fixture_case_purpose] is proves completion gate blocked output remains terminal_blocked until accepted review evidence exists
+
+  = must: keep fixture cases small enough for deterministic review
+  = must: require a future review before adding cases outside this bounded set
+
+& [ExpectedGraphTraceLedgerShape] is the expected runtime graph trace ledger shape
+  + [required_field] is fixture_id
+  + [required_field] is input_fixture_source_ref
+  + [required_field] is expected_terminal_outcome
+  + [required_field] is expected_graph_phase_sequence
+  + [required_field] is expected_node_visit_set
+  + [required_field] is expected_operator_contract_ref when operator invocation is expected
+  + [required_field] is expected_operator_trace_ref_state
+  + [required_field] is expected_checkpoint_state
+  + [required_field] is expected_interrupt_kind when terminal outcome is terminal_interrupt
+  + [required_field] is expected_fault_kind when terminal outcome is terminal_fault
+  + [required_field] is expected_refusal_reason when terminal outcome is terminal_blocked
+  + [required_field] is expected_non_authority_warning
+  + [required_field] is acceptance_status
+
+  = must: make expected trace facts reviewable without reading generated runtime state as authority
+  = must: require explicit expected refusal, fault, stale, or interrupt reason when execution cannot safely succeed
+
+& [ExpectedCheckpointLedgerShape] is the expected checkpoint ledger shape
+  + [required_field] is fixture_id
+  + [required_field] is expected_checkpoint_freshness_result
+  + [required_field] is expected_checkpoint_authority_result
+  + [required_field] is expected_resume_condition
+  + [required_field] is expected_stale_or_interrupt_route
+  + [required_field] is expected_cleanup_root
+  + [required_field] is expected_rebuild_or_stale_state
+  + [required_field] is acceptance_status
+
+  = must: prove generated checkpoint deletion and rebuild does not erase authority
+  = must: make checkpoint authority confusion and stale checkpoint failures explicit
+
+& [NoAuthorityPromotionProofChecklist: IR4RuntimeGraph] is the fixture proof checklist for runtime graph source/projection separation
+  + [proof_check] is tracked fixture source remains fixture authority
+  + [proof_check] is tracked expected ledger remains expected-output authority
+  + [proof_check] is generated checkpoint remains projection-only execution state
+  + [proof_check] is generated graph trace remains projection-only
+  + [proof_check] is generated report remains projection-only
+  + [proof_check] is generated output cannot open next gate
+  + [proof_check] is checkpoint state cannot satisfy completion review
+  + [proof_check] is hidden write attempt produces fault or refusal output
+  + [proof_check] is operations control and live machine control remain absent
+
+& [FutureFixtureExecutionPolicy: IR4RuntimeGraph] is the future fixture execution policy
+  + [future_targeted_test] is python -m unittest tests.test_ir4_runtime_graph_contracts
+  + [baseline_command] is python -m unittest discover -s tests
+  + [compile_command] is python -m compileall -q src tests
+  + [generated_output_policy] is future tests may write only tests/fixtures/generated/ir4_runtime_graph/ and accepted .langsop generated paths
+  + [cleanup_policy] is generated checkpoints, traces, and reports may be deleted and rebuilt
+
+  = must: require future implementation tests to prove no source mutation and no authority promotion
+  = must: fail fixture execution if generated outputs are required as source authority
+  = must: keep command integration gated until future implementation activation authorizes tests and code
+
+& [IR4S04CoverageReview] is the coverage checklist for IR4-S04
+  + [fixture_directory_plan_present] is true
+  + [fixture_case_matrix_present] is true
+  + [expected_graph_trace_ledger_shape_present] is true
+  + [expected_checkpoint_ledger_shape_present] is true
+  + [no_authority_promotion_proof_checklist_present] is true
+  + [future_fixture_execution_policy_present] is true
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_output_created] is false
+  + [implementation_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR4-S04 only when all checklist items are satisfied
+  = must: open IR4-S05 only after this fixture plan is reviewed in a completion review
