@@ -1,0 +1,49 @@
+Subject: Derived IR4 Final Slices Source
+Date: 2026-05-26
+Source UUID: 8ad2ad14-fcb6-4a41-9219-48f569ad0bed
+
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [fsc3_runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [whole_field_planner_graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [sop_first_interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [operator_trace_runtime_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+@ [ir3_operator_harness_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir3_completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+
+& [DerivedIR4FinalSlicesSource] is the preserved source record for minting IR4 final slices
+  + [source_kind] is derived_boundary_source
+  + [source_basis] is accepted post-FSC5 readiness surface, accepted FSC3 runtime graph proof pack, and accepted IR3 operator harness implementation proof pack
+  + [target_chunk] is IR4 LangGraph proof runtime implementation
+  + [target_chunk_state] is ready_for_final_slice_minting_after_IR3_completion
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is LangGraph runtime integration, checkpoint semantics, SOP-first interrupt behavior, and operator-trace proof boundaries affect authority/projection handoff
+
+  = must: mint IR4 final slices before creating executable LangGraph runtime code
+  = must: keep LangGraph checkpoints and graph state as execution state only
+  = must: use IR3 operator harness proof as the accepted execution/operator boundary input
+  = must: preserve SOP-first interrupt for ambiguous identity, authority conflict, stale input, missing proof route, contested coordination claim, high-risk operation, human override, unsupported scope, and checkpoint authority confusion
+  = must: require operator_trace or equivalent trace evidence for every runtime path before future surfaces consume it
+  = must: keep generated runtime checkpoints, generated traces, generated reports, and fixture outputs projection-only
+  - never: authorize operations control, live machine control, job dispatch, process control, GPU control, network control, credential access, destructive filesystem action, or hidden source mutation
+
+& [IR4SliceIntentSet] is the intended whole-pie slice shape for IR4
+  + [slice_intent] is import and reconcile FSC3 runtime graph contracts with IR3 operator harness implementation proof
+  + [slice_intent] is define the bounded LangGraph proof runtime implementation contract without installing dependencies or writing executable graph code
+  + [slice_intent] is define checkpoint persistence and resume policy as non-authoritative generated execution state
+  + [slice_intent] is define SOP-first interrupt fixture and expected-ledger material for graph execution
+  + [slice_intent] is define runtime trace and completion-gate fixture material for success, blocked, stale, fault, and interrupt outcomes
+  + [slice_intent] is produce implementation activation pack only after contract, checkpoint, fixture, and trace proof surfaces are accepted
+
+& [IR4ForbiddenScopeSet] is the forbidden scope for IR4 final-slice minting
+  + [forbidden_scope] is executable LangGraph node implementation
+  + [forbidden_scope] is dependency installation
+  + [forbidden_scope] is checkpoint persistence implementation
+  + [forbidden_scope] is surface or adapter implementation
+  + [forbidden_scope] is operations simulator implementation
+  + [forbidden_scope] is operations control
+  + [forbidden_scope] is live machine control
+
+& [IR4DownstreamGate] is the downstream state after IR4 final slices are minted
+  + [first_slice_after_minting] is IR4-S01 runtime boundary import and invariant reconciliation
+  + [downstream_chunk] is IR5 surface projection prototype remains gated until IR4 proof is accepted
+  + [future_spark_suitable_work] is GPT-5.3-Codex-Spark-suitable only after IR4 contracts, fixtures, and activation boundaries isolate bounded implementation

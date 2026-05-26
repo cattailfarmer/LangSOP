@@ -1,0 +1,95 @@
+Subject: IR4 Final Slice Minting Review V1
+Date: 2026-05-26
+Review UUID: d4114bb6-227d-44db-94c0-0b8dbd93ec41
+
+@ [source_manifest] docs/source/2026-05-26_ir4_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [ir3_implementation_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir3_completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR4-Final-Slice-Minting] is the completed-work review for minting IR4 final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir4_final_slices/Derived_IR4_Final_Slices_Source.sop
+  + [completed_output_sha256] is AE796BD62EB8A24C75911D6D4256E9EA20BE3F9362069EC919F02189BC289BD2
+  + [completed_output] is docs/source/2026-05-26_ir4_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is BB813E70C733F46185DCA3C1005FB626410AB81CE0CD7F6745D73FFAEF663AED
+  + [completed_output] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [completed_output_sha256] is B86135DDB261F197C3783D4246F0D23917E5441DF781764DEB2E096AEF377AED
+  + [completed_output] is docs/slices/IR4_Final_Slices.v1.sop
+  + [completed_output_sha256] is A4C175785CF1D7CB01139F9025D3195A1CF7FB3682CB13FCA9A9DEBEBF35D605
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4 final slice surface and open IR4-S01
+  + [next_gate_result] is IR4-S01 may open
+  + [next_model_route] is requires deeper reasoning for IR4-S01
+
+  = must: treat this review as gate-opening evidence for IR4-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, IR3 implementation proof pack, IR3 completion review, or FSC3 runtime graph proof pack changes
+  = must: keep executable LangGraph runtime implementation, dependency installation, generated checkpoint creation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control gated
+
+& [IR4FinalSliceMintingVerification] is the verification result for IR4 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [slice_count] is 6
+  + [current_ready_slice] is IR4-S01
+  + [gated_slice] is IR4-S02
+  + [gated_slice] is IR4-S03
+  + [gated_slice] is IR4-S04
+  + [gated_slice] is IR4-S05
+  + [gated_slice] is IR4-S06
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR4FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR4_Final_Slices.v1.sop
+
+& [SupportDelta: IR4-Final-Slice-Minting] is the support delta produced by minted IR4 final slices
+  + [new_support_record] is IR4-S01 may import and reconcile runtime graph and operator harness boundaries
+  + [new_support_record] is IR4-S02 through IR4-S06 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded IR4-S04 fixture planning after IR4-S01 through IR4-S03 are accepted
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-Final-Slice-Minting] is the requirement delta produced by minted IR4 final slices
+  + [requirement_delta] is IR4-S01 requires deeper reasoning
+  + [requirement_delta] is no executable LangGraph code, dependency installation, generated runtime output, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every IR4 slice
+
+& [FaultReview: IR4-Final-Slice-Minting] is the fault review for minted IR4 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [executable_graph_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4FinalSlicesAccepted] is accepted
+    @ [support] [IR4FinalSliceMintingVerification]
+    @ [support] [SupportDelta: IR4-Final-Slice-Minting]
+    @ [support] [RequirementDelta: IR4-Final-Slice-Minting]
+    @ [support] [FaultReview: IR4-Final-Slice-Minting]
+
+& [NextSliceGate: IR4-S01] is opened
+  + [opened_slice] is IR4-S01 runtime boundary import and invariant reconciliation
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is runtime authority boundaries and operator harness handoff affect downstream semantics
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-S01 next unless user redirects or a new fault invalidates this review

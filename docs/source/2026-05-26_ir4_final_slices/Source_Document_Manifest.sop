@@ -1,0 +1,35 @@
+Subject: IR4 Final Slices Source Document Manifest
+Date: 2026-05-26
+Manifest UUID: 2c4acfb3-cb68-4738-80a6-f1959d213dc6
+
+@ [source_document] docs/source/2026-05-26_ir4_final_slices/Derived_IR4_Final_Slices_Source.sop
+@ [post_fsc5_readiness] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [fsc3_runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [whole_field_planner_graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [sop_first_interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [operator_trace_runtime_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+@ [ir3_operator_harness_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir3_completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+
+& [SourceDocumentManifest: IR4FinalSlices] is the preserved source manifest for IR4 final-slice minting
+  + [manifest_uuid] is 2c4acfb3-cb68-4738-80a6-f1959d213dc6
+  + [source_document] is docs/source/2026-05-26_ir4_final_slices/Derived_IR4_Final_Slices_Source.sop
+  + [source_document_sha256] is AE796BD62EB8A24C75911D6D4256E9EA20BE3F9362069EC919F02189BC289BD2
+  + [boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [boundary_input] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [boundary_input_sha256] is 62E902F3CB461FE66271E58C34A1A42EF633331AA1A9428AD8909C6EC940083A
+  + [boundary_input] is docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+  + [boundary_input_sha256] is 58B041B9B1BEA5482B788CA1256FB217F36887C53C4E006C2166D56C9A89CFAA
+  + [boundary_input] is docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+  + [boundary_input_sha256] is 8FC7F0F78D006AE7B1441098554713BB0FBCC7E5DDE31E21B2262F28D62CAAA8
+  + [boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [boundary_input] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+  + [boundary_input_sha256] is C3CD25BF2B5891F56ED8D8BCBB1F49A0BE099E7EDA7140E1E296E172F3EE0578
+  + [preservation_status] is source_preserved
+  + [processing_route] is Specification_Justification_Solution_to_canonical_IR4_final_slice_surface
+
+  = must: preserve this manifest as provenance for canonical IR4 final slices
+  = must: treat downstream IR4 implementation as gated until slice surface and completion review open a bounded implementation step
+  - never: use this manifest to authorize executable LangGraph runtime code, dependency installation, operations control, or live machine control

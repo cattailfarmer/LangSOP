@@ -1,0 +1,84 @@
+Subject: LangSOP IR4 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir4_final_slices/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [fsc3_runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [ir3_operator_harness_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir3_completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR4FinalSlices] is the processed planning authority for IR4 final work slices
+  + [canonical_uuid] is 064a7937-6fb0-4250-9dd8-7c70bf0fc134
+  + [source_manifest_uuid] is 2c4acfb3-cb68-4738-80a6-f1959d213dc6
+  + [slice_surface_uuid] is 5f3b11f1-5e6f-4adc-8b71-fdc055ec3678
+  + [authority_scope] is IR4 slice order, gates, expected outputs, model routing, LangGraph runtime boundary, checkpoint non-authority policy, SOP-first interrupt policy, runtime trace fixture planning, implementation activation boundary, and forbidden live operations scope
+  + [implementation_scope] is runtime graph planning plus gated implementation activation
+  + [depends_on] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [depends_on] is docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+  + [depends_on] is docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+  + [depends_on] is docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+  + [depends_on] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+
+  = must: use docs/slices/IR4_Final_Slices.v1.sop as the current IR4 slice surface
+  = must: execute IR4-S01 first
+  = must: run completion review after each IR4 slice before opening the next gated slice
+  = must: keep LangGraph checkpoint state, graph state, generated traces, generated reports, and fixture outputs non-authoritative
+  - never: treat IR4 slices as permission for dependency installation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control
+
+& [CanonicalIR4SliceSet] is the final IR4 slice sequence
+  + [slice] is IR4-S01 runtime boundary import and invariant reconciliation
+  + [slice] is IR4-S02 WholeFieldPlannerGraph implementation contract and node mapping
+  + [slice] is IR4-S03 checkpoint and SOP-first interrupt policy
+  + [slice] is IR4-S04 runtime graph fixture plan and expected trace ledger plan
+  + [slice] is IR4-S05 LangGraph proof runtime implementation plan and dependency boundary
+  + [slice] is IR4-S06 IR4 completion review and implementation activation pack
+
+  = must: preserve this order unless completion review rebakes IR4
+
+& [CanonicalIR4ExecutionGate] is the activation rule for IR4
+  + [current_ready_slice] is IR4-S01
+  + [gated_slice] is IR4-S02 until IR4-S01 accepted
+  + [gated_slice] is IR4-S03 until IR4-S02 accepted
+  + [gated_slice] is IR4-S04 until IR4-S03 accepted
+  + [gated_slice] is IR4-S05 until IR4-S04 accepted
+  + [gated_slice] is IR4-S06 until IR4-S05 accepted
+  + [completion_gate] is IR4 implementation activation pack accepted after IR4-S06
+
+& [CanonicalIR4ModelRouting] is the model-routing record
+  + [IR4-S01] is requires deeper reasoning
+  + [IR4-S02] is requires deeper reasoning
+  + [IR4-S03] is requires deeper reasoning
+  + [IR4-S04] is GPT-5.3-Codex-Spark-suitable after IR4-S01 through IR4-S03 are accepted and fixture scope is bounded
+  + [IR4-S05] is requires deeper reasoning
+  + [IR4-S06] is requires deeper reasoning
+
+  = must: keep graph authority boundaries, checkpoint semantics, interrupt semantics, and final activation under deeper reasoning
+
+& [SatisfactionSignature: IR4FinalSlices] is the valid SJS satisfaction signature for the IR4 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 61d2bba4-a240-4df1-823b-dfdf1d30363b
+  + [signed_subject] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir4_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is AE796BD62EB8A24C75911D6D4256E9EA20BE3F9362069EC919F02189BC289BD2
+  + [source_sha256] is BB813E70C733F46185DCA3C1005FB626410AB81CE0CD7F6745D73FFAEF663AED
+  + [source_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [source_sha256] is 62E902F3CB461FE66271E58C34A1A42EF633331AA1A9428AD8909C6EC940083A
+  + [source_sha256] is 58B041B9B1BEA5482B788CA1256FB217F36887C53C4E006C2166D56C9A89CFAA
+  + [source_sha256] is 8FC7F0F78D006AE7B1441098554713BB0FBCC7E5DDE31E21B2262F28D62CAAA8
+  + [source_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [source_sha256] is C3CD25BF2B5891F56ED8D8BCBB1F49A0BE099E7EDA7140E1E296E172F3EE0578
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR4_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR3_gate_imported, FSC3_runtime_contracts_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR4_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR4 final slices; no live operations control authorized
+
+& [RegistryRecord: IR4FinalSlices] is the durable identity ledger for the IR4 final slice surface
+  + [registry_uuid] is 3ebc736d-784d-4775-8fb0-7319d9ede293
+  + [manifest_node_uuid] is 2c4acfb3-cb68-4738-80a6-f1959d213dc6
+  + [canonical_node_uuid] is 064a7937-6fb0-4250-9dd8-7c70bf0fc134
+  + [slice_surface_uuid] is 5f3b11f1-5e6f-4adc-8b71-fdc055ec3678
+  + [signature_uuid] is 61d2bba4-a240-4df1-823b-dfdf1d30363b
+  + [closure_review_uuid] is d4114bb6-227d-44db-94c0-0b8dbd93ec41

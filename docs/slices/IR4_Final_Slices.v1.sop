@@ -1,0 +1,129 @@
+Subject: IR4 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 5f3b11f1-5e6f-4adc-8b71-fdc055ec3678
+
+@ [canonical_specification] docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir4_final_slices/Source_Document_Manifest.sop
+@ [fsc3_runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [ir3_operator_harness_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir3_completion_review] docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+
+& [IR4FinalSliceSurfaceV1] is the executable slice surface for IR4 LangGraph proof runtime planning
+  + [chunk_ref] is IR4 LangGraph proof runtime implementation
+  + [chunk_boundary] is runtime boundary import, graph implementation contract, checkpoint and SOP-first interrupt policy, runtime graph fixtures, implementation plan, activation pack, and completion review
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR4-S01
+  + [gated_slice_set] is IR4-S02, IR4-S03, IR4-S04, IR4-S05, and IR4-S06
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR4-S01 before creating graph implementation contracts, checkpoint policy, fixtures, implementation activation plans, dependency changes, executable LangGraph code, or generated runtime outputs
+  = must: run completed-work review after each IR4 slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes LangGraph checkpoints, graph state, generated traces, generated reports, surface projections, or fixture outputs to source authority
+
+& [FinalWorkSlice: IR4-S01-RuntimeBoundaryImportAndInvariantReconciliation] is ready
+  + [slice_id] is IR4-S01
+  + [slice_name] is runtime boundary import and invariant reconciliation
+  + [chunk_ref] is IR4 LangGraph proof runtime implementation
+  + [portion_ref] is runtime graph boundary and IR3 operator harness handoff
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [activation_gate] is IR3 implementation completion accepted
+  + [internal_dependency_set] is accepted FSC3 runtime graph proof pack and accepted IR3 operator harness implementation proof pack
+  + [expected_output_set] is docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [verification_oracle] is boundary map imports graph contracts, checkpoint non-authority rules, SOP-first interrupt rules, IR3 operator harness proof, forbidden mutations, and stale triggers without implementing runtime code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is runtime authority boundaries and operator harness handoff affect downstream semantics
+  + [forbidden_scope] is executable graph implementation, dependency installation, fixture creation, generated output creation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-S02-WholeFieldPlannerGraphImplementationContract] is gated
+  + [slice_id] is IR4-S02
+  + [slice_name] is WholeFieldPlannerGraph implementation contract and node mapping
+  + [chunk_ref] is IR4 LangGraph proof runtime implementation
+  + [portion_ref] is graph implementation contract
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [activation_gate] is IR4-S01 accepted
+  + [internal_dependency_set] is IR4-S01 output and accepted graph contracts
+  + [expected_output_set] is docs/runtime/IR4_WholeFieldPlannerGraph_Implementation_Contract.v1.sop
+  + [verification_oracle] is graph implementation contract maps state, nodes, edges, terminal outcomes, operator harness calls, trace obligations, refusal/fault/interrupt behavior, and no-hidden-write proof without executable graph code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is node and edge contracts decide runtime authority, checkpoint, and trace semantics
+  + [forbidden_scope] is executable graph implementation, package installation, checkpoint persistence implementation, surface implementation, adapter implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-S03-CheckpointAndSOPFirstInterruptPolicy] is gated
+  + [slice_id] is IR4-S03
+  + [slice_name] is checkpoint and SOP-first interrupt policy
+  + [chunk_ref] is IR4 LangGraph proof runtime implementation
+  + [portion_ref] is checkpoint and interrupt policy
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [activation_gate] is IR4-S02 accepted
+  + [internal_dependency_set] is IR4-S01 through IR4-S02 accepted outputs
+  + [expected_output_set] is docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+  + [verification_oracle] is policy defines checkpoint freshness, resume packets, interrupt context, stale checkpoint refusal, checkpoint authority confusion faults, and no source-authority mutation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is interrupt and resume semantics govern authority-sensitive runtime continuation
+  + [forbidden_scope] is checkpoint persistence implementation, executable graph implementation, generated checkpoint creation, surface implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-S04-RuntimeGraphFixturePlanAndExpectedTraceLedgerPlan] is gated
+  + [slice_id] is IR4-S04
+  + [slice_name] is runtime graph fixture plan and expected trace ledger plan
+  + [chunk_ref] is IR4 LangGraph proof runtime implementation
+  + [portion_ref] is runtime graph fixtures
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [activation_gate] is IR4-S03 accepted
+  + [internal_dependency_set] is IR4-S01 through IR4-S03 accepted outputs
+  + [expected_output_set] is docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [verification_oracle] is fixture plan covers valid graph pass, blocked readiness, stale checkpoint, ambiguous interrupt, authority conflict interrupt, contested claim interrupt, faulted operator trace, hidden write prevention, false-ready checkpoint, and completion gate refusal
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-S01 through IR4-S03 acceptance
+  + [model_route_reason] is fixture planning is bounded by accepted graph, checkpoint, interrupt, and trace contracts
+  + [forbidden_scope] is fixture source file creation, expected ledger file creation, generated output creation, executable graph implementation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-S05-LangGraphProofRuntimeImplementationPlanAndDependencyBoundary] is gated
+  + [slice_id] is IR4-S05
+  + [slice_name] is LangGraph proof runtime implementation plan and dependency boundary
+  + [chunk_ref] is IR4 LangGraph proof runtime implementation
+  + [portion_ref] is implementation planning and dependency boundary
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [activation_gate] is IR4-S04 accepted
+  + [internal_dependency_set] is IR4-S01 through IR4-S04 accepted outputs
+  + [expected_output_set] is docs/implementation/IR4_LangGraph_Proof_Runtime_Implementation_Plan.v1.sop
+  + [verification_oracle] is implementation plan defines future file inventory, dependency decision boundary, generated checkpoint roots, fixture runner boundary, command plan, and proof checklist without code or dependency changes
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency policy and implementation boundary affect runtime graph authority and fixture execution
+  + [forbidden_scope] is executable graph implementation, dependency installation, fixture file creation, generated output creation, surface implementation, adapter implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR4-S06-CompletionReviewAndImplementationActivationPack] is gated
+  + [slice_id] is IR4-S06
+  + [slice_name] is IR4 completion review and implementation activation pack
+  + [chunk_ref] is IR4 LangGraph proof runtime implementation
+  + [portion_ref] is implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR4_Final_Slices.canonical.sop
+  + [activation_gate] is IR4-S05 accepted
+  + [internal_dependency_set] is IR4-S01 through IR4-S05 accepted outputs
+  + [expected_output_set] is docs/planning/IR4_LangGraph_Proof_Runtime_Activation_Pack.v1.sop
+  + [verification_oracle] is completion review accepts only bounded IR4 planning proof and opens implementation activation only if no checkpoint authority promotion, hidden graph write, dependency, generated output, operations control, or live-control fault is present
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR4 planning acceptance affects implementation activation and downstream IR5 readiness
+  + [forbidden_scope] is executable graph implementation, dependency installation, surface implementation, adapter implementation, operations simulator implementation, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR4FinalSliceClosureReview] is the dependency audit for minted IR4 final slices
+  + [FSC3_runtime_graph_proof_pack_status] is accepted
+  + [IR3_operator_harness_implementation_proof_pack_status] is accepted
+  + [IR3_implementation_completion_review_status] is accepted
+  + [current_ready_slice_set] is IR4-S01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR4-S02 through IR4-S06 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears
