@@ -1,0 +1,104 @@
+Subject: FSC5 Operations Safety Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: b19fdf35-a555-4969-a220-99571de09753
+
+@ [fixture_plan] docs/fixtures/FSC5_Operations_Safety_Fixture_Plan.v1.sop
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [dry_run_contract] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [resource_safety_contract] docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+@ [live_control_prohibition] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+
+& [FixtureIndex: FSC5OperationsSafetyFixtureIndexV1] is the fixture index for FSC5 operations safety fixtures
+  + [slice_id] is FSC5-S05
+  + [fixture_plan] is docs/fixtures/FSC5_Operations_Safety_Fixture_Plan.v1.sop
+  + [fixture_count] is 10
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+
+& [FixtureIndexEntry: F5X-001] is dry_run_resource_request
+  + [fixture_case] is F5X-001-dry-run-resource-request
+  + [primary_contract] is DryRunResultSchema
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is NoLiveEffectRule
+
+& [FixtureIndexEntry: F5X-002] is blocked_live_control
+  + [fixture_case] is F5X-002-blocked-live-control
+  + [primary_contract] is LiveControlProhibitionGate
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_live_process_control or refused_gpu_control
+
+& [FixtureIndexEntry: F5X-003] is gpu_contention
+  + [fixture_case] is F5X-003-gpu-contention
+  + [primary_contract] is ResourceRiskClassification
+  + [expected_status] is review_required
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is no_gpu_workload_launch
+
+& [FixtureIndexEntry: F5X-004] is model_runtime_unavailable
+  + [fixture_case] is F5X-004-model-runtime-unavailable
+  + [primary_contract] is ResourceTargetClassification
+  + [expected_status] is blocked_for_live_effect
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is refused_model_runtime_control
+
+& [FixtureIndexEntry: F5X-005] is credential_boundary
+  + [fixture_case] is F5X-005-credential-boundary
+  + [primary_contract] is CredentialBoundaryContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_credential_control
+
+& [FixtureIndexEntry: F5X-006] is network_exposure_refusal
+  + [fixture_case] is F5X-006-network-exposure-refusal
+  + [primary_contract] is NetworkBoundaryContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is refused_network_control
+
+& [FixtureIndexEntry: F5X-007] is destructive_command_refusal
+  + [fixture_case] is F5X-007-destructive-command-refusal
+  + [primary_contract] is RefusalOutputContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_destructive_filesystem_control
+
+& [FixtureIndexEntry: F5X-008] is missing_authority_notice
+  + [fixture_case] is F5X-008-missing-authority-notice
+  + [primary_contract] is OperationRequestSchema
+  + [expected_status] is faulted
+  + [required_notice] is missing_authority_notice refusal
+  + [required_refusal_or_gate] is blocked_operation_request
+
+& [FixtureIndexEntry: F5X-009] is stale_human_approval
+  + [fixture_case] is F5X-009-stale-human-approval
+  + [primary_contract] is ApprovalExpirationAndStaleRule
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_human_override
+
+& [FixtureIndexEntry: F5X-010] is dry_run_success_not_live_approval
+  + [fixture_case] is F5X-010-dry-run-success-not-live-approval
+  + [primary_contract] is MachineControlNonAuthorityRule
+  + [expected_status] is blocked_for_live_effect
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is refused_job_control or refused_gpu_control
+
+& [FixtureIndexCoverage: FSC5-S05] is the fixture index coverage assertion
+  + [fixture_count] is 10
+  + [covered_fixture] is dry_run_resource_request
+  + [covered_fixture] is blocked_live_control
+  + [covered_fixture] is gpu_contention
+  + [covered_fixture] is model_runtime_unavailable
+  + [covered_fixture] is credential_boundary
+  + [covered_fixture] is network_exposure_refusal
+  + [covered_fixture] is destructive_command_refusal
+  + [covered_fixture] is missing_authority_notice
+  + [covered_fixture] is stale_human_approval
+  + [covered_fixture] is dry_run_success_not_live_approval
+  + [covered_contract] is DryRunOperationRequestContractV1
+  + [covered_contract] is ResourceSafetyHumanOverrideContractV1
+  + [covered_contract] is MachineControlNonAuthorityAndLiveControlProhibitionV1
+
+  = must: reject FSC5-S05 if fixture_count is less than 10
+  = must: reject FSC5-S05 if any index entry lacks primary_contract, expected_status, required_notice, or required_refusal_or_gate

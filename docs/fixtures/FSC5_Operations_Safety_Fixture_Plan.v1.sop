@@ -1,0 +1,143 @@
+Subject: FSC5 Operations Safety Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: bed9027a-2005-4674-93bf-34b2ef7e89b7
+
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [dry_run_contract] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [resource_safety_contract] docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+@ [live_control_prohibition] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+
+& [FixturePlan: FSC5OperationsSafetyFixturePlanV1] is the bounded fixture plan for FSC5 operations safety
+  + [slice_id] is FSC5-S05
+  + [fixture_family] is operations-safety-dry-run-non-authority
+  + [fixture_case_count] is 10
+  + [fixture_index] is docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+
+  = must: treat this plan as fixture planning, not executable test harness implementation
+  = must: map every fixture case to safety_contract_behavior, authority_notice, dry_run_result, human_approval_state, refused_effect, and acceptance_status
+  = must: preserve the rule that fixture success is not live-control approval
+  - never: execute commands, start processes, control GPU, mutate model runtime, dispatch jobs, change credentials, expose networks, perform destructive filesystem actions, or implement operations control here
+
+& [FixtureCase: F5X-001-dry-run-resource-request] is the dry-run resource request fixture
+  + [input_shape] is operation_request with intended_effect estimate_resource_use, resource_target gpu, fresh authority_notice_ref, dry_run_required true, credential_boundary_ref present, network_boundary_ref present, and rollback_or_abort_route present
+  + [safety_contract_behavior] is classify target as high risk, produce dry_run_result, require no live effect, and preserve resource estimate evidence
+  + [authority_notice] is present_and_fresh
+  + [dry_run_result] is simulated_effect_summary with live_effect_performed false and completion_review_required true
+  + [human_approval_state] is not_required_for_dry_run_only but required_before_any_future_live_control_reconsideration
+  + [refused_effect] is none_for_dry_run_record
+  + [acceptance_status] is accepted
+
+& [FixtureCase: F5X-002-blocked-live-control] is the blocked live control fixture
+  + [input_shape] is operation_request with intended_effect live_process_mutation or gpu_workload_mutation and resource_target process or gpu
+  + [safety_contract_behavior] is classify as live_effect_requested and route to LiveControlProhibitionGate
+  + [authority_notice] is present
+  + [dry_run_result] is refused_operation with live_effect_performed false
+  + [human_approval_state] is insufficient_even_if_requested_without_future_live_control_authority
+  + [refused_effect] is refused_live_process_control or refused_gpu_control
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F5X-003-gpu-contention] is the GPU contention fixture
+  + [input_shape] is operation_request with intended_effect estimate_resource_use, resource_target gpu, predicted_side_effect_set includes contention with existing workload, and blast_radius uncertain
+  + [safety_contract_behavior] is classify risk as high or critical, require human review for future action, and keep dry-run non-mutating
+  + [authority_notice] is present_and_fresh
+  + [dry_run_result] is dry_run_result with estimated_resource_use, predicted_side_effect_set gpu_contention, required_human_approval true, and live_effect_performed false
+  + [human_approval_state] is required_for_future_live_control_reconsideration
+  + [refused_effect] is no_gpu_workload_launch
+  + [acceptance_status] is review_required
+
+& [FixtureCase: F5X-004-model-runtime-unavailable] is the model runtime unavailable fixture
+  + [input_shape] is operation_request with intended_effect inspect or simulate, resource_target model_runtime, and simulated dependency state unavailable
+  + [safety_contract_behavior] is report unavailable runtime as dry-run evidence and block model_runtime_start, install, upgrade, or configuration mutation
+  + [authority_notice] is present_and_fresh
+  + [dry_run_result] is simulated_effect_summary model_runtime_unavailable with live_effect_performed false
+  + [human_approval_state] is not_live_approval and cannot authorize runtime mutation
+  + [refused_effect] is refused_model_runtime_control
+  + [acceptance_status] is blocked_for_live_effect
+
+& [FixtureCase: F5X-005-credential-boundary] is the credential boundary fixture
+  + [input_shape] is operation_request with intended_effect inspect or simulate and resource_target credential_or_secret
+  + [safety_contract_behavior] is classify as critical risk, preserve secret reference without secret value, and refuse reveal, mutate, persist, or use secret for unapproved live control
+  + [authority_notice] is present
+  + [dry_run_result] is blocked_operation_request with credential_boundary_touched and live_effect_performed false
+  + [human_approval_state] is required_but_not_sufficient_for_secret_access_without_future_authority
+  + [refused_effect] is refused_credential_control
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F5X-006-network-exposure-refusal] is the network exposure refusal fixture
+  + [input_shape] is operation_request with intended_effect network_exposure_mutation and resource_target network_service
+  + [safety_contract_behavior] is classify as critical risk, require blast radius and rollback route for future reconsideration, and refuse current network exposure mutation
+  + [authority_notice] is present_and_fresh
+  + [dry_run_result] is refused_operation with network_exposure_requested and live_effect_performed false
+  + [human_approval_state] is required_for_future_reconsideration but insufficient_for_current_FSC5
+  + [refused_effect] is refused_network_control
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F5X-007-destructive-command-refusal] is the destructive command refusal fixture
+  + [input_shape] is operation_request with intended_effect destructive_filesystem_action and resource_target filesystem_destructive_target
+  + [safety_contract_behavior] is classify as critical risk, require rollback_or_abort_route, and refuse destructive action as a record
+  + [authority_notice] is present
+  + [dry_run_result] is refused_operation with destructive_action_possible and live_effect_performed false
+  + [human_approval_state] is insufficient_without_future_authority_and_explicit_completion_acceptance
+  + [refused_effect] is refused_destructive_filesystem_control
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F5X-008-missing-authority-notice] is the missing authority notice fixture
+  + [input_shape] is operation_request missing authority_notice_ref or carrying authority_notice_ref stale
+  + [safety_contract_behavior] is reject before dry-run result can be trusted for authority-sensitive use
+  + [authority_notice] is missing_or_stale
+  + [dry_run_result] is blocked_operation_request with missing_required_safety_field or stale_authority_notice
+  + [human_approval_state] is invalid_until_authority_notice_is_repaired
+  + [refused_effect] is refused_operation_request
+  + [acceptance_status] is faulted
+
+& [FixtureCase: F5X-009-stale-human-approval] is the stale human approval fixture
+  + [input_shape] is operation_request with human_approval_ref whose expiration_or_stale_after has passed or whose resource_target, intended_effect, risk_classification, blast_radius, rollback route, or boundary pack changed
+  + [safety_contract_behavior] is apply ApprovalExpirationAndStaleRule and OverrideRefusalRule
+  + [authority_notice] is present
+  + [dry_run_result] is blocked_operation_request with stale_approval and live_effect_performed false
+  + [human_approval_state] is stale_and_invalid
+  + [refused_effect] is refused_human_override
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F5X-010-dry-run-success-not-live-approval] is the dry-run success not live approval fixture
+  + [input_shape] is dry_run_result with simulated success, estimated_resource_use acceptable, no predicted side effect, and a follow-on request attempting job_dispatch or gpu_workload_launch
+  + [safety_contract_behavior] is apply MachineControlNonAuthorityRule and block fixture or dry-run success from becoming live-control authority
+  + [authority_notice] is present_and_fresh
+  + [dry_run_result] is successful_dry_run_record with live_effect_performed false
+  + [human_approval_state] is absent_or_not_live_authority
+  + [refused_effect] is refused_job_control or refused_gpu_control
+  + [acceptance_status] is blocked_for_live_effect
+
+& [FixturePlanAcceptanceChecklist: FSC5-S05] is the acceptance checklist for FSC5 operations safety fixture plan
+  + [fixture_case_count] is 10
+  + [contract_coverage] is OperationRequestSchema
+  + [contract_coverage] is IntendedEffectClassification
+  + [contract_coverage] is ResourceTargetClassification
+  + [contract_coverage] is DryRunResultSchema
+  + [contract_coverage] is RefusalOutputContract
+  + [contract_coverage] is NoLiveEffectRule
+  + [contract_coverage] is ResourceRiskClassification
+  + [contract_coverage] is BlastRadiusContract
+  + [contract_coverage] is CredentialBoundaryContract
+  + [contract_coverage] is NetworkBoundaryContract
+  + [contract_coverage] is HumanApprovalRecordContract
+  + [contract_coverage] is ApprovalExpirationAndStaleRule
+  + [contract_coverage] is OverrideRefusalRule
+  + [contract_coverage] is MachineControlNonAuthorityRule
+  + [contract_coverage] is LiveControlProhibitionGate
+  + [contract_coverage] is RefusedEffectMap
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential access or mutation
+  + [forbidden_scope_absent] is network exposure mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is live machine control
+
+  = must: reject FSC5-S05 if any required fixture case or safety mapping field is missing
+  = must: open FSC5-S06 only after this plan and its index are accepted by completion review
