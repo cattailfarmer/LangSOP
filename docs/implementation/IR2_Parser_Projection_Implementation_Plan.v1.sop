@@ -1,0 +1,159 @@
+Subject: IR2 Parser Projection Implementation Plan V1
+Date: 2026-05-26
+Plan UUID: 813887e3-a930-4cf4-8b2c-be89ab303891
+
+@ [slice_surface] docs/slices/IR2_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
+@ [boundary_map] docs/implementation/IR2_Parser_Projection_Boundary_And_Invariant_Map.v1.sop
+@ [parser_profile] docs/implementation/IR2_SOP_Artifact_Discovery_And_Parser_Profile.v1.sop
+@ [extraction_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+@ [validation_contract] docs/implementation/IR2_Hash_Ledger_Signature_And_Freshness_Validation.v1.sop
+@ [projection_policy] docs/implementation/IR2_SQLite_Projection_Schema_And_Rebuild_Policy.v1.sop
+
+& [IR2ParserProjectionImplementationPlanV1] is the IR2-S06 plan for bounded parser and projection implementation
+  + [plan_id] is ir2-parser-projection-implementation-plan-v1
+  + [plan_uuid] is 813887e3-a930-4cf4-8b2c-be89ab303891
+  + [slice_id] is IR2-S06
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is implementation plan only
+
+  = must: define future implementation files, public API boundaries, source-read safety, generated SQLite writer boundaries, command plan, and proof checklist
+  = must: preserve that actual code creation remains gated until a later activation review or explicit implementation slice accepts it
+  = must: keep all implementation side effects outside tracked SOP authority and inside accepted generated projection paths
+  - never: write parser, extraction, validation, SQLite, or rebuild code in this slice
+  - never: authorize operations control or live machine control from this plan
+
+& [ImplementationFileInventory] is the future file inventory for bounded IR2 implementation
+  + [future_file] is src/langsop/authority/discovery.py
+  + [future_file_role] is discover SOP authority candidates according to accepted include and exclude rules
+  + [future_file] is src/langsop/authority/sop_parser.py
+  + [future_file_role] is parse accepted SOP structural line profile into parse events and parse faults
+  + [future_file] is src/langsop/authority/extraction.py
+  + [future_file_role] is map parse events into KernelRecord candidate structures according to accepted extraction mapping
+  + [future_file] is src/langsop/authority/validation.py
+  + [future_file_role] is validate hashes, SJS signatures, freshness, and authority classifications according to accepted validation contract
+  + [future_file] is src/langsop/projections/sqlite_schema.py
+  + [future_file_role] is declare SQLite projection schema, table names, column sets, and index definitions
+  + [future_file] is src/langsop/projections/sqlite_projection.py
+  + [future_file_role] is write generated projection tables to accepted SQLite projection paths after validation succeeds
+  + [future_file] is src/langsop/projections/rebuild.py
+  + [future_file_role] is orchestrate deterministic rebuild from source discovery through validation and projection write
+  + [future_file] is tests/test_ir2_parser_projection_contracts.py
+  + [future_file_role] is future contract tests over fixtures and expected-output ledgers
+
+  = must: treat this file inventory as the maximum implementation candidate set until IR2 completion review or a future rebake changes it
+  = must: require a new review before creating or editing files outside this inventory for IR2 parser/projection implementation
+
+& [AllowedStandardLibrarySet] is the implementation dependency boundary for IR2 code
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is re
+  + [allowed_stdlib] is sqlite3
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+
+  = must: use Python standard library only for the first IR2 implementation pass
+  = must: require a dependency-authorizing slice before adding external packages
+
+& [PublicAPIBoundary] is the future public API boundary for IR2 implementation
+  + [api] is discover_sop_artifacts(root_path, discovery_config) returns discovered source artifacts and discovery diagnostics
+  + [api] is parse_sop_document(source_artifact, parser_profile) returns parse events and recoverable parse faults
+  + [api] is extract_kernel_record_candidates(parse_document, extraction_rules) returns KernelRecord candidates and blocked extraction diagnostics
+  + [api] is validate_kernel_record_candidates(candidate_set, validation_rules) returns validation report, proof results, stale projections, and fault candidates
+  + [api] is define_sqlite_projection_schema(schema_version) returns projection table and index definitions
+  + [api] is rebuild_sqlite_projection(validated_projection_input, output_path) returns projection build report
+  + [api_status] is future implementation target only
+
+  = must: keep APIs pure or generated-output-bounded where possible
+  = must: make source and projection status visible in return values
+  = must: return blocked or fault reports instead of throwing away ambiguous authority material
+
+& [NoMutationSourceReaderPolicy] is the future source-reader safety policy
+  + [read_scope] is accepted discovery input roots and tracked SOP source files
+  + [write_scope] is none for discovery, parser, extraction, and validation modules
+  + [forbidden_write] is docs/**
+  + [forbidden_write] is README.md
+  + [forbidden_write] is pyproject.toml
+  + [forbidden_write] is src/** during runtime execution
+  + [forbidden_write] is tests/** during runtime execution except future test-created generated output under tests/fixtures/generated/
+
+  = must: treat source mutation attempts as implementation faults
+  = must: keep parser and validation modules side-effect-free except for explicit generated diagnostics returned to caller
+
+& [GeneratedSQLiteWriterPolicy] is the future generated projection writer policy
+  + [allowed_write_root] is .langsop/sqlite/
+  + [allowed_write_root] is .langsop/indexes/
+  + [allowed_write_root] is .langsop/parser/
+  + [allowed_write_root] is .langsop/projections/
+  + [allowed_write_root] is .langsop/reports/
+  + [allowed_test_write_root] is tests/fixtures/generated/
+  + [write_precondition] is source hash ledger computed
+  + [write_precondition] is parse faults classified
+  + [write_precondition] is KernelRecord candidate validation completed
+  + [write_precondition] is projection schema version selected
+  + [write_precondition] is output path inside accepted generated root
+  + [write_result] is generated projection only
+
+  = must: refuse writes outside accepted generated roots
+  = must: preserve failed rebuild reports without mutating SOP authority
+  = must: make generated artifacts disposable and reproducible
+
+& [ImplementationCommandPlan] is the future command and verification plan for IR2 implementation
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [future_targeted_test] is python -m unittest tests.test_ir2_parser_projection_contracts
+  + [fixture_policy] is tests must use tracked fixture source and expected ledgers, with generated outputs under tests/fixtures/generated/
+  + [projection_policy] is tests may create generated SQLite files only under generated paths and must not track them
+
+  = must: run baseline tests and compile check after implementation
+  = must: prove generated artifacts are ignored and non-authoritative
+
+& [ImplementationProofChecklist] is the proof checklist for later code activation
+  + [proof_check] is implementation files match ImplementationFileInventory
+  + [proof_check] is external dependency set remains empty
+  + [proof_check] is discovery respects include and exclude rules
+  + [proof_check] is parser preserves raw line events and recoverable faults
+  + [proof_check] is extraction emits complete KernelRecord common envelopes or blocked/fault output
+  + [proof_check] is validation refuses missing, stale, wrong-protocol, broken-lineage, or ambiguous authority
+  + [proof_check] is SQLite projection writes only generated artifacts under accepted roots
+  + [proof_check] is generated projection rows preserve source path, source hash, authority state, freshness state, and projection status
+  + [proof_check] is source files are not mutated by runtime code or tests
+  + [proof_check] is operations control and live machine control remain absent
+
+  = must: require completion review before any implementation output is accepted
+  = must: fail implementation review if any proof check fails
+
+& [CodeActivationBoundary] is the activation boundary created by this implementation plan
+  + [code_creation_authorized_by_this_slice] is false
+  + [code_creation_candidate_after_review] is future bounded implementation may be planned from ImplementationFileInventory only
+  + [required_before_code_creation] is IR2-S07 fixture and expected-ledger plan accepted
+  + [required_before_code_creation] is IR2-S08 completion review and authority projection pack accepted or a future explicit activation review opens bounded implementation
+  + [model_route_for_code_creation] is GPT-5.3-Codex-Spark-suitable only after IR2 contracts and fixtures are accepted and implementation task is bounded
+  + [deeper_reasoning_required_for_changes] is any change to authority semantics, parser profile, extraction mapping, validation contract, SQLite schema, or generated artifact policy
+
+  = must: keep implementation code gated until evidence and fixtures are accepted
+  = must: preserve deeper reasoning for architecture or authority-boundary changes
+
+& [IR2S06CoverageReview] is the coverage checklist for IR2-S06
+  + [implementation_file_inventory_present] is ImplementationFileInventory
+  + [allowed_standard_library_set_present] is AllowedStandardLibrarySet
+  + [public_api_boundary_present] is PublicAPIBoundary
+  + [no_mutation_source_reader_policy_present] is NoMutationSourceReaderPolicy
+  + [generated_sqlite_writer_policy_present] is GeneratedSQLiteWriterPolicy
+  + [implementation_command_plan_present] is ImplementationCommandPlan
+  + [implementation_proof_checklist_present] is ImplementationProofChecklist
+  + [code_activation_boundary_present] is CodeActivationBoundary
+  + [implementation_code_created] is false
+  + [sqlite_file_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR2-S06 only when all checklist items are satisfied
+  = must: open IR2-S07 only after this implementation plan is reviewed in a completion review
