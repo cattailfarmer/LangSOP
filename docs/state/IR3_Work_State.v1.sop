@@ -7,16 +7,18 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
 @ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
 @ [slice_minting_review] docs/reviews/IR3_Final_Slice_Minting_Review.v1.sop
 @ [completion_review] docs/reviews/IR3_S01_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/IR3_S02_Completion_Review.v1.sop
 @ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
 @ [IR2_completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
 @ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
 @ [accepted_output] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_output] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
 
 & [IR3WorkStateV1] is the current derived work state for IR3 operator harness and fixture runner
   + [chunk_ref] is IR3 operator harness and fixture runner
-  + [state_basis] is docs/reviews/IR3_S01_Completion_Review.v1.sop
-  + [state_basis_sha256] is 09DAF1A15E6F3818C8D848A4FE98ABB915CE5EC75B48237A3F82CC7AAD26D211
-  + [surface_status] is IR3_S01_operator_harness_boundary_accepted_for_IR3_S02_execution
+  + [state_basis] is docs/reviews/IR3_S02_Completion_Review.v1.sop
+  + [state_basis_sha256] is E87FA4F4D98E28D7B1CA8CA5515649A1B5210D7A9D672329B96C8A4E5CA950E7
+  + [surface_status] is IR3_S02_runner_trace_contract_accepted_for_IR3_S03_execution
   + [source_document] is docs/source/2026-05-26_ir3_final_slices/Derived_IR3_Final_Slices_Source.sop
   + [source_document_sha256] is 34DC5C164C20CBFD9EE3E8D53FEF4E768BB902B78D4F592A34F37C49B3C424C2
   + [source_manifest] is docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
@@ -32,16 +34,20 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
   + [accepted_output_sha256] is 0048A2D79061B80A7F9C48724A018FCE955F9CB6BBFE6A1D0530D95AA5AC73BE
   + [accepted_completion_review] is docs/reviews/IR3_S01_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 09DAF1A15E6F3818C8D848A4FE98ABB915CE5EC75B48237A3F82CC7AAD26D211
+  + [accepted_slice] is IR3-S02
+  + [accepted_output] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [accepted_output_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [accepted_completion_review] is docs/reviews/IR3_S02_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is E87FA4F4D98E28D7B1CA8CA5515649A1B5210D7A9D672329B96C8A4E5CA950E7
   + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
   + [accepted_boundary_input] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
   + [accepted_boundary_input_sha256] is E7CCCA3A6744A03CD6871FF6B4CDB2682FA4BB6300179F2EA610717BA5F3F2ED
   + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
-  + [current_ready_slice] is IR3-S02
-  + [current_ready_slice_name] is contract-driven operator runner and trace contract
+  + [current_ready_slice] is IR3-S03
+  + [current_ready_slice_name] is fixture runner input/output policy and generated trace boundary
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is IR3-S03 until IR3-S02 accepted
   + [gated_slice] is IR3-S04 until IR3-S03 accepted
   + [gated_slice] is IR3-S05 until IR3-S04 accepted
   + [gated_slice] is IR3-S06 until IR3-S05 accepted
@@ -58,7 +64,7 @@ State UUID: c6c1bd06-68b9-47b8-8c09-f1f57f3daf7c
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR3-S02 next before creating IR3 fixture IO policies, implementation plans, fixture plans, code, fixture source, expected ledgers, generated traces, or tests
+  = must: execute IR3-S03 next before creating IR3 implementation plans, fixture plans, code, fixture source, expected ledgers, generated traces, or tests
   = must: keep generated traces, caches, fixture outputs, projection files, and runner reports non-authoritative
-  = must: mark this state stale if IR3 source document, source manifest, canonical specification, slice surface, slice minting review, IR3-S01 output, IR3-S01 completion review, IR2 implementation proof pack, IR2 implementation completion review, or FSC2 planning coordination pack changes
+  = must: mark this state stale if IR3 source document, source manifest, canonical specification, slice surface, slice minting review, IR3-S01 output, IR3-S01 completion review, IR3-S02 output, IR3-S02 completion review, IR2 implementation proof pack, IR2 implementation completion review, or FSC2 planning coordination pack changes
   = must: keep operations control and live machine control unauthorized

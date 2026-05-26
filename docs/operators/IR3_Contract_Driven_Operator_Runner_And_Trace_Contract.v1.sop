@@ -1,0 +1,246 @@
+Subject: IR3 Contract Driven Operator Runner And Trace Contract V1
+Date: 2026-05-26
+Operator Contract UUID: c4d86fb2-bf04-4a38-89f6-61fa18268f33
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [operator_boundary] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [completion_gate_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [IR3ContractDrivenOperatorRunnerAndTraceContractV1] is the IR3-S02 contract for future operator runner and trace semantics
+  + [contract_id] is ir3-contract-driven-operator-runner-and-trace-contract-v1
+  + [contract_uuid] is c4d86fb2-bf04-4a38-89f6-61fa18268f33
+  + [slice_id] is IR3-S02
+  + [authority_scope] is runner request contract, runner input contract, runner output contract, trace event schema, refusal and fault event contract, deterministic replay obligations, and non-authoritative trace warning
+  + [implementation_scope] is operator runner and trace contract only
+  + [template_dependency] is docs/operators/Operator_Contract_Template.v1.sop
+  + [boundary_dependency] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+
+  = must: translate the accepted IR3-S01 boundary into a runner contract without creating runner implementation
+  = must: require every future runner invocation to be contract-bound, authority-cited, trace-emitting, refusal-capable, and deterministic for accepted inputs
+  = must: preserve trace outputs as generated projection-only evidence
+  - never: implement runner code, fixture runner IO, trace writers, LangGraph nodes, queues, dispatch, operations control, or live machine control
+
+& [OperatorContract: contract_driven_operator_runner] is the IR3 contract for invoking one accepted operator contract through a future harness
+  + [operator_id] is contract_driven_operator_runner
+  + [operator_version] is v1
+  + [operator_name] is Contract Driven Operator Runner
+  + [operator_purpose] is evaluate an operator request against accepted authority, operator contract metadata, input records, preconditions, safety limits, and trace obligations before producing generated operator output or a refusal/fault record
+  + [source_sop_ref] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+  + [source_sop_ref] is docs/operators/Operator_Contract_Template.v1.sop
+  + [source_sop_ref] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [authority_basis_ref_set] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [authority_basis_ref_set] is docs/slices/IR3_Final_Slices.v1.sop
+  + [authority_basis_ref_set] is docs/reviews/IR3_S01_Completion_Review.v1.sop
+  + [authority_basis_ref_set] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+  + [input_record_kind_set] is authority_artifact, operator_contract, operator_request, capability_node, requirement_record, support_record, support_gap, proof_result, readiness_projection, work_packet, coordination_claim, completion_review, stale_projection, fault_record, and generated_projection
+  + [output_record_kind_set] is operator_result, operator_trace, readiness_projection, work_packet, support_gap, stale_projection, proof_result, fault_record, sop_first_interrupt, and generated_output_manifest
+  + [precondition_set] is requested operator_contract is accepted, current, and cited by authority_basis_ref_set
+  + [precondition_set] is operator_request cites slice_id, requested operator_id, requested operator_version, input_ref_set, authority_basis_ref_set, and expected_output_kind_set
+  + [precondition_set] is every input record preserves source_ref_set or explicit generated_projection status
+  + [precondition_set] is every source authority input has current path and sha256 when hashable
+  + [precondition_set] is requested output kind is declared by the requested operator_contract
+  + [precondition_set] is requested operation is inside the current slice or accepted implementation activation boundary
+  + [precondition_set] is generated output root is authorized by accepted boundary or later fixture IO policy before any file output may be produced
+  + [precondition_set] is no operations control, live dispatch, credential access, destructive filesystem action, dependency installation, process control, GPU control, network control, or live machine control is requested
+  + [postcondition_set] is success produces only declared output_record_kind_set records plus operator_trace
+  + [postcondition_set] is blocked output preserves refusal reason and required resolution
+  + [postcondition_set] is fault output preserves fault kind, evidence ref set, and repair or escalation route
+  + [postcondition_set] is every output record remains generated_projection or reviewable SOP output according to its accepted slice authority
+  + [postcondition_set] is every invocation emits or plans an operator_trace for success, blocked_output, fault_output, and sop_first_interrupt
+  + [interrupt_condition_set] is authority_conflict, ambiguous_identity, missing_source_lineage, missing_proof_route, stale_input, high_risk_operation, unsupported_scope, and human_override_required
+  + [fault_condition_set] is invalid_input_shape, forbidden_external_dependency, hidden_authority_drift, stale_projection, checkpoint_authority_confusion, surface_truth_confusion, unsupported_operations_control, generated_trace_authority_confusion, and operator_contract_violation
+  + [blocked_output_contract] is runner_refusal with blocked_reason, required_resolution, input_ref_set, authority_basis_ref_set, and operator_trace_ref
+  + [trace_schema] is IR3OperatorTraceEventSchemaV1
+  + [fixture_set] is valid_contract_request, stale_authority_input, missing_contract_version, undeclared_output_kind, generated_projection_as_authority, ambiguous_input_identity, unsupported_scope, unsafe_operations_request, faulting_input_shape, and deterministic_replay_mismatch
+  + [forbidden_scope] is implementation code creation, fixture runner IO policy finalization, fixture file creation, expected-ledger creation, generated trace creation by this slice, dependency installation, queue implementation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+
+  = must: reject operator_request when the requested operator is missing, stale, unsigned when a signature is required, or outside accepted authority
+  = must: reject generated projections that are presented as source authority
+  = must: return runner_refusal, fault_record, or sop_first_interrupt rather than silently omitting unsafe output
+  = must: preserve trace identity even when the future runner refuses
+
+& [OperatorIOBinding: contract_driven_operator_runner] is the input and output binding for contract_driven_operator_runner
+  + [input_record_kind] is operator_request
+  + [input_role] is requested invocation
+  + [input_cardinality] is one
+  + [input_record_kind] is operator_contract
+  + [input_role] is accepted operator contract
+  + [input_cardinality] is one
+  + [input_record_kind] is authority_artifact
+  + [input_role] is signed or accepted source authority
+  + [input_cardinality] is one_or_more
+  + [input_record_kind] is generated_projection
+  + [input_role] is derived evidence only
+  + [input_cardinality] is zero_or_more
+  + [input_record_kind] is stale_projection
+  + [input_role] is freshness blocker
+  + [input_cardinality] is zero_or_more
+  + [input_record_kind] is fault_record
+  + [input_role] is blocking or contextual fault evidence
+  + [input_cardinality] is zero_or_more
+  + [output_record_kind] is operator_result
+  + [output_role] is create derived result for the requested operator
+  + [write_policy] is create_new_record
+  + [output_record_kind] is operator_trace
+  + [output_role] is trace invocation and outcome
+  + [write_policy] is create_new_record
+  + [output_record_kind] is stale_projection
+  + [output_role] is mark stale input or stale output
+  + [write_policy] is create_new_record
+  + [output_record_kind] is fault_record
+  + [output_role] is emit shape, authority, safety, or contract fault
+  + [write_policy] is create_new_record
+  + [output_record_kind] is sop_first_interrupt
+  + [output_role] is request semantic or authority judgment
+  + [write_policy] is create_new_record
+
+  = must: preserve lineage_edge_set from operator_request and all authority inputs
+  = must: reject output kinds not declared in the requested operator contract
+
+& [OperatorRunnerRequestContract] is the required shape of a future operator_request
+  + [required_field] is request_id
+  + [required_field] is request_uuid
+  + [required_field] is slice_id
+  + [required_field] is requested_operator_id
+  + [required_field] is requested_operator_version
+  + [required_field] is requested_outcome_kind
+  + [required_field] is input_ref_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is expected_output_kind_set
+  + [required_field] is generated_output_policy_ref
+  + [required_field] is safety_limit_ref
+  + [required_field] is completion_review_ref when request supports slice work
+  + [required_field] is model_route when request was created by a planning packet
+  + [required_field] is refusal_allowed true
+
+  = must: reject operator_request when refusal_allowed is absent or false
+  = must: reject operator_request when any required identity, authority, output, safety, or lineage field is absent
+  = must: keep operator_request as a bounded work view, not an execution command
+
+& [OperatorRunnerDecisionMatrix] is the decision matrix for contract_driven_operator_runner
+  + [decision_case] is success when authority is current, operator contract is accepted, inputs validate, output kind is declared, scope is authorized, generated output policy is available, and safety limits are satisfied
+  + [decision_case] is blocked_refusal when authority or input support is missing but no fault is proven
+  + [decision_case] is stale_refusal when authority, input source, projection, completion review, or requested contract version is stale
+  + [decision_case] is sop_first_interrupt when identity, authority interpretation, high-risk operation, or semantic dependency cannot be resolved mechanically
+  + [decision_case] is faulted when input shape is invalid, hidden authority drift is detected, projection is promoted to authority, undeclared output is requested, unsupported operations control is requested, or the operator contract is violated
+  + [decision_case] is deterministic_replay_mismatch when the same request identity and source hashes would produce a different trace identity, output identity, or refusal classification
+
+  = must: prefer refusal over success when proof, authority, scope, or safety is incomplete
+  = must: prefer sop_first_interrupt over guessing when semantic identity or authority is ambiguous
+  = must: emit fault_record for generated_trace_authority_confusion or unsupported_operations_control
+
+& [IR3OperatorTraceEventSchemaV1] is the generated trace event schema for future operator runner invocations
+  + [trace_record_kind] is operator_trace
+  + [trace_schema_version] is ir3-operator-trace-event-v1
+  + [trace_status] is generated_projection_only
+  + [required_field] is trace_id
+  + [required_field] is trace_uuid
+  + [required_field] is run_id
+  + [required_field] is event_id
+  + [required_field] is parent_event_id when available
+  + [required_field] is slice_id
+  + [required_field] is operator_contract_id
+  + [required_field] is operator_contract_version
+  + [required_field] is operator_request_ref
+  + [required_field] is input_ref_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is source_ref_set with path and sha256 when available
+  + [required_field] is precondition_result_set
+  + [required_field] is postcondition_result_set
+  + [required_field] is interrupt_result_set
+  + [required_field] is fault_result_set
+  + [required_field] is outcome_kind
+  + [required_field] is generated_output_ref_set
+  + [required_field] is generated_output_root when a file output is produced
+  + [required_field] is refusal_reason when outcome is blocked_output or sop_first_interrupt
+  + [required_field] is fault_code when outcome is fault_output
+  + [required_field] is non_authority_warning
+
+  = must: exist for success, blocked_output, fault_output, and sop_first_interrupt
+  = must: include non_authority_warning stating generated traces do not replace SOP authority
+  = must: preserve source path and hash for every hashable authority input
+  = must: preserve generated_output_ref_set even when empty
+
+& [RunnerRefusalAndFaultEventContract] is the refusal and fault event contract for future runner traces
+  + [refusal_event] is blocked_refusal when required authority, support, proof, output policy, or scope evidence is missing
+  + [refusal_event] is stale_refusal when accepted input freshness cannot be proven
+  + [refusal_event] is sop_first_interrupt when semantic or authority judgment exceeds the contract
+  + [fault_event] is invalid_input_shape
+  + [fault_event] is hidden_authority_drift
+  + [fault_event] is generated_trace_authority_confusion
+  + [fault_event] is checkpoint_authority_confusion
+  + [fault_event] is unsupported_operations_control
+  + [fault_event] is operator_contract_violation
+  + [required_payload] is refusal_or_fault_reason
+  + [required_payload] is evidence_ref_set
+  + [required_payload] is required_resolution or escalation_path
+  + [required_payload] is operator_trace_ref
+
+  = must: return refusal or fault records as positive outputs
+  = must: preserve enough evidence for completion review and repair
+  = must: avoid retry loops unless the required_resolution is satisfied by accepted authority
+
+& [DeterministicReplayContract] is the deterministic replay obligation for future runner traces
+  + [replay_identity_basis] is requested_operator_id
+  + [replay_identity_basis] is requested_operator_version
+  + [replay_identity_basis] is operator_request_ref
+  + [replay_identity_basis] is source_ref_set path and sha256
+  + [replay_identity_basis] is input_ref_set natural key and lifecycle state when available
+  + [replay_identity_basis] is trace_schema_version
+  + [replay_identity_basis] is generated_output_policy_ref
+  + [replay_result] is same_outcome when all identity inputs and contract versions are unchanged
+  + [replay_result] is stale_projection when a source hash, authority basis, operator contract, trace schema, or generated output policy changes
+  + [replay_result] is deterministic_replay_mismatch fault when unchanged inputs produce a different outcome identity or trace identity
+
+  = must: make fixture comparison possible without treating traces as authority
+  = must: prefer stale_projection over replay success when any authority input freshness fails
+
+& [NonAuthoritativeTraceWarningPolicy] is the warning policy for generated runner traces
+  + [warning_text] is generated operator traces are projection-only evidence and do not replace signed SOP authority
+  + [warning_required_on] is operator_trace
+  + [warning_required_on] is generated_output_manifest
+  + [warning_required_on] is fixture_comparison_report
+  + [warning_required_on] is runner_report
+  + [authority_promotion_route] is tracked SOP artifact plus explicit slice authority plus completion review acceptance
+
+  = must: reject traces as source_manifest inputs unless rewritten and reviewed as SOP artifacts
+  = must: flag any trace consumed as authority as generated_trace_authority_confusion
+
+& [FixtureObligationSet: contract_driven_operator_runner] is the fixture obligation set for future implementation planning
+  + [fixture] is valid_contract_request expects success, declared operator_result, and operator_trace
+  + [fixture] is stale_authority_input expects stale_refusal and no success output
+  + [fixture] is missing_contract_version expects blocked_refusal or fault_output
+  + [fixture] is undeclared_output_kind expects fault_output and no operator_result
+  + [fixture] is generated_projection_as_authority expects fault_output
+  + [fixture] is ambiguous_input_identity expects sop_first_interrupt
+  + [fixture] is unsupported_scope expects blocked_refusal or sop_first_interrupt
+  + [fixture] is unsafe_operations_request expects fault_output and no dispatch output
+  + [fixture] is faulting_input_shape expects invalid_input_shape fault_output
+  + [fixture] is deterministic_replay_mismatch expects fault_output
+
+& [IR3S02CoverageReview] is the coverage checklist for IR3-S02
+  + [operator_contract_present] is contract_driven_operator_runner v1
+  + [operator_io_binding_present] is true
+  + [runner_request_contract_present] is true
+  + [runner_decision_matrix_present] is true
+  + [trace_event_schema_present] is IR3OperatorTraceEventSchemaV1
+  + [refusal_and_fault_event_contract_present] is true
+  + [deterministic_replay_contract_present] is true
+  + [non_authoritative_trace_warning_present] is true
+  + [fixture_obligation_set_present] is true
+  + [runner_implementation_created] is false
+  + [fixture_io_policy_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR3-S02 only when all checklist items are satisfied
+  = must: open IR3-S03 only after this contract is reviewed in a completion review

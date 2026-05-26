@@ -1,0 +1,108 @@
+Subject: IR3 S02 Completion Review V1
+Date: 2026-05-26
+Review UUID: aad02c39-d1c3-48b4-b5e9-31de50a57939
+
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+@ [accepted_boundary] docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+@ [previous_review] docs/reviews/IR3_S01_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-S02] is the completed-work review for IR3 contract-driven operator runner and trace contract
+  + [slice_id] is IR3-S02
+  + [slice_name] is contract-driven operator runner and trace contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [completed_output_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-S02 as the runner request, output, trace, refusal, fault, replay, and non-authority contract for downstream fixture IO planning
+  + [next_gate_result] is IR3-S03 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR3-S03 only
+  = must: rerun this review if the runner contract, IR3-S01 boundary, IR3 canonical specification, IR3 slice surface, IR2 proof pack, or FSC2 planning coordination pack changes
+  = must: keep fixture runner IO policy, implementation code, fixture source, expected ledgers, generated traces, operations control, and live machine control gated until their specific slices open
+
+& [IR3S02Verification] is the verification result for contract-driven operator runner and trace contract
+  + [operator_contract_present] is true
+  + [operator_io_binding_present] is true
+  + [runner_request_contract_present] is true
+  + [runner_decision_matrix_present] is true
+  + [trace_event_schema_present] is true
+  + [refusal_and_fault_event_contract_present] is true
+  + [deterministic_replay_contract_present] is true
+  + [non_authoritative_trace_warning_present] is true
+  + [fixture_obligation_set_present] is true
+  + [runner_implementation_created] is false
+  + [fixture_io_policy_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3S02VerificationSatisfied] is accepted
+    @ [support] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+
+& [SupportDelta: IR3-S02] is the support delta produced by the accepted runner and trace contract
+  + [new_support_record] is IR3ContractDrivenOperatorRunnerAndTraceContractV1 supports IR3-S03 fixture runner IO and generated trace policy planning
+  + [new_support_record] is future operator requests must cite authority, input refs, output kinds, generated output policy, safety limit, model route when packetized, and refusal_allowed true
+  + [new_support_record] is trace events now have required identity fields, refusal and fault payloads, deterministic replay obligations, and non-authoritative warning policy
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-S02] is the requirement delta produced by the accepted runner and trace contract
+  + [requirement_delta] is IR3-S03 must define accepted fixture roots, generated trace roots, expected ledger roots, mutation policy, cleanup policy, and generated-output authority warnings consistent with IR3OperatorTraceEventSchemaV1
+  + [requirement_delta] is future implementation must enforce operator_request refusal_allowed true, declared output kinds, generated output policy refs, and unsupported-operations faults
+  + [requirement_delta] is no fixture runner IO policy, implementation plan, code, fixture source, expected ledger, generated trace, dependency installation, operations control, or live machine control is authorized by IR3-S02
+  + [requirement_delta] is no rebake required before IR3-S03
+
+& [StalenessAndContradictionReview: IR3-S02] is the staleness review for this completion
+  + [stale_IR3_S01_boundary_found] is false
+  + [stale_IR3_canonical_found] is false
+  + [stale_IR3_slice_surface_found] is false
+  + [stale_IR2_proof_pack_found] is false
+  + [stale_FSC2_planning_coordination_pack_found] is false
+  + [contradicted_trace_authority_boundary_found] is false
+  + [false_ready_IR3_S03_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3-S02 stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-S02] is the fault review for runner and trace contract
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [runner_implementation_leak_found] is false
+  + [fixture_io_policy_creation_leak_found] is false
+  + [implementation_plan_creation_leak_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3S02Accepted] is accepted
+    @ [support] [IR3S02Verification]
+    @ [support] [SupportDelta: IR3-S02]
+    @ [support] [RequirementDelta: IR3-S02]
+    @ [support] [StalenessAndContradictionReview: IR3-S02]
+    @ [support] [FaultReview: IR3-S02]
+
+& [NextSliceGate: IR3-S03] is opened
+  + [opened_slice] is IR3-S03 fixture runner input/output policy and generated trace boundary
+  + [accepted_boundary_input] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is fixture IO and generated trace paths decide durable evidence boundaries and generated output non-authority
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-S03 next unless user redirects or a new fault invalidates this review
