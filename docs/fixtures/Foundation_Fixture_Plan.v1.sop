@@ -1,0 +1,158 @@
+Subject: Foundation Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: 603cf03e-d763-4313-9c42-1f41e8bda895
+
+@ [slice_authority] docs/slices/FSC1_Final_Slices.v1.sop
+@ [record_schemas] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [storage_decision] docs/decisions/Storage_Backend_Decision.v1.sop
+@ [fixture_index] docs/fixtures/Foundation_Fixture_Index.v1.sop
+
+& [FixturePlan: FoundationFixturePlanV1] is the bounded fixture plan for FSC1 foundation contracts
+  + [fixture_plan_id] is foundation-fixture-plan-v1
+  + [fixture_plan_uuid] is 603cf03e-d763-4313-9c42-1f41e8bda895
+  + [slice_id] is FSC1-S06
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture planning is bounded by accepted schemas, operator contracts, and storage decision
+  + [authority_scope] is fixture case definitions and expected records for foundation schema/operator validation
+  + [implementation_scope] is fixture plan only
+
+  = must: map every fixture case to schema records, operator behavior, expected trace, and acceptance status
+  = must: preserve SOP authority files as fixture source truth
+  = must: treat SQLite projection rows as expected derived outputs, not authority
+  = must: include valid, blocked, stale, contradicted, ambiguous, and fault cases
+  - never: implement test harness code in this plan
+  - never: create generated SQLite database files in this plan
+
+& [FixtureCaseShape] is the common fixture case declaration
+  + [fixture_case_id] is stable inside FoundationFixtureIndexV1
+  + [fixture_kind] is valid_signature, missing_signature, stale_source, broken_lineage, ready_capability, blocked_capability, stale_projection, contradicted_support, ambiguous_identity, blocked_output, or fault_output
+  + [operator_contract_ref] is signature_validation, support_readiness_recompute, work_packet_generation, or schema_validation
+  + [input_record_set] is the logical input records for the case
+  + [expected_output_record_set] is expected records or explicit absence
+  + [expected_trace_assertion_set] is required operator_trace facts
+  + [expected_projection_state] is the SQLite-derived projection status when indexed
+  + [acceptance_status] is accepted, blocked, faulted, stale, or interrupted
+
+  = must: include source_ref_set and lineage_edge_set expectations for every output record
+  = must: include freshness expectation for every derived projection output
+  = must: prove hidden writes absent by expecting explicit output_record_ref_set
+
+& [FixtureCase: FFX-001-valid-signature] is the valid signature fixture
+  + [fixture_kind] is valid_signature
+  + [operator_contract_ref] is signature_validation
+  + [input_record_set] is authority_artifact with valid signature_protocol_uuid and matching source hashes
+  + [expected_output_record_set] is proof_result verified and authority_artifact signed_sjs
+  + [expected_trace_assertion_set] is outcome_kind success and no fault_result_set entries
+  + [expected_projection_state] is SQLite index row current and rebuildable from SOP authority artifact
+  + [acceptance_status] is accepted
+
+& [FixtureCase: FFX-002-missing-signature] is the missing signature fixture
+  + [fixture_kind] is missing_signature
+  + [operator_contract_ref] is signature_validation
+  + [input_record_set] is authority_artifact claiming canonical status without satisfaction signature
+  + [expected_output_record_set] is blocked authority_artifact or fault_record missing_source_lineage
+  + [expected_trace_assertion_set] is outcome_kind blocked_output or fault_output
+  + [expected_projection_state] is no signed_sjs projection row
+  + [acceptance_status] is blocked
+
+& [FixtureCase: FFX-003-stale-source] is the stale source fixture
+  + [fixture_kind] is stale_source
+  + [operator_contract_ref] is signature_validation
+  + [input_record_set] is authority_artifact with source hash mismatch
+  + [expected_output_record_set] is stale_projection or fault_record hidden_authority_drift
+  + [expected_trace_assertion_set] is stale input detected before authority acceptance
+  + [expected_projection_state] is stale projection row marked stale
+  + [acceptance_status] is stale
+
+& [FixtureCase: FFX-004-broken-lineage] is the broken lineage fixture
+  + [fixture_kind] is broken_lineage
+  + [operator_contract_ref] is signature_validation
+  + [input_record_set] is authority_artifact with missing source manifest edge
+  + [expected_output_record_set] is fault_record missing_source_lineage
+  + [expected_trace_assertion_set] is outcome_kind fault_output and lineage edge to fault_record
+  + [expected_projection_state] is authority artifact not accepted
+  + [acceptance_status] is faulted
+
+& [FixtureCase: FFX-005-ready-capability] is the ready capability fixture
+  + [fixture_kind] is ready_capability
+  + [operator_contract_ref] is support_readiness_recompute
+  + [input_record_set] is capability_node with supported requirements, verified proof_result, no blocking support_gap, and current authority_artifact
+  + [expected_output_record_set] is readiness_projection ready_to_packetize
+  + [expected_trace_assertion_set] is outcome_kind success and postcondition readiness current
+  + [expected_projection_state] is current readiness index row
+  + [acceptance_status] is accepted
+
+& [FixtureCase: FFX-006-blocked-capability] is the blocked capability fixture
+  + [fixture_kind] is blocked_capability
+  + [operator_contract_ref] is support_readiness_recompute
+  + [input_record_set] is capability_node with requirement_record and unresolved blocking support_gap
+  + [expected_output_record_set] is readiness_projection blocked with blocker_ref_set
+  + [expected_trace_assertion_set] is outcome_kind blocked_output and no ready_to_packetize output
+  + [expected_projection_state] is blocked readiness index row
+  + [acceptance_status] is blocked
+
+& [FixtureCase: FFX-007-stale-projection] is the stale projection fixture
+  + [fixture_kind] is stale_projection
+  + [operator_contract_ref] is support_readiness_recompute
+  + [input_record_set] is readiness_projection whose input_record_set hash changed
+  + [expected_output_record_set] is stale_projection
+  + [expected_trace_assertion_set] is stale input detected and no new ready work packet
+  + [expected_projection_state] is stale projection row marked stale and rebuild_required
+  + [acceptance_status] is stale
+
+& [FixtureCase: FFX-008-contradicted-support] is the contradicted support fixture
+  + [fixture_kind] is contradicted_support
+  + [operator_contract_ref] is support_readiness_recompute
+  + [input_record_set] is support_record contradicted by proof_result failed
+  + [expected_output_record_set] is readiness_projection contradicted or fault_record
+  + [expected_trace_assertion_set] is contradiction preserved in lineage_edge_set
+  + [expected_projection_state] is contradicted support visible
+  + [acceptance_status] is faulted
+
+& [FixtureCase: FFX-009-ambiguous-identity] is the ambiguous identity fixture
+  + [fixture_kind] is ambiguous_identity
+  + [operator_contract_ref] is signature_validation or support_readiness_recompute
+  + [input_record_set] is two records sharing unresolved natural_key or conflicting subject_ref
+  + [expected_output_record_set] is operator_trace with sop_first_interrupt and no authority mutation
+  + [expected_trace_assertion_set] is interrupt_kind ambiguous_identity
+  + [expected_projection_state] is no accepted projection mutation
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: FFX-010-blocked-output] is the blocked output fixture
+  + [fixture_kind] is blocked_output
+  + [operator_contract_ref] is work_packet_generation
+  + [input_record_set] is readiness_projection blocked or missing verification_oracle
+  + [expected_output_record_set] is support_gap or blocked readiness_projection and no work_packet
+  + [expected_trace_assertion_set] is outcome_kind blocked_output
+  + [expected_projection_state] is packet not generated
+  + [acceptance_status] is blocked
+
+& [FixtureCase: FFX-011-fault-output] is the fault output fixture
+  + [fixture_kind] is fault_output
+  + [operator_contract_ref] is work_packet_generation
+  + [input_record_set] is stale readiness_projection incorrectly marked ready_to_packetize
+  + [expected_output_record_set] is fault_record false_ready_packet
+  + [expected_trace_assertion_set] is outcome_kind fault_output and no work_packet
+  + [expected_projection_state] is false-ready fault visible
+  + [acceptance_status] is faulted
+
+& [FixturePlanAcceptanceChecklist] is the FSC1-S06 verification checklist
+  + [fixture_case_present] is FFX-001-valid-signature
+  + [fixture_case_present] is FFX-002-missing-signature
+  + [fixture_case_present] is FFX-003-stale-source
+  + [fixture_case_present] is FFX-004-broken-lineage
+  + [fixture_case_present] is FFX-005-ready-capability
+  + [fixture_case_present] is FFX-006-blocked-capability
+  + [fixture_case_present] is FFX-007-stale-projection
+  + [fixture_case_present] is FFX-008-contradicted-support
+  + [fixture_case_present] is FFX-009-ambiguous-identity
+  + [fixture_case_present] is FFX-010-blocked-output
+  + [fixture_case_present] is FFX-011-fault-output
+  + [index_present] is docs/fixtures/Foundation_Fixture_Index.v1.sop
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is generated SQLite database files
+  + [forbidden_scope_absent] is schema mutation
+  + [forbidden_scope_absent] is operator semantic mutation
+
+  = must: accept FSC1-S06 only when all cases are indexed and mapped to expected records

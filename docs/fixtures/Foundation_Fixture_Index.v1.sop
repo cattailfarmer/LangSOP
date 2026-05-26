@@ -1,0 +1,111 @@
+Subject: Foundation Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: e88754b0-15f9-451d-8a24-6b3a269ee487
+
+@ [fixture_plan] docs/fixtures/Foundation_Fixture_Plan.v1.sop
+@ [record_schemas] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+
+& [FixtureIndex: FoundationFixtureIndexV1] is the traversal index for FSC1 foundation fixtures
+  + [fixture_index_id] is foundation-fixture-index-v1
+  + [fixture_index_uuid] is e88754b0-15f9-451d-8a24-6b3a269ee487
+  + [slice_id] is FSC1-S06
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [index_scope] is fixture lookup by fixture id, fixture kind, operator contract, expected outcome, and acceptance status
+
+  = must: map every planned fixture case to an operator contract or schema validation target
+  = must: preserve expected outcome and acceptance status for manager review
+  - never: treat this index as executable test code
+
+& [FixtureIndexEntry: FFX-001] is valid_signature
+  + [fixture_case_ref] is FFX-001-valid-signature
+  + [operator_contract_ref] is signature_validation
+  + [expected_outcome] is success
+  + [expected_primary_output] is proof_result verified and authority_artifact signed_sjs
+  + [acceptance_status] is accepted
+
+& [FixtureIndexEntry: FFX-002] is missing_signature
+  + [fixture_case_ref] is FFX-002-missing-signature
+  + [operator_contract_ref] is signature_validation
+  + [expected_outcome] is blocked_output or fault_output
+  + [expected_primary_output] is blocked authority_artifact or fault_record missing_source_lineage
+  + [acceptance_status] is blocked
+
+& [FixtureIndexEntry: FFX-003] is stale_source
+  + [fixture_case_ref] is FFX-003-stale-source
+  + [operator_contract_ref] is signature_validation
+  + [expected_outcome] is stale_input or fault_output
+  + [expected_primary_output] is stale_projection or fault_record hidden_authority_drift
+  + [acceptance_status] is stale
+
+& [FixtureIndexEntry: FFX-004] is broken_lineage
+  + [fixture_case_ref] is FFX-004-broken-lineage
+  + [operator_contract_ref] is signature_validation
+  + [expected_outcome] is fault_output
+  + [expected_primary_output] is fault_record missing_source_lineage
+  + [acceptance_status] is faulted
+
+& [FixtureIndexEntry: FFX-005] is ready_capability
+  + [fixture_case_ref] is FFX-005-ready-capability
+  + [operator_contract_ref] is support_readiness_recompute
+  + [expected_outcome] is success
+  + [expected_primary_output] is readiness_projection ready_to_packetize
+  + [acceptance_status] is accepted
+
+& [FixtureIndexEntry: FFX-006] is blocked_capability
+  + [fixture_case_ref] is FFX-006-blocked-capability
+  + [operator_contract_ref] is support_readiness_recompute
+  + [expected_outcome] is blocked_output
+  + [expected_primary_output] is readiness_projection blocked
+  + [acceptance_status] is blocked
+
+& [FixtureIndexEntry: FFX-007] is stale_projection
+  + [fixture_case_ref] is FFX-007-stale-projection
+  + [operator_contract_ref] is support_readiness_recompute
+  + [expected_outcome] is stale_input
+  + [expected_primary_output] is stale_projection
+  + [acceptance_status] is stale
+
+& [FixtureIndexEntry: FFX-008] is contradicted_support
+  + [fixture_case_ref] is FFX-008-contradicted-support
+  + [operator_contract_ref] is support_readiness_recompute
+  + [expected_outcome] is fault_output or contradicted readiness
+  + [expected_primary_output] is readiness_projection contradicted or fault_record
+  + [acceptance_status] is faulted
+
+& [FixtureIndexEntry: FFX-009] is ambiguous_identity
+  + [fixture_case_ref] is FFX-009-ambiguous-identity
+  + [operator_contract_ref] is signature_validation or support_readiness_recompute
+  + [expected_outcome] is sop_first_interrupt
+  + [expected_primary_output] is operator_trace interrupt with no authority mutation
+  + [acceptance_status] is interrupted
+
+& [FixtureIndexEntry: FFX-010] is blocked_output
+  + [fixture_case_ref] is FFX-010-blocked-output
+  + [operator_contract_ref] is work_packet_generation
+  + [expected_outcome] is blocked_output
+  + [expected_primary_output] is support_gap or blocked readiness_projection and no work_packet
+  + [acceptance_status] is blocked
+
+& [FixtureIndexEntry: FFX-011] is fault_output
+  + [fixture_case_ref] is FFX-011-fault-output
+  + [operator_contract_ref] is work_packet_generation
+  + [expected_outcome] is fault_output
+  + [expected_primary_output] is fault_record false_ready_packet and no work_packet
+  + [acceptance_status] is faulted
+
+& [FixtureIndexCoverage] is the coverage record for FoundationFixtureIndexV1
+  + [fixture_count] is 11
+  + [covered_fixture_kind] is valid_signature
+  + [covered_fixture_kind] is missing_signature
+  + [covered_fixture_kind] is stale_source
+  + [covered_fixture_kind] is broken_lineage
+  + [covered_fixture_kind] is ready_capability
+  + [covered_fixture_kind] is blocked_capability
+  + [covered_fixture_kind] is stale_projection
+  + [covered_fixture_kind] is contradicted_support
+  + [covered_fixture_kind] is ambiguous_identity
+  + [covered_fixture_kind] is blocked_output
+  + [covered_fixture_kind] is fault_output
+
+  = must: reject FSC1-S06 if fixture_count is less than 11
