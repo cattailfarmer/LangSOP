@@ -1,0 +1,171 @@
+Subject: Manager Worker Projection Contracts V1
+Date: 2026-05-26
+Contract UUID: 54ce3936-4dd2-4323-9c63-fe80a141ce75
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+
+& [ManagerWorkerProjectionContractsV1] is the FSC4 contract set for manager and worker projections
+  + [contract_id] is manager-worker-projection-contracts-v1
+  + [contract_uuid] is 54ce3936-4dd2-4323-9c63-fe80a141ce75
+  + [slice_id] is FSC4-S03
+  + [authority_scope] is manager projection contract, worker packet projection contract, claim visibility rule, support and requirement delta visibility, false-ready prevention rule, and manager-worker action route contract
+  + [implementation_scope] is projection contract only
+  + [boundary_dependency] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [authority_notice_dependency] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+
+  = must: let manager and worker surfaces show work state without becoming assignment or completion authority
+  = must: preserve authority_notice, freshness, source lineage, claims, blockers, faults, and completion review state in every decision-making projection
+  = must: route action requests through accepted operators, coordination review, SOP-first interrupt, human override, or completion review gates
+  - never: implement UI components, dispatch jobs, assign agents, accept completion, or authorize operations in this contract
+
+& [ManagerProjectionContract] is the manager-facing projection contract
+  + [projection_kind] is manager_summary_projection
+  + [required_input] is accepted_boundary_pack_ref
+  + [required_input] is work_state_ref
+  + [required_input] is readiness_projection_ref
+  + [required_input] is work_packet_ref_set
+  + [required_input] is coordination_claim_ref_set
+  + [required_input] is support_delta_ref_set
+  + [required_input] is requirement_delta_ref_set
+  + [required_input] is completion_review_ref_set
+  + [required_input] is fault_record_ref_set
+  + [required_input] is stale_projection_ref_set
+  + [required_input] is interrupt_context_ref_set
+  + [required_output_field] is projection_id
+  + [required_output_field] is authority_notice_ref
+  + [required_output_field] is freshness_state
+  + [required_output_field] is current_ready_slice_or_chunk
+  + [required_output_field] is blocked_item_set
+  + [required_output_field] is stale_item_set
+  + [required_output_field] is contested_claim_set
+  + [required_output_field] is fault_item_set
+  + [required_output_field] is pending_review_set
+  + [required_output_field] is supported_action_route_set
+  + [forbidden_effect] is assignment
+  + [forbidden_effect] is dispatch
+  + [forbidden_effect] is completion acceptance
+  + [forbidden_effect] is source authority mutation
+
+  = must: show what is ready, blocked, stale, contested, faulted, interrupted, and pending review without opening gates itself
+  = must: make every actionable recommendation traceable to accepted support and requirement records
+
+& [WorkerPacketProjectionContract] is the worker-facing projection contract
+  + [projection_kind] is worker_packet_projection
+  + [required_input] is work_packet_ref
+  + [required_input] is accepted_boundary_pack_ref_set
+  + [required_input] is authority_basis_ref_set
+  + [required_input] is dependency_set
+  + [required_input] is verification_oracle_ref
+  + [required_input] is model_route_ref
+  + [required_input] is completion_review_requirement_ref
+  + [required_input] is coordination_claim_ref_set
+  + [required_input] is support_gap_ref_set
+  + [required_input] is fault_record_ref_set
+  + [required_output_field] is projection_id
+  + [required_output_field] is authority_notice_ref
+  + [required_output_field] is freshness_state
+  + [required_output_field] is worker_scope_summary
+  + [required_output_field] is accepted_input_ref_set
+  + [required_output_field] is expected_output_ref_set
+  + [required_output_field] is forbidden_scope_set
+  + [required_output_field] is verification_oracle_summary
+  + [required_output_field] is completion_review_required
+  + [forbidden_effect] is claiming work
+  + [forbidden_effect] is accepting completion
+  + [forbidden_effect] is changing model route
+  + [forbidden_effect] is silently expanding scope
+
+  = must: show packet obligations and forbidden scope before work starts
+  = must: route any claim, scope change, completion assertion, or model-route change through accepted coordination or completion review paths
+
+& [ClaimVisibilityRule] is the claim visibility rule shared by manager and worker projections
+  + [visible_claim_state] is unclaimed
+  + [visible_claim_state] is claimed
+  + [visible_claim_state] is contested
+  + [visible_claim_state] is stale
+  + [visible_claim_state] is released
+  + [visible_claim_state] is superseded
+  + [required_context] is claimant_ref
+  + [required_context] is conversation_uuid
+  + [required_context] is claim_scope_ref
+  + [required_context] is claim_basis_ref_set
+  + [required_context] is stale_after
+  + [required_context] is conflict_ref_set
+
+  = must: display contested and stale claims before a manager or worker projection offers action
+  = must: route claim changes through coordination claim contracts, not through projection state
+
+& [SupportRequirementDeltaVisibilityRule] is the support and requirement delta visibility rule
+  + [visible_delta_kind] is support_delta
+  + [visible_delta_kind] is requirement_delta
+  + [visible_delta_kind] is unresolved_support_gap
+  + [visible_delta_kind] is unresolved_requirement_change
+  + [visible_delta_kind] is rebake_required
+  + [visible_delta_kind] is no_rebake_required
+  + [required_context] is delta_ref
+  + [required_context] is affected_slice_or_chunk_ref
+  + [required_context] is evidence_ref_set
+  + [required_context] is completion_review_ref
+  + [required_context] is stale_trigger_ref_set
+
+  = must: surface support and requirement changes before next work is suggested
+  = must: prevent false readiness when support or requirement deltas remain unreviewed
+
+& [FalseReadyPreventionRule] is the false-ready prevention rule for manager and worker projections
+  + [false_ready_condition] is missing authority_notice
+  + [false_ready_condition] is missing freshness_state
+  + [false_ready_condition] is stale boundary pack
+  + [false_ready_condition] is unresolved support gap
+  + [false_ready_condition] is unresolved requirement delta
+  + [false_ready_condition] is contested coordination claim
+  + [false_ready_condition] is missing completion review
+  + [false_ready_condition] is hidden fault state
+  + [false_ready_condition] is hidden interrupt state
+  + [false_ready_condition] is forbidden scope mismatch
+  + [required_output] is blocked_projection
+  + [required_output] is stale_projection
+  + [required_output] is fault_record
+  + [required_output] is sop_first_interrupt_context
+
+  = must: block ready display until every false-ready condition is cleared or explicitly reviewed
+  = must: preserve false-ready evidence for FSC4 fixture planning
+
+& [ManagerWorkerActionRouteContract] is the action route contract for manager and worker projections
+  + [projection_action] is request_packet
+  + [projection_action] is request_claim
+  + [projection_action] is request_review
+  + [projection_action] is request_rebake
+  + [projection_action] is request_interrupt_resolution
+  + [projection_action] is request_human_override
+  + [allowed_route] is work_packet_generation contract
+  + [allowed_route] is coordination_claim_register contract
+  + [allowed_route] is coordination_conflict_signal contract
+  + [allowed_route] is completion_review_delta_gate contract
+  + [allowed_route] is SOPFirstInterruptResumeContractV1
+  + [blocked_route] is manager projection opens gate directly
+  + [blocked_route] is worker projection claims completion directly
+  + [blocked_route] is projection dispatches an agent or machine job directly
+
+  = must: emit action request records or interrupt context rather than mutate work authority
+  = must: preserve projection carrier, actor, source_ref_set, and authority_notice in every action route
+
+& [ManagerWorkerProjectionCoverageReview] is the FSC4-S03 coverage checklist
+  + [manager_projection_contract_present] is ManagerProjectionContract
+  + [worker_packet_projection_contract_present] is WorkerPacketProjectionContract
+  + [claim_visibility_rule_present] is ClaimVisibilityRule
+  + [support_requirement_delta_visibility_rule_present] is SupportRequirementDeltaVisibilityRule
+  + [false_ready_prevention_rule_present] is FalseReadyPreventionRule
+  + [manager_worker_action_route_contract_present] is ManagerWorkerActionRouteContract
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is agent assignment implementation
+  + [forbidden_scope_absent] is job dispatch implementation
+  + [forbidden_scope_absent] is completion acceptance implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC4-S03 if manager or worker projections can assign, dispatch, accept completion, hide claims, hide deltas, or show false readiness
+  = must: open FSC4-S04 only after this contract is accepted by completion review
