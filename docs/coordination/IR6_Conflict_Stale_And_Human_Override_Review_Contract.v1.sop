@@ -1,0 +1,225 @@
+Subject: IR6 Conflict Stale And Human Override Review Contract V1
+Date: 2026-05-26
+Contract UUID: 89913a43-4e2e-46b5-b53a-6005c4e34f46
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [boundary_import_review] docs/reviews/IR6_S01_Completion_Review.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [claim_identity_review] docs/reviews/IR6_S02_Completion_Review.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [mailbox_carrier_review] docs/reviews/IR6_S03_Completion_Review.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR6ConflictStaleAndHumanOverrideReviewContractV1] is the IR6-S04 contract for conflict, stale-claim, and human-override review semantics
+  + [contract_id] is ir6-conflict-stale-human-override-review-contract-v1
+  + [contract_uuid] is 89913a43-4e2e-46b5-b53a-6005c4e34f46
+  + [slice_id] is IR6-S04
+  + [authority_scope] is conflict review envelope, stale claim review envelope, human override review envelope, review decision matrix, completion gate interaction, fixture seed obligations, forbidden mutation boundaries, and downstream stale triggers
+  + [implementation_scope] is conflict, stale-claim, and human-override review contract only
+  + [model_route_used] is requires deeper reasoning
+  + [accepted_dependency] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+  + [accepted_dependency] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+  + [accepted_dependency] is docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is D4C4D86DBF257D935B49362E6A09F4F01BE7290714A56D90AF69435C7B56AFC2
+
+  = must: define conflict, stale-claim, and human-override review semantics before fixture planning or implementation planning depends on coordination readiness
+  = must: preserve contested, stale, interrupted, faulted, human-override, and pending-review evidence until accepted review resolves or rebakes it
+  = must: preserve deeper-reasoning routing for this contract because conflict and human override rules decide whether multi-agent work pauses, rebakes, interrupts, or proceeds
+  - never: resolve conflicts silently, delete claim lineage, implement coordination code, implement mailbox transport, create fixture files, create expected ledgers, create generated outputs, install dependencies, dispatch agents, authorize operations control, or authorize live machine control in this contract
+
+& [ConflictReviewEnvelope] is the required review envelope for contested coordination state
+  + [required_field] is conflict_review_id
+  + [required_field] is conflict_ref
+  + [required_field] is involved_claim_ref_set
+  + [required_field] is involved_conversation_ref_set
+  + [required_field] is involved_carrier_ref_set
+  + [required_field] is compatibility_relation_set
+  + [required_field] is conflict_kind
+  + [required_field] is evidence_ref_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is freshness_state
+  + [required_field] is recommended_resolution_route
+  + [required_field] is forbidden_action_set
+  + [conflict_kind] is overlapping_write_scope
+  + [conflict_kind] is identical_write_scope
+  + [conflict_kind] is ambiguous_scope_relation
+  + [conflict_kind] is inconsistent_claim_state
+  + [conflict_kind] is inconsistent_recipient
+  + [conflict_kind] is hidden_scope_expansion
+  + [conflict_kind] is false_ownership
+  + [conflict_kind] is carrier_ordering_conflict
+  + [conflict_kind] is missing_lineage
+
+  = must: block ready projection and packet execution while unresolved incompatible conflicts remain
+  = must: preserve every involved claim, conversation, carrier, and authority basis ref for review
+  = must: avoid resolving semantic or scope conflicts from carrier order, timestamp order, or claim age alone
+
+& [StaleClaimReviewEnvelope] is the required review envelope for stale claim state
+  + [required_field] is stale_review_id
+  + [required_field] is stale_claim_ref
+  + [required_field] is stale_trigger_ref_set
+  + [required_field] is stale_basis_kind
+  + [required_field] is stale_detected_at
+  + [required_field] is related_work_packet_ref
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is claimant_ref
+  + [required_field] is conversation_ref
+  + [required_field] is allowed_resolution_set
+  + [required_field] is lineage_preservation_ref_set
+  + [stale_basis_kind] is work_packet_hash_changed
+  + [stale_basis_kind] is authority_basis_changed
+  + [stale_basis_kind] is scope_changed_without_supersession
+  + [stale_basis_kind] is conversation_freshness_expired
+  + [stale_basis_kind] is completion_review_invalidated_packet
+  + [stale_basis_kind] is hidden_conflict_discovered
+  + [stale_basis_kind] is release_condition_met_without_notice
+  + [allowed_resolution] is refresh_claim
+  + [allowed_resolution] is release_claim
+  + [allowed_resolution] is supersede_claim
+  + [allowed_resolution] is invalidate_claim
+  + [allowed_resolution] is rebake_affected_packet_or_slice
+
+  = must: prevent stale claims from blocking new work indefinitely without a reviewable resolution route
+  = must: preserve stale claims as historical lineage rather than deleting them
+  = must: prevent stale claims from appearing as active or ready until accepted resolution evidence exists
+
+& [HumanOverrideReviewEnvelope] is the required review envelope for human override requests in coordination flow
+  + [required_field] is human_override_review_id
+  + [required_field] is requested_by_ref
+  + [required_field] is human_actor_ref
+  + [required_field] is related_claim_ref
+  + [required_field] is related_work_packet_ref
+  + [required_field] is related_conflict_ref_set
+  + [required_field] is requested_override_scope
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is expiration_or_recheck_condition
+  + [required_field] is explicit_limit_set
+  + [required_field] is forbidden_effect_set
+  + [override_result] is accepted_for_scope
+  + [override_result] is rejected
+  + [override_result] is expired
+  + [override_result] is out_of_scope
+  + [override_result] is requires_sjs_reprocessing
+  + [override_result] is requires_completion_review
+
+  = must: display human override scope, authority notice, freshness, expiration, and forbidden effects before using an override in a projection
+  = must: prevent broad approval, carrier message, chat instruction, or inferred user intent from authorizing assignment, dispatch, completion acceptance, operations control, or live machine control
+  = must: route source-authority changes through SJS or completion review, not through human override display alone
+
+& [CoordinationReviewDecisionMatrix] is the decision matrix for conflict, stale claim, and human override review
+  + [decision] is proceed_when_no_conflict_no_stale_no_pending_review_and_scope_dependency_closed
+  + [decision] is block_when_contested_claim_unresolved
+  + [decision] is block_when_stale_claim_unresolved
+  + [decision] is interrupt_when_identity_ambiguous
+  + [decision] is interrupt_when_authority_basis_conflicted
+  + [decision] is refresh_when_stale_claim_can_be_refreshed_through_accepted_route
+  + [decision] is release_when_release_condition_met_and_notice_accepted
+  + [decision] is supersede_when_new_claim_replaces_prior_claim_with_lineage
+  + [decision] is invalidate_when_false_ownership_or_hidden_scope_expansion_is_proven
+  + [decision] is rebake_when_requirement_delta_changes_packet_or_slice_boundary
+  + [decision] is request_human_override_when_policy_requires_human_scope_choice
+  + [decision] is refuse_when_notice_or_claim_requests_dispatch_or_live_effect
+
+  = must: make every proceed decision cite accepted claim, packet, freshness, and review evidence
+  = must: make every block, interrupt, refresh, release, supersede, invalidate, rebake, or refuse decision visible to manager and worker projections
+  = must: preserve decision evidence for completion review and fixture planning
+
+& [CompletionGateInteractionRule] is the rule for how coordination review interacts with completed-work gates
+  + [completion_gate_state] is closed_when_conflict_unresolved
+  + [completion_gate_state] is closed_when_stale_claim_unresolved
+  + [completion_gate_state] is closed_when_human_override_pending
+  + [completion_gate_state] is closed_when_requirement_delta_requires_rebake
+  + [completion_gate_state] is open_only_after_support_and_requirement_delta_review
+  + [required_context] is support_delta_ref_set
+  + [required_context] is requirement_delta_ref_set
+  + [required_context] is coordination_claim_review_ref_set
+  + [required_context] is fault_review_ref_set
+  + [required_context] is stale_output_review_ref_set
+
+  = must: prevent completion review from accepting completed work while coordination conflict or stale claim blockers remain unresolved
+  = must: preserve completion-review authority as the gate for accepting work and opening follow-on slices
+  = must: prevent coordination claims or mailbox notices from satisfying completion acceptance by themselves
+
+& [IR6S05FixtureSeedSet] is the fixture seed set exported by IR6-S04 for later fixture planning
+  + [fixture_seed] is valid_claim_projection
+  + [fixture_seed] is compatible_parallel_claims
+  + [fixture_seed] is conflicting_write_claims
+  + [fixture_seed] is stale_claim_refresh_required
+  + [fixture_seed] is release_notice_with_lineage
+  + [fixture_seed] is superseded_claim_preserves_lineage
+  + [fixture_seed] is ambiguous_conversation_identity_interrupt
+  + [fixture_seed] is inbox_unread_notice_blocks_ready
+  + [fixture_seed] is read_cursor_stale_projection
+  + [fixture_seed] is mailbox_carrier_authority_refusal
+  + [fixture_seed] is human_override_scope_review
+  + [fixture_seed] is hidden_scope_expansion_fault
+  + [fixture_seed] is completion_gate_refusal_for_unresolved_claim
+
+  = must: treat this as fixture planning input only; no fixture source files or expected ledgers are authorized by IR6-S04
+  = must: let IR6-S05 refine, accept, or prune these seeds under its own completion review
+
+& [ForbiddenIR6S04MutationList] is the forbidden mutation set for IR6-S04
+  + [forbidden_mutation] is editing accepted IR6-S01, IR6-S02, or IR6-S03 outputs or reviews to make this contract easier
+  + [forbidden_mutation] is resolving conflicts silently
+  + [forbidden_mutation] is deleting stale, released, superseded, invalidated, or contested claim lineage
+  + [forbidden_mutation] is treating human override display as source authority, completion acceptance, dispatch authority, operation authority, or live-control permission
+  + [forbidden_mutation] is treating mailbox carrier state as accepted review evidence without accepted route
+  + [forbidden_mutation] is creating fixture source files
+  + [forbidden_mutation] is creating expected ledger files
+  + [forbidden_mutation] is creating generated output files
+  + [forbidden_mutation] is creating mailbox files
+  + [forbidden_mutation] is implementing coordination code, claim storage, mailbox transport, adapters, queues, sockets, IRC, Matrix, web, terminal, Codex, or Langflow export
+  + [forbidden_mutation] is installing dependencies or mutating package metadata
+  + [forbidden_mutation] is dispatching agents, jobs, commands, processes, GPU work, model runtimes, or persistent operations automation
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR6-S04 review if any forbidden mutation appears in the output
+
+& [IR6S04DownstreamStaleTriggerList] is the stale trigger set exported by IR6-S04
+  + [stale_trigger] is IR6-S01 boundary import output changes
+  + [stale_trigger] is IR6-S02 claim identity contract changes
+  + [stale_trigger] is IR6-S03 mailbox carrier contract changes
+  + [stale_trigger] is conflict review envelope changes
+  + [stale_trigger] is stale claim review envelope changes
+  + [stale_trigger] is human override review envelope changes
+  + [stale_trigger] is coordination review decision matrix changes
+  + [stale_trigger] is completion gate interaction rule changes
+  + [stale_trigger] is fixture seed set changes after IR6-S05 begins
+  + [stale_trigger] is conflict, stale claim, or human override state treated as proceed-ready without accepted review
+  + [stale_trigger] is human override display treated as source authority, dispatch authority, completion authority, operations authority, or live-control authority
+
+  = must: mark IR6-S05 and downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review and rebake rather than silent edits
+
+& [IR6S04CoverageReview] is the coverage checklist for IR6-S04
+  + [conflict_review_envelope_present] is true
+  + [stale_claim_review_envelope_present] is true
+  + [human_override_review_envelope_present] is true
+  + [coordination_review_decision_matrix_present] is true
+  + [completion_gate_interaction_rule_present] is true
+  + [fixture_seed_set_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [silent_conflict_resolution_found] is false
+  + [human_override_authority_promotion_found] is false
+  + [coordination_implementation_code_created] is false
+  + [mailbox_transport_code_created] is false
+  + [mailbox_file_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR6-S04 only when all checklist items are satisfied
+  = must: open IR6-S05 only after this contract is reviewed in a completion review

@@ -1,0 +1,111 @@
+Subject: IR6 S04 Completion Review V1
+Date: 2026-05-26
+Review UUID: 268c3824-237e-42c6-90e0-00285ad1632c
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [completed_output] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [mailbox_carrier_contract] docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+
+& [CompletedWorkReview: IR6-S04] is the completed-work review for IR6-S04 conflict, stale-claim, and human-override review contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-S04
+  + [completed_output] is docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+  + [completed_output_sha256] is 78C427CC4AFE9E27A75F31076A80E9338F21CD219E256867B249B4C3489DF4C7
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-S04 and open IR6-S05
+  + [next_gate_result] is IR6-S05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for bounded fixture planning after IR6-S01 through IR6-S04 acceptance
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR6-S05 fixture planning only
+  = must: rerun this review if the completed output, IR6-S01 boundary import, IR6-S02 claim identity contract, IR6-S03 mailbox carrier contract, IR6 slice surface, or coordination contracts change
+  = must: keep executable coordination code, mailbox transport, mailbox file creation, adapter code, dependency installation, generated output creation, agent dispatch, operations simulator implementation, operations control, and live machine control gated
+
+& [IR6S04Verification] is the verification result for IR6-S04
+  + [conflict_review_envelope_present] is true
+  + [stale_claim_review_envelope_present] is true
+  + [human_override_review_envelope_present] is true
+  + [coordination_review_decision_matrix_present] is true
+  + [completion_gate_interaction_rule_present] is true
+  + [fixture_seed_set_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [silent_conflict_resolution_found] is false
+  + [human_override_authority_promotion_found] is false
+  + [completion_gate_bypass_found] is false
+  + [mailbox_carrier_authority_promotion_found] is false
+  + [coordination_implementation_code_created] is false
+  + [mailbox_transport_code_created] is false
+  + [mailbox_file_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6S04VerificationSatisfied] is accepted
+    @ [support] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+
+& [SupportDelta: IR6-S04] is the support delta produced by IR6-S04
+  + [new_support_record] is IR6 has conflict, stale-claim, and human-override review envelopes that preserve evidence, authority basis, freshness, and resolution routes
+  + [new_support_record] is IR6 has a coordination review decision matrix that distinguishes proceed, block, interrupt, refresh, release, supersede, invalidate, rebake, human override, and refusal outcomes
+  + [new_support_record] is IR6 completion gates remain closed while unresolved conflicts, stale claims, pending human overrides, or requirement-delta rebake triggers remain present
+  + [new_support_record] is IR6-S05 fixture planning is bounded by accepted S01 through S04 contracts and is Spark-suitable
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-S04] is the requirement delta produced by IR6-S04
+  + [requirement_delta] is IR6-S05 must produce a fixture plan and fixture index for the accepted fixture seed set without creating fixture source files or expected ledgers
+  + [requirement_delta] is IR6-S05 is GPT-5.3-Codex-Spark-suitable because fixture scope is bounded by accepted S01 through S04 contracts
+  + [requirement_delta] is IR6-S05 must preserve refusal cases for unresolved contested claims, stale claims, ambiguous conversation identity, mailbox carrier authority promotion, human override scope, hidden scope expansion, and completion gate refusal
+  + [requirement_delta] is no executable coordination code, mailbox transport, mailbox files, adapter code, dependency installation, generated output, agent dispatch, operations simulator, operations control, or live machine control is authorized by IR6-S04
+
+& [FaultReview: IR6-S04] is the fault review for IR6-S04
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [silent_conflict_resolution_found] is false
+  + [claim_lineage_deletion_found] is false
+  + [human_override_authority_promotion_found] is false
+  + [completion_gate_bypass_found] is false
+  + [mailbox_carrier_authority_promotion_found] is false
+  + [implementation_leak_found] is false
+  + [mailbox_transport_leak_found] is false
+  + [mailbox_file_creation_leak_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6S04Accepted] is accepted
+    @ [support] [IR6S04Verification]
+    @ [support] [SupportDelta: IR6-S04]
+    @ [support] [RequirementDelta: IR6-S04]
+    @ [support] [FaultReview: IR6-S04]
+
+& [NextSliceGate: IR6-S05] is opened
+  + [opened_slice] is IR6-S05 coordination mailbox fixture plan and expected ledger plan
+  + [accepted_dependency] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+  + [accepted_dependency] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+  + [accepted_dependency] is docs/coordination/IR6_Rendezvous_And_Mailbox_Carrier_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is D4C4D86DBF257D935B49362E6A09F4F01BE7290714A56D90AF69435C7B56AFC2
+  + [accepted_dependency] is docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+  + [accepted_dependency_sha256] is 78C427CC4AFE9E27A75F31076A80E9338F21CD219E256867B249B4C3489DF4C7
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture planning is bounded by accepted claim, mailbox, conflict, and human override contracts
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-S05 next unless user redirects or a new fault invalidates this review
