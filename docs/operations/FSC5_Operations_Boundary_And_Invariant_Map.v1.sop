@@ -1,0 +1,128 @@
+Subject: FSC5 Operations Boundary And Invariant Map V1
+Date: 2026-05-26
+Map UUID: 99384647-d1fe-425f-b653-281d5fa2c722
+
+@ [slice_surface] docs/slices/FSC5_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_FSC5_Final_Slices.canonical.sop
+@ [operations_safety_spec] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+@ [surface_projection_pack] docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [foundation_contract_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+
+& [OperationsBoundaryMap: FSC5OperationsBoundaryAndInvariantMapV1] is the imported operations boundary map for FSC5 operations safety envelope
+  + [slice_id] is FSC5-S01
+  + [source_chunk] is FSC4 surface projection
+  + [target_chunk] is FSC5 operations safety envelope
+  + [accepted_boundary_input] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 7E297266E3E18561F869787C1C1B4421E2663C69E13089BF3E0E85D3A832E07C
+  + [safety_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [safety_source_sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+  + [import_policy] is read_only_import
+  + [operations_policy] is operations may be represented as requests, dry-runs, refusals, and safety proofs only
+  + [implementation_policy] is no operations implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, or live machine control is authorized by this map alone
+
+  = must: treat FSC1 through FSC4 packs and the operations safety spec as accepted boundary inputs, not editable operations drafts
+  = must: keep every operations-facing record behind dry-run-only and completion-review gates
+  = must: preserve authority_notice, freshness_state, intended_effect, resource_target, blast_radius, rollback_or_abort_route, dry_run_result_ref, and human_approval_ref requirements
+  - never: let projected intent, user request, dry-run success, or fixture success authorize live control
+
+& [ImportedOperationsSafetyContractInventory] is the accepted safety contract inventory imported into FSC5
+  + [imported_pack] is FSC1FoundationContractPackV1
+  + [imported_pack] is FSC2PlanningCoordinationPackV1
+  + [imported_pack] is FSC3RuntimeGraphProofPackV1
+  + [imported_pack] is FSC4SurfaceProjectionPackV1
+  + [imported_spec] is OperationsSafetySpec
+  + [imported_contract] is OperationsSafetyBoundary
+  + [imported_contract] is OperationsRequestSafetyFields
+  + [imported_contract] is DryRunOnlyPreAcceptanceRule
+  + [imported_contract] is HumanOverrideSafetyRule
+  + [imported_contract] is OperationsSafetyFixtureObligationSet
+  + [imported_contract] is AuthorityNoticeContract
+  + [imported_contract] is AdapterMutationThroughOperatorGate
+  + [imported_contract] is completion_review_delta_gate v1
+
+  = must: preserve all imported safety fields and live-control prohibitions in FSC5-S02 through FSC5-S06
+  = must: preserve projection authority limits from FSC4 when operations requests originate from surfaces
+
+& [OperationsOwnedInvariantSet] is the invariant set owned by FSC5
+  + [invariant] is operations records are requests, dry-run projections, refusal records, safety proofs, or completion reviews until future live-control authority exists
+  + [invariant] is dry-run result is not live approval
+  + [invariant] is human approval must be explicit, fresh, scoped, and tied to intended_effect and rollback_or_abort_route
+  + [invariant] is authority_notice and freshness_state are required before any operation request is considered
+  + [invariant] is process, GPU, model runtime, job, credential, network, and destructive filesystem effects are forbidden before accepted safety authority
+  + [invariant] is broad standing approval cannot authorize unrelated operations
+  + [invariant] is missing safety field produces blocked or refused operation request
+  + [invariant] is unsupported or ambiguous operation request routes to SOP-first interrupt or safety review
+  + [invariant] is live-control escalation requires separate future source preservation, SJS processing, and completion review
+  + [invariant] is FSC5 safety pack acceptance can close the planning envelope without granting live control
+
+  = must: preserve these invariants through FSC5-S02 through FSC5-S06
+  = must: mark downstream FSC5 slices stale when any invariant changes
+
+& [DryRunOnlyBoundary] is the dry-run-only boundary for FSC5
+  + [allowed_effect] is inspect planned operation
+  + [allowed_effect] is simulate command intent
+  + [allowed_effect] is estimate resource use
+  + [allowed_effect] is classify safety risk
+  + [allowed_effect] is emit dry_run_result
+  + [allowed_effect] is emit refused_operation
+  + [blocked_effect] is mutate process state
+  + [blocked_effect] is mutate GPU workload
+  + [blocked_effect] is mutate model runtime
+  + [blocked_effect] is dispatch job
+  + [blocked_effect] is change credentials or secrets
+  + [blocked_effect] is expose or mutate network service
+  + [blocked_effect] is perform destructive filesystem action
+  + [blocked_effect] is execute operations automation
+
+  = must: preserve dry-run-only status in every FSC5 contract and fixture
+  = must: convert blocked effects into refusal outputs, not commands
+
+& [ForbiddenLiveControlList: FSC5] is the forbidden live-control set for FSC5-S01
+  + [forbidden_live_control] is Start-Process or equivalent live process launch for operations control
+  + [forbidden_live_control] is stopping, killing, or reprioritizing live processes
+  + [forbidden_live_control] is GPU workload launch, cancellation, or scheduling mutation
+  + [forbidden_live_control] is model runtime start, stop, install, upgrade, or configuration mutation
+  + [forbidden_live_control] is job queue dispatch or cancellation
+  + [forbidden_live_control] is credential, token, or secret mutation
+  + [forbidden_live_control] is network listener creation, firewall mutation, or exposure change
+  + [forbidden_live_control] is destructive filesystem command
+  + [forbidden_live_control] is persistent automation creation for operations control
+  + [forbidden_live_control] is treating dry-run success as permission to execute
+
+  = must: fail FSC5-S01 review if any forbidden live-control authority appears in the output
+
+& [DownstreamStaleTriggerList: FSC5] is the stale trigger set for FSC5 downstream work
+  + [stale_trigger] is FSC4 surface projection pack hash changes
+  + [stale_trigger] is operations safety spec hash changes
+  + [stale_trigger] is FSC5 final slice surface changes
+  + [stale_trigger] is operations boundary invariant changes
+  + [stale_trigger] is dry-run operation request contract changes after resource safety work starts
+  + [stale_trigger] is resource safety or human override contract changes after live-control prohibition work starts
+  + [stale_trigger] is live-control prohibition gate changes after fixture planning starts
+  + [stale_trigger] is dry-run fixture plan reveals an unblocked live-control path
+  + [stale_trigger] is broad human approval or stale approval can authorize unrelated operations
+  + [stale_trigger] is projected surface intent is treated as operations authority
+
+  = must: mark affected downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review rather than silent edits
+
+& [FSC5S01AcceptanceChecklist] is the verification checklist for FSC5-S01
+  + [required_component] is imported operations safety contract inventory
+  + [required_component] is operations-owned invariant set
+  + [required_component] is dry-run-only boundary
+  + [required_component] is forbidden live-control list
+  + [required_component] is downstream stale trigger list
+  + [forbidden_scope_absent] is operations implementation
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential mutation
+  + [forbidden_scope_absent] is network mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is live machine control
+
+  = must: accept FSC5-S01 only when operations imports are mapped without creating implementation or live-control authority
