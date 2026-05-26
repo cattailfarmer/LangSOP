@@ -9,13 +9,15 @@ State UUID: 15958387-b9b7-45e1-a39b-19e298ca69cd
 @ [completion_review] docs/reviews/FSC4_S01_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC4_S02_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/FSC4_S03_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/FSC4_S04_Completion_Review.v1.sop
 @ [accepted_output] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
 @ [accepted_output] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
 @ [accepted_output] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [accepted_output] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
 
 & [FSC4WorkStateV1] is the current derived work state for FSC4 surface projection
   + [chunk_ref] is FSC4 surface projection
-  + [state_basis] is docs/reviews/FSC4_S03_Completion_Review.v1.sop
+  + [state_basis] is docs/reviews/FSC4_S04_Completion_Review.v1.sop
   + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
   + [activation_review] is docs/reviews/FSC3_Completion_Review.v1.sop
@@ -23,15 +25,17 @@ State UUID: 15958387-b9b7-45e1-a39b-19e298ca69cd
   + [accepted_slice] is FSC4-S01
   + [accepted_slice] is FSC4-S02
   + [accepted_slice] is FSC4-S03
+  + [accepted_slice] is FSC4-S04
   + [accepted_output] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
   + [accepted_output_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
   + [accepted_output] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
   + [accepted_output_sha256] is CC5C7AF6E6CDD98F3FDA32204A7A4BA24A07366BE61F52843E91E7B01DA09E06
   + [accepted_output] is docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
   + [accepted_output_sha256] is FFA0FF7BD2C2479C65B5D98AD53E70D580BA13555C40A03DA79E6AFC358A9665
-  + [current_ready_slice] is FSC4-S04
+  + [accepted_output] is docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+  + [accepted_output_sha256] is CCB8ADC3D4315DE28901EA155B72C20EA949F21BD8F5A4E6508A6E6F4CE4FE75
+  + [current_ready_slice] is FSC4-S05
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [gated_slice] is FSC4-S05 until FSC4-S04 accepted
   + [gated_slice] is FSC4-S06 until FSC4-S05 accepted
   + [gated_slice] is FSC4-S07 until FSC4-S06 accepted
   + [downstream_gate] is FSC5 remains gated until FSC4-S07 accepts FSC4_Surface_Projection_Pack.v1.sop
@@ -39,5 +43,5 @@ State UUID: 15958387-b9b7-45e1-a39b-19e298ca69cd
   + [forbidden_external_dependency_found] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run FSC4-S04 before FSC4-S05
-  = must: mark this state stale if the FSC3 runtime graph proof pack, FSC4 final slice surface, FSC4 canonical specification, FSC4-S01 through FSC4-S03 outputs, or their completion reviews change
+  = must: run FSC4-S05 before FSC4-S06
+  = must: mark this state stale if the FSC3 runtime graph proof pack, FSC4 final slice surface, FSC4 canonical specification, FSC4-S01 through FSC4-S04 outputs, or their completion reviews change

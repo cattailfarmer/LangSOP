@@ -1,0 +1,178 @@
+Subject: Narrative Debug Projection Contracts V1
+Date: 2026-05-26
+Contract UUID: fdfa2e49-7fc6-47f1-b9e9-f072818c4b5e
+
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [trace_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+
+& [NarrativeDebugProjectionContractsV1] is the FSC4 contract set for narrative and debug projections
+  + [contract_id] is narrative-debug-projection-contracts-v1
+  + [contract_uuid] is fdfa2e49-7fc6-47f1-b9e9-f072818c4b5e
+  + [slice_id] is FSC4-S04
+  + [authority_scope] is narrative projection contract, debug projection contract, compaction reentry view, fault visibility rule, operator trace inspection rule, unresolved frontier display rule, and narrative-debug action route contract
+  + [implementation_scope] is projection contract only
+  + [boundary_dependency] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [authority_notice_dependency] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [manager_worker_dependency] is docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+
+  = must: let narrative and debug surfaces preserve continuity without rewriting source authority
+  = must: keep trace, fault, interruption, claim, stale, support, requirement, and completion review context visible
+  = must: route repairs, reentry changes, and authority-sensitive reinterpretation through accepted SOP, SJS, operator, interrupt, or completion review routes
+  - never: implement UI components, ingest logs, rewrite source narrative, repair faults, dispatch work, or authorize operations in this contract
+
+& [NarrativeProjectionContract] is the narrative-facing projection contract
+  + [projection_kind] is narrative_projection
+  + [required_input] is project_narrative_ref
+  + [required_input] is conversation_surface_ref_set
+  + [required_input] is accepted_source_ref_set
+  + [required_input] is completion_review_ref_set
+  + [required_input] is support_delta_ref_set
+  + [required_input] is requirement_delta_ref_set
+  + [required_input] is stale_projection_ref_set
+  + [required_input] is unresolved_frontier_ref_set
+  + [required_input] is rendezvous_packet_ref_set
+  + [required_output_field] is projection_id
+  + [required_output_field] is authority_notice_ref
+  + [required_output_field] is freshness_state
+  + [required_output_field] is narrative_summary
+  + [required_output_field] is source_lineage_ref_set
+  + [required_output_field] is open_frontier_set
+  + [required_output_field] is blocked_or_stale_context_set
+  + [required_output_field] is reentry_packet_ref_set
+  + [forbidden_effect] is source narrative rewrite
+  + [forbidden_effect] is canonical specification rewrite
+  + [forbidden_effect] is completion review acceptance
+  + [forbidden_effect] is work gate mutation
+
+  = must: distinguish projected narrative summary from authority-bearing narrative records
+  = must: show when narrative context is stale, incomplete, contradicted, or pending review
+
+& [DebugProjectionContract] is the debug-facing projection contract
+  + [projection_kind] is debug_trace_projection
+  + [required_input] is operator_trace_ref_set
+  + [required_input] is proof_result_ref_set
+  + [required_input] is fault_record_ref_set
+  + [required_input] is stale_projection_ref_set
+  + [required_input] is interrupt_context_ref_set
+  + [required_input] is completion_review_ref_set
+  + [required_input] is hidden_write_prevention_ref
+  + [required_input] is checkpoint_context_ref_set
+  + [required_output_field] is projection_id
+  + [required_output_field] is authority_notice_ref
+  + [required_output_field] is freshness_state
+  + [required_output_field] is trace_path_summary
+  + [required_output_field] is fault_summary_set
+  + [required_output_field] is blocked_stale_interrupt_summary_set
+  + [required_output_field] is hidden_write_check_summary
+  + [required_output_field] is unresolved_debug_question_set
+  + [forbidden_effect] is fault repair
+  + [forbidden_effect] is checkpoint authority promotion
+  + [forbidden_effect] is trace mutation
+  + [forbidden_effect] is runtime execution
+
+  = must: inspect traces and faults without changing their authority-bearing records
+  = must: preserve enough evidence for another agent or human to understand the failing path
+
+& [CompactionReentryProjectionRule] is the rule for reentry after compaction, handoff, or long-running work
+  + [required_context] is active_goal_ref
+  + [required_context] is accepted_boundary_input_ref_set
+  + [required_context] is current_ready_slice_or_chunk
+  + [required_context] is last_accepted_output_ref_set
+  + [required_context] is unresolved_frontier_ref_set
+  + [required_context] is coordination_claim_ref_set
+  + [required_context] is fault_record_ref_set
+  + [required_context] is reentry_packet_ref
+  + [required_context] is stale_trigger_ref_set
+
+  = must: preserve enough state for a resumed conversation to continue without collapsing identities or skipping gate checks
+  = must: mark reentry stale when accepted boundary inputs, outputs, claims, or completion reviews changed
+
+& [FaultVisibilityRule] is the fault visibility rule for narrative and debug projections
+  + [visible_fault_kind] is operational_fault
+  + [visible_fault_kind] is projection_fault
+  + [visible_fault_kind] is hidden_write_attempt
+  + [visible_fault_kind] is missing_authority_notice
+  + [visible_fault_kind] is stale_projection
+  + [visible_fault_kind] is false_ready_gate
+  + [visible_fault_kind] is unresolved_coordination_conflict
+  + [visible_fault_kind] is unsupported_scope
+  + [required_context] is fault_record_ref
+  + [required_context] is fault_evidence_ref_set
+  + [required_context] is local_repair_route
+  + [required_context] is escalation_path
+
+  = must: show faults as unresolved until accepted repair or completion review clears them
+  = must: prevent narrative summaries from smoothing over active faults
+
+& [OperatorTraceInspectionRule] is the trace inspection rule for debug projections
+  + [required_trace_field] is graph_node_id
+  + [required_trace_field] is graph_phase_before
+  + [required_trace_field] is graph_phase_after
+  + [required_trace_field] is active_work_packet_ref
+  + [required_trace_field] is input_record_ref_set
+  + [required_trace_field] is output_record_ref_set
+  + [required_trace_field] is checkpoint_read_ref_set
+  + [required_trace_field] is checkpoint_write_ref_set
+  + [required_trace_field] is interrupt_context_ref
+  + [required_trace_field] is fault_record_ref
+  + [required_trace_field] is outcome_kind
+
+  = must: show missing trace fields as projection fault or blocked debug projection
+  = must: avoid inventing trace continuity when evidence is absent
+
+& [UnresolvedFrontierDisplayRule] is the rule for showing unresolved work and open questions
+  + [frontier_kind] is unresolved_support_gap
+  + [frontier_kind] is unresolved_requirement_delta
+  + [frontier_kind] is pending_completion_review
+  + [frontier_kind] is interrupted_runtime_path
+  + [frontier_kind] is contested_claim
+  + [frontier_kind] is stale_boundary_input
+  + [frontier_kind] is missing_fixture
+  + [frontier_kind] is model_route_requires_deeper_reasoning
+  + [required_context] is frontier_ref
+  + [required_context] is authority_basis_ref_set
+  + [required_context] is recommended_route
+  + [required_context] is stale_after
+
+  = must: keep unresolved frontier visible until accepted records close it
+  = must: distinguish ready work from merely explainable work
+
+& [NarrativeDebugActionRouteContract] is the action route contract for narrative and debug projections
+  + [projection_action] is request_reentry_packet
+  + [projection_action] is request_fault_review
+  + [projection_action] is request_trace_review
+  + [projection_action] is request_source_reconsideration
+  + [projection_action] is request_completion_review
+  + [allowed_route] is Project_Narrative_Surface update through accepted narrative process
+  + [allowed_route] is Operational_Faults review
+  + [allowed_route] is SOP-first interrupt
+  + [allowed_route] is SJS reprocessing
+  + [allowed_route] is completion_review_delta_gate
+  + [blocked_route] is projected narrative silently edits source
+  + [blocked_route] is debug projection repairs fault directly
+  + [blocked_route] is projection opens downstream gate directly
+
+  = must: emit traceable action requests rather than mutate authority from projection state
+  = must: preserve projection carrier, actor, source_ref_set, and authority_notice in every action route
+
+& [NarrativeDebugProjectionCoverageReview] is the FSC4-S04 coverage checklist
+  + [narrative_projection_contract_present] is NarrativeProjectionContract
+  + [debug_projection_contract_present] is DebugProjectionContract
+  + [compaction_reentry_projection_rule_present] is CompactionReentryProjectionRule
+  + [fault_visibility_rule_present] is FaultVisibilityRule
+  + [operator_trace_inspection_rule_present] is OperatorTraceInspectionRule
+  + [unresolved_frontier_display_rule_present] is UnresolvedFrontierDisplayRule
+  + [narrative_debug_action_route_contract_present] is NarrativeDebugActionRouteContract
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is log ingestion implementation
+  + [forbidden_scope_absent] is source narrative rewrite
+  + [forbidden_scope_absent] is fault repair implementation
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: reject FSC4-S04 if narrative or debug projections can rewrite authority, hide faults, invent trace continuity, or hide unresolved frontiers
+  = must: open FSC4-S05 only after this contract is accepted by completion review
