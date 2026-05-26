@@ -1,0 +1,17 @@
+Subject: Fixture Broken Lineage
+Date: 2026-05-26
+Fixture UUID: 6cf59684-2693-4fba-b3b6-9646c487ce31
+
+& [FixtureAuthorityArtifact: broken_lineage] is an artifact with missing source lineage
+  + [fixture_id] is broken_lineage
+  + [record_kind] is canonical_specification
+  + [natural_key] is fixture:broken_lineage
+  + [source_manifest] is missing:fixture_source_manifest
+  + [authority_state] is lineage_blocked_candidate
+  + [expected_record_status] is blocked_broken_lineage
+
+! [SatisfactionSignature: broken_lineage] is valid
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 8ea45a5c-a54f-4410-823a-44dfc51b5fe9
+  + [signed_subject] is tests/fixtures/sop/ir2_parser_projection/broken_lineage.sop
+  + [signature_status] is valid

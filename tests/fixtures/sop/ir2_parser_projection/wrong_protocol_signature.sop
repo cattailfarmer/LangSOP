@@ -1,0 +1,16 @@
+Subject: Fixture Wrong Protocol Signature
+Date: 2026-05-26
+Fixture UUID: 1fa7a7ce-ae8b-4599-b5eb-0a6b7b1196c6
+
+& [FixtureCanonicalArtifact: wrong_protocol_signature] is a canonical-looking artifact with the wrong signature protocol
+  + [fixture_id] is wrong_protocol_signature
+  + [record_kind] is canonical_specification
+  + [natural_key] is fixture:wrong_protocol_signature
+  + [authority_state] is signed_wrong_protocol_candidate
+  + [expected_record_status] is blocked_wrong_signature_protocol
+
+! [SatisfactionSignature: wrong_protocol_signature] is invalid
+  + [signature_protocol_uuid] is 00000000-0000-0000-0000-000000000000
+  + [signature_uuid] is a70d98a6-3ec0-48ce-ac19-5734b9219239
+  + [signed_subject] is tests/fixtures/sop/ir2_parser_projection/wrong_protocol_signature.sop
+  + [signature_status] is wrong_protocol

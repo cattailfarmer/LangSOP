@@ -1,0 +1,16 @@
+Subject: Fixture Unresolved Natural Key
+Date: 2026-05-26
+Fixture UUID: ae2168e6-e20d-4d38-be6c-f237d8534542
+
+& [FixtureAuthorityArtifact: unresolved_natural_key] is an artifact with unresolved identity
+  + [fixture_id] is unresolved_natural_key
+  + [record_kind] is canonical_specification
+  + [natural_key] is unresolved
+  + [authority_state] is identity_blocked_candidate
+  + [expected_record_status] is blocked_unresolved_identity
+
+! [SatisfactionSignature: unresolved_natural_key] is valid
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 4b146b9e-9882-458b-b497-7bd367e47a90
+  + [signed_subject] is tests/fixtures/sop/ir2_parser_projection/unresolved_natural_key.sop
+  + [signature_status] is valid

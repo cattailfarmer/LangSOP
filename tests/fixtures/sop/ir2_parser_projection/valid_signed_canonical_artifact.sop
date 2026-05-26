@@ -1,0 +1,19 @@
+Subject: Fixture Valid Signed Canonical Artifact
+Date: 2026-05-26
+Fixture UUID: eb9d25c6-0777-4575-b3c7-aecbceaa7fb7
+
+& [FixtureAuthorityArtifact: valid_signed_canonical_artifact] is a valid signed canonical artifact fixture
+  + [fixture_id] is valid_signed_canonical_artifact
+  + [record_kind] is canonical_specification
+  + [natural_key] is fixture:valid_signed_canonical_artifact
+  + [authority_state] is signed_sjs_authority_candidate
+  + [source_manifest] is tests/fixtures/sop/ir2_parser_projection/valid_signed_canonical_artifact.sop
+  + [expected_record_status] is accepted_authority_candidate
+
+! [SatisfactionSignature: valid_signed_canonical_artifact] is valid
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 976ad46e-c40d-4cc2-b84b-33aa0becdf3a
+  + [signed_subject] is tests/fixtures/sop/ir2_parser_projection/valid_signed_canonical_artifact.sop
+  + [source_sha256] is fixture_hash_computed_at_runtime
+  + [signature_status] is valid
+  + [signature_limit] is fixture authority only

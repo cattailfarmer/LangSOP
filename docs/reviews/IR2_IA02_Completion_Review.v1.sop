@@ -1,0 +1,125 @@
+Subject: IR2-IA02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 07fdb781-8b64-4f7b-ab74-d8d3ab2f7dd9
+
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [completed_output] docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+@ [completed_output] tests/fixtures/sop/ir2_parser_projection/
+@ [completed_output] tests/fixtures/expected/ir2_parser_projection/
+@ [accepted_input] docs/implementation/IR2_Bounded_Implementation_Activation_Boundary.v1.sop
+
+& [CompletedWorkReview: IR2-IA02] is the completion review for fixture source and expected-ledger seed material
+  + [slice_id] is IR2-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+  + [completed_output_sha256] is 9FA6FB3F4090829CBA29686BE43CB83598BB672CBA8B9F9D15BF8CD6F49CCA44
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [review_result] is accepted
+  + [next_gate_result] is IR2-IA03 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA02 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR2-IA03 only
+  = must: rerun review if any fixture source, expected ledger, or fixture index hash changes
+  = must: keep extraction, validation, SQLite projection, generated outputs, dependencies, operations control, and live machine control unauthorized
+
+& [AcceptedFixtureDigestSet: IR2-IA02] is the accepted hash ledger for fixture source and expected ledgers
+  + [accepted_output] is docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is 9FA6FB3F4090829CBA29686BE43CB83598BB672CBA8B9F9D15BF8CD6F49CCA44
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/valid_signed_canonical_artifact.sop
+  + [accepted_output_sha256] is EFCDB86AA7F8DB7ED330BE304CF13B9D1FA39440AD50C31CEB34E295CFD3A069
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/source_only_unprocessed_artifact.sop
+  + [accepted_output_sha256] is 65241892DB44C9A3A1374154EB5C271178139D3D5E41AE202FCA98F11E2C63E4
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/missing_signature_canonical_artifact.sop
+  + [accepted_output_sha256] is 5C8A327A430FFAD22D20CAFBF9418BA7104A4B1F6860C29784040C9D129DAE9C
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/wrong_protocol_signature.sop
+  + [accepted_output_sha256] is A770CA89E977D54097AB9D1C852793C2EA70A1782CDE574503ADE7A2012B7C43
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/stale_source_hash.sop
+  + [accepted_output_sha256] is CB9A7BA2887D2B44C481CBA458EB07D4E1CAF05BE3328746726527744422923B
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/malformed_sop_structure.sop
+  + [accepted_output_sha256] is BE8C6086061C401BF025124CD241B5AAF83229D30E05ADF665B0147C7EC57815
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/unresolved_natural_key.sop
+  + [accepted_output_sha256] is 155A155D51712C7228CFAAE603055B1FD29E319FA2057AC172AB23F62C64663B
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/broken_lineage.sop
+  + [accepted_output_sha256] is 8E46ECFDD05921081538030F7D73ECD46DF14ACCFC704145560798B3654556B0
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/generated_projection_non_authority.sop
+  + [accepted_output_sha256] is 6962B2C3A9D8931F6BD4D04206CFEA85B37E931B2322793AA7C4A1414055EC30
+  + [accepted_output] is tests/fixtures/sop/ir2_parser_projection/source_mutation_refusal.sop
+  + [accepted_output_sha256] is AD34E02F39AED8F1CE78BF9FA4D33A1946035DE4F1CDDFC00E8DAC0507E4963B
+  + [accepted_output] is tests/fixtures/expected/ir2_parser_projection/kernel_records_expected.sop
+  + [accepted_output_sha256] is 5F19ED26DDF0FEEEB3E31819D3CB3210472CF13EB600CD5C81AF3C09C1353C35
+  + [accepted_output] is tests/fixtures/expected/ir2_parser_projection/validation_expected.sop
+  + [accepted_output_sha256] is C3B5BA23E5D6C1433ADD72B3D226836A538CAF44C52CC282430B229C2B2442F9
+  + [accepted_output] is tests/fixtures/expected/ir2_parser_projection/sqlite_projection_expected.sop
+  + [accepted_output_sha256] is 633D73915CBC0D38B68E9F458B350D617D8C5D870C5C92594BC6BD520598B7C8
+
+  = must: mark IR2-IA02 stale if any listed hash changes
+
+& [VerificationOracleResult: IR2-IA02] is the verification result for fixture and expected-ledger coverage
+  + [fixture_index_present] is true
+  + [fixture_source_count] is 10
+  + [expected_ledger_count] is 3
+  + [valid_signed_canonical_artifact_present] is true
+  + [source_only_unprocessed_artifact_present] is true
+  + [missing_signature_canonical_artifact_present] is true
+  + [wrong_protocol_signature_present] is true
+  + [stale_source_hash_present] is true
+  + [malformed_sop_structure_present] is true
+  + [unresolved_natural_key_present] is true
+  + [broken_lineage_present] is true
+  + [generated_projection_non_authority_present] is true
+  + [source_mutation_refusal_present] is true
+  + [kernel_record_expected_ledger_present] is true
+  + [validation_expected_ledger_present] is true
+  + [sqlite_projection_expected_ledger_present] is true
+  + [implementation_code_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR2IA02VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+    @ [support] tests/fixtures/sop/ir2_parser_projection/
+    @ [support] tests/fixtures/expected/ir2_parser_projection/
+
+& [SupportDelta: IR2-IA02] is the support delta produced by this slice
+  + [new_support_record] is fixture source cases now cover valid authority, source-only material, missing signature, wrong protocol, stale hash, malformed SOP, unresolved identity, broken lineage, generated projection non-authority, and source mutation refusal
+  + [new_support_record] is expected ledgers now define KernelRecord, validation, and SQLite projection expectations before parser implementation
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2-IA02] is the requirement delta produced by this slice
+  + [requirement_delta] is IR2-IA03 may create only authority discovery and SOP parser implementation files
+  + [requirement_delta] is IR2-IA03 is GPT-5.3-Codex-Spark-suitable because parser scope and fixture evidence are bounded
+  + [requirement_delta] is extraction, validation, SQLite projection, generated output creation, dependency installation, operations control, and live machine control remain unauthorized
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR2-IA02] is the fault review for this slice
+  + [unlisted_fixture_file_created] is false
+  + [unlisted_expected_ledger_created] is false
+  + [implementation_code_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR2IA02Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR2-IA02]
+    @ [support] [SupportDelta: IR2-IA02]
+    @ [support] [RequirementDelta: IR2-IA02]
+    @ [support] [FaultReview: IR2-IA02]
+
+& [NextSliceGate: IR2-IA03] is opened
+  + [opened_slice] is IR2-IA03 authority discovery and SOP parser implementation
+  + [accepted_input] is docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+  + [accepted_input_sha256] is 9FA6FB3F4090829CBA29686BE43CB83598BB672CBA8B9F9D15BF8CD6F49CCA44
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA02 acceptance
+  + [model_route_reason] is parser implementation is bounded by accepted parser profile, fixture sources, and expected ledgers
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR2-IA03 next unless user redirects or a new fault invalidates this review

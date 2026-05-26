@@ -1,0 +1,20 @@
+Subject: IR2 Parser Projection Expected Kernel Records
+Date: 2026-05-26
+Expected Ledger UUID: 5dc2a8d3-f2d4-4971-934a-ab92641e4403
+
+& [ExpectedKernelRecordLedger: IR2ParserProjection] is the expected KernelRecord candidate ledger for IR2 fixtures
+  + [fixture_set] is ir2_parser_projection
+  + [ledger_status] is expected_output_authority_after_IR2-IA02_review
+  + [required_field_set] is fixture_id, input_source_ref_set, expected_record_kind, expected_record_id_pattern, expected_natural_key_state, expected_subject_ref_state, expected_authority_state, expected_source_ref_set_state, expected_lineage_edge_set_state, expected_freshness_state, expected_record_status, expected_blocked_or_fault_reason, and acceptance_status
+
+& [ExpectedKernelRecordCases] is the fixture expected KernelRecord case set
+  + [case] is valid_signed_canonical_artifact | canonical_specification | resolved | signed_sjs_authority_candidate | current | accepted_authority_candidate | none
+  + [case] is source_only_unprocessed_artifact | source_document | resolved | source_only | current | source_only_not_authority | unprocessed_source
+  + [case] is missing_signature_canonical_artifact | canonical_specification | resolved | unsigned_canonical_candidate | current | blocked_missing_sjs_signature | missing_signature
+  + [case] is wrong_protocol_signature | canonical_specification | resolved | signed_wrong_protocol_candidate | current | blocked_wrong_signature_protocol | wrong_protocol
+  + [case] is stale_source_hash | canonical_specification | resolved | stale_signature_candidate | stale | blocked_stale_source_hash | stale_source_hash
+  + [case] is malformed_sop_structure | malformed_source | resolved | parser_fault | unknown | parser_fault_preserved | malformed_line
+  + [case] is unresolved_natural_key | canonical_specification | unresolved | identity_blocked_candidate | current | blocked_unresolved_identity | unresolved_natural_key
+  + [case] is broken_lineage | canonical_specification | resolved | lineage_blocked_candidate | current | blocked_broken_lineage | missing_source_manifest
+  + [case] is generated_projection_non_authority | generated_projection_report | resolved | projection_only | current | projection_only_not_authority | generated_projection_not_source
+  + [case] is source_mutation_refusal | mutation_request_fixture | resolved | mutation_refusal_required | current | source_mutation_refused | source_mutation_forbidden

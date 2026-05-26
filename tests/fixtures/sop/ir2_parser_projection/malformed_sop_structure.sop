@@ -1,0 +1,13 @@
+Subject: Fixture Malformed SOP Structure
+Date: 2026-05-26
+Fixture UUID: 1805bc22-9200-49f8-bd99-3953b791df0c
+
+& [FixtureMalformedArtifact: malformed_sop_structure] is a malformed SOP fixture
+  + [fixture_id] is malformed_sop_structure
+  + [record_kind] is malformed_source
+  + [natural_key] is fixture:malformed_sop_structure
+  + [expected_record_status] is parser_fault_preserved
+
+this line intentionally lacks an SOP marker and must be preserved as a parse fault
+
+  = must: preserve raw line evidence for malformed content

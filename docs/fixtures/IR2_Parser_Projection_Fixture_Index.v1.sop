@@ -1,0 +1,59 @@
+Subject: IR2 Parser Projection Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: 822686b2-5732-4588-bec9-eb4b5d0f6041
+
+@ [activation_boundary] docs/implementation/IR2_Bounded_Implementation_Activation_Boundary.v1.sop
+@ [fixture_plan] docs/fixtures/IR2_Parser_Projection_Fixture_Plan.v1.sop
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+
+& [IR2ParserProjectionFixtureIndexV1] is the fixture index for IR2-IA02 fixture source and expected-ledger seed material
+  + [slice_id] is IR2-IA02
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR2-IA01 acceptance
+  + [fixture_source_root] is tests/fixtures/sop/ir2_parser_projection/
+  + [fixture_expected_root] is tests/fixtures/expected/ir2_parser_projection/
+  + [fixture_generated_root] is tests/fixtures/generated/ir2_parser_projection/
+  + [fixture_status] is tracked_fixture_authority_after_completion_review
+  + [generated_output_status] is projection_only
+
+  = must: keep generated outputs disposable and ignored
+  = must: keep parser and projection code gated until IR2-IA02 completion review accepts this material
+  - never: treat generated SQLite, parser output, cache, index, report, or fixture output as source authority
+
+& [FixtureCaseIndex] is the indexed fixture case set
+  + [fixture_case] is valid_signed_canonical_artifact
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/valid_signed_canonical_artifact.sop
+    + [expected_status] is accepted_authority_candidate
+  + [fixture_case] is source_only_unprocessed_artifact
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/source_only_unprocessed_artifact.sop
+    + [expected_status] is source_only_not_authority
+  + [fixture_case] is missing_signature_canonical_artifact
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/missing_signature_canonical_artifact.sop
+    + [expected_status] is blocked_missing_sjs_signature
+  + [fixture_case] is wrong_protocol_signature
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/wrong_protocol_signature.sop
+    + [expected_status] is blocked_wrong_signature_protocol
+  + [fixture_case] is stale_source_hash
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/stale_source_hash.sop
+    + [expected_status] is blocked_stale_source_hash
+  + [fixture_case] is malformed_sop_structure
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/malformed_sop_structure.sop
+    + [expected_status] is parser_fault_preserved
+  + [fixture_case] is unresolved_natural_key
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/unresolved_natural_key.sop
+    + [expected_status] is blocked_unresolved_identity
+  + [fixture_case] is broken_lineage
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/broken_lineage.sop
+    + [expected_status] is blocked_broken_lineage
+  + [fixture_case] is generated_projection_non_authority
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/generated_projection_non_authority.sop
+    + [expected_status] is projection_only_not_authority
+  + [fixture_case] is source_mutation_refusal
+    + [fixture_source] is tests/fixtures/sop/ir2_parser_projection/source_mutation_refusal.sop
+    + [expected_status] is source_mutation_refused
+
+& [ExpectedLedgerIndex] is the expected-output ledger set for IR2-IA02
+  + [expected_ledger] is tests/fixtures/expected/ir2_parser_projection/kernel_records_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir2_parser_projection/validation_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir2_parser_projection/sqlite_projection_expected.sop
+
+  = must: keep ledgers human-reviewable and independent of generated SQLite files

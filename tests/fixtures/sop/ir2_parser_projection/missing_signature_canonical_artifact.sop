@@ -1,0 +1,12 @@
+Subject: Fixture Missing Signature Canonical Artifact
+Date: 2026-05-26
+Fixture UUID: 930d3018-ec7a-4db1-b3a8-c216f878717e
+
+& [FixtureCanonicalArtifact: missing_signature_canonical_artifact] is a canonical-looking artifact without a satisfaction signature
+  + [fixture_id] is missing_signature_canonical_artifact
+  + [record_kind] is canonical_specification
+  + [natural_key] is fixture:missing_signature_canonical_artifact
+  + [authority_state] is unsigned_canonical_candidate
+  + [expected_record_status] is blocked_missing_sjs_signature
+
+  = must: block trust-bearing authority classification when the satisfaction signature is missing

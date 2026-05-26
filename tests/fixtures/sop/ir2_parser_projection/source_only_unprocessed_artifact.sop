@@ -1,0 +1,13 @@
+Subject: Fixture Source Only Unprocessed Artifact
+Date: 2026-05-26
+Fixture UUID: e5d4eeb7-18d1-4fb7-8e10-00c7a049c9ab
+
+& [FixtureSourceArtifact: source_only_unprocessed_artifact] is a preserved source-only fixture
+  + [fixture_id] is source_only_unprocessed_artifact
+  + [record_kind] is source_document
+  + [natural_key] is fixture:source_only_unprocessed_artifact
+  + [authority_state] is source_only
+  + [expected_record_status] is source_only_not_authority
+
+  = must: remain source-only until separate SJS processing exists
+  - never: infer signed authority from source prose alone

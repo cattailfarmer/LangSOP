@@ -1,0 +1,13 @@
+Subject: Fixture Generated Projection Non Authority
+Date: 2026-05-26
+Fixture UUID: ed424a82-771a-4e61-8dcc-1b742c0a76b7
+
+& [FixtureGeneratedProjection: generated_projection_non_authority] is a generated projection fixture that must not become authority
+  + [fixture_id] is generated_projection_non_authority
+  + [record_kind] is generated_projection_report
+  + [natural_key] is fixture:generated_projection_non_authority
+  + [projection_path] is tests/fixtures/generated/ir2_parser_projection/generated_projection.sqlite3
+  + [authority_state] is projection_only
+  + [expected_record_status] is projection_only_not_authority
+
+  = must: reject generated projection output as a source authority substitute

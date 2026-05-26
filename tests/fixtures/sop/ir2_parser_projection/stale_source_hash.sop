@@ -1,0 +1,17 @@
+Subject: Fixture Stale Source Hash
+Date: 2026-05-26
+Fixture UUID: 7612e9d4-7d83-4821-a95f-4631aae5a0ae
+
+& [FixtureCanonicalArtifact: stale_source_hash] is a signed artifact with a deliberately stale source hash claim
+  + [fixture_id] is stale_source_hash
+  + [record_kind] is canonical_specification
+  + [natural_key] is fixture:stale_source_hash
+  + [authority_state] is stale_signature_candidate
+  + [expected_record_status] is blocked_stale_source_hash
+
+! [SatisfactionSignature: stale_source_hash] is invalid
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 274993a5-bb8b-4d2e-b956-c612e99fcec6
+  + [signed_subject] is tests/fixtures/sop/ir2_parser_projection/stale_source_hash.sop
+  + [source_sha256] is 0000000000000000000000000000000000000000000000000000000000000000
+  + [signature_status] is stale_source_hash
