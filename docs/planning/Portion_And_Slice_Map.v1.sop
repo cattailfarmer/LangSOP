@@ -119,7 +119,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR6_Final_Slice_Minting_Review.v1.sop
   + [support_record] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
   + [support_record] is docs/reviews/IR6_S01_Completion_Review.v1.sop
-  + [support_gap] is IR6-S02 claim identity and work-boundary projection contract not yet executed
+  + [support_record] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [support_record] is docs/reviews/IR6_S02_Completion_Review.v1.sop
+  + [support_gap] is IR6-S03 rendezvous packet and mailbox carrier projection contract not yet executed
   + [support_gap] is coordination record schemas not yet rebound into the IR6 implementation boundary
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema

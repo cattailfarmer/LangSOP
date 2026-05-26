@@ -16,12 +16,14 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
 @ [ir5_work_state] docs/state/IR5_Work_State.v1.sop
 @ [accepted_output] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
 @ [completion_review] docs/reviews/IR6_S01_Completion_Review.v1.sop
+@ [accepted_output] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [completion_review] docs/reviews/IR6_S02_Completion_Review.v1.sop
 
 & [IR6WorkStateV1] is the current derived work state for IR6 coordination mailbox and claim projection prototype planning
   + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
-  + [state_basis] is docs/reviews/IR6_S01_Completion_Review.v1.sop
-  + [state_basis_sha256] is 6E4B360FB69656A67D9EC13B5D827F21764206620C4ABBFBD793B66A7EA94276
-  + [surface_status] is IR6-S01_accepted_and_IR6-S02_open
+  + [state_basis] is docs/reviews/IR6_S02_Completion_Review.v1.sop
+  + [state_basis_sha256] is 3F59E1E39CD1672CB1AEE8D5AAD8DA8B6DA397A48FC213C65DD097009DCD3CF5
+  + [surface_status] is IR6-S02_accepted_and_IR6-S03_open
   + [source_document] is docs/source/2026-05-26_ir6_final_slices/Derived_IR6_Final_Slices_Source.sop
   + [source_document_sha256] is ABB5882E6E23A50B4A40A7F4E6D270F46E500D31F2649F69F44AD2F98A383B53
   + [source_manifest] is docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
@@ -53,19 +55,23 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [accepted_output_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
   + [accepted_completion_review] is docs/reviews/IR6_S01_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 6E4B360FB69656A67D9EC13B5D827F21764206620C4ABBFBD793B66A7EA94276
-  + [current_ready_slice] is IR6-S02
-  + [current_ready_slice_name] is claim identity and work-boundary projection contract
+  + [accepted_slice] is IR6-S02
+  + [accepted_output] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [accepted_output_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+  + [accepted_completion_review] is docs/reviews/IR6_S02_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 3F59E1E39CD1672CB1AEE8D5AAD8DA8B6DA397A48FC213C65DD097009DCD3CF5
+  + [current_ready_slice] is IR6-S03
+  + [current_ready_slice_name] is rendezvous packet and mailbox carrier projection contract
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is identity and claim compatibility decide when projected work boundaries may guide action without becoming authority
+  + [current_ready_slice_model_route_reason] is mailbox and rendezvous carriers must preserve conversation continuity without becoming signed authority or dispatch channels
   + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after IR6 implementation activation slices are accepted and implementation tasks are bounded
-  + [gated_slice] is IR6-S03
   + [gated_slice] is IR6-S04
   + [gated_slice] is IR6-S05
   + [gated_slice] is IR6-S06
   + [gated_slice] is IR6-S07
   + [implementation_code_creation_authorized_by_current_slice] is false
-  + [claim_projection_contract_creation_authorized_by_current_slice] is true
-  + [mailbox_projection_contract_creation_authorized_by_current_slice] is false
+  + [claim_projection_contract_creation_authorized_by_current_slice] is false
+  + [mailbox_projection_contract_creation_authorized_by_current_slice] is true
   + [conflict_review_contract_creation_authorized_by_current_slice] is false
   + [fixture_plan_document_creation_authorized_by_current_slice] is false
   + [fixture_file_creation_authorized_by_current_slice] is false
@@ -83,12 +89,12 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [coordination_claim_authority_status] is work_boundary_record_only
   + [rendezvous_packet_authority_status] is carrier_context_only
   + [mailbox_authority_status] is carrier_context_only
-  + [IR6_state] is ready_for_IR6-S02_claim_identity_and_work_boundary_projection_contract
+  + [IR6_state] is ready_for_IR6-S03_rendezvous_packet_and_mailbox_carrier_projection_contract
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR6-S02 before IR6-S03 through IR6-S07 are assigned
-  = must: limit IR6-S02 work to claim identity and work-boundary projection contract unless a completion review or rebake changes the boundary
+  = must: execute IR6-S03 before IR6-S04 through IR6-S07 are assigned
+  = must: limit IR6-S03 work to rendezvous packet and mailbox carrier projection contract unless a completion review or rebake changes the boundary
   = must: keep downstream IR7 gated until IR6 planning and implementation proof are accepted or a future rebake explicitly reclassifies IR7 scope
   = must: keep coordination claims, rendezvous packets, mailboxes, IRC, Matrix, web, terminal, Codex, Langflow, generated projection, and generated report state non-authoritative
-  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, IR6-S01 output, IR6-S01 completion review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
+  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, IR6-S01 output, IR6-S01 completion review, IR6-S02 output, IR6-S02 completion review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
   = must: keep agent dispatch, operations control, and live machine control unauthorized

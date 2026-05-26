@@ -1,0 +1,309 @@
+Subject: IR6 Claim Identity And Work Boundary Projection Contract V1
+Date: 2026-05-26
+Contract UUID: 4d499991-b155-4da6-afca-c0a1bf96fb34
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [boundary_import_review] docs/reviews/IR6_S01_Completion_Review.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [surface_projection_proof] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+
+& [IR6ClaimIdentityAndWorkBoundaryProjectionContractV1] is the IR6-S02 contract for claim identity and work-boundary projection semantics
+  + [contract_id] is ir6-claim-identity-work-boundary-projection-contract-v1
+  + [contract_uuid] is 4d499991-b155-4da6-afca-c0a1bf96fb34
+  + [slice_id] is IR6-S02
+  + [authority_scope] is claim identity envelope, work-boundary projection envelope, compatibility relation, claim state transition display, stale claim freshness, action route display, projection refusal behavior, downstream mailbox handoff, and fixture seed obligations
+  + [implementation_scope] is claim identity and work-boundary projection contract only
+  + [model_route_used] is requires deeper reasoning
+  + [accepted_dependency] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+
+  = must: define identity and boundary semantics future coordination projections must show before mailbox, rendezvous, conflict, fixture, or implementation work depends on claims
+  = must: keep claim projections, mailbox carriers, rendezvous packets, generated projections, chat logs, IRC logs, Matrix events, terminal output, Codex state, and Langflow diagrams non-authoritative
+  = must: preserve deeper-reasoning routing for this contract because identity and claim compatibility decide when projected boundaries may guide action without becoming authority
+  - never: implement claim storage, mailbox transport, UI components, adapters, fixture files, expected ledgers, generated output writers, dependency installation, agent dispatch, operations control, or live machine control in this contract
+
+& [ClaimIdentityEnvelope] is the required identity envelope for every projected coordination claim
+  + [required_field] is claim_projection_id
+  + [required_field] is claim_id
+  + [required_field] is claim_uuid
+  + [required_field] is claimant_ref
+  + [required_field] is conversation_ref
+  + [required_field] is work_packet_ref
+  + [required_field] is scope_subject_ref
+  + [required_field] is file_scope_set
+  + [required_field] is artifact_scope_set
+  + [required_field] is intended_output_set
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is claim_state
+  + [required_field] is freshness_state
+  + [required_field] is conflict_policy
+  + [required_field] is release_condition
+  + [required_field] is source_ref_set
+  + [required_field] is lineage_edge_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is trust_limit
+  + [required_field] is visible_before_action
+  + [claim_state] is proposed
+  + [claim_state] is active
+  + [claim_state] is contested
+  + [claim_state] is stale
+  + [claim_state] is released
+  + [claim_state] is superseded
+  + [claim_state] is invalidated
+
+  = must: expose claimant, conversation, work packet, scope, authority basis, state, freshness, and trust limit before a human or agent can rely on a claim
+  = must: reject any projected claim that cannot distinguish claim identity from conversation identity, source authority, work packet, mailbox carrier, or completion review
+  = must: preserve lower-authority display when a claim is only projected from carrier context
+
+& [WorkBoundaryProjectionEnvelope] is the required boundary envelope for projected claim scope
+  + [required_field] is boundary_projection_id
+  + [required_field] is claim_ref
+  + [required_field] is work_packet_ref
+  + [required_field] is scope_subject_ref
+  + [required_field] is file_scope_set
+  + [required_field] is artifact_scope_set
+  + [required_field] is intended_output_set
+  + [required_field] is scope_relation_to_packet
+  + [required_field] is scope_relation_to_other_claim_set
+  + [required_field] is write_effect_classification
+  + [required_field] is read_effect_classification
+  + [required_field] is boundary_status
+  + [required_field] is conflict_ref_set
+  + [required_field] is stale_trigger_ref_set
+  + [required_field] is completion_review_ref_set
+  + [scope_relation_to_packet] is inside_packet_boundary
+  + [scope_relation_to_packet] is equal_to_packet_boundary
+  + [scope_relation_to_packet] is narrower_than_packet_boundary
+  + [scope_relation_to_packet] is outside_packet_boundary
+  + [scope_relation_to_packet] is ambiguous
+  + [boundary_status] is dependency_closed
+  + [boundary_status] is blocked
+  + [boundary_status] is contested
+  + [boundary_status] is stale
+  + [boundary_status] is unsupported_scope
+  + [boundary_status] is refused
+
+  = must: reject claim projections whose file_scope_set or artifact_scope_set expands beyond the work packet boundary unless a new packet or review accepts the expansion
+  = must: prevent dependency_closed boundary status when conflicting, stale, unsupported, ambiguous, or pending-review evidence exists
+  = must: preserve enough boundary evidence for manager, worker, narrative, debug, and mailbox projections to agree on the same work surface without collapsing their identities
+
+& [ClaimCompatibilityRelationContract] is the compatibility contract for claim-to-claim scope comparison
+  + [compatibility_relation] is identical_write_scope
+  + [compatibility_relation] is overlapping_write_scope
+  + [compatibility_relation] is non_overlapping_write_scope
+  + [compatibility_relation] is read_only_overlap
+  + [compatibility_relation] is supersedes_prior_claim
+  + [compatibility_relation] is released_prior_claim
+  + [compatibility_relation] is ambiguous_scope_relation
+  + [compatible_relation] is non_overlapping_write_scope
+  + [compatible_relation] is read_only_overlap with explicit read-only classification
+  + [compatible_relation] is supersedes_prior_claim with accepted supersession lineage
+  + [compatible_relation] is released_prior_claim with accepted release notice
+  + [incompatible_relation] is identical_write_scope unless same claimant and same conversation are refreshing the same claim through accepted route
+  + [incompatible_relation] is overlapping_write_scope unless an accepted boundary classifies the overlap as read-only or non-conflicting
+  + [incompatible_relation] is ambiguous_scope_relation until SOP-first interrupt, coordination review, or human override resolves it
+
+  = must: treat unresolved incompatible relations as contested claim state before downstream work proceeds
+  = must: preserve compatibility evidence and comparison basis for completion review
+  = must: avoid guessing compatibility from file path prefix alone when artifact scope, subject scope, or intended output conflicts remain unknown
+
+& [ClaimStateTransitionDisplayContract] is the contract for displaying claim state transitions
+  + [state_transition] is proposed_to_active
+  + [state_transition] is active_to_contested
+  + [state_transition] is active_to_stale
+  + [state_transition] is active_to_released
+  + [state_transition] is active_to_superseded
+  + [state_transition] is any_state_to_invalidated
+  + [required_transition_context] is prior_claim_ref
+  + [required_transition_context] is new_claim_ref
+  + [required_transition_context] is transition_reason
+  + [required_transition_context] is operator_trace_ref_or_review_ref
+  + [required_transition_context] is authority_basis_ref_set
+  + [required_transition_context] is stale_trigger_ref_set when transition includes stale state
+  + [required_transition_context] is conflict_ref_set when transition includes contested state
+  + [required_transition_context] is release_notice_ref when transition includes released state
+  + [required_transition_context] is supersession_notice_ref when transition includes superseded state
+  + [required_transition_context] is fault_record_ref when transition includes invalidated state
+
+  = must: preserve superseded, released, stale, contested, and invalidated claims as visible lineage
+  = must: require operator trace or review evidence for every non-trivial state transition
+  = must: refuse state transition displays that delete or hide prior claim lineage
+
+& [ClaimFreshnessAndStalenessContract] is the contract for claim freshness and stale claim handling
+  + [freshness_state] is fresh
+  + [freshness_state] is stale
+  + [freshness_state] is unknown
+  + [freshness_state] is contested
+  + [freshness_state] is interrupted
+  + [freshness_state] is pending_review
+  + [stale_when] is related work_packet hash changes
+  + [stale_when] is authority_basis_ref_set changes
+  + [stale_when] is file_scope_set or artifact_scope_set changes without supersession
+  + [stale_when] is claimant conversation loses freshness beyond claim freshness_rule
+  + [stale_when] is completion_review invalidates or rebakes the work packet
+  + [stale_when] is hidden conflict appears after claim activation
+  + [stale_when] is release_condition is met but release notice is missing
+  + [allowed_stale_resolution] is refresh_claim_through_coordination_claim_register
+  + [allowed_stale_resolution] is release_claim_through_reviewable_notice
+  + [allowed_stale_resolution] is supersede_claim_with_lineage
+  + [allowed_stale_resolution] is invalidate_claim_with_fault_evidence
+  + [allowed_stale_resolution] is rebake_affected_packet_or_slice
+
+  = must: display stale claims before packet execution, mailbox notice generation, or next-slice recommendation
+  = must: prevent stale claims from blocking new work indefinitely without reviewable resolution route
+  = must: keep unknown freshness as blocked or interrupted until lineage proves current authority against accepted hashes
+
+& [ClaimActionRouteDisplayContract] is the contract for displaying and classifying claim actions from projected surfaces
+  + [low_authority_action] is observe_claim
+  + [low_authority_action] is comment_on_claim
+  + [low_authority_action] is propose_claim_change
+  + [authority_sensitive_action] is request_claim
+  + [authority_sensitive_action] is request_claim_release
+  + [authority_sensitive_action] is request_claim_supersession
+  + [authority_sensitive_action] is request_conflict_review
+  + [authority_sensitive_action] is request_stale_claim_refresh
+  + [authority_sensitive_action] is request_human_override
+  + [authority_sensitive_action] is request_completion_review
+  + [allowed_route] is coordination_claim_register contract
+  + [allowed_route] is coordination_conflict_signal contract
+  + [allowed_route] is SOP-first interrupt
+  + [allowed_route] is explicit human override record with authority_notice
+  + [allowed_route] is completion_review_delta_gate
+  + [blocked_route] is direct source authority write
+  + [blocked_route] is direct claim activation from projection state
+  + [blocked_route] is direct claim release without reviewable notice
+  + [blocked_route] is direct completion acceptance
+  + [blocked_route] is direct agent assignment
+  + [blocked_route] is direct job dispatch
+  + [blocked_route] is direct command execution
+  + [blocked_route] is direct operations control
+
+  = must: show allowed route and blocked route before presenting an authority-sensitive claim action
+  = must: emit traceable request records or interrupt context rather than mutating authority from display state
+  = must: classify dispatch-like requests through refusal or safety review semantics before any further route is considered
+
+& [ClaimProjectionRefusalContract] is the contract for refusing unsafe or misleading claim projections
+  + [refusal_reason] is missing_claimant_ref
+  + [refusal_reason] is missing_conversation_ref
+  + [refusal_reason] is missing_work_packet_ref
+  + [refusal_reason] is missing_scope_subject_ref
+  + [refusal_reason] is missing_authority_basis_ref_set
+  + [refusal_reason] is missing_authority_notice
+  + [refusal_reason] is missing_freshness_state
+  + [refusal_reason] is unsupported_scope_relation
+  + [refusal_reason] is ambiguous_scope_relation
+  + [refusal_reason] is hidden_conflict
+  + [refusal_reason] is hidden_stale_claim
+  + [refusal_reason] is carrier_cannot_show_required_identity_context
+  + [refusal_reason] is claim_state_misrepresented_as_completion
+  + [refusal_reason] is claim_state_misrepresented_as_assignment
+  + [refusal_reason] is lower_authority_tier_misrepresented
+  + [refusal_output] is blocked_claim_projection
+  + [refusal_output] is stale_claim_projection
+  + [refusal_output] is contested_claim_projection
+  + [refusal_output] is coordination_fault_record
+  + [refusal_output] is sop_first_interrupt_context
+  + [refusal_output] is refused_dispatch_or_operation_request
+
+  = must: refuse the projection before user or agent action when required identity, boundary, authority, or freshness context cannot be displayed
+  = must: preserve refusal reason and evidence for downstream conflict review and fixture planning
+
+& [IdentitySeparationAndReentryRule] is the rule for preserving identities across conversations, agents, and carriers
+  + [identity_kind] is user_identity
+  + [identity_kind] is agent_identity
+  + [identity_kind] is conversation_identity
+  + [identity_kind] is work_packet_identity
+  + [identity_kind] is claim_identity
+  + [identity_kind] is carrier_identity
+  + [identity_kind] is source_authority_identity
+  + [required_reentry_context] is active_claim_ref_set
+  + [required_reentry_context] is claimant_ref
+  + [required_reentry_context] is conversation_ref
+  + [required_reentry_context] is work_packet_ref
+  + [required_reentry_context] is claim_state
+  + [required_reentry_context] is freshness_state
+  + [required_reentry_context] is conflict_ref_set
+  + [required_reentry_context] is stale_trigger_ref_set
+
+  = must: prevent resumed conversations, compacted threads, mailbox messages, and adapter carriers from collapsing separate identities into one claimant
+  = must: require ambiguous identity to produce SOP-first interrupt or blocked projection before any claim state changes
+  = must: preserve enough identity context for a different participant to understand what is claimed, by whom, in which conversation, and under which authority basis
+
+& [IR6S03MailboxContractSeedSet] is the seed set exported by IR6-S02 for later mailbox and rendezvous projection planning
+  + [contract_seed] is addressed_claim_notice_requires_claim_identity_envelope
+  + [contract_seed] is inbox_unread_notice_requires_conversation_ref_and_claim_ref
+  + [contract_seed] is release_notice_requires_release_condition_and_lineage
+  + [contract_seed] is conflict_notice_requires_compatibility_relation_and_conflict_ref_set
+  + [contract_seed] is stale_notice_requires_freshness_state_and_stale_trigger_ref_set
+  + [contract_seed] is mailbox_carrier_must_not_change_claim_state
+  + [contract_seed] is read_cursor_must_not_erase_unread_authority_context
+
+  = must: treat this as mailbox contract planning input only; no mailbox files, fixture source files, expected ledgers, or generated outputs are authorized by IR6-S02
+  = must: let IR6-S03 refine, accept, or prune these seeds under its own completion review
+
+& [ForbiddenIR6S02MutationList] is the forbidden mutation set for IR6-S02
+  + [forbidden_mutation] is editing accepted IR6-S01 output or review to make this contract easier
+  + [forbidden_mutation] is treating claim display state as source authority
+  + [forbidden_mutation] is treating coordination claim state as assignment, dispatch, or completion acceptance
+  + [forbidden_mutation] is treating mailbox carrier state as claim state transition evidence without accepted route
+  + [forbidden_mutation] is collapsing claimant, conversation, work packet, claim, carrier, or source authority identities
+  + [forbidden_mutation] is hiding contested, stale, ambiguous, interrupted, faulted, or pending-review claim state
+  + [forbidden_mutation] is resolving incompatible claims silently
+  + [forbidden_mutation] is creating fixture source files
+  + [forbidden_mutation] is creating expected ledger files
+  + [forbidden_mutation] is creating generated output files
+  + [forbidden_mutation] is implementing claim storage, mailbox transport, adapters, queues, sockets, IRC, Matrix, web, terminal, Codex, or Langflow export
+  + [forbidden_mutation] is installing dependencies or mutating package metadata
+  + [forbidden_mutation] is dispatching agents, jobs, commands, processes, GPU work, model runtimes, or persistent operations automation
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR6-S02 review if any forbidden mutation appears in the output
+
+& [IR6S02DownstreamStaleTriggerList] is the stale trigger set exported by IR6-S02
+  + [stale_trigger] is IR6-S01 boundary import output changes
+  + [stale_trigger] is IR6-S01 completion review changes
+  + [stale_trigger] is claim identity envelope changes
+  + [stale_trigger] is work boundary projection envelope changes
+  + [stale_trigger] is compatibility relation contract changes
+  + [stale_trigger] is claim state transition display contract changes
+  + [stale_trigger] is claim freshness and staleness contract changes
+  + [stale_trigger] is claim action route display contract changes
+  + [stale_trigger] is claim projection refusal contract changes
+  + [stale_trigger] is identity separation and reentry rule changes
+  + [stale_trigger] is mailbox contract seed set changes after IR6-S03 begins
+  + [stale_trigger] is projected claim state treated as assignment, dispatch, completion, operation, or source authority
+
+  = must: mark IR6-S03 and downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review and rebake rather than silent edits
+
+& [IR6S02CoverageReview] is the coverage checklist for IR6-S02
+  + [claim_identity_envelope_present] is true
+  + [work_boundary_projection_envelope_present] is true
+  + [claim_compatibility_relation_contract_present] is true
+  + [claim_state_transition_display_contract_present] is true
+  + [claim_freshness_and_staleness_contract_present] is true
+  + [claim_action_route_display_contract_present] is true
+  + [claim_projection_refusal_contract_present] is true
+  + [identity_separation_and_reentry_rule_present] is true
+  + [mailbox_contract_seed_set_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [coordination_implementation_code_created] is false
+  + [mailbox_transport_code_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR6-S02 only when all checklist items are satisfied
+  = must: open IR6-S03 only after this contract is reviewed in a completion review

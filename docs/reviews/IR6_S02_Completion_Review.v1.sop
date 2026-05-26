@@ -1,0 +1,109 @@
+Subject: IR6 S02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 23842b63-ff36-4ca0-bfab-c951e4176fa2
+
+@ [slice_surface] docs/slices/IR6_Final_Slices.v1.sop
+@ [completed_output] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [boundary_import] docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [boundary_import_review] docs/reviews/IR6_S01_Completion_Review.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Final_Slices.canonical.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [surface_projection_proof] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+
+& [CompletedWorkReview: IR6-S02] is the completed-work review for IR6-S02 claim identity and work-boundary projection contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-S02
+  + [completed_output] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [completed_output_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-S02 and open IR6-S03
+  + [next_gate_result] is IR6-S03 may open
+  + [next_model_route] is requires deeper reasoning for IR6-S03 rendezvous packet and mailbox carrier projection contract
+
+  = must: treat this review as gate-opening evidence for IR6-S03 mailbox and rendezvous contract planning only
+  = must: rerun this review if the completed output, IR6-S01 boundary import, IR6-S01 review, IR6 slice surface, FSC2 planning coordination pack, coordination contracts, or IR5 surface projection proof pack changes
+  = must: keep executable coordination code, mailbox transport, adapter code, dependency installation, generated output creation, agent dispatch, operations simulator implementation, operations control, and live machine control gated
+
+& [IR6S02Verification] is the verification result for IR6-S02
+  + [claim_identity_envelope_present] is true
+  + [work_boundary_projection_envelope_present] is true
+  + [claim_compatibility_relation_contract_present] is true
+  + [claim_state_transition_display_contract_present] is true
+  + [claim_freshness_and_staleness_contract_present] is true
+  + [claim_action_route_display_contract_present] is true
+  + [claim_projection_refusal_contract_present] is true
+  + [identity_separation_and_reentry_rule_present] is true
+  + [mailbox_contract_seed_set_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [claim_authority_promotion_found] is false
+  + [mailbox_carrier_authority_promotion_found] is false
+  + [identity_collapse_found] is false
+  + [silent_conflict_resolution_found] is false
+  + [coordination_implementation_code_created] is false
+  + [mailbox_transport_code_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6S02VerificationSatisfied] is accepted
+    @ [support] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+
+& [SupportDelta: IR6-S02] is the support delta produced by IR6-S02
+  + [new_support_record] is IR6 has a claim identity envelope for claimant, conversation, work packet, scope, authority basis, state, freshness, conflict policy, release condition, lineage, authority notice, and trust limit
+  + [new_support_record] is IR6 has a work-boundary projection envelope for packet relation, claim-to-claim relation, read and write effect classification, conflict refs, stale triggers, and completion review refs
+  + [new_support_record] is IR6 has compatibility, transition, staleness, action route, refusal, and identity separation contracts that prevent claims from becoming assignment, dispatch, completion, or source authority
+  + [new_support_record] is IR6-S03 has enough support to define rendezvous packet and mailbox carrier projection semantics without creating transport code or mailbox files
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-S02] is the requirement delta produced by IR6-S02
+  + [requirement_delta] is IR6-S03 must define mailbox and rendezvous carrier semantics over the accepted claim identity envelope without changing claim state directly
+  + [requirement_delta] is IR6-S03 must preserve carrier-only authority for mailbox paths, inbox timestamps, read cursors, IRC logs, Matrix events, terminal output, Codex state, web events, and Langflow diagrams
+  + [requirement_delta] is IR6-S05 remains gated and Spark-suitable only after IR6-S03 and IR6-S04 acceptance because fixture planning needs accepted mailbox and conflict review semantics
+  + [requirement_delta] is no executable coordination code, mailbox transport, adapter code, dependency installation, generated output, agent dispatch, operations simulator, operations control, or live machine control is authorized by IR6-S02
+
+& [FaultReview: IR6-S02] is the fault review for IR6-S02
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_claim_identity_rule_found] is false
+  + [missing_work_boundary_rule_found] is false
+  + [hidden_contested_claim_path_found] is false
+  + [hidden_stale_claim_path_found] is false
+  + [claim_authority_promotion_found] is false
+  + [mailbox_carrier_authority_promotion_found] is false
+  + [identity_collapse_found] is false
+  + [silent_conflict_resolution_found] is false
+  + [implementation_leak_found] is false
+  + [mailbox_transport_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6S02Accepted] is accepted
+    @ [support] [IR6S02Verification]
+    @ [support] [SupportDelta: IR6-S02]
+    @ [support] [RequirementDelta: IR6-S02]
+    @ [support] [FaultReview: IR6-S02]
+
+& [NextSliceGate: IR6-S03] is opened
+  + [opened_slice] is IR6-S03 rendezvous packet and mailbox carrier projection contract
+  + [accepted_dependency] is docs/coordination/IR6_Coordination_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is B12FBA2E60B554D39FEFA957A063C727FF3A848828111C2121403F997B28CF91
+  + [accepted_dependency] is docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+  + [accepted_dependency_sha256] is 25BE9763B31242E507F5FAFC2E48B3E41D7D5A1254544F674DB7714B45944973
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is mailbox and rendezvous carriers must preserve conversation continuity without becoming signed authority or dispatch channels
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-S03 next unless user redirects or a new fault invalidates this review
