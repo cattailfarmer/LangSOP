@@ -1,0 +1,34 @@
+Subject: FSC4 Final Slices Source Manifest
+Date: 2026-05-26
+Manifest UUID: cf3c50d0-6360-441e-afaa-9895cc30ab44
+
+& [SourceDocumentManifest: FSC4FinalSlices] is the source preservation manifest for minting FSC4 final slices
+  + [dictated_source] is docs/source/2026-05-26_fsc4_final_slices/Dictated_FSC4_Final_Slices_Source.sop
+    + [sha256] is 6281AFA4C3DF8C5EBAE4CB4CDEF6B91AD33BB38B7CD90CD90D65AEE1C2B3559F
+    + [source_role] is user-directed long-haul project-manager instruction
+  + [authority_source] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+    + [sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+    + [source_role] is accepted FSC3 boundary input
+  + [authority_source] is docs/reviews/FSC3_Completion_Review.v1.sop
+    + [sha256] is 83129A2D91ED585C419C0995A37E3C96785F0E31076C0A6A66CC6C73DAD8AA82
+    + [source_role] is FSC3 activation review
+  + [authority_source] is docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+    + [sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+    + [source_role] is final slicing authority
+  + [authority_source] is docs/planning/Final_Slicing_Surface.v1.sop
+    + [sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+    + [source_role] is active final slicing surface
+  + [authority_source] is docs/planning/Portion_And_Slice_Map.v1.sop
+    + [sha256] is 8601CDC316761D6C42731EEFC4727ED66883CD8F17FDA3822B8BE8280344E8CE
+    + [source_role] is portion and local proof leg map
+  + [authority_source] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+    + [sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+    + [source_role] is whole-pie development authority
+  + [exploded_target] is docs/exploded/LangSOP_FSC4_Final_Slices.exploded.sop
+  + [canonical_target] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/FSC4_Final_Slices.v1.sop
+
+  = must: preserve this manifest as the lineage record for FSC4 final slices
+  = must: invalidate FSC4 final slices if a cited source hash changes without reprocessing
+  = must: keep FSC4 bounded to surface projection contracts, authority notices, adapter projection contracts, and local projection fixtures
+  - never: use these slices to authorize FSC5 operations safety or live machine control before FSC4 completion review accepts the surface projection pack

@@ -1,0 +1,28 @@
+Subject: Dictated FSC4 Final Slices Source
+Date: 2026-05-26
+Source UUID: df4d0163-a11c-48bd-8461-6d00421c1061
+
+& [DictatedSource: FSC4FinalSlices] is the preserved source instruction for minting FSC4 surface projection slices
+  + [source_context] is long-haul project-manager work after FSC3 runtime graph proof acceptance
+  + [activated_by] is docs/reviews/FSC3_Completion_Review.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [chunk_scope] is FSC4 surface projection
+  + [included_portion] is P6 surface projection system
+  + [included_local_proof_leg] is P8d surface projection and authority-notice fixtures
+  + [projection_surface] is manager projection
+  + [projection_surface] is worker projection
+  + [projection_surface] is narrative projection
+  + [projection_surface] is debug projection
+  + [projection_surface] is conversation projection
+  + [projection_surface] is chat, Codex, terminal, IRC, Matrix, web, and optional Langflow adapters
+  + [required_boundary] is surfaces project typed collaboration records, runtime traces, freshness, faults, blocks, interrupts, and completion gates without becoming source authority
+  + [required_boundary] is every decision-making view carries authority_notice when displayed records are derived, staleable, interrupted, blocked, faulted, or pending review
+  + [required_boundary] is adapters transport projected records and user actions into accepted operator routes rather than mutating canonical authority directly
+  + [required_boundary] is fixtures must exist before bounded projection implementation is treated as Spark-suitable
+  + [model_route] is requires deeper reasoning for slice minting and authority display conflicts
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only for later bounded projection implementation after fixtures exist
+
+  = must: mint FSC4 final slices before implementing any surface, adapter, or projection renderer
+  = must: keep FSC5 operations safety gated until the FSC4 surface projection pack is accepted
+  = must: preserve source lineage and runtime trace context in every projected work surface
+  - never: let UI state, chat transport, adapter logs, Langflow diagrams, or terminal messages become authority without a signed source, accepted proof, or completion review path

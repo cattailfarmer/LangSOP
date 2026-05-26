@@ -1,0 +1,99 @@
+Subject: LangSOP FSC4 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_fsc4_final_slices/Source_Document_Manifest.sop
+@ [exploded_specification] docs/exploded/LangSOP_FSC4_Final_Slices.exploded.sop
+@ [slice_surface] docs/slices/FSC4_Final_Slices.v1.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [CanonicalRecord: FSC4FinalSlices] is the processed planning authority for FSC4 final work slices
+  + [canonical_uuid] is 68361ce3-a6da-4d8d-9acd-a9227d4f61d0
+  + [source_manifest_uuid] is cf3c50d0-6360-441e-afaa-9895cc30ab44
+  + [exploded_uuid] is 08d3b719-28b6-4f0b-b92b-bcdae889e6e7
+  + [slice_surface_uuid] is a1235896-8c1c-45c9-ae56-3d6fe23fb9d6
+  + [authority_scope] is FSC4 slice order, slice readiness, slice gates, model routing, expected outputs, and verification oracles
+  + [implementation_scope] is final slice planning authority only
+  + [depends_on] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+
+  = must: use docs/slices/FSC4_Final_Slices.v1.sop as the current FSC4 slice surface
+  = must: execute FSC4-S01 first
+  = must: run completion review after each slice before opening the next gated slice
+  = must: keep FSC5 work gated until FSC4-S07 accepts the surface projection pack
+  = must: treat P8d local projection fixtures as an inside-FSC4 completion gate, not a prerequisite to minting FSC4 slices
+  - never: treat FSC4 slice records as implementation proof
+
+& [CanonicalFSC4SliceSet] is the final FSC4 slice sequence
+  + [slice] is FSC4-S01 surface boundary and projection invariant map
+  + [slice] is FSC4-S02 authority notice and projection record contract
+  + [slice] is FSC4-S03 manager and worker projection contracts
+  + [slice] is FSC4-S04 narrative and debug projection contracts
+  + [slice] is FSC4-S05 conversation and adapter projection contracts
+  + [slice] is FSC4-S06 surface projection fixture plan
+  + [slice] is FSC4-S07 FSC4 completion review and activation packet
+
+  = must: preserve this order unless completion review rebakes FSC4
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+& [CanonicalFSC4ExecutionGate] is the activation rule for FSC4
+  + [current_ready_slice] is FSC4-S01
+  + [gated_slice] is FSC4-S02 until FSC4-S01 accepted
+  + [gated_slice] is FSC4-S03 until FSC4-S02 accepted
+  + [gated_slice] is FSC4-S04 until FSC4-S03 accepted
+  + [gated_slice] is FSC4-S05 until FSC4-S04 accepted
+  + [gated_slice] is FSC4-S06 until FSC4-S05 accepted
+  + [gated_slice] is FSC4-S07 until FSC4-S06 accepted
+  + [completion_gate] is FSC4 surface projection pack accepted after FSC4-S07
+
+  = must: expose only FSC4-S01 as ready right now
+  = must: keep all later slices gated inside FSC4
+
+& [CanonicalFSC4ModelRouting] is the model-routing record
+  + [FSC4-S01] is requires deeper reasoning
+  + [FSC4-S02] is requires deeper reasoning
+  + [FSC4-S03] is requires deeper reasoning
+  + [FSC4-S04] is requires deeper reasoning
+  + [FSC4-S05] is requires deeper reasoning
+  + [FSC4-S06] is GPT-5.3-Codex-Spark-suitable after FSC4-S01 through FSC4-S05 are accepted
+  + [FSC4-S07] is requires deeper reasoning
+
+  = must: keep authority display, adapter mutation, and final surface pack acceptance under deeper reasoning
+  = should: route projection fixture drafting to GPT-5.3-Codex-Spark only after projection contracts stabilize
+
+& [SatisfactionSignature: FSC4FinalSlices] is the valid SJS satisfaction signature for the FSC4 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 2871f2b7-dd37-46c6-b9a3-a4595a9366b8
+  + [signed_subject] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_fsc4_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 6281AFA4C3DF8C5EBAE4CB4CDEF6B91AD33BB38B7CD90CD90D65AEE1C2B3559F
+  + [source_sha256] is 6E03B128800FD6E8D9C2742141A9E884B1B6D7649D6D8F4B4AE78FEDB00AF58B
+  + [source_sha256] is 83129A2D91ED585C419C0995A37E3C96785F0E31076C0A6A66CC6C73DAD8AA82
+  + [source_sha256] is 606BE55137CA523DFF06533DBAFA71E35C5B718A63FA49783CC41BD8069C80DB
+  + [source_sha256] is CCDBDD48E67BAFF54253F00F29F0233905977889A9B10C9695547BFFD3F214DD
+  + [source_sha256] is 8601CDC316761D6C42731EEFC4727ED66883CD8F17FDA3822B8BE8280344E8CE
+  + [source_sha256] is D404F3E248AF9639EF13C70531F5D9AD3918B1833937B59AF80924A57B7F92A1
+  + [exploded_specification] is docs/exploded/LangSOP_FSC4_Final_Slices.exploded.sop
+  + [canonical_source_specification] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/FSC4_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, FSC3_boundary_imported, FSC4_boundary_checked, slices_minted, gates_defined, outputs_defined, verification_oracles_defined, model_routes_defined, completion_reviews_required, justified, and signed
+  + [exhaustion_state] is phase_locked_for_FSC4_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for FSC4 final slices; slice execution still requires solution records and proof
+  + [invalidation_condition] is source_hash_change, FSC3_pack_change, FSC4_boundary_change, forbidden_external_dependency_found, upstream_slice_contradiction, missing_completion_review, or implementation_contradiction
+
+  = must: reprocess when FSC4 slice order, boundary, or required outputs materially change
+
+& [RegistryRecord: FSC4FinalSlices] is the durable identity ledger for the FSC4 final slice surface
+  + [registry_uuid] is 5cf04cbd-ae33-40bf-af3e-227d23537f9d
+  + [manifest_node_uuid] is cf3c50d0-6360-441e-afaa-9895cc30ab44
+  + [exploded_node_uuid] is 08d3b719-28b6-4f0b-b92b-bcdae889e6e7
+  + [canonical_node_uuid] is 68361ce3-a6da-4d8d-9acd-a9227d4f61d0
+  + [slice_surface_uuid] is a1235896-8c1c-45c9-ae56-3d6fe23fb9d6
+  + [signature_uuid] is 2871f2b7-dd37-46c6-b9a3-a4595a9366b8
+  + [closure_review_uuid] is ffb9d589-8d2b-4215-b5af-602bde12e227
+  + [edge] is manifest_node_uuid derived_to exploded_node_uuid
+  + [edge] is exploded_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for FSC4 slice execution records and completion reviews

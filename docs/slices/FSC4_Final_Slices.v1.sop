@@ -1,0 +1,158 @@
+Subject: LangSOP FSC4 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: a1235896-8c1c-45c9-ae56-3d6fe23fb9d6
+
+@ [canonical_specification] docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC4FinalSliceSurfaceV1] is the executable final-slice surface for FSC4 surface projection
+  + [chunk_ref] is FSC4 surface projection
+  + [chunk_boundary] is P6 surface projection system and P8d surface projection and authority-notice fixtures
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is FSC4-S01
+  + [gated_slice_set] is FSC4-S02, FSC4-S03, FSC4-S04, FSC4-S05, FSC4-S06, and FSC4-S07
+
+  = must: execute FSC4-S01 before any other FSC4 slice
+  = must: run completed-work review after each slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: keep FSC5 gated until FSC4-S07 accepts the surface projection pack
+
+& [FinalWorkSlice: FSC4-S01-SurfaceBoundaryAndProjectionInvariantMap] is ready
+  + [slice_id] is FSC4-S01
+  + [slice_name] is surface boundary and projection invariant map
+  + [chunk_ref] is FSC4
+  + [portion_ref] is P6 surface projection system boundary import
+  + [authority_basis] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is imported projection contract inventory, projection-owned invariant set, surface non-authority boundary, adapter mutation boundary, and downstream stale trigger list
+  + [verification_oracle] is all FSC1 through FSC3 imports are mapped without UI implementation, adapter implementation, Langflow export, operations control, or surface authority promotion
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface boundaries decide how projected records may influence human and agent decisions
+  + [forbidden_scope] is implementing UI components, implementing adapters, exporting Langflow diagrams, writing runtime code, and operations-manager work
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC4-S02-AuthorityNoticeAndProjectionRecordContract] is gated
+  + [slice_id] is FSC4-S02
+  + [slice_name] is authority notice and projection record contract
+  + [chunk_ref] is FSC4
+  + [portion_ref] is P6 projection authority and freshness contract
+  + [authority_basis] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [activation_gate] is FSC4-S01 accepted
+  + [internal_dependency_set] is FSC4-S01 FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+  + [expected_output_set] is projection record schema, authority_notice contract, freshness display rule, stale/block/fault/interrupt visibility rule, and mutation-through-operator rule
+  + [verification_oracle] is every decision-making projection carries source_ref_set, lineage_edge_set, freshness_rule, authority_notice, and mutation boundary without becoming source authority
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is authority_notice semantics determine how users and agents can trust projected state
+  + [forbidden_scope] is rendering UI, implementing adapters, changing kernel records, or authorizing operations
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC4-S03-ManagerAndWorkerProjectionContracts] is gated
+  + [slice_id] is FSC4-S03
+  + [slice_name] is manager and worker projection contracts
+  + [chunk_ref] is FSC4
+  + [portion_ref] is P6 manager-worker surface projections
+  + [authority_basis] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [activation_gate] is FSC4-S02 accepted
+  + [internal_dependency_set] is FSC4-S01 FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [internal_dependency_set] is FSC4-S02 Authority_Notice_Projection_Contract.v1.sop
+  + [expected_output_set] is docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+  + [expected_output_set] is manager projection contract, worker packet projection contract, claim visibility rule, support/requirement delta visibility, and false-ready prevention rule
+  + [verification_oracle] is manager and worker projections can show readiness, packet status, claims, blockers, stale state, and completion gates without assigning, dispatching, or mutating authority directly
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager and worker projections can influence task assignment and must preserve authority distinctions
+  + [forbidden_scope] is UI implementation, job dispatch, agent assignment, live operations control, or hidden state mutation
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC4-S04-NarrativeAndDebugProjectionContracts] is gated
+  + [slice_id] is FSC4-S04
+  + [slice_name] is narrative and debug projection contracts
+  + [chunk_ref] is FSC4
+  + [portion_ref] is P6 narrative-debug surface projections
+  + [authority_basis] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [activation_gate] is FSC4-S03 accepted
+  + [internal_dependency_set] is FSC4-S02 Authority_Notice_Projection_Contract.v1.sop
+  + [internal_dependency_set] is FSC4-S03 Manager_Worker_Projection_Contracts.v1.sop
+  + [expected_output_set] is docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+  + [expected_output_set] is narrative projection contract, debug projection contract, compaction reentry view, fault visibility rule, operator trace inspection rule, and unresolved frontier display rule
+  + [verification_oracle] is narrative and debug projections preserve source lineage, operator traces, faults, unresolved items, and reentry packets without rewriting narrative authority
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is narrative and debug projections shape how future agents understand project state after compaction or handoff
+  + [forbidden_scope] is UI implementation, log ingestion implementation, source rewrite, runtime code, or operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC4-S05-ConversationAndAdapterProjectionContracts] is gated
+  + [slice_id] is FSC4-S05
+  + [slice_name] is conversation and adapter projection contracts
+  + [chunk_ref] is FSC4
+  + [portion_ref] is P6 chat and adapter projection contracts
+  + [authority_basis] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [activation_gate] is FSC4-S04 accepted
+  + [internal_dependency_set] is FSC4-S02 Authority_Notice_Projection_Contract.v1.sop
+  + [internal_dependency_set] is FSC4-S04 Narrative_Debug_Projection_Contracts.v1.sop
+  + [expected_output_set] is docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+  + [expected_output_set] is chat/Codex/terminal/IRC/Matrix/web adapter projection contracts, optional Langflow projection contract, inbound action classification rule, outbound projection rule, and mutation-through-operator gate
+  + [verification_oracle] is every adapter treats transport state as carrier context and routes authority-sensitive actions through accepted operator, SOP-first interrupt, or completion review paths
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is adapter contracts decide how multi-surface participation can affect authority-bearing work
+  + [forbidden_scope] is implementing transports, opening sockets, writing UI, dispatching agents, installing Langflow, or live operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC4-S06-SurfaceProjectionFixturePlan] is gated
+  + [slice_id] is FSC4-S06
+  + [slice_name] is surface projection fixture plan
+  + [chunk_ref] is FSC4
+  + [portion_ref] is P8d surface projection and authority-notice fixtures
+  + [authority_basis] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [activation_gate] is FSC4-S05 accepted
+  + [internal_dependency_set] is FSC4-S02 Authority_Notice_Projection_Contract.v1.sop
+  + [internal_dependency_set] is FSC4-S03 Manager_Worker_Projection_Contracts.v1.sop
+  + [internal_dependency_set] is FSC4-S04 Narrative_Debug_Projection_Contracts.v1.sop
+  + [internal_dependency_set] is FSC4-S05 Conversation_Adapter_Projection_Contracts.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC4_Surface_Projection_Fixture_Plan.v1.sop
+  + [expected_output_set] is docs/fixtures/FSC4_Surface_Projection_Fixture_Index.v1.sop
+  + [expected_output_set] is fixture cases for manager ready packet, worker blocked packet, stale projection, narrative lineage, debug fault trace, conversation interrupt, adapter mutation refusal, missing authority notice, Langflow non-authority projection, multi-surface divergence, and completion gate refusal
+  + [verification_oracle] is fixture plan maps every case to projection contract behavior, authority_notice, freshness_rule, mutation boundary, expected visible state, and acceptance status
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after FSC4-S01 through FSC4-S05 are accepted
+  + [model_route_reason] is fixture drafting becomes bounded once projection and adapter contracts are accepted
+  + [forbidden_scope] is changing accepted projection contracts, executable test harness implementation, UI implementation, transport implementation, and operations control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: FSC4-S07-FSC4CompletionReviewAndActivationPacket] is gated
+  + [slice_id] is FSC4-S07
+  + [slice_name] is FSC4 completion review and activation packet
+  + [chunk_ref] is FSC4
+  + [portion_ref] is P6 and P8d
+  + [authority_basis] is docs/canonical/LangSOP_FSC4_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [activation_gate] is FSC4-S06 accepted
+  + [internal_dependency_set] is FSC4-S01 through FSC4-S06 accepted outputs
+  + [expected_output_set] is docs/reviews/FSC4_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [expected_output_set] is acceptance record for boundary map, authority notice contract, manager/worker contracts, narrative/debug contracts, conversation/adapter contracts, and projection fixtures
+  + [expected_output_set] is activation recommendation for FSC5 operations safety envelope
+  + [verification_oracle] is completion review classifies support_delta, requirement_delta, stale outputs, contradictions, unresolved proof gaps, and FSC5 activation readiness
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final acceptance changes downstream boundary inputs and may activate FSC5
+  + [forbidden_scope] is implementing FSC5, operations control, live machine control, or silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [FSC4SliceClosureReview] is the dependency audit for minted FSC4 slices
+  + [slice_surface_uuid] is a1235896-8c1c-45c9-ae56-3d6fe23fb9d6
+  + [FSC4_boundary_input_set] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is FSC4-S01
+  + [downstream_gate] is FSC5 remains gated until FSC4-S07 accepts FSC4_Surface_Projection_Pack.v1.sop
+
+  = must: rerun this closure review after every FSC4 completion review

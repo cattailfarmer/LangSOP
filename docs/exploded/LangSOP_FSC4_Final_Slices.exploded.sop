@@ -1,0 +1,83 @@
+Subject: LangSOP FSC4 Final Slices Exploded Specification
+Date: 2026-05-26
+Exploded Specification UUID: 08d3b719-28b6-4f0b-b92b-bcdae889e6e7
+
+@ [source_manifest] docs/source/2026-05-26_fsc4_final_slices/Source_Document_Manifest.sop
+@ [runtime_graph_proof_pack] docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+@ [final_slicing_surface] docs/planning/Final_Slicing_Surface.v1.sop
+@ [final_slicing_authority] docs/canonical/LangSOP_Final_Slicing_Surface.canonical.sop
+
+& [FSC4FinalSlicesExplosion] is the processing pass that mints final work slices inside FSC4 surface projection
+  + [root_subject] is FSC4 surface projection
+  + [chunk_state] is activated_by_FSC3_runtime_graph_proof_pack
+  + [boundary_input] is FSC3 runtime graph proof pack
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [slice_strategy] is order slices so projection boundaries and authority notices are defined before manager, worker, narrative, debug, conversation, adapter, Langflow, and fixture contracts
+  + [fixture_gate_interpretation] is P8d projection fixtures gate FSC4 completion, not initial FSC4 slice minting
+  + [result] is seven final slices, one ready now and six gated inside FSC4
+
+  = must: preserve no unresolved dependency outside FSC4
+  = must: make each slice contiguous by expected output and verification oracle
+  = must: run completed-work review after each completed slice
+  = must: mark downstream slices stale when an upstream accepted output changes
+
+## Fold 1: Surface Boundary And Projection Authority
+
+& [Fold1SurfaceBoundaryAndProjectionAuthority] is the boundary check for FSC4 final slices
+  + [inside_boundary] is P6 surface projection system and P8d surface projection and authority-notice fixtures
+  + [accepted_boundary_input] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [forbidden_external_dependency] is FSC5 operations safety, live machine control, production dispatch, unreviewed adapter mutation, and surface-as-authority promotion
+
+  = must: import FSC1, FSC2, and FSC3 packs as accepted boundary inputs
+  = must: treat every surface as a projection of kernel records, work packets, operator traces, faults, freshness, interrupts, and completion reviews
+  = must: prevent UI state, adapter state, transport logs, and Langflow diagrams from becoming source authority
+
+## Fold 2: Slice Chain
+
+& [Fold2SliceChain] is the ordered final slice chain
+  + [FSC4-S01] is surface boundary and projection invariant map
+  + [FSC4-S02] is authority notice and projection record contract
+  + [FSC4-S03] is manager and worker projection contracts
+  + [FSC4-S04] is narrative and debug projection contracts
+  + [FSC4-S05] is conversation and adapter projection contracts
+  + [FSC4-S06] is surface projection fixture plan
+  + [FSC4-S07] is FSC4 completion review and activation packet
+
+  = must: keep FSC4-S01 as the only ready slice at first minting
+  = must: activate later slices only when their inside-FSC4 inputs are accepted
+
+## Fold 3: Model Routing
+
+& [Fold3ModelRouting] is the route classification for FSC4 slices
+  + [FSC4-S01] is requires deeper reasoning
+  + [FSC4-S02] is requires deeper reasoning
+  + [FSC4-S03] is requires deeper reasoning
+  + [FSC4-S04] is requires deeper reasoning
+  + [FSC4-S05] is requires deeper reasoning
+  + [FSC4-S06] is GPT-5.3-Codex-Spark-suitable after FSC4-S01 through FSC4-S05 are accepted
+  + [FSC4-S07] is requires deeper reasoning
+
+  = must: state model route on every slice
+  = must: keep authority_notice semantics, adapter mutation boundaries, and final FSC4 acceptance under deeper reasoning
+  = should: route fixture drafting to GPT-5.3-Codex-Spark only after projection and adapter contracts stabilize
+
+## Fold 4: Readiness And Gates
+
+& [Fold4ReadinessAndGates] is the current FSC4 readiness pass
+  + [ready_slice] is FSC4-S01
+  + [gated_slice] is FSC4-S02 until FSC4-S01 accepted
+  + [gated_slice] is FSC4-S03 until FSC4-S02 accepted
+  + [gated_slice] is FSC4-S04 until FSC4-S03 accepted
+  + [gated_slice] is FSC4-S05 until FSC4-S04 accepted
+  + [gated_slice] is FSC4-S06 until FSC4-S05 accepted
+  + [gated_slice] is FSC4-S07 until FSC4-S06 accepted
+
+  = must: not start a gated slice until its activation gate is accepted
+  = must: run completion review before opening the next slice
+
+& [FSC4FinalSlicesConclusion] is the result of this pass
+  + [ready_for] is execution of FSC4-S01 surface boundary and projection invariant map
+  + [not_ready_for] is surface implementation, adapter implementation, Langflow export, operations safety work, or production dispatch
+  + [remaining_uncertainty] is exact projection affordance shape, adapter carrier details, and authority display conflict handling
+
+  = must: promote the final slice surface only with satisfaction signature and source lineage
