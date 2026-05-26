@@ -1,0 +1,131 @@
+Subject: IR1 Completion Review V1
+Date: 2026-05-26
+Review UUID: d6ee78d5-4aae-418c-b2ed-db79b94989ca
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [completed_output] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+@ [accepted_input] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [accepted_input] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+@ [accepted_input] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_input] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [accepted_input] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+@ [accepted_input] docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+@ [accepted_input] docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+
+& [CompletedWorkReview: IR1-S06] is the completion review for IR1 substrate pack and scaffold activation boundary
+  + [slice_id] is IR1-S06
+  + [slice_name] is IR1 completion review and scaffold activation pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [completed_output_sha256] is BB07889B944EF8725579A05F15A52C17529D626068D73BCF01D779F6E28F6774
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is IR1 accepted as implementation substrate pack
+  + [scaffold_activation_result] is scaffold file creation may proceed only for the inert accepted inventory
+  + [next_gate_result] is inert scaffold creation may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for bounded scaffold file creation; deeper reasoning is required again for IR2 parser and projection authority planning
+
+  = must: treat this review as the gate-opening evidence for inert scaffold file creation only
+  = must: rerun review if IR1_Implementation_Substrate_Pack.v1.sop changes
+  = must: preserve no operations control and no live machine control as hard safety limits
+
+& [AcceptedOutputDigestSet: IR1] is the accepted digest set closed by this review
+  + [accepted_output] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [accepted_output] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [accepted_output_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
+  + [accepted_output] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [accepted_output_sha256] is CDE97B898024E6FDAFF19CCD33895ABC47B0AEB9B96C108DADC8FF2B3F2AC688
+  + [accepted_output] is docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+  + [accepted_output_sha256] is 8BC81195EC5FEDFCE0DD693B69C4B3B88F59DC950E8B764C19DDB7DD8AB31F58
+  + [accepted_output] is docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+  + [accepted_output_sha256] is 14F85B430EC2E8185ACC4C4A7AF7FC1C5A6D844C75A74F331577CD3A59AE7CDB
+  + [accepted_output] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [accepted_output_sha256] is BB07889B944EF8725579A05F15A52C17529D626068D73BCF01D779F6E28F6774
+
+  = must: mark IR1 closure stale if any accepted digest changes
+
+& [IR1CompletionVerification] is the verification result for IR1 closure
+  + [accepted_slice] is IR1-S01
+  + [accepted_slice] is IR1-S02
+  + [accepted_slice] is IR1-S03
+  + [accepted_slice] is IR1-S04
+  + [accepted_slice] is IR1-S05
+  + [accepted_slice] is IR1-S06
+  + [IR1-S01_status] is accepted
+  + [IR1-S02_status] is accepted
+  + [IR1-S03_status] is accepted
+  + [IR1-S04_status] is accepted
+  + [IR1-S05_status] is accepted
+  + [IR1-S06_status] is accepted
+  + [unresolved_support_gaps] is 0
+  + [scaffold_activation_boundary] is accepted
+  + [scaffold_file_creation_authorized] is true
+  + [scaffold_scope] is inert accepted inventory only
+  + [IR2_authority_parser_planning_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR1CompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+    @ [support] [AcceptedOutputDigestSet: IR1]
+
+& [SupportDelta: IR1-S06] is the support delta produced by this slice
+  + [new_support_record] is IR1ImplementationSubstratePackV1 supports inert scaffold execution from accepted inventory
+  + [new_support_record] is IR1ImplementationSubstratePackV1 supports IR2 planning after scaffold creation is reviewed
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1-S06] is the requirement delta produced by this slice
+  + [requirement_delta] is actual scaffold creation must match ExportedScaffoldActivationBoundary exactly
+  + [requirement_delta] is scaffold creation may create only inert package markers, package metadata without runtime dependencies, no-op import smoke tests, and generated artifact ignore rules
+  + [requirement_delta] is no parser behavior, SQLite projection behavior, LangGraph behavior, surface behavior, adapter behavior, operations simulator behavior, operations control, or live machine control authorized
+  + [requirement_delta] is IR2 remains gated until scaffold creation is reviewed or a future rebake explicitly skips scaffold execution
+  + [requirement_delta] is no rebake required before inert scaffold file creation
+
+& [StalenessAndContradictionReview: IR1-S06] is the contradiction review for IR1 closure
+  + [post_FSC5_readiness_hash_changed] is false
+  + [IR1_output_hash_changed] is false
+  + [IR1_completion_review_missing] is false
+  + [scaffold_boundary_conflict_found] is false
+  + [model_route_conflict_found] is false
+  + [operations_safety_conflict_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+& [FaultReview: IR1-S06] is the fault review for this slice
+  + [parser_behavior_leak_found] is false
+  + [sqlite_projection_behavior_leak_found] is false
+  + [langgraph_behavior_leak_found] is false
+  + [surface_behavior_leak_found] is false
+  + [adapter_behavior_leak_found] is false
+  + [operations_simulator_behavior_leak_found] is false
+  + [process_control_leak_found] is false
+  + [gpu_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_control_leak_found] is false
+  + [credential_control_leak_found] is false
+  + [network_control_leak_found] is false
+  + [destructive_filesystem_control_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR1S06Accepted] is accepted
+    @ [support] [IR1CompletionVerification]
+    @ [support] [SupportDelta: IR1-S06]
+    @ [support] [RequirementDelta: IR1-S06]
+    @ [support] [StalenessAndContradictionReview: IR1-S06]
+    @ [support] [FaultReview: IR1-S06]
+
+& [IR1ClosureState] is the accepted closure state for IR1 implementation substrate
+  + [chunk_status] is accepted
+  + [accepted_boundary_output] is docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
+  + [accepted_boundary_output_sha256] is BB07889B944EF8725579A05F15A52C17529D626068D73BCF01D779F6E28F6774
+  + [scaffold_file_creation_authorized] is true
+  + [scaffold_scope] is inert accepted inventory only
+  + [IR2_gated_until_scaffold_review] is true
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: use ExportedScaffoldActivationBoundary from docs/planning/IR1_Implementation_Substrate_Pack.v1.sop as the maximum scope for scaffold creation
+  = must: require deeper reasoning for IR2 parser and projection authority planning after scaffold review

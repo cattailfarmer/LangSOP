@@ -1,0 +1,105 @@
+Subject: IR1 Implementation Substrate Pack V1
+Date: 2026-05-26
+Pack UUID: 8165216a-8309-4cc1-8e18-65aef56d0295
+
+@ [completion_review] docs/reviews/IR1_Completion_Review.v1.sop
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [substrate_boundary] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [tooling_decision] docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+@ [layout_policy] docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+@ [harness_shape] docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+@ [scaffold_plan] docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+
+& [ImplementationSubstratePack: IR1ImplementationSubstratePackV1] is the accepted boundary pack exported by IR1
+  + [pack_id] is ir1-implementation-substrate-pack-v1
+  + [pack_uuid] is 8165216a-8309-4cc1-8e18-65aef56d0295
+  + [source_chunk] is IR1 implementation substrate and repository scaffold
+  + [export_status] is accepted_boundary_input
+  + [consumer_chunk] is scaffold execution and IR2 authority parser planning
+  + [activation_effect] is inert scaffold file creation may proceed if it exactly matches the accepted scaffold file inventory and proof checklist
+  + [implementation_effect] is no parser behavior, SQLite projection behavior, LangGraph runtime behavior, surface behavior, adapter behavior, operations simulator behavior, operations control, or live machine control is authorized by this pack
+
+  = must: preserve Python as the substrate runtime and pyproject.toml as package metadata format
+  = must: preserve docs/ as SOP authority and .langsop/ as generated projection root
+  = must: preserve no-op side-effect-free scaffold placeholders only
+  = must: preserve generated artifacts as projection-only and ignored by default
+  - never: treat scaffold files, test smoke checks, generated artifacts, or package metadata as authority records by themselves
+
+& [AcceptedIR1DigestSet] is the accepted hash ledger exported by IR1
+  + [accepted_boundary_input] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [accepted_boundary_input] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 08205B1C45B24DFA4DFB3DBDC6A6EB720C05846E7B5FB027B7AC2FF59F2EE443
+  + [accepted_output] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_output_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [accepted_output] is docs/decisions/IR1_Language_Runtime_And_Tooling_Decision.v1.sop
+  + [accepted_output_sha256] is FC8A5922865DBFA817F5138FBAE55AFA69D20E09C5F5A4FC9D7BBF16C20BDD09
+  + [accepted_output] is docs/implementation/IR1_Repository_Layout_And_Generated_Artifact_Policy.v1.sop
+  + [accepted_output_sha256] is CDE97B898024E6FDAFF19CCD33895ABC47B0AEB9B96C108DADC8FF2B3F2AC688
+  + [accepted_output] is docs/implementation/IR1_Test_Harness_And_Fixture_Execution_Shape.v1.sop
+  + [accepted_output_sha256] is 8BC81195EC5FEDFCE0DD693B69C4B3B88F59DC950E8B764C19DDB7DD8AB31F58
+  + [accepted_output] is docs/implementation/IR1_Scaffold_Execution_Plan_And_Placeholder_Scope.v1.sop
+  + [accepted_output_sha256] is 14F85B430EC2E8185ACC4C4A7AF7FC1C5A6D844C75A74F331577CD3A59AE7CDB
+
+  = must: mark this implementation substrate pack stale if any listed hash changes
+
+& [ExportedToolingAndLayoutDecisionSet] is the tooling and layout decision set exported by IR1
+  + [primary_language] is Python
+  + [target_runtime] is Python 3.12 baseline compatibility target
+  + [package_metadata_format] is pyproject.toml using PEP 621 project metadata
+  + [baseline_package_manager] is python -m venv plus python -m pip
+  + [optional_accelerator] is uv may be adopted later by explicit slice
+  + [package_root] is src/langsop/
+  + [test_root] is tests/
+  + [generated_root] is .langsop/
+  + [authority_root] is docs/
+
+  = must: keep package installation and dependency lockfile creation gated until a later slice authorizes them
+
+& [ExportedScaffoldActivationBoundary] is the accepted scaffold activation boundary exported by IR1
+  + [activation_status] is scaffold_file_creation_allowed_after_IR1_completion_review
+  + [allowed_file] is pyproject.toml
+  + [allowed_file] is src/langsop/__init__.py
+  + [allowed_file] is src/langsop/authority/__init__.py
+  + [allowed_file] is src/langsop/kernel/__init__.py
+  + [allowed_file] is src/langsop/projections/__init__.py
+  + [allowed_file] is src/langsop/operators/__init__.py
+  + [allowed_file] is src/langsop/runtime/__init__.py
+  + [allowed_file] is src/langsop/surfaces/__init__.py
+  + [allowed_file] is src/langsop/coordination/__init__.py
+  + [allowed_file] is src/langsop/operations/__init__.py
+  + [allowed_file] is tests/test_scaffold_imports.py
+  + [allowed_file] is .gitignore
+  + [allowed_content] is inert package/module markers
+  + [allowed_content] is project metadata without runtime dependencies
+  + [allowed_content] is no-op import smoke tests
+  + [allowed_content] is generated artifact ignore rules
+  + [forbidden_content] is parser behavior
+  + [forbidden_content] is SQLite connection or projection builder behavior
+  + [forbidden_content] is LangGraph import or graph behavior
+  + [forbidden_content] is surface or adapter behavior
+  + [forbidden_content] is operations simulator behavior
+  + [forbidden_content] is process, GPU, model runtime, job, credential, network, destructive filesystem, or live machine control behavior
+
+  = must: fail scaffold execution review if any created file exceeds this boundary
+
+& [IR1PackDownstreamGate] is the downstream gate exported by IR1
+  + [current_next_work] is inert scaffold file creation from accepted inventory
+  + [following_chunk] is IR2 authority-file parser and SQLite projection builder after scaffold is created and reviewed
+  + [IR2_model_route] is requires deeper reasoning for parser and projection authority boundary; GPT-5.3-Codex-Spark-suitable for bounded parser fixtures after contracts are accepted
+  + [safety_limit] is no live operations control authorized
+
+  = must: keep IR2 gated until scaffold creation is reviewed or a future rebake explicitly skips scaffold execution
+
+& [IR1PackInvalidationRuleSet] is the staleness contract for IR1ImplementationSubstratePackV1
+  + [invalidated_by] is change to post-FSC5 implementation readiness surface
+  + [invalidated_by] is change to post-FSC5 rebake review
+  + [invalidated_by] is change to any accepted IR1 output hash
+  + [invalidated_by] is change to any IR1-S01 through IR1-S06 completion review
+  + [invalidated_by] is package metadata requiring external dependencies before review
+  + [invalidated_by] is scaffold file exceeding inert placeholder boundary
+  + [invalidated_by] is generated artifact path treated as authority
+  + [invalidated_by] is operations control or live machine control leak
+
+  = must: rerun IR1-S06 after invalidation before downstream work consumes this pack again
