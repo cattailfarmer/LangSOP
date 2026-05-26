@@ -17,6 +17,7 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [activation_completion_review] docs/reviews/IR2_IA01_Completion_Review.v1.sop
 @ [activation_completion_review] docs/reviews/IR2_IA02_Completion_Review.v1.sop
 @ [activation_completion_review] docs/reviews/IR2_IA03_Completion_Review.v1.sop
+@ [activation_completion_review] docs/reviews/IR2_IA04_Completion_Review.v1.sop
 @ [activation_canonical_specification] docs/canonical/LangSOP_IR2_Implementation_Activation.canonical.sop
 @ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
 @ [IR1_substrate_pack] docs/planning/IR1_Implementation_Substrate_Pack.v1.sop
@@ -33,12 +34,14 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
 @ [accepted_output] docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
 @ [accepted_output] src/langsop/authority/discovery.py
 @ [accepted_output] src/langsop/authority/sop_parser.py
+@ [accepted_output] src/langsop/authority/extraction.py
+@ [accepted_output] src/langsop/authority/validation.py
 
 & [IR2WorkStateV1] is the current derived work state for IR2 authority-file parser and SQLite projection builder
   + [chunk_ref] is IR2 authority-file parser and SQLite projection builder
-  + [state_basis] is docs/reviews/IR2_IA03_Completion_Review.v1.sop
-  + [state_basis_sha256] is 814FF4FCA0F3D3D5FA70C43DC8F8B0D85991E0A3FA156DEC9247DB78ACD32AC6
-  + [surface_status] is accepted_for_IR2-IA04_execution
+  + [state_basis] is docs/reviews/IR2_IA04_Completion_Review.v1.sop
+  + [state_basis_sha256] is 1B5D94AC579028DBA06C2B515EC43E81B9EEF74930B6C1CDBA2F2927ACBC3EF8
+  + [surface_status] is accepted_for_IR2-IA05_execution
   + [source_manifest] is docs/source/2026-05-26_ir2_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 57ADD2036F8B951CA94824E6C1AC3BC2255BB567D8BC34B5DED926A48AA94487
   + [canonical_specification] is docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop
@@ -86,12 +89,16 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [accepted_code_output_sha256] is 202EC8AD87D99D516CBDBC3E4D8B56BF9FC363093DF23F4A16EC46BEA1230356
   + [accepted_code_output] is src/langsop/authority/sop_parser.py
   + [accepted_code_output_sha256] is 87868226D91F86B7BAE89D33EFA0EB2D431407AF8D0AB8EFF02061DF7570BD04
-  + [current_ready_slice] is IR2-IA04
-  + [current_ready_slice_name] is KernelRecord extraction and validation implementation
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA03 acceptance
-  + [code_creation_authorized_by_current_slice] is true_for_src_langsop_authority_extraction_py_and_validation_py_only
-  + [projection_code_creation_authorized_by_current_state] is false
-  + [generated_output_creation_authorized_by_current_state] is false
+  + [accepted_activation_slice] is IR2-IA04
+  + [accepted_code_output] is src/langsop/authority/extraction.py
+  + [accepted_code_output_sha256] is C23C0451CC92CD446EF183EB465DD5DF223D533E144890862204418E59FB7AB1
+  + [accepted_code_output] is src/langsop/authority/validation.py
+  + [accepted_code_output_sha256] is EBC487EDE198F2DDC4A75482D296B4C45FED7816D821D04FD464723857FB50FE
+  + [current_ready_slice] is IR2-IA05
+  + [current_ready_slice_name] is SQLite projection schema, writer, and rebuild implementation
+  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA04 acceptance
+  + [code_creation_authorized_by_current_slice] is true_for_src_langsop_projections_sqlite_schema_py_sqlite_projection_py_and_rebuild_py_only
+  + [generated_output_creation_authorized_by_current_state] is false_during_implementation_review
   + [IR3_planning_intake_state] is may_consume_IR2_authority_projection_pack
   + [IR3_implementation_state] is gated_until_IR2_bounded_parser_projection_implementation_review_is_accepted_or_a_rebake_reclassifies_IR3_scope
   + [safety_limit] is no live operations control authorized
@@ -100,8 +107,8 @@ State UUID: fe8c89d3-c895-437e-9118-3fbbceec12ba
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: keep IR2-IA04 bounded to src/langsop/authority/extraction.py and src/langsop/authority/validation.py only
-  = must: run IR2-IA04 before creating projection code, generated SQLite outputs, or test integration files
+  = must: keep IR2-IA05 bounded to src/langsop/projections/sqlite_schema.py, src/langsop/projections/sqlite_projection.py, and src/langsop/projections/rebuild.py only
+  = must: run IR2-IA05 before creating generated SQLite outputs or test integration files
   = must: keep IR3 implementation gated until parser/projection implementation proof is accepted or a rebake reclassifies IR3 scope
   = must: keep generated SQLite, cache, index, fixture output, and projection artifacts non-authoritative
-  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S08 outputs, IR2-S01 through IR2-S08 completion reviews, IR2 implementation activation source manifest, canonical specification, slice surface, minting review, IR2-IA01 through IR2-IA03 outputs, or IR2-IA01 through IR2-IA03 completion reviews change
+  = must: mark this state stale if IR2 source manifest, canonical specification, slice surface, slice minting review, accepted IR1 pack, scaffold review, schema inputs, storage decision, IR2-S01 through IR2-S08 outputs, IR2-S01 through IR2-S08 completion reviews, IR2 implementation activation source manifest, canonical specification, slice surface, minting review, IR2-IA01 through IR2-IA04 outputs, or IR2-IA01 through IR2-IA04 completion reviews change

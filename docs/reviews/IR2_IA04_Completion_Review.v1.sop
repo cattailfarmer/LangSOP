@@ -1,0 +1,104 @@
+Subject: IR2-IA04 Completion Review V1
+Date: 2026-05-26
+Review UUID: d61aea0e-d158-4c1d-a074-ea883cecc0d4
+
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [completed_output] src/langsop/authority/extraction.py
+@ [completed_output] src/langsop/authority/validation.py
+@ [accepted_input] docs/reviews/IR2_IA03_Completion_Review.v1.sop
+@ [accepted_input] src/langsop/authority/discovery.py
+@ [accepted_input] src/langsop/authority/sop_parser.py
+
+& [CompletedWorkReview: IR2-IA04] is the completion review for KernelRecord extraction and validation implementation
+  + [slice_id] is IR2-IA04
+  + [slice_name] is KernelRecord extraction and validation implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/authority/extraction.py
+  + [completed_output_sha256] is C23C0451CC92CD446EF183EB465DD5DF223D533E144890862204418E59FB7AB1
+  + [completed_output] is src/langsop/authority/validation.py
+  + [completed_output_sha256] is EBC487EDE198F2DDC4A75482D296B4C45FED7816D821D04FD464723857FB50FE
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [review_result] is accepted
+  + [next_gate_result] is IR2-IA05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA04 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR2-IA05 only
+  = must: rerun review if extraction.py or validation.py changes
+  = must: keep generated outputs, dependencies, operations control, and live machine control unauthorized
+
+& [VerificationOracleResult: IR2-IA04] is the verification result for extraction and validation implementation
+  + [extraction_module_present] is true
+  + [validation_module_present] is true
+  + [extraction_api_present] is extract_kernel_record_candidates
+  + [validation_api_present] is validate_kernel_record_candidates
+  + [extraction_preserves_blocked_output] is true
+  + [validation_preserves_fault_output] is true
+  + [source_mutation_created] is false
+  + [generated_projection_created] is false
+  + [external_dependency_added] is false
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed
+  + [smoke_check] is PYTHONPATH=src discovery, parsing, extraction, and validation over IR2 fixture source set
+  + [smoke_fixture_count] is 10
+  + [smoke_candidate_count] is 10
+  + [smoke_parse_fault_count] is 1
+  + [smoke_extraction_fault_count] is 2
+  + [smoke_validation_result_count] is 10
+  + [smoke_validation_fault_count] is 9
+  + [smoke_stale_projection_ref_count] is 1
+  + [sqlite_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR2IA04VerificationSatisfied] is accepted
+    @ [support] src/langsop/authority/extraction.py
+    @ [support] src/langsop/authority/validation.py
+
+& [SupportDelta: IR2-IA04] is the support delta produced by this slice
+  + [new_support_record] is extract_kernel_record_candidates emits KernelRecord candidate envelopes with natural-key state, source refs, lineage edges, freshness, status, and blocked/fault rationale
+  + [new_support_record] is validate_kernel_record_candidates emits proof results, validation faults, stale projection refs, and authority classification without accepting semantic truth
+  + [new_support_record] is fixture smoke proves valid, blocked, stale, malformed, projection-only, and source-mutation-refusal cases remain visible
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2-IA04] is the requirement delta produced by this slice
+  + [requirement_delta] is IR2-IA05 may create only SQLite projection schema, writer, and rebuild implementation files
+  + [requirement_delta] is IR2-IA05 is GPT-5.3-Codex-Spark-suitable because validation output and projection expectations are bounded
+  + [requirement_delta] is generated output creation during review, dependency installation, operations control, and live machine control remain unauthorized
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR2-IA04] is the fault review for this slice
+  + [unlisted_code_file_created] is false
+  + [sqlite_code_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR2IA04Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR2-IA04]
+    @ [support] [SupportDelta: IR2-IA04]
+    @ [support] [RequirementDelta: IR2-IA04]
+    @ [support] [FaultReview: IR2-IA04]
+
+& [NextSliceGate: IR2-IA05] is opened
+  + [opened_slice] is IR2-IA05 SQLite projection schema, writer, and rebuild implementation
+  + [accepted_input] is src/langsop/authority/extraction.py
+  + [accepted_input_sha256] is C23C0451CC92CD446EF183EB465DD5DF223D533E144890862204418E59FB7AB1
+  + [accepted_input] is src/langsop/authority/validation.py
+  + [accepted_input_sha256] is EBC487EDE198F2DDC4A75482D296B4C45FED7816D821D04FD464723857FB50FE
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA04 acceptance
+  + [model_route_reason] is projection implementation is bounded by accepted schema, generated path policy, and validation reports
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR2-IA05 next unless user redirects or a new fault invalidates this review
