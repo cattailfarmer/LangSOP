@@ -1,0 +1,192 @@
+Subject: IR6 Bounded Coordination Implementation Activation Boundary V1
+Date: 2026-05-26
+Activation Boundary UUID: e83c2c91-ef08-4704-af8c-5bd0332b1839
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+@ [IR6_activation_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+
+& [IR6BoundedCoordinationImplementationActivationBoundaryV1] is the IR6-IA01 activation boundary for future bounded coordination mailbox projection implementation work
+  + [activation_boundary_id] is ir6-bounded-coordination-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is e83c2c91-ef08-4704-af8c-5bd0332b1839
+  + [slice_id] is IR6-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary and dependency decision only
+
+  = must: confirm future file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, dependency boundary, mailbox IO boundary, adapter boundary, transport boundary, command plan, and proof gate for implementation slices
+  = must: preserve accepted IR6 claim identity, work-boundary, mailbox carrier, conflict review, fixture, generated-output, no-mailbox-IO, dispatch, operation safety, and no-live-control semantics without implementation code creation in this slice
+  = must: keep package dependency changes, mailbox IO, adapter transports, UI, and dispatch gated until IR6-IA07 or a later dependency-authorizing slice
+  - never: create coordination implementation code, fixture source files, expected ledgers, mailbox files, generated projections, generated reports, tests, dependencies, adapter transports, UI, operations simulator code, agent dispatch, operations control, or live machine control in this slice
+
+& [ConfirmedImplementationFileInventory: IR6CoordinationMailboxProjection] is the maximum code and test file inventory for first-pass IR6 coordination mailbox projection implementation
+  + [future_code_file] is src/langsop/coordination/__init__.py
+  + [future_code_file] is src/langsop/coordination/claims.py
+  + [future_code_file] is src/langsop/coordination/mailbox.py
+  + [future_code_file] is src/langsop/coordination/reviews.py
+  + [future_code_file] is src/langsop/coordination/action_routes.py
+  + [future_code_file] is src/langsop/coordination/generated_paths.py
+  + [future_code_file] is src/langsop/coordination/fixture_runner.py
+  + [future_test_file] is tests/test_ir6_coordination_mailbox_contracts.py
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+
+& [ConfirmedFixtureSourceInventory: IR6CoordinationMailboxProjection] is the fixture source inventory opened by IR6-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/valid_claim_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/compatible_parallel_claims.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/conflicting_write_claims.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/stale_claim_refresh_required.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/release_notice_with_lineage.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/superseded_claim_preserves_lineage.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/ambiguous_conversation_identity_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/inbox_unread_notice_blocks_ready.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/read_cursor_stale_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/mailbox_carrier_authority_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/human_override_scope_review.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/hidden_scope_expansion_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir6_coordination_mailbox/completion_gate_refusal_for_unresolved_claim.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to FixturePlan: IR6CoordinationMailboxFixturePlanV1
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR6CoordinationMailboxProjection] is the expected ledger inventory opened by IR6-IA02 after this boundary is accepted
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/claim_identity_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/work_boundary_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/mailbox_carrier_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/conflict_and_stale_review_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir6_coordination_mailbox/no_authority_promotion_expected.sop
+
+  = must: make expected ledgers reviewable without generated projections, generated reports, carrier state, mailbox files, read cursors, runtime state, dispatch, or live control
+  = must: keep expected ledgers as tracked fixture authority only after IR6-IA02 completion review accepts them
+
+& [ConfirmedGeneratedOutputBoundary: IR6CoordinationMailboxProjection] is the generated-output boundary for future tests and fixture runs
+  + [generated_output_root] is .langsop/projections/ir6_coordination_mailbox/
+  + [generated_output_root] is .langsop/reports/ir6_coordination_mailbox/
+  + [generated_output_root] is tests/fixtures/generated/ir6_coordination_mailbox/
+  + [generated_output_root] is tests/fixtures/generated/ir6_coordination_mailbox/projections/
+  + [generated_output_root] is tests/fixtures/generated/ir6_coordination_mailbox/reports/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is projection_only
+  + [source_authority_status] is docs/ and accepted tracked fixture source or expected ledgers only
+
+  = must: refuse writes outside accepted generated roots during projection or test execution
+  = must: refuse generated writes to docs/, src/, tests/fixtures/sop/, tests/fixtures/expected/, platform/, .git/, and platform/coordination/mailboxes/
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject projection records, reports, manifests, caches, carrier state, adapter state, mailbox state, read cursors, dry-runs, or runtime state as source authority
+
+& [ConfirmedDependencyBoundary: IR6CoordinationMailboxProjection] is the dependency boundary for the first IR6 implementation pass
+  + [allowed_dependency_set] is Python standard library only through IR6-IA06
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [mailbox_IO_dependency_state] is gated_until_IR6-IA07_dependency_decision
+  + [file_watcher_dependency_state] is gated_until_future_adapter_authorization
+  + [irc_or_matrix_dependency_state] is gated_until_future_adapter_authorization
+  + [web_ui_dependency_state] is gated_until_future_UI_authorization
+  + [langflow_dependency_state] is gated_until_future_adapter_authorization
+
+  = must: require IR6-IA07 or a later dependency-authorizing slice before adding package dependencies, lockfiles, imports from external adapter packages, UI frameworks, Langflow packages, IRC or Matrix clients, file watcher libraries, or runtime requirements
+  = must: keep first-pass coordination mailbox projection implementation clearly marked as data projection, not live adapter, UI, transport, mailbox IO, dispatch, or orchestration integration
+
+& [ConfirmedMailboxIOBoundary: IR6CoordinationMailboxProjection] is the mailbox IO and carrier boundary for first-pass implementation
+  + [mailbox_carrier_status] is carrier_context_projection_only
+  + [platform_mailbox_read_authorized] is false
+  + [platform_mailbox_write_authorized] is false
+  + [mailbox_message_file_creation_authorized] is false
+  + [mailbox_message_file_mutation_authorized] is false
+  + [read_cursor_persistence_authorized] is false
+  + [inbox_directory_creation_authorized] is false
+  + [outbox_directory_creation_authorized] is false
+  + [filesystem_watch_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [agent_dispatch_authorized] is false
+
+  = must: represent mailbox paths, message ids, read cursors, timestamps, and carrier lineage as projection context only
+  = must: refuse future implementation that reads, writes, creates, watches, or mutates platform mailbox paths without a separate accepted activation slice
+
+& [ConfirmedAdapterBoundary: IR6CoordinationMailboxProjection] is the adapter, transport, and UI boundary for first-pass implementation
+  + [adapter_status] is carrier_context_projection_only
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [Langflow_install_or_export_authorized] is false
+  + [IRC_or_Matrix_connection_authorized] is false
+  + [web_server_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_simulator_authorized] is false
+
+  = must: preserve carrier context as traceable evidence without granting authority
+  = must: refuse future implementation that opens live transports, UI surfaces, Langflow export, mailbox IO, or dispatch without a separate accepted activation slice
+
+& [ConfirmedCommandPlan: IR6CoordinationMailboxProjection] is the command and verification plan for future implementation slices
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test] is python -m unittest tests.test_ir6_coordination_mailbox_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated projections and reports are ignored, disposable, reproducible, and non-authoritative
+  + [mailbox_io_review] is prove platform mailboxes, inbox directories, message files, read cursors, and carrier state are not created or mutated by projection code or tests
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir6_coordination_mailbox_contracts exists
+
+& [ImplementationSliceProofGate: IR6CoordinationMailboxProjection] is the proof gate opened by this activation boundary
+  + [IR6-IA02_opened_after_review] is fixture source and expected-ledger seed material
+  + [IR6-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after IR6-IA01 acceptance
+  + [IR6-IA02_scope] is fixture source files, expected ledger files, and fixture index only
+  + [code_creation_authorized_after_IR6-IA01] is false
+  + [fixture_creation_authorized_after_IR6-IA01] is true_for_IR6-IA02_only
+  + [expected_ledger_creation_authorized_after_IR6-IA01] is true_for_IR6-IA02_only
+  + [mailbox_file_creation_authorized_after_IR6-IA01] is false
+  + [generated_projection_creation_authorized_after_IR6-IA01] is false
+  + [test_file_creation_authorized_after_IR6-IA01] is false
+  + [dependency_installation_authorized_after_IR6-IA01] is false
+  + [package_metadata_mutation_authorized_after_IR6-IA01] is false
+  + [adapter_implementation_authorized_after_IR6-IA01] is false
+  + [transport_implementation_authorized_after_IR6-IA01] is false
+  + [UI_implementation_authorized_after_IR6-IA01] is false
+  + [agent_dispatch_authorized_after_IR6-IA01] is false
+  + [operations_control_authorized_after_IR6-IA01] is false
+  + [live_machine_control_authorized_after_IR6-IA01] is false
+
+  = must: open only IR6-IA02 after this boundary is accepted
+  = must: keep claim models, mailbox models, conflict review models, action routes, generated path policy, fixture runner, tests, generated outputs, dependency changes, mailbox IO, adapter work, transport work, UI work, proof packs, operations simulator work, agent dispatch, operations control, and live machine control gated until their specific slices open
+
+& [IR6IA01CoverageReview] is the coverage checklist for IR6-IA01
+  + [confirmed_implementation_file_inventory_present] is ConfirmedImplementationFileInventory: IR6CoordinationMailboxProjection
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceInventory: IR6CoordinationMailboxProjection
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory: IR6CoordinationMailboxProjection
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary: IR6CoordinationMailboxProjection
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: IR6CoordinationMailboxProjection
+  + [confirmed_mailbox_IO_boundary_present] is ConfirmedMailboxIOBoundary: IR6CoordinationMailboxProjection
+  + [confirmed_adapter_boundary_present] is ConfirmedAdapterBoundary: IR6CoordinationMailboxProjection
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: IR6CoordinationMailboxProjection
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: IR6CoordinationMailboxProjection
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [mailbox_file_created] is false
+  + [generated_projection_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR6-IA01 only when all checklist items are satisfied
+  = must: open IR6-IA02 only after this activation boundary is reviewed in a completion review

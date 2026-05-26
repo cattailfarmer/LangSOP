@@ -1,0 +1,99 @@
+Subject: IR6 IA01 Completion Review V1
+Date: 2026-05-26
+Review UUID: cd7df27c-3389-4b43-8162-bec6dd561b36
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [completed_output] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+@ [activation_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Plan.v1.sop
+
+& [CompletedWorkReview: IR6-IA01] is the completed-work review for IR6-IA01 bounded coordination implementation activation boundary and dependency decision
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-IA01
+  + [completed_output] is docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+  + [completed_output_sha256] is F2AA7543D4C7D3197E4C269A6CDC1A4A8456539FE95E8894E57319C267D782BD
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-IA01 and open IR6-IA02
+  + [next_gate_result] is IR6-IA02 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for fixture source and expected-ledger seed material
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR6-IA02 only
+  = must: rerun this review if the activation boundary, IR6 implementation activation slice surface, IR6 activation pack, or IR6 implementation plan changes
+  = must: keep implementation code, mailbox files, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control gated
+
+& [IR6IA01Verification] is the verification result for IR6-IA01
+  + [confirmed_implementation_file_inventory_present] is true
+  + [confirmed_fixture_source_inventory_present] is true
+  + [confirmed_expected_ledger_inventory_present] is true
+  + [confirmed_generated_output_boundary_present] is true
+  + [confirmed_dependency_boundary_present] is true
+  + [confirmed_mailbox_IO_boundary_present] is true
+  + [confirmed_adapter_boundary_present] is true
+  + [confirmed_command_plan_present] is true
+  + [implementation_slice_proof_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [mailbox_file_created] is false
+  + [generated_projection_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6IA01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+
+& [SupportDelta: IR6-IA01] is the support delta produced by IR6-IA01
+  + [new_support_record] is IR6 implementation activation has confirmed file, fixture, expected-ledger, generated-output, dependency, mailbox IO, adapter, transport, command, and proof-gate boundaries
+  + [new_support_record] is IR6-IA02 may create only bounded fixture source and expected-ledger seed material
+  + [new_support_record] is dependency installation, package metadata mutation, mailbox IO, adapter implementation, transport implementation, UI implementation, generated output creation, operations simulator implementation, and agent dispatch remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-IA01] is the requirement delta produced by IR6-IA01
+  + [requirement_delta] is IR6-IA02 is GPT-5.3-Codex-Spark-suitable because fixture and expected-ledger scope is bounded by accepted activation boundary
+  + [requirement_delta] is IR6-IA02 may create tracked fixture source files and expected ledger files only inside accepted roots
+  + [requirement_delta] is no implementation code, mailbox file, generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, operations simulator, agent dispatch, operations control, or live machine control is authorized by IR6-IA01
+
+& [FaultReview: IR6-IA01] is the fault review for IR6-IA01
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [implementation_code_leak_found] is false
+  + [fixture_source_file_leak_found] is false
+  + [expected_ledger_file_leak_found] is false
+  + [mailbox_file_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6IA01Accepted] is accepted
+    @ [support] [IR6IA01Verification]
+    @ [support] [SupportDelta: IR6-IA01]
+    @ [support] [RequirementDelta: IR6-IA01]
+    @ [support] [FaultReview: IR6-IA01]
+
+& [NextSliceGate: IR6-IA02] is opened
+  + [opened_slice] is IR6-IA02 fixture source and expected-ledger seed material
+  + [accepted_dependency] is docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+  + [accepted_dependency_sha256] is F2AA7543D4C7D3197E4C269A6CDC1A4A8456539FE95E8894E57319C267D782BD
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture and expected-ledger material is bounded by accepted fixture plan and activation boundary
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-IA02 next unless user redirects or a new fault invalidates this review
