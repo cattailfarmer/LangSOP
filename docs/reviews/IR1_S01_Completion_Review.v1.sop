@@ -1,0 +1,93 @@
+Subject: IR1-S01 Completion Review V1
+Date: 2026-05-26
+Review UUID: 8450605f-1697-4a10-8005-38bb6729bfe6
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [work_state] docs/state/IR1_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+@ [accepted_input] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [accepted_input] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+
+& [CompletedWorkReview: IR1-S01] is the completion review for implementation substrate boundary and invariant map
+  + [slice_id] is IR1-S01
+  + [slice_name] is implementation substrate boundary and invariant map
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [completed_output_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR1-S02 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR1-S02
+  = must: rerun review if IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop changes
+
+& [VerificationOracleResult: IR1-S01] is the verification result for implementation substrate boundary coverage
+  + [imported_authority_pack_inventory_present] is ImportedAuthorityPackInventory: IR1
+  + [substrate_owned_invariant_set_present] is SubstrateOwnedInvariantSet
+  + [scaffold_only_boundary_present] is ScaffoldOnlyImplementationBoundary
+  + [generated_artifact_non_authority_rule_present] is GeneratedArtifactNonAuthorityRule
+  + [downstream_stale_trigger_list_present] is DownstreamStaleTriggerList: IR1
+  + [forbidden_implementation_list_present] is ForbiddenImplementationList: IR1-S01
+  + [package_installation_forbidden] is true
+  + [code_scaffolding_forbidden] is true
+  + [generated_artifact_authority_forbidden] is true
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [forbidden_scope_absent] is package installation
+  + [forbidden_scope_absent] is runtime code
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR1S01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+
+& [SupportDelta: IR1-S01] is the support delta produced by this slice
+  + [new_support_record] is IR1ImplementationSubstrateBoundaryAndInvariantMapV1 supports IR1-S02 language runtime and package tooling decision
+  + [new_support_record] is ScaffoldOnlyImplementationBoundary supports later scaffold plan without opening runtime behavior
+  + [new_support_record] is GeneratedArtifactNonAuthorityRule supports repository layout and test harness decisions
+  + [support_status] is accepted
+
+& [RequirementDelta: IR1-S01] is the requirement delta produced by this slice
+  + [requirement_delta] is IR1-S02 must choose language/runtime and tooling under the generated-artifact non-authority rule
+  + [requirement_delta] is IR1-S02 requires deeper reasoning
+  + [requirement_delta] is no package installation, code scaffolding, parser implementation, SQLite builder implementation, LangGraph implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control authorized
+  + [requirement_delta] is no external dependency created
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR1-S01] is the fault review for this slice
+  + [forbidden_external_dependency_found] is false
+  + [package_installation_leak_found] is false
+  + [code_scaffolding_leak_found] is false
+  + [parser_implementation_leak_found] is false
+  + [sqlite_builder_implementation_leak_found] is false
+  + [langgraph_implementation_leak_found] is false
+  + [surface_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR1S01Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR1-S01]
+    @ [support] [SupportDelta: IR1-S01]
+    @ [support] [RequirementDelta: IR1-S01]
+    @ [support] [FaultReview: IR1-S01]
+
+& [NextSliceGate: IR1-S02] is opened
+  + [opened_slice] is IR1-S02 language runtime and package tooling decision
+  + [accepted_input] is docs/implementation/IR1_Implementation_Substrate_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is EEBF553D2222E3909B83E409FA2FB6C0FBA076C87A80C47E11859FF3FDCEDA10
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is language and package choices affect every downstream implementation and proof surface
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR1-S02 next unless user redirects or a new fault invalidates this review

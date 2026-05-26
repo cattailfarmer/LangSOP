@@ -1,0 +1,148 @@
+Subject: IR1 Implementation Substrate Boundary And Invariant Map V1
+Date: 2026-05-26
+Contract UUID: ee9745b5-ceed-478c-aea6-914858431d82
+
+@ [slice_surface] docs/slices/IR1_Final_Slices.v1.sop
+@ [ir1_canonical] docs/canonical/LangSOP_IR1_Final_Slices.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+@ [implementation_readiness_review] docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+@ [foundation_pack] docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR1ImplementationSubstrateBoundaryAndInvariantMapV1] is the IR1-S01 boundary map for implementation substrate and repository scaffold work
+  + [contract_id] is ir1-implementation-substrate-boundary-and-invariant-map-v1
+  + [contract_uuid] is ee9745b5-ceed-478c-aea6-914858431d82
+  + [slice_id] is IR1-S01
+  + [authority_scope] is imported authority pack inventory, substrate-owned invariants, scaffold-only boundary, generated-artifact non-authority rule, downstream stale trigger list, and forbidden implementation list
+  + [implementation_scope] is boundary contract only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: define the safe edge for IR1 implementation substrate work before language, layout, test harness, or scaffold slices execute
+  = must: keep all runtime behavior, parser behavior, SQLite projection behavior, LangGraph behavior, surface behavior, adapter behavior, operations simulation, operations control, and live machine control gated
+  = must: preserve SOP authority files as source truth and generated artifacts as projections
+  - never: create package files, install dependencies, implement runtime code, or mutate generated artifacts in this slice
+
+& [ImportedAuthorityPackInventory: IR1] is the accepted authority inventory imported by IR1
+  + [accepted_pack] is docs/planning/FSC1_Foundation_Contract_Pack.v1.sop
+  + [accepted_pack_role] is foundation schema, operator template, storage decision, and foundation fixtures
+  + [accepted_pack] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [accepted_pack_role] is readiness, packetization, coordination, completion gate, and planning fixtures
+  + [accepted_pack] is docs/planning/FSC3_Runtime_Graph_Proof_Pack.v1.sop
+  + [accepted_pack_role] is runtime graph proof contracts and trace fixture obligations
+  + [accepted_pack] is docs/planning/FSC4_Surface_Projection_Pack.v1.sop
+  + [accepted_pack_role] is surface projection and authority notice contracts
+  + [accepted_pack] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_pack_role] is operations safety, dry-run-only, and live-control prohibition boundary
+  + [accepted_readiness_surface] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [accepted_readiness_review] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+
+  = must: stale IR1 if any imported pack hash or readiness review hash changes without reprocessing
+
+& [SubstrateOwnedInvariantSet] is the invariant set owned by IR1
+  + [invariant] is SOP authority files remain source truth
+  + [invariant] is generated SQLite, indexes, caches, build artifacts, and test outputs are projection artifacts only
+  + [invariant] is code scaffold files cannot become authority records by themselves
+  + [invariant] is package metadata can describe tooling but cannot authorize runtime behavior
+  + [invariant] is tests can prove conformance only against accepted fixtures and explicit expected outputs
+  + [invariant] is every generated artifact needs a rebuild or invalidation route
+  + [invariant] is every implementation slice needs a completion review before downstream consumption
+  + [invariant] is operations safety pack remains a safety boundary, not execution permission
+
+  = must: reject downstream IR1 outputs that hide generated artifacts or promote projections to authority
+
+& [ScaffoldOnlyImplementationBoundary] is the boundary for scaffold work that may be authorized later in IR1
+  + [allowed_after_gate] is package metadata files
+  + [allowed_after_gate] is project configuration files
+  + [allowed_after_gate] is empty or no-op source module placeholders
+  + [allowed_after_gate] is empty or no-op test module placeholders
+  + [allowed_after_gate] is documentation references to accepted SOP authorities
+  + [allowed_after_gate] is .gitignore entries for generated projection artifacts
+  + [required_before_allowed] is IR1-S02 language runtime and tooling decision accepted
+  + [required_before_allowed] is IR1-S03 repository layout and generated artifact policy accepted
+  + [required_before_allowed] is IR1-S04 test harness and fixture execution shape accepted
+  + [required_before_allowed] is IR1-S05 scaffold execution plan and placeholder scope accepted
+  + [required_before_allowed] is IR1-S06 scaffold activation pack accepted
+
+  = must: treat scaffold files as inert placeholders until a later implementation chunk authorizes behavior
+  = must: prevent placeholder files from importing live libraries, launching processes, opening listeners, accessing secrets, or mutating resources
+
+& [GeneratedArtifactNonAuthorityRule] is the generated artifact rule for IR1 and downstream implementation work
+  + [projection_artifact] is SQLite database
+  + [projection_artifact] is generated index
+  + [projection_artifact] is cache file
+  + [projection_artifact] is build output
+  + [projection_artifact] is test output
+  + [projection_artifact] is coverage output
+  + [projection_artifact] is LangGraph checkpoint
+  + [projection_artifact] is surface snapshot
+  + [projection_artifact] is dry-run result projection
+  + [required_metadata] is source_ref_set
+  + [required_metadata] is generation_tool_ref
+  + [required_metadata] is input_hash_set
+  + [required_metadata] is generated_at
+  + [required_metadata] is invalidation_rule
+  + [required_metadata] is authority_limit
+
+  = must: ignore generated artifacts as source authority unless a future SOP authority explicitly promotes a record through accepted processing
+  = must: delete or rebuild generated artifacts when their input hash set changes
+
+& [DownstreamStaleTriggerList: IR1] is the stale trigger list for IR1 downstream slices
+  + [stale_trigger] is change to post-FSC5 implementation readiness canonical specification
+  + [stale_trigger] is change to post-FSC5 implementation readiness surface
+  + [stale_trigger] is change to post-FSC5 rebake review
+  + [stale_trigger] is change to IR1 final slice surface
+  + [stale_trigger] is change to IR1-S01 boundary map
+  + [stale_trigger] is change to accepted language runtime and tooling decision
+  + [stale_trigger] is change to accepted repository layout and generated artifact policy
+  + [stale_trigger] is change to accepted test harness and fixture execution shape
+  + [stale_trigger] is change to accepted scaffold execution plan
+  + [stale_trigger] is any generated artifact treated as authority
+  + [stale_trigger] is any package, test, or placeholder file performing runtime behavior before authorization
+  + [stale_trigger] is any operations control or live machine control leak
+
+  = must: rerun completion review before downstream slices consume stale substrate assumptions
+
+& [ForbiddenImplementationList: IR1-S01] is the forbidden implementation list for this slice
+  + [forbidden_scope] is language/package installation
+  + [forbidden_scope] is code scaffolding
+  + [forbidden_scope] is parser implementation
+  + [forbidden_scope] is SQLite builder implementation
+  + [forbidden_scope] is generated index creation
+  + [forbidden_scope] is executable test harness implementation
+  + [forbidden_scope] is LangGraph runtime implementation
+  + [forbidden_scope] is UI or surface implementation
+  + [forbidden_scope] is adapter implementation
+  + [forbidden_scope] is operations simulator implementation
+  + [forbidden_scope] is command execution beyond repository inspection and verification commands
+  + [forbidden_scope] is process control
+  + [forbidden_scope] is GPU control
+  + [forbidden_scope] is model runtime mutation
+  + [forbidden_scope] is job dispatch
+  + [forbidden_scope] is credential access or mutation
+  + [forbidden_scope] is network exposure mutation
+  + [forbidden_scope] is destructive filesystem action
+  + [forbidden_scope] is persistent operations automation
+  + [forbidden_scope] is live machine control
+
+  = must: reject IR1-S01 if any forbidden implementation scope appears in the output
+
+& [IR1S01CoverageReview] is the coverage checklist for IR1-S01
+  + [imported_authority_pack_inventory_present] is ImportedAuthorityPackInventory: IR1
+  + [substrate_owned_invariant_set_present] is SubstrateOwnedInvariantSet
+  + [scaffold_only_boundary_present] is ScaffoldOnlyImplementationBoundary
+  + [generated_artifact_non_authority_rule_present] is GeneratedArtifactNonAuthorityRule
+  + [downstream_stale_trigger_list_present] is DownstreamStaleTriggerList: IR1
+  + [forbidden_implementation_list_present] is ForbiddenImplementationList: IR1-S01
+  + [forbidden_scope_absent] is package installation
+  + [forbidden_scope_absent] is runtime code
+  + [forbidden_scope_absent] is parser implementation
+  + [forbidden_scope_absent] is SQLite builder implementation
+  + [forbidden_scope_absent] is LangGraph implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: open IR1-S02 only after this boundary map is accepted by completion review
