@@ -1,0 +1,113 @@
+Subject: FSC2 Planning Coordination Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: 8a7dce2b-25e0-47a0-b2cd-695aadd0fb82
+
+@ [fixture_plan] docs/fixtures/FSC2_Planning_Coordination_Fixture_Plan.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [completion_gate_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+
+& [FixtureIndex: FSC2PlanningCoordinationFixtureIndexV1] is the traversal index for FSC2 planning coordination fixtures
+  + [fixture_index_id] is fsc2-planning-coordination-fixture-index-v1
+  + [fixture_index_uuid] is 8a7dce2b-25e0-47a0-b2cd-695aadd0fb82
+  + [slice_id] is FSC2-S06
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [index_scope] is fixture lookup by fixture id, fixture kind, contract, expected outcome, and acceptance status
+
+  = must: map every planned fixture case to an FSC2 contract or validation target
+  = must: preserve expected outcome and acceptance status for manager review
+  - never: treat this index as executable test code
+
+& [FixtureIndexEntry: F2X-001] is ready_capability
+  + [fixture_case_ref] is F2X-001-ready-capability
+  + [contract_ref] is planning_readiness_recompute
+  + [expected_outcome] is success
+  + [expected_primary_output] is readiness_projection ready_to_packetize
+  + [acceptance_status] is accepted
+
+& [FixtureIndexEntry: F2X-002] is blocked_capability
+  + [fixture_case_ref] is F2X-002-blocked-capability
+  + [contract_ref] is planning_readiness_recompute
+  + [expected_outcome] is blocked_output
+  + [expected_primary_output] is blocked readiness_projection or support_gap
+  + [acceptance_status] is blocked
+
+& [FixtureIndexEntry: F2X-003] is stale_support
+  + [fixture_case_ref] is F2X-003-stale-support
+  + [contract_ref] is planning_readiness_recompute
+  + [expected_outcome] is stale_input
+  + [expected_primary_output] is stale_projection
+  + [acceptance_status] is stale
+
+& [FixtureIndexEntry: F2X-004] is contradicted_support
+  + [fixture_case_ref] is F2X-004-contradicted-support
+  + [contract_ref] is planning_readiness_recompute
+  + [expected_outcome] is fault_output or contradicted readiness
+  + [expected_primary_output] is readiness_projection contradicted or fault_record
+  + [acceptance_status] is faulted
+
+& [FixtureIndexEntry: F2X-005] is ambiguous_ownership
+  + [fixture_case_ref] is F2X-005-ambiguous-ownership
+  + [contract_ref] is coordination_claim_register
+  + [expected_outcome] is sop_first_interrupt
+  + [expected_primary_output] is operator_trace interrupt and no active coordination_claim
+  + [acceptance_status] is interrupted
+
+& [FixtureIndexEntry: F2X-006] is packet_dependency_leak
+  + [fixture_case_ref] is F2X-006-packet-dependency-leak
+  + [contract_ref] is work_packet_generation
+  + [expected_outcome] is fault_output
+  + [expected_primary_output] is fault_record dependency_leak and no work_packet
+  + [acceptance_status] is faulted
+
+& [FixtureIndexEntry: F2X-007] is conflicting_claim
+  + [fixture_case_ref] is F2X-007-conflicting-claim
+  + [contract_ref] is coordination_claim_register and coordination_conflict_signal
+  + [expected_outcome] is blocked_output or contested coordination_claim
+  + [expected_primary_output] is contested coordination_claim or support_gap
+  + [acceptance_status] is blocked
+
+& [FixtureIndexEntry: F2X-008] is stale_claim
+  + [fixture_case_ref] is F2X-008-stale-claim
+  + [contract_ref] is coordination_conflict_signal
+  + [expected_outcome] is stale_input
+  + [expected_primary_output] is stale_projection and stale coordination_claim
+  + [acceptance_status] is stale
+
+& [FixtureIndexEntry: F2X-009] is completion_support_delta
+  + [fixture_case_ref] is F2X-009-completion-support-delta
+  + [contract_ref] is completion_review_delta_gate
+  + [expected_outcome] is blocked_output
+  + [expected_primary_output] is blocked completion_review and next gate closed
+  + [acceptance_status] is blocked
+
+& [FixtureIndexEntry: F2X-010] is completion_requirement_delta
+  + [fixture_case_ref] is F2X-010-completion-requirement-delta
+  + [contract_ref] is completion_review_delta_gate
+  + [expected_outcome] is rebake_required
+  + [expected_primary_output] is completion_review rebake_required and next gate closed
+  + [acceptance_status] is rebake_required
+
+& [FixtureIndexEntry: F2X-011] is false_ready_next_gate
+  + [fixture_case_ref] is F2X-011-false-ready-next-gate
+  + [contract_ref] is completion_review_delta_gate
+  + [expected_outcome] is fault_output
+  + [expected_primary_output] is fault_record false_ready_next_gate and next gate closed
+  + [acceptance_status] is faulted
+
+& [FixtureIndexCoverage] is the coverage record for FSC2PlanningCoordinationFixtureIndexV1
+  + [fixture_count] is 11
+  + [covered_fixture_kind] is ready_capability
+  + [covered_fixture_kind] is blocked_capability
+  + [covered_fixture_kind] is stale_support
+  + [covered_fixture_kind] is contradicted_support
+  + [covered_fixture_kind] is ambiguous_ownership
+  + [covered_fixture_kind] is packet_dependency_leak
+  + [covered_fixture_kind] is conflicting_claim
+  + [covered_fixture_kind] is stale_claim
+  + [covered_fixture_kind] is completion_support_delta
+  + [covered_fixture_kind] is completion_requirement_delta
+  + [covered_fixture_kind] is false_ready_next_gate
+
+  = must: reject FSC2-S06 if fixture_count is less than 11

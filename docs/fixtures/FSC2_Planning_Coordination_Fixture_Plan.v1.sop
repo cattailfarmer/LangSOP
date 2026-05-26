@@ -1,0 +1,125 @@
+Subject: FSC2 Planning Coordination Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: 10a2cab5-d0f5-4da4-b486-0ff2324a3b55
+
+@ [slice_surface] docs/slices/FSC2_Final_Slices.v1.sop
+@ [boundary_map] docs/planning/FSC2_Boundary_And_Invariant_Map.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [coordination_contracts] docs/coordination/Coordination_Claim_And_Rendezvous_Contracts.v1.sop
+@ [completion_gate_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+
+& [FixturePlan: FSC2PlanningCoordinationFixturePlanV1] is the fixture plan for FSC2 planning coordination
+  + [fixture_plan_id] is fsc2-planning-coordination-fixture-plan-v1
+  + [fixture_plan_uuid] is 10a2cab5-d0f5-4da4-b486-0ff2324a3b55
+  + [slice_id] is FSC2-S06
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [fixture_scope] is readiness, packetization, coordination claims, completion-review deltas, stale gates, contradiction gates, and false-ready prevention
+
+  = must: map every fixture case to a contract, expected input shape, expected output record set, expected trace result, and acceptance status
+  = must: preserve fixture planning as contract evidence, not executable test code
+  - never: implement a test harness in this file
+  - never: mutate accepted FSC2 contracts from this fixture plan
+
+& [FixtureCase: F2X-001-ready-capability] is the ready capability fixture
+  + [fixture_kind] is ready_capability
+  + [contract_ref] is planning_readiness_recompute
+  + [input_shape] is capability_node with complete current requirements, support_record set, proof_result, and no blocking support_gap
+  + [expected_outcome] is success
+  + [expected_output_record_set] is readiness_projection ready_to_packetize plus operator_trace
+  + [acceptance_status] is accepted
+
+& [FixtureCase: F2X-002-blocked-capability] is the blocked capability fixture
+  + [fixture_kind] is blocked_capability
+  + [contract_ref] is planning_readiness_recompute
+  + [input_shape] is capability_node with unresolved blocking support_gap
+  + [expected_outcome] is blocked_output
+  + [expected_output_record_set] is readiness_projection blocked or support_gap plus operator_trace
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F2X-003-stale-support] is the stale support fixture
+  + [fixture_kind] is stale_support
+  + [contract_ref] is planning_readiness_recompute
+  + [input_shape] is support_record or proof_result failing freshness_rule
+  + [expected_outcome] is stale_input
+  + [expected_output_record_set] is stale_projection and no ready readiness_projection
+  + [acceptance_status] is stale
+
+& [FixtureCase: F2X-004-contradicted-support] is the contradicted support fixture
+  + [fixture_kind] is contradicted_support
+  + [contract_ref] is planning_readiness_recompute
+  + [input_shape] is support_record set and support_gap set with incompatible claim-bearing statements
+  + [expected_outcome] is fault_output or contradicted readiness
+  + [expected_output_record_set] is readiness_projection contradicted or fault_record plus operator_trace
+  + [acceptance_status] is faulted
+
+& [FixtureCase: F2X-005-ambiguous-ownership] is the ambiguous ownership fixture
+  + [fixture_kind] is ambiguous_ownership
+  + [contract_ref] is coordination_claim_register
+  + [input_shape] is work_packet with claimant_ref or conversation_ref ambiguous against existing coordination_claim records
+  + [expected_outcome] is sop_first_interrupt
+  + [expected_output_record_set] is operator_trace interrupt and no active coordination_claim
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: F2X-006-packet-dependency-leak] is the packet dependency leak fixture
+  + [fixture_kind] is packet_dependency_leak
+  + [contract_ref] is work_packet_generation
+  + [input_shape] is ready_to_packetize readiness with dependency outside packet boundary and no accepted boundary input
+  + [expected_outcome] is fault_output
+  + [expected_output_record_set] is fault_record dependency_leak and no work_packet
+  + [acceptance_status] is faulted
+
+& [FixtureCase: F2X-007-conflicting-claim] is the conflicting claim fixture
+  + [fixture_kind] is conflicting_claim
+  + [contract_ref] is coordination_claim_register and coordination_conflict_signal
+  + [input_shape] is work_packet scope with overlapping incompatible active coordination_claim
+  + [expected_outcome] is blocked_output or contested coordination_claim
+  + [expected_output_record_set] is contested coordination_claim or support_gap plus operator_trace
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F2X-008-stale-claim] is the stale claim fixture
+  + [fixture_kind] is stale_claim
+  + [contract_ref] is coordination_conflict_signal
+  + [input_shape] is active coordination_claim whose related work_packet hash or freshness_rule is stale
+  + [expected_outcome] is stale_input
+  + [expected_output_record_set] is stale_projection and stale coordination_claim state
+  + [acceptance_status] is stale
+
+& [FixtureCase: F2X-009-completion-support-delta] is the completion support delta fixture
+  + [fixture_kind] is completion_support_delta
+  + [contract_ref] is completion_review_delta_gate
+  + [input_shape] is completion_review with support_delta_gap or missing support_delta classification
+  + [expected_outcome] is blocked_output
+  + [expected_output_record_set] is completion_review blocked and next gate closed
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F2X-010-completion-requirement-delta] is the completion requirement delta fixture
+  + [fixture_kind] is completion_requirement_delta
+  + [contract_ref] is completion_review_delta_gate
+  + [input_shape] is completion_review with requirement_delta that changes downstream boundary or expected outputs
+  + [expected_outcome] is rebake_required
+  + [expected_output_record_set] is completion_review rebake_required and next gate closed
+  + [acceptance_status] is rebake_required
+
+& [FixtureCase: F2X-011-false-ready-next-gate] is the false-ready next gate fixture
+  + [fixture_kind] is false_ready_next_gate
+  + [contract_ref] is completion_review_delta_gate
+  + [input_shape] is completion_review attempting to open next gate despite stale output, contested claim, unresolved fault, or unclassified delta
+  + [expected_outcome] is fault_output
+  + [expected_output_record_set] is fault_record false_ready_next_gate and next gate closed
+  + [acceptance_status] is faulted
+
+& [FixturePlanAcceptanceChecklist] is the FSC2-S06 verification checklist
+  + [fixture_case_count] is 11
+  + [contract_coverage] is planning_readiness_recompute
+  + [contract_coverage] is work_packet_generation
+  + [contract_coverage] is coordination_claim_register
+  + [contract_coverage] is coordination_conflict_signal
+  + [contract_coverage] is completion_review_delta_gate
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is schema mutation
+  + [forbidden_scope_absent] is operator semantic mutation
+  + [forbidden_scope_absent] is runtime implementation
+  + [forbidden_scope_absent] is surface implementation
+
+  = must: accept FSC2-S06 only when all fixture cases are indexed and mapped to expected records
