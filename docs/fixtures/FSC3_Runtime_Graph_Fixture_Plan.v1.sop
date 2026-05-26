@@ -1,0 +1,115 @@
+Subject: FSC3 Runtime Graph Fixture Plan V1
+Date: 2026-05-26
+Fixture Plan UUID: 58bb106a-9dfa-4561-9dfd-4b1212365181
+
+@ [slice_surface] docs/slices/FSC3_Final_Slices.v1.sop
+@ [runtime_boundary] docs/runtime/FSC3_Runtime_Boundary_And_Invariant_Map.v1.sop
+@ [graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [trace_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+
+& [FixturePlan: FSC3RuntimeGraphFixturePlanV1] is the fixture plan for FSC3 runtime graph proof
+  + [fixture_plan_id] is fsc3-runtime-graph-fixture-plan-v1
+  + [fixture_plan_uuid] is 58bb106a-9dfa-4561-9dfd-4b1212365181
+  + [slice_id] is FSC3-S05
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [fixture_scope] is graph contract behavior, checkpoint policy, SOP-first interrupt handling, operator trace proof, hidden write prevention, and completion gate refusal
+
+  = must: map every fixture case to graph contract behavior, expected checkpoint behavior, expected trace result, and acceptance status
+  = must: preserve fixture planning as contract evidence, not executable test code
+  - never: implement LangGraph runtime or test harness code in this file
+
+& [FixtureCase: F3X-001-valid-graph-pass] is the valid graph pass fixture
+  + [fixture_kind] is valid_graph_pass
+  + [contract_ref] is WholeFieldPlannerGraphContractV1 and OperatorTraceRuntimeProofContractV1
+  + [input_shape] is current work_packet, ready readiness, compatible coordination claim, accepted operator contract, and completion gate evidence
+  + [expected_outcome] is success
+  + [expected_output_record_set] is operator_trace, proof_result, completion_review, and terminal_success
+  + [acceptance_status] is accepted
+
+& [FixtureCase: F3X-002-blocked-readiness] is the blocked readiness fixture
+  + [fixture_kind] is blocked_readiness
+  + [contract_ref] is WholeFieldPlannerGraphContractV1
+  + [input_shape] is work_packet candidate with blocked readiness_projection or unresolved support_gap
+  + [expected_outcome] is blocked_output
+  + [expected_output_record_set] is terminal_blocked plus operator_trace and support_gap or blocked completion_review
+  + [acceptance_status] is blocked
+
+& [FixtureCase: F3X-003-stale-checkpoint] is the stale checkpoint fixture
+  + [fixture_kind] is stale_checkpoint
+  + [contract_ref] is CheckpointPolicy and CheckpointTraceAssertionSet
+  + [input_shape] is checkpoint_ref whose boundary pack, packet, or graph phase freshness fails
+  + [expected_outcome] is stale_input
+  + [expected_output_record_set] is stale_projection and no resume
+  + [acceptance_status] is stale
+
+& [FixtureCase: F3X-004-ambiguous-interrupt] is the ambiguous interrupt fixture
+  + [fixture_kind] is ambiguous_interrupt
+  + [contract_ref] is SOPFirstInterruptResumeContractV1
+  + [input_shape] is graph path with ambiguous identity, requirement scope, or authority basis
+  + [expected_outcome] is sop_first_interrupt
+  + [expected_output_record_set] is InterruptContextPacket, operator_trace, and no hidden mutation
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: F3X-005-authority-conflict-interrupt] is the authority conflict interrupt fixture
+  + [fixture_kind] is authority_conflict_interrupt
+  + [contract_ref] is SOPFirstInterruptResumeContractV1
+  + [input_shape] is graph path where checkpoint, packet, operator, or source authority conflict is detected
+  + [expected_outcome] is sop_first_interrupt
+  + [expected_output_record_set] is InterruptContextPacket and operator_trace
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: F3X-006-contested-claim-interrupt] is the contested claim interrupt fixture
+  + [fixture_kind] is contested_claim_interrupt
+  + [contract_ref] is WholeFieldPlannerGraphContractV1 and SOPFirstInterruptResumeContractV1
+  + [input_shape] is active work_packet with unresolved contested coordination_claim
+  + [expected_outcome] is sop_first_interrupt or blocked_output
+  + [expected_output_record_set] is terminal_interrupt or terminal_blocked plus operator_trace
+  + [acceptance_status] is interrupted
+
+& [FixtureCase: F3X-007-faulted-operator-trace] is the faulted operator trace fixture
+  + [fixture_kind] is faulted_operator_trace
+  + [contract_ref] is OperatorTraceRuntimeProofContractV1
+  + [input_shape] is graph path missing required trace assertion or carrying invalid output shape
+  + [expected_outcome] is fault_output
+  + [expected_output_record_set] is fault_record and terminal_fault
+  + [acceptance_status] is faulted
+
+& [FixtureCase: F3X-008-hidden-write-prevention] is the hidden write prevention fixture
+  + [fixture_kind] is hidden_write_prevention
+  + [contract_ref] is HiddenWritePreventionProof
+  + [input_shape] is graph path whose output is not declared in output_record_ref_set or lineage_edge_set
+  + [expected_outcome] is fault_output
+  + [expected_output_record_set] is fault_record hidden_write_attempt
+  + [acceptance_status] is faulted
+
+& [FixtureCase: F3X-009-false-ready-checkpoint] is the false-ready checkpoint fixture
+  + [fixture_kind] is false_ready_checkpoint
+  + [contract_ref] is CheckpointPolicy and OperatorTraceRuntimeProofContractV1
+  + [input_shape] is checkpoint state attempting to resume or open gate from stale or non-authority state
+  + [expected_outcome] is fault_output
+  + [expected_output_record_set] is fault_record checkpoint_authority_confusion and no next gate
+  + [acceptance_status] is faulted
+
+& [FixtureCase: F3X-010-completion-gate-refusal] is the completion gate refusal fixture
+  + [fixture_kind] is completion_gate_refusal
+  + [contract_ref] is CompletionGateTraceAssertionSet
+  + [input_shape] is runtime path missing support_delta, requirement_delta, stale review, contradiction review, or coordination claim review
+  + [expected_outcome] is blocked_output
+  + [expected_output_record_set] is closed next gate and completion_review blocked
+  + [acceptance_status] is blocked
+
+& [FixturePlanAcceptanceChecklist] is the FSC3-S05 verification checklist
+  + [fixture_case_count] is 10
+  + [contract_coverage] is WholeFieldPlannerGraphContractV1
+  + [contract_coverage] is CheckpointPolicy
+  + [contract_coverage] is SOPFirstInterruptResumeContractV1
+  + [contract_coverage] is OperatorTraceRuntimeProofContractV1
+  + [contract_coverage] is HiddenWritePreventionProof
+  + [contract_coverage] is CompletionGateTraceAssertionSet
+  + [forbidden_scope_absent] is executable runtime implementation
+  + [forbidden_scope_absent] is executable test harness implementation
+  + [forbidden_scope_absent] is surface implementation
+  + [forbidden_scope_absent] is operations control
+
+  = must: accept FSC3-S05 only when all fixture cases are indexed and mapped to expected records

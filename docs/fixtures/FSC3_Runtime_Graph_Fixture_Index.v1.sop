@@ -1,0 +1,103 @@
+Subject: FSC3 Runtime Graph Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: 291b490b-70ca-484e-8d56-33893d48bd03
+
+@ [fixture_plan] docs/fixtures/FSC3_Runtime_Graph_Fixture_Plan.v1.sop
+@ [graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [interrupt_contract] docs/runtime/SOP_First_Interrupt_Resume_Contract.v1.sop
+@ [trace_proof_contract] docs/runtime/Operator_Trace_Runtime_Proof_Contract.v1.sop
+
+& [FixtureIndex: FSC3RuntimeGraphFixtureIndexV1] is the traversal index for FSC3 runtime graph proof fixtures
+  + [fixture_index_id] is fsc3-runtime-graph-fixture-index-v1
+  + [fixture_index_uuid] is 291b490b-70ca-484e-8d56-33893d48bd03
+  + [slice_id] is FSC3-S05
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [index_scope] is fixture lookup by fixture id, fixture kind, contract, expected outcome, and acceptance status
+
+  = must: map every planned fixture case to an FSC3 graph, checkpoint, interrupt, trace, or gate proof target
+  - never: treat this index as executable test code
+
+& [FixtureIndexEntry: F3X-001] is valid_graph_pass
+  + [fixture_case_ref] is F3X-001-valid-graph-pass
+  + [contract_ref] is WholeFieldPlannerGraphContractV1 and OperatorTraceRuntimeProofContractV1
+  + [expected_outcome] is success
+  + [expected_primary_output] is operator_trace, proof_result, completion_review, and terminal_success
+  + [acceptance_status] is accepted
+
+& [FixtureIndexEntry: F3X-002] is blocked_readiness
+  + [fixture_case_ref] is F3X-002-blocked-readiness
+  + [contract_ref] is WholeFieldPlannerGraphContractV1
+  + [expected_outcome] is blocked_output
+  + [expected_primary_output] is terminal_blocked plus operator_trace and support_gap or blocked completion_review
+  + [acceptance_status] is blocked
+
+& [FixtureIndexEntry: F3X-003] is stale_checkpoint
+  + [fixture_case_ref] is F3X-003-stale-checkpoint
+  + [contract_ref] is CheckpointPolicy and CheckpointTraceAssertionSet
+  + [expected_outcome] is stale_input
+  + [expected_primary_output] is stale_projection and no resume
+  + [acceptance_status] is stale
+
+& [FixtureIndexEntry: F3X-004] is ambiguous_interrupt
+  + [fixture_case_ref] is F3X-004-ambiguous-interrupt
+  + [contract_ref] is SOPFirstInterruptResumeContractV1
+  + [expected_outcome] is sop_first_interrupt
+  + [expected_primary_output] is InterruptContextPacket, operator_trace, and no hidden mutation
+  + [acceptance_status] is interrupted
+
+& [FixtureIndexEntry: F3X-005] is authority_conflict_interrupt
+  + [fixture_case_ref] is F3X-005-authority-conflict-interrupt
+  + [contract_ref] is SOPFirstInterruptResumeContractV1
+  + [expected_outcome] is sop_first_interrupt
+  + [expected_primary_output] is InterruptContextPacket and operator_trace
+  + [acceptance_status] is interrupted
+
+& [FixtureIndexEntry: F3X-006] is contested_claim_interrupt
+  + [fixture_case_ref] is F3X-006-contested-claim-interrupt
+  + [contract_ref] is WholeFieldPlannerGraphContractV1 and SOPFirstInterruptResumeContractV1
+  + [expected_outcome] is sop_first_interrupt or blocked_output
+  + [expected_primary_output] is terminal_interrupt or terminal_blocked plus operator_trace
+  + [acceptance_status] is interrupted
+
+& [FixtureIndexEntry: F3X-007] is faulted_operator_trace
+  + [fixture_case_ref] is F3X-007-faulted-operator-trace
+  + [contract_ref] is OperatorTraceRuntimeProofContractV1
+  + [expected_outcome] is fault_output
+  + [expected_primary_output] is fault_record and terminal_fault
+  + [acceptance_status] is faulted
+
+& [FixtureIndexEntry: F3X-008] is hidden_write_prevention
+  + [fixture_case_ref] is F3X-008-hidden-write-prevention
+  + [contract_ref] is HiddenWritePreventionProof
+  + [expected_outcome] is fault_output
+  + [expected_primary_output] is fault_record hidden_write_attempt
+  + [acceptance_status] is faulted
+
+& [FixtureIndexEntry: F3X-009] is false_ready_checkpoint
+  + [fixture_case_ref] is F3X-009-false-ready-checkpoint
+  + [contract_ref] is CheckpointPolicy and OperatorTraceRuntimeProofContractV1
+  + [expected_outcome] is fault_output
+  + [expected_primary_output] is fault_record checkpoint_authority_confusion and no next gate
+  + [acceptance_status] is faulted
+
+& [FixtureIndexEntry: F3X-010] is completion_gate_refusal
+  + [fixture_case_ref] is F3X-010-completion-gate-refusal
+  + [contract_ref] is CompletionGateTraceAssertionSet
+  + [expected_outcome] is blocked_output
+  + [expected_primary_output] is closed next gate and completion_review blocked
+  + [acceptance_status] is blocked
+
+& [FixtureIndexCoverage] is the coverage record for FSC3RuntimeGraphFixtureIndexV1
+  + [fixture_count] is 10
+  + [covered_fixture_kind] is valid_graph_pass
+  + [covered_fixture_kind] is blocked_readiness
+  + [covered_fixture_kind] is stale_checkpoint
+  + [covered_fixture_kind] is ambiguous_interrupt
+  + [covered_fixture_kind] is authority_conflict_interrupt
+  + [covered_fixture_kind] is contested_claim_interrupt
+  + [covered_fixture_kind] is faulted_operator_trace
+  + [covered_fixture_kind] is hidden_write_prevention
+  + [covered_fixture_kind] is false_ready_checkpoint
+  + [covered_fixture_kind] is completion_gate_refusal
+
+  = must: reject FSC3-S05 if fixture_count is less than 10
