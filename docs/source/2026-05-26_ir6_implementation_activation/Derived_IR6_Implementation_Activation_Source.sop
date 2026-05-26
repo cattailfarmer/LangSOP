@@ -1,0 +1,51 @@
+Subject: Derived IR6 Implementation Activation Source
+Date: 2026-05-26
+Source UUID: bafae9cf-69c2-4845-8b4b-c0c3ffc5078a
+
+@ [activation_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR6_Completion_Review.v1.sop
+@ [work_state] docs/state/IR6_Work_State.v1.sop
+
+& [DerivedIR6ImplementationActivationSource] is the preserved source for minting IR6 implementation activation slices
+  + [source_basis] is accepted IR6 final planning completion
+  + [source_basis] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [source_basis] is docs/reviews/IR6_Completion_Review.v1.sop
+  + [source_intent] is convert the accepted future implementation activation shape into dependency-closed implementation activation slices
+  + [target_chunk] is IR6 coordination mailbox projection prototype implementation activation
+  + [source_status] is preserved_before_canonical_processing
+
+  = must: preserve accepted IR6 final planning outputs as boundary inputs
+  = must: mint implementation activation slices before creating code, fixture files, expected ledgers, mailbox files, generated outputs, dependencies, package metadata changes, adapters, transports, UI, operations simulator code, agent dispatch, operations control, or live machine control
+  = must: open only IR6-IA01 after minting review acceptance
+  = must: keep future bounded fixture, model, runner, generated-output proof, no-mailbox-IO proof, and test slices GPT-5.3-Codex-Spark-suitable only after activation boundaries isolate scope
+  = must: keep activation minting, dependency decisions, adapter boundaries, transport boundaries, mailbox IO boundaries, generated-output boundaries, dispatch boundaries, operations safety changes, and live-control boundaries under deeper reasoning
+  - never: treat this source as implementation permission by itself
+
+& [DerivedIR6ImplementationActivationShape] is the intended activation slice shape from the accepted IR6 activation pack
+  + [future_activation_slice] is IR6-IA01 bounded coordination implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR6-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR6-IA03 claim identity and work-boundary model implementation
+  + [future_activation_slice] is IR6-IA04 mailbox carrier and conflict review model implementation
+  + [future_activation_slice] is IR6-IA05 generated path policy and fixture runner implementation
+  + [future_activation_slice] is IR6-IA06 contract tests and generated-output/no-mailbox-IO proof
+  + [future_activation_slice] is IR6-IA07 mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [future_activation_slice] is IR6-IA08 implementation completion review and proof pack
+
+& [DerivedIR6ImplementationActivationSafetyBoundary] is the safety boundary preserved for activation slice minting
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [mailbox_file_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [mailbox_IO_initial_state] is gated
+  + [UI_implementation_initial_state] is gated
+  + [operations_simulator_initial_state] is gated
+  + [agent_dispatch_initial_state] is unauthorized
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+
+  = must: preserve FSC5 dry-run-only and live-control prohibition in every future coordination mailbox implementation slice

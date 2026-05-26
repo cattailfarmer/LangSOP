@@ -1,0 +1,137 @@
+Subject: IR6 Implementation Activation Slices V1
+Date: 2026-05-26
+Slice Surface UUID: 7fe65379-134a-4882-9e25-a9f0224ab7ee
+
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir6_implementation_activation/Source_Document_Manifest.sop
+@ [activation_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR6_Completion_Review.v1.sop
+
+& [IR6ImplementationActivationSliceSurfaceV1] is the executable slice surface for IR6 coordination mailbox projection prototype implementation activation
+  + [chunk_ref] is IR6 coordination mailbox projection prototype implementation activation
+  + [chunk_boundary] is activation boundary, fixture material, claim identity and work-boundary models, mailbox carrier and conflict review models, generated path and fixture runner implementation, contract tests, generated-output and no-mailbox-IO proof, dependency and mailbox IO decision, proof pack, and completion review
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 2BAD44F39FFA06F60EF2C88C6BD096474D6F632FF9DE3B0BE849B72887A1E947
+  + [accepted_boundary_input] is docs/reviews/IR6_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 818A43AE60E2AF047A78DDB02912403E6A5F4D652351EBFE5FF43113140270AA
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR6-IA01
+  + [gated_slice_set] is IR6-IA02, IR6-IA03, IR6-IA04, IR6-IA05, IR6-IA06, IR6-IA07, and IR6-IA08
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR6-IA01 before creating fixture source files, expected ledgers, implementation code, generated outputs, dependency changes, mailbox files, adapters, transports, UI, operation simulator code, agent dispatch, operations control, or live machine control
+  = must: run completed-work review after each IR6 implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes coordination claims, work-boundary projections, rendezvous packets, mailbox carriers, mailbox paths, read cursors, adapter state, carrier state, runtime graph output, generated projection, dry-run output, or human approval display to source authority
+
+& [FinalWorkSlice: IR6-IA01-BoundedCoordinationImplementationActivationBoundaryAndDependencyDecision] is ready
+  + [slice_id] is IR6-IA01
+  + [slice_name] is bounded coordination implementation activation boundary and dependency decision
+  + [chunk_ref] is IR6 coordination mailbox projection prototype implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR6 final planning completion accepted
+  + [expected_output_set] is docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is activation boundary confirms file inventory, fixture inventory, expected ledger inventory, generated-output roots, dependency boundary, mailbox IO boundary, adapter boundary, transport boundary, command plan, and proof gates without creating implementation code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, dependency decision, mailbox IO boundary, transport boundary, and dispatch boundary control future implementation authority
+  + [forbidden_scope] is implementation code creation, fixture source creation, expected ledger creation, mailbox file creation, generated output creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-IA02-FixtureSourceAndExpectedLedgerSeedMaterial] is gated
+  + [slice_id] is IR6-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [activation_gate] is IR6-IA01 accepted
+  + [expected_output_set] is tests/fixtures/sop/ir6_coordination_mailbox/
+  + [expected_output_set] is tests/fixtures/expected/ir6_coordination_mailbox/
+  + [expected_output_set] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [verification_oracle] is tracked fixture source and expected ledgers cover all 13 accepted fixture cases without implementation code, mailbox files, or generated outputs
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR6-IA01 acceptance
+  + [model_route_reason] is fixture and expected-ledger material is bounded by accepted fixture plan, implementation plan, and activation boundary
+  + [forbidden_scope] is implementation code creation, mailbox file creation, generated output creation, dependency installation, adapter implementation, transport implementation, UI implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-IA03-ClaimIdentityAndWorkBoundaryModelImplementation] is gated
+  + [slice_id] is IR6-IA03
+  + [slice_name] is claim identity and work-boundary model implementation
+  + [activation_gate] is IR6-IA02 accepted
+  + [expected_output_set] is src/langsop/coordination/__init__.py
+  + [expected_output_set] is src/langsop/coordination/claims.py
+  + [verification_oracle] is models validate claim identity envelope, work-boundary projection envelope, conversation identity, claimant identity, authority basis, freshness, compatibility, refusal, and no-authority-promotion behavior over accepted fixtures
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR6-IA02 acceptance
+  + [model_route_reason] is model implementation is bounded by accepted contracts and fixture material
+  + [forbidden_scope] is mailbox carrier implementation, conflict review implementation, fixture runner implementation, generated output creation, dependency installation, adapter implementation, transport implementation, mailbox IO, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-IA04-MailboxCarrierAndConflictReviewModelImplementation] is gated
+  + [slice_id] is IR6-IA04
+  + [slice_name] is mailbox carrier and conflict review model implementation
+  + [activation_gate] is IR6-IA03 accepted
+  + [expected_output_set] is src/langsop/coordination/mailbox.py
+  + [expected_output_set] is src/langsop/coordination/reviews.py
+  + [expected_output_set] is src/langsop/coordination/action_routes.py
+  + [expected_output_set] is src/langsop/coordination/__init__.py
+  + [verification_oracle] is mailbox carrier and conflict review models produce rendezvous, inbox, read cursor, stale claim, human override, completion gate, and refusal records without mailbox IO, dispatch, source mutation, or authority promotion
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR6-IA03 acceptance unless mailbox carrier or conflict-review semantics change
+  + [model_route_reason] is implementation is bounded when accepted claim models and fixtures are stable; semantic changes require deeper reasoning
+  + [forbidden_scope] is fixture runner implementation, generated output creation, dependency installation, adapter transport implementation, mailbox file IO, UI implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-IA05-GeneratedPathPolicyAndFixtureRunnerImplementation] is gated
+  + [slice_id] is IR6-IA05
+  + [slice_name] is generated path policy and fixture runner implementation
+  + [activation_gate] is IR6-IA04 accepted
+  + [expected_output_set] is src/langsop/coordination/generated_paths.py
+  + [expected_output_set] is src/langsop/coordination/fixture_runner.py
+  + [verification_oracle] is fixture runner reads only accepted fixture source and expected ledgers, writes only generated projection/report outputs under accepted roots, and refuses path escapes, mailbox paths, source paths, and platform mailbox mutation
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR6-IA04 acceptance
+  + [model_route_reason] is runner and generated path policy are bounded by accepted implementation plan
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, mailbox IO implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-IA06-ContractTestsAndGeneratedOutputNoMailboxIOProof] is gated
+  + [slice_id] is IR6-IA06
+  + [slice_name] is contract tests and generated-output/no-mailbox-IO proof
+  + [activation_gate] is IR6-IA05 accepted
+  + [expected_output_set] is tests/test_ir6_coordination_mailbox_contracts.py
+  + [expected_output_set] is docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+  + [verification_oracle] is tests cover all 13 fixture cases, no-authority promotion, path refusal, generated output disposability, and proof that platform mailboxes, inboxes, message files, read cursors, source docs, and expected ledgers are not mutated by projection code or tests
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR6-IA05 acceptance
+  + [model_route_reason] is tests, generated-output proof, and no-mailbox-IO proof are bounded by accepted implementation and fixture runner behavior
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, mailbox IO implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-IA07-MailboxIOTransportAdapterAndDependencyDecisionOrDeferralReview] is gated
+  + [slice_id] is IR6-IA07
+  + [slice_name] is mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [activation_gate] is IR6-IA06 accepted
+  + [expected_output_set] is docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+  + [verification_oracle] is decision either defers all mailbox IO, transport, adapter, UI, and external dependencies or explicitly authorizes narrowly scoped future work without live transports, UI launch, agent dispatch, operations control, mailbox authority promotion, or source authority promotion
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, mailbox IO, adapter, transport, UI, dispatch, and safety boundaries affect authority and live-control semantics
+  + [forbidden_scope] is unreviewed dependency installation, mailbox IO implementation, adapter transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR6-IA08-ImplementationCompletionReviewAndProofPack] is gated
+  + [slice_id] is IR6-IA08
+  + [slice_name] is implementation completion review and proof pack
+  + [activation_gate] is IR6-IA07 accepted
+  + [expected_output_set] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [verification_oracle] is proof pack accepts only bounded implementation outputs with hashes, fixture and expected ledger ledgers, generated-output proof, no-mailbox-IO proof, dependency decision, command evidence, support deltas, requirement deltas, and no authority, dispatch, mailbox IO, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream IR7 readiness
+  + [forbidden_scope] is new implementation work, dependency installation, adapter implementation, transport implementation, mailbox IO implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR6ImplementationActivationClosureReview] is the dependency audit for minted IR6 implementation activation slices
+  + [IR6_activation_pack_status] is accepted
+  + [IR6_completion_review_status] is accepted
+  + [current_ready_slice_set] is IR6-IA01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR6-IA02 through IR6-IA08 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

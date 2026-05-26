@@ -1,0 +1,24 @@
+Subject: IR6 Implementation Activation Source Document Manifest
+Date: 2026-05-26
+Manifest UUID: f5fd19c1-d3a7-43f7-a695-bf2aafb6f16e
+
+@ [source_document] docs/source/2026-05-26_ir6_implementation_activation/Derived_IR6_Implementation_Activation_Source.sop
+@ [activation_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR6_Completion_Review.v1.sop
+@ [work_state] docs/state/IR6_Work_State.v1.sop
+
+& [SourceDocumentManifest: IR6ImplementationActivation] is the source manifest for IR6 implementation activation slice minting
+  + [manifest_uuid] is f5fd19c1-d3a7-43f7-a695-bf2aafb6f16e
+  + [source_document] is docs/source/2026-05-26_ir6_implementation_activation/Derived_IR6_Implementation_Activation_Source.sop
+  + [source_document_sha256] is 94468AA39D9D5994036B55C54B2FC0E5D668DD9A221ED5B60966F312B6DF9BC6
+  + [boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [boundary_input_sha256] is 2BAD44F39FFA06F60EF2C88C6BD096474D6F632FF9DE3B0BE849B72887A1E947
+  + [boundary_input] is docs/reviews/IR6_Completion_Review.v1.sop
+  + [boundary_input_sha256] is 818A43AE60E2AF047A78DDB02912403E6A5F4D652351EBFE5FF43113140270AA
+  + [boundary_input] is docs/state/IR6_Work_State.v1.sop
+  + [boundary_input_sha256] is 99E8F86A6075D5556CEC317D40E4EFA23EF6EC29860AFEBBCAEC473FDDA14A11
+  + [manifest_scope] is IR6 implementation activation slice minting only
+
+  = must: preserve the source document unchanged as provenance
+  = must: treat this manifest as stale if any listed source or boundary input hash changes
+  = must: run canonical processing before trusting activation slices as processed authority

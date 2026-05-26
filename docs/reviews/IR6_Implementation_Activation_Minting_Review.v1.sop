@@ -1,0 +1,113 @@
+Subject: IR6 Implementation Activation Minting Review V1
+Date: 2026-05-26
+Review UUID: 9a5f1e81-c760-430e-a226-01fed5c6d21c
+
+@ [source_manifest] docs/source/2026-05-26_ir6_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR6_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR6-Implementation-Activation-Minting] is the completed-work review for minting IR6 implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir6_implementation_activation/Derived_IR6_Implementation_Activation_Source.sop
+  + [completed_output_sha256] is 94468AA39D9D5994036B55C54B2FC0E5D668DD9A221ED5B60966F312B6DF9BC6
+  + [completed_output] is docs/source/2026-05-26_ir6_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 464E4F5D12B229FFC34B8E3FCE35F67ACB28D3A97AACC34E74294012EF6116EE
+  + [completed_output] is docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is 91361D5B3534CCFBC10CC9E10DAFF9173633CE843A518EA7C5E41CB009F6A564
+  + [completed_output] is docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is FBA6A6C893DE168ED2CAC9FE6E0E7BC98061C66BE4EB25E5EC9BB3D3D622D581
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6 implementation activation slice surface and open IR6-IA01
+  + [next_gate_result] is IR6-IA01 may open
+  + [next_model_route] is requires deeper reasoning for IR6-IA01 activation boundary, dependency decision, mailbox IO boundary, transport boundary, and dispatch boundary
+
+  = must: treat this review as gate-opening evidence for IR6-IA01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, IR6 activation pack, IR6 completion review, or IR6 work state changes
+  = must: keep fixture source files, expected ledgers, implementation code, mailbox files, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control gated until explicit activation slices open them
+
+& [IR6ImplementationActivationMintingVerification] is the verification result for IR6 implementation activation slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [slice_count] is 8
+  + [current_ready_slice] is IR6-IA01
+  + [gated_slice] is IR6-IA02
+  + [gated_slice] is IR6-IA03
+  + [gated_slice] is IR6-IA04
+  + [gated_slice] is IR6-IA05
+  + [gated_slice] is IR6-IA06
+  + [gated_slice] is IR6-IA07
+  + [gated_slice] is IR6-IA08
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [mailbox_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6ImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: IR6-Implementation-Activation-Minting] is the support delta produced by minted IR6 implementation activation slices
+  + [new_support_record] is IR6-IA01 may define bounded coordination implementation activation boundary and dependency decision
+  + [new_support_record] is IR6-IA02 through IR6-IA08 remain gated until upstream completion reviews accept each output
+  + [new_support_record] is Spark-suitable IR6 implementation work is limited to bounded IR6-IA02 through IR6-IA06 work after each upstream gate is accepted
+  + [new_support_record] is dependency, mailbox IO, adapter, transport, dispatch, proof-pack, operations safety, and live-control boundary work remains deeper-reasoning work
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-Implementation-Activation-Minting] is the requirement delta produced by minted IR6 implementation activation slices
+  + [requirement_delta] is IR6-IA01 requires deeper reasoning
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, mailbox file, generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, operations simulator, agent dispatch, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every IR6 implementation activation slice
+
+& [FaultReview: IR6-Implementation-Activation-Minting] is the fault review for minted IR6 implementation activation slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [implementation_leak_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [mailbox_file_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6ImplementationActivationSlicesAccepted] is accepted
+    @ [support] [IR6ImplementationActivationMintingVerification]
+    @ [support] [SupportDelta: IR6-Implementation-Activation-Minting]
+    @ [support] [RequirementDelta: IR6-Implementation-Activation-Minting]
+    @ [support] [FaultReview: IR6-Implementation-Activation-Minting]
+
+& [NextSliceGate: IR6-IA01] is opened
+  + [opened_slice] is IR6-IA01 bounded coordination implementation activation boundary and dependency decision
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 2BAD44F39FFA06F60EF2C88C6BD096474D6F632FF9DE3B0BE849B72887A1E947
+  + [accepted_boundary_input] is docs/reviews/IR6_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 818A43AE60E2AF047A78DDB02912403E6A5F4D652351EBFE5FF43113140270AA
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, dependency decision, mailbox IO boundary, transport boundary, and dispatch boundary control future implementation authority
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-IA01 next unless user redirects or a new fault invalidates this review

@@ -1,0 +1,82 @@
+Subject: LangSOP IR6 Implementation Activation Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir6_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR6_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR6ImplementationActivation] is the processed planning authority for IR6 implementation activation slices
+  + [canonical_uuid] is a2280fc2-af5f-4146-ac72-2a437ed748f4
+  + [source_manifest_uuid] is f5fd19c1-d3a7-43f7-a695-bf2aafb6f16e
+  + [slice_surface_uuid] is 7fe65379-134a-4882-9e25-a9f0224ab7ee
+  + [authority_scope] is IR6 implementation activation slice order, gates, expected outputs, model routing, dependency boundaries, generated-output boundaries, mailbox IO boundaries, adapter boundaries, transport boundaries, dispatch boundaries, operations safety limits, and proof pack requirements
+  + [implementation_scope] is activation slice minting only
+  + [depends_on] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Activation_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR6_Completion_Review.v1.sop
+
+  = must: use docs/slices/IR6_Implementation_Activation_Slices.v1.sop as the current IR6 implementation activation slice surface
+  = must: execute IR6-IA01 first
+  = must: run completion review after each IR6 implementation activation slice before opening the next gated slice
+  = must: keep agent dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to skip activation slices or directly implement code, fixtures, expected ledgers, mailbox files, generated outputs, dependencies, adapters, transports, UI, operations simulator code, agent dispatch, operations control, or live machine control
+
+& [CanonicalIR6ImplementationActivationSliceSet] is the final IR6 implementation activation slice sequence
+  + [slice] is IR6-IA01 bounded coordination implementation activation boundary and dependency decision
+  + [slice] is IR6-IA02 fixture source and expected-ledger seed material
+  + [slice] is IR6-IA03 claim identity and work-boundary model implementation
+  + [slice] is IR6-IA04 mailbox carrier and conflict review model implementation
+  + [slice] is IR6-IA05 generated path policy and fixture runner implementation
+  + [slice] is IR6-IA06 contract tests and generated-output/no-mailbox-IO proof
+  + [slice] is IR6-IA07 mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [slice] is IR6-IA08 implementation completion review and proof pack
+
+  = must: preserve this order unless completion review rebakes IR6 implementation activation
+
+& [CanonicalIR6ImplementationActivationGate] is the activation rule for IR6 implementation work
+  + [current_ready_slice] is IR6-IA01
+  + [gated_slice] is IR6-IA02 until IR6-IA01 accepted
+  + [gated_slice] is IR6-IA03 until IR6-IA02 accepted
+  + [gated_slice] is IR6-IA04 until IR6-IA03 accepted
+  + [gated_slice] is IR6-IA05 until IR6-IA04 accepted
+  + [gated_slice] is IR6-IA06 until IR6-IA05 accepted
+  + [gated_slice] is IR6-IA07 until IR6-IA06 accepted
+  + [gated_slice] is IR6-IA08 until IR6-IA07 accepted
+
+& [CanonicalIR6ImplementationActivationModelRouting] is the model-routing record
+  + [IR6-IA01] is requires deeper reasoning
+  + [IR6-IA02] is GPT-5.3-Codex-Spark-suitable after IR6-IA01 acceptance
+  + [IR6-IA03] is GPT-5.3-Codex-Spark-suitable after IR6-IA02 acceptance
+  + [IR6-IA04] is GPT-5.3-Codex-Spark-suitable after IR6-IA03 acceptance unless mailbox carrier or conflict-review semantics change
+  + [IR6-IA05] is GPT-5.3-Codex-Spark-suitable after IR6-IA04 acceptance
+  + [IR6-IA06] is GPT-5.3-Codex-Spark-suitable after IR6-IA05 acceptance
+  + [IR6-IA07] is requires deeper reasoning
+  + [IR6-IA08] is requires deeper reasoning
+
+  = must: keep activation boundary, dependency decisions, mailbox IO decisions, adapter and transport decisions, proof pack closure, operations safety changes, dispatch boundaries, and live-control boundaries under deeper reasoning
+  = must: treat bounded fixture, model, runner, generated-output proof, no-mailbox-IO proof, and test implementation as Spark-suitable only after upstream activation gates are accepted
+
+& [SatisfactionSignature: IR6ImplementationActivation] is the valid SJS satisfaction signature for the IR6 implementation activation slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 7cd08d66-89fc-4463-9c01-ee1c0e68516e
+  + [signed_subject] is docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir6_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is 94468AA39D9D5994036B55C54B2FC0E5D668DD9A221ED5B60966F312B6DF9BC6
+  + [source_sha256] is 464E4F5D12B229FFC34B8E3FCE35F67ACB28D3A97AACC34E74294012EF6116EE
+  + [source_sha256] is 2BAD44F39FFA06F60EF2C88C6BD096474D6F632FF9DE3B0BE849B72887A1E947
+  + [source_sha256] is 818A43AE60E2AF047A78DDB02912403E6A5F4D652351EBFE5FF43113140270AA
+  + [source_sha256] is 99E8F86A6075D5556CEC317D40E4EFA23EF6EC29860AFEBBCAEC473FDDA14A11
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR6_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, activation_pack_imported, completion_review_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, mailbox_IO_limits_preserved, dispatch_limits_preserved, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR6_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR6 implementation activation slices; no agent dispatch, operations control, or live machine control authorized
+
+& [RegistryRecord: IR6ImplementationActivation] is the durable identity ledger for the IR6 implementation activation slice surface
+  + [registry_uuid] is 81cd04a5-0edc-4398-9eae-79aaa3861934
+  + [manifest_node_uuid] is f5fd19c1-d3a7-43f7-a695-bf2aafb6f16e
+  + [canonical_node_uuid] is a2280fc2-af5f-4146-ac72-2a437ed748f4
+  + [slice_surface_uuid] is 7fe65379-134a-4882-9e25-a9f0224ab7ee
+  + [signature_uuid] is 7cd08d66-89fc-4463-9c01-ee1c0e68516e
+  + [closure_review_uuid] is 9a5f1e81-c760-430e-a226-01fed5c6d21c
