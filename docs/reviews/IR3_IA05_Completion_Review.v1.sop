@@ -1,0 +1,84 @@
+Subject: IR3 IA05 Completion Review V1
+Date: 2026-05-26
+Review UUID: 9a443a90-6f0f-436e-a128-92c3849e5522
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] src/langsop/operators/fixture_runner.py
+@ [previous_review] docs/reviews/IR3_IA04_Repair_Review.v1.sop
+
+& [CompletedWorkReview: IR3-IA05] is the completed-work review for IR3 fixture runner implementation
+  + [slice_id] is IR3-IA05
+  + [slice_name] is fixture runner implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/operators/fixture_runner.py
+  + [completed_output_sha256] is E1BAE288DFCDA30A6302F6666A8A763D32E6B2772A05C88BA71ABE35F91C91C5
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR3-IA04 repair acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-IA05 as fixture runner and generated path policy implementation
+  + [next_gate_result] is IR3-IA06 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA05 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR3-IA06 only
+  = must: rerun this review if fixture runner, runner implementation, fixture material, expected ledgers, generated output policy, or activation surface changes
+  = must: keep dependency installation, operations control, and live machine control gated
+
+& [IR3IA05Verification] is the verification result for fixture runner implementation
+  + [fixture_runner_module_created] is true
+  + [tracked_fixture_loader_present] is true
+  + [tracked_expected_ledger_loader_present] is true
+  + [fixture_source_to_runner_request_present] is true
+  + [generated_output_path_policy_present] is true
+  + [source_mutation_refusal_present] is true
+  + [fixture_comparison_report_present] is true
+  + [non_authority_warning_present] is true
+  + [generated_file_created_during_slice] is false
+  + [source_fixture_mutated] is false
+  + [expected_ledger_mutated] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [compile_result] is passed
+  + [baseline_test_result] is passed
+  + [fixture_corpus_smoke_result] is passed_for_12_fixture_sources_without_generated_artifact_creation
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3IA05VerificationSatisfied] is accepted
+    @ [support] src/langsop/operators/fixture_runner.py
+
+& [SupportDelta: IR3-IA05] is the support delta produced by accepted fixture runner implementation
+  + [new_support_record] is fixture runner loads tracked fixture source and expected ledgers, validates generated paths, refuses source mutation paths, runs accepted fixture requests through the pure runner, and returns comparison reports
+  + [new_support_record] is all 12 accepted fixture sources can be smoke-run without generated files and without promoting generated output to authority
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA05] is the requirement delta produced by accepted fixture runner implementation
+  + [requirement_delta] is IR3-IA06 may create tests/test_ir3_operator_harness_contracts.py and docs/reviews/IR3_Operator_Harness_Generated_Output_Proof.v1.sop
+  + [requirement_delta] is dependency installation, operations control, and live machine control remain unauthorized by IR3-IA05
+  + [requirement_delta] is no rebake required before IR3-IA06
+
+& [FaultReview: IR3-IA05] is the fault review for fixture runner implementation
+  + [forbidden_external_dependency_found] is false
+  + [unlisted_code_file_created] is false
+  + [generated_file_creation_during_slice_found] is false
+  + [source_mutation_leak_found] is false
+  + [expected_ledger_mutation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3IA05Accepted] is accepted
+    @ [support] [IR3IA05Verification]
+    @ [support] [SupportDelta: IR3-IA05]
+    @ [support] [RequirementDelta: IR3-IA05]
+    @ [support] [FaultReview: IR3-IA05]
+
+& [NextSliceGate: IR3-IA06] is opened
+  + [opened_slice] is IR3-IA06 contract test integration and generated-output proof
+  + [accepted_boundary_input] is src/langsop/operators/fixture_runner.py
+  + [accepted_boundary_input_sha256] is E1BAE288DFCDA30A6302F6666A8A763D32E6B2772A05C88BA71ABE35F91C91C5
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA05 acceptance
+  + [model_route_reason] is test integration and proof update are bounded by accepted fixtures and implementation outputs
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-IA06 next unless user redirects or a new fault invalidates this review
