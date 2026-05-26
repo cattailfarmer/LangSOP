@@ -1,0 +1,66 @@
+Subject: IR3 Operator Harness Fixture Index V1
+Date: 2026-05-26
+Fixture Index UUID: 8910a35d-6625-4dde-87d2-29dc045971c7
+
+@ [activation_boundary] docs/implementation/IR3_Bounded_Implementation_Activation_Boundary.v1.sop
+@ [fixture_plan] docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+
+& [IR3OperatorHarnessFixtureIndexV1] is the fixture index for IR3-IA02 fixture source and expected-ledger seed material
+  + [slice_id] is IR3-IA02
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR3-IA01 acceptance
+  + [fixture_source_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [fixture_expected_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [fixture_generated_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [fixture_status] is tracked_fixture_authority_after_completion_review
+  + [generated_output_status] is projection_only
+
+  = must: keep generated outputs disposable and ignored
+  = must: keep contracts, runner, fixture runner, generated traces, and tests gated until later IR3 implementation activation slices open them
+  - never: treat generated traces, reports, manifests, caches, fixture outputs, or runtime state as source authority
+
+& [FixtureCaseIndex] is the indexed fixture case set
+  + [fixture_case] is valid_contract_request_success
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/valid_contract_request_success.sop
+    + [expected_status] is success_operator_result_and_trace
+  + [fixture_case] is stale_authority_input_refusal
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/stale_authority_input_refusal.sop
+    + [expected_status] is stale_refusal_no_success
+  + [fixture_case] is missing_contract_version_refusal
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/missing_contract_version_refusal.sop
+    + [expected_status] is blocked_missing_contract_version
+  + [fixture_case] is undeclared_output_kind_fault
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/undeclared_output_kind_fault.sop
+    + [expected_status] is fault_operator_contract_violation
+  + [fixture_case] is generated_projection_as_authority_fault
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/generated_projection_as_authority_fault.sop
+    + [expected_status] is fault_generated_trace_authority_confusion
+  + [fixture_case] is ambiguous_input_identity_interrupt
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/ambiguous_input_identity_interrupt.sop
+    + [expected_status] is sop_first_interrupt_ambiguous_identity
+  + [fixture_case] is unsupported_scope_refusal
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/unsupported_scope_refusal.sop
+    + [expected_status] is blocked_unsupported_scope
+  + [fixture_case] is unsafe_operations_request_fault
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/unsafe_operations_request_fault.sop
+    + [expected_status] is fault_unsupported_operations_control
+  + [fixture_case] is invalid_input_shape_fault
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/invalid_input_shape_fault.sop
+    + [expected_status] is fault_invalid_input_shape
+  + [fixture_case] is deterministic_replay_mismatch_fault
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/deterministic_replay_mismatch_fault.sop
+    + [expected_status] is fault_deterministic_replay_mismatch
+  + [fixture_case] is generated_output_path_escape_refusal
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/generated_output_path_escape_refusal.sop
+    + [expected_status] is blocked_generated_output_path_escape
+  + [fixture_case] is source_mutation_refusal
+    + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/source_mutation_refusal.sop
+    + [expected_status] is blocked_source_mutation_refusal
+
+& [ExpectedLedgerIndex] is the expected-output ledger set for IR3-IA02
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/operator_trace_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/runner_refusal_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/fault_and_interrupt_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/generated_output_policy_expected.sop
+
+  = must: keep ledgers human-reviewable and independent of generated trace files

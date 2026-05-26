@@ -1,0 +1,13 @@
+Subject: IR3 Fixture Source Deterministic Replay Mismatch Fault
+Date: 2026-05-26
+
+& [IR3FixtureSource: deterministic_replay_mismatch_fault] is an operator harness fixture source
+  + [fixture_case] is deterministic_replay_mismatch_fault
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [replay_identity_state] is unchanged
+  + [observed_replay_outcome] is changed
+  + [refusal_allowed] is true
+
+  = expect: fault_output
+  = expect: fault_code is deterministic_replay_mismatch

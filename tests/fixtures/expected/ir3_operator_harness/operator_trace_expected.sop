@@ -1,0 +1,29 @@
+Subject: IR3 Operator Trace Expected Ledger
+Date: 2026-05-26
+
+& [ExpectedOperatorTraceLedger: IR3OperatorHarness] is the expected trace ledger for success-oriented fixture cases
+  + [fixture_id] is valid_contract_request_success
+  + [expected_operator_contract_id] is contract_driven_operator_runner
+  + [expected_operator_contract_version] is v1
+  + [expected_outcome_kind] is success
+  + [expected_output_kind] is operator_result
+  + [expected_trace_schema_version] is ir3-operator-trace-event-v1
+  + [expected_trace_status] is generated_projection_only
+  + [expected_non_authority_warning] is present
+  + [expected_generated_output_ref_state] is present_or_empty_but_declared
+  + [acceptance_status] is expected
+
+& [TraceIdentityRequirementSet] is the expected identity field set for all operator traces
+  + [required_trace_field] is trace_id
+  + [required_trace_field] is trace_uuid
+  + [required_trace_field] is run_id
+  + [required_trace_field] is event_id
+  + [required_trace_field] is slice_id
+  + [required_trace_field] is operator_contract_id
+  + [required_trace_field] is operator_contract_version
+  + [required_trace_field] is operator_request_ref
+  + [required_trace_field] is input_ref_set
+  + [required_trace_field] is authority_basis_ref_set
+  + [required_trace_field] is source_ref_set
+  + [required_trace_field] is outcome_kind
+  + [required_trace_field] is non_authority_warning

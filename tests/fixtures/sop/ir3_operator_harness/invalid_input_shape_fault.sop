@@ -1,0 +1,12 @@
+Subject: IR3 Fixture Source Invalid Input Shape Fault
+Date: 2026-05-26
+
+& [IR3FixtureSource: invalid_input_shape_fault] is an operator harness fixture source
+  + [fixture_case] is invalid_input_shape_fault
+  + [requested_operator_id] is missing
+  + [requested_operator_version] is missing
+  + [input_shape_state] is invalid
+  + [refusal_allowed] is true
+
+  = expect: fault_output
+  = expect: fault_code is invalid_input_shape

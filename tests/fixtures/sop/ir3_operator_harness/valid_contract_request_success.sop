@@ -1,0 +1,17 @@
+Subject: IR3 Fixture Source Valid Contract Request Success
+Date: 2026-05-26
+
+& [IR3FixtureSource: valid_contract_request_success] is an operator harness fixture source
+  + [fixture_case] is valid_contract_request_success
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [requested_outcome_kind] is success
+  + [requested_output_kind] is operator_result
+  + [authority_basis_state] is current
+  + [input_identity_state] is resolved
+  + [generated_output_policy_state] is accepted
+  + [refusal_allowed] is true
+  + [unsafe_operation_requested] is false
+
+  = expect: operator_result produced
+  = expect: operator_trace produced with non_authority_warning

@@ -1,0 +1,129 @@
+Subject: IR3 IA02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 23754bf3-25f9-406a-a463-3989b4edaa54
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/fixtures/IR3_Operator_Harness_Fixture_Index.v1.sop
+@ [completed_output] tests/fixtures/sop/ir3_operator_harness/
+@ [completed_output] tests/fixtures/expected/ir3_operator_harness/
+@ [activation_boundary] docs/implementation/IR3_Bounded_Implementation_Activation_Boundary.v1.sop
+@ [previous_review] docs/reviews/IR3_IA01_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR3-IA02] is the completed-work review for IR3 fixture source and expected-ledger seed material
+  + [slice_id] is IR3-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/fixtures/IR3_Operator_Harness_Fixture_Index.v1.sop
+  + [completed_output_sha256] is EC8B213C52FADBCC70F26EE41644052E2F87E8A3F4092773B3DC8C8A0C16E662
+  + [completed_fixture_source_count] is 12
+  + [completed_expected_ledger_count] is 4
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR3-IA01 acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-IA02 fixture source, expected ledgers, and fixture index as bounded seed material for contracts and trace model implementation
+  + [next_gate_result] is IR3-IA03 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA02 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR3-IA03 only
+  = must: rerun this review if fixture source, expected ledgers, fixture index, activation boundary, or IR3 implementation activation surface changes
+  = must: keep generated traces, implementation code outside IR3-IA03 scope, tests, dependencies, operations control, and live machine control gated until their specific slices open
+
+& [IR3IA02FixtureDigestSet] is the accepted fixture and expected-ledger hash ledger
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/ambiguous_input_identity_interrupt.sop
+  + [fixture_source_sha256] is E04271CAA85DF6938EEFA9DCE712EEBA1F9CDAC3BD3A11EF6F95C28602FD4D55
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/deterministic_replay_mismatch_fault.sop
+  + [fixture_source_sha256] is D5ABDC5AFF3791C50236DE4983A4462D64B4416DFEBA2D413447761B3A586500
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/generated_output_path_escape_refusal.sop
+  + [fixture_source_sha256] is 2CFEEE41239593128B7C20B31C1966F4E820E44CF099FB6450C840CDB7FEE5CC
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/generated_projection_as_authority_fault.sop
+  + [fixture_source_sha256] is A771B271419E264442AA5A7561E2E95401FEB51154A515DDCB2C5C23372F3F41
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/invalid_input_shape_fault.sop
+  + [fixture_source_sha256] is E6878F88A0110753B9E43E3A29378130E59256D4CA0B1017FE9C390E05576099
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/missing_contract_version_refusal.sop
+  + [fixture_source_sha256] is F529AC8F2368C16AD77B0F15A221CFFB60C8871447D03549AB6E9CB48164809B
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/source_mutation_refusal.sop
+  + [fixture_source_sha256] is B6420B666228BC21A820F058EC34E4C699E9A94368C753C2AFEAAECFC31BFF97
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/stale_authority_input_refusal.sop
+  + [fixture_source_sha256] is 9C1A41C39F48CF6478189796B2626A7A219DDA6907CCBCDD5FAA962A742355AD
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/undeclared_output_kind_fault.sop
+  + [fixture_source_sha256] is 0FEC62B6CB88289136A4AEB8B68A00E216B06725B443A6F6438BDD35113E1D82
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/unsafe_operations_request_fault.sop
+  + [fixture_source_sha256] is DBFF08350301831F9C5A3491D0D049058D07F37AF178F7410F60D87F0C6AE7F7
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/unsupported_scope_refusal.sop
+  + [fixture_source_sha256] is DC27DBED98726BCCFBF959134309B890CD26074F6604F94EB282D3137D7BD9BA
+  + [fixture_source] is tests/fixtures/sop/ir3_operator_harness/valid_contract_request_success.sop
+  + [fixture_source_sha256] is 9A47FB1D978D7EFA128D84017455D582DA996DF449369757DB54519790E52D16
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/fault_and_interrupt_expected.sop
+  + [expected_ledger_sha256] is 51905D229E5D3884B63957A51827B9EF7D78E86054D1F704DA709232A38B9F94
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/generated_output_policy_expected.sop
+  + [expected_ledger_sha256] is A09AE0EF70CB80AB3D2C22FBBB0563D87D4BBA73E1A274DDE077423379ADBF02
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/operator_trace_expected.sop
+  + [expected_ledger_sha256] is 0C030A97B0B2E351E7A9DE1FBFAC1E63C761A102C896B066CDF3DC7324399F64
+  + [expected_ledger] is tests/fixtures/expected/ir3_operator_harness/runner_refusal_expected.sop
+  + [expected_ledger_sha256] is 41E65E8449B26D749ED19D0A029C9785272DB29507685C4146E12820D6D4528E
+
+  = must: mark IR3-IA02 stale if any listed hash changes
+
+& [IR3IA02Verification] is the verification result for fixture source and expected-ledger seed material
+  + [fixture_index_present] is true
+  + [fixture_source_count] is 12
+  + [expected_ledger_count] is 4
+  + [valid_success_case_present] is true
+  + [stale_refusal_case_present] is true
+  + [missing_contract_version_case_present] is true
+  + [undeclared_output_fault_case_present] is true
+  + [generated_projection_authority_fault_case_present] is true
+  + [ambiguous_identity_interrupt_case_present] is true
+  + [unsupported_scope_refusal_case_present] is true
+  + [unsafe_operations_fault_case_present] is true
+  + [invalid_input_shape_fault_case_present] is true
+  + [deterministic_replay_fault_case_present] is true
+  + [generated_path_escape_refusal_case_present] is true
+  + [source_mutation_refusal_case_present] is true
+  + [generated_output_created] is false
+  + [implementation_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3IA02VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR3_Operator_Harness_Fixture_Index.v1.sop
+
+& [SupportDelta: IR3-IA02] is the support delta produced by accepted fixture seed material
+  + [new_support_record] is IR3OperatorHarnessFixtureIndexV1 supports IR3-IA03 contracts and trace model implementation
+  + [new_support_record] is accepted fixture and expected-ledger material covers success, refusal, fault, interrupt, path policy, source mutation, and no-live-control proof cases
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA02] is the requirement delta produced by accepted fixture seed material
+  + [requirement_delta] is IR3-IA03 may create only src/langsop/operators/contracts.py and src/langsop/operators/traces.py
+  + [requirement_delta] is runner orchestration, fixture runner implementation, generated traces, test files, dependency installation, operations control, and live machine control remain unauthorized by IR3-IA02
+  + [requirement_delta] is no rebake required before IR3-IA03
+
+& [FaultReview: IR3-IA02] is the fault review for fixture source and expected-ledger seed material
+  + [forbidden_external_dependency_found] is false
+  + [unlisted_fixture_file_created] is false
+  + [unlisted_expected_ledger_created] is false
+  + [implementation_code_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3IA02Accepted] is accepted
+    @ [support] [IR3IA02Verification]
+    @ [support] [SupportDelta: IR3-IA02]
+    @ [support] [RequirementDelta: IR3-IA02]
+    @ [support] [FaultReview: IR3-IA02]
+
+& [NextSliceGate: IR3-IA03] is opened
+  + [opened_slice] is IR3-IA03 contracts and trace model implementation
+  + [accepted_boundary_input] is docs/fixtures/IR3_Operator_Harness_Fixture_Index.v1.sop
+  + [accepted_boundary_input_sha256] is EC8B213C52FADBCC70F26EE41644052E2F87E8A3F4092773B3DC8C8A0C16E662
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA02 acceptance
+  + [model_route_reason] is contracts and trace model implementation is bounded by accepted runner/trace contract, fixture source, and expected ledgers
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-IA03 next unless user redirects or a new fault invalidates this review

@@ -1,0 +1,13 @@
+Subject: IR3 Fixture Source Source Mutation Refusal
+Date: 2026-05-26
+
+& [IR3FixtureSource: source_mutation_refusal] is an operator harness fixture source
+  + [fixture_case] is source_mutation_refusal
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [requested_write_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [source_mutation_requested] is true
+  + [refusal_allowed] is true
+
+  = expect: blocked_refusal
+  = expect: tracked fixture source not mutated

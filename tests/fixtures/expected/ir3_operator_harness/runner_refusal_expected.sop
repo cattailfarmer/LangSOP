@@ -1,0 +1,27 @@
+Subject: IR3 Runner Refusal Expected Ledger
+Date: 2026-05-26
+
+& [ExpectedRunnerRefusalLedger: IR3OperatorHarness] is the expected refusal ledger for blocked or stale fixture cases
+  + [fixture_id] is stale_authority_input_refusal
+  + [expected_outcome_kind] is blocked_output
+  + [expected_refusal_reason] is stale_refusal
+  + [expected_success_output_present] is false
+  + [fixture_id] is missing_contract_version_refusal
+  + [expected_outcome_kind] is blocked_output
+  + [expected_refusal_reason] is missing_contract_version
+  + [expected_success_output_present] is false
+  + [fixture_id] is unsupported_scope_refusal
+  + [expected_outcome_kind] is blocked_output
+  + [expected_refusal_reason] is unsupported_scope
+  + [expected_success_output_present] is false
+  + [fixture_id] is generated_output_path_escape_refusal
+  + [expected_outcome_kind] is blocked_output
+  + [expected_refusal_reason] is generated_output_path_escape
+  + [expected_success_output_present] is false
+  + [fixture_id] is source_mutation_refusal
+  + [expected_outcome_kind] is blocked_output
+  + [expected_refusal_reason] is source_mutation_refusal
+  + [expected_success_output_present] is false
+
+  = must: require operator_trace for every refusal
+  = must: require non_authority_warning on every refusal trace

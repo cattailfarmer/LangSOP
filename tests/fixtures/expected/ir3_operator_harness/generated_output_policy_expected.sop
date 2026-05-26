@@ -1,0 +1,19 @@
+Subject: IR3 Generated Output Policy Expected Ledger
+Date: 2026-05-26
+
+& [ExpectedGeneratedOutputPolicyLedger: IR3OperatorHarness] is the expected generated-output policy ledger
+  + [accepted_generated_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [accepted_generated_root] is .langsop/traces/ir3_operator_harness/
+  + [accepted_generated_root] is .langsop/reports/ir3_operator_harness/
+  + [accepted_generated_root] is .langsop/fixtures/ir3_operator_harness/
+  + [forbidden_write_root] is docs/
+  + [forbidden_write_root] is src/
+  + [forbidden_write_root] is platform/
+  + [forbidden_write_root] is tests/fixtures/sop/ir3_operator_harness/
+  + [forbidden_write_root] is tests/fixtures/expected/ir3_operator_harness/
+  + [expected_non_authority_warning] is present_on_every_generated_output
+  + [expected_cleanup_policy] is generated_roots_only
+  + [expected_authority_promotion_result] is refused
+
+  = must: treat generated traces, reports, manifests, caches, and fixture outputs as projection-only
+  = must: reject generated output as source authority

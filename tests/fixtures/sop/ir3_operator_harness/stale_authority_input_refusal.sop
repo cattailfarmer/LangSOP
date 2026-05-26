@@ -1,0 +1,14 @@
+Subject: IR3 Fixture Source Stale Authority Input Refusal
+Date: 2026-05-26
+
+& [IR3FixtureSource: stale_authority_input_refusal] is an operator harness fixture source
+  + [fixture_case] is stale_authority_input_refusal
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [authority_basis_state] is stale
+  + [stale_source_ref] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [refusal_allowed] is true
+  + [unsafe_operation_requested] is false
+
+  = expect: stale_refusal
+  = expect: no operator_result produced

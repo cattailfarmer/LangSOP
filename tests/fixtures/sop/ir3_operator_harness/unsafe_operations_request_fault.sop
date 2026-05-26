@@ -1,0 +1,14 @@
+Subject: IR3 Fixture Source Unsafe Operations Request Fault
+Date: 2026-05-26
+
+& [IR3FixtureSource: unsafe_operations_request_fault] is an operator harness fixture source
+  + [fixture_case] is unsafe_operations_request_fault
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [unsafe_operation_requested] is operations_control
+  + [unsafe_operation_requested] is live_machine_control
+  + [refusal_allowed] is true
+
+  = expect: fault_output
+  = expect: fault_code is unsupported_operations_control
+  = expect: no dispatch output

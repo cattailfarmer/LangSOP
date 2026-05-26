@@ -1,0 +1,26 @@
+Subject: IR3 Fault And Interrupt Expected Ledger
+Date: 2026-05-26
+
+& [ExpectedFaultAndInterruptLedger: IR3OperatorHarness] is the expected fault and interrupt ledger
+  + [fixture_id] is undeclared_output_kind_fault
+  + [expected_outcome_kind] is fault_output
+  + [expected_fault_code] is operator_contract_violation
+  + [fixture_id] is generated_projection_as_authority_fault
+  + [expected_outcome_kind] is fault_output
+  + [expected_fault_code] is generated_trace_authority_confusion
+  + [fixture_id] is ambiguous_input_identity_interrupt
+  + [expected_outcome_kind] is sop_first_interrupt
+  + [expected_interrupt_kind] is ambiguous_identity
+  + [fixture_id] is unsafe_operations_request_fault
+  + [expected_outcome_kind] is fault_output
+  + [expected_fault_code] is unsupported_operations_control
+  + [expected_dispatch_output_present] is false
+  + [fixture_id] is invalid_input_shape_fault
+  + [expected_outcome_kind] is fault_output
+  + [expected_fault_code] is invalid_input_shape
+  + [fixture_id] is deterministic_replay_mismatch_fault
+  + [expected_outcome_kind] is fault_output
+  + [expected_fault_code] is deterministic_replay_mismatch
+
+  = must: require operator_trace for every fault and interrupt
+  = must: require no operations control or live machine control output

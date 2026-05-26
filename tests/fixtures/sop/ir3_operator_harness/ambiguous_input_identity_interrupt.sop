@@ -1,0 +1,12 @@
+Subject: IR3 Fixture Source Ambiguous Input Identity Interrupt
+Date: 2026-05-26
+
+& [IR3FixtureSource: ambiguous_input_identity_interrupt] is an operator harness fixture source
+  + [fixture_case] is ambiguous_input_identity_interrupt
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [input_identity_state] is ambiguous
+  + [refusal_allowed] is true
+
+  = expect: sop_first_interrupt
+  = expect: interrupt_kind is ambiguous_identity

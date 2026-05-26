@@ -1,0 +1,12 @@
+Subject: IR3 Fixture Source Unsupported Scope Refusal
+Date: 2026-05-26
+
+& [IR3FixtureSource: unsupported_scope_refusal] is an operator harness fixture source
+  + [fixture_case] is unsupported_scope_refusal
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [requested_scope] is outside_current_activation_boundary
+  + [refusal_allowed] is true
+
+  = expect: blocked_refusal
+  = expect: refusal_reason is unsupported_scope

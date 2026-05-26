@@ -1,0 +1,13 @@
+Subject: IR3 Fixture Source Generated Projection As Authority Fault
+Date: 2026-05-26
+
+& [IR3FixtureSource: generated_projection_as_authority_fault] is an operator harness fixture source
+  + [fixture_case] is generated_projection_as_authority_fault
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [authority_basis_state] is generated_projection_only
+  + [generated_projection_presented_as_authority] is true
+  + [refusal_allowed] is true
+
+  = expect: fault_output
+  = expect: fault_code is generated_trace_authority_confusion

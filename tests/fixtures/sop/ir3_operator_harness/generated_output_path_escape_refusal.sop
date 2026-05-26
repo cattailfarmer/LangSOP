@@ -1,0 +1,13 @@
+Subject: IR3 Fixture Source Generated Output Path Escape Refusal
+Date: 2026-05-26
+
+& [IR3FixtureSource: generated_output_path_escape_refusal] is an operator harness fixture source
+  + [fixture_case] is generated_output_path_escape_refusal
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is v1
+  + [requested_generated_output_root] is docs/
+  + [accepted_generated_output_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [refusal_allowed] is true
+
+  = expect: blocked_refusal
+  = expect: no generated trace written

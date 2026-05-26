@@ -1,0 +1,12 @@
+Subject: IR3 Fixture Source Missing Contract Version Refusal
+Date: 2026-05-26
+
+& [IR3FixtureSource: missing_contract_version_refusal] is an operator harness fixture source
+  + [fixture_case] is missing_contract_version_refusal
+  + [requested_operator_id] is contract_driven_operator_runner
+  + [requested_operator_version] is missing
+  + [authority_basis_state] is current
+  + [refusal_allowed] is true
+
+  = expect: blocked_refusal
+  = expect: required_resolution is supply accepted operator contract version
