@@ -1,0 +1,237 @@
+Subject: IR5 Surface Projection Prototype Implementation Plan V1
+Date: 2026-05-26
+Plan UUID: e4d9875d-40c3-4e32-9164-2e1cfa5020b8
+
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [boundary_import] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/IR5_Surface_Projection_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR5_Surface_Projection_Fixture_Index.v1.sop
+@ [boundary_import_review] docs/reviews/IR5_S01_Completion_Review.v1.sop
+@ [authority_display_review] docs/reviews/IR5_S02_Completion_Review.v1.sop
+@ [fixture_plan_review] docs/reviews/IR5_S03_Completion_Review.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [fsc5_operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR5SurfaceProjectionPrototypeImplementationPlanV1] is the IR5-S04 implementation plan and generated-output boundary for future surface projection prototype activation
+  + [plan_id] is ir5-surface-projection-prototype-implementation-plan-v1
+  + [plan_uuid] is e4d9875d-40c3-4e32-9164-2e1cfa5020b8
+  + [slice_id] is IR5-S04
+  + [plan_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is future file inventory, dependency boundary, projection API boundary, adapter boundary, generated output boundary, fixture runner boundary, command plan, and proof checklist only
+
+  = must: define future implementation files, fixture roots, expected ledger roots, generated projection roots, adapter carrier boundaries, dependency decision boundary, command plan, and proof checklist
+  = must: preserve that actual code creation, fixture source creation, expected ledger creation, generated output creation, dependency installation, and package metadata mutation remain gated until later implementation activation slices accept them
+  = must: keep all future generated surface artifacts projection-only and disposable
+  - never: write executable surface code, implement adapters or transports, install UI or Langflow packages, create fixture source files, create expected ledgers, write generated outputs, authorize operations simulator code, authorize operations control, or authorize live machine control in this slice
+
+& [ImplementationFileInventory: IR5SurfaceProjectionPrototype] is the future file inventory for bounded IR5 implementation
+  + [future_code_file] is src/langsop/surfaces/__init__.py
+  + [future_code_file_role] is expose only bounded projection APIs and keep live transport, dispatch, operations, and UI names absent
+  + [future_code_file] is src/langsop/surfaces/authority.py
+  + [future_code_file_role] is define authority display envelope, authority tier, trust limit, permitted action, forbidden action, and route validation models
+  + [future_code_file] is src/langsop/surfaces/projection_state.py
+  + [future_code_file_role] is define projection state envelope, freshness state, stop-state context, refusal records, and stale trigger helpers
+  + [future_code_file] is src/langsop/surfaces/projectors.py
+  + [future_code_file_role] is build manager, worker, narrative, debug, conversation, adapter, Langflow, runtime handoff, and operation-like projection records from fixture data
+  + [future_code_file] is src/langsop/surfaces/action_routes.py
+  + [future_code_file_role] is classify observe, comment, propose, work, claim, review, rebake, interrupt, human override, dry-run, and completion review requests without mutating authority
+  + [future_code_file] is src/langsop/surfaces/generated_paths.py
+  + [future_code_file_role] is validate generated surface projection paths and refuse writes outside accepted generated roots
+  + [future_code_file] is src/langsop/surfaces/fixture_runner.py
+  + [future_code_file_role] is load tracked IR5 fixture source and expected ledgers, build projections, compare expected records, and write generated outputs only under accepted roots
+  + [future_test_file] is tests/test_ir5_surface_projection_contracts.py
+
+  = must: require deeper reasoning review before creating or editing files outside this inventory for IR5 surface projection implementation
+  = must: keep code and test creation gated until specific implementation activation slices open
+
+& [ConfirmedFixtureSourceInventory: IR5SurfaceProjectionPrototype] is the fixture source inventory for future activation
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/manager_ready_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/worker_blocked_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/stale_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/narrative_lineage.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/debug_fault_trace.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/conversation_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/adapter_mutation_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/missing_authority_notice.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/langflow_non_authority_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/multi_surface_divergence.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/completion_gate_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/ir4_runtime_graph_proof_handoff.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir5_surface_projection/dry_run_success_not_live_control.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to IR5 fixture plan cases
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR5SurfaceProjectionPrototype] is the expected ledger inventory for future activation
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/authority_display_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/projection_state_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/action_route_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/runtime_and_operations_boundary_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir5_surface_projection/no_authority_promotion_expected.sop
+
+  = must: make expected ledgers reviewable without generated projections, generated reports, carrier state, or runtime state
+  = must: keep expected ledgers as tracked fixture authority only after a future implementation activation slice accepts them
+
+& [DependencyBoundary: IR5SurfaceProjectionPrototype] is the dependency boundary for future IR5 implementation
+  + [dependency_policy] is no dependency installation authorized by IR5-S04
+  + [first_pass_dependency_set] is Python standard library only unless a later dependency-authorizing activation slice explicitly authorizes more
+  + [external_dependency_set] is empty_for_current_slice
+  + [future_dependency_candidate] is langflow
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+  + [future_dependency_candidate_reason] is Langflow diagrams are explanatory projections and should not be installed or exported until surface projection proofs and generated-output policy are accepted
+  + [future_dependency_candidate] is irc_client_library
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+  + [future_dependency_candidate] is matrix_client_library
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+  + [future_dependency_candidate] is web_ui_framework
+  + [future_dependency_candidate_status] is not_authorized_for_first_pass
+
+  = must: require a dependency-authorizing slice before adding packages, lockfiles, imports, UI frameworks, transport libraries, Langflow packages, or runtime requirements
+  = must: keep first-pass projection prototype as pure data transformation over tracked fixture records
+
+& [PublicAPIBoundary: IR5SurfaceProjectionPrototype] is the future public API boundary for IR5 implementation
+  + [api] is validate_authority_display_envelope(envelope, authority_basis, policy) returns accepted or projection fault
+  + [api] is build_projection_state(input_record, projection_policy) returns projection state envelope
+  + [api] is project_manager_summary(input_packet, projection_policy) returns manager summary projection
+  + [api] is project_worker_packet(input_packet, projection_policy) returns worker packet projection
+  + [api] is project_narrative(input_packet, projection_policy) returns narrative projection
+  + [api] is project_debug_trace(input_packet, projection_policy) returns debug trace projection
+  + [api] is project_conversation(input_packet, projection_policy) returns conversation projection
+  + [api] is project_adapter_event(input_packet, projection_policy) returns adapter event projection
+  + [api] is project_langflow_view(input_packet, projection_policy) returns explanatory Langflow projection record without installing Langflow
+  + [api] is project_operation_request(input_packet, projection_policy) returns dry-run request, refusal, or safety review projection
+  + [api] is classify_surface_action(action_packet, projection_policy) returns route, refusal, or SOP-first interrupt context
+  + [api] is validate_generated_surface_output_path(path, generated_output_policy) returns accepted generated path or refusal
+  + [api] is run_surface_projection_fixture(fixture_case, expected_ledger, runner_policy) returns generated fixture comparison report
+  + [api_status] is future implementation target only
+
+  = must: make refusal, stale, fault, interrupt, stop-state, authority tier, and non-authority status visible in return values
+  = must: avoid APIs named or shaped as live transport, adapter socket, web server, UI renderer, agent dispatch, job control, process control, GPU control, model runtime control, network control, credential access, operations control, or live machine control
+
+& [SurfaceAdapterBoundary: IR5SurfaceProjectionPrototype] is the carrier and adapter boundary for future implementation
+  + [carrier_supported_as_projection] is chat
+  + [carrier_supported_as_projection] is Codex thread
+  + [carrier_supported_as_projection] is terminal
+  + [carrier_supported_as_projection] is IRC
+  + [carrier_supported_as_projection] is Matrix
+  + [carrier_supported_as_projection] is web
+  + [carrier_supported_as_projection] is Langflow
+  + [carrier_supported_as_projection] is local generated report
+  + [carrier_implementation_status] is projection_record_only
+  + [transport_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [browser_ui_authorized] is false
+  + [Langflow_install_or_export_authorized] is false
+  + [adapter_queue_authorized] is false
+
+  = must: represent carriers as carrier_context fields and projection records only
+  = must: preserve carrier context without treating it as authority
+  = must: refuse future implementation that opens live transports or UI surfaces without a separate accepted activation slice
+
+& [GeneratedSurfaceOutputPolicy: IR5SurfaceProjectionPrototype] is the future generated output policy for surface projection fixtures and reports
+  + [allowed_write_root] is tests/fixtures/generated/ir5_surface_projection/projections/
+  + [allowed_write_root] is tests/fixtures/generated/ir5_surface_projection/reports/
+  + [allowed_write_root] is .langsop/projections/ir5_surface_projection/
+  + [allowed_write_root] is .langsop/reports/ir5_surface_projection/
+  + [write_forbidden_root] is docs/
+  + [write_forbidden_root] is src/
+  + [write_forbidden_root] is tests/fixtures/sop/
+  + [write_forbidden_root] is tests/fixtures/expected/
+  + [write_forbidden_root] is platform/
+  + [write_forbidden_root] is .git/
+  + [write_result] is generated_projection_only
+  + [authority_status] is non_authoritative_disposable_evidence
+
+  = must: refuse writes outside accepted generated roots
+  = must: preserve failed projection reports without mutating SOP authority
+  = must: make generated artifacts disposable and reproducible
+  = must: reject generated projection, report, manifest, cache, carrier state, or adapter state as source authority
+
+& [FixtureRunnerImplementationBoundary: IR5SurfaceProjectionPrototype] is the future fixture runner boundary for IR5 implementation
+  + [allowed_fixture_source_root] is tests/fixtures/sop/ir5_surface_projection/
+  + [allowed_expected_ledger_root] is tests/fixtures/expected/ir5_surface_projection/
+  + [allowed_generated_root] is tests/fixtures/generated/ir5_surface_projection/
+  + [fixture_execution_mode] is in_process_projection_only
+  + [fixture_execution_forbidden] is shell execution
+  + [fixture_execution_forbidden] is subprocess control
+  + [fixture_execution_forbidden] is socket or network listener
+  + [fixture_execution_forbidden] is IRC or Matrix connection
+  + [fixture_execution_forbidden] is web UI launch
+  + [fixture_execution_forbidden] is Langflow installation or export
+  + [fixture_execution_forbidden] is job dispatch
+  + [fixture_execution_forbidden] is credential access
+  + [fixture_execution_forbidden] is process control
+  + [fixture_execution_forbidden] is GPU control
+  + [fixture_execution_forbidden] is model runtime mutation
+  + [fixture_execution_forbidden] is live machine control
+
+  = must: compare generated projection records to tracked expected ledgers without promoting generated output to authority
+  = must: fail closed when fixture source, expected ledger, or generated root is outside accepted policy
+
+& [ImplementationCommandPlan: IR5SurfaceProjectionPrototype] is the future command and verification plan
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [future_targeted_test] is python -m unittest tests.test_ir5_surface_projection_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated projection records and reports are ignored, disposable, reproducible, and non-authoritative
+
+  = must: run baseline tests and diff hygiene after every future implementation slice
+  = must: run targeted surface projection tests once tests.test_ir5_surface_projection_contracts exists
+
+& [ImplementationProofChecklist: IR5SurfaceProjectionPrototype] is the proof checklist for later implementation activation
+  + [proof_check] is implementation files match ImplementationFileInventory: IR5SurfaceProjectionPrototype
+  + [proof_check] is external dependency set remains empty unless a dependency-authorizing activation slice accepts a package
+  + [proof_check] is authority display envelope rejects missing authority notice, missing source refs, missing route, hidden stop-state, and lower-tier authority promotion
+  + [proof_check] is projection state envelope prevents ready display when blocked, stale, faulted, interrupted, contested, pending-review, unsupported, or refused evidence exists
+  + [proof_check] is action route classifier emits request, refusal, or SOP-first interrupt records without mutating source authority
+  + [proof_check] is manager, worker, narrative, debug, conversation, adapter, Langflow, runtime handoff, and operation projections satisfy fixture plan cases
+  + [proof_check] is runtime checkpoints, generated traces, generated reports, dry-runs, human approvals, carrier state, and Langflow diagrams remain non-authoritative
+  + [proof_check] is generated projection and report writers refuse paths outside accepted generated roots
+  + [proof_check] is fixture runner reads only tracked fixture source and expected ledgers and writes only generated outputs
+  + [proof_check] is source files, expected ledgers, and tracked SOP authority are not mutated by projection code or tests
+  + [proof_check] is operations simulator implementation, operations control, and live machine control remain absent
+
+  = must: require completion review before any implementation output is accepted
+  = must: fail implementation review if any proof check fails
+
+& [ActivationGate: IR5SurfaceProjectionPrototypeImplementation] is the activation boundary created by this implementation plan
+  + [code_creation_authorized_by_this_slice] is false
+  + [fixture_creation_authorized_by_this_slice] is false
+  + [expected_ledger_creation_authorized_by_this_slice] is false
+  + [generated_output_creation_authorized_by_this_slice] is false
+  + [dependency_installation_authorized_by_this_slice] is false
+  + [package_metadata_mutation_authorized_by_this_slice] is false
+  + [next_slice_after_review] is IR5-S05 IR5 completion review and implementation activation pack
+  + [IR5-S05_model_route] is requires deeper reasoning because activation affects implementation authorization and downstream IR6 readiness boundaries
+  + [model_route_for_future_bounded_code_creation] is GPT-5.3-Codex-Spark-suitable only after IR5 implementation activation slices isolate bounded code, fixture, expected-ledger, and generated-output work
+  + [deeper_reasoning_required_for_changes] is any change to authority display semantics, projection-state semantics, adapter boundary, generated output policy, dependency boundary, fixture IO policy, operation safety boundary, or live-control boundary
+
+  = must: keep implementation code, fixture source files, expected ledgers, generated output creation, dependency installation, and package metadata mutation gated until a later accepted implementation activation slice opens them
+  = must: preserve deeper reasoning for architecture, authority-boundary, dependency-boundary, generated-output-boundary, adapter-boundary, or safety-boundary changes
+
+& [IR5S04CoverageReview] is the coverage checklist for IR5-S04
+  + [implementation_file_inventory_present] is true
+  + [fixture_source_inventory_present] is true
+  + [expected_ledger_inventory_present] is true
+  + [dependency_boundary_present] is true
+  + [public_api_boundary_present] is true
+  + [surface_adapter_boundary_present] is true
+  + [generated_surface_output_policy_present] is true
+  + [fixture_runner_implementation_boundary_present] is true
+  + [implementation_command_plan_present] is true
+  + [implementation_proof_checklist_present] is true
+  + [activation_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR5-S04 only when all checklist items are satisfied
+  = must: open IR5-S05 only after this implementation plan is reviewed in a completion review
