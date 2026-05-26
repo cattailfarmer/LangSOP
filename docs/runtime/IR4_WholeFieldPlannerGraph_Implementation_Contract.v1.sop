@@ -1,0 +1,146 @@
+Subject: IR4 WholeFieldPlannerGraph Implementation Contract V1
+Date: 2026-05-26
+Graph Implementation Contract UUID: 9cf64b25-23d1-45e6-80db-c19021697afe
+
+@ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
+@ [runtime_boundary_import] docs/runtime/IR4_Runtime_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [fsc3_graph_contract] docs/runtime/WholeFieldPlannerGraph_Contract.v1.sop
+@ [ir3_operator_harness_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir4_s01_review] docs/reviews/IR4_S01_Completion_Review.v1.sop
+
+& [IR4WholeFieldPlannerGraphImplementationContractV1] is the IR4-S02 contract for a future bounded WholeFieldPlannerGraph implementation
+  + [graph_contract_id] is ir4-whole-field-planner-graph-implementation-contract-v1
+  + [graph_contract_uuid] is 9cf64b25-23d1-45e6-80db-c19021697afe
+  + [slice_id] is IR4-S02
+  + [authority_scope] is implementation-facing graph state, node mapping, edge mapping, operator harness call boundary, trace obligations, terminal outcome contracts, and no-hidden-write proof obligations
+  + [implementation_scope] is graph implementation contract only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: define future graph implementation obligations without importing LangGraph or writing executable graph code
+  = must: keep graph state and checkpoints as execution state only
+  = must: require accepted operator harness contracts for all mechanical operator work
+  = must: emit or preserve trace evidence for every graph path
+  - never: install dependencies, implement graph nodes, persist checkpoints, write generated runtime outputs, mutate source authority, authorize operations control, or authorize live machine control in this slice
+
+& [ImplementationGraphState: WholeFieldPlannerGraph] is the implementation-facing graph state contract
+  + [state_field] is active_work_packet_ref
+  + [state_field] is accepted_boundary_pack_ref_set
+  + [state_field] is graph_phase
+  + [state_field] is current_node_id
+  + [state_field] is input_record_ref_set
+  + [state_field] is output_record_ref_set
+  + [state_field] is operator_trace_ref_set
+  + [state_field] is proof_result_ref_set
+  + [state_field] is stale_projection_ref_set
+  + [state_field] is fault_record_ref_set
+  + [state_field] is coordination_claim_ref_set
+  + [state_field] is pending_interrupt_ref
+  + [state_field] is checkpoint_ref
+  + [state_field] is completion_review_ref
+  + [state_field] is no_hidden_write_proof_ref
+  + [authority_limit] is graph state is execution_state_only and cannot serve as signed_sjs, proof_backed, accepted_decision, completion_review, or source_only authority by itself
+
+  = must: preserve source_ref_set and lineage_edge_set through derived outputs
+  = must: validate every state ref against accepted source or generated projection policy before success
+
+& [ImplementationGraphNodeMap: WholeFieldPlannerGraph] is the future implementation node map
+  + [node_id] is packet_intake
+  + [node_contract] is validates active_work_packet_ref, accepted boundary pack refs, natural-key identity, and source freshness before graph execution proceeds
+  + [node_id] is readiness_guard
+  + [node_contract] is blocks non-ready, stale, contradicted, ambiguous, or faulted readiness projections
+  + [node_id] is coordination_guard
+  + [node_contract] is blocks contested, stale, or incompatible coordination claims without resolving them silently
+  + [node_id] is operator_contract_select
+  + [node_contract] is selects an accepted operator contract or accepted operator harness function inside declared scope without live dispatch
+  + [node_id] is operator_invocation
+  + [node_contract] is invokes only bounded in-process operator harness behavior and receives success, blocked, fault, or interrupt outputs
+  + [node_id] is trace_recording
+  + [node_contract] is preserves or emits operator_trace references for success, blocked, stale, fault, and interrupt outcomes
+  + [node_id] is completion_gate
+  + [node_contract] is applies completion_review_delta_gate semantics before any next-slice readiness signal
+  + [node_id] is sop_first_interrupt
+  + [node_contract] is emits interrupt context and pauses mutation when semantic or authority judgment exceeds the graph contract
+  + [node_id] is terminal_outcome
+  + [node_contract] is records terminal_success, terminal_blocked, terminal_stale, terminal_fault, or terminal_interrupt as generated projection output only
+
+  = must: define each future node by input records, preconditions, postconditions, interrupts, faults, and trace obligations before code activation
+  = must: reject hidden source writes from every node
+
+& [ImplementationGraphEdgeMap: WholeFieldPlannerGraph] is the future implementation edge map
+  + [edge] is packet_intake success to readiness_guard
+  + [edge] is packet_intake blocked, stale, fault, or interrupt to terminal_outcome
+  + [edge] is readiness_guard success to coordination_guard
+  + [edge] is readiness_guard blocked, stale, fault, or interrupt to terminal_outcome
+  + [edge] is coordination_guard success to operator_contract_select
+  + [edge] is coordination_guard blocked, stale, fault, or interrupt to terminal_outcome
+  + [edge] is operator_contract_select success to operator_invocation
+  + [edge] is operator_contract_select blocked, stale, fault, or interrupt to terminal_outcome
+  + [edge] is operator_invocation success, blocked, fault, or interrupt to trace_recording
+  + [edge] is trace_recording success to completion_gate
+  + [edge] is trace_recording blocked, stale, fault, or interrupt to terminal_outcome
+  + [edge] is completion_gate open_next_slice to terminal_outcome
+  + [edge] is completion_gate blocked, stale, fault, or interrupt to terminal_outcome
+
+  = must: make blocked, stale, fault, and interrupt paths terminal until accepted retry or resume evidence exists
+  = must: preserve terminal outcome lineage rather than silently retrying
+
+& [OperatorHarnessCallBoundary: WholeFieldPlannerGraph] is the call boundary from graph nodes to IR3 operator harness implementation
+  + [allowed_call] is request_from_mapping for operator request shape conversion
+  + [allowed_call] is validate_operator_request for contract validation
+  + [allowed_call] is build_trace_event for trace envelope construction
+  + [allowed_call] is run_contract_operator for pure in-process operator invocation
+  + [allowed_call] is validate_generated_output_path only when a later fixture or generated-output slice opens path testing
+  + [forbidden_call] is subprocess execution
+  + [forbidden_call] is shell command execution
+  + [forbidden_call] is network request
+  + [forbidden_call] is GPU control
+  + [forbidden_call] is job dispatch
+  + [forbidden_call] is credential access
+  + [forbidden_call] is live machine control
+
+  = must: treat operator harness results as generated projection evidence until completion review accepts them
+  = must: fault any graph node that attempts live dispatch or operations control through operator invocation
+
+& [TraceAndTerminalOutcomeContract: WholeFieldPlannerGraph] is the trace and terminal outcome contract for future graph implementation
+  + [terminal_outcome] is terminal_success with operator_trace_ref_set and output_record_ref_set
+  + [terminal_outcome] is terminal_blocked with support_gap, runner_refusal, or blocked completion gate evidence
+  + [terminal_outcome] is terminal_stale with stale_projection evidence
+  + [terminal_outcome] is terminal_fault with fault_record evidence
+  + [terminal_outcome] is terminal_interrupt with SOP-first interrupt context
+  + [required_trace] is one or more operator_trace refs for every terminal outcome
+  + [required_trace] is no_hidden_write_proof_ref for success and completion_gate paths
+  + [required_trace] is checkpoint_authority_confusion fault when checkpoint state is consumed as authority
+  + [required_trace] is generated_projection_only status for runtime outputs
+
+  = must: refuse terminal_success when trace evidence, source lineage, or hidden-write proof is missing
+  = must: preserve interrupt context for later SOP or human judgment
+
+& [NoHiddenWriteProofObligation: WholeFieldPlannerGraph] is the proof obligation for future graph implementation
+  + [proof_check] is source authority files are read-only during runtime execution
+  + [proof_check] is accepted proof packs are read-only during runtime execution
+  + [proof_check] is generated graph state and checkpoint state stay under accepted generated roots after a future generated-output slice opens them
+  + [proof_check] is no graph node writes completion review or gate state directly
+  + [proof_check] is no graph node mutates coordination claims as acceptance
+  + [proof_check] is no graph node promotes checkpoint state, generated trace, or surface projection to authority
+  + [proof_check] is no dependency installation occurs without an activation slice
+  + [proof_check] is no operations control or live machine control API is exposed
+
+  = must: make future implementation tests prove these checks before activation can complete
+
+& [IR4S02CoverageReview] is the coverage checklist for IR4-S02
+  + [implementation_graph_state_present] is true
+  + [implementation_graph_node_map_present] is true
+  + [implementation_graph_edge_map_present] is true
+  + [operator_harness_call_boundary_present] is true
+  + [trace_terminal_outcome_contract_present] is true
+  + [no_hidden_write_proof_obligation_present] is true
+  + [executable_graph_code_created] is false
+  + [dependency_installed] is false
+  + [checkpoint_persistence_created] is false
+  + [fixture_file_created] is false
+  + [generated_output_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR4-S02 only when all checklist items are satisfied
+  = must: open IR4-S03 only after this graph implementation contract is reviewed in a completion review
