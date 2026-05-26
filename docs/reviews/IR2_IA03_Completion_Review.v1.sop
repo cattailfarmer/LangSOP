@@ -1,0 +1,105 @@
+Subject: IR2-IA03 Completion Review V1
+Date: 2026-05-26
+Review UUID: eb1e9957-9cb7-49be-957e-51b3295e5c34
+
+@ [activation_slice_surface] docs/slices/IR2_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR2_Work_State.v1.sop
+@ [completed_output] src/langsop/authority/discovery.py
+@ [completed_output] src/langsop/authority/sop_parser.py
+@ [accepted_input] docs/reviews/IR2_IA02_Completion_Review.v1.sop
+@ [accepted_input] docs/fixtures/IR2_Parser_Projection_Fixture_Index.v1.sop
+
+& [CompletedWorkReview: IR2-IA03] is the completion review for authority discovery and SOP parser implementation
+  + [slice_id] is IR2-IA03
+  + [slice_name] is authority discovery and SOP parser implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is src/langsop/authority/discovery.py
+  + [completed_output_sha256] is 202EC8AD87D99D516CBDBC3E4D8B56BF9FC363093DF23F4A16EC46BEA1230356
+  + [completed_output] is src/langsop/authority/sop_parser.py
+  + [completed_output_sha256] is 87868226D91F86B7BAE89D33EFA0EB2D431407AF8D0AB8EFF02061DF7570BD04
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_used] is current Codex manager session because no separate Spark worker was active
+  + [review_result] is accepted
+  + [next_gate_result] is IR2-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA03 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR2-IA04 only
+  = must: rerun review if discovery.py or sop_parser.py changes
+  = must: keep SQLite projection, generated outputs, dependencies, operations control, and live machine control unauthorized
+
+& [VerificationOracleResult: IR2-IA03] is the verification result for discovery and parser implementation
+  + [discovery_module_present] is true
+  + [sop_parser_module_present] is true
+  + [discovery_api_present] is discover_sop_artifacts
+  + [parser_api_present] is parse_sop_document
+  + [parser_api_present] is parse_sop_text
+  + [discovery_is_read_only] is true
+  + [parser_is_read_only] is true
+  + [source_mutation_created] is false
+  + [generated_projection_created] is false
+  + [external_dependency_added] is false
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_test_result] is passed
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed
+  + [smoke_check] is PYTHONPATH=src discovery plus malformed fixture parse
+  + [smoke_result_artifact_count] is 198
+  + [smoke_result_malformed_fixture_role] is fixture_source
+  + [smoke_result_malformed_fixture_fault_count] is 1
+  + [smoke_result_malformed_fixture_fault_kind] is unknown_marker
+  + [extraction_code_created] is false
+  + [validation_code_created] is false
+  + [sqlite_code_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR2IA03VerificationSatisfied] is accepted
+    @ [support] src/langsop/authority/discovery.py
+    @ [support] src/langsop/authority/sop_parser.py
+
+& [SupportDelta: IR2-IA03] is the support delta produced by this slice
+  + [new_support_record] is discover_sop_artifacts returns candidate SOP artifacts, source hashes, path roles, and diagnostics without classifying authority
+  + [new_support_record] is parse_sop_document and parse_sop_text preserve raw text, line numbers, indentation, marker kind, bracket label, tail text, parent line reference, parse status, and recoverable faults
+  + [new_support_record] is malformed fixture smoke proves parser fault preservation before extraction and validation implementation
+  + [support_status] is accepted
+
+& [RequirementDelta: IR2-IA03] is the requirement delta produced by this slice
+  + [requirement_delta] is IR2-IA04 may create only KernelRecord extraction and validation implementation files
+  + [requirement_delta] is IR2-IA04 is GPT-5.3-Codex-Spark-suitable because parser output and expected validation ledgers are now bounded
+  + [requirement_delta] is SQLite projection, generated output creation, dependency installation, operations control, and live machine control remain unauthorized
+  + [requirement_delta] is no rebake required
+
+& [FaultReview: IR2-IA03] is the fault review for this slice
+  + [unlisted_code_file_created] is false
+  + [extraction_code_creation_leak_found] is false
+  + [validation_code_creation_leak_found] is false
+  + [sqlite_code_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [source_mutation_authority_leak_found] is false
+  + [generated_projection_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR2IA03Accepted] is accepted
+    @ [support] [VerificationOracleResult: IR2-IA03]
+    @ [support] [SupportDelta: IR2-IA03]
+    @ [support] [RequirementDelta: IR2-IA03]
+    @ [support] [FaultReview: IR2-IA03]
+
+& [NextSliceGate: IR2-IA04] is opened
+  + [opened_slice] is IR2-IA04 KernelRecord extraction and validation implementation
+  + [accepted_input] is src/langsop/authority/discovery.py
+  + [accepted_input_sha256] is 202EC8AD87D99D516CBDBC3E4D8B56BF9FC363093DF23F4A16EC46BEA1230356
+  + [accepted_input] is src/langsop/authority/sop_parser.py
+  + [accepted_input_sha256] is 87868226D91F86B7BAE89D33EFA0EB2D431407AF8D0AB8EFF02061DF7570BD04
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR2-IA03 acceptance
+  + [model_route_reason] is extraction and validation implementation is bounded by accepted mappings, parser output shape, and expected validation ledgers
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR2-IA04 next unless user redirects or a new fault invalidates this review
