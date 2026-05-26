@@ -1,0 +1,22 @@
+Subject: IR4 Fixture Source False Ready Checkpoint
+Date: 2026-05-26
+
+& [IR4FixtureSource: false_ready_checkpoint] is a runtime graph fixture source
+  + [fixture_case] is false_ready_checkpoint
+  + [active_work_packet_state] is accepted
+  + [readiness_state] is checkpoint_claims_ready
+  + [coordination_claim_state] is accepted
+  + [checkpoint_freshness_state] is current
+  + [checkpoint_authority_state] is authority_confusion_detected
+  + [input_identity_state] is resolved
+  + [operator_trace_state] is not_requested
+  + [completion_gate_state] is missing_accepted_completion_review
+  + [hidden_write_attempt] is false
+  + [expected_terminal_outcome] is terminal_fault
+  + [expected_fault_kind] is checkpoint_readiness_authority_confusion
+  + [expected_operator_invocation] is false
+  + [generated_output_policy_state] is accepted_projection_only
+  + [unsafe_operation_requested] is false
+
+  = expect: checkpoint readiness cannot open a gate
+  = expect: accepted completion review remains required for next-slice readiness

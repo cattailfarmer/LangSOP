@@ -1,0 +1,126 @@
+Subject: IR4 IA02 Completion Review V1
+Date: 2026-05-26
+Review UUID: 1f654ff4-8dfb-44bd-a8b0-3e7f522920c9
+
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR4_Work_State.v1.sop
+@ [activation_boundary] docs/implementation/IR4_Bounded_Implementation_Activation_Boundary.v1.sop
+@ [fixture_index] docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR4_Implementation_Activation.canonical.sop
+
+& [CompletedWorkReview: IR4-IA02] is the completed-work review for IR4 fixture source and expected-ledger seed material
+  + [slice_id] is IR4-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [completed_output_sha256] is 053F73C345A36DA42B635AA11ACDE7E9CD27C9995517FB4B681A2641DF50E5FE
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/ambiguous_interrupt.sop
+  + [completed_output_sha256] is DBFF82DE443FC8325CAEB914D57B37CC5ED78C6DB7D61777855B885CBB631E80
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/authority_conflict_interrupt.sop
+  + [completed_output_sha256] is 34F136CD408708BAFAB9DCADA14D7AEB2F934C5EB4A3745EABD749035DD535A2
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/blocked_readiness.sop
+  + [completed_output_sha256] is 568D864E8F2B6C3B4FA8B2CE491D54FF9EC89413815531452EE32F7C264D377A
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/completion_gate_refusal.sop
+  + [completed_output_sha256] is 3FF622E8FF099E350B2C4C705F470E80B7FC1B04332B8B0F575044ADC43040F7
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/contested_claim_interrupt.sop
+  + [completed_output_sha256] is 3B14A969D97BEF333C23394646EF27097C316A2D0D21DE7DB948AB31AB304E3B
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/false_ready_checkpoint.sop
+  + [completed_output_sha256] is 35A3C53D6CED74D56B39B9CA07B616742AE05F9C0DAC2EBDA25D0A30E7DD65DF
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/faulted_operator_trace.sop
+  + [completed_output_sha256] is 7957CC466431A794676896629AFB6CB93DBC7F5A1F24A417CA0D96456B17E011
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/hidden_write_prevention.sop
+  + [completed_output_sha256] is 6542D49361D44EE82E5E5450D57E208839C6AD0DC7A6FA6E8DD6681B4113C26E
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/stale_checkpoint.sop
+  + [completed_output_sha256] is 9096F230D83E1F18B58A338C4B873C44D47EEB9478873E6991F02C1DD50BFB2E
+  + [completed_output] is tests/fixtures/sop/ir4_runtime_graph/valid_graph_pass.sop
+  + [completed_output_sha256] is 33E09C1CC98089CC1C8EFF8D433168FBA34C320822FD92E6CD95AF1F9E2485B3
+  + [completed_output] is tests/fixtures/expected/ir4_runtime_graph/checkpoint_expected.sop
+  + [completed_output_sha256] is 4B2CFF58EAF52631220184DCFC4C673C73125C31116C1E65903206965834C97C
+  + [completed_output] is tests/fixtures/expected/ir4_runtime_graph/graph_trace_expected.sop
+  + [completed_output_sha256] is A3EBC35A3C458DBC7AE567D756DBA78A50AEEEEAFFF3AA35BF79A80661166B39
+  + [completed_output] is tests/fixtures/expected/ir4_runtime_graph/interrupt_fault_refusal_expected.sop
+  + [completed_output_sha256] is C9F1DA28CD5C11400203F59BA4ADA323A7A919FE28012600E37FB155B9E2E25D
+  + [completed_output] is tests/fixtures/expected/ir4_runtime_graph/no_authority_promotion_expected.sop
+  + [completed_output_sha256] is C4F5C7E607A4E756D3F0AAE7F8E52FEDCFF874D5D90D0914234BF7AEEBA35DFD
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-IA01 acceptance
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR4-IA02 as tracked fixture source and expected-ledger material for bounded runtime graph implementation
+  + [next_gate_result] is IR4-IA03 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA02 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR4-IA03 only
+  = must: rerun this review if the activation boundary, fixture index, fixture source files, expected ledger files, or activation slice surface changes
+  = must: keep runtime graph code, generated checkpoints, generated traces, tests, dependencies, package metadata changes, operations control, and live machine control gated until their specific slices open
+
+& [IR4IA02Verification] is the verification result for fixture source and expected-ledger seed material
+  + [fixture_index_updated] is true
+  + [fixture_source_file_count] is 10
+  + [expected_ledger_file_count] is 4
+  + [fixture_source_matches_activation_boundary] is true
+  + [expected_ledger_matches_activation_boundary] is true
+  + [generated_output_created] is false
+  + [implementation_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR4IA02VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+    @ [support] tests/fixtures/sop/ir4_runtime_graph/
+    @ [support] tests/fixtures/expected/ir4_runtime_graph/
+
+& [SupportDelta: IR4-IA02] is the support delta produced by accepted fixture source and expected ledgers
+  + [new_support_record] is tracked IR4 runtime graph fixture source exists for ten accepted fixture cases
+  + [new_support_record] is tracked expected ledgers exist for graph traces, checkpoint behavior, interrupt/fault/refusal behavior, and no-authority-promotion behavior
+  + [new_support_record] is IR4-IA03 is GPT-5.3-Codex-Spark-suitable because graph state and contract model implementation is bounded by accepted fixture cases and expected ledgers
+  + [support_status] is accepted
+
+& [RequirementDelta: IR4-IA02] is the requirement delta produced by accepted fixture source and expected ledgers
+  + [requirement_delta] is IR4 fixture index now reflects accepted IR4-IA02 tracked fixture material rather than only future inventory
+  + [requirement_delta] is IR4-IA03 may create only graph_state.py and graph_contracts.py according to accepted boundaries
+  + [requirement_delta] is code outside graph state and graph contract models, generated outputs, tests, dependency installation, package metadata mutation, operations control, and live machine control remain unauthorized by IR4-IA02
+  + [requirement_delta] is no rebake required before IR4-IA03
+
+& [StalenessAndContradictionReview: IR4-IA02] is the staleness review for this completion
+  + [stale_IR4_activation_pack_found] is false
+  + [stale_activation_boundary_found] is false
+  + [stale_activation_canonical_found] is false
+  + [stale_activation_slice_surface_found] is false
+  + [contradicted_fixture_inventory_found] is false
+  + [false_ready_IR4_IA03_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR4-IA02 stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR4-IA02] is the fault review for fixture source and expected-ledger seed material
+  + [implementation_code_creation_leak_found] is false
+  + [generated_checkpoint_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [generated_runtime_authority_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR4IA02Accepted] is accepted
+    @ [support] [IR4IA02Verification]
+    @ [support] [SupportDelta: IR4-IA02]
+    @ [support] [RequirementDelta: IR4-IA02]
+    @ [support] [StalenessAndContradictionReview: IR4-IA02]
+    @ [support] [FaultReview: IR4-IA02]
+
+& [NextSliceGate: IR4-IA03] is opened
+  + [opened_slice] is IR4-IA03 graph state and graph contract model implementation
+  + [accepted_boundary_input] is docs/implementation/IR4_Bounded_Implementation_Activation_Boundary.v1.sop
+  + [accepted_boundary_input] is docs/fixtures/IR4_Runtime_Graph_Fixture_Index.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR4-IA02 acceptance
+  + [model_route_reason] is graph state and graph contract model implementation is bounded by accepted graph contract, fixture source, and expected ledgers
+  + [safety_limit] is no operations control or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR4-IA03 next unless user redirects or a new fault invalidates this review

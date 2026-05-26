@@ -1,0 +1,35 @@
+Subject: IR4 Checkpoint Expected Ledger
+Date: 2026-05-26
+
+& [ExpectedCheckpointLedger: IR4RuntimeGraph] is the expected checkpoint ledger for IR4 runtime graph fixture cases
+  + [checkpoint_schema_version] is ir4-runtime-checkpoint-v1
+  + [checkpoint_status] is generated_projection_only
+  + [required_checkpoint_field] is fixture_id
+  + [required_checkpoint_field] is checkpoint_freshness_result
+  + [required_checkpoint_field] is checkpoint_authority_result
+  + [required_checkpoint_field] is resume_condition
+  + [required_checkpoint_field] is stale_or_interrupt_route
+  + [required_checkpoint_field] is cleanup_root
+  + [required_checkpoint_field] is rebuild_or_stale_state
+  + [required_checkpoint_field] is non_authority_warning
+
+& [ExpectedCheckpointCaseSet: IR4RuntimeGraph] is the checkpoint expectation set
+  + [fixture_id] is valid_graph_pass
+    + [expected_checkpoint_freshness_result] is current
+    + [expected_checkpoint_authority_result] is non_authoritative_execution_state
+    + [expected_resume_condition] is not_required
+  + [fixture_id] is stale_checkpoint
+    + [expected_checkpoint_freshness_result] is stale
+    + [expected_checkpoint_authority_result] is non_authoritative_execution_state
+    + [expected_resume_condition] is rebuild_from_source_authority
+  + [fixture_id] is authority_conflict_interrupt
+    + [expected_checkpoint_freshness_result] is current
+    + [expected_checkpoint_authority_result] is authority_confusion_detected
+    + [expected_resume_condition] is accepted_authority_reconciliation
+  + [fixture_id] is false_ready_checkpoint
+    + [expected_checkpoint_freshness_result] is current
+    + [expected_checkpoint_authority_result] is checkpoint_readiness_authority_confusion
+    + [expected_resume_condition] is accepted_completion_review_required
+
+  = must: prove generated checkpoint deletion and rebuild does not erase authority
+  = must: make checkpoint authority confusion and stale checkpoint failures explicit

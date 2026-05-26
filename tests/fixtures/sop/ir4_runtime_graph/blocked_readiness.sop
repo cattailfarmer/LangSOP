@@ -1,0 +1,23 @@
+Subject: IR4 Fixture Source Blocked Readiness
+Date: 2026-05-26
+
+& [IR4FixtureSource: blocked_readiness] is a runtime graph fixture source
+  + [fixture_case] is blocked_readiness
+  + [active_work_packet_state] is accepted
+  + [readiness_state] is unsupported
+  + [coordination_claim_state] is accepted
+  + [checkpoint_freshness_state] is current
+  + [checkpoint_authority_state] is non_authoritative_execution_state
+  + [input_identity_state] is resolved
+  + [operator_trace_state] is not_requested
+  + [completion_gate_state] is not_reached
+  + [hidden_write_attempt] is false
+  + [expected_terminal_outcome] is terminal_blocked
+  + [expected_refusal_reason] is support_gap_blocks_readiness
+  + [expected_operator_invocation] is false
+  + [generated_output_policy_state] is accepted_projection_only
+  + [unsafe_operation_requested] is false
+
+  = expect: readiness_guard blocks execution
+  = expect: operator_invocation is not reached
+  = expect: no source authority mutation

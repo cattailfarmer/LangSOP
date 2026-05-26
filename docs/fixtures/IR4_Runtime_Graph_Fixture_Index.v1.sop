@@ -5,38 +5,65 @@ Fixture Index UUID: 07020561-a967-4084-a10b-5796ec24f5c9
 @ [fixture_plan] docs/fixtures/IR4_Runtime_Graph_Fixture_Plan.v1.sop
 @ [slice_surface] docs/slices/IR4_Final_Slices.v1.sop
 @ [checkpoint_interrupt_policy] docs/runtime/IR4_Checkpoint_And_SOP_First_Interrupt_Policy.v1.sop
+@ [activation_boundary] docs/implementation/IR4_Bounded_Implementation_Activation_Boundary.v1.sop
+@ [activation_slice_surface] docs/slices/IR4_Implementation_Activation_Slices.v1.sop
 
-& [IR4RuntimeGraphFixtureIndexV1] is the fixture inventory for future IR4 runtime graph implementation proof
+& [IR4RuntimeGraphFixtureIndexV1] is the fixture index for IR4-IA02 fixture source and expected-ledger seed material
   + [fixture_index_id] is ir4-runtime-graph-fixture-index-v1
   + [fixture_index_uuid] is 07020561-a967-4084-a10b-5796ec24f5c9
-  + [slice_id] is IR4-S04
+  + [slice_id] is IR4-IA02
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable after IR4-IA01 acceptance
   + [fixture_source_root] is tests/fixtures/sop/ir4_runtime_graph/
   + [expected_ledger_root] is tests/fixtures/expected/ir4_runtime_graph/
   + [generated_output_root] is tests/fixtures/generated/ir4_runtime_graph/
   + [fixture_source_count] is 10
   + [expected_ledger_count] is 4
+  + [fixture_status] is tracked_fixture_authority_after_completion_review
   + [generated_output_status] is projection_only
 
-  = must: treat this index as a plan for future fixture material, not as created fixture source or expected ledgers
+  = must: keep generated outputs disposable and ignored
   = must: keep generated checkpoint and trace outputs ignored, disposable, and non-authoritative
+  = must: keep graph state models, graph contract models, checkpoint models, interrupt models, runner, fixture runner, generated outputs, tests, dependencies, operations control, and live machine control gated until later IR4 implementation activation slices open them
 
-& [FutureFixtureSourceInventory: IR4RuntimeGraph] is the planned fixture source inventory
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/valid_graph_pass.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/blocked_readiness.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/stale_checkpoint.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/ambiguous_interrupt.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/authority_conflict_interrupt.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/contested_claim_interrupt.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/faulted_operator_trace.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/hidden_write_prevention.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/false_ready_checkpoint.sop
-  + [future_fixture_source_file] is tests/fixtures/sop/ir4_runtime_graph/completion_gate_refusal.sop
+& [FixtureCaseIndex] is the indexed fixture case set for IR4-IA02
+  + [fixture_case] is valid_graph_pass
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/valid_graph_pass.sop
+    + [expected_status] is terminal_success_with_trace_and_completion_gate
+  + [fixture_case] is blocked_readiness
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/blocked_readiness.sop
+    + [expected_status] is terminal_blocked_no_operator_invocation
+  + [fixture_case] is stale_checkpoint
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/stale_checkpoint.sop
+    + [expected_status] is terminal_stale_no_resume
+  + [fixture_case] is ambiguous_interrupt
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/ambiguous_interrupt.sop
+    + [expected_status] is terminal_interrupt_ambiguous_identity
+  + [fixture_case] is authority_conflict_interrupt
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/authority_conflict_interrupt.sop
+    + [expected_status] is terminal_interrupt_authority_conflict
+  + [fixture_case] is contested_claim_interrupt
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/contested_claim_interrupt.sop
+    + [expected_status] is terminal_interrupt_contested_coordination_claim
+  + [fixture_case] is faulted_operator_trace
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/faulted_operator_trace.sop
+    + [expected_status] is terminal_fault_missing_operator_trace
+  + [fixture_case] is hidden_write_prevention
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/hidden_write_prevention.sop
+    + [expected_status] is terminal_fault_hidden_write_attempt
+  + [fixture_case] is false_ready_checkpoint
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/false_ready_checkpoint.sop
+    + [expected_status] is terminal_fault_checkpoint_readiness_authority_confusion
+  + [fixture_case] is completion_gate_refusal
+    + [fixture_source] is tests/fixtures/sop/ir4_runtime_graph/completion_gate_refusal.sop
+    + [expected_status] is terminal_blocked_completion_gate_refusal
 
-& [FutureExpectedLedgerInventory: IR4RuntimeGraph] is the planned expected ledger inventory
-  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/terminal_outcome_expected.sop
-  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/operator_trace_expected.sop
-  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/checkpoint_policy_expected.sop
-  + [future_expected_ledger_file] is tests/fixtures/expected/ir4_runtime_graph/no_authority_promotion_expected.sop
+& [ExpectedLedgerIndex] is the expected-output ledger set for IR4-IA02
+  + [expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/graph_trace_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/checkpoint_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/interrupt_fault_refusal_expected.sop
+  + [expected_ledger] is tests/fixtures/expected/ir4_runtime_graph/no_authority_promotion_expected.sop
+
+  = must: keep ledgers human-reviewable and independent of generated checkpoints, generated traces, or runtime state
 
 & [FutureGeneratedOutputInventory: IR4RuntimeGraph] is the planned generated output inventory
   + [future_generated_root] is tests/fixtures/generated/ir4_runtime_graph/checkpoints/
@@ -53,10 +80,10 @@ Fixture Index UUID: 07020561-a967-4084-a10b-5796ec24f5c9
   + [fixture_source_inventory_present] is true
   + [expected_ledger_inventory_present] is true
   + [generated_output_inventory_present] is true
-  + [fixture_source_files_created] is false
-  + [expected_ledger_files_created] is false
+  + [fixture_source_files_created] is true_after_IR4-IA02_completion_review
+  + [expected_ledger_files_created] is true_after_IR4-IA02_completion_review
   + [generated_output_created] is false
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
 
-  = must: accept this index only when it remains inventory-only
+  = must: accept this index only when fixture source and expected ledgers remain tracked source authority and generated outputs remain absent

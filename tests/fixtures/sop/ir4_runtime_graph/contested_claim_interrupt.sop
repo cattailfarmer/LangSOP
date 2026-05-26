@@ -1,0 +1,23 @@
+Subject: IR4 Fixture Source Contested Claim Interrupt
+Date: 2026-05-26
+
+& [IR4FixtureSource: contested_claim_interrupt] is a runtime graph fixture source
+  + [fixture_case] is contested_claim_interrupt
+  + [active_work_packet_state] is accepted
+  + [readiness_state] is ready
+  + [coordination_claim_state] is contested
+  + [checkpoint_freshness_state] is current
+  + [checkpoint_authority_state] is non_authoritative_execution_state
+  + [input_identity_state] is resolved
+  + [operator_trace_state] is not_requested
+  + [completion_gate_state] is not_reached
+  + [hidden_write_attempt] is false
+  + [expected_terminal_outcome] is terminal_interrupt
+  + [expected_interrupt_kind] is contested_coordination_claim
+  + [expected_resume_condition] is accepted_coordination_rendezvous
+  + [expected_operator_invocation] is false
+  + [generated_output_policy_state] is accepted_projection_only
+  + [unsafe_operation_requested] is false
+
+  = expect: coordination_guard interrupts before operator selection
+  = expect: runtime graph does not resolve contested claims silently

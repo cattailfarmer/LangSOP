@@ -1,0 +1,34 @@
+Subject: IR4 Interrupt Fault Refusal Expected Ledger
+Date: 2026-05-26
+
+& [ExpectedInterruptFaultRefusalLedger: IR4RuntimeGraph] is the expected ledger for non-success runtime graph outcomes
+  + [fixture_id] is blocked_readiness
+    + [expected_terminal_outcome] is terminal_blocked
+    + [expected_refusal_reason] is support_gap_blocks_readiness
+  + [fixture_id] is stale_checkpoint
+    + [expected_terminal_outcome] is terminal_stale
+    + [expected_stale_reason] is checkpoint_freshness_basis_changed
+  + [fixture_id] is ambiguous_interrupt
+    + [expected_terminal_outcome] is terminal_interrupt
+    + [expected_interrupt_kind] is ambiguous_identity
+  + [fixture_id] is authority_conflict_interrupt
+    + [expected_terminal_outcome] is terminal_interrupt
+    + [expected_interrupt_kind] is authority_conflict
+  + [fixture_id] is contested_claim_interrupt
+    + [expected_terminal_outcome] is terminal_interrupt
+    + [expected_interrupt_kind] is contested_coordination_claim
+  + [fixture_id] is faulted_operator_trace
+    + [expected_terminal_outcome] is terminal_fault
+    + [expected_fault_kind] is missing_operator_trace
+  + [fixture_id] is hidden_write_prevention
+    + [expected_terminal_outcome] is terminal_fault
+    + [expected_fault_kind] is hidden_source_write_attempt
+  + [fixture_id] is false_ready_checkpoint
+    + [expected_terminal_outcome] is terminal_fault
+    + [expected_fault_kind] is checkpoint_readiness_authority_confusion
+  + [fixture_id] is completion_gate_refusal
+    + [expected_terminal_outcome] is terminal_blocked
+    + [expected_refusal_reason] is completion_review_delta_gate_missing
+
+  = must: require explicit expected refusal, fault, stale, or interrupt reason when execution cannot safely succeed
+  = must: keep SOP-first interrupt context separate from completion review authority

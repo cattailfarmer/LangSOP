@@ -1,0 +1,34 @@
+Subject: IR4 No Authority Promotion Expected Ledger
+Date: 2026-05-26
+
+& [ExpectedNoAuthorityPromotionLedger: IR4RuntimeGraph] is the expected source/projection separation ledger
+  + [tracked_fixture_source_status] is source_fixture_authority
+  + [tracked_expected_ledger_status] is expected_output_authority
+  + [generated_checkpoint_status] is projection_only
+  + [generated_graph_trace_status] is projection_only
+  + [generated_report_status] is projection_only
+  + [graph_state_status] is execution_state_only
+  + [checkpoint_gate_authority_status] is never_authority
+  + [surface_projection_status] is never_source_authority
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+& [ExpectedNoAuthorityPromotionCaseSet: IR4RuntimeGraph] is the expected no-authority-promotion case ledger
+  + [fixture_id] is valid_graph_pass
+    + [expected_non_authority_warning] is present
+    + [expected_source_mutation] is false
+  + [fixture_id] is stale_checkpoint
+    + [expected_checkpoint_cleanup_authority_loss] is false
+    + [expected_rebuild_from_source_authority] is true
+  + [fixture_id] is hidden_write_prevention
+    + [expected_hidden_write_result] is terminal_fault
+    + [expected_source_mutation] is false
+  + [fixture_id] is false_ready_checkpoint
+    + [expected_gate_opened_by_checkpoint] is false
+    + [expected_completion_review_required] is true
+  + [fixture_id] is completion_gate_refusal
+    + [expected_gate_opened_by_runtime_graph] is false
+    + [expected_completion_review_required] is true
+
+  = must: reject generated output as source authority
+  = must: fail future implementation if generated checkpoints, traces, reports, or graph state can open a gate

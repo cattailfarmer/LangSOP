@@ -1,0 +1,23 @@
+Subject: IR4 Fixture Source Ambiguous Interrupt
+Date: 2026-05-26
+
+& [IR4FixtureSource: ambiguous_interrupt] is a runtime graph fixture source
+  + [fixture_case] is ambiguous_interrupt
+  + [active_work_packet_state] is accepted
+  + [readiness_state] is ready
+  + [coordination_claim_state] is accepted
+  + [checkpoint_freshness_state] is current
+  + [checkpoint_authority_state] is non_authoritative_execution_state
+  + [input_identity_state] is ambiguous
+  + [operator_trace_state] is not_requested
+  + [completion_gate_state] is not_reached
+  + [hidden_write_attempt] is false
+  + [expected_terminal_outcome] is terminal_interrupt
+  + [expected_interrupt_kind] is ambiguous_identity
+  + [expected_resume_condition] is SOP_or_human_identity_resolution
+  + [expected_operator_invocation] is false
+  + [generated_output_policy_state] is accepted_projection_only
+  + [unsafe_operation_requested] is false
+
+  = expect: SOP-first interrupt context is produced
+  = expect: runtime graph does not resolve semantic ambiguity silently
