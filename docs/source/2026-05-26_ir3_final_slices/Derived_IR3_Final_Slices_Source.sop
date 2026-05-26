@@ -1,0 +1,27 @@
+Subject: IR3 Final Slices Source
+Date: 2026-05-26
+Source UUID: fbdcf25d-efb4-473c-af1d-773654912f96
+
+& [SourcePrompt: IR3FinalSlices] is the preserved source for minting IR3 final slices
+  + [source_kind] is manager-derived implementation-readiness slice source
+  + [origin] is accepted IR2 parser/projection implementation proof pack
+  + [purpose] is split IR3 operator harness and fixture runner into clean final slices before operator harness code begins
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [model_route] is requires deeper reasoning for final-slice minting; later bounded IR3 implementation may be GPT-5.3-Codex-Spark-suitable after slices are accepted
+
+  = must: use IR2 parser/projection implementation proof as the boundary input for fixture-backed operator harness work
+  = must: define operator harness boundaries, fixture runner policy, trace output policy, and implementation activation plan before writing operator runner code
+  = must: preserve SOP authority and generated traces/projections as non-authoritative
+  = must: keep LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control out of IR3
+  = must: require completion review after every IR3 slice
+
+& [RequiredIR3SliceSet] is the source-level slice set for IR3
+  + [slice_candidate] is IR3-S01 operator harness boundary and invariant map
+  + [slice_candidate] is IR3-S02 contract-driven operator runner and trace contract
+  + [slice_candidate] is IR3-S03 fixture runner input/output policy and generated trace boundary
+  + [slice_candidate] is IR3-S04 implementation file inventory and activation plan
+  + [slice_candidate] is IR3-S05 operator harness fixture and expected trace ledger plan
+  + [slice_candidate] is IR3-S06 IR3 completion review and implementation activation pack
+
+  = must: route IR3-S01 through IR3-S04 and IR3-S06 to deeper reasoning
+  = should: route IR3-S05 to GPT-5.3-Codex-Spark after IR3-S01 through IR3-S04 are accepted because fixture planning is bounded

@@ -1,0 +1,24 @@
+Subject: IR3 Final Slices Source Manifest
+Date: 2026-05-26
+Manifest UUID: 8bf3992d-5ec0-4d6d-abe3-a4d384a24500
+
+& [SourceDocumentManifest: IR3FinalSlices] is the source preservation manifest for minting IR3 final slices
+  + [derived_source] is docs/source/2026-05-26_ir3_final_slices/Derived_IR3_Final_Slices_Source.sop
+    + [sha256] is 34DC5C164C20CBFD9EE3E8D53FEF4E768BB902B78D4F592A34F37C49B3C424C2
+    + [source_role] is preserved manager-derived source for IR3 final slice minting
+  + [authority_source] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+    + [sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+    + [source_role] is accepted parser/projection implementation proof pack and IR3 gate input
+  + [authority_source] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+    + [sha256] is E7CCCA3A6744A03CD6871FF6B4CDB2682FA4BB6300179F2EA610717BA5F3F2ED
+    + [source_role] is IR2 implementation completion review
+  + [authority_source] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+    + [sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+    + [source_role] is accepted planning coordination and operator contract input
+  + [canonical_target] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/IR3_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for IR3 final slices
+  = must: invalidate IR3 final slices if a cited source hash changes without reprocessing
+  = must: keep IR3 bounded to operator harness and fixture runner planning
+  - never: use this manifest to authorize LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, or live machine control

@@ -1,0 +1,103 @@
+Subject: IR3 Final Slice Minting Review V1
+Date: 2026-05-26
+Review UUID: 4719ceff-8844-4f0e-b75f-6efcd76b5e15
+
+@ [source_manifest] docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [IR2_completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [SliceMintingReview: IR3FinalSlices] is the completed-work review for minting IR3 final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 54FBBC2914CDDDE3E75A4470AF5DADE511DD9335BDADEF544E073D9F2C64CE74
+  + [completed_output] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [completed_output_sha256] is DB3CA534CD20107429069B45F40EEC45EBF982CFC789C1FF5F9E1039E5C0297C
+  + [completed_output] is docs/slices/IR3_Final_Slices.v1.sop
+  + [completed_output_sha256] is ED6E0876738CC3E758593F721CFA1B771D97B26DEE2CD3C9C6ACB71FAAA71D18
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR3-S01 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as the gate-opening evidence for IR3-S01 only
+  = must: rerun this review if IR3 source, canonical specification, or slice surface changes
+  = must: keep runner implementation, fixture files, expected ledgers, generated traces, dependencies, operations control, and live machine control gated until their specific slices open
+
+& [VerificationOracleResult: IR3FinalSlices] is the verification result for IR3 slice minting
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [slice_count] is 6
+  + [ready_slice] is IR3-S01 operator harness boundary and invariant map
+  + [gated_slice] is IR3-S02 contract-driven operator runner and trace contract
+  + [gated_slice] is IR3-S03 fixture runner input/output policy and generated trace boundary
+  + [gated_slice] is IR3-S04 implementation file inventory and activation plan
+  + [gated_slice] is IR3-S05 operator harness fixture and expected trace ledger plan
+  + [gated_slice] is IR3-S06 IR3 completion review and implementation activation pack
+  + [model_route_present] is IR3-S01 requires deeper reasoning
+  + [model_route_present] is IR3-S02 requires deeper reasoning
+  + [model_route_present] is IR3-S03 requires deeper reasoning
+  + [model_route_present] is IR3-S04 requires deeper reasoning
+  + [model_route_present] is IR3-S05 GPT-5.3-Codex-Spark-suitable after IR3-S01 through IR3-S04 are accepted and fixture scope is bounded
+  + [model_route_present] is IR3-S06 requires deeper reasoning
+  + [forbidden_scope_absent] is generated trace authority promotion
+  + [forbidden_scope_absent] is LangGraph runtime implementation
+  + [forbidden_scope_absent] is UI or surface implementation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is operations simulator implementation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [IR3FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+    @ [support] docs/slices/IR3_Final_Slices.v1.sop
+
+& [SupportDelta: IR3FinalSlices] is the support delta produced by this slice minting pass
+  + [new_support_record] is IR3FinalSliceSurfaceV1 supports IR3-S01 execution
+  + [new_support_record] is IR3-S01 through IR3-S04 preserve deeper-reasoning boundary, trace, IO, and activation decisions
+  + [new_support_record] is IR3-S05 Spark suitability is gated until IR3-S01 through IR3-S04 are accepted
+  + [new_support_record] is IR3-S06 preserves deeper-reasoning final activation review
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3FinalSlices] is the requirement delta produced by this slice minting pass
+  + [requirement_delta] is IR3-S01 must run first and requires deeper reasoning
+  + [requirement_delta] is no operator runner contract, fixture runner IO policy, implementation plan, fixture plan, code, fixture source, expected-ledger, generated trace, or test integration files are authorized until their slice gates open
+  + [requirement_delta] is generated traces, fixture outputs, caches, projection files, and runner reports remain non-authoritative generated artifacts
+  + [requirement_delta] is no LangGraph runtime, surface, adapter, operations simulator, operations control, or live-control behavior authorized
+  + [requirement_delta] is no rebake required before IR3-S01
+
+& [FaultReview: IR3FinalSlices] is the fault review for IR3 slice minting
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [runner_implementation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [generated_trace_authority_leak_found] is false
+  + [langgraph_runtime_leak_found] is false
+  + [surface_runtime_leak_found] is false
+  + [adapter_runtime_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_slice_found] is false
+
+  ! [IR3FinalSlicesAccepted] is accepted
+    @ [support] [VerificationOracleResult: IR3FinalSlices]
+    @ [support] [SupportDelta: IR3FinalSlices]
+    @ [support] [RequirementDelta: IR3FinalSlices]
+    @ [support] [FaultReview: IR3FinalSlices]
+
+& [NextSliceGate: IR3-S01] is opened
+  + [opened_slice] is IR3-S01 operator harness boundary and invariant map
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is operator harness boundaries decide what future runner and fixture implementation may safely mean
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-S01 next unless user redirects or a new fault invalidates this review

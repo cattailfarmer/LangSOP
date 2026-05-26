@@ -31,6 +31,8 @@ Current planning authority:
 - `docs/slices/IR1_Final_Slices.v1.sop`
 - `docs/canonical/LangSOP_IR2_Final_Slices.canonical.sop`
 - `docs/slices/IR2_Final_Slices.v1.sop`
+- `docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop`
+- `docs/slices/IR3_Final_Slices.v1.sop`
 
 The v2 pass preserves the initial specification as source snapshots, expands it through a seven-fold specification explosion, and leaves the project ready for kernel schema and operator-contract design. Runtime code still requires solution records, fixtures, and proof before it can claim implementation authority.
 
@@ -38,4 +40,4 @@ The working development pattern is "whole-pie first": keep the product overview 
 
 The final slicing surface isolates work into dependency-closed chunks. FSC1 foundation contracts is accepted as a boundary input, FSC2 planning coordination has been minted into final slices, and downstream chunks stay gated until their upstream contract packs are accepted.
 
-FSC1, FSC2, FSC3, FSC4, FSC5, IR1, and IR2 have been minted, executed, reviewed, and accepted through the planning and authority-projection layers. The inert Python scaffold has been created from the accepted IR1 inventory and reviewed in `docs/reviews/IR1_Scaffold_Creation_Review.v1.sop`. IR2 parser/projection implementation proof is accepted in `docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop`. The current ready chunk is IR3 operator harness and fixture runner final-slice minting, which requires deeper reasoning; later bounded IR3 implementation can be GPT-5.3-Codex-Spark-suitable after IR3 slices are accepted. Generated outputs remain non-authoritative and limited to ignored fixture paths. No operations control or live machine control is authorized.
+FSC1, FSC2, FSC3, FSC4, FSC5, IR1, and IR2 have been minted, executed, reviewed, and accepted through the planning and authority-projection layers. The inert Python scaffold has been created from the accepted IR1 inventory and reviewed in `docs/reviews/IR1_Scaffold_Creation_Review.v1.sop`. IR2 parser/projection implementation proof is accepted in `docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop`. IR3 final slices are minted and accepted in `docs/reviews/IR3_Final_Slice_Minting_Review.v1.sop`. The current ready slice is IR3-S01 operator harness boundary and invariant map, which requires deeper reasoning; IR3-S05 fixture planning can become GPT-5.3-Codex-Spark-suitable only after IR3-S01 through IR3-S04 are accepted. Generated outputs remain non-authoritative and limited to ignored fixture paths and future ignored trace paths. No operations control or live machine control is authorized.

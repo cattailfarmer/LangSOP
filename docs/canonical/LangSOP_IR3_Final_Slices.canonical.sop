@@ -1,0 +1,77 @@
+Subject: LangSOP IR3 Final Slices Canonical Specification
+Date: 2026-05-26
+
+@ [source_manifest] docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR3_Final_Slices.v1.sop
+@ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [IR2_completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [CanonicalRecord: IR3FinalSlices] is the processed planning authority for IR3 final work slices
+  + [canonical_uuid] is 62aded9b-cbe4-4c41-bbed-1170780d9bbc
+  + [source_manifest_uuid] is 8bf3992d-5ec0-4d6d-abe3-a4d384a24500
+  + [slice_surface_uuid] is a29a9777-f8fb-42d8-8290-ec123f9085e2
+  + [authority_scope] is IR3 slice order, gates, expected outputs, model routing, implementation boundaries, fixture runner policy, trace output policy, and forbidden downstream scope
+  + [implementation_scope] is operator harness and fixture runner planning plus gated implementation activation
+  + [depends_on] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+  = must: use docs/slices/IR3_Final_Slices.v1.sop as the current IR3 slice surface
+  = must: execute IR3-S01 first
+  = must: run completion review after each IR3 slice before opening the next gated slice
+  = must: preserve generated traces and fixture outputs as non-authoritative projections
+  - never: treat IR3 slices as permission for live dispatch, LangGraph runtime implementation, operations control, or live machine control
+
+& [CanonicalIR3SliceSet] is the final IR3 slice sequence
+  + [slice] is IR3-S01 operator harness boundary and invariant map
+  + [slice] is IR3-S02 contract-driven operator runner and trace contract
+  + [slice] is IR3-S03 fixture runner input/output policy and generated trace boundary
+  + [slice] is IR3-S04 implementation file inventory and activation plan
+  + [slice] is IR3-S05 operator harness fixture and expected trace ledger plan
+  + [slice] is IR3-S06 IR3 completion review and implementation activation pack
+
+  = must: preserve this order unless completion review rebakes IR3
+
+& [CanonicalIR3ExecutionGate] is the activation rule for IR3
+  + [current_ready_slice] is IR3-S01
+  + [gated_slice] is IR3-S02 until IR3-S01 accepted
+  + [gated_slice] is IR3-S03 until IR3-S02 accepted
+  + [gated_slice] is IR3-S04 until IR3-S03 accepted
+  + [gated_slice] is IR3-S05 until IR3-S04 accepted
+  + [gated_slice] is IR3-S06 until IR3-S05 accepted
+  + [completion_gate] is IR3 implementation activation pack accepted after IR3-S06
+
+& [CanonicalIR3ModelRouting] is the model-routing record
+  + [IR3-S01] is requires deeper reasoning
+  + [IR3-S02] is requires deeper reasoning
+  + [IR3-S03] is requires deeper reasoning
+  + [IR3-S04] is requires deeper reasoning
+  + [IR3-S05] is GPT-5.3-Codex-Spark-suitable after IR3-S01 through IR3-S04 are accepted and fixture scope is bounded
+  + [IR3-S06] is requires deeper reasoning
+
+  = must: keep operator authority boundaries, trace semantics, fixture runner policy, and final activation under deeper reasoning
+
+& [SatisfactionSignature: IR3FinalSlices] is the valid SJS satisfaction signature for the IR3 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is f5c7ef99-b95e-4c8e-a40b-fd251a4c5597
+  + [signed_subject] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 34DC5C164C20CBFD9EE3E8D53FEF4E768BB902B78D4F592A34F37C49B3C424C2
+  + [source_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+  + [source_sha256] is E7CCCA3A6744A03CD6871FF6B4CDB2682FA4BB6300179F2EA610717BA5F3F2ED
+  + [source_sha256] is 488028EFDB7178A0AEB329F5689A915B86AFF52CB445E3BFB1D0D29581626B76
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR3_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, IR2_gate_imported, planning_coordination_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR3_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR3 final slices; no live operations control authorized
+
+& [RegistryRecord: IR3FinalSlices] is the durable identity ledger for the IR3 final slice surface
+  + [registry_uuid] is 8df74dba-00ee-4ac2-a345-7901d1a9d31c
+  + [manifest_node_uuid] is 8bf3992d-5ec0-4d6d-abe3-a4d384a24500
+  + [canonical_node_uuid] is 62aded9b-cbe4-4c41-bbed-1170780d9bbc
+  + [slice_surface_uuid] is a29a9777-f8fb-42d8-8290-ec123f9085e2
+  + [signature_uuid] is f5c7ef99-b95e-4c8e-a40b-fd251a4c5597
+  + [closure_review_uuid] is 4719ceff-8844-4f0e-b75f-6efcd76b5e15

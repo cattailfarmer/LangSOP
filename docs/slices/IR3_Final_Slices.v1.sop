@@ -1,0 +1,137 @@
+Subject: LangSOP IR3 Final Slices V1
+Date: 2026-05-26
+Slice Surface UUID: a29a9777-f8fb-42d8-8290-ec123f9085e2
+
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-26_ir3_final_slices/Source_Document_Manifest.sop
+@ [IR2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [IR2_completion_review] docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+@ [planning_coordination_pack] docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+
+& [IR3FinalSliceSurfaceV1] is the executable slice surface for IR3 operator harness and fixture runner final-slice work
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [chunk_boundary] is operator harness boundary, operator runner contract, fixture runner IO policy, trace boundary, implementation activation plan, fixture ledger plan, and IR3 activation proof pack
+  + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR3-S01
+  + [gated_slice_set] is IR3-S02, IR3-S03, IR3-S04, IR3-S05, and IR3-S06
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR3-S01 before defining runner traces, fixture runner IO policy, implementation file inventory, fixtures, expected ledgers, generated traces, code, or tests
+  = must: run completed-work review after each IR3 slice
+  = must: stale downstream slices when an upstream output changes or contradicts the current slice assumptions
+  = must: preserve generated traces, fixture outputs, caches, projections, and runner reports as non-authoritative generated artifacts
+  - never: treat IR3 as permission for live dispatch, LangGraph runtime implementation, operations control, or live machine control
+
+& [FinalWorkSlice: IR3-S01-OperatorHarnessBoundaryAndInvariantMap] is ready
+  + [slice_id] is IR3-S01
+  + [slice_name] is operator harness boundary and invariant map
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [portion_ref] is operator harness semantic boundary
+  + [authority_basis] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [boundary_input_set] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [boundary_input_set] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+  + [boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [internal_dependency_set] is empty
+  + [expected_output_set] is docs/implementation/IR3_Operator_Harness_Boundary_And_Invariant_Map.v1.sop
+  + [expected_output_set] is operator harness role map, authority boundary, non-authoritative projection boundary, input/output invariant set, trace identity rules, and blocked downstream dependencies
+  + [verification_oracle] is boundary map defines what an operator harness may observe, transform, emit, and refuse without creating implementation code, fixture files, generated traces, dependency additions, runtime dispatch, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is the slice fixes authority distinctions for operator execution, generated traces, fixture boundaries, and downstream implementation activation
+  + [forbidden_scope] is runner contract creation, fixture runner IO policy, implementation code creation, fixture file creation, expected-ledger creation, generated trace creation, dependency installation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR3-S02-ContractDrivenOperatorRunnerAndTraceContract] is gated
+  + [slice_id] is IR3-S02
+  + [slice_name] is contract-driven operator runner and trace contract
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [portion_ref] is runner and trace contract
+  + [authority_basis] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [activation_gate] is IR3-S01 accepted
+  + [internal_dependency_set] is IR3-S01 accepted output
+  + [expected_output_set] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [expected_output_set] is runner input contract, runner output contract, trace event schema, refusal and fault event contract, deterministic replay notes, and non-authoritative trace warning
+  + [verification_oracle] is runner contract maps accepted boundary invariants to traceable operator execution semantics without implementation code, fixture files, generated traces, dependency additions, live dispatch, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is trace semantics and runner refusal behavior must preserve authority distinctions and planning coordination identity
+  + [forbidden_scope] is implementation code creation, fixture file creation, expected-ledger creation, generated trace creation, dependency installation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR3-S03-FixtureRunnerIOAndGeneratedTracePolicy] is gated
+  + [slice_id] is IR3-S03
+  + [slice_name] is fixture runner input/output policy and generated trace boundary
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [portion_ref] is fixture runner and generated trace policy
+  + [authority_basis] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [activation_gate] is IR3-S02 accepted
+  + [internal_dependency_set] is IR3-S01 and IR3-S02 accepted outputs
+  + [expected_output_set] is docs/fixtures/IR3_Fixture_Runner_IO_And_Generated_Trace_Policy.v1.sop
+  + [expected_output_set] is accepted fixture roots, generated trace roots, expected ledger roots, mutation policy, cleanup policy, and generated-output authority warnings
+  + [verification_oracle] is policy defines fixture and generated trace handling without creating fixture source, expected ledgers, generated outputs, implementation code, dependency additions, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is fixture IO policy decides durable evidence boundaries and generated output non-authority
+  + [forbidden_scope] is implementation code creation, fixture file creation, expected-ledger creation, generated trace creation, dependency installation, source mutation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR3-S04-ImplementationFileInventoryAndActivationPlan] is gated
+  + [slice_id] is IR3-S04
+  + [slice_name] is implementation file inventory and activation plan
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [portion_ref] is implementation activation planning
+  + [authority_basis] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [activation_gate] is IR3-S03 accepted
+  + [internal_dependency_set] is IR3-S01 through IR3-S03 accepted outputs
+  + [expected_output_set] is docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+  + [expected_output_set] is proposed source file inventory, public API inventory, test inventory, command plan, generated-output policy, activation gate, and proof requirements for bounded implementation
+  + [verification_oracle] is activation plan lists exact implementation and test file scope without creating code, fixtures, expected ledgers, generated traces, dependencies, runtime dispatch, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation activation decides what future bounded code work may safely create
+  + [forbidden_scope] is implementation code creation, fixture file creation, expected-ledger creation, generated trace creation, dependency installation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR3-S05-OperatorHarnessFixtureAndExpectedTraceLedgerPlan] is gated
+  + [slice_id] is IR3-S05
+  + [slice_name] is operator harness fixture and expected trace ledger plan
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [portion_ref] is fixture and expected trace ledger plan
+  + [authority_basis] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [activation_gate] is IR3-S04 accepted
+  + [internal_dependency_set] is IR3-S01 through IR3-S04 accepted outputs
+  + [expected_output_set] is docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+  + [expected_output_set] is fixture case matrix, expected trace ledger plan, acceptance and refusal cases, generated-output cleanup expectations, and future implementation test oracle
+  + [verification_oracle] is fixture plan covers accepted operator harness and trace semantics without creating fixture source, expected ledgers, generated traces, implementation code, dependencies, operations control, or live machine control
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR3-S01 through IR3-S04 are accepted and fixture scope is bounded
+  + [model_route_reason] is fixture and expected-ledger planning is bounded once boundary, runner contract, IO policy, and implementation activation plan are accepted
+  + [forbidden_scope] is implementation code creation, fixture file creation, expected-ledger creation, generated trace creation, dependency installation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR3-S06-CompletionReviewAndImplementationActivationPack] is gated
+  + [slice_id] is IR3-S06
+  + [slice_name] is IR3 completion review and implementation activation pack
+  + [chunk_ref] is IR3 operator harness and fixture runner
+  + [portion_ref] is planning closure and implementation activation gate
+  + [authority_basis] is docs/canonical/LangSOP_IR3_Final_Slices.canonical.sop
+  + [activation_gate] is IR3-S05 accepted
+  + [internal_dependency_set] is IR3-S01 through IR3-S05 accepted outputs
+  + [expected_output_set] is docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/IR3_Completion_Review.v1.sop
+  + [expected_output_set] is acceptance record for operator harness boundary, runner contract, fixture runner IO policy, implementation plan, fixture plan, support deltas, requirement deltas, stale outputs, contradictions, unresolved proof gaps, and downstream implementation readiness
+  + [verification_oracle] is completion review accepts only IR3 planning proof and opens bounded operator harness implementation activation only if no false authority, mutation, dependency, generated-output, runtime, dispatch, operations control, or live-control fault is present
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR3 planning acceptance affects implementation readiness and downstream work boundaries
+  + [forbidden_scope] is implementation code creation, fixture file creation, expected-ledger creation, generated trace creation, dependency installation, LangGraph runtime implementation, surface implementation, adapter implementation, operations simulator implementation, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR3FinalSliceClosureReview] is the dependency audit for minted IR3 final slices
+  + [slice_surface_uuid] is a29a9777-f8fb-42d8-8290-ec123f9085e2
+  + [IR3_boundary_input_set] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [IR3_boundary_input_set] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+  + [IR3_boundary_input_set] is docs/planning/FSC2_Planning_Coordination_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [current_ready_slice] is IR3-S01
+  + [safety_limit] is no live operations control authorized
+
+  = must: rerun this closure review after every IR3 completion review
