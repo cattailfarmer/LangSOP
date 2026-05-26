@@ -1,0 +1,99 @@
+Subject: IR3 IA01 Completion Review V1
+Date: 2026-05-26
+Review UUID: 2ba22ea1-2902-479f-a2d9-2ba341d75f28
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [work_state] docs/state/IR3_Work_State.v1.sop
+@ [completed_output] docs/implementation/IR3_Bounded_Implementation_Activation_Boundary.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+@ [minting_review] docs/reviews/IR3_Implementation_Activation_Minting_Review.v1.sop
+
+& [CompletedWorkReview: IR3-IA01] is the completed-work review for IR3 bounded implementation activation boundary and file inventory confirmation
+  + [slice_id] is IR3-IA01
+  + [slice_name] is bounded implementation activation boundary and file inventory confirmation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_output] is docs/implementation/IR3_Bounded_Implementation_Activation_Boundary.v1.sop
+  + [completed_output_sha256] is E8B7BAD71EE5388FB77B6888B1086A4979F1CD9657434D1495F60636C3E44C04
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR3-IA01 as the bounded activation boundary for fixture and expected-ledger seed material
+  + [next_gate_result] is IR3-IA02 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA01 acceptance
+
+  = must: treat this review as the gate-opening evidence for IR3-IA02 only
+  = must: rerun this review if the activation boundary, IR3 implementation activation canonical specification, slice surface, minting review, or IR3 activation pack changes
+  = must: keep implementation code, generated traces, tests, dependencies, operations control, and live machine control gated until their specific slices open
+
+& [IR3IA01Verification] is the verification result for bounded implementation activation boundary
+  + [confirmed_implementation_file_inventory_present] is true
+  + [confirmed_fixture_source_inventory_present] is true
+  + [confirmed_expected_ledger_inventory_present] is true
+  + [confirmed_generated_output_boundary_present] is true
+  + [confirmed_dependency_boundary_present] is true
+  + [confirmed_command_plan_present] is true
+  + [implementation_slice_proof_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR3IA01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR3_Bounded_Implementation_Activation_Boundary.v1.sop
+
+& [SupportDelta: IR3-IA01] is the support delta produced by the accepted bounded implementation activation boundary
+  + [new_support_record] is IR3BoundedImplementationActivationBoundaryV1 supports IR3-IA02 fixture source and expected-ledger seed material
+  + [new_support_record] is exact implementation, fixture, expected-ledger, generated-output, dependency, command, and proof gates are confirmed
+  + [new_support_record] is IR3-IA02 is GPT-5.3-Codex-Spark-suitable because fixture and expected-ledger material is bounded by accepted inventory
+  + [support_status] is accepted
+
+& [RequirementDelta: IR3-IA01] is the requirement delta produced by the accepted activation boundary
+  + [requirement_delta] is IR3-IA02 may create only the confirmed fixture source files, expected ledger files, and fixture index
+  + [requirement_delta] is code, generated trace, test file, dependency installation, operations control, and live machine control remain unauthorized by IR3-IA01
+  + [requirement_delta] is no rebake required before IR3-IA02
+
+& [StalenessAndContradictionReview: IR3-IA01] is the staleness review for this completion
+  + [stale_IR3_activation_pack_found] is false
+  + [stale_activation_canonical_found] is false
+  + [stale_activation_slice_surface_found] is false
+  + [stale_activation_minting_review_found] is false
+  + [contradicted_file_inventory_found] is false
+  + [false_ready_IR3_IA02_found] is false
+  + [unresolved_support_gap_found] is false
+  + [review_result] is no_staleness_or_contradiction_found
+
+  = must: mark IR3-IA01 stale if any listed stale or contradiction field becomes true
+
+& [FaultReview: IR3-IA01] is the fault review for bounded implementation activation boundary
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [implementation_code_creation_leak_found] is false
+  + [fixture_file_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_trace_creation_leak_found] is false
+  + [test_file_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR3IA01Accepted] is accepted
+    @ [support] [IR3IA01Verification]
+    @ [support] [SupportDelta: IR3-IA01]
+    @ [support] [RequirementDelta: IR3-IA01]
+    @ [support] [StalenessAndContradictionReview: IR3-IA01]
+    @ [support] [FaultReview: IR3-IA01]
+
+& [NextSliceGate: IR3-IA02] is opened
+  + [opened_slice] is IR3-IA02 fixture source and expected-ledger seed material
+  + [accepted_boundary_input] is docs/implementation/IR3_Bounded_Implementation_Activation_Boundary.v1.sop
+  + [accepted_boundary_input_sha256] is E8B7BAD71EE5388FB77B6888B1086A4979F1CD9657434D1495F60636C3E44C04
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA01 acceptance
+  + [model_route_reason] is fixture and expected-ledger creation is bounded by accepted fixture plan and activation boundary
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR3-IA02 next unless user redirects or a new fault invalidates this review

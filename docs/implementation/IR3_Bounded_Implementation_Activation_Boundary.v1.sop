@@ -1,0 +1,135 @@
+Subject: IR3 Bounded Implementation Activation Boundary V1
+Date: 2026-05-26
+Activation Boundary UUID: ae5c511b-0893-48d4-a680-55b7e11d6ed7
+
+@ [activation_slice_surface] docs/slices/IR3_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR3_Implementation_Activation.canonical.sop
+@ [IR3_activation_pack] docs/planning/IR3_Operator_Harness_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR3_Operator_Harness_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR3_Operator_Harness_Fixture_Plan.v1.sop
+
+& [IR3BoundedImplementationActivationBoundaryV1] is the IR3-IA01 activation boundary for future bounded operator harness implementation work
+  + [activation_boundary_id] is ir3-bounded-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is ae5c511b-0893-48d4-a680-55b7e11d6ed7
+  + [slice_id] is IR3-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary only
+
+  = must: confirm future file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, dependency boundary, command plan, and proof gate for implementation slices
+  = must: preserve accepted IR3 authority and trace semantics without implementation code creation in this slice
+  = must: keep IR4 gated until IR3 implementation proof is accepted
+  - never: create operator harness code, fixture source files, expected ledgers, generated traces, tests, dependencies, operations control, or live machine control in this slice
+
+& [ConfirmedImplementationFileInventory: IR3OperatorHarness] is the maximum code and test file inventory for IR3 operator harness implementation
+  + [future_code_file] is src/langsop/operators/contracts.py
+  + [future_code_file] is src/langsop/operators/traces.py
+  + [future_code_file] is src/langsop/operators/runner.py
+  + [future_code_file] is src/langsop/operators/fixture_runner.py
+  + [future_code_file] is src/langsop/operators/__init__.py
+  + [future_test_file] is tests/test_ir3_operator_harness_contracts.py
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+
+& [ConfirmedFixtureSourceInventory: IR3OperatorHarness] is the fixture source inventory opened by IR3-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/valid_contract_request_success.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/stale_authority_input_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/missing_contract_version_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/undeclared_output_kind_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/generated_projection_as_authority_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/ambiguous_input_identity_interrupt.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/unsupported_scope_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/unsafe_operations_request_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/invalid_input_shape_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/deterministic_replay_mismatch_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/generated_output_path_escape_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir3_operator_harness/source_mutation_refusal.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to FixtureCaseMatrix: IR3OperatorHarness
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR3OperatorHarness] is the expected ledger inventory opened by IR3-IA02 after this boundary is accepted
+  + [future_fixture_index] is docs/fixtures/IR3_Operator_Harness_Fixture_Index.v1.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir3_operator_harness/operator_trace_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir3_operator_harness/runner_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir3_operator_harness/fault_and_interrupt_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir3_operator_harness/generated_output_policy_expected.sop
+
+  = must: make expected ledgers reviewable without generated traces or runtime state
+  = must: keep expected ledgers as tracked fixture authority only after IR3-IA02 completion review accepts them
+
+& [ConfirmedGeneratedOutputBoundary: IR3OperatorHarness] is the generated-output boundary for future tests and fixture runs
+  + [generated_output_root] is .langsop/
+  + [generated_output_root] is .langsop/traces/ir3_operator_harness/
+  + [generated_output_root] is .langsop/reports/ir3_operator_harness/
+  + [generated_output_root] is .langsop/fixtures/ir3_operator_harness/
+  + [generated_output_root] is tests/fixtures/generated/ir3_operator_harness/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is projection_only
+  + [source_authority_status] is docs/ and accepted tracked fixture source or expected ledgers only
+
+  = must: refuse writes outside accepted generated roots during runtime or test execution
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject generated traces, reports, manifests, caches, fixture outputs, or runtime state as source authority
+
+& [ConfirmedDependencyBoundary: IR3OperatorHarness] is the dependency boundary for the first IR3 implementation pass
+  + [allowed_dependency_set] is Python standard library only
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+
+  = must: require a future dependency-authorizing slice before adding package dependencies or lockfiles
+
+& [ConfirmedCommandPlan: IR3OperatorHarness] is the command and verification plan for future implementation slices
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [targeted_contract_test] is python -m unittest tests.test_ir3_operator_harness_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated outputs are ignored, disposable, and reproducible
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir3_operator_harness_contracts exists
+
+& [ImplementationSliceProofGate: IR3OperatorHarness] is the proof gate opened by this activation boundary
+  + [IR3-IA02_opened_after_review] is fixture source and expected-ledger seed material
+  + [IR3-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after IR3-IA01 acceptance
+  + [IR3-IA02_scope] is fixture source files, expected ledger files, and fixture index only
+  + [code_creation_authorized_after_IR3-IA01] is false
+  + [fixture_creation_authorized_after_IR3-IA01] is true_for_IR3-IA02_only
+  + [expected_ledger_creation_authorized_after_IR3-IA01] is true_for_IR3-IA02_only
+  + [generated_trace_creation_authorized_after_IR3-IA01] is false
+  + [test_file_creation_authorized_after_IR3-IA01] is false
+  + [dependency_installation_authorized_after_IR3-IA01] is false
+  + [operations_control_authorized_after_IR3-IA01] is false
+  + [live_machine_control_authorized_after_IR3-IA01] is false
+
+  = must: open only IR3-IA02 after this boundary is accepted
+  = must: keep contracts, trace models, runner, fixture runner, tests, and generated outputs gated until IR3-IA02 is reviewed and accepted
+
+& [IR3IA01CoverageReview] is the coverage checklist for IR3-IA01
+  + [confirmed_implementation_file_inventory_present] is ConfirmedImplementationFileInventory: IR3OperatorHarness
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceInventory: IR3OperatorHarness
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory: IR3OperatorHarness
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary: IR3OperatorHarness
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: IR3OperatorHarness
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: IR3OperatorHarness
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: IR3OperatorHarness
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_trace_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR3-IA01 only when all checklist items are satisfied
+  = must: open IR3-IA02 only after this activation boundary is reviewed in a completion review
