@@ -1,0 +1,303 @@
+Subject: IR5 Authority Display And Projection State Contract V1
+Date: 2026-05-26
+Contract UUID: c30feec3-4002-4617-89f4-031b19106f55
+
+@ [slice_surface] docs/slices/IR5_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR5_Final_Slices.canonical.sop
+@ [boundary_import] docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [boundary_import_review] docs/reviews/IR5_S01_Completion_Review.v1.sop
+@ [authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [narrative_debug_contracts] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+@ [conversation_adapter_contracts] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir4_runtime_graph_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+
+& [IR5AuthorityDisplayAndProjectionStateContractV1] is the IR5-S02 contract for authority display and projection-state semantics
+  + [contract_id] is ir5-authority-display-projection-state-contract-v1
+  + [contract_uuid] is c30feec3-4002-4617-89f4-031b19106f55
+  + [slice_id] is IR5-S02
+  + [authority_scope] is authority display envelope, projection-state envelope, freshness and lineage display, stop-state display, mutation route display, completion gate display, projection refusal behavior, surface-family obligations, and fixture seed obligations
+  + [implementation_scope] is display and projection-state contract only
+  + [model_route_used] is requires deeper reasoning
+  + [accepted_dependency] is docs/surfaces/IR5_Surface_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is 60EF5679FBAC2AB6037696C59E078498F079E188B63564D1DE43C9A570B4CB56
+
+  = must: define the authority and state semantics future surfaces must project before any decision-making action is offered
+  = must: keep projected state, display state, carrier state, generated runtime evidence, dry-run evidence, and Langflow diagrams non-authoritative
+  = must: preserve deeper-reasoning routing for this contract because authority display conflicts decide when projected state may guide action without becoming authority
+  - never: implement UI components, adapters, transports, fixture files, expected ledgers, generated output writers, dependency installation, operations simulator code, operations control, or live machine control in this contract
+
+& [AuthorityDisplayEnvelope] is the required authority notice display envelope for every decision-making projection
+  + [required_field] is display_projection_id
+  + [required_field] is projected_subject_ref
+  + [required_field] is carrier_surface
+  + [required_field] is authority_tier
+  + [required_field] is trust_limit
+  + [required_field] is source_authority_ref_set
+  + [required_field] is derived_from_ref_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is risk_reason
+  + [required_field] is permitted_action_set
+  + [required_field] is forbidden_action_set
+  + [required_field] is required_route_set
+  + [required_field] is mutation_boundary_ref
+  + [required_field] is visible_before_action
+  + [authority_tier] is source_authority
+  + [authority_tier] is accepted_execution_evidence
+  + [authority_tier] is generated_projection_evidence
+  + [authority_tier] is carrier_context
+
+  = must: expose authority tier and trust limit before a human or agent can select an authority-sensitive action
+  = must: show lower-tier records as lower-tier records even when they summarize accepted work
+  = must: reject any display envelope that cannot cite source authority refs and required route set
+
+& [ProjectionStateEnvelope] is the required state envelope for projected surface records
+  + [required_field] is projection_id
+  + [required_field] is projection_kind
+  + [required_field] is projected_subject_ref
+  + [required_field] is source_record_ref_set
+  + [required_field] is lineage_edge_set
+  + [required_field] is generated_at
+  + [required_field] is projected_status
+  + [required_field] is freshness_state
+  + [required_field] is invalidation_ref_set
+  + [required_field] is blocker_ref_set
+  + [required_field] is stale_source_ref_set
+  + [required_field] is fault_record_ref_set
+  + [required_field] is interrupt_context_ref_set
+  + [required_field] is contested_claim_ref_set
+  + [required_field] is pending_review_ref_set
+  + [required_field] is supported_action_route_set
+  + [required_field] is refusal_reason_set
+  + [projected_status] is ready
+  + [projected_status] is blocked
+  + [projected_status] is stale
+  + [projected_status] is faulted
+  + [projected_status] is interrupted
+  + [projected_status] is contested
+  + [projected_status] is pending_review
+  + [projected_status] is unsupported_scope
+  + [projected_status] is refused
+
+  = must: prevent ready status when blocker, stale, fault, interrupt, contested claim, pending review, or refusal evidence exists
+  = must: keep projection identity distinct from source record identity
+  = must: preserve enough state context for another conversation, user, or agent to reenter without trusting carrier memory
+
+& [FreshnessAndLineageDisplayContract] is the contract for freshness and lineage visibility
+  + [freshness_state] is fresh
+  + [freshness_state] is stale
+  + [freshness_state] is unknown
+  + [freshness_state] is contested
+  + [freshness_state] is interrupted
+  + [freshness_state] is blocked
+  + [freshness_state] is faulted
+  + [freshness_state] is pending_review
+  + [freshness_input] is accepted_boundary_pack_hash
+  + [freshness_input] is source_record_ref_set
+  + [freshness_input] is lineage_edge_set
+  + [freshness_input] is operator_trace_ref_set
+  + [freshness_input] is checkpoint_ref
+  + [freshness_input] is completion_review_ref
+  + [freshness_input] is invalidation_ref_set
+  + [display_obligation] is source authority path
+  + [display_obligation] is accepted proof or review path
+  + [display_obligation] is generated projection path when present
+  + [display_obligation] is carrier context path when present
+
+  = must: display stale, unknown, contested, interrupted, blocked, faulted, or pending-review freshness before any dependent action route is offered
+  = must: force unknown freshness when lineage cannot prove current authority against accepted hashes
+  = must: mark projection stale when source authority, accepted proof, completion review, runtime proof, operations safety, or boundary contract hash changes
+
+& [StopStateDisplayContract] is the display contract for blocked, stale, faulted, interrupted, contested, pending-review, unsupported, and refused states
+  + [stop_state] is blocked
+  + [stop_state] is stale
+  + [stop_state] is faulted
+  + [stop_state] is interrupted
+  + [stop_state] is contested
+  + [stop_state] is pending_review
+  + [stop_state] is unsupported_scope
+  + [stop_state] is refused
+  + [required_context] is stop_state_kind
+  + [required_context] is stop_state_ref_set
+  + [required_context] is evidence_ref_set
+  + [required_context] is required_resolution
+  + [required_context] is allowed_reconsideration_route_set
+  + [required_context] is forbidden_action_set
+
+  = must: prevent stopped projections from rendering as ready, completed, accepted, assigned, dispatched, or authorized
+  = must: preserve stop-state evidence for completion review and fixture planning
+  = must: keep unresolved stop states visible until accepted evidence clears or rebakes them
+
+& [ActionRouteDisplayContract] is the contract for displaying and classifying actions from projected surfaces
+  + [low_authority_action] is observe
+  + [low_authority_action] is comment
+  + [low_authority_action] is propose
+  + [authority_sensitive_action] is request_work_packet
+  + [authority_sensitive_action] is request_claim
+  + [authority_sensitive_action] is request_review
+  + [authority_sensitive_action] is request_rebake
+  + [authority_sensitive_action] is request_interrupt_resolution
+  + [authority_sensitive_action] is request_human_override
+  + [authority_sensitive_action] is request_dry_run
+  + [authority_sensitive_action] is request_completion_review
+  + [allowed_route] is accepted operator contract
+  + [allowed_route] is coordination review
+  + [allowed_route] is SOP-first interrupt
+  + [allowed_route] is SJS reprocessing
+  + [allowed_route] is explicit human override record with authority_notice
+  + [allowed_route] is completion_review_delta_gate
+  + [allowed_route] is dry_run_operation_request_contract for operation-like requests
+  + [blocked_route] is direct source authority write
+  + [blocked_route] is direct accepted pack write
+  + [blocked_route] is direct completion review acceptance
+  + [blocked_route] is direct claim acceptance
+  + [blocked_route] is direct agent dispatch
+  + [blocked_route] is direct command execution
+  + [blocked_route] is direct operations command
+
+  = must: show allowed route and blocked route before presenting an authority-sensitive action
+  = must: emit traceable request records or interrupt context rather than mutating authority from display state
+  = must: classify operation-like requests through dry-run and refusal semantics before any further route is considered
+
+& [ProjectionRefusalDisplayContract] is the contract for refusing unsafe or misleading projections
+  + [refusal_reason] is missing_source_ref_set
+  + [refusal_reason] is missing_lineage_edge_set
+  + [refusal_reason] is missing_authority_notice
+  + [refusal_reason] is missing_freshness_state
+  + [refusal_reason] is hidden_stop_state
+  + [refusal_reason] is unsupported_action_route
+  + [refusal_reason] is carrier_cannot_show_required_context
+  + [refusal_reason] is lower_authority_tier_misrepresented
+  + [refusal_reason] is runtime_checkpoint_treated_as_authority
+  + [refusal_reason] is dry_run_or_human_approval_treated_as_live_control
+  + [refusal_output] is blocked_projection
+  + [refusal_output] is stale_projection
+  + [refusal_output] is projection_fault_record
+  + [refusal_output] is divergence_notice
+  + [refusal_output] is sop_first_interrupt_context
+  + [refusal_output] is refused_operation_request
+
+  = must: refuse the projection before user action when required authority context cannot be displayed
+  = must: preserve refusal reason and evidence for downstream fixture planning
+
+& [CompletionGateAndOverrideDisplayRule] is the rule for completion gates, human override records, and review visibility
+  + [display_context] is completion_review_required
+  + [display_context] is completion_review_pending
+  + [display_context] is completion_review_accepted
+  + [display_context] is completion_review_rejected
+  + [display_context] is support_delta_present
+  + [display_context] is requirement_delta_present
+  + [display_context] is human_override_requested
+  + [display_context] is human_override_accepted
+  + [display_context] is human_override_expired
+  + [display_context] is human_override_out_of_scope
+
+  = must: prevent projections from opening downstream gates without accepted completion review
+  = must: display support and requirement deltas before a next-slice or next-chunk recommendation is acted on
+  = must: display human override scope, freshness, authority notice, and expiration without treating broad approval as live-control permission
+
+& [SurfaceFamilyDisplayObligationSet] is the family-specific obligation set for future IR5 projections
+  + [manager_projection_must_show] is current_ready_slice_or_chunk, blocked_item_set, stale_item_set, contested_claim_set, fault_item_set, pending_review_set, authority_notice, freshness_state, and supported_action_route_set
+  + [worker_projection_must_show] is worker_scope_summary, accepted_input_ref_set, expected_output_ref_set, forbidden_scope_set, model_route, verification_oracle_summary, completion_review_required, authority_notice, and freshness_state
+  + [narrative_projection_must_show] is narrative_summary, source_lineage_ref_set, open_frontier_set, blocked_or_stale_context_set, reentry_packet_ref_set, authority_notice, and freshness_state
+  + [debug_projection_must_show] is trace_path_summary, checkpoint_context_ref_set, fault_summary_set, hidden_write_check_summary, unresolved_debug_question_set, authority_notice, and freshness_state
+  + [conversation_projection_must_show] is conversation_lineage_ref_set, participant context, visible_authority_notice, visible_freshness_state, visible_blocked_stale_fault_interrupt_set, and available_action_route_set
+  + [adapter_projection_must_show] is carrier_surface, external_event_ref, projected_record_ref_set, authority_notice, freshness_state, inbound_action_classification_ref, mutation_gate_ref, and carrier context
+  + [langflow_projection_must_show] is explanatory_projection_only status, source graph ref set, authority notice, freshness state, and blocked direct execution route
+  + [operation_projection_must_show] is intended_effect, resource_target, risk_classification, dry_run_required, rollback_or_abort_route, refusal status, no-live-effect notice, and completion review requirement
+
+  = must: let future surfaces choose layout only after preserving these semantic obligations
+  = must: reject any family projection that cannot show its required obligation set
+
+& [IR4RuntimeAndFSC5SafetyDisplayBridge] is the display bridge for runtime evidence and operations safety
+  + [runtime_terminal_outcome_display] is terminal_success as generated_projection_evidence unless accepted by completion review
+  + [runtime_terminal_outcome_display] is terminal_blocked as blocked projection with blocker evidence
+  + [runtime_terminal_outcome_display] is terminal_stale as stale projection with stale source refs
+  + [runtime_terminal_outcome_display] is terminal_fault as faulted projection with fault record refs
+  + [runtime_terminal_outcome_display] is terminal_interrupt as interrupted projection with SOP-first interrupt context
+  + [checkpoint_display] is execution_state_only
+  + [generated_trace_display] is generated_projection_evidence
+  + [dry_run_display] is non_live_simulation_only
+  + [operation_refusal_display] is refused_operation_request
+  + [human_approval_display] is scoped_approval_record_only_not_live_control
+
+  = must: prevent terminal success, checkpoint freshness, generated trace, dry-run success, or human approval display from satisfying source authority
+  = must: show live-control prohibition when operation-like requests are visible
+
+& [IR5S03FixtureSeedSet] is the fixture seed set exported by IR5-S02 for later fixture planning
+  + [fixture_seed] is manager_ready_packet
+  + [fixture_seed] is worker_blocked_packet
+  + [fixture_seed] is stale_projection
+  + [fixture_seed] is narrative_lineage
+  + [fixture_seed] is debug_fault_trace
+  + [fixture_seed] is conversation_interrupt
+  + [fixture_seed] is adapter_mutation_refusal
+  + [fixture_seed] is missing_authority_notice
+  + [fixture_seed] is langflow_non_authority_projection
+  + [fixture_seed] is multi_surface_divergence
+  + [fixture_seed] is completion_gate_refusal
+  + [fixture_seed] is ir4_runtime_graph_proof_handoff
+  + [fixture_seed] is dry_run_success_not_live_control
+
+  = must: treat this as fixture planning input only; no fixture source files or expected ledgers are authorized by IR5-S02
+  = must: let IR5-S03 refine, accept, or prune these seeds under its own completion review
+
+& [ForbiddenIR5S02MutationList] is the forbidden mutation set for IR5-S02
+  + [forbidden_mutation] is editing accepted IR5-S01 output or review to make this contract easier
+  + [forbidden_mutation] is treating display state as authority
+  + [forbidden_mutation] is treating carrier state as source authority
+  + [forbidden_mutation] is treating runtime checkpoint, generated trace, generated report, dry-run, fixture success, or human approval display as source authority
+  + [forbidden_mutation] is implementing UI components
+  + [forbidden_mutation] is implementing adapters, transports, queues, sockets, Langflow export, or browser surfaces
+  + [forbidden_mutation] is creating fixture source files
+  + [forbidden_mutation] is creating expected ledger files
+  + [forbidden_mutation] is creating generated output files
+  + [forbidden_mutation] is installing dependencies or mutating package metadata
+  + [forbidden_mutation] is implementing operations simulator code
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR5-S02 review if any forbidden mutation appears in the output
+
+& [IR5S02DownstreamStaleTriggerList] is the stale trigger set exported by IR5-S02
+  + [stale_trigger] is IR5-S01 boundary import output changes
+  + [stale_trigger] is IR5-S01 completion review changes
+  + [stale_trigger] is authority display envelope changes
+  + [stale_trigger] is projection state envelope changes
+  + [stale_trigger] is freshness and lineage display contract changes
+  + [stale_trigger] is stop-state display contract changes
+  + [stale_trigger] is action route display contract changes
+  + [stale_trigger] is projection refusal behavior changes
+  + [stale_trigger] is family-specific display obligation changes
+  + [stale_trigger] is runtime or dry-run evidence displayed as source authority
+  + [stale_trigger] is fixture seed set changes after IR5-S03 begins
+
+  = must: mark IR5-S03 and downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review and rebake rather than silent edits
+
+& [IR5S02CoverageReview] is the coverage checklist for IR5-S02
+  + [authority_display_envelope_present] is true
+  + [projection_state_envelope_present] is true
+  + [freshness_and_lineage_display_contract_present] is true
+  + [stop_state_display_contract_present] is true
+  + [action_route_display_contract_present] is true
+  + [projection_refusal_display_contract_present] is true
+  + [completion_gate_and_override_display_rule_present] is true
+  + [surface_family_display_obligation_set_present] is true
+  + [runtime_and_safety_display_bridge_present] is true
+  + [fixture_seed_set_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [executable_ui_code_created] is false
+  + [adapter_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [operations_simulator_code_created] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR5-S02 only when all checklist items are satisfied
+  = must: open IR5-S03 only after this contract is reviewed in a completion review
