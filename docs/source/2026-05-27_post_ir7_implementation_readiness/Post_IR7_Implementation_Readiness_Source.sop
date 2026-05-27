@@ -1,0 +1,31 @@
+Subject: Post IR7 Implementation Readiness Source
+Date: 2026-05-27
+Source UUID: cb8ac7b6-233a-4244-8b1b-b6cf53fb5749
+
+& [SourcePrompt: PostIR7ImplementationReadiness] is the preserved manager-derived source for the post-IR7 implementation rebake
+  + [source_kind] is manager-derived rebake source
+  + [origin] is long-haul project-manager session after IR7 operations dry-run simulator implementation was accepted
+  + [purpose] is convert accepted IR7 dry-run simulator proof, post-IR6 readiness lineage, and FSC5 operations safety into a new readiness surface without authorizing live operations control
+  + [reason] is IR7 implementation is complete enough to feed integrated manager orchestration planning, but direct adapter, dispatch, or live-control assignment would be false-ready without a fresh readiness rebake
+
+  = must: preserve accepted IR7 implementation proof pack and completion review as boundary inputs
+  = must: preserve accepted IR7 work state as derived state input, not replacement canonical authority
+  = must: preserve FSC5 operations safety and operations safety canonical authority as the live-control boundary for all downstream work
+  = must: preserve post-IR6 implementation readiness lineage as background authority for why IR7 was opened
+  = must: create a post-IR7 implementation-readiness authority that opens only IR8 integrated manager orchestration planning and final-slice minting
+  = must: keep IR8 non-live, non-mutating, and unable to perform command execution, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control
+  = must: distinguish accepted dry-run simulator evidence from adapter authority, dispatch authority, operations-control authority, and live-control authority
+  = must: preserve coordination proof boundaries: claims, mailbox carriers, human overrides, conflict reviews, completion gates, and conversation identities cannot be bypassed by dry-run outputs or operation requests
+  = must: require final IR8 slices before any integrated manager orchestration implementation, adapter work, dependency changes, package metadata changes, generated output creation, UI work, or transport work
+  = must: route IR8 readiness, final-slice minting, manager loop integration, authority merger, dispatch boundary, and live-control boundary questions to deeper reasoning
+  = should: make later bounded fixture drafting and inert manager-loop implementation GPT-5.3-Codex-Spark-suitable only after IR8 final slice boundaries are accepted
+
+& [RequiredPostIR7ImplementationChunkSet] is the source-level chunk set for the next development stage
+  + [ready_chunk_candidate] is IR8 integrated manager orchestration planning
+  + [blocked_downstream_candidate] is future IR8 implementation activation until IR8 final planning is accepted
+  + [blocked_downstream_candidate] is future operations adapter or transport implementation until explicit deferral decisions are superseded by source-preserved authority
+  + [blocked_downstream_candidate] is future live-control authority reconsideration until separate source-preserved SJS authority exists
+
+  = must: keep IR8 dependency-closed around accepted parser/projection, operator harness, LangGraph proof runtime, surface projection, coordination mailbox, dry-run operations, and operations safety proof packs
+  = must: keep live-control authority outside IR8 unless a separate future source, SJS canonical safety authority, least-privilege credential boundary, rollback proof, resource monitor proof, and explicit human approval model are accepted
+  = must: emit completion reviews before downstream implementation chunks consume completed IR8 planning work

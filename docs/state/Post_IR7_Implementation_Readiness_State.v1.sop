@@ -1,0 +1,67 @@
+Subject: Post IR7 Implementation Readiness State V1
+Date: 2026-05-27
+State UUID: b69c893a-d756-45e6-93a9-105e737b5acc
+
+@ [source_manifest] docs/source/2026-05-27_post_ir7_implementation_readiness/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [rebake_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+@ [accepted_boundary_input] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+@ [accepted_boundary_input] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [accepted_lineage] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+
+& [PostIR7ImplementationReadinessStateV1] is the current derived manager state after IR7 implementation acceptance
+  + [state_basis] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [surface_status] is accepted_for_IR8_final_slice_minting
+  + [source_manifest] is docs/source/2026-05-27_post_ir7_implementation_readiness/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is CDDBC9E1D019AFEC01AC54ED8B34A1FB7C35F425231DB62FB4B8D6A94D224096
+  + [canonical_specification] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+  + [canonical_specification_sha256] is 28A9D22371A5A8DFD7BB2FC5CE0BA9FFE7DA18E81D81E5E1556DA2A91554A206
+  + [implementation_readiness_surface] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [implementation_readiness_surface_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
+  + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 31184C312AA4A7FA727598B69AE9B8F7F556E35CED4F7C2092E9DE165FB65F3D
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [accepted_lineage] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+  + [accepted_lineage_sha256] is 32B7C88C80115C05A1606B9618B154A6D1365D94531F2D6EA46BACAB1F5D3B0C
+  + [current_ready_chunk] is IR8 integrated manager orchestration planning
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is manager orchestration merges authority, readiness, graph execution, surface projection, coordination, operation dry-run evidence, and future dispatch boundaries
+  + [current_ready_work] is IR8 final slice minting
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR8 boundary, manager loop, and handoff contracts are accepted
+  + [gated_chunk] is IR8 implementation activation until final planning is accepted
+  + [gated_chunk] is operations adapter, transport, UI, dependency, and package metadata work until explicit non-live authority is accepted
+  + [gated_chunk] is future live-control authority reconsideration until separate source-preserved SJS authority is accepted
+  + [integrated_manager_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: mint IR8 final slices before integrated manager implementation, fixture creation, expected ledger creation, dependency changes, generated outputs, adapter work, transport work, UI work, or package metadata mutation
+  = must: preserve dry-run-only and no-live-control semantics
+  = must: mark this state stale if any accepted boundary input, canonical readiness specification, implementation readiness surface, or rebake review changes

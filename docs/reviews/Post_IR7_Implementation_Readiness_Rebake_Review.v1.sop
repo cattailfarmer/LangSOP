@@ -1,0 +1,117 @@
+Subject: Post IR7 Implementation Readiness Rebake Review V1
+Date: 2026-05-27
+Review UUID: 5878a761-80a1-4cb7-9713-1f05602c8356
+
+@ [source_manifest] docs/source/2026-05-27_post_ir7_implementation_readiness/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [work_state] docs/state/Post_IR7_Implementation_Readiness_State.v1.sop
+
+& [RebakeReview: PostIR7ImplementationReadiness] is the completed-work review for the post-IR7 implementation readiness rebake
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_post_ir7_implementation_readiness/Source_Document_Manifest.sop
+  + [completed_output_sha256] is CDDBC9E1D019AFEC01AC54ED8B34A1FB7C35F425231DB62FB4B8D6A94D224096
+  + [completed_output] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+  + [completed_output_sha256] is 28A9D22371A5A8DFD7BB2FC5CE0BA9FFE7DA18E81D81E5E1556DA2A91554A206
+  + [completed_output] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [completed_output_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
+  + [completed_output] is docs/state/Post_IR7_Implementation_Readiness_State.v1.sop
+  + [completed_output_sha256] is 10CD477B52573C11520E9F93874113ACC89398A87162B74F2FEA1FA8FC8632BD
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is IR8 may be final-sliced
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_reason] is manager orchestration merges authority, readiness, graph execution, surface projection, coordination, operation dry-run evidence, and future dispatch boundaries
+
+  = must: treat this review as the gate-opening evidence for IR8 final-slice minting
+  = must: rerun this rebake if any accepted IR2 through IR7 proof pack, IR7 implementation completion review, FSC5 operations safety pack, post-IR6 readiness lineage, or post-IR7 readiness source changes
+  = must: keep integrated manager implementation, adapter work, agent dispatch, operations control, and live machine control gated
+
+& [VerificationOracleResult: PostIR7ImplementationReadiness] is the verification result for implementation readiness rebake coverage
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [accepted_pack_imported] is IR2ParserProjectionImplementationProofPack
+  + [accepted_pack_imported] is IR3OperatorHarnessImplementationProofPack
+  + [accepted_pack_imported] is IR4LangGraphProofRuntimeImplementationProofPack
+  + [accepted_pack_imported] is IR5SurfaceProjectionPrototypeImplementationProofPack
+  + [accepted_pack_imported] is IR6CoordinationMailboxProjectionImplementationProofPack
+  + [accepted_pack_imported] is IR7OperationsDryRunSimulatorImplementationProofPack
+  + [accepted_review_imported] is IR7ImplementationCompletionReview
+  + [accepted_pack_imported] is FSC5OperationsSafetyPackV1
+  + [accepted_lineage_imported] is PostIR6ImplementationReadinessSurfaceV1
+  + [ready_chunk] is IR8 integrated manager orchestration planning
+  + [gated_chunk] is IR8 implementation activation until final planning is accepted
+  + [gated_chunk] is operations adapter, transport, UI, dependency, and package metadata work until explicit non-live authority is accepted
+  + [gated_chunk] is live-control authority reconsideration until separate source-preserved SJS authority is accepted
+  + [forbidden_scope_absent] is integrated manager implementation
+  + [forbidden_scope_absent] is fixture file creation
+  + [forbidden_scope_absent] is expected ledger creation
+  + [forbidden_scope_absent] is dependency installation
+  + [forbidden_scope_absent] is package metadata mutation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential access or mutation
+  + [forbidden_scope_absent] is network exposure mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is persistent operations automation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [PostIR7ImplementationReadinessVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+    @ [support] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+    @ [support] docs/state/Post_IR7_Implementation_Readiness_State.v1.sop
+
+& [SupportDelta: PostIR7ImplementationReadiness] is the support delta produced by this rebake
+  + [new_support_record] is PostIR7ImplementationReadinessSurfaceV1 replaces the closed IR7 implementation state as the current manager view for downstream readiness
+  + [new_support_record] is IR8 is ready for final-slice minting only
+  + [new_support_record] is IR8 implementation activation, adapter work, transport work, UI work, dependency changes, package metadata mutation, dispatch, live-control authority reconsideration, and operations execution remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: PostIR7ImplementationReadiness] is the requirement delta produced by this rebake
+  + [requirement_delta] is IR8 must split integrated manager orchestration planning into final slices before implementation activation
+  + [requirement_delta] is IR8 readiness and final-slice minting require deeper reasoning
+  + [requirement_delta] is bounded fixture drafting becomes Spark-suitable only after IR8 boundary, manager loop, and handoff contracts are accepted
+  + [requirement_delta] is no integrated manager implementation, dependency installation, package metadata mutation, adapter work, transport work, UI work, agent dispatch, operations control, or live machine control is authorized
+  + [requirement_delta] is no rebake required before IR8 final-slice minting unless a source or boundary input changes
+
+& [FaultReview: PostIR7ImplementationReadiness] is the fault review for this rebake
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [integrated_manager_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [stale_IR7_state_visible_without_replacement_found] is false
+
+  ! [PostIR7ImplementationReadinessAccepted] is accepted
+    @ [support] [VerificationOracleResult: PostIR7ImplementationReadiness]
+    @ [support] [SupportDelta: PostIR7ImplementationReadiness]
+    @ [support] [RequirementDelta: PostIR7ImplementationReadiness]
+    @ [support] [FaultReview: PostIR7ImplementationReadiness]
+
+& [NextSliceGate: IR8] is opened
+  + [opened_chunk] is IR8 integrated manager orchestration planning
+  + [opened_work] is IR8 final-slice minting
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager orchestration merges authority, readiness, graph execution, surface projection, coordination, operation dry-run evidence, and future dispatch boundaries
+  + [future_spark_suitable_work] is bounded fixture drafting only after IR8 boundary, manager loop, and handoff contracts are accepted
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: mint IR8 final slices next unless user redirects or a new fault invalidates this review

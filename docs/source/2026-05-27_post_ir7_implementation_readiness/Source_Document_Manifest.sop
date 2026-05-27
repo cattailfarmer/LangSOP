@@ -1,0 +1,78 @@
+Subject: Post IR7 Implementation Readiness Source Manifest
+Date: 2026-05-27
+Manifest UUID: a424ea99-9cf3-4c9d-9e58-0a45a76fc56a
+
+& [SourceDocumentManifest: PostIR7ImplementationReadiness] is the source preservation manifest for the post-IR7 implementation readiness specification
+  + [dictated_source] is docs/source/2026-05-27_post_ir7_implementation_readiness/Post_IR7_Implementation_Readiness_Source.sop
+    + [sha256] is FA17EAC7AA73D9666C529072253FA3849A3590486DD2A2EA271D6A6C73025F7B
+    + [source_role] is preserved manager-derived rebake source after IR7 implementation acceptance
+  + [authority_source] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+    + [sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+    + [source_role] is accepted IR2 parser and projection implementation proof pack
+  + [authority_source] is docs/reviews/IR2_Implementation_Completion_Review.v1.sop
+    + [sha256] is E7CCCA3A6744A03CD6871FF6B4CDB2682FA4BB6300179F2EA610717BA5F3F2ED
+    + [source_role] is accepted IR2 implementation completion review
+  + [authority_source] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+    + [sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+    + [source_role] is accepted IR3 operator harness implementation proof pack
+  + [authority_source] is docs/reviews/IR3_Implementation_Completion_Review.v1.sop
+    + [sha256] is C3CD25BF2B5891F56ED8D8BCBB1F49A0BE099E7EDA7140E1E296E172F3EE0578
+    + [source_role] is accepted IR3 implementation completion review
+  + [authority_source] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+    + [sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+    + [source_role] is accepted IR4 LangGraph proof runtime implementation proof pack
+  + [authority_source] is docs/reviews/IR4_Implementation_Completion_Review.v1.sop
+    + [sha256] is 83B54B65C5029FEF898DB68A74F40A44E82A8356422EA5B97FF7A26FFE3F6BDA
+    + [source_role] is accepted IR4 implementation completion review
+  + [authority_source] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+    + [sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+    + [source_role] is accepted IR5 surface projection implementation proof pack
+  + [authority_source] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+    + [sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+    + [source_role] is accepted IR5 implementation completion review
+  + [authority_source] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+    + [sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+    + [source_role] is accepted IR6 coordination mailbox implementation proof pack
+  + [authority_source] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+    + [sha256] is F200CA49FD087B486D601AB95749CA98B63D7F9246869DB417B4BE2CB2AE4C0C
+    + [source_role] is accepted IR6 implementation completion review
+  + [authority_source] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+    + [sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+    + [source_role] is accepted IR7 implementation proof pack
+  + [authority_source] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+    + [sha256] is 31184C312AA4A7FA727598B69AE9B8F7F556E35CED4F7C2092E9DE165FB65F3D
+    + [source_role] is accepted IR7 implementation completion review
+  + [authority_source] is docs/state/IR7_Work_State.v1.sop
+    + [sha256] is 2E29C7282E6C152E5F291EB7D387C2E11F7DDCC3098E70B6D6E2EC4614A0809A
+    + [source_role] is current IR7 derived work state
+  + [authority_source] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+    + [sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+    + [source_role] is accepted operations safety pack
+  + [authority_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+    + [sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+    + [source_role] is accepted operations safety canonical authority
+  + [authority_source] is docs/canonical/LangSOP_Post_IR6_Implementation_Readiness.canonical.sop
+    + [sha256] is 3C9AC4D3E7FED91D8029A60D2AF0A11B5C99790FE345BE031A6DB6C11B8CBC10
+    + [source_role] is accepted post-IR6 implementation readiness canonical authority
+  + [authority_source] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+    + [sha256] is 32B7C88C80115C05A1606B9618B154A6D1365D94531F2D6EA46BACAB1F5D3B0C
+    + [source_role] is accepted post-IR6 implementation readiness surface
+  + [authority_source] is docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
+    + [sha256] is D062EA85C7ACF6B1E6384E5D7BEEB3AE5BEE0A3F40C4EBCBA739BD987F9774A1
+    + [source_role] is accepted post-IR6 implementation readiness rebake review
+  + [authority_source] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+    + [sha256] is CFD6DE0F1C0C1DF20917B2B9CBC2B80AE9C48EF6B79B7386BEFF40C124EC7402
+    + [source_role] is whole-pie product overview
+  + [authority_source] is docs/planning/Capability_Field.v2.sop
+    + [sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+    + [source_role] is capability field
+  + [authority_source] is docs/planning/Portion_And_Slice_Map.v1.sop
+    + [sha256] is 53C99869D8E4F941231324082F1242E325F3FAA927D52A3AA2814456794146E7
+    + [source_role] is current portion and slice map after IR7 implementation acceptance
+  + [canonical_target] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+  + [surface_target] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+
+  = must: preserve this manifest as source lineage for post-IR7 implementation readiness planning
+  = must: invalidate the post-IR7 readiness surface if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not implementation authority
+  - never: use this manifest to authorize operations control or live machine control

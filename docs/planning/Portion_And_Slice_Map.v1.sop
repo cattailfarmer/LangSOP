@@ -5,6 +5,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [canonical_pattern] docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
 @ [product_overview] docs/product/LangSOP_Whole_Pie_Product_Overview.sop
 @ [capability_field] docs/planning/Capability_Field.v2.sop
+@ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [post_ir7_readiness_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
   + [map_state] is ready_for_deeper_reasoning_design_slices
@@ -108,7 +110,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: never let surfaces mutate canonical authority directly
   = should: route bounded projection rendering to GPT-5.3-Codex-Spark after fixture records exist
 
-& [Portion: P7CoordinationAndMultiAgentGovernance] is implementation_accepted_pending_IR7_readiness_rebake
+& [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR7_readiness
   + [portion_id] is P7
   + [portion_name] is coordination and multi-agent governance
   + [purpose] is preserve claims, ownership, conversation identity, rendezvous packets, mailbox messages, conflicts, and human overrides
@@ -156,17 +158,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR6_IA07_Completion_Review.v1.sop
   + [support_record] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
   + [support_record] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
-  + [support_gap] is downstream IR7 readiness rebake not yet executed
-  + [support_gap] is future operations-manager safety and dry-run readiness not yet accepted
+  + [support_record] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+  + [support_record] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [support_gap] is IR8 integrated manager orchestration final slices not yet minted
+  + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
   + [slice_family] is rendezvous-packet-fixtures
   + [slice_family] is mailbox-projection-integration
 
   = must: preserve conversation identity and work boundaries before multi-agent dispatch
-  = must: keep implementation, mailbox transport, agent dispatch, operations control, and live machine control gated until future IR6 activation proof explicitly opens bounded work
+  = must: keep mailbox transport, agent dispatch, operations control, and live machine control gated until future source-preserved authority explicitly opens bounded work
 
-& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_slice_family
+& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_IR8_final_slice_minting
   + [portion_id] is P8
   + [portion_name] is proof, fixtures, evaluation, and faults
   + [purpose] is provide deterministic evidence for schema validation, operator behavior, packet readiness, surface projections, and fault routing
@@ -181,7 +186,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is implementation_accepted_pending_post_IR7_readiness_rebake
+& [Portion: P9OperationsManagerSafety] is supported_by_post_IR7_readiness_live_control_gated
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -237,15 +242,31 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR7_IA07_Completion_Review.v1.sop
   + [support_record] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
   + [support_record] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
-  + [support_gap] is post-IR7 readiness rebake not yet executed
+  + [support_record] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+  + [support_record] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [support_gap] is IR8 integrated manager orchestration final slices not yet minted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open post-IR7 readiness rebake before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route post-IR7 readiness rebake as requires deeper reasoning because accepted implementation changes future operations-manager readiness and live-control boundaries
+  = must: mint IR8 final slices before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route IR8 final-slice minting as requires deeper reasoning because manager orchestration merges authority, readiness, graph execution, surface projection, coordination, operation dry-run evidence, and future dispatch boundaries
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
+
+& [CurrentReadyChunk: IR8IntegratedManagerOrchestrationPlanning] is ready_for_final_slice_minting
+  + [chunk_id] is IR8
+  + [chunk_name] is integrated manager orchestration planning
+  + [authority_basis] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
+  + [readiness_surface] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [rebake_review] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager orchestration merges authority, readiness, graph execution, surface projection, coordination, operation dry-run evidence, and future dispatch boundaries
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR8 boundary, manager loop, and handoff contracts are accepted
+
+  = must: mint IR8 final slices before implementation activation
+  = must: keep agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design
