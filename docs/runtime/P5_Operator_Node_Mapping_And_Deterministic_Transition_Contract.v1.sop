@@ -1,0 +1,145 @@
+Subject: P5 Operator Node Mapping And Deterministic Transition Contract V1
+Date: 2026-05-27
+Contract UUID: 49b8213e-9880-4b0c-a6e0-20cd52e5d98a
+
+@ [p5_slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [p5_s02_output] docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
+@ [p5_s02_review] docs/reviews/P5_S02_Completion_Review.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+
+& [P5OperatorNodeMappingAndDeterministicTransitionContractV1] is the P5-S03 operator node mapping and deterministic transition contract
+  + [slice_id] is P5-S03
+  + [slice_name] is operator node mapping and deterministic transition contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is operator-to-node mapping determines which SOP duties can be mechanical and when the graph must stop for judgment
+  + [contract_result] is operator_node_mapping_and_transition_records_defined_without_node_implementation
+  + [next_gate_result] is P5-S04 may open
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define node mapping and transition records as contracts only
+  = must: preserve P3 operator contracts as the authority for mechanical duties
+  = must: stop at SOP interrupt when operator output requires meaning, authority, ambiguity, contradiction, or repair judgment
+
+& [P5OperatorNodeMappingRequiredFieldSet] is the required field set for future operator node mapping records
+  + [required_field] is node_id
+  + [required_field] is node_uuid
+  + [required_field] is operator_contract_ref
+  + [required_field] is operator_contract_sha256
+  + [required_field] is operator_kind
+  + [required_field] is input_envelope_schema_ref
+  + [required_field] is output_envelope_schema_ref
+  + [required_field] is accepted_input_authority_class_set
+  + [required_field] is produced_record_class_set
+  + [required_field] is deterministic_transition_rule_ref
+  + [required_field] is refusal_edge_ref
+  + [required_field] is interrupt_edge_ref
+  + [required_field] is stale_edge_ref
+  + [required_field] is fault_edge_ref
+  + [required_field] is no_automation_notice
+  + [required_field] is checkpoint_nonauthority_notice
+  + [required_field] is generated_output_nonpromotion_notice
+  + [required_field] is no_dispatch_review
+  + [required_field] is no_live_effect_review
+
+  = must: reject node mappings that omit operator contract identity, accepted authority classes, deterministic transition rules, refusal edges, interrupt edges, or nonpromotion notices
+  = must: keep node_uuid durable across surface projections and future graph implementation records
+
+& [P5DeterministicTransitionRecordRequiredFieldSet] is the required field set for future graph transition records
+  + [required_field] is transition_id
+  + [required_field] is transition_uuid
+  + [required_field] is graph_run_uuid
+  + [required_field] is node_uuid
+  + [required_field] is input_record_ref_set
+  + [required_field] is input_record_sha256_set
+  + [required_field] is input_authority_basis_ref_set
+  + [required_field] is output_record_ref_set
+  + [required_field] is output_record_sha256_set
+  + [required_field] is checkpoint_ref_before
+  + [required_field] is checkpoint_ref_after
+  + [required_field] is result_state
+  + [required_field] is edge_kind
+  + [required_field] is refusal_reason
+  + [required_field] is interrupt_reason
+  + [required_field] is stale_trigger_set
+  + [required_field] is fault_kind
+  + [required_field] is rebake_route_ref
+  + [required_field] is proof_ledger_ref
+  + [required_field] is nonpromotion_notice
+  + [required_field] is no_dispatch_review
+  + [required_field] is no_live_effect_review
+
+  = must: record before and after checkpoint refs without granting checkpoint authority
+  = must: record proof ledger refs as support routes, not as generated-output promotion
+  = must: require null refusal, interrupt, stale, fault, and rebake fields to be explicit when not applicable
+
+& [P5TransitionResultAndEdgeVocabulary] is the transition result and edge vocabulary
+  + [result_state] is pass
+  + [result_state] is fail
+  + [result_state] is blocked
+  + [result_state] is stale
+  + [result_state] is contradicted
+  + [result_state] is interrupted
+  + [result_state] is faulted
+  + [result_state] is rebake_required
+  + [result_state] is not_run
+  + [edge_kind] is success_edge
+  + [edge_kind] is failure_edge
+  + [edge_kind] is blocked_edge
+  + [edge_kind] is stale_edge
+  + [edge_kind] is contradicted_edge
+  + [edge_kind] is refusal_edge
+  + [edge_kind] is interrupt_edge
+  + [edge_kind] is fault_edge
+  + [edge_kind] is rebake_edge
+
+  = must: use interrupted and interrupt_edge when SOP-first judgment is required
+  = must: use refusal_edge when operator contract refuses to perform a duty under current authority
+  = must: use rebake_edge when accepted source or proof authority must be regenerated before the graph can continue
+
+& [P5MechanicalDutyBoundaryMatrix] is the mechanical duty boundary matrix for graph nodes
+  + [mechanical_duty] is signature_validation
+  + [operator_source] is P3 signature validation operator contract
+  + [allowed_node_result] is pass, fail, blocked, stale, interrupted, faulted, or rebake_required
+  + [mechanical_duty] is support_readiness_recompute
+  + [operator_source] is P3 support readiness recompute operator contract
+  + [allowed_node_result] is pass, blocked, stale, contradicted, interrupted, faulted, or rebake_required
+  + [mechanical_duty] is authority_class_projection
+  + [operator_source] is P2 authority vocabulary and P8 nonpromotion policy
+  + [allowed_node_result] is pass, blocked, stale, contradicted, interrupted, faulted, or rebake_required
+  + [mechanical_duty] is checkpoint_freshness_review
+  + [operator_source] is P5-S02 checkpoint freshness and resume contract
+  + [allowed_node_result] is pass, blocked, stale, interrupted, faulted, or rebake_required
+  + [mechanical_duty] is proof_ledger_acceptance_review
+  + [operator_source] is P8 proof ledger and evaluation acceptance contract
+  + [allowed_node_result] is pass, fail, blocked, stale, contradicted, interrupted, faulted, or rebake_required
+
+  = must: keep any duty outside this matrix as SOP-first until a future accepted operator contract adds it
+  = must: preserve no automation for duties that require semantic, authority, or repair judgment
+
+& [P5TransitionDeterminismRules] is the transition determinism rule set
+  + [rule] is identical input authority, operator contract, checkpoint basis, and proof basis must produce identical transition classification
+  + [rule] is transition records must cite exact input hashes and authority hashes
+  + [rule] is transition records must not perform hidden writes, dependency changes, adapter effects, assignment, dispatch, operations control, or live machine control
+  + [rule] is transition records must route ambiguity, contested identity, authority conflict, and repair choice to SOP interrupt
+  + [rule] is transition success must not override stale source, stale proof, missing review gate, or generated-output promotion faults
+
+  = must: treat non-deterministic or hidden-effect transition behavior as faulted and blocked
+  = must: preserve transition determinism as proofability, not as permission to execute a live graph
+
+& [P5S03DownstreamGate] is the gate opened by P5-S03
+  + [opened_slice] is P5-S04 SOP interrupt human judgment handoff and rebake route contract
+  + [activation_basis] is operator node mapping and deterministic transition contract accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is interrupt semantics define the boundary between mechanical graph execution and SOP-first authority reconsideration
+  + [completion_review_required] is true
+
+  = must: open P5-S04 only after P5-S03 completion review accepts this operator node mapping and deterministic transition contract

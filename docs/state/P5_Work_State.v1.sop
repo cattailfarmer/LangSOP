@@ -10,6 +10,8 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [completion_review] docs/reviews/P5_S01_Completion_Review.v1.sop
 @ [accepted_output] docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
 @ [completion_review] docs/reviews/P5_S02_Completion_Review.v1.sop
+@ [accepted_output] docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+@ [completion_review] docs/reviews/P5_S03_Completion_Review.v1.sop
 @ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
 @ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
 @ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
@@ -20,7 +22,7 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
   + [state_basis_sha256] is C9B8ACF56464CC2F3813899A0D39DEECF9793BF4D2011EB7EF39740552476FAB
-  + [surface_status] is P5_S02_accepted_pending_P5-S03
+  + [surface_status] is P5_S03_accepted_pending_P5-S04
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -49,12 +51,16 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_output_sha256] is 3D87C40137353B1688BF79A0777430AB40D29578CD0DE0148A18BBD5E2309095
   + [accepted_completion_review] is docs/reviews/P5_S02_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is C30D7DEDA934EB09185737EE6E117F76AAA8AA3E579A4350FADF87C98B59F2E9
-  + [current_ready_slice] is P5-S03
-  + [current_ready_slice_name] is operator node mapping and deterministic transition contract
-  + [current_ready_slice_expected_output] is docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+  + [accepted_slice] is P5-S03
+  + [accepted_output] is docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+  + [accepted_output_sha256] is 5B5CFF27BA76644C5CDDF10E76CF0AA639C678F0E64D7D1A7A4572ACF78F57C1
+  + [accepted_completion_review] is docs/reviews/P5_S03_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is E7644C6331E12DE4B0B8E945043C86FFD9472CE05BCE5C63DA1C9A8AFB37FF41
+  + [current_ready_slice] is P5-S04
+  + [current_ready_slice_name] is SOP interrupt human judgment handoff and rebake route contract
+  + [current_ready_slice_expected_output] is docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is operator-to-node mapping determines which SOP duties can be mechanical and when the graph must stop for judgment
-  + [gated_slice] is P5-S04
+  + [current_ready_slice_model_route_reason] is interrupt semantics define the boundary between mechanical graph execution and SOP-first authority reconsideration
   + [gated_slice] is P5-S05
   + [gated_slice] is P5-S06
   + [gated_slice] is P5-S07
@@ -77,6 +83,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P5-S03 before SOP interrupt, proof trace, dependency posture, implementation activation, runtime implementation, surface expansion, adapter work, dispatch, or live-control work
+  = must: execute P5-S04 before proof trace, dependency posture, implementation activation, runtime implementation, surface expansion, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
   = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, or post-P8 readiness changes

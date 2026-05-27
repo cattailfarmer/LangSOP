@@ -1,0 +1,72 @@
+Subject: P5 S03 Completion Review V1
+Date: 2026-05-27
+Review UUID: c599dc6a-0b63-48b1-9861-232ba5b24ce7
+
+@ [completed_output] docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+@ [p5_s02_output] docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
+@ [p5_s02_review] docs/reviews/P5_S02_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P5-S03] is the completed-work review for P5-S03 operator node mapping and deterministic transition contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P5-S03
+  + [completed_output] is docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+  + [completed_output_sha256] is 5B5CFF27BA76644C5CDDF10E76CF0AA639C678F0E64D7D1A7A4572ACF78F57C1
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P5-S04
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P5-S04 may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is interrupt semantics define the boundary between mechanical graph execution and SOP-first authority reconsideration
+
+  = must: treat this review as gate-opening evidence for P5-S04 only
+  = must: rerun this review if P5-S03 output, P5-S02 output, P5-S02 review, operator contract authority, checkpoint nonauthority, or transition determinism changes
+  = must: keep dependency installation, package metadata mutation, implementation code, adapter work, graph runtime execution, assignment, dispatch, operations control, and live machine control gated
+
+& [P5S03Verification] is the verification result for P5-S03
+  + [operator_node_mapping_required_field_set_present] is true
+  + [deterministic_transition_record_required_field_set_present] is true
+  + [transition_result_and_edge_vocabulary_present] is true
+  + [mechanical_duty_boundary_matrix_present] is true
+  + [transition_determinism_rules_present] is true
+  + [P5-S04_opened] is true
+  + [P5-S05_opened] is false
+  + [P5-S06_opened] is false
+  + [P5-S07_opened] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [graph_runtime_executed] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P5S03Accepted] is accepted
+    @ [support] docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+
+& [SupportDelta: P5-S03] is the support delta produced by P5-S03
+  + [new_support_record] is future operator node mappings require operator contract identity, authority class inputs, deterministic transitions, refusal edges, interrupt edges, and nonpromotion notices
+  + [new_support_record] is graph transition records require before and after checkpoint refs while preserving checkpoint nonauthority
+  + [new_support_record] is mechanical graph duties are limited to accepted operator duties and must route ambiguity, authority conflict, and repair choice to SOP interrupt
+  + [support_status] is accepted
+
+& [RequirementDelta: P5-S03] is the requirement delta produced by P5-S03
+  + [requirement_delta] is P5-S04 must define interrupt causes, human judgment handoff fields, rebake route records, and resume conditions before proof trace planning can proceed
+  + [requirement_delta] is future graph implementation must reject hidden-effect transitions and non-deterministic transition classification as faulted and blocked
+  + [requirement_delta] is transition success cannot override stale source, stale proof, missing review gate, or generated-output promotion faults
+
+& [NextSliceGate: P5-S04] is opened
+  + [opened_slice] is P5-S04 SOP interrupt human judgment handoff and rebake route contract
+  + [authority_basis] is docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+  + [authority_basis_sha256] is 5B5CFF27BA76644C5CDDF10E76CF0AA639C678F0E64D7D1A7A4572ACF78F57C1
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute P5-S04 next unless user redirects, interrupt semantics become ambiguous, or operator-node mapping changes
