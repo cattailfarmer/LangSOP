@@ -1,0 +1,130 @@
+Subject: IR8 IA03 Completion Review V1
+Date: 2026-05-27
+Review UUID: 909ba7a9-b38d-4245-9ba3-e0e4302cec5b
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+@ [fixture_source_root] tests/fixtures/sop/ir8_integrated_manager/
+@ [expected_ledger_root] tests/fixtures/expected/ir8_integrated_manager/
+@ [completed_output] src/langsop/manager/__init__.py
+@ [completed_output] src/langsop/manager/records.py
+@ [completed_output] src/langsop/manager/authority.py
+@ [completed_output] src/langsop/manager/readiness.py
+@ [completed_output] src/langsop/manager/packets.py
+
+& [CompletedWorkReview: IR8-IA03] is the completed-work review for IR8-IA03 manager authority, readiness, packet, proof, and interrupt model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-IA03
+  + [completed_output] is src/langsop/manager/__init__.py
+  + [completed_output_sha256] is AB9DE229972E2468DBD70807D9605FB6D30D74C232EC1F4E1FAE6FE23BB53B21
+  + [completed_output] is src/langsop/manager/records.py
+  + [completed_output_sha256] is 6A057EBE5A9C7EE4348B2284A28E327A513EB4FD9FC17A7341423DD5A79E7CA6
+  + [completed_output] is src/langsop/manager/authority.py
+  + [completed_output_sha256] is 8BA59D90738A2D0D3621EB3D213F2BDBA9799A820DB2A20E3597CC0E097F496E
+  + [completed_output] is src/langsop/manager/readiness.py
+  + [completed_output_sha256] is AFAC896AA9801CD455275EBBEAB23899E6379E690AD42F2012FC7FF2310367E0
+  + [completed_output] is src/langsop/manager/packets.py
+  + [completed_output_sha256] is 31BA6AAC7CE8934A2FC39AAAAEC175EE3D8AA61BCED5AE0FDECC51843E627B3B
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8-IA03 and open IR8-IA04
+  + [next_gate_result] is IR8-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for handoff, human override, refusal, and fault model implementation
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR8-IA04 only
+  = must: rerun this review if manager authority, readiness, packet, proof, interrupt, fixture source, expected ledger, activation boundary, or activation slice surface changes
+  = must: keep generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control gated
+
+& [IR8IA03Verification] is the verification result for IR8-IA03
+  + [manager_package_present] is true
+  + [records_module_present] is true
+  + [authority_module_present] is true
+  + [readiness_module_present] is true
+  + [packets_module_present] is true
+  + [authority_class_separation_present] is true
+  + [readiness_recomputation_present] is true
+  + [work_packet_candidate_present] is true
+  + [proof_obligation_model_present] is true
+  + [completion_gate_model_present] is true
+  + [interrupt_context_model_present] is true
+  + [model_route_required] is true
+  + [generated_output_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR8IA03VerificationSatisfied] is accepted
+    @ [support] src/langsop/manager/records.py
+    @ [support] src/langsop/manager/authority.py
+    @ [support] src/langsop/manager/readiness.py
+    @ [support] src/langsop/manager/packets.py
+
+& [SupportDelta: IR8-IA03] is the support delta produced by IR8-IA03
+  + [new_support_record] is IR8 now has planning-only manager records for authority classes, freshness, readiness, model routing, proof obligations, completion gates, interrupt contexts, readiness results, and work packet candidates
+  + [new_support_record] is IR8 now has pure authority classification and readiness recomputation helpers that preserve no-dispatch and no-live-effect semantics
+  + [new_support_record] is IR8-IA04 may implement handoff, human override, refusal, and fault models against accepted manager record behavior
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-IA03] is the requirement delta produced by IR8-IA03
+  + [requirement_delta] is IR8-IA04 is GPT-5.3-Codex-Spark-suitable because handoff and fault work is bounded by accepted manager models and fixtures
+  + [requirement_delta] is IR8-IA04 may create src/langsop/manager/handoffs.py, src/langsop/manager/faults.py, and update src/langsop/manager/__init__.py only
+  + [requirement_delta] is no generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, or live machine control is authorized by IR8-IA03
+
+& [FaultReview: IR8-IA03] is the fault review for IR8-IA03
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [unexpected_file_created_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8IA03Accepted] is accepted
+    @ [support] [IR8IA03Verification]
+    @ [support] [SupportDelta: IR8-IA03]
+    @ [support] [RequirementDelta: IR8-IA03]
+    @ [support] [FaultReview: IR8-IA03]
+
+& [NextSliceGate: IR8-IA04] is opened
+  + [opened_slice] is IR8-IA04 handoff, human override, refusal, and fault model implementation
+  + [accepted_dependency] is src/langsop/manager/records.py
+  + [accepted_dependency] is src/langsop/manager/authority.py
+  + [accepted_dependency] is src/langsop/manager/readiness.py
+  + [accepted_dependency] is src/langsop/manager/packets.py
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is implementation is bounded when accepted manager models and fixtures are stable
+  + [safety_limit] is no manager dispatch, agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-IA04 next unless user redirects or a new fault invalidates this review

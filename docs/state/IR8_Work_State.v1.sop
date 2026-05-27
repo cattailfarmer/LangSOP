@@ -31,12 +31,18 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
 @ [accepted_output] tests/fixtures/sop/ir8_integrated_manager/
 @ [accepted_output] tests/fixtures/expected/ir8_integrated_manager/
 @ [completion_review] docs/reviews/IR8_IA02_Completion_Review.v1.sop
+@ [accepted_output] src/langsop/manager/__init__.py
+@ [accepted_output] src/langsop/manager/records.py
+@ [accepted_output] src/langsop/manager/authority.py
+@ [accepted_output] src/langsop/manager/readiness.py
+@ [accepted_output] src/langsop/manager/packets.py
+@ [completion_review] docs/reviews/IR8_IA03_Completion_Review.v1.sop
 
 & [IR8WorkStateV1] is the current derived work state for IR8 integrated manager orchestration planning
   + [chunk_ref] is IR8 integrated manager orchestration planning
-  + [state_basis] is docs/reviews/IR8_IA02_Completion_Review.v1.sop
-  + [state_basis_sha256] is 096899D912497109D50B0B37F7DDD3E72E3F38B25C0367DDF0AE8083E6AFF11D
-  + [surface_status] is IR8-IA02_accepted_pending_IR8-IA03
+  + [state_basis] is docs/reviews/IR8_IA03_Completion_Review.v1.sop
+  + [state_basis_sha256] is 3939EB962D6B10DDE5969E91391D76C1D43B1211F3ED8022E8E9F98C9DD33853
+  + [surface_status] is IR8-IA03_accepted_pending_IR8-IA04
   + [source_document] is docs/source/2026-05-27_ir8_final_slices/Derived_IR8_Final_Slices_Source.sop
   + [source_document_sha256] is F31ECA5A6CAE0A4D05798C3C0580A2C51A57ADAB7904D77E535D1B4585CD2E78
   + [source_manifest] is docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
@@ -115,13 +121,27 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
   + [accepted_expected_ledger_count] is 6
   + [accepted_completion_review] is docs/reviews/IR8_IA02_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 096899D912497109D50B0B37F7DDD3E72E3F38B25C0367DDF0AE8083E6AFF11D
-  + [current_ready_slice] is IR8-IA03
-  + [current_ready_slice_name] is manager authority, readiness, packet, proof, and interrupt model implementation
+  + [accepted_slice] is IR8-IA03
+  + [accepted_output] is src/langsop/manager/__init__.py
+  + [accepted_output_sha256] is AB9DE229972E2468DBD70807D9605FB6D30D74C232EC1F4E1FAE6FE23BB53B21
+  + [accepted_output] is src/langsop/manager/records.py
+  + [accepted_output_sha256] is 6A057EBE5A9C7EE4348B2284A28E327A513EB4FD9FC17A7341423DD5A79E7CA6
+  + [accepted_output] is src/langsop/manager/authority.py
+  + [accepted_output_sha256] is 8BA59D90738A2D0D3621EB3D213F2BDBA9799A820DB2A20E3597CC0E097F496E
+  + [accepted_output] is src/langsop/manager/readiness.py
+  + [accepted_output_sha256] is AFAC896AA9801CD455275EBBEAB23899E6379E690AD42F2012FC7FF2310367E0
+  + [accepted_output] is src/langsop/manager/packets.py
+  + [accepted_output_sha256] is 31BA6AAC7CE8934A2FC39AAAAEC175EE3D8AA61BCED5AE0FDECC51843E627B3B
+  + [accepted_completion_review] is docs/reviews/IR8_IA03_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 3939EB962D6B10DDE5969E91391D76C1D43B1211F3ED8022E8E9F98C9DD33853
+  + [current_ready_slice] is IR8-IA04
+  + [current_ready_slice_name] is handoff, human override, refusal, and fault model implementation
   + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
   + [current_ready_slice_model_route_depth] is Spark-suitable
-  + [current_ready_slice_model_route_reason] is model implementation is bounded by accepted contracts and fixture material
+  + [current_ready_slice_model_route_reason] is implementation is bounded when accepted manager models and fixtures are stable
   + [implementation_activation_slice_minting_opened] is completed
-  + [integrated_manager_implementation_authorized] is true_for_IR8-IA03_only
+  + [integrated_manager_implementation_authorized] is completed_for_IR8-IA03
+  + [handoff_and_fault_model_implementation_authorized] is true_for_IR8-IA04_only
   + [fixture_file_creation_authorized] is completed_for_IR8-IA02
   + [expected_ledger_creation_authorized] is completed_for_IR8-IA02
   + [generated_output_creation_authorized] is false
@@ -133,9 +153,9 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
   + [agent_dispatch_authorized] is false
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
-  + [IR8_state] is IR8-IA02_accepted_pending_IR8-IA03
+  + [IR8_state] is IR8-IA03_accepted_pending_IR8-IA04
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR8-IA03 before handoff implementation, fault implementation, generated output creation, dependency installation, package metadata mutation, adapters, transports, UI, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: execute IR8-IA04 before generated path policy, fixture runner, generated output creation, dependency installation, package metadata mutation, adapters, transports, UI, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
   = must: keep source, projections, graph checkpoints, coordination claims, mailbox carriers, dry-run outputs, human approvals, and generated reports in distinct authority classes
-  = must: mark this state stale if IR8 source document, IR8 source manifest, canonical specification, slice surface, minting review, IR8-S01 output, IR8-S01 completion review, IR8-S02 output, IR8-S02 completion review, IR8-S03 output, IR8-S03 completion review, IR8-S04 output, IR8-S04 completion review, IR8-S05 outputs, IR8-S05 completion review, IR8 completion review, IR8 implementation activation source, IR8 implementation activation source manifest, IR8 implementation activation canonical specification, IR8 implementation activation slice surface, IR8 implementation activation minting review, IR8-IA01 output, IR8-IA01 completion review, IR8-IA02 fixture source set, IR8-IA02 expected ledger set, IR8-IA02 completion review, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 proof packs, or FSC5 operations safety pack changes
+  = must: mark this state stale if IR8 source document, IR8 source manifest, canonical specification, slice surface, minting review, IR8-S01 output, IR8-S01 completion review, IR8-S02 output, IR8-S02 completion review, IR8-S03 output, IR8-S03 completion review, IR8-S04 output, IR8-S04 completion review, IR8-S05 outputs, IR8-S05 completion review, IR8 completion review, IR8 implementation activation source, IR8 implementation activation source manifest, IR8 implementation activation canonical specification, IR8 implementation activation slice surface, IR8 implementation activation minting review, IR8-IA01 output, IR8-IA01 completion review, IR8-IA02 fixture source set, IR8-IA02 expected ledger set, IR8-IA02 completion review, IR8-IA03 manager model outputs, IR8-IA03 completion review, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 proof packs, or FSC5 operations safety pack changes
