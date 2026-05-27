@@ -1,0 +1,120 @@
+Subject: Post IR8 Implementation Readiness Rebake Review V1
+Date: 2026-05-27
+Review UUID: 531aeba6-e526-4f78-9f4c-f562d1d7fcf5
+
+@ [source_manifest] docs/source/2026-05-27_post_ir8_implementation_readiness/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [work_state] docs/state/Post_IR8_Implementation_Readiness_State.v1.sop
+
+& [RebakeReview: PostIR8ImplementationReadiness] is the completed-work review for the post-IR8 implementation readiness rebake
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_post_ir8_implementation_readiness/Post_IR8_Implementation_Readiness_Source.sop
+  + [completed_output_sha256] is CEC453A0F264CFD08E1223D2279EB7AE3D86B2F766EE90279AC0CCF5397FED92
+  + [completed_output] is docs/source/2026-05-27_post_ir8_implementation_readiness/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 6CF4563F5585C78E0273B21C4B9DDF97706936721D4F5B5585A8B777C261DFF8
+  + [completed_output] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+  + [completed_output_sha256] is 5BC668F0D5B0FF85D1600040C33A736978C9FE88E9BBD545D541354EB14D658A
+  + [completed_output] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [completed_output_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [completed_output] is docs/state/Post_IR8_Implementation_Readiness_State.v1.sop
+  + [completed_output_sha256] is 1FD8D551DDE6C765262556DCB903A356E53D4A9E3248806A43835861E2BC8C56
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is P2 may be final-sliced
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_reason] is natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
+
+  = must: treat this review as the gate-opening evidence for P2 authority kernel and record schema slice minting
+  = must: rerun this rebake if any accepted IR2 through IR8 proof pack, IR8 implementation completion review, IR8 dependency/dispatch/live-control decision, FSC5 operations safety pack, post-IR7 readiness lineage, or post-IR8 readiness source changes
+  = must: keep manager adapters, dependency installation, package metadata mutation, transport work, UI work, manager dispatch, agent dispatch, job dispatch, operations control, and live machine control gated
+
+& [VerificationOracleResult: PostIR8ImplementationReadiness] is the verification result for implementation readiness rebake coverage
+  + [source_manifest_present] is true
+  + [satisfaction_signature_protocol_present] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [accepted_pack_imported] is IR8IntegratedManagerOrchestrationImplementationProofPack
+  + [accepted_review_imported] is IR8ImplementationCompletionReview
+  + [accepted_decision_imported] is IR8ManagerAdapterDependencyDispatchAndLiveControlDeferralDecision
+  + [accepted_lineage_imported] is PostIR7ImplementationReadinessSurfaceV1
+  + [accepted_pack_imported] is IR7OperationsDryRunSimulatorImplementationProofPack
+  + [accepted_pack_imported] is IR6CoordinationMailboxProjectionImplementationProofPack
+  + [accepted_pack_imported] is FSC5OperationsSafetyPackV1
+  + [ready_chunk] is P2 authority kernel and record schemas
+  + [conditionally_ready_chunk] is P3 compiled SOP operator contracts after P2 boundary refresh
+  + [gated_chunk] is P4 whole-field planning and packetization until P2 and P3 contracts advance
+  + [gated_chunk] is P5 LangGraph procedure runtime until P2, P3, and fixture-pack contracts advance
+  + [gated_chunk] is P6 surface projection expansion until P2, P4, and fixture records advance
+  + [gated_chunk] is manager adapter, dependency, transport, UI, dispatch, operations-control, and live-control work until separate source-preserved authority is accepted
+  + [forbidden_scope_absent] is dependency installation
+  + [forbidden_scope_absent] is package metadata mutation
+  + [forbidden_scope_absent] is adapter implementation
+  + [forbidden_scope_absent] is transport implementation
+  + [forbidden_scope_absent] is UI implementation
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is manager dispatch
+  + [forbidden_scope_absent] is agent dispatch
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential access or mutation
+  + [forbidden_scope_absent] is network exposure mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is persistent operations automation
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  ! [PostIR8ImplementationReadinessVerificationSatisfied] is accepted
+    @ [support] docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+    @ [support] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+    @ [support] docs/state/Post_IR8_Implementation_Readiness_State.v1.sop
+
+& [SupportDelta: PostIR8ImplementationReadiness] is the support delta produced by this rebake
+  + [new_support_record] is PostIR8ImplementationReadinessSurfaceV1 replaces the closed IR8 implementation state as the current manager view for downstream readiness
+  + [new_support_record] is IR8 integrated manager implementation is accepted as bounded projection and proof evidence
+  + [new_support_record] is P2 authority kernel and record schemas is the current ready deeper-reasoning chunk
+  + [new_support_record] is P3 compiled SOP operator contracts becomes conditionally ready after P2 boundary refresh
+  + [new_support_record] is adapter work, transport work, UI work, dependency changes, package metadata mutation, dispatch, live-control authority reconsideration, and operations execution remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: PostIR8ImplementationReadiness] is the requirement delta produced by this rebake
+  + [requirement_delta] is P2 must split authority kernel and record schema design into final slices before downstream broad fixture, packetization, runtime, adapter, or surface expansion
+  + [requirement_delta] is P2 readiness and slice minting require deeper reasoning
+  + [requirement_delta] is later bounded fixture drafting, ledger updates, and narrow proof updates become Spark-suitable only after schema and operator contract boundaries stabilize
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter work, transport work, UI work, manager dispatch, agent dispatch, job dispatch, operations control, or live machine control is authorized
+  + [requirement_delta] is no rebake required before P2 slice minting unless a source or boundary input changes
+
+& [FaultReview: PostIR8ImplementationReadiness] is the fault review for this rebake
+  + [forbidden_external_dependency_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [manager_adapter_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [stale_IR8_state_visible_without_replacement_found] is false
+
+  ! [PostIR8ImplementationReadinessAccepted] is accepted
+    @ [support] [VerificationOracleResult: PostIR8ImplementationReadiness]
+    @ [support] [SupportDelta: PostIR8ImplementationReadiness]
+    @ [support] [RequirementDelta: PostIR8ImplementationReadiness]
+    @ [support] [FaultReview: PostIR8ImplementationReadiness]
+
+& [NextSliceGate: P2] is opened
+  + [opened_chunk] is P2 authority kernel and record schemas
+  + [opened_work] is P2 schema and natural-key slice minting
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
+  + [future_spark_suitable_work] is bounded fixture drafting only after P2 schemas and later operator contracts are accepted
+  + [safety_limit] is no dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: mint P2 final slices next unless user redirects or a new fault invalidates this review

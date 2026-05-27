@@ -12,9 +12,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [ir8_implementation_activation_canonical] docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
 @ [ir8_implementation_activation_slices] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
 @ [ir8_implementation_activation_review] docs/reviews/IR8_Implementation_Activation_Minting_Review.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [post_ir8_readiness_review] docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_deeper_reasoning_design_slices
+  + [map_state] is ready_for_P2_authority_kernel_schema_slices
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -41,6 +43,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [purpose] is define logical records, natural keys, lineage, authority states, readiness states, and freshness rules
   + [dependency_set] is P1
   + [support_record] is CanonicalKernelRecordContractV2
+  + [support_record] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+  + [support_record] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
   + [support_gap] is record-specific schemas not yet drafted
   + [support_gap] is natural-key matrix not yet accepted
   + [support_gap] is physical storage not yet chosen
@@ -115,7 +120,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: never let surfaces mutate canonical authority directly
   = should: route bounded projection rendering to GPT-5.3-Codex-Spark after fixture records exist
 
-& [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR7_readiness
+& [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR8_readiness
   + [portion_id] is P7
   + [portion_name] is coordination and multi-agent governance
   + [purpose] is preserve claims, ownership, conversation identity, rendezvous packets, mailbox messages, conflicts, and human overrides
@@ -210,7 +215,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
   + [support_record] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
   + [support_record] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
-  + [support_gap] is post-IR8 implementation readiness rebake not yet accepted
+  + [support_record] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+  + [support_record] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -235,7 +242,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is supported_by_post_IR7_readiness_live_control_gated
+& [Portion: P9OperationsManagerSafety] is supported_by_post_IR8_readiness_live_control_gated
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -338,26 +345,28 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
   + [support_record] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
   + [support_record] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
-  + [support_gap] is post-IR8 implementation readiness rebake not yet accepted
+  + [support_record] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+  + [support_record] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: run post-IR8 implementation readiness rebake before dependencies, adapters, transports, UI, or live operations control
-  = must: route post-IR8 readiness rebake as requiring deeper reasoning because completed IR8 implementation changes whole-field support, manager readiness, dispatch readiness, and live-control gates
+  = must: use post-IR8 implementation readiness before dependencies, adapters, transports, UI, or live operations control
+  = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: PostIR8ImplementationReadinessRebake] is ready_for_execution
-  + [chunk_id] is post-IR8
-  + [chunk_name] is post-IR8 implementation readiness rebake
-  + [authority_basis] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
-  + [activation_slice_surface] is docs/planning/Portion_And_Slice_Map.v1.sop
+& [CurrentReadyChunk: P2AuthorityKernelAndRecordSchemas] is ready_for_execution
+  + [chunk_id] is P2
+  + [chunk_name] is authority kernel and record schemas
+  + [authority_basis] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+  + [activation_slice_surface] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is completed IR8 implementation changes whole-field support, manager readiness, dispatch readiness, and live-control gates
+  + [model_route_reason] is natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
 
-  = must: create only docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop, docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop, and docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop unless a new source-preservation need is discovered
+  = must: mint P2 schema and natural-key design slices before fixture expansion, storage backend selection, broad packetization, adapter work, dispatch, or live-control implementation
   = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

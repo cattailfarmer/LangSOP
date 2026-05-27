@@ -1,0 +1,64 @@
+Subject: Post IR8 Implementation Readiness State V1
+Date: 2026-05-27
+State UUID: f63a3c75-168d-4fc5-9099-3f6bcb342090
+
+@ [source_manifest] docs/source/2026-05-27_post_ir8_implementation_readiness/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [rebake_review] docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+@ [accepted_boundary_input] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+@ [accepted_boundary_input] docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+@ [accepted_boundary_input] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [accepted_boundary_input] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [PostIR8ImplementationReadinessStateV1] is the current derived manager state after IR8 implementation acceptance
+  + [state_basis] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+  + [surface_status] is accepted_for_next_deeper_reasoning_design_selection
+  + [source_manifest] is docs/source/2026-05-27_post_ir8_implementation_readiness/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 6CF4563F5585C78E0273B21C4B9DDF97706936721D4F5B5585A8B777C261DFF8
+  + [canonical_specification] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+  + [canonical_specification_sha256] is 5BC668F0D5B0FF85D1600040C33A736978C9FE88E9BBD545D541354EB14D658A
+  + [implementation_readiness_surface] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [implementation_readiness_surface_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [accepted_boundary_input] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is CAB85007AEA0F5711959DDBD6D157E39DE04E1DC24C4DFB2728225A550B3C328
+  + [accepted_boundary_input] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_boundary_input_sha256] is 2D9768BA9C72598CD5A18CC3D0D74835749940F18908112E522BEBA568B53BD9
+  + [accepted_lineage] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [accepted_lineage_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [current_ready_chunk] is P2 authority kernel and record schemas
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
+  + [current_ready_work] is P2 schema and natural-key slice minting
+  + [secondary_ready_chunk] is P3 compiled SOP operator contracts after P2 boundary refresh
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after schemas and operator contracts stabilize
+  + [gated_chunk] is P4 whole-field planning and packetization until P2 and P3 contracts advance
+  + [gated_chunk] is P5 LangGraph procedure runtime until P2, P3, and fixture-pack contracts advance
+  + [gated_chunk] is P6 surface projection expansion until P2, P4, and fixture records advance
+  + [gated_chunk] is future adapter, dependency, transport, UI, dispatch, operations-control, and live-control work until separate source-preserved authority is accepted
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: mint P2 schema and natural-key design slices before fixture expansion, storage backend selection, broad packetization, adapter work, dispatch, or live-control implementation
+  = must: preserve no-dispatch and no-live-control semantics
+  = must: mark this state stale if any accepted boundary input, canonical readiness specification, implementation readiness surface, or rebake review changes

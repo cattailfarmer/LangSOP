@@ -1,0 +1,117 @@
+Subject: Post IR8 Implementation Readiness Surface V1
+Date: 2026-05-27
+Surface UUID: 5ab960b4-e091-49cd-b03c-62bad4613530
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_post_ir8_implementation_readiness/Source_Document_Manifest.sop
+@ [post_ir7_readiness_surface] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [ir8_implementation_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+@ [ir8_implementation_completion_review] docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+@ [ir8_dependency_dispatch_live_control_decision] docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [PostIR8ImplementationReadinessSurfaceV1] is the current implementation-readiness surface after IR8 implementation acceptance
+  + [surface_state] is ready_for_next_deeper_reasoning_design_selection
+  + [accepted_boundary_input] is IR2ParserProjectionImplementationProofPack
+  + [accepted_boundary_input] is IR3OperatorHarnessImplementationProofPack
+  + [accepted_boundary_input] is IR4LangGraphProofRuntimeImplementationProofPack
+  + [accepted_boundary_input] is IR5SurfaceProjectionPrototypeImplementationProofPack
+  + [accepted_boundary_input] is IR6CoordinationMailboxProjectionImplementationProofPack
+  + [accepted_boundary_input] is IR7OperationsDryRunSimulatorImplementationProofPack
+  + [accepted_boundary_input] is IR8IntegratedManagerOrchestrationImplementationProofPack
+  + [accepted_boundary_input] is IR8ImplementationCompletionReview
+  + [accepted_boundary_input] is IR8ManagerAdapterDependencyDispatchAndLiveControlDeferralDecision
+  + [accepted_boundary_input] is FSC5OperationsSafetyPackV1
+  + [accepted_boundary_input] is PostIR7ImplementationReadinessSurfaceV1
+  + [active_implementation_chunk] is none
+  + [current_ready_chunk] is P2 authority kernel and record schemas
+  + [secondary_ready_chunk] is P3 compiled SOP operator contracts after P2 boundary refresh
+  + [gated_chunk] is P4 whole-field planning and packetization until P2 and P3 contracts are advanced
+  + [gated_chunk] is P5 LangGraph procedure runtime until P2, P3, and fixture-pack contracts are advanced
+  + [gated_chunk] is P6 surface projection expansion until P2, P4, and fixture records are advanced
+  + [gated_chunk] is manager adapter, transport, UI, dependency, package metadata, and dispatch work until explicit non-live authority is accepted
+  + [gated_chunk] is live-control authority reconsideration until separate source-preserved SJS authority is accepted
+  + [safety_limit] is no dispatch, operations control, or live machine control authorized
+
+  = must: choose the next slice from current support, completed-work deltas, and whole-field dependency closure
+  = must: run completion review after each new design, planning, proof, or implementation slice before opening downstream slices
+  = must: preserve parser/projection, operator harness, LangGraph proof runtime, surface projection, coordination mailbox, operations dry-run, integrated manager, and operations safety proof boundaries
+  = must: preserve dry-run-only semantics for operation requests, resource reviews, human approvals, generated outputs, fixture success, manager packets, and handoff records
+  = must: keep dispatch and live-control work blocked unless a separate future authority is source-preserved, SJS-processed, least-privilege bounded, rollback-proved, abort-proved, monitored, and accepted
+
+& [ImplementationReadinessChunk: P2AuthorityKernelAndRecordSchemas] is ready_for_slice_minting
+  + [chunk_id] is P2
+  + [chunk_name] is authority kernel and record schemas
+  + [boundary_input_set] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+  + [boundary_input_set] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [boundary_input_set] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+  + [boundary_input_set] is docs/planning/Capability_Field.v2.sop
+  + [boundary_input_set] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is kernel record schema design slice or source-preserved schema specification
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after kernel schema boundaries are accepted
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, operations control, and live machine control
+
+  = must: start with deeper-reasoning schema and natural-key decisions before broad fixture or runtime work
+  = must: preserve manager implementation records as evidence, not as a replacement for kernel authority schemas
+
+& [ImplementationReadinessChunk: P3CompiledSOPOperatorContracts] is conditionally_ready_after_P2_boundary_refresh
+  + [chunk_id] is P3
+  + [chunk_name] is compiled SOP operator contracts
+  + [dependency_set] is P1 semantic authority and source lineage
+  + [dependency_set] is P2 authority kernel and record schema refresh
+  + [expected_output_set] is operator contract template design slice
+  + [expected_output_set] is first operator examples for signature validation and support-readiness recompute
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is compiled SOP duty boundaries affect what may move from SOP proof into mechanical operators
+  + [future_operator_example_route] is GPT-5.3-Codex-Spark-suitable only after template acceptance
+
+  = must: keep SOP as proof and semantic authority
+  = must: let compiled operators handle only stable, frequent, mechanically checkable duties after authority boundaries are explicit
+
+& [PostIR8ReadinessSafetyBoundary] is the safety boundary for the post-IR8 readiness surface
+  + [integrated_manager_implementation_status] is accepted_for_bounded_projection_and_proof_only
+  + [manager_loop_record_status] is accepted_record_model_only
+  + [readiness_projection_record_status] is accepted_projection_model_only
+  + [work_packet_record_status] is accepted_packet_candidate_model_only
+  + [coordination_handoff_record_status] is accepted_handoff_model_only
+  + [operations_dry_run_handoff_record_status] is accepted_handoff_model_only
+  + [future_manager_adapter_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat manager-loop outputs as records and proof evidence, not commands
+  = must: reject manager packet readiness, dry-run success, fixture success, projected user intent, broad approval, mailbox notice, claim state, graph checkpoint state, or generated report success as dispatch authority or live-control authority
+  = must: require separate future live-control authority before any live process, GPU, model runtime, job, credential, network, destructive filesystem, persistent automation, or machine-control effect
+
+& [PostIR8ReadinessClosureReview] is the dependency audit for the post-IR8 implementation surface
+  + [IR2_implementation_proof_status] is accepted
+  + [IR3_implementation_proof_status] is accepted
+  + [IR4_implementation_proof_status] is accepted
+  + [IR5_implementation_proof_status] is accepted
+  + [IR6_implementation_proof_status] is accepted
+  + [IR7_implementation_proof_status] is accepted
+  + [IR8_implementation_proof_status] is accepted
+  + [IR8_implementation_completion_status] is accepted
+  + [IR8_dependency_dispatch_live_control_deferral_status] is accepted
+  + [FSC5_operations_safety_status] is accepted
+  + [post_IR7_readiness_lineage_status] is accepted
+  + [current_ready_chunk_set] is P2 authority kernel and record schemas
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat implementation activation, adapter work, transport work, dispatch authority, live-control authority, and downstream operations execution as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

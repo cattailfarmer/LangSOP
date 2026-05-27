@@ -1,0 +1,36 @@
+Subject: Post IR8 Implementation Readiness Source
+Date: 2026-05-27
+Source UUID: 5bbcbfe5-0631-433e-b85a-e5f2243a093f
+
+& [SourcePrompt: PostIR8ImplementationReadiness] is the preserved manager-derived source for the post-IR8 implementation rebake
+  + [source_kind] is manager-derived rebake source
+  + [origin] is long-haul project-manager session after IR8 integrated manager orchestration implementation was accepted
+  + [purpose] is convert accepted IR8 integrated manager proof, post-IR7 readiness lineage, IR7 operations dry-run safety, IR6 coordination mailbox proof, and FSC5 operations safety into a new readiness surface without authorizing dispatch, operations control, or live machine control
+  + [reason] is IR8 implementation is complete enough to serve as manager orchestration evidence, but direct adapter, dispatch, or live-control assignment would be false-ready without a fresh readiness rebake
+
+  = must: preserve accepted IR8 implementation proof pack and completion review as boundary inputs
+  = should: treat accepted IR8 work state as derived context only, not source authority for this rebake
+  = must: preserve IR8 manager adapter, dependency, dispatch, and live-control deferral as a gating decision
+  = must: preserve accepted IR7 operations dry-run simulator proof as dry-run-only safety evidence
+  = must: preserve accepted IR6 coordination mailbox proof as coordination carrier evidence, not direct mailbox IO authority
+  = must: preserve FSC5 operations safety and operations safety canonical authority as the live-control boundary for all downstream work
+  = must: preserve post-IR7 implementation readiness lineage as background authority for why IR8 was opened and closed
+  = must: create a post-IR8 implementation-readiness authority that closes IR8 implementation activation and opens only dependency-closed planning or rebake work unless a future source-preserved authority opens bounded implementation
+  = must: keep manager adapters, dispatch, operations control, live control, dependency installation, package metadata mutation, UI, transport, credential access, network mutation, process control, GPU control, model runtime control, job dispatch, destructive filesystem action, and persistent automation gated
+  = must: distinguish accepted manager orchestration evidence from adapter authority, dispatch authority, operations-control authority, and live-control authority
+  = must: preserve coordination proof boundaries: claims, mailbox carriers, human overrides, conflict reviews, completion gates, and conversation identities cannot be bypassed by manager packets, dry-run outputs, or operation requests
+  = must: require future source preservation and SJS processing before any new dispatch, adapter, dependency, transport, UI, live-control, or machine-management implementation authority is trusted
+  = must: route post-IR8 readiness, next-slice selection, dispatch boundary, adapter boundary, and live-control boundary questions to deeper reasoning
+  = should: make later bounded fixture drafting, ledger updates, and narrow proof updates GPT-5.3-Codex-Spark-suitable only after post-IR8 readiness and next slice authority are accepted
+
+& [RequiredPostIR8ImplementationChunkSet] is the source-level chunk set for the next development stage
+  + [ready_chunk_candidate] is whole-field rebake and next-slice selection after IR8 implementation acceptance
+  + [ready_chunk_candidate] is kernel-record-schema-design if no newer implementation readiness surface opens a more local implementation activation
+  + [ready_chunk_candidate] is operator-contract-template-design if authority-kernel dependencies remain stable
+  + [blocked_downstream_candidate] is future manager adapter or transport implementation until explicit deferral decisions are superseded by source-preserved authority
+  + [blocked_downstream_candidate] is future dispatch authority until separate source-preserved SJS authority exists
+  + [blocked_downstream_candidate] is future live-control authority reconsideration until separate source-preserved SJS authority exists
+
+  = must: keep post-IR8 work dependency-closed around accepted parser/projection, operator harness, LangGraph proof runtime, surface projection, coordination mailbox, dry-run operations, integrated manager, and operations safety proof packs
+  = must: keep live-control authority outside post-IR8 readiness unless a separate future source, SJS canonical safety authority, least-privilege credential boundary, rollback proof, resource monitor proof, emergency stop path, and explicit human approval model are accepted
+  = must: emit completion reviews before downstream implementation chunks consume completed post-IR8 readiness work

@@ -50,12 +50,14 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
 @ [completion_review] docs/reviews/IR8_IA07_Completion_Review.v1.sop
 @ [accepted_output] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
 @ [completion_review] docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [post_ir8_readiness_review] docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
 
 & [IR8WorkStateV1] is the current derived work state for IR8 integrated manager orchestration planning
   + [chunk_ref] is IR8 integrated manager orchestration planning
-  + [state_basis] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
-  + [state_basis_sha256] is CAB85007AEA0F5711959DDBD6D157E39DE04E1DC24C4DFB2728225A550B3C328
-  + [surface_status] is IR8_implementation_accepted_pending_post_IR8_readiness_rebake
+  + [state_basis] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+  + [state_basis_sha256] is 2F4198E73BCCFA1981A7C13501D47635709E0C70571BFB4C0461FE09A995FEDA
+  + [surface_status] is IR8_implementation_accepted_post_IR8_readiness_rebake_accepted
   + [source_document] is docs/source/2026-05-27_ir8_final_slices/Derived_IR8_Final_Slices_Source.sop
   + [source_document_sha256] is F31ECA5A6CAE0A4D05798C3C0580A2C51A57ADAB7904D77E535D1B4585CD2E78
   + [source_manifest] is docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
@@ -182,11 +184,15 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
   + [accepted_output_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
   + [accepted_completion_review] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is CAB85007AEA0F5711959DDBD6D157E39DE04E1DC24C4DFB2728225A550B3C328
-  + [current_ready_slice] is post-IR8-readiness-rebake
-  + [current_ready_slice_name] is post-IR8 implementation readiness rebake
+  + [post_ir8_readiness_surface] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [post_ir8_readiness_surface_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [post_ir8_readiness_review] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+  + [post_ir8_readiness_review_sha256] is 2F4198E73BCCFA1981A7C13501D47635709E0C70571BFB4C0461FE09A995FEDA
+  + [current_ready_slice] is P2
+  + [current_ready_slice_name] is authority kernel and record schemas
   + [current_ready_slice_model_route] is requires deeper reasoning
   + [current_ready_slice_model_route_depth] is deeper_reasoning_required
-  + [current_ready_slice_model_route_reason] is completed IR8 implementation changes whole-field support, manager readiness, dispatch readiness, and live-control gates
+  + [current_ready_slice_model_route_reason] is natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   + [implementation_activation_slice_minting_opened] is completed
   + [integrated_manager_implementation_authorized] is completed_for_IR8-IA03
   + [handoff_and_fault_model_implementation_authorized] is completed_for_IR8-IA04
@@ -213,9 +219,9 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
   + [agent_dispatch_authorized] is false
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
-  + [IR8_state] is IR8_implementation_accepted_pending_post_IR8_readiness_rebake
+  + [IR8_state] is IR8_implementation_accepted_post_IR8_readiness_rebake_accepted
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: run a post-IR8 readiness rebake before dependency installation, package metadata mutation, adapters, transports, UI, command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: use post-IR8 readiness before selecting downstream slices, dependency installation, package metadata mutation, adapters, transports, UI, command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
   = must: keep source, projections, graph checkpoints, coordination claims, mailbox carriers, dry-run outputs, human approvals, and generated reports in distinct authority classes
-  = must: mark this state stale if IR8 source document, IR8 source manifest, canonical specification, slice surface, minting review, IR8-S01 output, IR8-S01 completion review, IR8-S02 output, IR8-S02 completion review, IR8-S03 output, IR8-S03 completion review, IR8-S04 output, IR8-S04 completion review, IR8-S05 outputs, IR8-S05 completion review, IR8 completion review, IR8 implementation activation source, IR8 implementation activation source manifest, IR8 implementation activation canonical specification, IR8 implementation activation slice surface, IR8 implementation activation minting review, IR8-IA01 output, IR8-IA01 completion review, IR8-IA02 fixture source set, IR8-IA02 expected ledger set, IR8-IA02 completion review, IR8-IA03 manager model outputs, IR8-IA03 completion review, IR8-IA04 handoff/fault outputs, IR8-IA04 completion review, IR8-IA05 generated path and fixture runner outputs, IR8-IA05 completion review, IR8-IA06 contract tests, IR8-IA06 generated-output proof, IR8-IA06 completion review, IR8-IA07 dependency dispatch live-control decision, IR8-IA07 completion review, IR8-IA08 proof pack, IR8 implementation completion review, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 proof packs, or FSC5 operations safety pack changes
+  = must: mark this state stale if IR8 source document, IR8 source manifest, canonical specification, slice surface, minting review, IR8-S01 output, IR8-S01 completion review, IR8-S02 output, IR8-S02 completion review, IR8-S03 output, IR8-S03 completion review, IR8-S04 output, IR8-S04 completion review, IR8-S05 outputs, IR8-S05 completion review, IR8 completion review, IR8 implementation activation source, IR8 implementation activation source manifest, IR8 implementation activation canonical specification, IR8 implementation activation slice surface, IR8 implementation activation minting review, IR8-IA01 output, IR8-IA01 completion review, IR8-IA02 fixture source set, IR8-IA02 expected ledger set, IR8-IA02 completion review, IR8-IA03 manager model outputs, IR8-IA03 completion review, IR8-IA04 handoff/fault outputs, IR8-IA04 completion review, IR8-IA05 generated path and fixture runner outputs, IR8-IA05 completion review, IR8-IA06 contract tests, IR8-IA06 generated-output proof, IR8-IA06 completion review, IR8-IA07 dependency dispatch live-control decision, IR8-IA07 completion review, IR8-IA08 proof pack, IR8 implementation completion review, post-IR8 readiness surface, post-IR8 readiness review, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 proof packs, or FSC5 operations safety pack changes
