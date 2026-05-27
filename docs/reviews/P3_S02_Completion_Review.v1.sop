@@ -1,0 +1,107 @@
+Subject: P3 S02 Completion Review V1
+Date: 2026-05-27
+Review UUID: b066fd3d-5b4d-41d4-91d5-fa2d15f5a41f
+
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [p3_s02_output] docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+@ [p3_s01_review] docs/reviews/P3_S01_Completion_Review.v1.sop
+@ [p3_work_state] docs/state/P3_Work_State.v1.sop
+
+& [P3S02CompletionReviewV1] is the completion review for P3-S02 common operator envelope and SOP-first refusal semantics
+  + [slice_id] is P3-S02
+  + [slice_name] is common operator envelope and SOP-first refusal semantics
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [accepted_output] is docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+  + [accepted_output_sha256] is A7DD9F962924B33773F9D846390C1725209C27C2607ABAD6BBCAE0C396FD8C25
+  + [next_gate_result] is P3-S03 may open
+  + [P3-S03_model_route] is requires deeper reasoning
+  + [P3-S03_model_route_reason] is signature validation operator boundaries affect which artifacts may be trusted as processed authority
+  + [specific_operator_contract_rewrite_authorized] is false
+  + [operator_implementation_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this review as acceptance of the common operator envelope overlay, not acceptance of refreshed signature validation or support readiness operators
+  = must: open only P3-S03 signature validation operator contract refresh
+  = must: keep specific support readiness refresh, fixture source creation, implementation, dependencies, package metadata, adapters, dispatch, operations control, and live machine control gated
+
+& [VerificationAgainstSlice: P3-S02] is the verification result for the P3-S02 slice contract
+  + [expected_output_present] is true
+  + [expected_output_hash] is A7DD9F962924B33773F9D846390C1725209C27C2607ABAD6BBCAE0C396FD8C25
+  + [common_operator_envelope_present] is true
+  + [P2_overlay_field_requirements_present] is true
+  + [effect_boundary_rule_present] is true
+  + [SOP_first_refusal_semantics_present] is true
+  + [no_hidden_write_policy_present] is true
+  + [trace_nonpromotion_rule_present] is true
+  + [downstream_refresh_instruction_present] is true
+  + [specific_operator_contract_rewrite_found] is false
+  + [implementation_code_creation_found] is false
+  + [dependency_installation_found] is false
+
+  ! [P3S02SliceContractSatisfied] is accepted
+    @ [support] docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+
+& [SupportDelta: P3-S02] is the support delta created by the accepted common operator envelope
+  + [support_added] is P3 overlay fields are required for refreshed operator contracts
+  + [support_added] is blocked_output fault_output and SOP_first_interrupt semantics are explicit
+  + [support_added] is effect boundary limits forbid dispatch, operations-control, live-control, dependency mutation, package mutation, credential mutation, network mutation, process control, GPU control, model runtime mutation, and job dispatch
+  + [support_added] is output mutation policy preserves no hidden writes and explicit supersession lineage
+  + [support_added] is operator trace, projection, checkpoint, carrier, generated output, and dry-run contexts are non-authority unless separately reviewed as proof authority
+  + [support_gap_closed] is common operator envelope refresh not yet accepted
+  + [support_gap_remaining] is signature validation operator contract not yet refreshed
+  + [support_gap_remaining] is support readiness recompute operator contract not yet refreshed
+  + [support_gap_remaining] is no operator trace fixture oracle plan accepted
+
+& [RequirementDelta: P3-S02] is the requirement delta after common envelope acceptance
+  + [requirement_added] is P3-S03 must apply the common envelope to signature_validation
+  + [requirement_added] is P3-S04 must apply the common envelope to support_readiness_recompute
+  + [requirement_added] is P3-S05 must plan fixtures for blocked, fault, interrupt, nonpromotion, and no-automation cases
+  + [requirement_preserved] is no operator implementation, graph node implementation, adapter, dispatch, operations-control, or live-control authority
+  + [requirement_preserved] is completion review after every P3 slice
+
+& [FaultReview: P3-S02] is the completed-work fault review
+  + [source_overwrite_found] is false
+  + [operator_template_in_place_rewrite_found] is false
+  + [specific_operator_contract_rewrite_found] is false
+  + [operator_implementation_found] is false
+  + [LangGraph_node_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [expected_ledger_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [transport_implementation_found] is false
+  + [UI_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [trace_to_authority_promotion_found] is false
+  + [false_downstream_ready_found] is false
+
+& [DownstreamReadinessAfterP3S02] is the downstream readiness result after P3-S02
+  + [P3-S03] is ready_for_execution
+  + [P3-S03_name] is signature validation operator contract refresh
+  + [P3-S03_model_route] is requires deeper reasoning
+  + [P3-S03_model_route_reason] is signature validation operator boundaries affect which artifacts may be trusted as processed authority
+  + [P3-S04] is gated_until_P3-S03_accepted
+  + [P3-S05] is gated_until_P3-S04_accepted
+  + [P3-S06] is gated_until_P3-S05_accepted
+  + [P4] is gated_until_P3_completion_or_explicit_rebake
+  + [P5] is gated_until_P3_and_fixture_contracts_advance
+  + [operator_implementation] is gated_until_future_source_preserved_implementation_activation
+
+  ! [P3S02CompletionAccepted] is accepted
+    @ [support] [P3S02SliceContractSatisfied]
+    @ [support] [SupportDelta: P3-S02]
+    @ [support] [RequirementDelta: P3-S02]
+    @ [support] [FaultReview: P3-S02]
+    @ [support] [DownstreamReadinessAfterP3S02]

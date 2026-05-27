@@ -8,6 +8,8 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
 @ [slice_minting_review] docs/reviews/P3_Final_Slice_Minting_Review.v1.sop
 @ [accepted_output] docs/operators/P3_Operator_Boundary_Import_And_Duty_Inventory.v1.sop
 @ [completion_review] docs/reviews/P3_S01_Completion_Review.v1.sop
+@ [accepted_output] docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+@ [completion_review] docs/reviews/P3_S02_Completion_Review.v1.sop
 @ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
 @ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
 @ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
@@ -16,9 +18,9 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
 @ [operator_runner_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
 
 & [P3WorkStateV1] is the current derived work state for P3 compiled SOP operator contracts
-  + [state_basis] is docs/reviews/P3_S01_Completion_Review.v1.sop
-  + [state_basis_sha256] is 44A6C0AF48DBBE50FC7996EB7F8D38DD1AC93D43D88306FCCCC479F975F5EE70
-  + [surface_status] is P3-S01_accepted_pending_P3-S02
+  + [state_basis] is docs/reviews/P3_S02_Completion_Review.v1.sop
+  + [state_basis_sha256] is 8E5A6FC754E5934BD928DE6BBE94BEF92EA8231BAB730DEE63D66F9C0A206E96
+  + [surface_status] is P3-S02_accepted_pending_P3-S03
   + [source_manifest] is docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is C1F84558BB7870C2F46FDE2FD8BCCBA2F3D8D0D89AF853372DD3C260DA182134
   + [canonical_specification] is docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
@@ -42,11 +44,15 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
   + [accepted_output_sha256] is FC70B606F5F2650D6536487C1D5FC3A3B6318CB4F3C7E19C0DDBFC7BF8922A0A
   + [accepted_completion_review] is docs/reviews/P3_S01_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 44A6C0AF48DBBE50FC7996EB7F8D38DD1AC93D43D88306FCCCC479F975F5EE70
-  + [current_ready_slice] is P3-S02
-  + [current_ready_slice_name] is common operator envelope and SOP-first refusal semantics
+  + [accepted_slice] is P3-S02
+  + [accepted_output] is docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+  + [accepted_output_sha256] is A7DD9F962924B33773F9D846390C1725209C27C2607ABAD6BBCAE0C396FD8C25
+  + [accepted_completion_review] is docs/reviews/P3_S02_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 8E5A6FC754E5934BD928DE6BBE94BEF92EA8231BAB730DEE63D66F9C0A206E96
+  + [current_ready_slice] is P3-S03
+  + [current_ready_slice_name] is signature validation operator contract refresh
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is the common operator envelope controls all downstream mechanical SOP duties and runtime graph nodes
-  + [gated_slice] is P3-S03
+  + [current_ready_slice_model_route_reason] is signature validation operator boundaries affect which artifacts may be trusted as processed authority
   + [gated_slice] is P3-S04
   + [gated_slice] is P3-S05
   + [gated_slice] is P3-S06
@@ -66,6 +72,6 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P3-S02 before refreshing specific operator contracts, fixture plans, downstream packetization, graph runtime, or surface expansion
+  = must: execute P3-S03 before support readiness refresh, fixture plans, downstream packetization, graph runtime, or surface expansion
   = must: keep SOP proof authority, operator contract authority, generated traces, graph checkpoints, fixture plans, packetization candidates, and runtime outputs in distinct authority classes
   = must: mark this state stale if P3 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, or accepted operator boundary inputs change

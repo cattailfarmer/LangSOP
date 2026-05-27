@@ -1,0 +1,195 @@
+Subject: P3 Common Operator Contract Envelope And Refusal Semantics V1
+Date: 2026-05-27
+Envelope UUID: 093a81de-05ae-41b8-832a-45d09f49b660
+
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [p3_s01] docs/operators/P3_Operator_Boundary_Import_And_Duty_Inventory.v1.sop
+@ [p3_s01_review] docs/reviews/P3_S01_Completion_Review.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [p2_common_overlay] docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+@ [p2_record_overlay] docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+@ [p2_storage_posture] docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+
+& [P3CommonOperatorContractEnvelopeAndRefusalSemanticsV1] is the P3-S02 refresh for common operator contract envelope and SOP-first refusal semantics
+  + [slice_id] is P3-S02
+  + [slice_name] is common operator envelope and SOP-first refusal semantics
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [refresh_result] is OperatorContractTemplateV1_remains_accepted_for_existing_contracts_and_P3_common_operator_overlay_is_required_for_new_or_refreshed_downstream_operator_contracts_after_P3_completion
+  + [supersession_scope] is additive_operator_envelope_overlay_not_in_place_rewrite
+  + [next_gate_result] is P3-S03 may open
+  + [operator_implementation_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this refresh as the common semantic overlay for P3-S03 and P3-S04 operator-specific refresh work
+  = must: preserve Operator_Contract_Template.v1.sop as accepted historical template authority for existing contracts
+  = must: require downstream refreshed operator contracts to declare how they consume P2 authority_class, effect_boundary, currentness_state, review_gate_ref, invalidation_ref_set, natural keys, source refs, and lineage rules
+  = must: keep implementation, graph nodes, dependency installation, adapters, dispatch, operations control, and live machine control gated
+
+& [CommonOperatorEnvelopeRefreshDecision: P3-S02] is the common operator envelope decision
+  + [existing_template_field] is operator_id
+  + [existing_template_field] is operator_version
+  + [existing_template_field] is operator_name
+  + [existing_template_field] is operator_purpose
+  + [existing_template_field] is source_sop_ref
+  + [existing_template_field] is authority_basis_ref_set
+  + [existing_template_field] is input_record_kind_set
+  + [existing_template_field] is output_record_kind_set
+  + [existing_template_field] is precondition_set
+  + [existing_template_field] is postcondition_set
+  + [existing_template_field] is interrupt_condition_set
+  + [existing_template_field] is fault_condition_set
+  + [existing_template_field] is blocked_output_contract
+  + [existing_template_field] is trace_schema
+  + [existing_template_field] is fixture_set
+  + [existing_template_field] is forbidden_scope
+  + [P3_overlay_required_field] is input_authority_requirement_set
+  + [P3_overlay_required_field] is output_authority_class_set
+  + [P3_overlay_required_field] is effect_boundary_limit
+  + [P3_overlay_required_field] is currentness_precondition_set
+  + [P3_overlay_required_field] is natural_key_requirement_set
+  + [P3_overlay_required_field] is source_lineage_requirement_set
+  + [P3_overlay_required_field] is review_gate_requirement_set
+  + [P3_overlay_required_field] is invalidation_behavior_set
+  + [P3_overlay_required_field] is output_mutation_policy
+  + [P3_overlay_required_field] is nonpromotion_policy
+  + [P3_overlay_required_field] is SOP_first_interrupt_contract
+  + [field_policy] is P3 overlay fields may be represented as contract extensions or operator-specific sections until a future implementation activation selects storage shape
+  + [field_policy] is downstream operator contracts must expose overlay fields in validation and projections even if persisted as payload material
+
+  = must: preserve the existing OperatorContractTemplateV1 field set for compatibility
+  = must: require P3 overlay fields for all newly refreshed operator contracts before P4, P5, P6, or P8 consumes them
+  = must: reject downstream operator contracts that hide authority class, effect boundary, currentness, review gate, invalidation, natural key, or source lineage requirements inside prose when the operator can affect readiness, packetization, traces, generated output, dispatch, operations, or live-control gates
+
+| [P3OperatorOutcomeKind] is (
+  success |
+  blocked_output |
+  fault_output |
+  SOP_first_interrupt
+)
+
+| [P3OperatorMutationPolicy] is (
+  create_new_record |
+  supersede_existing_record |
+  append_lineage_edge |
+  append_review |
+  emit_trace_only |
+  refuse_hidden_write
+)
+
+| [P3OperatorRefusalKind] is (
+  blocked_missing_support |
+  blocked_missing_source |
+  blocked_missing_review_gate |
+  blocked_unresolved_natural_key |
+  blocked_stale_input |
+  fault_invalid_input_shape |
+  fault_hidden_authority |
+  fault_false_ready |
+  fault_projection_promotion |
+  fault_forbidden_output |
+  interrupt_semantic_ambiguity |
+  interrupt_authority_conflict |
+  interrupt_human_override_required |
+  interrupt_high_risk_scope |
+  interrupt_missing_proof_route
+)
+
+& [OperatorEffectBoundaryRule: P3-S02] is the effect boundary rule for all refreshed operator contracts
+  + [default_effect_boundary_limit] is proof_only
+  + [allowed_effect_boundary] is no_effect
+  + [allowed_effect_boundary] is proof_only
+  + [allowed_effect_boundary] is projection_only
+  + [allowed_effect_boundary] is review_gate_only
+  + [allowed_effect_boundary] is dry_run_only only when consuming accepted dry-run evidence as non-authority
+  + [forbidden_effect_boundary] is dispatch_authorized
+  + [forbidden_effect_boundary] is operations_authorized
+  + [forbidden_effect_boundary] is live_control_authorized
+  + [forbidden_effect_boundary] is filesystem_mutation
+  + [forbidden_effect_boundary] is dependency_or_package_mutation
+  + [forbidden_effect_boundary] is credential_or_network_mutation
+  + [forbidden_effect_boundary] is process_gpu_model_runtime_or_job_control
+
+  = must: keep operator contract effect boundaries independent from runtime implementation
+  = must: require separate future source-preserved authority before any operator can authorize dispatch, operations control, live control, filesystem mutation, dependency mutation, credential access, network exposure, process control, GPU control, model runtime mutation, or job dispatch
+  = must: classify any attempted promotion beyond effect_boundary_limit as fault_forbidden_output or SOP_first_interrupt when semantic review is needed
+
+& [SOPFirstRefusalSemantics: P3-S02] is the refusal and interrupt decision rule for common operators
+  + [blocked_output_when] is required support, source, review gate, natural key, freshness, lineage, proof route, or accepted authority is missing but no unsafe contradiction is proven
+  + [fault_output_when] is invalid shape, hidden authority, false-ready output, projection promotion, forbidden output kind, generated-output promotion, checkpoint authority confusion, or contract violation is proven
+  + [SOP_first_interrupt_when] is semantic ambiguity, authority conflict, high-risk scope, missing proof route requiring judgment, or scoped human override question cannot be decided mechanically
+  + [success_when] is all preconditions pass, output kind is declared, authority basis is current, output mutation policy is satisfied, effect boundary limit is preserved, and trace obligations are complete
+
+  = must: return a traceable refusal rather than silently omitting output
+  = must: prefer blocked_output over success when support is insufficient
+  = must: prefer fault_output over success when false-ready, hidden authority, projection promotion, or forbidden output is proven
+  = must: prefer SOP_first_interrupt over guessing when semantic identity, authority, or high-risk scope is ambiguous
+
+& [NoHiddenWriteAndSupersessionPolicy: P3-S02] is the output mutation policy for common operators
+  + [allowed_mutation_policy] is create_new_record for new derived outputs
+  + [allowed_mutation_policy] is supersede_existing_record when invalidation_ref_set and lineage_edge_set are explicit
+  + [allowed_mutation_policy] is append_lineage_edge when only lineage is being recorded
+  + [allowed_mutation_policy] is append_review when completion or review result is being recorded
+  + [allowed_mutation_policy] is emit_trace_only for non-authority runtime or projection observations
+  + [required_refusal_policy] is refuse_hidden_write when an operator would silently mutate source, canonical, schema, decision, review, storage, fixture, generated output, checkpoint, or carrier state beyond its declared output_record_kind_set
+
+  = must: preserve source_ref_set and lineage_edge_set for every claim-bearing output
+  = must: require invalidation_ref_set when currentness_state changes to superseded, contradicted, or invalidated
+  = must: prevent output mutation policy from becoming filesystem, database, package, process, job, network, credential, or live machine mutation authority
+
+& [TraceAndNonpromotionCommonRule: P3-S02] is the trace and nonpromotion rule for operator contracts
+  + [operator_trace_authority_class] is generated_output_non_authority or proof_authority only for the proof record that reviews the trace
+  + [runtime_checkpoint_status] is execution_state_non_authority
+  + [generated_output_status] is generated_output_non_authority
+  + [projection_output_status] is surface_projection_non_authority unless separately reviewed as proof authority
+  + [carrier_context_status] is carrier_state_non_authority
+  + [dry_run_context_status] is dry_run_evidence_non_authority
+  + [nonpromotion_policy] is trace_checkpoint_projection_carrier_generated_and_dry_run_records_cannot_satisfy_source_authority_dispatch_operations_or_live_control_gates
+
+  = must: require operator traces to cite source inputs, output records, precondition results, postcondition results, refusal or interrupt result, and effect boundary classification
+  = must: keep LangGraph checkpoints and operator traces useful for debugging without treating them as source truth
+
+& [DownstreamOperatorRefreshInstruction: P3-S02] is the instruction to P3-S03 and P3-S04
+  + [P3-S03_must_apply] is CommonOperatorEnvelopeRefreshDecision
+  + [P3-S03_must_apply] is OperatorEffectBoundaryRule
+  + [P3-S03_must_apply] is SOPFirstRefusalSemantics
+  + [P3-S03_must_apply] is NoHiddenWriteAndSupersessionPolicy
+  + [P3-S03_must_apply] is TraceAndNonpromotionCommonRule
+  + [P3-S03_must_decide] is signature_validation input authority requirements, source lineage requirements, stale hash behavior, wrong protocol behavior, duplicate signature behavior, broken lineage behavior, and ambiguous identity interrupt behavior
+  + [P3-S04_must_apply] is CommonOperatorEnvelopeRefreshDecision
+  + [P3-S04_must_apply] is OperatorEffectBoundaryRule
+  + [P3-S04_must_apply] is SOPFirstRefusalSemantics
+  + [P3-S04_must_apply] is NoHiddenWriteAndSupersessionPolicy
+  + [P3-S04_must_apply] is TraceAndNonpromotionCommonRule
+  + [P3-S04_must_decide] is support_readiness_recompute readiness input authority requirements, support gap behavior, stale projection behavior, contradiction behavior, false-ready fault behavior, packetization refusal, and proof route interrupt behavior
+  + [P3-S05_must_plan] is fixture oracle cases for success, blocked, stale, contradicted, invalid, ambiguous, hidden authority, missing source lineage, false ready, forbidden output, projection promotion, trace nonpromotion, and no-automation boundary
+
+& [P3S02FaultReview] is the fault review for P3-S02
+  + [in_place_operator_template_rewrite_found] is false
+  + [specific_operator_contract_rewrite_found] is false
+  + [operator_implementation_found] is false
+  + [LangGraph_node_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [trace_to_authority_promotion_found] is false
+  + [hidden_write_authorized] is false
+
+  ! [P3CommonOperatorContractEnvelopeAndRefusalSemanticsAccepted] is accepted
+    @ [support] [CommonOperatorEnvelopeRefreshDecision: P3-S02]
+    @ [support] [OperatorEffectBoundaryRule: P3-S02]
+    @ [support] [SOPFirstRefusalSemantics: P3-S02]
+    @ [support] [NoHiddenWriteAndSupersessionPolicy: P3-S02]
+    @ [support] [TraceAndNonpromotionCommonRule: P3-S02]
+    @ [support] [DownstreamOperatorRefreshInstruction: P3-S02]
+    @ [support] [P3S02FaultReview]
