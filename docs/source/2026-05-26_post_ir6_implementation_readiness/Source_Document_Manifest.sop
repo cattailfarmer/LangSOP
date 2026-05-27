@@ -1,0 +1,45 @@
+Subject: Post IR6 Implementation Readiness Source Manifest
+Date: 2026-05-26
+Manifest UUID: 5cac4124-fcf3-4caa-9067-cdf670e004f0
+
+& [SourceDocumentManifest: PostIR6ImplementationReadiness] is the source preservation manifest for the post-IR6 implementation readiness specification
+  + [dictated_source] is docs/source/2026-05-26_post_ir6_implementation_readiness/Post_IR6_Implementation_Readiness_Source.sop
+    + [sha256] is 8AEF06E735198031B59BF3B0050400EADDF11120E5D08F282E6F8F3604B72947
+    + [source_role] is preserved manager-derived rebake source after IR6 implementation acceptance
+  + [authority_source] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+    + [sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+    + [source_role] is accepted IR6 implementation proof pack
+  + [authority_source] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+    + [sha256] is F200CA49FD087B486D601AB95749CA98B63D7F9246869DB417B4BE2CB2AE4C0C
+    + [source_role] is accepted IR6 implementation completion review
+  + [authority_source] is docs/state/IR6_Work_State.v1.sop
+    + [sha256] is FF32BFF7A795942F7104738D2674B3DA0F44D880666EC23D7D571499CDED9948
+    + [source_role] is current IR6 derived work state
+  + [authority_source] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+    + [sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+    + [source_role] is accepted operations safety pack
+  + [authority_source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+    + [sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+    + [source_role] is accepted operations safety canonical authority
+  + [authority_source] is docs/canonical/LangSOP_Post_FSC5_Implementation_Readiness.canonical.sop
+    + [sha256] is EA3EF2515A90CCAC96ACA76E199C96FF39BDC9AA1568C253B3C33E1807A2EA0B
+    + [source_role] is accepted implementation readiness lineage
+  + [authority_source] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+    + [sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+    + [source_role] is accepted post-FSC5 implementation readiness surface
+  + [authority_source] is docs/reviews/Post_FSC5_Implementation_Readiness_Rebake_Review.v1.sop
+    + [sha256] is 08205B1C45B24DFA4DFB3DBDC6A6EB720C05846E7B5FB027B7AC2FF59F2EE443
+    + [source_role] is accepted post-FSC5 implementation readiness rebake review
+  + [authority_source] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+    + [sha256] is CFD6DE0F1C0C1DF20917B2B9CBC2B80AE9C48EF6B79B7386BEFF40C124EC7402
+    + [source_role] is whole-pie product overview
+  + [authority_source] is docs/planning/Capability_Field.v2.sop
+    + [sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+    + [source_role] is capability field
+  + [canonical_target] is docs/canonical/LangSOP_Post_IR6_Implementation_Readiness.canonical.sop
+  + [surface_target] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+
+  = must: preserve this manifest as source lineage for post-IR6 implementation readiness planning
+  = must: invalidate the post-IR6 readiness surface if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not implementation authority
+  - never: use this manifest to authorize operations control or live machine control

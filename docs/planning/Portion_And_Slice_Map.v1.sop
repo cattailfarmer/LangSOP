@@ -181,19 +181,26 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is deferred
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7_final_slice_minting
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
   + [dependency_set] is P2 through P8
-  + [support_gap] is safety specification not yet authored
-  + [support_gap] is dry-run operations fixture model not yet defined
+  + [support_record] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [support_record] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [support_record] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [support_record] is docs/canonical/LangSOP_Post_IR6_Implementation_Readiness.canonical.sop
+  + [support_record] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
+  + [support_gap] is IR7 final slices not yet minted
+  + [support_gap] is IR7 dry-run operations fixture implementation not yet accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: remain deferred until core kernel, graph, surfaces, coordination, and proof portions mature
-  = must: require deeper reasoning when opened
+  = must: open only IR7 final-slice minting, not implementation or live operations control
+  = must: require deeper reasoning for IR7 readiness and final-slice minting
+  = should: route bounded fixture drafting to GPT-5.3-Codex-Spark only after IR7 safety and dry-run contracts are accepted
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

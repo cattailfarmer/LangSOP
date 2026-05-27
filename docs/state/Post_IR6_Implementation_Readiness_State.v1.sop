@@ -1,0 +1,42 @@
+Subject: Post IR6 Implementation Readiness State V1
+Date: 2026-05-26
+State UUID: 5ffe5ff4-5317-4523-918f-70722726497d
+
+@ [source_manifest] docs/source/2026-05-26_post_ir6_implementation_readiness/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_Post_IR6_Implementation_Readiness.canonical.sop
+@ [implementation_readiness_surface] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+@ [rebake_review] docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
+@ [accepted_boundary_input] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [accepted_boundary_input] docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+@ [accepted_boundary_input] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [accepted_lineage] docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+
+& [PostIR6ImplementationReadinessStateV1] is the current derived manager state after IR6 implementation acceptance
+  + [state_basis] is docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
+  + [surface_status] is accepted_for_IR7_final_slice_minting
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is F200CA49FD087B486D601AB95749CA98B63D7F9246869DB417B4BE2CB2AE4C0C
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [accepted_lineage] is docs/planning/Post_FSC5_Implementation_Readiness_Surface.v1.sop
+  + [accepted_lineage_sha256] is F9F5EB3EADF76A1F18BFDA2D3CF834D430D068026463D4E95057349FC47B8EF8
+  + [current_ready_chunk] is IR7 operations dry-run request simulator planning
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is operations manager, job-control simulation, resource-boundary modeling, future dispatch, and live-control safety semantics require new authority review
+  + [current_ready_work] is IR7 final slice minting
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR7 safety and dry-run contracts are accepted
+  + [gated_chunk] is IR7 implementation activation until final planning is accepted
+  + [gated_chunk] is future live-control authority reconsideration until separate source-preserved SJS authority is accepted
+  + [operations_simulator_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: mint IR7 final slices before operations simulator implementation, fixture creation, expected ledger creation, dependency changes, generated outputs, adapter work, transport work, or package metadata mutation
+  = must: preserve dry-run-only and no-live-control semantics
+  = must: mark this state stale if any accepted boundary input, canonical readiness specification, implementation readiness surface, or rebake review changes
