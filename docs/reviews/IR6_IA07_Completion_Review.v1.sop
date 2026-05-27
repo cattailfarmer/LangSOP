@@ -1,0 +1,96 @@
+Subject: IR6 IA07 Completion Review V1
+Date: 2026-05-26
+Review UUID: 2c7bf1a3-0c1e-4d22-9b91-cc85daec137b
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [dependency_decision] docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+@ [previous_completion_review] docs/reviews/IR6_IA06_Completion_Review.v1.sop
+@ [generated_output_proof] docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+
+& [CompletedWorkReview: IR6-IA07] is the completed-work review for IR6-IA07 mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-IA07
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-IA07 and open IR6-IA08
+  + [next_gate_result] is IR6-IA08 may open
+  + [next_model_route] is requires deeper reasoning for implementation completion review and proof pack
+  + [next_model_route_depth] is deeper reasoning required
+  + [completed_output] is docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+  + [completed_output_sha256] is 9CB64A4732922967FADD21E107EA319743ED73DFB34E1092ADAAE4AB61F8C039
+
+  = must: treat this review as gate-opening evidence for IR6-IA08 only
+  = must: rerun this review if the dependency decision, IR6-IA06 completion review, generated-output/no-mailbox-IO proof, pyproject dependency list, mailbox IO boundary, transport boundary, adapter boundary, dispatch boundary, or operations safety assumptions change
+  = must: keep dependency installation, package metadata mutation, mailbox IO, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control gated
+
+& [IR6IA07Verification] is the verification result for IR6-IA07
+  + [dependency_decision_present] is true
+  + [decision_result] is defer_all_external_dependencies_mailbox_IO_transports_adapters_UI_dispatch_and_operations_for_current_IR6_proof_pass
+  + [current_dependency_set] is empty
+  + [pyproject_dependency_list] is empty
+  + [package_metadata_mutated] is false
+  + [dependency_installed] is false
+  + [mailbox_IO_created] is false
+  + [mailbox_message_file_created] is false
+  + [inbox_or_outbox_directory_created] is false
+  + [read_cursor_persisted] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [langgraph_import_added] is false
+  + [langflow_import_or_export_added] is false
+  + [web_server_created] is false
+  + [socket_listener_created] is false
+  + [MCP_client_or_server_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6IA07VerificationSatisfied] is accepted
+    @ [support] docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+
+& [SupportDelta: IR6-IA07] is the support delta produced by IR6-IA07
+  + [new_support_record] is IR6 implementation proof can proceed with no external dependencies because the pure coordination runner and contract tests satisfy current proof needs
+  + [new_support_record] is mailbox IO, IRC, Matrix, web UI, LangGraph, Langflow, MCP, and operations simulator work remain preserved as future candidates behind explicit authority-preserving activation boundaries
+  + [new_support_record] is current mailbox carrier and read cursor handling remains projection context only, with no platform mailbox files, inbox directories, outbox directories, watchers, sockets, dispatch channels, or source authority promotion authorized
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-IA07] is the requirement delta produced by IR6-IA07
+  + [requirement_delta] is IR6-IA08 may create only the implementation proof pack and implementation completion review named in the activation boundary
+  + [requirement_delta] is IR6-IA08 requires deeper reasoning because final implementation acceptance affects downstream IR7 readiness
+  + [requirement_delta] is IR6-IA08 must record the mailbox IO, transport, adapter, and dependency deferral as accepted evidence
+  + [requirement_delta] is no new implementation work, dependency installation, mailbox IO, adapter implementation, transport implementation, UI implementation, operations simulator, agent dispatch, operations control, or live machine control is authorized by IR6-IA07
+
+& [FaultReview: IR6-IA07] is the fault review for IR6-IA07
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [mailbox_IO_leak_found] is false
+  + [mailbox_file_creation_leak_found] is false
+  + [read_cursor_persistence_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6IA07Accepted] is accepted
+    @ [support] [IR6IA07Verification]
+    @ [support] [SupportDelta: IR6-IA07]
+    @ [support] [RequirementDelta: IR6-IA07]
+    @ [support] [FaultReview: IR6-IA07]
+
+& [NextSliceGate: IR6-IA08] is opened
+  + [opened_slice] is IR6-IA08 implementation completion review and proof pack
+  + [accepted_dependency] is docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+  + [accepted_dependency_sha256] is 9CB64A4732922967FADD21E107EA319743ED73DFB34E1092ADAAE4AB61F8C039
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects downstream IR7 readiness
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-IA08 next unless user redirects or a new fault invalidates this review

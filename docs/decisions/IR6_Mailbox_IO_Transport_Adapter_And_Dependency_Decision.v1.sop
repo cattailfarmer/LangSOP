@@ -1,0 +1,159 @@
+Subject: IR6 Mailbox IO Transport Adapter And Dependency Decision V1
+Date: 2026-05-26
+Decision UUID: 55a4e08a-d8a8-4f18-993c-51f81e1b9e56
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [ia06_completion_review] docs/reviews/IR6_IA06_Completion_Review.v1.sop
+@ [generated_output_proof] docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+@ [contract_tests] tests/test_ir6_coordination_mailbox_contracts.py
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+@ [pyproject] pyproject.toml
+@ [ir4_langgraph_dependency_decision] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+@ [ir5_surface_adapter_dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+
+& [IR6MailboxIOTransportAdapterAndDependencyDecisionV1] is the mailbox IO, transport, adapter, and dependency decision or deferral review for IR6-IA07
+  + [slice_id] is IR6-IA07
+  + [slice_name] is mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [decision_result] is defer_all_external_dependencies_mailbox_IO_transports_adapters_UI_dispatch_and_operations_for_current_IR6_proof_pass
+  + [mailbox_IO_status] is deferred_to_future_explicit_mailbox_IO_activation_slice
+  + [filesystem_watch_status] is deferred_to_future_explicit_transport_activation_slice
+  + [irc_transport_status] is deferred_to_future_explicit_transport_activation_slice
+  + [matrix_transport_status] is deferred_to_future_explicit_transport_activation_slice
+  + [web_UI_status] is deferred_to_future_explicit_UI_activation_slice
+  + [langgraph_adapter_status] is deferred_to_future_explicit_runtime_adapter_activation_slice
+  + [langflow_projection_status] is deferred_to_future_explicit_visual_projection_activation_slice
+  + [operations_simulator_status] is deferred_to_future_explicit_operations_safety_slice
+  + [package_metadata_mutation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [mailbox_IO_implementation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [current_pure_coordination_runner_status] is sufficient_for_IR6_bounded_coordination_mailbox_projection_proof
+
+  = must: preserve this decision as a deferral, not a rejection of mailbox IO, IRC, Matrix, web UI, LangGraph, Langflow, or future transport adapters
+  = must: require a later explicit activation slice before adding package dependencies, lockfiles, imports from external adapter packages, mailbox readers, mailbox writers, read-cursor stores, filesystem watchers, socket listeners, IRC clients, Matrix clients, web servers, LangGraph adapters, Langflow exports, MCP clients, MCP servers, operations simulators, or runtime requirements
+  = must: keep SOP, SJS, completion reviews, accepted decision documents, tracked fixture sources, expected ledgers, and canonical specifications as source authority
+  = must: treat mailbox carrier records, adapter state, transport messages, graph checkpoints, Langflow flows, UI state, generated projections, generated reports, read cursors, dispatch attempts, and operations telemetry as carrier or execution projections until rewritten into accepted SOP authority by a later reviewed process
+
+& [DependencyEvidence: CurrentIR6ProofNeed] is the current proof sufficiency evidence for deferring external dependency installation
+  + [claim_model_output] is src/langsop/coordination/claims.py
+  + [mailbox_model_output] is src/langsop/coordination/mailbox.py
+  + [conflict_review_output] is src/langsop/coordination/reviews.py
+  + [action_route_output] is src/langsop/coordination/action_routes.py
+  + [generated_path_policy_output] is src/langsop/coordination/generated_paths.py
+  + [fixture_runner_output] is src/langsop/coordination/fixture_runner.py
+  + [contract_test_output] is tests/test_ir6_coordination_mailbox_contracts.py
+  + [contract_test_output_sha256] is 2FF67DC7C0D3B41975B19C9DBEB4B124770B7FF6EFF528EBF8466209057AAC61
+  + [generated_output_proof] is docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+  + [generated_output_proof_sha256] is 1CADD25146E4783C92546DD3D0D08BCA662B94D15F02D101A015E6E0E9D3C7D9
+  + [ia06_completion_review] is docs/reviews/IR6_IA06_Completion_Review.v1.sop
+  + [ia06_completion_review_sha256] is 4DC8916CB88CD55078F86F278278F03EDFD3585AE2CC4CBD41AB1CEB167BFD42
+  + [current_test_result] is python -m unittest discover -s tests passed 33 tests after IR6-IA06
+  + [current_targeted_test_result] is python -m unittest tests.test_ir6_coordination_mailbox_contracts passed 8 tests after IR6-IA06
+  + [current_dependency_set] is empty
+  + [pyproject_dependency_list] is empty
+  + [pyproject_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+  + [current_coordination_proof_need] is deterministic in-process proof of claim identity, work boundary, mailbox carrier refusal, conflict review, action-route refusal, path policy, fixture corpus coverage, generated-output disposability, no platform mailbox IO, no dispatch, and no live control
+  + [external_mailbox_IO_needed_for_current_proof] is false
+  + [external_transport_needed_for_current_proof] is false
+  + [external_UI_needed_for_current_proof] is false
+  + [external_langgraph_needed_for_current_proof] is false
+  + [external_langflow_needed_for_current_proof] is false
+
+  ! [CurrentIR6ProofNeedSatisfiedWithoutDependency] is accepted
+    @ [support] docs/reviews/IR6_IA06_Completion_Review.v1.sop
+    @ [support] tests/test_ir6_coordination_mailbox_contracts.py
+    @ [support] pyproject.toml
+
+& [FutureMailboxIOAndTransportActivationBoundary] is the required boundary for any later mailbox IO, adapter, transport, UI, LangGraph, Langflow, MCP, or operations implementation slice
+  + [future_slice_required] is true
+  + [future_slice_must_authorize] is dependency installation
+  + [future_slice_must_authorize] is package metadata mutation
+  + [future_slice_must_authorize] is adapter module inventory
+  + [future_slice_must_authorize] is mailbox read/write boundary
+  + [future_slice_must_authorize] is read cursor persistence boundary
+  + [future_slice_must_authorize] is carrier-state storage boundary
+  + [future_slice_must_authorize] is filesystem watch or polling boundary
+  + [future_slice_must_authorize] is socket, web server, MCP client, MCP server, IRC, or Matrix boundary
+  + [future_slice_must_authorize] is credential and secret boundary
+  + [future_slice_must_authorize] is source-to-carrier projection mapping
+  + [future_slice_must_authorize] is carrier-to-SOP-review reentry mapping
+  + [future_slice_must_authorize] is fixture expansion or adapter fixture mapping
+  + [future_slice_must_authorize] is generated carrier-state boundary
+  + [future_slice_must_authorize] is operations safety and dry-run boundary before any resource-control simulator
+  + [future_forbidden_without_slice] is dependency installation
+  + [future_forbidden_without_slice] is lockfile mutation
+  + [future_forbidden_without_slice] is runtime requirements mutation
+  + [future_forbidden_without_slice] is mailbox file read
+  + [future_forbidden_without_slice] is mailbox file write
+  + [future_forbidden_without_slice] is inbox or outbox directory creation
+  + [future_forbidden_without_slice] is read cursor persistence
+  + [future_forbidden_without_slice] is filesystem watcher
+  + [future_forbidden_without_slice] is socket listener
+  + [future_forbidden_without_slice] is IRC connection
+  + [future_forbidden_without_slice] is Matrix connection
+  + [future_forbidden_without_slice] is web server launch
+  + [future_forbidden_without_slice] is LangGraph import
+  + [future_forbidden_without_slice] is Langflow import or export
+  + [future_forbidden_without_slice] is MCP client or server connection
+  + [future_forbidden_without_slice] is agent dispatch
+  + [future_forbidden_without_slice] is live process control
+  + [future_forbidden_without_slice] is operations control
+  + [future_forbidden_without_slice] is live machine control
+
+  = must: require generated adapter and carrier outputs to remain ignored, disposable, and reproducible unless accepted by a later review
+  = must: require adapter tests to prove carrier state, transport events, graph checkpoints, UI state, and mailbox read cursors cannot open gates or mutate source authority
+  = must: require adapter tests to prove user or agent interactions route back to request records, SOP-first interrupts, human override records, conflict reviews, or completion reviews rather than direct mutation
+
+& [AuthorityBoundaryAssessment: IR6CoordinationAdapters] is the authority fit assessment for future mailbox and transport surfaces
+  + [fit_status] is future_adapter_candidates_preserved
+  + [fit_reason] is mailbox IO, IRC, Matrix, web UI, LangGraph, and Langflow can become useful projections or execution surfaces after authority-preserving boundaries exist
+  + [mismatch_status] is authority_boundary_mismatch_if_used_directly_as_truth
+  + [mismatch_reason] is mailbox files, chat messages, adapter callbacks, UI events, graph checkpoints, Langflow flows, and process telemetry are carrier or execution surfaces rather than accepted SOP authority
+  + [adapter_need] is map accepted LangSOP authority records into carrier inputs and map carrier outputs back into non-authoritative review requests until accepted by SOP review
+
+  = must: prevent mailbox unread state, read cursor freshness, carrier delivery success, graph execution success, visual node state, UI click, chat command, or transport callback from satisfying readiness, completion review, source specification processing, or next-slice gates by itself
+  = must: preserve human override and conflict review as reviewed SOP records rather than direct UI, transport, mailbox, or dispatch effects
+
+& [DecisionConsequences: IR6-IA07] is the consequence ledger for the deferral decision
+  + [IR6_IA08_may_proceed_without_external_dependency] is true
+  + [IR6_IA08_must_record_dependency_deferral] is true
+  + [IR6_IA08_must_record_no_mailbox_IO_boundary] is true
+  + [downstream_IR7_readiness_basis] is IR6 implementation proof pack plus mailbox IO, transport, adapter, and dependency deferral
+  + [downstream_mailbox_IO_or_adapter_work] is future_slice_after_IR6_implementation_completion_or_rebake
+  + [dependency_risk_reduced] is no unreviewed package, lockfile, mailbox IO, UI runtime, network transport, MCP connection, dispatch channel, operations simulator, or live-control runtime enters current proof
+  + [architecture_option_preserved] is mailbox IO, IRC, Matrix, web UI, LangGraph, Langflow, and MCP can be introduced later with explicit authority-preserving adapter boundaries
+
+& [IR6IA07FaultReview] is the fault review for the mailbox IO, transport, adapter, and dependency decision
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [mailbox_IO_created] is false
+  + [mailbox_message_file_created] is false
+  + [inbox_or_outbox_directory_created] is false
+  + [read_cursor_persisted] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [langgraph_import_added] is false
+  + [langflow_import_or_export_added] is false
+  + [web_server_created] is false
+  + [socket_listener_created] is false
+  + [MCP_client_or_server_created] is false
+  + [agent_dispatch_created] is false
+  + [carrier_state_authority_promotion_found] is false
+  + [mailbox_authority_promotion_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6MailboxIOTransportAdapterAndDependencyDecisionAccepted] is accepted
+    @ [support] [DependencyEvidence: CurrentIR6ProofNeed]
+    @ [support] [FutureMailboxIOAndTransportActivationBoundary]
+    @ [support] [AuthorityBoundaryAssessment: IR6CoordinationAdapters]
+    @ [support] [DecisionConsequences: IR6-IA07]
+    @ [support] [IR6IA07FaultReview]
