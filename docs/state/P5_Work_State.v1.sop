@@ -40,11 +40,12 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [p8_ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
 @ [p8_ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
 @ [p8_ia03_review] docs/reviews/P8_IA03_Completion_Review.v1.sop
+@ [p8_ia04_review] docs/reviews/P8_IA04_Completion_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_completed_with_P6_and_P8_fixture_material_P8-IA03_accepted_pending_P8-IA04
+  + [surface_status] is P5_completed_with_P6_and_P8_fixture_material_P8-IA04_accepted_pending_P8-IA05
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -123,10 +124,12 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_downstream_slice_review_sha256] is B5D709E9F667DC350DF74B69B3459AABDAD890FF9BE2C4EF83D3C4059171BDF8
   + [accepted_downstream_slice_review] is docs/reviews/P8_IA03_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is 3C51D8833A1F92136F48A88A487E89ED040AA0819698248D2A2B15AF24A32B37
-  + [current_ready_slice] is P8-IA04
-  + [current_ready_slice_name] is negative oracle source material for stale, false-ready, contradiction, and fault cases
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_reason] is negative oracle material is bounded when accepted authority and fault semantics remain stable
+  + [accepted_downstream_slice_review] is docs/reviews/P8_IA04_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is F5C73C3B12645BA878E3E8B7C01568702865AEC3D75038417FA57AAD887D61BF
+  + [current_ready_slice] is P8-IA05
+  + [current_ready_slice_name] is generated path policy and proof runner contract
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is generated-output roots, proof runner effects, path refusal, source protection, and no-live-effect boundaries affect authority and safety semantics
   + [gated_chunk] is P5 runtime implementation activation until source-preserved activation authority is accepted
   + [gated_chunk] is P8 fixture material creation until P8-IA01 and downstream fixture-material slices accept exact files
   + [dependency_installation_authorized] is false
@@ -148,6 +151,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-IA04 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
+  = must: execute P8-IA05 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, or P8-IA03 review changes
+  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, or P8-IA04 review changes

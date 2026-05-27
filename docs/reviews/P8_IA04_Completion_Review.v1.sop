@@ -1,0 +1,107 @@
+Subject: P8 IA04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 3a1fb946-1b1d-4ae0-894f-1d1c71b0b7a9
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [completed_output] docs/fixtures/P8_Negative_Oracle_Source_Material_And_Fault_Route_Refinement.v1.sop
+@ [p8_ia03_review] docs/reviews/P8_IA03_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-IA04] is the completed-work review for P8-IA04 negative oracle source material for stale, false-ready, contradiction, and fault cases
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA04
+  + [completed_output] is docs/fixtures/P8_Negative_Oracle_Source_Material_And_Fault_Route_Refinement.v1.sop
+  + [completed_output_sha256] is BDC279D5EF51808EEAC0CF2D70A57B4554BC30A15D8B5A77FBEC03442BA36D66
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8-IA04 and open P8-IA05
+  + [next_gate_result] is P8-IA05 may open
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as gate-opening evidence for P8-IA05 only
+  = must: rerun this review if P8-IA02 fixture source material, P8-IA03 expected ledgers, proof ledger seeds, or negative oracle refinement changes
+  = must: keep generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P8IA04Verification] is the verification result for P8-IA04
+  + [negative_oracle_refinement_present] is true
+  + [covered_oracle_case_count] is 15
+  + [stale_source_hash_case_present] is true
+  + [missing_signature_case_present] is true
+  + [generated_output_promotion_case_present] is true
+  + [unsupported_operator_scope_case_present] is true
+  + [deterministic_replay_mismatch_case_present] is true
+  + [blocked_requirement_case_present] is true
+  + [false_ready_packet_case_present] is true
+  + [no_dispatch_case_present] is true
+  + [checkpoint_non_authority_case_present] is true
+  + [stale_checkpoint_case_present] is true
+  + [surface_mutation_refusal_case_present] is true
+  + [expected_ledger_non_authority_case_present] is true
+  + [fixture_success_live_control_fault_case_present] is true
+  + [source_fixture_creation] is not_performed
+  + [expected_ledger_creation] is not_performed
+  + [generated_output_creation] is not_performed
+  + [proof_runner_code_creation] is not_performed
+  + [test_file_creation] is not_performed
+  + [dependency_change] is not_performed
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8IA04VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/P8_Negative_Oracle_Source_Material_And_Fault_Route_Refinement.v1.sop
+
+& [SupportDelta: P8-IA04] is the support delta produced by P8-IA04
+  + [new_support_record] is negative oracle coverage now maps accepted fixture source and expected ledger material to stale, false-ready, contradiction, authority-promotion, dispatch-promotion, operations-promotion, and live-control fault routes
+  + [new_support_record] is P8-IA05 may define generated path policy and proof runner contract
+  + [new_support_record] is P8-IA05 requires deeper reasoning because generated-output roots, proof runner effects, path refusal, source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-IA04] is the requirement delta produced by P8-IA04
+  + [requirement_delta] is P8-IA05 must preserve all negative oracle fault routes when defining generated path policy and proof runner contract
+  + [requirement_delta] is generated outputs must remain ignored, disposable, rebuildable, and non-authoritative
+  + [requirement_delta] is proof runner contract must refuse source paths, expected ledger paths, platform mailbox paths, credential paths, network paths, destructive filesystem targets, assignment records, dispatch records, operations targets, and live-control targets
+
+& [FaultReview: P8-IA04] is the fault review for P8-IA04
+  + [source_overwrite_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [proof_ledger_mutation_found] is false
+  + [generated_output_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8IA04Accepted] is accepted
+    @ [support] [P8IA04Verification]
+    @ [support] [SupportDelta: P8-IA04]
+    @ [support] [RequirementDelta: P8-IA04]
+    @ [support] [FaultReview: P8-IA04]
+
+& [NextSliceGate: P8-IA05] is opened
+  + [opened_slice] is P8-IA05 generated path policy and proof runner contract
+  + [accepted_dependency] is docs/reviews/P8_IA04_Completion_Review.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is generated-output roots, proof runner effects, path refusal, source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-IA05 next unless user redirects or a new fault invalidates this review
