@@ -1,0 +1,192 @@
+Subject: IR7 Operations Boundary Import And Invariant Reconciliation V1
+Date: 2026-05-26
+Boundary Map UUID: dae09e31-b6a6-44ab-b895-0126247a56aa
+
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+@ [post_ir6_readiness] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+@ [post_ir6_rebake_review] docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [operations_safety_canonical] docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+@ [fsc5_operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [dry_run_contract] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [resource_safety_contract] docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+@ [live_control_prohibition] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+@ [operations_fixture_index] docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+@ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir6_implementation_completion_review] docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+
+& [IR7OperationsBoundaryImportAndInvariantReconciliationV1] is the IR7-S01 boundary map for operations dry-run request simulator planning
+  + [boundary_map_id] is ir7-operations-boundary-import-and-invariant-reconciliation-v1
+  + [boundary_map_uuid] is dae09e31-b6a6-44ab-b895-0126247a56aa
+  + [slice_id] is IR7-S01
+  + [source_chunk] is IR7 operations dry-run request simulator planning
+  + [authority_scope] is imported operations safety contracts, imported IR6 coordination proof, post-IR6 readiness gates, operation request non-authority ladder, dry-run-only boundary, human approval limits, stale triggers, and forbidden mutation boundaries
+  + [implementation_scope] is boundary import and invariant reconciliation only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: import accepted operations safety, dry-run, resource safety, live-control prohibition, and IR6 coordination proof boundaries before defining IR7 request, result, refusal, fixture, implementation, or activation contracts
+  = must: preserve operation requests as reviewable records, not commands
+  = must: preserve dry-run results as simulation evidence, not live approval
+  = must: preserve human approval records as explicit, fresh, scoped, revocable safety inputs, not blanket live-control permission
+  = must: preserve IR6 coordination proof so claims, mailbox carriers, human overrides, conflict reviews, completion gates, and carrier state cannot become dispatch or operations authority
+  - never: implement operations simulator code, execute commands, control processes, control GPU, mutate model runtime, dispatch jobs, access or mutate credentials, mutate network exposure, perform destructive filesystem actions, create persistent operations automation, install dependencies, mutate package metadata, dispatch agents, authorize operations control, or authorize live machine control in this slice
+
+& [ImportedIR7BoundaryDigestSet] is the accepted boundary input hash ledger for IR7-S01
+  + [accepted_boundary_input] is docs/slices/IR7_Final_Slices.v1.sop
+  + [accepted_boundary_input_sha256] is A52969918D00039D4E4BD1CF3B8C599CF4A38D40492811F5FB08FBA831100112
+  + [accepted_boundary_input] is docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+  + [accepted_boundary_input_sha256] is 727CD73B6180D5794B8E2FAE5D8EA65CEBA837356E797CE6808065120F54E6DD
+  + [accepted_boundary_input] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 32B7C88C80115C05A1606B9618B154A6D1365D94531F2D6EA46BACAB1F5D3B0C
+  + [accepted_boundary_input] is docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
+  + [accepted_boundary_input_sha256] is D062EA85C7ACF6B1E6384E5D7BEEB3AE5BEE0A3F40C4EBCBA739BD987F9774A1
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [accepted_contract] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [accepted_contract_sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+  + [accepted_contract] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_contract_sha256] is 4C7F2B224A3CD4D9497DD28ABEDC3750CA4979EB132D3DE0DAD2DF5D0E564024
+  + [accepted_contract] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+  + [accepted_contract_sha256] is 19D818B72B680AEEB9897A819F4DAD294627F226B9F1E7E2AEB65E90D42EFF57
+  + [accepted_contract] is docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+  + [accepted_contract_sha256] is 45B49390D2AB8CE5B85B809128865D4B689A8113BCE87D1AC329153D5DEBDD01
+  + [accepted_contract] is docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [accepted_contract_sha256] is 12ACEBB9B110F3572F5B6E087D4B8D50273D135A6C887047932A58B32357BF54
+  + [accepted_fixture_index] is docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+  + [accepted_fixture_index_sha256] is 2C76D6B5A1609BE7AEC71C1C4C4887C1D528645B1DFF06E37D98FE7EE2041873
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is F200CA49FD087B486D601AB95749CA98B63D7F9246869DB417B4BE2CB2AE4C0C
+
+  = must: mark IR7-S01 and downstream IR7 slices stale if any listed boundary input or accepted contract hash changes
+
+& [ReconciledIR7InvariantSet] is the reconciled invariant set for IR7 operations dry-run request simulator planning
+  + [invariant] is SOP source documents, accepted canonical specifications, accepted packs, accepted proofs, accepted completion reviews, accepted human override records, and SJS-signed artifacts remain source authority
+  + [invariant] is operation requests describe intended effects and safety context but cannot perform effects
+  + [invariant] is dry-run results simulate, classify, estimate, refuse, or require review but cannot approve live effects
+  + [invariant] is refusal records preserve evidence and block unsafe operation requests as records, not commands
+  + [invariant] is authority_notice, freshness_state, intended_effect, resource_target, risk_classification, blast_radius, rollback_or_abort_route, credential_boundary_ref, network_boundary_ref, human_approval_ref, and completion_review_ref are required before an operation request can become trusted dry-run input
+  + [invariant] is unknown, ambiguous, credential-touching, network-touching, destructive, process, GPU, model-runtime, and job-queue targets route to high-risk review or refusal
+  + [invariant] is human approval must be explicit, fresh, scoped to intended_effect and resource_target, revocable, and tied to rollback_or_abort_route
+  + [invariant] is broad standing approval, stale approval, fixture success, dry-run success, projected user intent, mailbox notice, active claim, or carrier state cannot authorize live control
+  + [invariant] is coordination claims coordinate work boundaries only and cannot dispatch jobs, run commands, mutate resources, or accept completion for operations effects
+  + [invariant] is live-control escalation requires separate future source preservation, SJS processing, least-privilege credential boundary, rollback proof, explicit human approval rules, monitoring and abort routes, and completion review
+
+  = must: preserve these invariants through IR7-S02 through IR7-S06
+  = must: route invariant contradictions through completion review and rebake rather than silent edits
+
+& [OperationsAuthorityLadder: IR7] is the authority ladder that all downstream IR7 projections must preserve
+  + [authority_tier] is source_authority
+  + [source_authority_member] is preserved source specification
+  + [source_authority_member] is accepted canonical specification
+  + [source_authority_member] is accepted SJS satisfaction signature
+  + [source_authority_member] is accepted proof pack
+  + [source_authority_member] is accepted completion review
+  + [source_authority_member] is explicit accepted human override record with authority notice
+  + [authority_tier] is operations_planning_record
+  + [operations_planning_record_member] is operation_request
+  + [operations_planning_record_member] is dry_run_result
+  + [operations_planning_record_member] is refusal_record
+  + [operations_planning_record_member] is resource_safety_review
+  + [operations_planning_record_member] is human_approval_record
+  + [authority_tier] is coordination_boundary_record
+  + [coordination_boundary_record_member] is coordination_claim
+  + [coordination_boundary_record_member] is mailbox_carrier_context
+  + [coordination_boundary_record_member] is conflict_review_context
+  + [authority_tier] is generated_projection_evidence
+  + [generated_projection_evidence_member] is generated dry-run projection
+  + [generated_projection_evidence_member] is generated report
+  + [generated_projection_evidence_member] is fixture output
+  + [authority_tier] is carrier_context
+  + [carrier_context_member] is terminal output
+  + [carrier_context_member] is chat message
+  + [carrier_context_member] is Codex thread state
+  + [carrier_context_member] is mailbox path
+  + [carrier_context_member] is UI event
+
+  = must: display lower authority tier and trust limit anywhere lower-tier records may influence action
+  = must: prevent lower tiers from satisfying live-control, source-authority, completion, or dispatch obligations without separate accepted authority
+
+& [IR7GeneratedOutputAndFixtureBoundary] is the generated-output and fixture boundary for IR7-S01
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [future_fixture_slice] is IR7-S04 after IR7-S01 through IR7-S03 acceptance
+  + [future_generated_output_policy_slice] is IR7-S05 after IR7-S04 acceptance
+  + [current_generated_output_role] is none_created_by_this_slice
+  + [future_generated_output_default_authority] is non_authoritative_projection_only
+
+  = must: reject IR7-S01 completion if fixture sources, expected ledgers, generated output files, dry-run reports, carrier caches, or projection reports are created
+  = must: require later accepted generated-output policy before any generated operations projection root can be trusted even as disposable evidence
+
+& [ForbiddenIR7S01MutationList] is the forbidden mutation set for IR7-S01
+  + [forbidden_mutation] is editing accepted FSC5, IR6, post-IR6, or IR7 authority inputs to make reconciliation easier
+  + [forbidden_mutation] is treating operation requests as commands
+  + [forbidden_mutation] is treating dry-run results as live approval
+  + [forbidden_mutation] is treating human approval requests or broad approval as live-control permission
+  + [forbidden_mutation] is treating coordination claims, mailbox carriers, or conflict reviews as dispatch authority
+  + [forbidden_mutation] is implementing operations simulator code
+  + [forbidden_mutation] is creating fixture source files
+  + [forbidden_mutation] is creating expected ledger files
+  + [forbidden_mutation] is creating generated output files
+  + [forbidden_mutation] is installing dependencies or mutating package metadata
+  + [forbidden_mutation] is executing commands
+  + [forbidden_mutation] is starting, stopping, killing, or reprioritizing live processes
+  + [forbidden_mutation] is launching, cancelling, or scheduling GPU workloads
+  + [forbidden_mutation] is starting, stopping, installing, upgrading, or configuring model runtimes
+  + [forbidden_mutation] is dispatching or cancelling jobs
+  + [forbidden_mutation] is accessing, writing, rotating, or mutating credentials or secrets
+  + [forbidden_mutation] is opening, exposing, or mutating network listeners or firewall state
+  + [forbidden_mutation] is performing destructive filesystem actions
+  + [forbidden_mutation] is creating persistent operations automation
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR7-S01 review if any forbidden mutation appears in the output
+
+& [DownstreamStaleTriggerList: IR7] is the stale trigger set for downstream IR7 work
+  + [stale_trigger] is IR7 canonical specification hash changes
+  + [stale_trigger] is IR7 final slice surface changes
+  + [stale_trigger] is IR7 minting review changes
+  + [stale_trigger] is post-IR6 readiness surface changes
+  + [stale_trigger] is FSC5 operations safety pack hash changes
+  + [stale_trigger] is operations safety canonical hash changes
+  + [stale_trigger] is FSC5 operations boundary, dry-run, resource safety, or live-control prohibition contract changes
+  + [stale_trigger] is IR6 implementation proof pack hash changes
+  + [stale_trigger] is IR6 implementation completion review changes
+  + [stale_trigger] is dry-run output treated as live approval
+  + [stale_trigger] is human approval display treated as live-control permission
+  + [stale_trigger] is operation-like projection treated as command execution, job dispatch, process control, GPU control, model runtime mutation, credential mutation, network mutation, destructive filesystem action, operations control, or live-control effect
+
+  = must: mark affected downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review and rebake rather than silent edits
+
+& [IR7S01CoverageReview] is the coverage checklist for IR7-S01
+  + [boundary_digest_set_present] is true
+  + [reconciled_invariant_set_present] is true
+  + [operations_authority_ladder_present] is true
+  + [generated_output_and_fixture_boundary_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [operations_simulator_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [command_executed] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_mutation_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR7-S01 only when all checklist items are satisfied
+  = must: open IR7-S02 only after this boundary map is reviewed in a completion review

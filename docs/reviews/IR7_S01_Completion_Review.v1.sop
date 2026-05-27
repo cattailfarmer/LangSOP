@@ -1,0 +1,120 @@
+Subject: IR7 S01 Completion Review V1
+Date: 2026-05-26
+Review UUID: f6a81c50-48b0-4db4-95a8-65bd2a653aed
+
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [completed_output] docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+@ [post_ir6_readiness] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir6_implementation_completion_review] docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR7-S01] is the completed-work review for IR7-S01 operations boundary import and invariant reconciliation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR7-S01
+  + [completed_output] is docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [completed_output_sha256] is 077E4B4F444B433DE7A81C9D68D364C15577E3EBACCF3020981F88D969C282F2
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-S01 and open IR7-S02
+  + [next_gate_result] is IR7-S02 may open
+  + [next_model_route] is requires deeper reasoning for IR7-S02 dry-run operation request, result, refusal, and non-authority contract
+  + [next_model_route_reason] is dry-run evidence must be useful for planning without becoming live-control permission
+
+  = must: treat this review as gate-opening evidence for IR7-S02 only
+  = must: rerun this review if the completed output, IR7 slice surface, post-IR6 readiness surface, FSC5 operations safety pack, IR6 implementation proof pack, or IR6 implementation completion review changes
+  = must: keep operations simulator implementation, fixture creation, expected ledger creation, generated outputs, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
+
+& [IR7S01Verification] is the verification result for IR7-S01
+  + [boundary_digest_set_present] is true
+  + [reconciled_invariant_set_present] is true
+  + [operations_authority_ladder_present] is true
+  + [generated_output_and_fixture_boundary_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [operation_request_non_authority_preserved] is true
+  + [dry_run_result_non_authority_preserved] is true
+  + [human_approval_limit_preserved] is true
+  + [coordination_dispatch_refusal_preserved] is true
+  + [live_control_prohibition_preserved] is true
+  + [operations_simulator_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [command_executed] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_mutation_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7S01VerificationSatisfied] is accepted
+    @ [support] docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+
+& [SupportDelta: IR7-S01] is the support delta produced by IR7-S01
+  + [new_support_record] is IR7 has a reconciled operations authority ladder distinguishing source authority, operations planning records, coordination boundary records, generated projection evidence, and carrier context
+  + [new_support_record] is IR7 downstream contracts must preserve authority notice, freshness, intended effect, resource target, risk, blast radius, rollback or abort route, credential boundary, network boundary, human approval, and completion review before dry-run trust
+  + [new_support_record] is IR6 coordination proof may inform dispatch-like refusal and human override context only as accepted proof evidence, not as operation authority
+  + [new_support_record] is FSC5 dry-run-only and live-control prohibition are imported into IR7 without opening implementation or live effects
+  + [new_support_record] is IR7-S02 has enough support to define dry-run request, result, refusal, and non-authority semantics without creating implementation code
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-S01] is the requirement delta produced by IR7-S01
+  + [requirement_delta] is IR7-S02 must define operation request identity, intended effect, dry-run result shape, refusal output, no-live-effect rule, source/projection boundary, and non-authority behavior
+  + [requirement_delta] is IR7-S02 must preserve refusal when an operation request lacks authority notice, freshness, intended effect, resource target, risk classification, rollback or abort route, credential boundary, network boundary, or completion review reference
+  + [requirement_delta] is IR7-S04 remains gated and Spark-suitable only after IR7-S02 through IR7-S03 acceptance because fixture planning needs accepted dry-run and resource safety semantics
+  + [requirement_delta] is no operations simulator implementation, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, agent dispatch, operations control, or live machine control is authorized by IR7-S01
+
+& [FaultReview: IR7-S01] is the fault review for IR7-S01
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_authority_notice_rule_found] is false
+  + [operation_request_command_promotion_found] is false
+  + [dry_run_to_live_control_promotion_found] is false
+  + [human_approval_to_live_control_promotion_found] is false
+  + [coordination_dispatch_authority_promotion_found] is false
+  + [operations_simulator_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_mutation_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_mutation_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [persistent_operations_automation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7S01Accepted] is accepted
+    @ [support] [IR7S01Verification]
+    @ [support] [SupportDelta: IR7-S01]
+    @ [support] [RequirementDelta: IR7-S01]
+    @ [support] [FaultReview: IR7-S01]
+
+& [NextSliceGate: IR7-S02] is opened
+  + [opened_slice] is IR7-S02 dry-run operation request, result, refusal, and non-authority contract
+  + [accepted_dependency] is docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is 077E4B4F444B433DE7A81C9D68D364C15577E3EBACCF3020981F88D969C282F2
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dry-run evidence must be useful for planning without becoming live-control permission
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-S02 next unless user redirects or a new fault invalidates this review
