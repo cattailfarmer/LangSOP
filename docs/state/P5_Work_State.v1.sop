@@ -42,11 +42,12 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [p8_ia03_review] docs/reviews/P8_IA03_Completion_Review.v1.sop
 @ [p8_ia04_review] docs/reviews/P8_IA04_Completion_Review.v1.sop
 @ [p8_ia05_review] docs/reviews/P8_IA05_Completion_Review.v1.sop
+@ [p8_ia06_review] docs/reviews/P8_IA06_Completion_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_completed_with_P6_and_P8_fixture_material_P8-IA05_accepted_pending_P8-IA06
+  + [surface_status] is P5_completed_with_P6_and_P8_fixture_material_P8-IA06_accepted_pending_P8-IA07
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -129,10 +130,12 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_downstream_slice_review_sha256] is F5C73C3B12645BA878E3E8B7C01568702865AEC3D75038417FA57AAD887D61BF
   + [accepted_downstream_slice_review] is docs/reviews/P8_IA05_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is C447BEA46306444962DEE065DFAC9F18B2A50066BFFC3CEF80066D53D5F419A9
-  + [current_ready_slice] is P8-IA06
-  + [current_ready_slice_name] is fixture material validation tests and generated-output nonpromotion proof
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_reason] is validation tests and proof records are bounded by accepted fixture material, expected ledgers, negative oracle coverage, and generated path policy
+  + [accepted_downstream_slice_review] is docs/reviews/P8_IA06_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is 8C5B011E2BF883D9F797AAF24B2202333901FA57881F217925A388830BF197A5
+  + [current_ready_slice] is P8-IA07
+  + [current_ready_slice_name] is dependency, adapter, transport, dispatch, operations, and live-control deferral decision
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is dependency, adapter, transport, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
   + [gated_chunk] is P5 runtime implementation activation until source-preserved activation authority is accepted
   + [gated_chunk] is P8 fixture material creation until P8-IA01 and downstream fixture-material slices accept exact files
   + [dependency_installation_authorized] is false
@@ -154,6 +157,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-IA06 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
+  = must: execute P8-IA07 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, or P8-IA05 review changes
+  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, or P8-IA06 review changes

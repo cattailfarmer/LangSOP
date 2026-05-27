@@ -1,0 +1,104 @@
+Subject: P8 Fixture Material Generated Output Nonpromotion And No Live Effect Proof V1
+Date: 2026-05-27
+Proof UUID: 479ea005-aaa4-4e77-9d8f-78755d272254
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [generated_path_contract] docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+@ [p8_ia05_review] docs/reviews/P8_IA05_Completion_Review.v1.sop
+@ [contract_tests] tests/test_p8_fixture_material_contracts.py
+@ [generated_output_index] docs/proofs/p8_fixture_material/P8_Fixture_Material_Generated_Output_Index.v1.sop
+@ [no_dispatch_no_live_effect_ledger] docs/proofs/p8_fixture_material/P8_Fixture_Material_No_Dispatch_And_No_Live_Effect_Ledger.v1.sop
+
+& [P8FixtureMaterialGeneratedOutputNonpromotionAndNoLiveEffectProofV1] is the P8-IA06 generated-output nonpromotion and no-live-effect proof
+  + [slice_id] is P8-IA06
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [proof_scope] is bounded fixture material validation tests and generated-output boundary proof
+  + [contract_test_file] is tests/test_p8_fixture_material_contracts.py
+  + [contract_test_file_sha256] is B47A5A7E0A65B59B43CBE82D1C1C56BD2581DF79697C7FB6F020E38D857D47F5
+  + [targeted_test_command] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 5
+  + [generated_output_root] is tests/fixtures/generated/
+  + [generated_output_status] is ignored_disposable_rebuildable_non_authoritative
+  + [generated_probe_status] is transient_created_under_ignored_root_and_removed_by_test
+  + [generated_output_persisted_after_test] is false
+  + [source_fixture_mutation] is false
+  + [expected_ledger_mutation] is false
+  + [proof_ledger_mutation] is false
+  + [proof_runner_code_creation] is false
+  + [dependency_change] is false
+  + [package_metadata_mutation] is false
+  + [adapter_or_transport_implementation] is false
+  + [UI_implementation] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat generated fixture output as proof evidence only, never as source authority
+  = must: treat this proof as bounded test evidence for P8-IA06, not as runtime, adapter, dispatch, operations, or live-control authority
+  = must: rerun this proof when fixture source material, expected ledgers, proof ledgers, negative oracle material, generated path policy, contract tests, or generated-output ignore policy changes
+
+& [P8FixtureMaterialValidationCoverage] is the validation coverage proven by P8-IA06 tests
+  + [covered_fixture_source_count] is 24
+  + [covered_expected_ledger_count] is 13
+  + [covered_proof_ledger_count] is 5
+  + [covered_negative_oracle_case_count] is 15
+  + [covered_policy] is accepted read roots
+  + [covered_policy] is accepted generated write roots
+  + [covered_policy] is source write refusal
+  + [covered_policy] is expected ledger write refusal
+  + [covered_policy] is proof ledger write refusal
+  + [covered_policy] is platform mailbox refusal
+  + [covered_policy] is credential path refusal
+  + [covered_policy] is assignment dispatch operations and live-control target refusal
+  + [covered_policy] is generated-output ignore and discovery exclusion
+  + [covered_policy] is generated-output deletion and fixture rebuildability
+
+  ! [P8FixtureMaterialValidationCoverageSatisfied] is accepted
+    @ [support] tests/test_p8_fixture_material_contracts.py
+    @ [support] docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+
+& [GeneratedOutputNonpromotionProof] is the generated-output authority proof for P8 fixture material
+  + [generated_output_authority_class] is generated_output_non_authority
+  + [generated_output_source_authority_status] is false
+  + [generated_output_assignment_authority_status] is false
+  + [generated_output_dispatch_authority_status] is false
+  + [generated_output_operations_authority_status] is false
+  + [generated_output_live_control_authority_status] is false
+  + [generated_output_discovery_excluded] is true
+  + [generated_output_deletion_preserves_fixture_source] is true
+  + [generated_output_deletion_preserves_expected_ledgers] is true
+  + [generated_output_deletion_preserves_proof_ledgers] is true
+
+  = must: keep tests/fixtures/generated/ in .gitignore
+  = must: refuse generated-output promotion to source, assignment, dispatch, operations, or live-control authority
+  = must: require accepted proof review or completion review before generated-output observations can influence readiness
+
+& [NoDispatchNoOperationsNoLiveEffectProof] is the no-dispatch, no-operations, and no-live-effect proof for P8 fixture material
+  + [platform_mailbox_created] is false
+  + [assignment_record_created] is false
+  + [dispatch_record_created] is false
+  + [operations_target_mutated] is false
+  + [live_control_target_mutated] is false
+  + [credential_access_performed] is false
+  + [network_mutation_performed] is false
+  + [destructive_filesystem_action_performed] is false
+  + [process_control_performed] is false
+  + [GPU_control_performed] is false
+  + [model_runtime_mutation_performed] is false
+  + [job_dispatch_performed] is false
+
+  = must: reject fixture success as assignment, dispatch, operations-control, or live-control authority
+  = must: keep future dependency, adapter, transport, dispatch, operations, and live-control decisions gated behind P8-IA07 or later accepted authority
+
+& [P8IA06ProofResult] is accepted
+  + [contract_tests_passed] is true
+  + [generated_output_nonpromotion_proven] is true
+  + [no_dispatch_proven] is true
+  + [no_operations_control_proven] is true
+  + [no_live_effect_proven] is true
+  + [next_gate_candidate] is P8-IA07 dependency, adapter, transport, dispatch, operations, and live-control deferral decision
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_reason] is dependency, adapter, transport, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
