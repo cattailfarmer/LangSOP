@@ -197,7 +197,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is src/langsop/manager/readiness.py
   + [support_record] is src/langsop/manager/packets.py
   + [support_record] is docs/reviews/IR8_IA03_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA04 handoff/refusal/fault implementation not yet accepted
+  + [support_record] is src/langsop/manager/handoffs.py
+  + [support_record] is src/langsop/manager/faults.py
+  + [support_record] is docs/reviews/IR8_IA04_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA05 generated path policy and fixture runner not yet accepted
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -312,26 +315,29 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is src/langsop/manager/readiness.py
   + [support_record] is src/langsop/manager/packets.py
   + [support_record] is docs/reviews/IR8_IA03_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA04 handoff/refusal/fault implementation not yet accepted
+  + [support_record] is src/langsop/manager/handoffs.py
+  + [support_record] is src/langsop/manager/faults.py
+  + [support_record] is docs/reviews/IR8_IA04_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA05 generated path policy and fixture runner not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-IA04 before generated path policy, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route IR8-IA04 as GPT-5.3-Codex-Spark-suitable because handoff and fault implementation is bounded by accepted manager models and fixture material
+  = must: execute IR8-IA05 before contract tests, dependencies, adapters, transports, UI, or live operations control
+  = must: route IR8-IA05 as GPT-5.3-Codex-Spark-suitable because runner and generated path policy are bounded by accepted implementation plan
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: IR8-IA04-HandoffHumanOverrideRefusalAndFaultModelImplementation] is ready_for_execution
+& [CurrentReadyChunk: IR8-IA05-GeneratedPathPolicyAndFixtureRunnerImplementation] is ready_for_execution
   + [chunk_id] is IR8
-  + [chunk_name] is IR8-IA04 handoff, human override, refusal, and fault model implementation
-  + [authority_basis] is docs/reviews/IR8_IA03_Completion_Review.v1.sop
+  + [chunk_name] is IR8-IA05 generated path policy and fixture runner implementation
+  + [authority_basis] is docs/reviews/IR8_IA04_Completion_Review.v1.sop
   + [activation_slice_surface] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
   + [model_route] is GPT-5.3-Codex-Spark-suitable
   + [model_route_depth] is Spark-suitable
-  + [model_route_reason] is implementation is bounded when accepted manager models and fixtures are stable
+  + [model_route_reason] is runner and generated path policy are bounded by accepted implementation plan
 
-  = must: create only src/langsop/manager/handoffs.py, faults.py, and update __init__.py
+  = must: create only src/langsop/manager/generated_paths.py, fixture_runner.py, and update __init__.py
   = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

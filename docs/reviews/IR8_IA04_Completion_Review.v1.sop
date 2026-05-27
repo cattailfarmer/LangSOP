@@ -1,0 +1,114 @@
+Subject: IR8 IA04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 338d71f3-ca12-4e17-b1db-ab6a976654ca
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+@ [completed_output] src/langsop/manager/__init__.py
+@ [completed_output] src/langsop/manager/handoffs.py
+@ [completed_output] src/langsop/manager/faults.py
+
+& [CompletedWorkReview: IR8-IA04] is the completed-work review for IR8-IA04 handoff, human override, refusal, and fault model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-IA04
+  + [completed_output] is src/langsop/manager/__init__.py
+  + [completed_output_sha256] is 3FB421E79C4A876DD181A36727C82A42FA4A35553EEB1086B5C196C23BF595C9
+  + [completed_output] is src/langsop/manager/handoffs.py
+  + [completed_output_sha256] is 030FDB63B93F32364119CD833B892DAB3D332CE61C5860ACD6258D0A54D63518
+  + [completed_output] is src/langsop/manager/faults.py
+  + [completed_output_sha256] is 6A8F91F3C1B081F5E159842E95FC2EC528597C7D7C10C021F7D6BC1148458F20
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8-IA04 and open IR8-IA05
+  + [next_gate_result] is IR8-IA05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for generated path policy and fixture runner implementation
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR8-IA05 only
+  = must: rerun this review if manager handoff, human override, refusal, fault, manager records, activation boundary, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control gated
+
+& [IR8IA04Verification] is the verification result for IR8-IA04
+  + [handoff_module_present] is true
+  + [fault_module_present] is true
+  + [human_override_record_present] is true
+  + [refusal_record_present] is true
+  + [fault_record_present] is true
+  + [safe_next_route_present] is true
+  + [manager_package_exports_updated] is true
+  + [generated_output_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR8IA04VerificationSatisfied] is accepted
+    @ [support] src/langsop/manager/handoffs.py
+    @ [support] src/langsop/manager/faults.py
+
+& [SupportDelta: IR8-IA04] is the support delta produced by IR8-IA04
+  + [new_support_record] is IR8 now has no-dispatch handoff, scoped human override, refusal, and fault record models
+  + [new_support_record] is IR8 fault and refusal records preserve source refs, triggering refs, missing requirements, safe next route, and no-live-effect notices
+  + [new_support_record] is IR8-IA05 may implement generated path policy and fixture runner against accepted manager records and fixtures
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-IA04] is the requirement delta produced by IR8-IA04
+  + [requirement_delta] is IR8-IA05 is GPT-5.3-Codex-Spark-suitable because runner and generated path policy are bounded by accepted implementation plan
+  + [requirement_delta] is IR8-IA05 may create src/langsop/manager/generated_paths.py, src/langsop/manager/fixture_runner.py, and update src/langsop/manager/__init__.py only
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, or live machine control is authorized by IR8-IA04
+
+& [FaultReview: IR8-IA04] is the fault review for IR8-IA04
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [unexpected_file_created_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8IA04Accepted] is accepted
+    @ [support] [IR8IA04Verification]
+    @ [support] [SupportDelta: IR8-IA04]
+    @ [support] [RequirementDelta: IR8-IA04]
+    @ [support] [FaultReview: IR8-IA04]
+
+& [NextSliceGate: IR8-IA05] is opened
+  + [opened_slice] is IR8-IA05 generated path policy and fixture runner implementation
+  + [accepted_dependency] is src/langsop/manager/records.py
+  + [accepted_dependency] is src/langsop/manager/handoffs.py
+  + [accepted_dependency] is src/langsop/manager/faults.py
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is runner and generated path policy are bounded by accepted implementation plan
+  + [safety_limit] is no manager dispatch, agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-IA05 next unless user redirects or a new fault invalidates this review
