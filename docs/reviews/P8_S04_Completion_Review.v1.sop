@@ -1,0 +1,72 @@
+Subject: P8 S04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 330b0993-a320-4893-b10a-002cfbd752b9
+
+@ [completed_output] docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+@ [p8_s03_output] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_s03_review] docs/reviews/P8_S03_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-S04] is the completed-work review for P8-S04 stale false-ready contradiction and fault oracle plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P8-S04
+  + [completed_output] is docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+  + [completed_output_sha256] is F01A6D8D1E0B0CB1AA123B465276792AF8867A43343B8BBD5B1DA988F03FF807
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P8-S05
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P8-S05 may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is proof ledger acceptance decides which future generated outputs can support P5 and P6 without becoming source authority
+
+  = must: treat this review as gate-opening evidence for P8-S05 only
+  = must: rerun this review if P8-S04 output, P8-S03 output, P8-S03 review, fixture materialization boundary, generated-output nonpromotion, or no-live-effect policy changes
+  = must: keep fixture source file creation, expected ledger creation, generated output creation, implementation code, dependency installation, assignment, dispatch, operations control, and live machine control gated
+
+& [P8S04Verification] is the verification result for P8-S04
+  + [negative_oracle_case_set_present] is true
+  + [required_field_set_present] is true
+  + [fault_vocabulary_present] is true
+  + [no_dispatch_outcome_present] is true
+  + [no_live_effect_outcome_present] is true
+  + [generated_output_nonpromotion_fault_present] is true
+  + [projection_promotion_fault_present] is true
+  + [rebake_required_case_present] is true
+  + [P8-S05_opened] is true
+  + [P8-S06_opened] is false
+  + [fixture_source_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8S04Accepted] is accepted
+    @ [support] docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+
+& [SupportDelta: P8-S04] is the support delta produced by P8-S04
+  + [new_support_record] is negative fixture oracles must cover stale, false-ready, contradiction, ambiguity, hidden authority, promotion, missing gate, missing route, dependency leak, forbidden effect, and rebake cases
+  + [new_support_record] is future negative fixture material must include no-assignment, no-dispatch, no-live-effect, nonpromotion, and repair-or-rebake checks
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-S04] is the requirement delta produced by P8-S04
+  + [requirement_delta] is proof ledger acceptance must record result states for blocked, stale, contradicted, faulted, interrupted, rebake_required, and not_run outcomes
+  + [requirement_delta] is downstream P5 and P6 work must reject fixture, projection, or generated-output records that attempt to promote themselves to source authority
+
+& [NextSliceGate: P8-S05] is opened
+  + [opened_slice] is P8-S05 proof ledger and evaluation acceptance contract
+  + [authority_basis] is docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+  + [authority_basis_sha256] is F01A6D8D1E0B0CB1AA123B465276792AF8867A43343B8BBD5B1DA988F03FF807
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute P8-S05 next unless user redirects, proof ledger authority becomes ambiguous, or no-live-effect policy changes

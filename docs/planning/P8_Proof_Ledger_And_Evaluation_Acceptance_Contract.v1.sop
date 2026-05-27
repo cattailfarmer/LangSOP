@@ -1,0 +1,141 @@
+Subject: P8 Proof Ledger And Evaluation Acceptance Contract V1
+Date: 2026-05-27
+Contract UUID: 0209798c-1f65-45ce-9a4a-9a50a4b9ff69
+
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_s04_output] docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+@ [p8_s04_review] docs/reviews/P8_S04_Completion_Review.v1.sop
+@ [p8_s03_output] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_s02_output] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+
+& [P8ProofLedgerAndEvaluationAcceptanceContractV1] is the P8-S05 proof ledger and evaluation acceptance contract
+  + [slice_id] is P8-S05
+  + [slice_name] is proof ledger and evaluation acceptance contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is proof ledger acceptance decides which future generated outputs can support P5 and P6 without becoming source authority
+  + [contract_result] is proof_ledger_acceptance_defined_without_writing_ledgers
+  + [next_gate_result] is P8-S06 may open
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [proof_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define proof ledger and evaluation acceptance rules as planning authority only
+  = must: preserve no fixture file creation, expected ledger creation, proof ledger creation, generated output creation, implementation, dispatch, operations-control, and live-control boundaries
+  = must: keep generated fixture outputs disposable, reviewable, and non-authoritative until accepted by separate source-preserved proof authority
+
+& [P8ProofLedgerRequiredFieldSet] is the required field set for future proof ledger records
+  + [required_field] is proof_id
+  + [required_field] is proof_uuid
+  + [required_field] is fixture_family
+  + [required_field] is fixture_case_id
+  + [required_field] is source_fixture_ref
+  + [required_field] is source_fixture_sha256
+  + [required_field] is expected_ledger_ref
+  + [required_field] is expected_ledger_sha256
+  + [required_field] is generated_output_ref
+  + [required_field] is generated_output_sha256
+  + [required_field] is validation_invocation_ref
+  + [required_field] is command_ref
+  + [required_field] is result_state
+  + [required_field] is proof_status
+  + [required_field] is no_live_effect_review
+  + [required_field] is no_dispatch_review
+  + [required_field] is nonpromotion_notice
+  + [required_field] is stale_trigger_set
+  + [required_field] is support_delta
+  + [required_field] is requirement_delta
+  + [required_field] is accepted_absence_proof
+  + [required_field] is downstream_consumption_gate
+
+  = must: reject proof ledgers that omit fixture identity, expected-ledger identity, generated-output identity, result state, nonpromotion notice, or no-live-effect review
+  = must: treat proof_id as a local natural key and proof_uuid as the durable cross-surface identity
+
+& [P8EvaluationResultStateSet] is the accepted result state vocabulary for future fixture evaluations
+  + [result_state] is pass
+  + [result_state] is fail
+  + [result_state] is blocked
+  + [result_state] is stale
+  + [result_state] is contradicted
+  + [result_state] is interrupted
+  + [result_state] is faulted
+  + [result_state] is rebake_required
+  + [result_state] is not_run
+
+  = must: use blocked when required authority, expected ledger, or review gate is missing
+  = must: use stale when accepted input hashes, source snapshots, or expected ledgers no longer match
+  = must: use contradicted when two accepted records cannot both be true under the current authority basis
+  = must: use interrupted when SOP-first judgment is required before mechanical evaluation can continue
+  = must: use rebake_required when the fixture family, expected ledger, or downstream consumption gate must be reminted before evaluation can be trusted
+
+& [P8AcceptedAbsenceProofContract] is the accepted absence proof contract
+  + [absence_subject] is no_assignment
+  + [absence_subject] is no_dispatch
+  + [absence_subject] is no_operations_control
+  + [absence_subject] is no_live_machine_control
+  + [absence_subject] is no_source_authority_promotion
+  + [absence_subject] is no_generated_output_promotion
+  + [absence_subject] is no_dependency_or_package_mutation
+  + [absence_subject] is no_adapter_or_transport_effect
+
+  = must: record the checked path, command, generated-output root, or event stream where absence was evaluated
+  = must: record not_applicable only when the case family cannot create the effect under review
+  = must: never use absence proof as permission to perform the absent effect
+
+& [P8StaleProofAndRebakeRules] is the stale proof and rebake rule set
+  + [stale_trigger] is source_fixture_hash_changed
+  + [stale_trigger] is expected_ledger_hash_changed
+  + [stale_trigger] is generated_output_hash_mismatch
+  + [stale_trigger] is authority_basis_changed
+  + [stale_trigger] is path_policy_changed
+  + [stale_trigger] is nonpromotion_policy_changed
+  + [stale_trigger] is no_live_effect_policy_changed
+  + [stale_trigger] is fixture_family_contract_changed
+  + [stale_trigger] is proof_ledger_schema_changed
+  + [stale_trigger] is downstream_consumption_gate_changed
+
+  = must: mark prior generated outputs stale when any stale trigger applies
+  = must: require rebake_required when fixture material or expected ledgers cannot be regenerated from accepted authority without changing case meaning
+  = must: keep stale generated outputs visible as evidence of prior run history only, not current support
+
+& [P8GeneratedOutputReviewRules] is the generated-output review rule set
+  + [review_rule] is generated outputs must live under ignored generated output roots when materialized
+  + [review_rule] is generated outputs must cite the source fixture, expected ledger, invocation, and proof ledger
+  + [review_rule] is generated outputs must carry a nonpromotion notice
+  + [review_rule] is generated outputs must be rebuildable or explicitly marked unrebuildable_fault
+  + [review_rule] is generated outputs must not be imported as source specifications, canonical specifications, SOP authority, assignment, dispatch, or live-control evidence
+  + [review_rule] is generated outputs may support a completion review only through an accepted proof ledger and accepted absence proof
+
+  = must: reject generated output as source authority even when the output matches an expected ledger
+  = must: keep generated output support separate from source fixture, expected ledger, and canonical specification support
+
+& [P8DownstreamConsumptionGate] is the downstream consumption gate for P5 and P6
+  + [P5_consumption_status] is gated_until_P8_completion_review_and_future_fixture_material_proof_pack
+  + [P6_consumption_status] is gated_until_P8_completion_review_and_projection_fixture_material_authority
+  + [P8_fixture_material_status] is gated_until_source_preserved_implementation_activation
+  + [generated_output_status] is non_authoritative_reviewable_trace_only
+  + [graph_checkpoint_status] is non_authoritative_runtime_state_only
+  + [surface_projection_status] is non_authoritative_projection_only
+  + [model_route_for_P5_final_slice_minting] is requires deeper reasoning
+  + [model_route_reason] is LangGraph runtime authority depends on proof ledger, generated-output nonpromotion, checkpoint nonauthority, and SOP interrupt boundaries
+
+  = must: require future P5 work to keep LangGraph checkpoint state outside source authority
+  = must: require future P6 work to render authority notices, stale notices, and nonpromotion notices explicitly
+  = must: require fixture material creation to stay Spark-suitable only after source-preserved implementation activation accepts exact paths, expected ledgers, proof ledger schema, and no-live-effect proof boundaries
+
+& [P8S05DownstreamGate] is the gate opened by P8-S05
+  + [opened_slice] is P8-S06 P8 completion review and downstream gate
+  + [activation_basis] is proof ledger and evaluation acceptance contract accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P8 acceptance changes LangGraph runtime readiness, surface projection readiness, fixture material readiness, and implementation gates
+  + [completion_review_required] is true
+
+  = must: open P8-S06 only after P8-S05 completion review accepts this proof ledger and evaluation acceptance contract

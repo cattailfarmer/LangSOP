@@ -24,9 +24,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
 @ [p8_slice_minting_review] docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P8-S02_fixture_path_policy_and_generated_output_nonpromotion_contract
+  + [map_state] is ready_for_P5_LangGraph_procedure_runtime_final_slice_minting
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -148,20 +150,28 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route downstream fixture, runtime, surface, coordination, and operations planning through PostP4ReadinessSurfaceV1
   = may: use P4 outputs to packetize future work only as reviewable records with explicit no-assignment, no-dispatch, and no-live-effect notices
 
-& [Portion: P5LangGraphProcedureRuntime] is blocked
+& [Portion: P5LangGraphProcedureRuntime] is ready_for_final_slice_minting
   + [portion_id] is P5
   + [portion_name] is LangGraph procedure runtime
   + [purpose] is execute compiled operators over kernel records with checkpointed procedure state and judgment interrupts
   + [dependency_set] is P2
   + [dependency_set] is P3
   + [dependency_set] is P8 fixture pack
-  + [support_gap] is graph proof-of-shape not implemented
+  + [support_record] is docs/reviews/P2_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/P3_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/P8_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [support_gap] is source-preserved P5 final slice surface not yet authored, SJS-processed, or accepted
+  + [support_gap] is graph proof-of-shape not implemented and remains gated until P5 final slices plus implementation activation accept it
   + [proof_route] is graph run over fixture records with expected operator traces
   + [slice_family] is whole-field-planner-graph-proof
   + [slice_family] is graph-interrupt-fixtures
 
   = must: keep LangGraph checkpoint state non-authoritative
-  = should: route graph proof implementation to GPT-5.3-Codex-Spark after contracts and fixtures stabilize
+  = must: route P5 final slice minting as requiring deeper reasoning because checkpoint nonauthority, proof ledger support, generated-output nonpromotion, and SOP interrupt semantics are authority-sensitive
+  = should: route graph proof implementation to GPT-5.3-Codex-Spark after P5 final slices, implementation activation, contracts, and fixtures stabilize
 
 & [Portion: P6SurfaceProjectionSystem] is blocked
   + [portion_id] is P6
@@ -286,7 +296,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: preserve conversation identity and work boundaries before multi-agent dispatch
   = must: keep mailbox transport, agent dispatch, operations control, and live machine control gated until future source-preserved authority explicitly opens bounded work
 
-& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_slice_family
+& [Portion: P8ProofFixturesEvaluationAndFaults] is accepted_plan_and_contract_authority
   + [portion_id] is P8
   + [portion_name] is proof, fixtures, evaluation, and faults
   + [purpose] is provide deterministic evidence for schema validation, operator behavior, packet readiness, surface projections, and fault routing
@@ -304,16 +314,26 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/state/P8_Work_State.v1.sop
   + [support_record] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
   + [support_record] is docs/reviews/P8_S01_Completion_Review.v1.sop
-  + [support_gap] is fixture pack not yet authored
-  + [support_gap] is false-ready and stale-slice fault examples not yet encoded
+  + [support_record] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+  + [support_record] is docs/reviews/P8_S02_Completion_Review.v1.sop
+  + [support_record] is docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+  + [support_record] is docs/reviews/P8_S03_Completion_Review.v1.sop
+  + [support_record] is docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+  + [support_record] is docs/reviews/P8_S04_Completion_Review.v1.sop
+  + [support_record] is docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+  + [support_record] is docs/reviews/P8_S05_Completion_Review.v1.sop
+  + [support_record] is docs/reviews/P8_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [support_gap] is fixture material files not yet authored and remain gated until source-preserved implementation activation
+  + [support_gap] is expected ledgers, proof ledgers, generated outputs, and material false-ready/stale fixtures not yet generated
   + [proof_route] is fixture validation tests and expected trace records
   + [slice_family] is fixture-pack-generation
   + [slice_family] is stale-and-false-ready-fault-cases
   + [slice_family] is proof-output-ledger
 
-  = must: source-preserve, SJS-process, and final-slice P8 before trusting fixture material work as current authority
-  = must: route P8 final slice minting as requiring deeper reasoning because fixture material, generated output, proof ledger, and nonpromotion rules affect P5 runtime and P6 surface authority
-  = should: route fixture generation to GPT-5.3-Codex-Spark after P8 fixture contracts and implementation activation stabilize
+  = must: keep P8 accepted as planning and contract authority, not fixture material, generated-output, assignment, dispatch, operations-control, or live-control authority
+  = must: route fixture material creation through separate source-preserved implementation activation before any files, ledgers, generated outputs, or proof runner effects are authored
+  = should: route fixture generation to GPT-5.3-Codex-Spark after P8 fixture contracts, downstream P5/P6 consumption requirements, and implementation activation stabilize
 
 & [Portion: P9OperationsManagerSafety] is supported_by_post_IR8_readiness_live_control_gated
   + [portion_id] is P9
@@ -430,21 +450,21 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P8-S02-FixturePathPolicyAndGeneratedOutputNonpromotionContract] is ready_for_execution
-  + [chunk_id] is P8
-  + [slice_id] is P8-S02
-  + [chunk_name] is fixture path policy and generated-output nonpromotion contract
-  + [authority_basis] is docs/reviews/P8_S01_Completion_Review.v1.sop
-  + [readiness_surface] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
-  + [expected_output] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
-  + [completion_review_output] is docs/reviews/P8_S02_Completion_Review.v1.sop
+& [CurrentReadyChunk: P5-LangGraphProcedureRuntimeFinalSliceMinting] is ready_for_execution
+  + [chunk_id] is P5
+  + [slice_id] is P5 final slice minting
+  + [chunk_name] is LangGraph procedure runtime final slice minting
+  + [authority_basis] is docs/reviews/P8_Completion_Review.v1.sop
+  + [readiness_surface] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [expected_output] is source-preserved P5 final slice source, canonical specification, final slice surface, work state, and minting review
+  + [completion_review_output] is docs/reviews/P5_Final_Slice_Minting_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is fixture path policy and generated-output nonpromotion affect all downstream proof and runtime authority
-  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable P8-S04 negative fixture oracle planning only after P8-S03 accepts fixture path and materialization boundaries
+  + [model_route_reason] is LangGraph runtime authority depends on P8 proof ledger support, fixture nonpromotion, checkpoint nonauthority, and SOP interrupt boundaries
+  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable graph fixture implementation only after P5 final slices and source-preserved implementation activation accept exact graph contracts and fixture paths
 
-  = must: create only the P8-S02 fixture path policy output and P8-S02 completion review unless a completed-work delta rebakes this map
-  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior outputs
+  = must: source-preserve and SJS-process P5 final slice source before trusting the P5 slice surface
+  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected ledgers, proof ledgers, generated databases, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

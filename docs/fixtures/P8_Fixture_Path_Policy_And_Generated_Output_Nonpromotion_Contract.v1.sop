@@ -1,0 +1,119 @@
+Subject: P8 Fixture Path Policy And Generated Output Nonpromotion Contract V1
+Date: 2026-05-27
+Contract UUID: 7c49d948-2b70-4ba4-8b99-1a283d4cce06
+
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_s01_output] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+@ [p8_s01_review] docs/reviews/P8_S01_Completion_Review.v1.sop
+
+& [P8FixturePathPolicyAndGeneratedOutputNonpromotionContractV1] is the P8-S02 fixture path policy and generated-output nonpromotion contract
+  + [slice_id] is P8-S02
+  + [slice_name] is fixture path policy and generated-output nonpromotion contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [contract_result] is fixture_path_policy_and_generated_output_nonpromotion_defined_without_file_creation
+  + [next_gate_result] is P8-S03 may open
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define fixture paths as future allowed roots, not current file creation authority
+  = must: define generated outputs as disposable, rebuildable, non-source-authority records
+  = must: require expected ledgers to remain reviewable evidence, not canonical authority
+  = must: keep all fixture, generated, and expected paths blocked until a future implementation activation opens bounded file creation
+
+& [P8FixturePathRootPolicy] is the path policy for future fixture material
+  + [fixture_family] is p2_authority_kernel
+  + [future_fixture_source_root] is tests/fixtures/sop/p2_authority_kernel/
+  + [future_expected_ledger_root] is tests/fixtures/expected/p2_authority_kernel/
+  + [future_generated_output_root] is tests/fixtures/generated/p2_authority_kernel/
+  + [fixture_family] is p3_operator_contracts
+  + [future_fixture_source_root] is tests/fixtures/sop/p3_operator_contracts/
+  + [future_expected_ledger_root] is tests/fixtures/expected/p3_operator_contracts/
+  + [future_generated_output_root] is tests/fixtures/generated/p3_operator_contracts/
+  + [fixture_family] is p4_packetization
+  + [future_fixture_source_root] is tests/fixtures/sop/p4_packetization/
+  + [future_expected_ledger_root] is tests/fixtures/expected/p4_packetization/
+  + [future_generated_output_root] is tests/fixtures/generated/p4_packetization/
+  + [fixture_family] is p8_proof_fixtures
+  + [future_fixture_source_root] is tests/fixtures/sop/p8_proof_fixtures/
+  + [future_expected_ledger_root] is tests/fixtures/expected/p8_proof_fixtures/
+  + [future_generated_output_root] is tests/fixtures/generated/p8_proof_fixtures/
+  + [fixture_family] is ir7_operations_dry_run
+  + [future_fixture_source_root] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [future_expected_ledger_root] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [future_generated_output_root] is tests/fixtures/generated/ir7_operations_dry_run/
+  + [fixture_family] is ir8_integrated_manager
+  + [future_fixture_source_root] is tests/fixtures/sop/ir8_integrated_manager/
+  + [future_expected_ledger_root] is tests/fixtures/expected/ir8_integrated_manager/
+  + [future_generated_output_root] is tests/fixtures/generated/ir8_integrated_manager/
+
+  = must: treat every root as a candidate path until future implementation activation opens file creation
+  = must: keep generated output roots ignored, disposable, and rebuildable
+  = must: reject fixture material outside an accepted fixture family root
+
+& [P8GeneratedOutputNonpromotionPolicy] is the policy for generated fixture and evaluation outputs
+  + [generated_output_authority_class] is generated_output_non_authority
+  + [generated_output_effect_boundary] is disposable_projection_or_proof_evidence_only
+  + [generated_output_required_notice] is not_source_authority
+  + [generated_output_required_notice] is not_signed_sjs
+  + [generated_output_required_notice] is not_assignment_authority
+  + [generated_output_required_notice] is not_dispatch_authority
+  + [generated_output_required_notice] is not_operations_authority
+  + [generated_output_required_notice] is not_live_control_authority
+  + [promotion_rule] is generated output may support proof only through accepted proof ledger or completion review
+  + [promotion_rule] is generated output cannot become canonical source, source manifest, authority record, work packet authority, dispatch authority, or live-control authority
+
+  = must: emit fault_record when generated output is used as source authority
+  = must: mark generated output stale when fixture source, expected ledger, operator contract, packet contract, proof ledger, or acceptance rule changes
+  = must: require rebuildability and lineage to fixture source and expected ledger for future generated outputs
+
+& [P8ExpectedLedgerPolicy] is the policy for future expected ledgers
+  + [ledger_authority_class] is reviewable_expected_evidence
+  + [ledger_effect_boundary] is evaluation_expected_output_only
+  + [required_field] is ledger_id
+  + [required_field] is fixture_family
+  + [required_field] is fixture_case_id
+  + [required_field] is expected_record_kind
+  + [required_field] is expected_acceptance_status
+  + [required_field] is expected_fault_kind
+  + [required_field] is expected_refusal_or_interrupt_kind
+  + [required_field] is expected_nonpromotion_notice
+  + [required_field] is expected_no_live_effect_notice
+  + [required_field] is source_fixture_ref
+  + [required_field] is authority_basis_ref_set
+
+  = must: treat expected ledgers as comparison evidence, not canonical truth
+  = must: require future completion review before expected ledger changes can affect downstream readiness
+
+& [P8FixturePathFreshnessRuleSet] is the freshness rule set for future fixture material
+  + [stale_trigger] is fixture oracle plan changes
+  + [stale_trigger] is source fixture changes
+  + [stale_trigger] is expected ledger changes
+  + [stale_trigger] is generated output policy changes
+  + [stale_trigger] is proof ledger acceptance rule changes
+  + [stale_trigger] is P2 authority schema boundary changes
+  + [stale_trigger] is P3 operator contract boundary changes
+  + [stale_trigger] is P4 packetization boundary changes
+  + [stale_trigger] is IR7 operations dry-run proof boundary changes
+  + [stale_trigger] is IR8 manager proof boundary changes
+
+  = must: require regenerated proof outputs after any stale_trigger fires
+  = must: keep stale generated outputs visible as stale evidence rather than deleting lineage
+
+& [P8S02DownstreamGate] is the gate opened by P8-S02
+  + [opened_slice] is P8-S03 fixture pack materialization plan and implementation activation boundary
+  + [activation_basis] is fixture path policy and generated-output nonpromotion accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is fixture materialization boundary decides when plan-only oracles may become files without becoming authority or effects
+  + [completion_review_required] is true
+
+  = must: open P8-S03 only after P8-S02 completion review accepts this path and nonpromotion contract
+  = must: keep P8-S04 through P8-S06 gated until their predecessor reviews accept

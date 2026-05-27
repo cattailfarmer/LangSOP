@@ -8,6 +8,16 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [slice_minting_review] docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
 @ [accepted_output] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
 @ [completion_review] docs/reviews/P8_S01_Completion_Review.v1.sop
+@ [accepted_output] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [completion_review] docs/reviews/P8_S02_Completion_Review.v1.sop
+@ [accepted_output] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+@ [completion_review] docs/reviews/P8_S03_Completion_Review.v1.sop
+@ [accepted_output] docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+@ [completion_review] docs/reviews/P8_S04_Completion_Review.v1.sop
+@ [accepted_output] docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+@ [completion_review] docs/reviews/P8_S05_Completion_Review.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
 @ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
@@ -17,9 +27,9 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [ir8_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
 
 & [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
-  + [state_basis] is docs/reviews/P8_S01_Completion_Review.v1.sop
-  + [state_basis_sha256] is BB388B6C5C5EC5E7B42E1419B730CCAE30C7D3B97712E05C34F147B117DA01F0
-  + [surface_status] is P8_S01_accepted_pending_P8-S02
+  + [state_basis] is docs/reviews/P8_Completion_Review.v1.sop
+  + [state_basis_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [surface_status] is P8_completed_pending_P5_final_slice_minting
   + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
   + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
@@ -47,17 +57,41 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_output_sha256] is B061E1EEE06EA492260C191EC121F85F069D2274E0CCDF48B0C7F4449AD2FEC6
   + [accepted_completion_review] is docs/reviews/P8_S01_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is BB388B6C5C5EC5E7B42E1419B730CCAE30C7D3B97712E05C34F147B117DA01F0
-  + [current_ready_slice] is P8-S02
-  + [current_ready_slice_name] is fixture path policy and generated-output nonpromotion contract
-  + [current_ready_slice_expected_output] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is fixture path policy and generated-output nonpromotion affect all downstream proof and runtime authority
-  + [gated_slice] is P8-S03
-  + [gated_slice] is P8-S04
-  + [gated_slice] is P8-S05
-  + [gated_slice] is P8-S06
+  + [accepted_slice] is P8-S02
+  + [accepted_output] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+  + [accepted_output_sha256] is 488D6E41A8D94EC8411A4C9E09392DB97E53C71F6E6A5EC34B70128152E58DD6
+  + [accepted_completion_review] is docs/reviews/P8_S02_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 2EBAE0B08805DD10E2B87310CD860D7D5CE2DD9719B9EBF29B62CB83D421D230
+  + [accepted_slice] is P8-S03
+  + [accepted_output] is docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+  + [accepted_output_sha256] is C421893A5271DEA1F87F69B3B7D94D94226D2F304C2719EA65B15E95C6FF60A2
+  + [accepted_completion_review] is docs/reviews/P8_S03_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 4479B750CC806D5D20A13BA5D7B02A6EBED47C3BF46309CF23AA2AB251356B28
+  + [accepted_slice] is P8-S04
+  + [accepted_output] is docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+  + [accepted_output_sha256] is F01A6D8D1E0B0CB1AA123B465276792AF8867A43343B8BBD5B1DA988F03FF807
+  + [accepted_completion_review] is docs/reviews/P8_S04_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 60DC0296A5DF5C7F3A5B7344E0747771CE0D628C88677858DBFD8AB51B09C2B4
+  + [accepted_slice] is P8-S05
+  + [accepted_output] is docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+  + [accepted_output_sha256] is E98F96EC50C45041E198D3C6131D2EBCF98A3C25367BF9917BB6846B876EADF3
+  + [accepted_completion_review] is docs/reviews/P8_S05_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 0B3B5B45B11A43A7AD2A5830E8023E9F1C4463A70F59DA290BE5E2743D7F606B
+  + [accepted_portion_completion_review] is docs/reviews/P8_Completion_Review.v1.sop
+  + [accepted_portion_completion_review_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [accepted_post_readiness_surface] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [accepted_post_readiness_surface_sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
+  + [current_ready_chunk] is P5 LangGraph procedure runtime final slice minting
+  + [current_ready_chunk_expected_output] is source-preserved P5 final slice surface
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is LangGraph runtime authority depends on P8 proof ledger support, fixture nonpromotion, checkpoint nonauthority, and SOP interrupt boundaries
+  + [gated_chunk] is P6 surface projection expansion until P5 runtime authority and projection fixture authority are reminted
+  + [gated_chunk] is P8 fixture material implementation activation until future source-preserved implementation activation opens exact files
+  + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted
+  + [gated_chunk] is P9 operations live-control reconsideration until separate source-preserved live-control authority is accepted
   + [fixture_source_file_creation_authorized] is false
   + [expected_ledger_creation_authorized] is false
+  + [proof_ledger_creation_authorized] is false
   + [generated_output_creation_authorized] is false
   + [implementation_code_authorized] is false
   + [dependency_installation_authorized] is false
@@ -73,6 +107,6 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-S02 before fixture materialization planning, fault oracle consolidation, proof ledger planning, runtime work, surface expansion, fixture material creation, adapter work, dispatch, or live-control work
+  = must: source-preserve and SJS-process P5 final slice authority before runtime implementation, surface expansion, fixture material creation, adapter work, dispatch, or live-control work
   = must: keep fixture obligations, generated outputs, proof ledgers, graph checkpoints, surface projections, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P4 completion, post-P4 readiness, accepted fixture oracles, or accepted proof packs change
+  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P4 completion, post-P4 readiness, accepted fixture oracle, or accepted proof pack changes

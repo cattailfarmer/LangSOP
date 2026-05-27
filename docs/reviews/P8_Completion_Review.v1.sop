@@ -1,0 +1,115 @@
+Subject: P8 Completion Review V1
+Date: 2026-05-27
+Review UUID: b61dcf29-3cc6-4cd6-8d28-0248b368242d
+
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_s01_output] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+@ [p8_s01_review] docs/reviews/P8_S01_Completion_Review.v1.sop
+@ [p8_s02_output] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [p8_s02_review] docs/reviews/P8_S02_Completion_Review.v1.sop
+@ [p8_s03_output] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_s03_review] docs/reviews/P8_S03_Completion_Review.v1.sop
+@ [p8_s04_output] docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+@ [p8_s04_review] docs/reviews/P8_S04_Completion_Review.v1.sop
+@ [p8_s05_output] docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+@ [p8_s05_review] docs/reviews/P8_S05_Completion_Review.v1.sop
+@ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
+
+& [CompletedWorkReview: P8] is the completion review for P8 proof fixtures evaluation and faults
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_portion_ref] is P8 proof fixtures evaluation and faults
+  + [reviewed_slice_surface] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+  + [P8-S01_output] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [P8-S01_output_sha256] is B061E1EEE06EA492260C191EC121F85F069D2274E0CCDF48B0C7F4449AD2FEC6
+  + [P8-S01_review] is docs/reviews/P8_S01_Completion_Review.v1.sop
+  + [P8-S01_review_sha256] is BB388B6C5C5EC5E7B42E1419B730CCAE30C7D3B97712E05C34F147B117DA01F0
+  + [P8-S02_output] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+  + [P8-S02_output_sha256] is 488D6E41A8D94EC8411A4C9E09392DB97E53C71F6E6A5EC34B70128152E58DD6
+  + [P8-S02_review] is docs/reviews/P8_S02_Completion_Review.v1.sop
+  + [P8-S02_review_sha256] is 2EBAE0B08805DD10E2B87310CD860D7D5CE2DD9719B9EBF29B62CB83D421D230
+  + [P8-S03_output] is docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+  + [P8-S03_output_sha256] is C421893A5271DEA1F87F69B3B7D94D94226D2F304C2719EA65B15E95C6FF60A2
+  + [P8-S03_review] is docs/reviews/P8_S03_Completion_Review.v1.sop
+  + [P8-S03_review_sha256] is 4479B750CC806D5D20A13BA5D7B02A6EBED47C3BF46309CF23AA2AB251356B28
+  + [P8-S04_output] is docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+  + [P8-S04_output_sha256] is F01A6D8D1E0B0CB1AA123B465276792AF8867A43343B8BBD5B1DA988F03FF807
+  + [P8-S04_review] is docs/reviews/P8_S04_Completion_Review.v1.sop
+  + [P8-S04_review_sha256] is 60DC0296A5DF5C7F3A5B7344E0747771CE0D628C88677858DBFD8AB51B09C2B4
+  + [P8-S05_output] is docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+  + [P8-S05_output_sha256] is E98F96EC50C45041E198D3C6131D2EBCF98A3C25367BF9917BB6846B876EADF3
+  + [P8-S05_review] is docs/reviews/P8_S05_Completion_Review.v1.sop
+  + [P8-S05_review_sha256] is 0B3B5B45B11A43A7AD2A5830E8023E9F1C4463A70F59DA290BE5E2743D7F606B
+  + [post_p8_readiness] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [post_p8_readiness_sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only portion closure
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is post-P8 readiness surface accepted for P5 final slice minting
+  + [next_gate_decision] is open_next_portion
+  + [next_gate_result] is P5 LangGraph procedure runtime final slice minting may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is LangGraph runtime authority depends on P8 proof ledger support, fixture nonpromotion, checkpoint nonauthority, and SOP interrupt boundaries
+
+  = must: treat this review as accepted P8 planning authority and downstream readiness evidence, not implementation authority
+  = must: rerun this review if any P8 slice output, P8 slice review, P8 source, P8 canonical specification, P8 slice surface, P4 completion, post-P4 readiness, accepted fixture oracle, or accepted proof pack changes
+  = must: keep fixture source file creation, expected ledger creation, proof ledger creation, generated output creation, implementation code, dependency installation, package metadata mutation, assignment, dispatch, operations control, and live machine control gated
+
+& [P8CompletionVerification] is the verification result for P8 completion
+  + [P8-S01_status] is accepted
+  + [P8-S02_status] is accepted
+  + [P8-S03_status] is accepted
+  + [P8-S04_status] is accepted
+  + [P8-S05_status] is accepted
+  + [post_p8_readiness_status] is accepted
+  + [fixture_obligation_inventory_present] is true
+  + [fixture_path_policy_present] is true
+  + [generated_output_nonpromotion_present] is true
+  + [fixture_materialization_boundary_present] is true
+  + [negative_oracle_plan_present] is true
+  + [proof_ledger_contract_present] is true
+  + [accepted_absence_proof_contract_present] is true
+  + [downstream_consumption_gate_present] is true
+  + [P5_final_slice_minting_opened] is true
+  + [P6_surface_projection_expansion_opened] is false
+  + [P8_fixture_material_implementation_opened] is false
+  + [fixture_source_file_created] is false
+  + [expected_ledger_created] is false
+  + [proof_ledger_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8Accepted] is accepted
+    @ [support] docs/planning/Post_P8_Readiness_Surface.v1.sop
+    @ [support] docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+    @ [support] docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+
+& [SupportDelta: P8] is the support delta produced by P8 completion
+  + [new_support_record] is P8 fixture authority is complete as planning and contract authority but does not authorize fixture files, proof ledger files, generated outputs, implementation, dependency work, assignment, dispatch, operations control, or live machine control
+  + [new_support_record] is P5 final slice minting is ready and requires deeper reasoning
+  + [new_support_record] is future fixture material creation is Spark-suitable only after separate source-preserved implementation activation accepts exact paths, expected ledgers, proof ledger schema, generated output roots, and no-live-effect proof boundaries
+  + [support_status] is accepted
+
+& [RequirementDelta: P8] is the requirement delta produced by P8 completion
+  + [requirement_delta] is downstream P5 must keep LangGraph checkpoint state non-authoritative and must represent SOP interrupts, blocked states, stale states, contradiction states, fault states, and rebake_required states explicitly
+  + [requirement_delta] is downstream P6 must render authority notices, stale notices, nonpromotion notices, and generated-output limitations explicitly
+  + [requirement_delta] is downstream proof work must reject generated output, projection, checkpoint, packet, dry-run evidence, or human approval display as source authority unless separately source-preserved and accepted
+
+& [NextChunkGate: P5LangGraphProcedureRuntimeFinalSliceMinting] is opened
+  + [opened_chunk] is P5 LangGraph procedure runtime final slice minting
+  + [authority_basis] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [authority_basis_sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: source-preserve and SJS-process P5 final slice source before trusting it as current authority
+  = must: create no dependency installation, package metadata mutation, live LangGraph adapter work, assignment, dispatch, operations control, or live machine control during P5 final slice minting

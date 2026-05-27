@@ -1,0 +1,120 @@
+Subject: P8 Stale False Ready Contradiction And Fault Oracle Plan V1
+Date: 2026-05-27
+Plan UUID: d2ea0802-08be-4512-9f67-1f60035b6918
+
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_s03_output] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_s03_review] docs/reviews/P8_S03_Completion_Review.v1.sop
+@ [p8_s02_output] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+
+& [P8StaleFalseReadyContradictionAndFaultOraclePlanV1] is the P8-S04 negative fixture oracle plan
+  + [slice_id] is P8-S04
+  + [slice_name] is stale false-ready contradiction and fault oracle plan
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark_suitable_bounded_planning
+  + [model_route_reason] is negative fixture oracle planning is bounded after path policy and materialization boundaries are accepted
+  + [plan_result] is negative_fault_oracle_cases_defined_without_fixture_file_creation
+  + [next_gate_result] is P8-S05 may open
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define negative oracle cases as planning obligations only
+  = must: preserve no fixture file creation, expected ledger creation, generated output creation, implementation, dispatch, operations-control, and live-control boundaries
+  = must: require every future negative fixture to produce a blocked, stale, contradicted, fault, refusal, interrupt, or rebake result rather than a silent pass
+
+& [P8NegativeOracleCaseSet] is the planned negative oracle case set
+  + [case] is stale_source_authority
+  + [expected_result] is stale_projection or blocked review with stale_source_ref_set
+  + [case] is stale_fixture_source
+  + [expected_result] is stale generated output and required regeneration
+  + [case] is stale_expected_ledger
+  + [expected_result] is blocked evaluation until expected ledger is reviewed
+  + [case] is false_ready_readiness_projection
+  + [expected_result] is fault_record false_ready_projection and closed gate
+  + [case] is false_ready_work_packet
+  + [expected_result] is fault_record false_ready_packet and no dispatch output
+  + [case] is contradicted_support
+  + [expected_result] is contradicted review or fault_record
+  + [case] is ambiguous_identity
+  + [expected_result] is SOP_first_interrupt with required context
+  + [case] is hidden_authority_in_projection
+  + [expected_result] is fault_record hidden_authority
+  + [case] is projection_to_source_authority_promotion
+  + [expected_result] is fault_record projection_to_authority_promotion
+  + [case] is generated_output_to_source_authority_promotion
+  + [expected_result] is fault_record generated_output_authority_promotion
+  + [case] is missing_review_gate
+  + [expected_result] is blocked output and closed downstream gate
+  + [case] is missing_model_route
+  + [expected_result] is blocked output and no packet success
+  + [case] is dependency_leak
+  + [expected_result] is fault_record dependency_leak
+  + [case] is forbidden_assignment
+  + [expected_result] is refusal or fault_record with no assignment output
+  + [case] is forbidden_dispatch
+  + [expected_result] is refusal or fault_record with no dispatch output
+  + [case] is forbidden_adapter_effect
+  + [expected_result] is fault_record or SOP_first_interrupt with no adapter or transport effect
+  + [case] is dry_run_to_live_control_promotion
+  + [expected_result] is live_control_deferral or refusal with no live effect
+  + [case] is rebake_required
+  + [expected_result] is rebake_required record and closed downstream gate
+
+  = must: cover stale, false-ready, contradiction, ambiguity, hidden authority, promotion, missing gate, missing route, dependency leak, forbidden effect, and rebake cases
+  = must: preserve no-live-effect and no-dispatch outcomes as explicit expected results
+
+& [P8NegativeOracleRequiredFields] is the required field set for future negative oracle cases
+  + [required_field] is case_id
+  + [required_field] is fixture_family
+  + [required_field] is input_authority_basis_ref_set
+  + [required_field] is stale_or_fault_trigger
+  + [required_field] is expected_blocker_or_fault_kind
+  + [required_field] is expected_gate_result
+  + [required_field] is expected_nonpromotion_notice
+  + [required_field] is expected_no_assignment_check
+  + [required_field] is expected_no_dispatch_check
+  + [required_field] is expected_no_live_effect_check
+  + [required_field] is repair_or_rebake_route
+
+  = must: reject future negative fixture material that lacks explicit nonpromotion, no-dispatch, or no-live-effect checks
+  = must: require deterministic expected fault kind for every fault case
+
+& [P8FaultKindConsolidatedSet] is the consolidated fault vocabulary for P8 negative fixtures
+  + [fault_kind] is stale_projection
+  + [fault_kind] is stale_fixture_source
+  + [fault_kind] is stale_expected_ledger
+  + [fault_kind] is false_ready_projection
+  + [fault_kind] is false_ready_packet
+  + [fault_kind] is contradicted_support
+  + [fault_kind] is ambiguous_identity_interrupt
+  + [fault_kind] is hidden_authority
+  + [fault_kind] is projection_to_authority_promotion
+  + [fault_kind] is generated_output_authority_promotion
+  + [fault_kind] is missing_review_gate
+  + [fault_kind] is missing_model_route
+  + [fault_kind] is dependency_leak
+  + [fault_kind] is forbidden_assignment
+  + [fault_kind] is forbidden_dispatch
+  + [fault_kind] is forbidden_adapter_or_transport_effect
+  + [fault_kind] is dry_run_to_live_control_promotion
+  + [fault_kind] is rebake_required
+
+  = must: preserve this vocabulary for future expected ledger and proof ledger planning
+
+& [P8S04DownstreamGate] is the gate opened by P8-S04
+  + [opened_slice] is P8-S05 proof ledger and evaluation acceptance contract
+  + [activation_basis] is negative oracle plan accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is proof ledger acceptance decides which future generated outputs can support P5 and P6 without becoming source authority
+  + [completion_review_required] is true
+
+  = must: open P8-S05 only after P8-S04 completion review accepts this negative oracle plan
+  = must: keep P8-S06 gated until P8-S05 completion review accepts

@@ -1,0 +1,109 @@
+Subject: P8 Fixture Pack Materialization Plan And Implementation Activation Boundary V1
+Date: 2026-05-27
+Plan UUID: 0e1f6f64-7cc2-4084-89e1-73ef245f2ac8
+
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_s02_output] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [p8_s02_review] docs/reviews/P8_S02_Completion_Review.v1.sop
+@ [p8_s01_output] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+
+& [P8FixturePackMaterializationPlanAndImplementationActivationBoundaryV1] is the P8-S03 fixture materialization and activation boundary plan
+  + [slice_id] is P8-S03
+  + [slice_name] is fixture pack materialization plan and implementation activation boundary
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [plan_result] is fixture_materialization_boundary_defined_without_file_creation
+  + [next_gate_result] is P8-S04 may open
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define when future fixture material may be created without opening creation now
+  = must: require source-preserved implementation activation before writing fixture files, expected ledgers, generated outputs, or tests
+  = must: preserve path policy and generated-output nonpromotion as preconditions for future materialization
+  = must: keep future Spark work bounded to material creation only after activation accepts all boundaries
+
+& [P8MaterializationPrerequisiteSet] is the required precondition set for future fixture material activation
+  + [prerequisite] is source-preserved implementation activation source document
+  + [prerequisite] is valid SJS satisfaction signature for implementation activation
+  + [prerequisite] is accepted fixture path policy
+  + [prerequisite] is accepted generated-output nonpromotion policy
+  + [prerequisite] is accepted expected ledger policy
+  + [prerequisite] is accepted proof ledger and evaluation acceptance contract
+  + [prerequisite] is accepted no-live-effect proof route
+  + [prerequisite] is accepted generated-output cleanup or ignored-path policy
+  + [prerequisite] is explicit list of fixture families opened for materialization
+  + [prerequisite] is completion review after every materialization slice
+
+  = must: block fixture materialization when any prerequisite is absent, stale, contradicted, or ambiguous
+  = must: require deeper reasoning when materialization scope changes fixture authority or proof ledger semantics
+
+& [P8MaterializationFamilyReadinessMatrix] is the readiness matrix for future fixture families
+  + [fixture_family] is p2_authority_kernel
+  + [current_status] is planned_not_materialized
+  + [future_materialization_route] is GPT-5.3-Codex-Spark-suitable only after P8 implementation activation
+  + [fixture_family] is p3_operator_contracts
+  + [current_status] is planned_not_materialized
+  + [future_materialization_route] is GPT-5.3-Codex-Spark-suitable only after P8 implementation activation
+  + [fixture_family] is p4_packetization
+  + [current_status] is planned_not_materialized
+  + [future_materialization_route] is GPT-5.3-Codex-Spark-suitable only after P8 implementation activation
+  + [fixture_family] is p8_proof_fixtures
+  + [current_status] is planned_not_materialized
+  + [future_materialization_route] is GPT-5.3-Codex-Spark-suitable only after P8 implementation activation
+  + [fixture_family] is ir7_operations_dry_run
+  + [current_status] is existing_material_and_proof_pack_boundary_preserved
+  + [future_materialization_route] is deeper reasoning if generalized or changed
+  + [fixture_family] is ir8_integrated_manager
+  + [current_status] is existing_material_and_proof_pack_boundary_preserved
+  + [future_materialization_route] is deeper reasoning if generalized or changed
+
+  = must: distinguish existing accepted fixture material from new P8 fixture material
+  = must: avoid rewriting existing IR7 or IR8 fixture material unless a future activation explicitly opens it
+
+& [P8MaterializationOutputBoundary] is the output boundary for future fixture materialization
+  + [allowed_future_output_after_activation] is fixture_source_file
+  + [allowed_future_output_after_activation] is expected_ledger_file
+  + [allowed_future_output_after_activation] is generated_output_file
+  + [allowed_future_output_after_activation] is generated_output_index
+  + [allowed_future_output_after_activation] is proof_result_record
+  + [forbidden_current_output] is any of the above before activation
+  + [forbidden_future_output] is source authority created from generated output
+  + [forbidden_future_output] is dispatch authority created from fixture success
+  + [forbidden_future_output] is operations authority created from dry-run success
+  + [forbidden_future_output] is live-control authority created from proof success
+
+  = must: require generated outputs to remain ignored and rebuildable
+  = must: require proof results to cite fixture source, expected ledger, generated output, command invocation, and no-live-effect boundary when future execution is opened
+
+& [P8ImplementationActivationBoundary] is the boundary for future P8 implementation activation
+  + [activation_may_open] is fixture file creation
+  + [activation_may_open] is expected ledger creation
+  + [activation_may_open] is generated output creation
+  + [activation_may_open] is bounded fixture runner or validation harness updates
+  + [activation_may_not_open] is dependency installation unless separately accepted
+  + [activation_may_not_open] is adapter implementation
+  + [activation_may_not_open] is transport implementation
+  + [activation_may_not_open] is UI implementation
+  + [activation_may_not_open] is assignment or dispatch
+  + [activation_may_not_open] is operations control or live machine control
+
+  = must: require future activation slices to state Spark-suitable or requires deeper reasoning explicitly
+  = must: require proof that generated fixture outputs do not touch mailbox IO, network, credentials, process control, GPU control, job dispatch, destructive filesystem actions, operations control, or live machine control
+
+& [P8S03DownstreamGate] is the gate opened by P8-S03
+  + [opened_slice] is P8-S04 stale false-ready contradiction and fault oracle plan
+  + [activation_basis] is fixture materialization and implementation activation boundary accepted
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P8-S03 acceptance unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [model_route_reason] is negative fixture oracle planning is bounded after path policy and materialization boundaries are accepted
+  + [completion_review_required] is true
+
+  = must: open P8-S04 only after P8-S03 completion review accepts this materialization boundary
+  = must: keep P8-S05 and P8-S06 gated until their predecessor reviews accept

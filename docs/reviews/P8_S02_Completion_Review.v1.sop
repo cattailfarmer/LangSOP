@@ -1,0 +1,74 @@
+Subject: P8 S02 Completion Review V1
+Date: 2026-05-27
+Review UUID: f8ea2f83-591e-458c-a5bb-d8b740ec1a4a
+
+@ [completed_output] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [p8_s01_output] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+@ [p8_s01_review] docs/reviews/P8_S01_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-S02] is the completed-work review for P8-S02 fixture path policy and generated-output nonpromotion contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P8-S02
+  + [completed_output] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+  + [completed_output_sha256] is 488D6E41A8D94EC8411A4C9E09392DB97E53C71F6E6A5EC34B70128152E58DD6
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P8-S03
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P8-S03 may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is fixture materialization boundary decides when plan-only oracles may become files without becoming authority or effects
+
+  = must: treat this review as gate-opening evidence for P8-S03 only
+  = must: rerun this review if P8-S02 output, P8-S01 output, P8-S01 review, accepted fixture oracle plans, or accepted proof packs change
+  = must: keep fixture source file creation, expected ledger creation, generated output creation, implementation code, dependency installation, assignment, dispatch, operations control, and live machine control gated
+
+& [P8S02Verification] is the verification result for P8-S02
+  + [fixture_path_root_policy_present] is true
+  + [generated_output_nonpromotion_policy_present] is true
+  + [expected_ledger_policy_present] is true
+  + [freshness_rule_set_present] is true
+  + [future_roots_declared_as_candidates] is true
+  + [generated_outputs_declared_non_authority] is true
+  + [expected_ledgers_declared_evidence_only] is true
+  + [P8-S03_opened] is true
+  + [P8-S04_opened] is false
+  + [P8-S05_opened] is false
+  + [P8-S06_opened] is false
+  + [fixture_source_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8S02Accepted] is accepted
+    @ [support] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+
+& [SupportDelta: P8-S02] is the support delta produced by P8-S02
+  + [new_support_record] is P8 fixture family roots are defined as candidate future paths only
+  + [new_support_record] is generated outputs are disposable non-authority and can support proof only through accepted proof ledger or completion review
+  + [new_support_record] is expected ledgers are reviewable comparison evidence, not canonical truth
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-S02] is the requirement delta produced by P8-S02
+  + [requirement_delta] is P8-S03 must define materialization and implementation activation boundaries before any fixture files, expected ledgers, or generated outputs are created
+  + [requirement_delta] is future generated outputs must carry nonpromotion notices and rebuildability lineage
+
+& [NextSliceGate: P8-S03] is opened
+  + [opened_slice] is P8-S03 fixture pack materialization plan and implementation activation boundary
+  + [authority_basis] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+  + [authority_basis_sha256] is 488D6E41A8D94EC8411A4C9E09392DB97E53C71F6E6A5EC34B70128152E58DD6
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute P8-S03 next unless user redirects or a new fault invalidates this review
