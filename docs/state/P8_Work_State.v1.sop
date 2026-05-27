@@ -23,6 +23,7 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [p5_s02_review] docs/reviews/P5_S02_Completion_Review.v1.sop
 @ [p5_s03_review] docs/reviews/P5_S03_Completion_Review.v1.sop
 @ [p5_s04_review] docs/reviews/P5_S04_Completion_Review.v1.sop
+@ [p5_s05_review] docs/reviews/P5_S05_Completion_Review.v1.sop
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
 @ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
@@ -96,10 +97,12 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_downstream_slice_review_sha256] is E7644C6331E12DE4B0B8E945043C86FFD9472CE05BCE5C63DA1C9A8AFB37FF41
   + [accepted_downstream_slice_review] is docs/reviews/P5_S04_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is E674C277434FC566A7CC481835EA1C1FB0807962BE459D76E567051CC346DA7B
-  + [current_ready_chunk] is P5-S05 runtime proof trace fixture plan and no-live-effect execution boundary
-  + [current_ready_chunk_expected_output] is docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
-  + [current_ready_chunk_model_route] is GPT-5.3-Codex-Spark-suitable only if proof trace semantics, no-live-effect boundaries, and nonpromotion rules remain unchanged
-  + [current_ready_chunk_model_route_reason] is bounded proof trace planning can be mechanical after graph state, node, and interrupt contracts are accepted
+  + [accepted_downstream_slice_review] is docs/reviews/P5_S05_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is 4529D4BF5629AB7E7E17444E0CC63B23746ECEB1CD9E99AF118BBDB085BACE38
+  + [current_ready_chunk] is P5-S06 LangGraph adapter dependency deferral and implementation activation boundary
+  + [current_ready_chunk_expected_output] is docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is dependency posture and adapter activation decide when external LangGraph code may enter the project and when runtime implementation becomes safe
   + [gated_chunk] is P6 surface projection expansion until P5 runtime authority and projection fixture authority are reminted
   + [gated_chunk] is P8 fixture material implementation activation until future source-preserved implementation activation opens exact files
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted

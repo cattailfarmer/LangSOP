@@ -1,0 +1,125 @@
+Subject: P5 Runtime Proof Trace Fixture Plan And No Live Effect Execution Boundary V1
+Date: 2026-05-27
+Plan UUID: 7e1fe330-9d25-48d0-8bb8-4531f6cfb422
+
+@ [p5_slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [p5_s04_output] docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+@ [p5_s04_review] docs/reviews/P5_S04_Completion_Review.v1.sop
+@ [p5_s03_output] docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+@ [p8_proof_ledger_contract] docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+
+& [P5RuntimeProofTraceFixturePlanAndNoLiveEffectExecutionBoundaryV1] is the P5-S05 runtime proof trace fixture plan and no-live-effect execution boundary
+  + [slice_id] is P5-S05
+  + [slice_name] is runtime proof trace fixture plan and no-live-effect execution boundary
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark_suitable_bounded_planning
+  + [model_route_reason] is bounded proof trace planning can be mechanical after graph state, node, and interrupt contracts are accepted
+  + [plan_result] is proof_trace_fixture_plan_defined_without_fixture_file_creation_or_runtime_execution
+  + [next_gate_result] is P5-S06 may open
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_trace_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define proof trace fixture families as planning obligations only
+  = must: preserve no fixture file creation, expected trace creation, generated output creation, runtime execution, dependency installation, implementation, assignment, dispatch, operations-control, and live-control boundaries
+  = must: require every future runtime proof trace to include nonpromotion, no-dispatch, and no-live-effect checks
+
+& [P5RuntimeProofTraceFixtureFamilySet] is the planned runtime proof trace fixture family set
+  + [fixture_family] is graph_state_valid_pass
+  + [expected_result_state] is pass
+  + [fixture_family] is checkpoint_resume_valid
+  + [expected_result_state] is pass
+  + [fixture_family] is missing_source_authority
+  + [expected_result_state] is blocked
+  + [fixture_family] is stale_checkpoint_basis
+  + [expected_result_state] is stale
+  + [fixture_family] is contradicted_support
+  + [expected_result_state] is contradicted
+  + [fixture_family] is operator_refusal
+  + [expected_result_state] is interrupted or blocked
+  + [fixture_family] is SOP_interrupt_handoff
+  + [expected_result_state] is interrupted
+  + [fixture_family] is rebake_route_required
+  + [expected_result_state] is rebake_required
+  + [fixture_family] is hidden_effect_transition
+  + [expected_result_state] is faulted
+  + [fixture_family] is checkpoint_to_authority_promotion_attempt
+  + [expected_result_state] is faulted
+  + [fixture_family] is generated_output_to_authority_promotion_attempt
+  + [expected_result_state] is faulted
+  + [fixture_family] is missing_no_dispatch_review
+  + [expected_result_state] is blocked
+  + [fixture_family] is missing_no_live_effect_review
+  + [expected_result_state] is blocked
+  + [fixture_family] is not_run_due_to_closed_gate
+  + [expected_result_state] is not_run
+
+  = must: cover pass, blocked, stale, contradicted, interrupted, faulted, rebake_required, and not_run outcomes
+  = must: preserve no assignment, no dispatch, no operations-control, and no live-control expectations in every fixture family
+
+& [P5ExpectedTraceRecordRequiredFieldSet] is the required field set for future expected runtime trace records
+  + [required_field] is trace_case_id
+  + [required_field] is fixture_family
+  + [required_field] is input_graph_state_ref
+  + [required_field] is input_graph_state_sha256
+  + [required_field] is input_checkpoint_ref
+  + [required_field] is input_checkpoint_sha256
+  + [required_field] is operator_node_mapping_ref
+  + [required_field] is expected_transition_record_ref
+  + [required_field] is expected_result_state
+  + [required_field] is expected_edge_kind
+  + [required_field] is expected_interrupt_cause
+  + [required_field] is expected_rebake_route
+  + [required_field] is expected_nonpromotion_notice
+  + [required_field] is expected_no_assignment_check
+  + [required_field] is expected_no_dispatch_check
+  + [required_field] is expected_no_live_effect_check
+  + [required_field] is downstream_consumption_gate
+
+  = must: reject future expected trace records that omit no-assignment, no-dispatch, no-live-effect, or nonpromotion checks
+  = must: require explicit not_applicable values rather than silent omission
+
+& [P5NoLiveEffectExecutionBoundary] is the no-live-effect execution boundary for future proof trace evaluation
+  + [forbidden_effect] is dependency_installation
+  + [forbidden_effect] is package_metadata_mutation
+  + [forbidden_effect] is implementation_code_write
+  + [forbidden_effect] is adapter_or_transport_effect
+  + [forbidden_effect] is graph_runtime_execution_against_live_state
+  + [forbidden_effect] is process_control
+  + [forbidden_effect] is GPU_control
+  + [forbidden_effect] is model_runtime_mutation
+  + [forbidden_effect] is job_dispatch
+  + [forbidden_effect] is assignment
+  + [forbidden_effect] is dispatch
+  + [forbidden_effect] is operations_control
+  + [forbidden_effect] is live_machine_control
+
+  = must: make future proof trace evaluation fail or block if any forbidden effect is observed
+  = must: keep future graph proof traces dry, bounded, and generated-output non-authoritative
+
+& [P5GeneratedTraceNonpromotionRules] is the generated trace nonpromotion rule set
+  + [rule] is generated runtime traces must live under future ignored generated trace roots when materialized
+  + [rule] is generated runtime traces must cite fixture source, expected trace, operator node mapping, checkpoint basis, and proof ledger
+  + [rule] is generated runtime traces must carry checkpoint nonauthority and generated-output nonpromotion notices
+  + [rule] is generated runtime traces must not become SOP source authority, canonical specifications, proof ledgers, assignment records, dispatch records, operations records, or live-control records
+  + [rule] is generated runtime traces may support completion review only through accepted proof ledger and accepted absence proof
+
+  = must: reject generated trace promotion even when trace output matches the expected trace
+
+& [P5S05DownstreamGate] is the gate opened by P5-S05
+  + [opened_slice] is P5-S06 LangGraph adapter dependency deferral and implementation activation boundary
+  + [activation_basis] is runtime proof trace fixture plan and no-live-effect execution boundary accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency posture and adapter activation decide when external LangGraph code may enter the project and when runtime implementation becomes safe
+  + [completion_review_required] is true
+
+  = must: open P5-S06 only after P5-S05 completion review accepts this proof trace fixture plan and no-live-effect execution boundary
