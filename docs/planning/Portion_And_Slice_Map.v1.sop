@@ -206,7 +206,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is tests/test_ir8_integrated_manager_contracts.py
   + [support_record] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
   + [support_record] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA07 adapter/dependency/dispatch/live-control deferral decision not yet accepted
+  + [support_record] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  + [support_record] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA08 implementation completion proof pack and review not yet accepted
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -330,26 +332,28 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is tests/test_ir8_integrated_manager_contracts.py
   + [support_record] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
   + [support_record] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA07 adapter/dependency/dispatch/live-control deferral decision not yet accepted
+  + [support_record] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  + [support_record] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA08 implementation completion proof pack and review not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-IA07 before dependencies, adapters, transports, UI, or live operations control
-  = must: route IR8-IA07 as requiring deeper reasoning because dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  = must: execute IR8-IA08 before dependencies, adapters, transports, UI, or live operations control
+  = must: route IR8-IA08 as requiring deeper reasoning because final implementation acceptance affects future operations-manager readiness, dispatch readiness, and live-control boundaries
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: IR8-IA07-AdapterDependencyDispatchAndLiveControlDeferralDecision] is ready_for_execution
+& [CurrentReadyChunk: IR8-IA08-ImplementationCompletionReviewAndProofPack] is ready_for_execution
   + [chunk_id] is IR8
-  + [chunk_name] is IR8-IA07 adapter, dependency, dispatch, and live-control deferral decision
-  + [authority_basis] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
+  + [chunk_name] is IR8-IA08 implementation completion review and proof pack
+  + [authority_basis] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
   + [activation_slice_surface] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  + [model_route_reason] is final implementation acceptance affects future operations-manager readiness, dispatch readiness, and live-control boundaries
 
-  = must: create only docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  = must: create only docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop and docs/reviews/IR8_Implementation_Completion_Review.v1.sop
   = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

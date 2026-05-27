@@ -1,0 +1,247 @@
+Subject: IR8 Manager Adapter Dependency Dispatch And Live Control Deferral Decision V1
+Date: 2026-05-27
+Decision UUID: bf54504f-a8e6-4e87-80de-eb998740c0ee
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [ia06_completion_review] docs/reviews/IR8_IA06_Completion_Review.v1.sop
+@ [generated_output_no_dispatch_no_live_effect_proof] docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+@ [contract_tests] tests/test_ir8_integrated_manager_contracts.py
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+@ [pyproject] pyproject.toml
+@ [ir4_langgraph_dependency_decision] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+@ [ir5_surface_adapter_dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+@ [ir6_mailbox_transport_dependency_decision] docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+@ [ir7_operations_live_control_decision] docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+
+& [IR8ManagerAdapterDependencyDispatchAndLiveControlDeferralDecisionV1] is the manager adapter, dependency, dispatch, and live-control deferral decision for IR8-IA07
+  + [slice_id] is IR8-IA07
+  + [slice_name] is adapter, dependency, dispatch, and live-control deferral decision
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [decision_result] is defer_all_manager_adapters_external_dependencies_package_metadata_mutation_dispatch_mechanisms_operations_control_and_live_control_for_current_IR8_proof_pass
+  + [manager_adapter_status] is deferred_to_future_explicit_manager_adapter_activation_slice
+  + [coordination_adapter_status] is deferred_to_future_explicit_coordination_adapter_activation_slice
+  + [operations_adapter_status] is deferred_to_future_explicit_operations_adapter_activation_slice
+  + [chat_transport_status] is deferred_to_future_explicit_transport_activation_slice
+  + [web_UI_status] is deferred_to_future_explicit_UI_activation_slice
+  + [langgraph_runtime_adapter_status] is deferred_to_future_explicit_runtime_adapter_activation_slice
+  + [langflow_projection_status] is deferred_to_future_explicit_visual_projection_activation_slice
+  + [manager_dispatch_status] is deferred_to_future_explicit_dispatch_authority_path
+  + [agent_dispatch_status] is deferred_to_future_explicit_dispatch_authority_path
+  + [job_dispatch_status] is deferred_to_future_explicit_dispatch_authority_path
+  + [process_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [GPU_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [model_runtime_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [credential_access_status] is deferred_to_future_explicit_least_privilege_credential_authority_path
+  + [network_mutation_status] is deferred_to_future_explicit_network_exposure_authority_path
+  + [destructive_filesystem_action_status] is deferred_to_future_explicit_live_control_authority_path
+  + [persistent_manager_automation_status] is deferred_to_future_explicit_automation_authority_path
+  + [package_metadata_mutation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [current_pure_manager_runner_status] is sufficient_for_IR8_bounded_integrated_manager_orchestration_projection_proof
+
+  = must: preserve this decision as a deferral, not a rejection of future manager adapters, coordination adapters, operations adapters, transports, UI, dispatch mechanisms, telemetry, schedulers, LangGraph runtime integration, Langflow projection, or future Ryzen 9 RTX 5090 operations-manager capability
+  = must: require a later explicit activation slice before adding package dependencies, lockfiles, imports from external adapter packages, socket listeners, chat clients, Matrix clients, IRC clients, web servers, LangGraph runtime adapters, Langflow exports, MCP clients, MCP servers, job queues, scheduler clients, telemetry collectors, process controllers, GPU controllers, model runtime clients, credential readers, network mutators, or persistent manager automation
+  = must: require a separate future source-preserved and SJS-processed dispatch authority path before any manager, agent, or job dispatch can be reconsidered
+  = must: require a separate future source-preserved and SJS-processed live-control authority path before any live machine control can be reconsidered
+  = must: keep SOP, SJS, completion reviews, accepted decision documents, tracked fixture sources, expected ledgers, and canonical specifications as source authority
+  = must: treat manager packets, readiness projections, handoff records, refusal records, fault records, operation requests, dry-run results, carrier messages, terminal output, chat events, telemetry, graph checkpoints, generated reports, adapter callbacks, UI state, and dispatch attempts as projections or evidence until rewritten into accepted SOP authority by a later reviewed process
+
+& [DependencyEvidence: CurrentIR8ProofNeed] is the current proof sufficiency evidence for deferring external dependency installation
+  + [manager_init_output] is src/langsop/manager/__init__.py
+  + [manager_init_output_sha256] is 51C9514ED8E28874DBEFABDCCB63B592630AAE1A0E8FADECE52864CEE219F7B5
+  + [record_model_output] is src/langsop/manager/records.py
+  + [record_model_output_sha256] is 6A057EBE5A9C7EE4348B2284A28E327A513EB4FD9FC17A7341423DD5A79E7CA6
+  + [authority_model_output] is src/langsop/manager/authority.py
+  + [authority_model_output_sha256] is 8BA59D90738A2D0D3621EB3D213F2BDBA9799A820DB2A20E3597CC0E097F496E
+  + [readiness_model_output] is src/langsop/manager/readiness.py
+  + [readiness_model_output_sha256] is AFAC896AA9801CD455275EBBEAB23899E6379E690AD42F2012FC7FF2310367E0
+  + [packet_model_output] is src/langsop/manager/packets.py
+  + [packet_model_output_sha256] is 31BA6AAC7CE8934A2FC39AAAAEC175EE3D8AA61BCED5AE0FDECC51843E627B3B
+  + [handoff_model_output] is src/langsop/manager/handoffs.py
+  + [handoff_model_output_sha256] is 030FDB63B93F32364119CD833B892DAB3D332CE61C5860ACD6258D0A54D63518
+  + [fault_model_output] is src/langsop/manager/faults.py
+  + [fault_model_output_sha256] is 6A8F91F3C1B081F5E159842E95FC2EC528597C7D7C10C021F7D6BC1148458F20
+  + [generated_path_policy_output] is src/langsop/manager/generated_paths.py
+  + [generated_path_policy_output_sha256] is 99945CCCA071150FCB8A7F8B6532B406D5A028BF5ED975E6E7820761318958F2
+  + [fixture_runner_output] is src/langsop/manager/fixture_runner.py
+  + [fixture_runner_output_sha256] is E7FC4BE250AA96CA7C6B0CE0750B67E652755D5DBBFBDE5A402AC4D318A6B37F
+  + [contract_test_output] is tests/test_ir8_integrated_manager_contracts.py
+  + [contract_test_output_sha256] is 3541005F6946A3C904197A71531B91DC4D77EFDCF8DE6F2C3E80DE146FD473F8
+  + [generated_output_no_dispatch_no_live_effect_proof] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  + [generated_output_no_dispatch_no_live_effect_proof_sha256] is DCD41A52D3D92A2CB483F2D7B339579FA780B46BAA544BBB03DAD68FF57E8A86
+  + [ia06_completion_review] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
+  + [ia06_completion_review_sha256] is 11D9920F928BBCB17E0FA4ABB29D21204999AE53D733F7869D1B248B3BC4EF1D
+  + [current_test_result] is python -m unittest discover -s tests passed 48 tests after IR8-IA06
+  + [current_targeted_test_result] is python -m unittest tests.test_ir8_integrated_manager_contracts passed 8 tests after IR8-IA06
+  + [current_dependency_set] is empty
+  + [pyproject_dependency_list] is empty
+  + [pyproject_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+  + [current_manager_proof_need] is deterministic in-process proof of authority classification, readiness recomputation, packet generation, proof obligations, completion gates, handoff records, refusal records, fault records, generated-output disposability, no platform mailbox IO, no command dispatch, no job dispatch, no operations control, and no live control
+  + [external_manager_adapter_needed_for_current_proof] is false
+  + [external_coordination_adapter_needed_for_current_proof] is false
+  + [external_operations_adapter_needed_for_current_proof] is false
+  + [external_transport_needed_for_current_proof] is false
+  + [external_UI_needed_for_current_proof] is false
+  + [external_langgraph_needed_for_current_proof] is false
+  + [external_langflow_needed_for_current_proof] is false
+  + [external_scheduler_or_job_queue_needed_for_current_proof] is false
+  + [external_process_library_needed_for_current_proof] is false
+  + [external_GPU_library_needed_for_current_proof] is false
+  + [external_model_runtime_client_needed_for_current_proof] is false
+  + [external_network_or_firewall_library_needed_for_current_proof] is false
+
+  ! [CurrentIR8ProofNeedSatisfiedWithoutDependency] is accepted
+    @ [support] docs/reviews/IR8_IA06_Completion_Review.v1.sop
+    @ [support] tests/test_ir8_integrated_manager_contracts.py
+    @ [support] pyproject.toml
+
+& [FutureManagerAdapterActivationBoundary] is the required boundary for any later manager adapter, transport, UI, runtime, or projection implementation slice
+  + [future_slice_required] is true
+  + [future_slice_must_authorize] is dependency installation
+  + [future_slice_must_authorize] is package_metadata_mutation
+  + [future_slice_must_authorize] is adapter module inventory
+  + [future_slice_must_authorize] is source-to-adapter projection mapping
+  + [future_slice_must_authorize] is adapter-to-SOP-review reentry mapping
+  + [future_slice_must_authorize] is carrier and telemetry storage boundary
+  + [future_slice_must_authorize] is filesystem watch or polling boundary
+  + [future_slice_must_authorize] is socket, web server, MCP client, MCP server, IRC, Matrix, or terminal boundary
+  + [future_slice_must_authorize] is LangGraph runtime checkpoint authority boundary
+  + [future_slice_must_authorize] is Langflow projection export boundary
+  + [future_slice_must_authorize] is operations dry-run handoff boundary
+  + [future_slice_must_authorize] is fixture expansion or adapter fixture mapping
+  + [future_slice_must_authorize] is generated adapter output boundary
+  + [future_forbidden_without_slice] is dependency installation
+  + [future_forbidden_without_slice] is lockfile mutation
+  + [future_forbidden_without_slice] is runtime requirements mutation
+  + [future_forbidden_without_slice] is adapter package import
+  + [future_forbidden_without_slice] is transport implementation
+  + [future_forbidden_without_slice] is UI implementation
+  + [future_forbidden_without_slice] is socket listener
+  + [future_forbidden_without_slice] is web server launch
+  + [future_forbidden_without_slice] is IRC connection
+  + [future_forbidden_without_slice] is Matrix connection
+  + [future_forbidden_without_slice] is MCP client or server connection
+  + [future_forbidden_without_slice] is LangGraph runtime adapter mutation
+  + [future_forbidden_without_slice] is Langflow import or export
+  + [future_forbidden_without_slice] is manager dispatch
+  + [future_forbidden_without_slice] is agent dispatch
+  + [future_forbidden_without_slice] is job dispatch
+  + [future_forbidden_without_slice] is operations control
+  + [future_forbidden_without_slice] is live machine control
+
+  = must: require generated adapter outputs, telemetry snapshots, reports, traces, and projections to remain ignored, disposable, and reproducible unless accepted by a later review
+  = must: require adapter tests to prove carrier state, telemetry state, graph checkpoints, UI state, terminal output, chat messages, and callback success cannot open authority, dispatch, operations-control, or live-control gates
+  = must: require adapter tests to prove user or agent interactions route back to SOP-first manager records, operation requests, human override records, conflict reviews, resource safety reviews, dependency decisions, or completion reviews rather than direct mutation
+
+& [FutureDispatchAuthorityPath] is the only path by which manager, agent, or job dispatch may be reconsidered later
+  + [required_future_step] is preserve new dispatch source document
+  + [required_future_step] is SJS-process new source into signed canonical dispatch authority
+  + [required_future_step] is define dispatch subject taxonomy for manager dispatch, agent dispatch, job dispatch, work claims, and cancel requests
+  + [required_future_step] is define identity, authentication, capability, and least-privilege boundary for dispatch recipients
+  + [required_future_step] is define dry-run, refusal, rollback, abort, and monitoring proof for dispatch effects
+  + [required_future_step] is define explicit fresh scoped human approval and expiration rule where dispatch may affect external state
+  + [required_future_step] is define audit log, provenance, and reentry mapping from dispatch result to SOP review
+  + [required_future_step] is run completion review that explicitly accepts dispatch scope
+  + [forbidden_shortcut] is relying on manager packet readiness
+  + [forbidden_shortcut] is relying on fixture success
+  + [forbidden_shortcut] is relying on broad human approval
+  + [forbidden_shortcut] is relying on terminal, chat, mailbox, IRC, Matrix, web, Codex, graph checkpoint, or adapter state
+  + [forbidden_shortcut] is relying on this deferral decision as permission
+
+  = must: require a future, separate authority path for any dispatch capability
+  = must: keep current IR8 work non-dispatch even after IR8 implementation completion
+
+& [FutureLiveControlAuthorityPath] is the only path by which live machine control may be reconsidered later
+  + [required_future_step] is preserve new live-control source document
+  + [required_future_step] is SJS-process new source into signed canonical safety authority
+  + [required_future_step] is define target host inventory and resource API boundaries
+  + [required_future_step] is define least-privilege credential and secret boundary
+  + [required_future_step] is define network exposure boundary
+  + [required_future_step] is define process, GPU, model runtime, job queue, and scheduler control boundary
+  + [required_future_step] is define dry-run, rollback, abort, and monitoring proof
+  + [required_future_step] is define explicit fresh scoped human approval and expiration rule
+  + [required_future_step] is define emergency stop and revocation path
+  + [required_future_step] is run completion review that explicitly accepts live-control scope
+  + [forbidden_shortcut] is relying on IR7 operations dry-run success
+  + [forbidden_shortcut] is relying on IR8 manager readiness success
+  + [forbidden_shortcut] is relying on generated fixture success
+  + [forbidden_shortcut] is relying on broad human approval
+  + [forbidden_shortcut] is relying on terminal, chat, mailbox, IRC, Matrix, web, Codex, graph checkpoint, or adapter state
+  + [forbidden_shortcut] is relying on this deferral decision as permission
+
+  = must: require a future, separate authority path for any live-control capability
+  = must: keep current IR8 work non-live even after IR8 implementation completion
+
+& [AuthorityBoundaryAssessment: IR8ManagerAdapters] is the authority fit assessment for future manager surfaces
+  + [fit_status] is future_adapter_candidates_preserved
+  + [fit_reason] is manager adapters, coordination adapters, operations adapters, chat transports, UI surfaces, LangGraph runtime execution, Langflow projection, schedulers, telemetry, and future machine-management integrations may become useful projections or controlled execution surfaces after authority-preserving boundaries exist
+  + [mismatch_status] is authority_boundary_mismatch_if_used_directly_as_truth
+  + [mismatch_reason] is manager packet readiness, operation dry-run state, coordination carrier state, resource telemetry, process state, GPU state, model runtime state, job queues, terminal output, chat commands, adapter callbacks, UI events, graph checkpoints, generated reports, and dispatch attempts are projections or execution state rather than accepted SOP authority
+  + [adapter_need] is map accepted LangSOP authority records into adapter inputs and map adapter outputs back into non-authoritative manager observations, operation requests, human override records, resource safety reviews, refusal records, SOP-first interrupts, dependency decisions, or completion reviews until accepted by SOP review
+
+  = must: prevent packet readiness, dry-run success, carrier delivery success, telemetry availability, generated report success, approval display state, adapter callback success, UI click, chat command, terminal output, or graph execution success from satisfying readiness, completion review, source specification processing, dispatch authority, operations authority, or live-control gates by itself
+  = must: preserve human override, human approval, conflict review, resource safety review, and completion review as reviewed SOP records rather than direct UI, transport, mailbox, terminal, adapter, or dispatch effects
+
+& [DecisionConsequences: IR8-IA07] is the consequence ledger for the deferral decision
+  + [IR8_IA08_may_proceed_without_external_dependency] is true
+  + [IR8_IA08_must_record_dependency_deferral] is true
+  + [IR8_IA08_must_record_no_dispatch_boundary] is true
+  + [IR8_IA08_must_record_no_live_control_boundary] is true
+  + [downstream_manager_adapter_work] is future_slice_after_IR8_implementation_completion_or_rebake
+  + [downstream_dispatch_work] is future_source_preserved_SJS_processed_dispatch_authority_path
+  + [downstream_live_control_work] is future_source_preserved_SJS_processed_live_control_authority_path
+  + [dependency_risk_reduced] is no unreviewed package, lockfile, UI runtime, network transport, MCP connection, scheduler, process controller, GPU controller, model runtime client, job queue client, credential boundary, manager adapter, dispatch runtime, operations adapter, or live-control runtime enters current proof
+  + [architecture_option_preserved] is future AI collaboration platform manager integrations, multi-user surfaces, multi-agent dispatch, and Ryzen 9 RTX 5090 operations-manager capabilities can be introduced later with explicit authority-preserving adapter, dispatch, and live-control boundaries
+
+& [IR8IA07FaultReview] is the fault review for the manager adapter, dependency, dispatch, and live-control deferral decision
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [langgraph_runtime_adapter_created] is false
+  + [langflow_import_or_export_added] is false
+  + [MCP_client_or_server_created] is false
+  + [socket_listener_created] is false
+  + [web_server_created] is false
+  + [manager_dispatch_created] is false
+  + [agent_dispatch_created] is false
+  + [job_dispatch_created] is false
+  + [process_control_created] is false
+  + [GPU_control_created] is false
+  + [model_runtime_control_created] is false
+  + [credential_access_created] is false
+  + [network_mutation_created] is false
+  + [destructive_filesystem_action_created] is false
+  + [operations_control_created] is false
+  + [live_machine_control_created] is false
+  + [readiness_projection_authority_promotion_found] is false
+  + [work_packet_authority_promotion_found] is false
+  + [handoff_authority_promotion_found] is false
+  + [carrier_state_authority_promotion_found] is false
+  + [dry_run_success_authority_promotion_found] is false
+  + [human_approval_authority_promotion_found] is false
+
+  ! [IR8ManagerAdapterDependencyDispatchAndLiveControlDeferralDecisionAccepted] is accepted
+    @ [support] [DependencyEvidence: CurrentIR8ProofNeed]
+    @ [support] [FutureManagerAdapterActivationBoundary]
+    @ [support] [FutureDispatchAuthorityPath]
+    @ [support] [FutureLiveControlAuthorityPath]
+    @ [support] [AuthorityBoundaryAssessment: IR8ManagerAdapters]
+    @ [support] [DecisionConsequences: IR8-IA07]
+    @ [support] [IR8IA07FaultReview]
