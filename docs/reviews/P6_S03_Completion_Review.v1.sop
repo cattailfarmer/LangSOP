@@ -1,0 +1,79 @@
+Subject: P6 S03 Completion Review V1
+Date: 2026-05-27
+Review UUID: 32ca0ec5-fb88-463a-8bf0-58f71af54843
+
+@ [completed_output] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+@ [p6_s02_output] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+@ [p6_s02_review] docs/reviews/P6_S02_Completion_Review.v1.sop
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+
+& [CompletedWorkReview: P6-S03] is the completed-work review for P6-S03 multi-surface projection envelope and surface-specific boundary contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P6-S03
+  + [completed_output] is docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+  + [completed_output_sha256] is 8038BEFB488B8AB2E6865E42DE608196BD8369CFAC53A5AEFBFA7EC1215A7FCE
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P6-S04
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P6-S04 may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is inbound action classification decides which surface actions become proposals, interrupts, reviews, or rejected authority mutations
+
+  = must: treat this review as gate-opening evidence for P6-S04 only
+  = must: rerun this review if P6-S03 output, P6-S02 output, P6-S02 review, P6 slice surface, manager/worker projection contracts, narrative/debug projection contracts, conversation/adapter projection contracts, or IR5 authority display contract changes
+  = must: keep projection fixture files, expected snapshots, generated projections, dependency installation, package metadata mutation, implementation code, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control gated
+
+& [P6S03Verification] is the verification result for P6-S03
+  + [common_projection_envelope_present] is true
+  + [manager_worker_boundary_set_present] is true
+  + [narrative_debug_boundary_set_present] is true
+  + [conversation_carrier_boundary_set_present] is true
+  + [Langflow_boundary_set_present] is true
+  + [multi_surface_divergence_and_capability_rule_present] is true
+  + [surface_specific_stale_trigger_set_present] is true
+  + [P6-S04_opened] is true
+  + [P6-S05_opened] is false
+  + [P6-S06_opened] is false
+  + [P6-S07_opened] is false
+  + [projection_fixture_files_created] is false
+  + [expected_snapshots_created] is false
+  + [generated_projections_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6S03Accepted] is accepted
+    @ [support] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+
+& [SupportDelta: P6-S03] is the support delta produced by P6-S03
+  + [new_support_record] is P6 now has a common projection envelope for manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow surfaces
+  + [new_support_record] is each surface family has an explicit may-show, may-request, and forbidden-effect boundary before inbound action classification is authored
+  + [new_support_record] is multi-surface divergence and carrier capability failures are routed to stale, blocked, conflict, or SOP-first interrupt contexts instead of silent authority mutation
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-S03] is the requirement delta produced by P6-S03
+  + [requirement_delta] is P6-S04 must classify actions by surface family, carrier context, authority notice, freshness state, requested effect, and required route
+  + [requirement_delta] is P6-S04 must prevent every named surface from mutating source authority, accepting completion, assigning, dispatching, operating, or controlling live machine state directly
+  + [requirement_delta] is P6-S05 fixture planning must cover multi-surface divergence and carrier capability failures
+
+& [NextSliceGate: P6-S04] is opened
+  + [opened_slice] is P6-S04 inbound action classification and surface mutation boundary contract
+  + [authority_basis] is docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+  + [authority_basis_sha256] is 8038BEFB488B8AB2E6865E42DE608196BD8369CFAC53A5AEFBFA7EC1215A7FCE
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute P6-S04 next unless user redirects, inbound mutation semantics become ambiguous, or surface-specific projection authority changes

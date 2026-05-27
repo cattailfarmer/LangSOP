@@ -1,0 +1,223 @@
+Subject: P6 Multi Surface Projection Envelope And Surface Specific Boundary Contract V1
+Date: 2026-05-27
+Contract UUID: 1fd8c785-d791-4fe7-a382-8bd00f4c2ad5
+
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_s02_output] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+@ [p6_s02_review] docs/reviews/P6_S02_Completion_Review.v1.sop
+@ [manager_worker_contracts] docs/surfaces/Manager_Worker_Projection_Contracts.v1.sop
+@ [narrative_debug_contracts] docs/surfaces/Narrative_Debug_Projection_Contracts.v1.sop
+@ [conversation_adapter_contracts] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+@ [ir5_authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+
+& [P6MultiSurfaceProjectionEnvelopeAndSurfaceSpecificBoundaryContractV1] is the P6-S03 multi-surface projection envelope and surface-specific boundary contract
+  + [slice_id] is P6-S03
+  + [slice_name] is multi-surface projection envelope and surface-specific boundary contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is surface-specific boundaries determine what each conversation surface may show, request, or classify without becoming authority
+  + [contract_result] is multi_surface_projection_envelope_defined_without_surface_implementation
+  + [next_gate_result] is P6-S04 may open
+  + [projection_fixture_file_creation_authorized] is false
+  + [expected_snapshot_creation_authorized] is false
+  + [generated_projection_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define the common projection envelope and surface-specific boundaries only
+  = must: preserve P6-S02 authority notice, freshness, nonpromotion, stop-state, handoff, and refusal semantics on every decision-making projection
+  = must: treat every named surface as a carrier or projection family, not a source authority store, assignment engine, dispatch engine, operations controller, or live-control route
+
+& [P6CommonProjectionEnvelope] is the common envelope required for every P6 surface projection
+  + [required_field] is projection_id
+  + [required_field] is projection_uuid
+  + [required_field] is projection_kind
+  + [required_field] is surface_family
+  + [required_field] is carrier_surface
+  + [required_field] is projected_subject_ref
+  + [required_field] is source_record_ref_set
+  + [required_field] is source_authority_sha256_set
+  + [required_field] is lineage_edge_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is freshness_state
+  + [required_field] is projected_status
+  + [required_field] is stop_state_ref_set
+  + [required_field] is nonpromotion_notice_set
+  + [required_field] is supported_action_route_set
+  + [required_field] is forbidden_action_set
+  + [required_field] is mutation_boundary_ref
+  + [required_field] is carrier_context_ref
+  + [required_field] is generated_at
+  + [required_field] is invalidation_ref_set
+  + [surface_family] is manager
+  + [surface_family] is worker
+  + [surface_family] is narrative
+  + [surface_family] is debug
+  + [surface_family] is chat
+  + [surface_family] is Codex
+  + [surface_family] is terminal
+  + [surface_family] is IRC
+  + [surface_family] is Matrix
+  + [surface_family] is web
+  + [surface_family] is Langflow
+
+  = must: keep projection identity distinct from source record identity
+  = must: require the same authority notice and freshness semantics across compact and verbose surfaces
+  = must: block any projection family that cannot preserve required envelope fields or visible stop-state evidence
+
+& [P6ManagerWorkerSurfaceBoundarySet] is the manager and worker surface boundary set
+  + [manager_surface_may_show] is current_ready_slice_or_chunk
+  + [manager_surface_may_show] is blocked_item_set
+  + [manager_surface_may_show] is stale_item_set
+  + [manager_surface_may_show] is contested_claim_set
+  + [manager_surface_may_show] is fault_item_set
+  + [manager_surface_may_show] is pending_review_set
+  + [manager_surface_may_show] is support_delta_set
+  + [manager_surface_may_show] is requirement_delta_set
+  + [manager_surface_may_request] is packet_proposal
+  + [manager_surface_may_request] is review_request
+  + [manager_surface_may_request] is rebake_request
+  + [manager_surface_forbidden_effect] is assignment
+  + [manager_surface_forbidden_effect] is dispatch
+  + [manager_surface_forbidden_effect] is completion_acceptance
+  + [manager_surface_forbidden_effect] is operations_control
+  + [worker_surface_may_show] is accepted_input_ref_set
+  + [worker_surface_may_show] is expected_output_ref_set
+  + [worker_surface_may_show] is forbidden_scope_set
+  + [worker_surface_may_show] is verification_oracle_summary
+  + [worker_surface_may_show] is model_route
+  + [worker_surface_may_show] is completion_review_required
+  + [worker_surface_may_request] is claim_request
+  + [worker_surface_may_request] is scope_question
+  + [worker_surface_may_request] is completion_review_request
+  + [worker_surface_forbidden_effect] is claim_acceptance
+  + [worker_surface_forbidden_effect] is completion_acceptance
+  + [worker_surface_forbidden_effect] is model_route_mutation
+  + [worker_surface_forbidden_effect] is scope_expansion
+
+  = must: let manager and worker projections show work state without becoming assignment, dispatch, claim, or completion authority
+  = must: require manager and worker requests to pass through P6-S04 action classification before any mutation route is considered
+
+& [P6NarrativeDebugSurfaceBoundarySet] is the narrative and debug surface boundary set
+  + [narrative_surface_may_show] is narrative_summary
+  + [narrative_surface_may_show] is source_lineage_ref_set
+  + [narrative_surface_may_show] is open_frontier_set
+  + [narrative_surface_may_show] is blocked_or_stale_context_set
+  + [narrative_surface_may_show] is reentry_packet_ref_set
+  + [narrative_surface_may_request] is reentry_packet_request
+  + [narrative_surface_may_request] is source_reconsideration_request
+  + [narrative_surface_forbidden_effect] is source_narrative_rewrite
+  + [narrative_surface_forbidden_effect] is canonical_specification_rewrite
+  + [narrative_surface_forbidden_effect] is work_gate_mutation
+  + [debug_surface_may_show] is trace_path_summary
+  + [debug_surface_may_show] is checkpoint_context_ref_set
+  + [debug_surface_may_show] is fault_summary_set
+  + [debug_surface_may_show] is hidden_write_check_summary
+  + [debug_surface_may_show] is unresolved_debug_question_set
+  + [debug_surface_may_request] is fault_review_request
+  + [debug_surface_may_request] is trace_review_request
+  + [debug_surface_forbidden_effect] is fault_repair
+  + [debug_surface_forbidden_effect] is checkpoint_authority_promotion
+  + [debug_surface_forbidden_effect] is trace_mutation
+  + [debug_surface_forbidden_effect] is runtime_execution
+
+  = must: let narrative and debug projections preserve continuity and diagnostics without rewriting source authority or repairing faults directly
+  = must: preserve compaction reentry, unresolved frontier, and fault evidence until accepted review clears or rebakes it
+
+& [P6ConversationCarrierSurfaceBoundarySet] is the chat, Codex, terminal, IRC, Matrix, and web carrier boundary set
+  + [conversation_surface] is chat
+  + [conversation_surface] is Codex
+  + [conversation_surface] is terminal
+  + [conversation_surface] is IRC
+  + [conversation_surface] is Matrix
+  + [conversation_surface] is web
+  + [carrier_surface_may_show] is conversation_lineage_ref_set
+  + [carrier_surface_may_show] is participant_ref_set
+  + [carrier_surface_may_show] is visible_authority_notice
+  + [carrier_surface_may_show] is visible_freshness_state
+  + [carrier_surface_may_show] is visible_blocked_stale_fault_interrupt_set
+  + [carrier_surface_may_show] is available_action_route_set
+  + [carrier_surface_may_request] is observation
+  + [carrier_surface_may_request] is comment
+  + [carrier_surface_may_request] is proposal
+  + [carrier_surface_may_request] is work_request
+  + [carrier_surface_may_request] is claim_request
+  + [carrier_surface_may_request] is review_request
+  + [carrier_surface_forbidden_effect] is transcript_as_source_authority
+  + [carrier_surface_forbidden_effect] is carrier_order_as_authority
+  + [carrier_surface_forbidden_effect] is completion_acceptance
+  + [carrier_surface_forbidden_effect] is direct_source_mutation
+  + [carrier_surface_forbidden_effect] is direct_dispatch
+  + [carrier_surface_forbidden_effect] is direct_operations_command
+
+  = must: preserve participant, conversation, thread, room, channel, terminal, or web carrier context as evidence only
+  = must: refuse or degrade projections when compact carrier limits would hide authority notice, freshness, stop-state, or nonpromotion context
+
+& [P6LangflowSurfaceBoundarySet] is the optional Langflow projection boundary set
+  + [langflow_surface_may_show] is explanatory_graph_projection
+  + [langflow_surface_may_show] is source_graph_ref_set
+  + [langflow_surface_may_show] is authority_notice
+  + [langflow_surface_may_show] is freshness_state
+  + [langflow_surface_may_show] is blocked_direct_execution_route
+  + [langflow_surface_may_request] is diagram_review_request
+  + [langflow_surface_may_request] is export_reconsideration_request
+  + [langflow_surface_forbidden_effect] is executable_authority
+  + [langflow_surface_forbidden_effect] is dependency_installation
+  + [langflow_surface_forbidden_effect] is package_metadata_mutation
+  + [langflow_surface_forbidden_effect] is runtime_execution
+  + [langflow_surface_forbidden_effect] is graph_checkpoint_authority
+
+  = must: treat Langflow diagrams as explanatory projections unless a later source-preserved implementation activation explicitly authorizes bounded export behavior
+  = must: block direct execution-looking routes when they would bypass SOP authority, LangGraph runtime gates, proof ledgers, or completion review
+
+& [P6MultiSurfaceDivergenceAndCapabilityRule] is the divergence and carrier capability rule
+  + [divergence_kind] is authority_notice_mismatch
+  + [divergence_kind] is freshness_mismatch
+  + [divergence_kind] is stop_state_hidden_on_one_surface
+  + [divergence_kind] is nonpromotion_notice_hidden_on_one_surface
+  + [divergence_kind] is carrier_ordering_conflict
+  + [divergence_kind] is participant_identity_conflict
+  + [divergence_kind] is claim_state_mismatch
+  + [capability_failure] is carrier_cannot_show_required_context
+  + [capability_failure] is carrier_cannot_preserve_lineage
+  + [capability_failure] is carrier_cannot_preserve_participant_identity
+  + [required_output] is divergence_notice
+  + [required_output] is stale_projection
+  + [required_output] is blocked_projection
+  + [required_output] is coordination_conflict_signal
+  + [required_output] is sop_first_interrupt_context
+
+  = must: mark divergent projections stale, blocked, or interrupted before any authority-sensitive action proceeds
+  = must: preserve the per-surface evidence set for P6-S04 classification and P6-S05 fixture planning
+
+& [P6SurfaceSpecificStaleTriggerSet] is the stale trigger set exported by P6-S03
+  + [stale_trigger] is P6-S02 authority notice contract changes
+  + [stale_trigger] is common projection envelope changes
+  + [stale_trigger] is manager or worker surface boundary changes
+  + [stale_trigger] is narrative or debug surface boundary changes
+  + [stale_trigger] is chat, Codex, terminal, IRC, Matrix, or web carrier boundary changes
+  + [stale_trigger] is Langflow boundary changes
+  + [stale_trigger] is multi-surface divergence rule changes
+  + [stale_trigger] is carrier capability rule changes
+  + [stale_trigger] is a surface offers an action not routed through P6-S04 classification
+
+  = must: mark P6-S04 and downstream slices stale when any listed trigger fires after they begin
+  = must: route stale-trigger repair through completion review and rebake rather than silent projection edits
+
+& [P6S03DownstreamGate] is the gate opened by P6-S03
+  + [opened_slice] is P6-S04 inbound action classification and surface mutation boundary contract
+  + [activation_basis] is multi-surface projection envelope and surface-specific boundary contract accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is inbound action classification decides which surface actions become proposals, interrupts, reviews, or rejected authority mutations
+  + [completion_review_required] is true
+
+  = must: open P6-S04 only after P6-S03 completion review accepts this surface envelope
+  = must: keep P6-S05 through P6-S07 gated until their predecessor reviews accept

@@ -218,6 +218,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P6_S01_Completion_Review.v1.sop
   + [support_record] is docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
   + [support_record] is docs/reviews/P6_S02_Completion_Review.v1.sop
+  + [support_record] is docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+  + [support_record] is docs/reviews/P6_S03_Completion_Review.v1.sop
   + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
@@ -225,7 +227,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [slice_family] is langflow-export-prototype
 
   = must: never let surfaces mutate canonical authority directly
-  = must: route P6-S03 as requiring deeper reasoning because surface-specific boundaries determine what each conversation surface may show, request, or classify without becoming authority
+  = must: route P6-S04 as requiring deeper reasoning because inbound action classification decides which surface actions become proposals, interrupts, reviews, or rejected authority mutations
   = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 final slices, P6-S01 through P6-S04, implementation activation, and fixture records stabilize
 
 & [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR8_readiness
@@ -489,19 +491,19 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6-S03-MultiSurfaceProjectionEnvelopeAndSurfaceSpecificBoundaryContract] is ready_for_execution
+& [CurrentReadyChunk: P6-S04-InboundActionClassificationAndSurfaceMutationBoundaryContract] is ready_for_execution
   + [chunk_id] is P6
-  + [slice_id] is P6-S03
-  + [chunk_name] is multi-surface projection envelope and surface-specific boundary contract
-  + [authority_basis] is docs/reviews/P6_S02_Completion_Review.v1.sop
+  + [slice_id] is P6-S04
+  + [chunk_name] is inbound action classification and surface mutation boundary contract
+  + [authority_basis] is docs/reviews/P6_S03_Completion_Review.v1.sop
   + [readiness_surface] is docs/state/P6_Work_State.v1.sop
-  + [expected_output] is docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
-  + [completion_review_output] is docs/reviews/P6_S03_Completion_Review.v1.sop
+  + [expected_output] is docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+  + [completion_review_output] is docs/reviews/P6_S04_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is surface-specific boundaries determine what each conversation surface may show, request, or classify without becoming authority
+  + [model_route_reason] is inbound action classification decides which surface actions become proposals, interrupts, reviews, or rejected authority mutations
 
-  = must: define common projection envelope and surface-specific boundaries for manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow surfaces without implementing surfaces
+  = must: define observation, comment, proposal, work_request, claim_request, human_override_request, interrupt_resolution_request, review_request, and unsupported action handling without direct source mutation
   = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected snapshots, proof ledgers, generated projections, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence

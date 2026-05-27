@@ -31,6 +31,7 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [p6_slice_minting_review] docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
 @ [p6_s01_review] docs/reviews/P6_S01_Completion_Review.v1.sop
 @ [p6_s02_review] docs/reviews/P6_S02_Completion_Review.v1.sop
+@ [p6_s03_review] docs/reviews/P6_S03_Completion_Review.v1.sop
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
 @ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
@@ -42,7 +43,7 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 & [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
   + [state_basis] is docs/reviews/P8_Completion_Review.v1.sop
   + [state_basis_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
-  + [surface_status] is P8_completed_with_P5_and_P6-S02_accepted_pending_P6-S03
+  + [surface_status] is P8_completed_with_P5_and_P6-S03_accepted_pending_P6-S04
   + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
   + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
@@ -116,10 +117,12 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_downstream_slice_review_sha256] is 2C4D18115D07CC918AB5328686414353878114AB1A9DD0F709382EEC7A555757
   + [accepted_downstream_slice_review] is docs/reviews/P6_S02_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is D807F2AD376E4F9187B2E3248591E7E548E06B340A249AFA3F362C5BFFC81D1D
-  + [current_ready_chunk] is P6-S03 multi-surface projection envelope and surface-specific boundary contract
-  + [current_ready_chunk_expected_output] is docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+  + [accepted_downstream_slice_review] is docs/reviews/P6_S03_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is 14192FDE1B3BC8821B14B7207EF4BA41AE0A168025D09DAEC271CDAD879C2EDC
+  + [current_ready_chunk] is P6-S04 inbound action classification and surface mutation boundary contract
+  + [current_ready_chunk_expected_output] is docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
   + [current_ready_chunk_model_route] is requires deeper reasoning
-  + [current_ready_chunk_model_route_reason] is surface-specific boundaries determine what each conversation surface may show, request, or classify without becoming authority
+  + [current_ready_chunk_model_route_reason] is inbound action classification decides which surface actions become proposals, interrupts, reviews, or rejected authority mutations
   + [gated_chunk] is P6 implementation and projection fixture materialization until P6 final slices and implementation activation are accepted
   + [gated_chunk] is P8 fixture material implementation activation until future source-preserved implementation activation opens exact files
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted
@@ -142,6 +145,6 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P6-S03 before surface expansion, fixture material creation, adapter work, dispatch, or live-control work
+  = must: execute P6-S04 before surface expansion, fixture material creation, adapter work, dispatch, or live-control work
   = must: keep fixture obligations, generated outputs, proof ledgers, graph checkpoints, surface projections, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
   = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P4 completion, post-P4 readiness, accepted fixture oracle, or accepted proof pack changes
