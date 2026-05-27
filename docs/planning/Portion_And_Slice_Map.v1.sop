@@ -32,9 +32,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
 @ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
 @ [p6_slice_minting_review] docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P6-S01_boundary_import_and_projection_obligation_inventory
+  + [map_state] is ready_for_P8_fixture_material_implementation_activation_minting
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -198,7 +200,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: keep P5 accepted as planning and contract authority, not runtime implementation, dependency, adapter, graph execution, assignment, dispatch, operations-control, or live-control authority
   = should: route graph proof implementation to GPT-5.3-Codex-Spark after P5 final slices, implementation activation, contracts, and fixtures stabilize
 
-& [Portion: P6SurfaceProjectionSystem] is ready_for_slice_family
+& [Portion: P6SurfaceProjectionSystem] is accepted_plan_and_contract_authority
   + [portion_id] is P6
   + [portion_name] is surface projection system
   + [purpose] is render manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow projections from kernel records
@@ -226,6 +228,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P6_S05_Completion_Review.v1.sop
   + [support_record] is docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
   + [support_record] is docs/reviews/P6_S06_Completion_Review.v1.sop
+  + [support_record] is docs/reviews/P6_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P6_Readiness_Surface.v1.sop
   + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
@@ -233,8 +237,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [slice_family] is langflow-export-prototype
 
   = must: never let surfaces mutate canonical authority directly
-  = must: route P6-S07 as requiring deeper reasoning because final P6 acceptance changes projection fixture readiness, fixture material readiness, coordination readiness, and implementation gates
-  = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 final slices, P6-S01 through P6-S05, implementation activation, and fixture records stabilize
+  = must: keep P6 accepted as planning and contract authority, not surface implementation, adapter, transport, UI, Langflow, assignment, dispatch, operations-control, or live-control authority
+  = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 implementation activation and fixture records stabilize
 
 & [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR8_readiness
   + [portion_id] is P7
@@ -371,6 +375,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P8_S05_Completion_Review.v1.sop
   + [support_record] is docs/reviews/P8_Completion_Review.v1.sop
   + [support_record] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/P6_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P6_Readiness_Surface.v1.sop
   + [support_gap] is fixture material files not yet authored and remain gated until source-preserved implementation activation
   + [support_gap] is expected ledgers, proof ledgers, generated outputs, and material false-ready/stale fixtures not yet generated
   + [proof_route] is fixture validation tests and expected trace records
@@ -497,21 +503,22 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6-S07-P6CompletionReviewAndDownstreamGate] is ready_for_execution
-  + [chunk_id] is P6
-  + [slice_id] is P6-S07
-  + [chunk_name] is P6 completion review and downstream gate
-  + [authority_basis] is docs/reviews/P6_S06_Completion_Review.v1.sop
-  + [readiness_surface] is docs/state/P6_Work_State.v1.sop
-  + [expected_output] is docs/reviews/P6_Completion_Review.v1.sop
-  + [expected_output] is docs/planning/Post_P6_Readiness_Surface.v1.sop
-  + [completion_review_output] is docs/reviews/P6_Completion_Review.v1.sop
+& [CurrentReadyChunk: P8FixtureMaterialImplementationActivationMinting] is ready_for_execution
+  + [chunk_id] is P8-implementation-activation
+  + [chunk_name] is P8 fixture material implementation activation source preservation and slice minting
+  + [authority_basis] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [authority_basis_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [readiness_surface] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [expected_output] is source-preserved P8 fixture material implementation activation source
+  + [expected_output] is SJS-processed P8 fixture material implementation activation canonical specification
+  + [expected_output] is P8 fixture material implementation activation slice surface
+  + [expected_output] is activation minting review
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is final P6 acceptance changes projection fixture readiness, fixture material readiness, coordination readiness, and implementation gates
+  + [model_route_reason] is fixture material activation converts plan-only fixture obligations into exact file and generated-output authority boundaries across P2/P3/P4/P6/P8/IR7/IR8 without allowing generated outputs to become source authority or live effects
 
-  = must: accept P6 outputs with hashes, support deltas, requirement deltas, P8/P7/P9 downstream gates, model-route recommendations, and no UI, adapter, transport, dependency, dispatch, operations-control, or live-control leaks
-  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected snapshots, proof ledgers, generated projections, or silent edits to prior outputs
+  = must: source-preserve and SJS-process the activation source before trusting it as current authority
+  = must: create no fixture source files, expected ledgers, proof ledgers, generated outputs, implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs during activation minting
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

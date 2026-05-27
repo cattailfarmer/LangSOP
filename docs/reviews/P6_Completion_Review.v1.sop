@@ -1,0 +1,119 @@
+Subject: P6 Completion Review V1
+Date: 2026-05-27
+Review UUID: 8e5344c8-b79b-4cda-b900-80185ef2a608
+
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_s01_output] docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+@ [p6_s01_review] docs/reviews/P6_S01_Completion_Review.v1.sop
+@ [p6_s02_output] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+@ [p6_s02_review] docs/reviews/P6_S02_Completion_Review.v1.sop
+@ [p6_s03_output] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+@ [p6_s03_review] docs/reviews/P6_S03_Completion_Review.v1.sop
+@ [p6_s04_output] docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+@ [p6_s04_review] docs/reviews/P6_S04_Completion_Review.v1.sop
+@ [p6_s05_output] docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+@ [p6_s05_review] docs/reviews/P6_S05_Completion_Review.v1.sop
+@ [p6_s06_output] docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+@ [p6_s06_review] docs/reviews/P6_S06_Completion_Review.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+
+& [CompletedWorkReview: P6] is the completion review for P6 surface projection system
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_portion_ref] is P6 surface projection system
+  + [reviewed_slice_surface] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+  + [P6_source_sha256] is 0BD670DD19F59161D921582988011A7417528EE0930AEDBCA235CEC370BE05FF
+  + [P6_source_manifest_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
+  + [P6_canonical_specification_sha256] is 94F907ED69E964B94C43E932DE48B254C2AE4C504BE0209185C7CD5963A64122
+  + [P6_slice_surface_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
+  + [P6_minting_review_sha256] is 7FC478533DF5C151D176E916708ACB64B4B8154928335A45175C14C7B91D54B2
+  + [P6-S01_output_sha256] is 11EDE8406F7B78EAD229B5F185E3EC3D27A58805BEFAEC1BA62E37319293087D
+  + [P6-S01_review_sha256] is 2C4D18115D07CC918AB5328686414353878114AB1A9DD0F709382EEC7A555757
+  + [P6-S02_output_sha256] is 7E5C7FF23525DBA0831F1E712C74A669A775E35FFD7E5ED5EC97E49E412B0D9D
+  + [P6-S02_review_sha256] is D807F2AD376E4F9187B2E3248591E7E548E06B340A249AFA3F362C5BFFC81D1D
+  + [P6-S03_output_sha256] is 8038BEFB488B8AB2E6865E42DE608196BD8369CFAC53A5AEFBFA7EC1215A7FCE
+  + [P6-S03_review_sha256] is 14192FDE1B3BC8821B14B7207EF4BA41AE0A168025D09DAEC271CDAD879C2EDC
+  + [P6-S04_output_sha256] is EAC92BD2F68BD9E70A61EE92965023DBC41FF63262DF4451B44A0E4A4F1B4F43
+  + [P6-S04_review_sha256] is 887CD5F224CF924D5929E8D5B052543E809C21F068AD868825953AB8D0FCE24B
+  + [P6-S05_output_sha256] is EF2460E3D949D007AEF0ACAD5E09AD16706AC499CD35B976131791DBDBB81774
+  + [P6-S05_review_sha256] is A1E04B375A29A94B38B431319773BA59774509AC578C9AADE8A95E0251EF51D8
+  + [P6-S06_output_sha256] is 6F3E749F4703B9FF7C291ACBACEFDEB1C034074CFFFB68C83208043988425D7C
+  + [P6-S06_review_sha256] is 01819F89B60E4412977C47248BBA53B269858F672FC0EE5908A05BDF89CC9E11
+  + [post_p6_readiness_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only portion closure
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is post-P6 readiness surface accepted for P8 fixture material implementation activation source preservation and slice minting
+  + [next_gate_decision] is open_next_chunk
+  + [next_gate_result] is P8 fixture material implementation activation source preservation and slice minting may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is fixture material activation converts plan-only fixture obligations into exact source file, expected ledger, generated-output, and proof-runner authority boundaries across P2, P3, P4, P6, P8, IR7, and IR8 without promoting generated outputs or live effects
+
+  = must: treat this review as accepted P6 planning and projection contract authority, not surface implementation authority
+  = must: rerun this review if any P6 slice output, P6 slice review, P6 source, P6 canonical specification, P6 slice surface, P2 completion, P4 completion, P5 completion, P8 completion, FSC4 surface boundary, IR5 implementation completion, or post-P6 readiness changes
+  = must: keep fixture source file creation, expected snapshot creation, generated projection creation, dependency installation, package metadata mutation, surface implementation, adapter work, transport work, UI work, Langflow work, assignment, dispatch, operations control, and live machine control gated
+
+& [P6CompletionVerification] is the verification result for P6 completion
+  + [P6-S01_status] is accepted
+  + [P6-S02_status] is accepted
+  + [P6-S03_status] is accepted
+  + [P6-S04_status] is accepted
+  + [P6-S05_status] is accepted
+  + [P6-S06_status] is accepted
+  + [post_p6_readiness_status] is accepted
+  + [boundary_import_contract_present] is true
+  + [authority_notice_contract_present] is true
+  + [freshness_rendering_contract_present] is true
+  + [generated_output_nonpromotion_contract_present] is true
+  + [multi_surface_envelope_present] is true
+  + [surface_specific_boundary_contract_present] is true
+  + [inbound_action_boundary_present] is true
+  + [projection_fixture_plan_present] is true
+  + [adapter_dependency_deferral_present] is true
+  + [P8_fixture_material_activation_opened] is true
+  + [P6_surface_implementation_activation_opened] is false
+  + [fixture_source_file_created] is false
+  + [expected_snapshot_created] is false
+  + [generated_projection_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6Accepted] is accepted
+    @ [support] docs/planning/Post_P6_Readiness_Surface.v1.sop
+    @ [support] docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+    @ [support] docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+
+& [SupportDelta: P6] is the support delta produced by P6 completion
+  + [new_support_record] is P6 projection authority is complete as planning and contract authority but does not authorize fixture material creation, generated projections, dependency installation, package metadata mutation, UI, adapters, transports, Langflow export, assignment, dispatch, operations control, or live machine control
+  + [new_support_record] is P8 fixture material implementation activation source preservation and slice minting is ready and requires deeper reasoning
+  + [new_support_record] is future P6 surface projection implementation activation remains gated until source-preserved activation authority accepts exact fixture files, expected snapshots, generated roots, renderer boundaries, adapter boundaries, and no-live-effect proofs
+  + [new_support_record] is future bounded fixture source and expected ledger material will be GPT-5.3-Codex-Spark-suitable only after deeper-reasoning activation slices isolate exact files and proof checks
+  + [support_status] is accepted
+
+& [RequirementDelta: P6] is the requirement delta produced by P6 completion
+  + [requirement_delta] is downstream P8 fixture material activation must consume P6 projection fixture snapshot planning and generated projection nonpromotion boundaries explicitly
+  + [requirement_delta] is downstream P7 coordination expansion must preserve surface mutation limits, human override notices, conversation identity, no-dispatch notices, and generated projection nonpromotion
+  + [requirement_delta] is downstream P9 operations work must keep surface displays, dry-run evidence, displayed approvals, and manager packets non-authoritative for live control unless separately source-preserved and accepted
+  + [requirement_delta] is future P6 implementation must preserve projection authority notices, freshness notices, blocked and stale visibility, inbound action classification, and nonpromotion rules without treating rendered surfaces as source authority
+
+& [NextChunkGate: P8FixtureMaterialImplementationActivationMinting] is opened
+  + [opened_chunk] is P8 fixture material implementation activation source preservation and slice minting
+  + [authority_basis] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [authority_basis_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: source-preserve and SJS-process P8 fixture material implementation activation before trusting it as current authority
+  = must: create no fixture source files, expected ledgers, proof ledgers, generated outputs, dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, or live machine control during activation minting

@@ -26,11 +26,13 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
 @ [completion_review] docs/reviews/P6_S05_Completion_Review.v1.sop
 @ [accepted_output] docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
 @ [completion_review] docs/reviews/P6_S06_Completion_Review.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
 
 & [P6WorkStateV1] is the current derived work state for P6 surface projection system
   + [state_basis] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
   + [state_basis_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
-  + [surface_status] is P6-S06_accepted_pending_P6-S07
+  + [surface_status] is P6_completed_pending_P8_fixture_material_implementation_activation_minting
   + [source_manifest] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
   + [canonical_specification] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
@@ -67,12 +69,13 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [accepted_output_sha256] is 6F3E749F4703B9FF7C291ACBACEFDEB1C034074CFFFB68C83208043988425D7C
   + [accepted_completion_review] is docs/reviews/P6_S06_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 01819F89B60E4412977C47248BBA53B269858F672FC0EE5908A05BDF89CC9E11
-  + [current_ready_slice] is P6-S07
-  + [current_ready_slice_name] is P6 completion review and downstream gate
-  + [current_ready_slice_expected_output] is docs/reviews/P6_Completion_Review.v1.sop
-  + [current_ready_slice_expected_output] is docs/planning/Post_P6_Readiness_Surface.v1.sop
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is final P6 acceptance changes projection fixture readiness, fixture material readiness, coordination readiness, and implementation gates
+  + [accepted_portion_completion_review] is docs/reviews/P6_Completion_Review.v1.sop
+  + [accepted_portion_completion_review_sha256] is 1024C0B1B3AB56A147FCD7663292F2D224AF671D5BB0FCF11B2D1FAD11FF29CB
+  + [accepted_post_readiness_surface] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [accepted_post_readiness_surface_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [current_ready_chunk] is P8 fixture material implementation activation source preservation and slice minting
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is fixture material activation converts plan-only fixture obligations into exact file and generated-output authority boundaries across P2/P3/P4/P6/P8/IR7/IR8 without allowing generated outputs to become source authority or live effects
   + [UI_implementation_authorized] is false
   + [adapter_implementation_authorized] is false
   + [transport_implementation_authorized] is false
@@ -85,6 +88,6 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P6-S07 before implementation activation, surface implementation, adapter work, dispatch, or live-control work
+  = must: execute P8 fixture material implementation activation source preservation and slice minting before fixture material creation, surface implementation, adapter work, dispatch, or live-control work
   = must: keep source authority, projection records, generated snapshots, adapter messages, human handoffs, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, or IR5 implementation completion changes
+  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P6 completion review, post-P6 readiness, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, or IR5 implementation completion changes

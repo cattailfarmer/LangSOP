@@ -1,0 +1,115 @@
+Subject: Post P6 Readiness Surface V1
+Date: 2026-05-27
+Surface UUID: 7f7fa5dd-c4e0-45e6-b05f-b0fa3a4f40e9
+
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_s01_review] docs/reviews/P6_S01_Completion_Review.v1.sop
+@ [p6_s02_review] docs/reviews/P6_S02_Completion_Review.v1.sop
+@ [p6_s03_review] docs/reviews/P6_S03_Completion_Review.v1.sop
+@ [p6_s04_review] docs/reviews/P6_S04_Completion_Review.v1.sop
+@ [p6_s05_review] docs/reviews/P6_S05_Completion_Review.v1.sop
+@ [p6_s06_review] docs/reviews/P6_S06_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+
+& [PostP6ReadinessSurfaceV1] is the current readiness surface after P6 surface projection system planning acceptance
+  + [surface_state] is ready_for_next_source_preserved_activation_selection
+  + [accepted_boundary_input] is PostP5ReadinessSurfaceV1
+  + [accepted_boundary_input] is P6SurfaceProjectionSystemFinalSliceSurfaceV1
+  + [accepted_boundary_input] is P6BoundaryImportAndProjectionObligationInventoryV1
+  + [accepted_boundary_input] is P6AuthorityNoticeFreshnessAndNonpromotionRenderingContractV1
+  + [accepted_boundary_input] is P6MultiSurfaceProjectionEnvelopeAndSurfaceSpecificBoundaryContractV1
+  + [accepted_boundary_input] is P6InboundActionClassificationAndSurfaceMutationBoundaryContractV1
+  + [accepted_boundary_input] is P6ProjectionFixtureSnapshotPlanAndGeneratedProjectionNonpromotionBoundaryV1
+  + [accepted_boundary_input] is P6SurfaceAdapterLangflowDependencyDeferralAndImplementationActivationBoundaryV1
+  + [active_implementation_chunk] is none
+  + [current_ready_chunk] is P8 fixture material implementation activation source preservation and slice minting
+  + [secondary_ready_chunk] is P6 surface projection implementation activation after P8 fixture material and exact file inventory are source-preserved and accepted
+  + [secondary_ready_chunk] is P5 runtime implementation activation after runtime fixture material and dependency authority are source-preserved and accepted
+  + [secondary_ready_chunk] is P7 coordination expansion after P6 projection authority and P8 fixture material support are accepted
+  + [gated_chunk] is fixture source file creation until future source-preserved implementation activation explicitly opens files
+  + [gated_chunk] is expected snapshot creation until future source-preserved implementation activation explicitly opens snapshots
+  + [gated_chunk] is generated projection creation until future ignored generated roots and proof runner contracts are accepted
+  + [gated_chunk] is dependency installation, package metadata mutation, adapters, transports, UI, Langflow, IRC, Matrix, web, Codex, terminal, MCP, assignment, dispatch, operations control, and live machine control until explicit accepted authority opens bounded work
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: choose the next slice from current support, completed-work deltas, and whole-field dependency closure
+  = must: run completion review after each new design, planning, proof, or implementation activation slice before opening downstream slices
+  = must: preserve P6 authority notice, freshness, nonpromotion, surface boundary, action classification, fixture snapshot, generated projection, no-dispatch, no-live-effect, and dependency deferral boundaries in downstream work
+
+& [ReadinessChunk: P8FixtureMaterialImplementationActivation] is ready_for_source_preserved_activation_minting
+  + [chunk_id] is P8-implementation-activation
+  + [chunk_name] is fixture material implementation activation
+  + [dependency_set] is P2 authority kernel fixture oracle
+  + [dependency_set] is P3 operator trace fixture oracle
+  + [dependency_set] is P4 packet trace fixture oracle
+  + [dependency_set] is P8 proof fixture planning authority
+  + [dependency_set] is IR7 operations dry-run proof pack
+  + [dependency_set] is IR8 integrated manager proof pack
+  + [dependency_set] is P5 runtime proof trace planning
+  + [dependency_set] is P6 projection fixture snapshot planning
+  + [expected_output_set] is source-preserved P8 fixture material implementation activation source
+  + [expected_output_set] is SJS-processed implementation activation canonical specification
+  + [expected_output_set] is implementation activation slice surface
+  + [expected_output_set] is fixture material file inventory and proof boundary
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is fixture material activation converts plan-only fixture obligations into exact file and generated-output authority boundaries across P2/P3/P4/P6/P8/IR7/IR8 without allowing generated outputs to become source authority or live effects
+  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable bounded fixture source and expected ledger material after activation slices isolate exact files and proof checks
+  + [forbidden_scope] is direct fixture file creation before activation, generated output creation before generated roots are accepted, dependency installation, package metadata mutation, adapter work, UI work, assignment, dispatch, operations control, and live machine control
+
+  = must: source-preserve, SJS-process, and final-slice P8 fixture material activation before trusting fixture material work as current authority
+  = must: keep generated outputs, projections, graph checkpoints, packet candidates, dry-run evidence, and human approval displays non-authoritative unless accepted source authority explicitly says otherwise
+
+& [PostP6ProjectionStatus] is the accepted P6 status for downstream design
+  + [boundary_import_status] is accepted
+  + [authority_notice_status] is accepted_contract_only
+  + [multi_surface_envelope_status] is accepted_contract_only
+  + [inbound_action_classification_status] is accepted_contract_only
+  + [projection_fixture_plan_status] is accepted_plan_only
+  + [generated_projection_nonpromotion_status] is accepted_contract_only
+  + [adapter_dependency_status] is deferred
+  + [implementation_activation_status] is not_authorized
+  + [projection_fixture_material_status] is not_authorized
+  + [expected_snapshot_status] is not_authorized
+  + [generated_projection_status] is not_authorized
+  + [adapter_status] is not_implemented
+  + [transport_status] is not_implemented
+  + [UI_status] is not_implemented
+  + [Langflow_status] is deferred
+  + [assignment_status] is not_authorized
+  + [dispatch_status] is not_authorized
+  + [operations_control_status] is not_authorized
+  + [live_control_status] is not_authorized
+
+  = must: require downstream P8, P7, and P9 work to consume P6 projection authority, surface mutation, generated projection nonpromotion, no-dispatch, and no-live-effect boundaries explicitly
+  = must: mark downstream designs stale if P6 source, slice surface, output, review, completion review, dependency decision, or this readiness surface changes
+
+& [PostP6ReadinessClosureReview] is the dependency audit for the post-P6 readiness surface
+  + [P6-S01_status] is accepted
+  + [P6-S02_status] is accepted
+  + [P6-S03_status] is accepted
+  + [P6-S04_status] is accepted
+  + [P6-S05_status] is accepted
+  + [P6-S06_status] is accepted
+  + [P6_completion_status] is accepted_by docs/reviews/P6_Completion_Review.v1.sop
+  + [current_ready_chunk_set] is P8 fixture material implementation activation source preservation and slice minting
+  + [conditionally_ready_chunk_set] is P6 surface projection implementation activation after fixture material support is accepted
+  + [conditionally_ready_chunk_set] is P7 coordination expansion after P6 projection authority and fixture material support are accepted
+  + [conditionally_ready_chunk_set] is P9 operations live-control reconsideration only after separate source-preserved live-control authority is accepted
+  + [forbidden_external_dependency_found] is false
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_snapshot_creation_authorized] is false
+  + [generated_projection_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P8 fixture material implementation activation source preservation and slice minting as ready and deeper-reasoning required
+  = must: treat direct fixture material creation, implementation activation, adapter work, transport work, UI work, dispatch authority, live-control authority, and downstream operations execution as gated, not ready
