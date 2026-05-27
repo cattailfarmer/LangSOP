@@ -1,0 +1,15 @@
+Subject: P2 Stale And Signature Refusal Expected Ledger
+Date: 2026-05-27
+Ledger ID: p2-stale-and-signature-refusal-expected
+
+& [ExpectedLedger: P2StaleAndSignatureRefusal] is comparison evidence for P2 refusal fixtures
+  + [fixture_family] is p2_authority_kernel
+  + [covered_fixture] is stale_source_hash_blocks_ready
+  + [covered_fixture] is missing_sjs_signature_refusal
+  + [covered_fixture] is generated_projection_promotion_fault
+  + [expected_acceptance_status] is refused_or_faulted
+  + [expected_fault_kind] is stale_source_hash or generated_output_promoted_to_authority
+  + [expected_refusal_kind] is missing_satisfaction_signature
+  + [expected_nonpromotion_notice] is not_source_authority
+
+  = must: preserve stale and unsigned records as reviewable refusals

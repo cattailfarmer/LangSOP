@@ -1,0 +1,13 @@
+Subject: P8 Fixture Material Generated Output Index V1
+Date: 2026-05-27
+Ledger UUID: 8041dcd8-d6cf-44d5-b51f-33dbb11e8d84
+
+& [P8FixtureMaterialGeneratedOutputIndexV1] is the proof ledger seed for future generated outputs
+  + [generated_output_status] is none_created_by_P8-IA03
+  + [future_generated_output_root] is tests/fixtures/generated/
+  + [authority_class] is generated_output_non_authority
+  + [source_authority_status] is false
+  + [rebuildability_required] is true
+
+  = must: remain empty until a future generated-output slice opens
+  = must: reject generated output as source, dispatch, operations, or live-control authority

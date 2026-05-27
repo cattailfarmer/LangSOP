@@ -1,0 +1,12 @@
+Subject: P8 Fixture Policy Expected Ledger
+Date: 2026-05-27
+Ledger ID: p8-fixture-policy-expected
+
+& [ExpectedLedger: P8FixturePolicy] is comparison evidence for P8 fixture path policy
+  + [fixture_family] is p8_proof_fixtures
+  + [covered_fixture] is fixture_path_policy_valid
+  + [expected_result] is accepted
+  + [expected_generated_output_root_status] is ignored_and_disposable
+  + [expected_nonpromotion_notice] is generated_output_not_source_authority
+
+  = must: accept only inventory-bound fixture paths

@@ -1,0 +1,13 @@
+Subject: P8 Fixture Material Expected Ledger Index V1
+Date: 2026-05-27
+Ledger UUID: 3d655003-d3cd-4e3b-94f3-91b82355844c
+
+& [P8FixtureMaterialExpectedLedgerIndexV1] is the proof ledger seed for expected ledger inventory
+  + [expected_ledger_file_count] is 13
+  + [expected_ledger_status] is created_by_P8-IA03
+  + [authority_class] is reviewable_expected_evidence
+  + [source_authority_status] is not_canonical_source
+  + [comparison_scope] is accepted P8-IA02 fixture source files
+
+  = must: cite fixture source refs and authority basis refs
+  = must: remain comparison evidence rather than canonical authority

@@ -1,0 +1,13 @@
+Subject: P2 Authority Validation Expected Ledger
+Date: 2026-05-27
+Ledger ID: p2-authority-validation-expected
+
+& [ExpectedLedger: P2AuthorityValidation] is comparison evidence for P2 authority fixtures
+  + [fixture_family] is p2_authority_kernel
+  + [covered_fixture] is valid_signed_authority_record
+  + [expected_acceptance_status] is accepted
+  + [expected_authority_class] is source_authority
+  + [expected_nonpromotion_notice] is not_generated_output
+  + [source_fixture_ref] is tests/fixtures/sop/p2_authority_kernel/valid_signed_authority_record.sop
+
+  = must: remain comparison evidence, not canonical authority

@@ -1,0 +1,13 @@
+Subject: P4 Readiness Packet Expected Ledger
+Date: 2026-05-27
+Ledger ID: p4-readiness-packet-expected
+
+& [ExpectedLedger: P4ReadinessPacket] is comparison evidence for P4 packet readiness
+  + [fixture_family] is p4_packetization
+  + [covered_fixture] is ready_packet_candidate
+  + [expected_packet_state] is ready_candidate
+  + [expected_assignment_authority] is false
+  + [expected_dispatch_authority] is false
+  + [expected_nonpromotion_notice] is planning_packet_only
+
+  = must: preserve ready packet as reviewable candidate only

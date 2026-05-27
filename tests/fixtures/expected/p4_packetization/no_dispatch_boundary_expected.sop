@@ -1,0 +1,14 @@
+Subject: P4 No Dispatch Boundary Expected Ledger
+Date: 2026-05-27
+Ledger ID: p4-no-dispatch-boundary-expected
+
+& [ExpectedLedger: P4NoDispatchBoundary] is comparison evidence for blocked and no-dispatch packet cases
+  + [fixture_family] is p4_packetization
+  + [covered_fixture] is blocked_requirement_packet
+  + [covered_fixture] is false_ready_packet_fault
+  + [covered_fixture] is no_dispatch_packet_boundary
+  + [expected_acceptance_status] is blocked_or_faulted_or_handoff_only
+  + [expected_dispatch_authority] is false
+  + [expected_live_control_authority] is false
+
+  = must: reject packet success as dispatch authority

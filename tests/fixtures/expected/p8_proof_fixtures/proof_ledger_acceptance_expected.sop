@@ -1,0 +1,13 @@
+Subject: P8 Proof Ledger Acceptance Expected Ledger
+Date: 2026-05-27
+Ledger ID: p8-proof-ledger-acceptance-expected
+
+& [ExpectedLedger: P8ProofLedgerAcceptance] is comparison evidence for proof ledger acceptance
+  + [fixture_family] is p8_proof_fixtures
+  + [covered_fixture] is proof_ledger_acceptance
+  + [expected_result] is accepted_as_reviewable_evidence
+  + [expected_source_authority] is false
+  + [expected_live_control_authority] is false
+  + [expected_required_notice] is evidence_only
+
+  = must: prevent proof ledger from becoming source authority

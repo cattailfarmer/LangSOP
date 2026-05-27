@@ -1,0 +1,14 @@
+Subject: P3 Operator Fault Refusal Expected Ledger
+Date: 2026-05-27
+Ledger ID: p3-operator-fault-refusal-expected
+
+& [ExpectedLedger: P3OperatorFaultRefusal] is comparison evidence for P3 negative operator fixtures
+  + [fixture_family] is p3_operator_contracts
+  + [covered_fixture] is unsupported_operator_scope_refusal
+  + [covered_fixture] is deterministic_replay_mismatch_fault
+  + [covered_fixture] is generated_output_as_authority_fault
+  + [expected_acceptance_status] is refused_or_faulted
+  + [expected_fault_kind] is deterministic_replay_mismatch or generated_output_promoted_to_authority
+  + [expected_refusal_kind] is unsupported_operator_scope
+
+  = must: block downstream readiness when operator scope or replay safety fails

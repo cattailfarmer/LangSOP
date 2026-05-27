@@ -1,0 +1,13 @@
+Subject: P6 Authority Projection Expected Ledger
+Date: 2026-05-27
+Ledger ID: p6-authority-projection-expected
+
+& [ExpectedLedger: P6AuthorityProjection] is comparison evidence for P6 authority projection fixtures
+  + [fixture_family] is p6_surface_projection
+  + [covered_fixture] is manager_authority_notice_projection
+  + [covered_fixture] is stale_surface_projection
+  + [expected_projection_state] is visible_authority_or_stale_notice
+  + [expected_surface_mutation_authority] is false
+  + [expected_nonpromotion_notice] is rendered_projection_not_source_authority
+
+  = must: render authority and stale notices without authority promotion

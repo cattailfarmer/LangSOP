@@ -1,0 +1,15 @@
+Subject: P8 Fixture Material No Dispatch And No Live Effect Ledger V1
+Date: 2026-05-27
+Ledger UUID: fff01fb0-51c1-4ba2-8f83-e413508dbe53
+
+& [P8FixtureMaterialNoDispatchAndNoLiveEffectLedgerV1] is the proof ledger seed for no-dispatch and no-live-effect evidence
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+
+  = must: be cited by future generated-output and validation proof
+  = must: reject fixture success as authority for assignment, dispatch, operations control, or live control

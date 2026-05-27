@@ -1,0 +1,14 @@
+Subject: P5 Interrupt And Checkpoint Expected Ledger
+Date: 2026-05-27
+Ledger ID: p5-interrupt-and-checkpoint-expected
+
+& [ExpectedLedger: P5InterruptAndCheckpoint] is comparison evidence for P5 interrupt and checkpoint fixtures
+  + [fixture_family] is p5_runtime_proof
+  + [covered_fixture] is checkpoint_non_authority
+  + [covered_fixture] is sop_interrupt_handoff
+  + [covered_fixture] is stale_checkpoint_rebake_required
+  + [expected_acceptance_status] is refused_or_interrupted_or_rebake_required
+  + [expected_dispatch_authority] is false
+  + [expected_live_control_authority] is false
+
+  = must: preserve human handoff and rebake requirements without live effects

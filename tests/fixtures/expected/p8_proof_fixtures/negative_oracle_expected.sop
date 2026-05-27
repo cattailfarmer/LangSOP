@@ -1,0 +1,14 @@
+Subject: P8 Negative Oracle Expected Ledger
+Date: 2026-05-27
+Ledger ID: p8-negative-oracle-expected
+
+& [ExpectedLedger: P8NegativeOracle] is comparison evidence for P8 negative oracle fixtures
+  + [fixture_family] is p8_proof_fixtures
+  + [covered_fixture] is expected_ledger_non_authority
+  + [covered_fixture] is negative_oracle_fault_route
+  + [expected_acceptance_status] is refused_or_faulted
+  + [expected_refusal_kind] is expected_ledger_not_source_authority
+  + [expected_fault_kind] is fixture_success_promoted_to_live_control
+  + [expected_live_control_authority] is false
+
+  = must: preserve negative oracle evidence without live effects

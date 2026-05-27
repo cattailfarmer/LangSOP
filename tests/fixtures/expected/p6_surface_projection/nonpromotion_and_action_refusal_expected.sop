@@ -1,0 +1,13 @@
+Subject: P6 Nonpromotion And Action Refusal Expected Ledger
+Date: 2026-05-27
+Ledger ID: p6-nonpromotion-and-action-refusal-expected
+
+& [ExpectedLedger: P6NonpromotionAndActionRefusal] is comparison evidence for P6 action refusal fixtures
+  + [fixture_family] is p6_surface_projection
+  + [covered_fixture] is inbound_action_mutation_refusal
+  + [covered_fixture] is generated_projection_non_authority
+  + [expected_acceptance_status] is refused_or_faulted
+  + [expected_refusal_kind] is surface_cannot_mutate_source_authority
+  + [expected_fault_kind] is generated_projection_promoted_to_authority
+
+  = must: prevent surface action and generated projection authority leaks

@@ -1,0 +1,13 @@
+Subject: P5 Runtime Transition Expected Ledger
+Date: 2026-05-27
+Ledger ID: p5-runtime-transition-expected
+
+& [ExpectedLedger: P5RuntimeTransition] is comparison evidence for P5 runtime transition fixtures
+  + [fixture_family] is p5_runtime_proof
+  + [covered_fixture] is valid_runtime_transition_trace
+  + [expected_runtime_state] is transition_accepted
+  + [expected_checkpoint_authority] is false
+  + [expected_live_effect] is false
+  + [expected_nonpromotion_notice] is checkpoint_not_source_authority
+
+  = must: accept transition evidence without promoting checkpoint state

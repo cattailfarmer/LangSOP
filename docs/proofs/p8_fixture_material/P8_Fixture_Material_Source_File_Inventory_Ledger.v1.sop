@@ -1,0 +1,13 @@
+Subject: P8 Fixture Material Source File Inventory Ledger V1
+Date: 2026-05-27
+Ledger UUID: 65bf9e1d-f722-477a-a41a-f92ba3bb785d
+
+& [P8FixtureMaterialSourceFileInventoryLedgerV1] is the proof ledger seed for fixture source inventory
+  + [fixture_source_file_count] is 24
+  + [fixture_family_count] is 6
+  + [authority_class] is reviewable_proof_evidence
+  + [source_authority_status] is not_canonical_source
+  + [accepted_by] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+
+  = must: be completed with hashes before final P8 fixture material implementation completion
+  = must: remain proof evidence rather than source authority

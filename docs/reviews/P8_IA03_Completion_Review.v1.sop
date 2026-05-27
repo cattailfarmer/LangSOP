@@ -1,0 +1,147 @@
+Subject: P8 IA03 Completion Review V1
+Date: 2026-05-27
+Review UUID: b38dac7b-f6dc-4ac8-b979-b7b048d79bb2
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+@ [p8_ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-IA03] is the completed-work review for P8-IA03 expected ledgers and proof ledger seed material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA03
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8-IA03 and open P8-IA04
+  + [next_gate_result] is P8-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for P8-IA04 only
+  = must: rerun this review if P8-IA01 activation boundary, P8-IA02 fixture source material, P8-IA02 completion review, activation slice surface, expected ledger inventory, or proof ledger seed inventory changes
+  = must: keep generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P8IA03ExpectedLedgerHashLedger] is the accepted expected ledger hash ledger for P8-IA03
+  + [expected_ledger_file] is tests/fixtures/expected/p2_authority_kernel/authority_validation_expected.sop
+  + [expected_ledger_sha256] is CE72FA149F76AAF9E485546D3551A3DB3DE57135ACCC0BD6427518CC5465041C
+  + [expected_ledger_file] is tests/fixtures/expected/p2_authority_kernel/stale_and_signature_refusal_expected.sop
+  + [expected_ledger_sha256] is 3275D84EE45E277A2AB586E9F900FDAD890E15F41F671B57CAE2C0DF9759A1C6
+  + [expected_ledger_file] is tests/fixtures/expected/p3_operator_contracts/operator_fault_refusal_expected.sop
+  + [expected_ledger_sha256] is AEC8E6CA2143D0D4E01C916CE1656BF8DCDFBCE172F25D2CD2B92C367772A292
+  + [expected_ledger_file] is tests/fixtures/expected/p3_operator_contracts/operator_trace_expected.sop
+  + [expected_ledger_sha256] is 1A01C0E936E2846CAD84FF5F656502CF2300E3B327D82EFA36AEE59FE2E49EF3
+  + [expected_ledger_file] is tests/fixtures/expected/p4_packetization/no_dispatch_boundary_expected.sop
+  + [expected_ledger_sha256] is A618EEC93426E35A6CFE2286ED85DC3B46E709DA43B5CE5D8604A28B41CB6014
+  + [expected_ledger_file] is tests/fixtures/expected/p4_packetization/readiness_packet_expected.sop
+  + [expected_ledger_sha256] is A057B23885128953966D67E61F54FE527311ABBEE2625BE0F03BDBAFA6C3C3D5
+  + [expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/interrupt_and_checkpoint_expected.sop
+  + [expected_ledger_sha256] is 77C703CF629F4ACAA5D419ECC37DA80680C6E6C5242F12DF6D59EE4E1D9B76EA
+  + [expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/runtime_transition_expected.sop
+  + [expected_ledger_sha256] is 632C1D1D097D5EE25ED79721E00D344B9F5ABC35DABAA3C057EB5CC7A7588427
+  + [expected_ledger_file] is tests/fixtures/expected/p6_surface_projection/authority_projection_expected.sop
+  + [expected_ledger_sha256] is 14909415BAAA372A8CA1E33A24AF4E42C78058E4E45AF43A103151D1DDCB9ED5
+  + [expected_ledger_file] is tests/fixtures/expected/p6_surface_projection/nonpromotion_and_action_refusal_expected.sop
+  + [expected_ledger_sha256] is F4611FF504A62F0C08E37C19459710B26A46E069D695C51F27FCFEE549F481CA
+  + [expected_ledger_file] is tests/fixtures/expected/p8_proof_fixtures/fixture_policy_expected.sop
+  + [expected_ledger_sha256] is E09F83EB63D8E62E65F376DD25D95C886B433000C8C8B78D743C303E8973099C
+  + [expected_ledger_file] is tests/fixtures/expected/p8_proof_fixtures/negative_oracle_expected.sop
+  + [expected_ledger_sha256] is 296867A352D46E11D0CCFE1DC759334DBB7CA80B0344AAD7AD767A01B982DC33
+  + [expected_ledger_file] is tests/fixtures/expected/p8_proof_fixtures/proof_ledger_acceptance_expected.sop
+  + [expected_ledger_sha256] is 95CD3BBDE540EE79948AB5C68FB7475BCC30F3F5DC183AF9A22B3AA1247AD028
+
+& [P8IA03ProofLedgerSeedHashLedger] is the accepted proof ledger seed hash ledger for P8-IA03
+  + [proof_ledger_seed_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Expected_Ledger_Index.v1.sop
+  + [proof_ledger_seed_sha256] is 40BE4EF728183EF2C61ABE2ED42321A17D8A993F97CB585595A3716688C146AF
+  + [proof_ledger_seed_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Generated_Output_Index.v1.sop
+  + [proof_ledger_seed_sha256] is 489F988A27342EA8C1508658D6ACE036DFABE323C1AB3715B067A977D0CC4842
+  + [proof_ledger_seed_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_No_Dispatch_And_No_Live_Effect_Ledger.v1.sop
+  + [proof_ledger_seed_sha256] is 2C6CB6F46928F6A0AC717E035BB080E3679085573EBE379037B4433EB6B1827C
+  + [proof_ledger_seed_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Source_File_Inventory_Ledger.v1.sop
+  + [proof_ledger_seed_sha256] is 3778A8B24161EC9B189E716B4D62197FA14AE4F80B6CE019AF7AC433DBCFA36F
+  + [proof_ledger_seed_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Validation_Result_Ledger.v1.sop
+  + [proof_ledger_seed_sha256] is 0A94EB4DFD372DB22524828DC82ABE38B417B071CD6BF17D9C653666DCF7E633
+
+& [P8IA03Verification] is the verification result for P8-IA03
+  + [expected_ledger_file_count] is 13
+  + [proof_ledger_seed_file_count] is 5
+  + [expected_ledgers_match_P8_IA01_inventory] is true
+  + [proof_ledgers_match_P8_IA01_inventory] is true
+  + [fixture_source_files_changed] is false
+  + [generated_output_created] is false
+  + [proof_runner_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8IA03VerificationSatisfied] is accepted
+    @ [support] [P8IA03ExpectedLedgerHashLedger]
+    @ [support] [P8IA03ProofLedgerSeedHashLedger]
+
+& [SupportDelta: P8-IA03] is the support delta produced by P8-IA03
+  + [new_support_record] is P8 expected ledgers and proof ledger seeds now exist as reviewable evidence for accepted fixture source material
+  + [new_support_record] is P8-IA04 may refine negative oracle source material and fault-route coverage without generated output or runner code
+  + [new_support_record] is P8-IA04 remains GPT-5.3-Codex-Spark-suitable unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [new_support_record] is generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, and live machine control remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-IA03] is the requirement delta produced by P8-IA03
+  + [requirement_delta] is expected ledgers must remain comparison evidence and must not become canonical source authority
+  + [requirement_delta] is proof ledger seeds must be completed with generated-output and validation evidence only after future slices open those effects
+  + [requirement_delta] is P8-IA04 must preserve no-dispatch, no-operations-control, and no-live-control boundaries while refining negative oracle coverage
+
+& [FaultReview: P8-IA03] is the fault review for P8-IA03
+  + [source_overwrite_found] is false
+  + [fixture_source_mutation_found] is false
+  + [unexpected_expected_ledger_found] is false
+  + [unexpected_proof_ledger_found] is false
+  + [generated_output_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8IA03Accepted] is accepted
+    @ [support] [P8IA03Verification]
+    @ [support] [SupportDelta: P8-IA03]
+    @ [support] [RequirementDelta: P8-IA03]
+    @ [support] [FaultReview: P8-IA03]
+
+& [NextSliceGate: P8-IA04] is opened
+  + [opened_slice] is P8-IA04 negative oracle source material for stale, false-ready, contradiction, and fault cases
+  + [accepted_dependency] is docs/reviews/P8_IA03_Completion_Review.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [model_route_reason] is negative oracle material is bounded when accepted authority and fault semantics remain stable
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-IA04 next unless user redirects, semantic boundaries change, or a new fault invalidates this review
