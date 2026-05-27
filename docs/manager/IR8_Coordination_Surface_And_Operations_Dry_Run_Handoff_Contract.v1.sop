@@ -1,0 +1,169 @@
+Subject: IR8 Coordination Surface And Operations Dry Run Handoff Contract V1
+Date: 2026-05-27
+Contract UUID: eb1a26c3-4e3b-4dce-959c-23cd73863651
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [boundary_map] docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+@ [manager_loop_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [manager_loop_review] docs/reviews/IR8_S02_Completion_Review.v1.sop
+
+& [IR8CoordinationSurfaceAndOperationsDryRunHandoffContractV1] is the IR8-S03 handoff contract for manager coordination, surface, and operations dry-run boundaries
+  + [contract_id] is ir8-coordination-surface-and-operations-dry-run-handoff-contract-v1
+  + [contract_uuid] is eb1a26c3-4e3b-4dce-959c-23cd73863651
+  + [slice_id] is IR8-S03
+  + [source_chunk] is IR8 integrated manager orchestration planning
+  + [authority_scope] is manager-to-surface, surface-to-manager, manager-to-coordination, coordination-to-manager, manager-to-operations-dry-run, operations-to-manager, human override, refusal, and interrupt handoff semantics
+  + [implementation_scope] is contract definition only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: define handoff records as authority-noticed records, not adapter implementations, UI behavior, mailbox IO, dry-run execution, dispatch, or live effects
+  = must: preserve manager-loop readiness and work-packet contracts through every handoff boundary
+  = must: ensure every handoff record carries authority_notice, freshness_state, source_ref_set, source_authority_basis_ref_set, producing_component_ref, consuming_component_ref, expected_response_route, stale_trigger_set, and forbidden_scope_set
+  = must: require SOP-first interrupt for ambiguous authority, hidden scope expansion, stale claim basis, surface mutation requests, dry-run/live-control confusion, and operation-like or dispatch-like requests
+  - never: implement adapters, transports, UI, mailbox IO, dry-run execution, generated output writers, dependency changes, package metadata changes, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential access, network mutation, destructive filesystem actions, operations control, or live machine control in this slice
+
+& [ManagerToSurfaceProjectionHandoff: IR8] is the handoff contract from manager records to user-facing and agent-facing surfaces
+  + [handoff_record] is manager_surface_projection_request
+  + [required_field] is manager_cycle_result_ref
+  + [required_field] is readiness_projection_ref
+  + [required_field] is work_packet_candidate_ref_set
+  + [required_field] is blocked_or_stale_notice_set
+  + [required_field] is proof_obligation_ref_set
+  + [required_field] is fault_ref_set
+  + [required_field] is authority_notice
+  + [required_field] is freshness_state
+  + [required_field] is projection_limit
+  + [projection_limit] is surface may display, filter, summarize, and collect proposed responses only
+  + [projection_limit] is surface may not mutate canonical authority, accept completion, dispatch agents, execute commands, or authorize operations
+
+  = must: include blocked, stale, unsafe, contested, and ambiguous states visibly in manager, worker, narrative, debug, and conversation projections
+  = must: keep Codex, terminal, IRC, Matrix, web, and future chat surfaces as carriers or projections unless a later accepted adapter authority says otherwise
+
+& [SurfaceToManagerActionRequestHandoff: IR8] is the handoff contract from a surface or conversation carrier back to the manager loop
+  + [handoff_record] is surface_action_request
+  + [required_field] is surface_ref
+  + [required_field] is carrier_context_ref
+  + [required_field] is requested_action_kind
+  + [required_field] is requested_subject_ref
+  + [required_field] is claimed_authority_basis_ref_set
+  + [required_field] is requested_effect_class
+  + [required_field] is authority_notice_seen
+  + [required_field] is freshness_state_seen
+  + [required_field] is classification_required
+  + [requested_action_kind] is propose_work_packet
+  + [requested_action_kind] is claim_work
+  + [requested_action_kind] is release_claim
+  + [requested_action_kind] is request_completion_review
+  + [requested_action_kind] is request_rebake
+  + [requested_action_kind] is request_dry_run
+  + [requested_action_kind] is request_human_override
+  + [requested_action_kind] is request_live_control
+
+  = must: classify every surface action request through the manager authority classifier before it can affect readiness or packetization
+  = must: refuse request_live_control unless a separate accepted live-control authority exists
+  = must: treat carrier text, button clicks, chat messages, terminal output, and UI events as carrier context until classified and accepted by an authority-bearing route
+
+& [ManagerCoordinationHandoff: IR8] is the handoff contract between manager work packets and coordination records
+  + [handoff_record] is manager_coordination_claim_request
+  + [required_field] is work_packet_candidate_ref
+  + [required_field] is claimant_ref
+  + [required_field] is conversation_ref
+  + [required_field] is work_scope_ref_set
+  + [required_field] is file_scope_set
+  + [required_field] is artifact_scope_set
+  + [required_field] is claim_basis_ref_set
+  + [required_field] is conflict_policy
+  + [required_field] is release_condition
+  + [handoff_record] is coordination_manager_claim_state_notice
+  + [required_field] is coordination_claim_ref
+  + [required_field] is claim_state
+  + [required_field] is conflict_state
+  + [required_field] is stale_state
+  + [required_field] is human_override_context_ref_set
+
+  = must: allow coordination claims to constrain readiness, conflict review, and visible work boundaries
+  = must: prevent coordination claims from dispatching agents, executing work, accepting completion, or authorizing operations
+  = must: preserve distinct conversation identities and contested-claim lineage across handoff records
+
+& [ManagerOperationsDryRunHandoff: IR8] is the handoff contract between manager planning and operations dry-run records
+  + [handoff_record] is manager_operation_dry_run_request
+  + [required_field] is work_packet_candidate_ref
+  + [required_field] is operation_request_ref
+  + [required_field] is intended_effect
+  + [required_field] is resource_target
+  + [required_field] is authority_notice
+  + [required_field] is freshness_state
+  + [required_field] is risk_classification
+  + [required_field] is rollback_or_abort_route_ref
+  + [required_field] is credential_boundary_ref
+  + [required_field] is network_boundary_ref
+  + [required_field] is human_approval_ref when approval is cited
+  + [handoff_record] is operations_manager_dry_run_result_notice
+  + [required_field] is dry_run_result_ref
+  + [required_field] is refusal_record_ref when refused
+  + [required_field] is safety_review_ref
+  + [required_field] is no_live_effect_notice
+
+  = must: allow operations dry-run records to inform readiness, refusal, proof obligations, and safety review only
+  = must: prevent dry-run result success, fixture success, or human approval display from becoming dispatch authority or live-control authority
+  = must: route operation-like manager requests without sufficient authority, freshness, risk, rollback, credential, network, or approval basis to refusal or SOP-first interrupt
+
+& [HumanOverrideAndRefusalHandoff: IR8] is the handoff contract for human override, refusal, and interrupt return paths
+  + [handoff_record] is human_override_request
+  + [required_field] is requesting_record_ref
+  + [required_field] is override_scope
+  + [required_field] is risk_context_ref_set
+  + [required_field] is expiration_or_freshness_rule
+  + [required_field] is revocation_route
+  + [handoff_record] is refusal_return_notice
+  + [required_field] is refused_record_ref
+  + [required_field] is refusal_reason
+  + [required_field] is missing_requirement_set
+  + [required_field] is next_safe_route
+  + [handoff_record] is SOP_first_interrupt_return_notice
+  + [required_field] is interrupt_context_ref
+  + [required_field] is unresolved_question_set
+  + [required_field] is authority_repair_route
+
+  = must: keep human override scoped, explicit, fresh, revocable, and visible as authority-noticed input
+  = must: prevent refusal and interrupt notices from being erased by later projections or carrier messages
+
+& [HandoffFreshnessAndStaleRuleSet: IR8] is the stale rule set for handoff records
+  + [stale_trigger] is producing source authority changes
+  + [stale_trigger] is manager loop contract changes
+  + [stale_trigger] is coordination claim basis changes
+  + [stale_trigger] is mailbox carrier or rendezvous context superseded
+  + [stale_trigger] is surface projection contract changes
+  + [stale_trigger] is operation request contract changes
+  + [stale_trigger] is dry-run result or refusal basis changes
+  + [stale_trigger] is human approval expires or is revoked
+  + [stale_trigger] is generated-output policy changes
+  + [stale_trigger] is safety boundary changes
+  + [stale_trigger] is live-control request appears without accepted live-control authority
+
+  = must: mark affected handoff records stale when any listed trigger fires
+  = must: require readiness recomputation before stale handoff records influence work packet candidates
+
+& [IR8S03CoverageReview] is the coverage checklist for IR8-S03
+  + [manager_to_surface_projection_handoff_present] is true
+  + [surface_to_manager_action_request_handoff_present] is true
+  + [manager_coordination_handoff_present] is true
+  + [manager_operations_dry_run_handoff_present] is true
+  + [human_override_and_refusal_handoff_present] is true
+  + [handoff_freshness_and_stale_rule_set_present] is true
+  + [authority_notice_required] is true
+  + [freshness_state_required] is true
+  + [dispatch_authority_created] is false
+  + [live_control_authority_created] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [dry_run_executed] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [operation_or_live_effect_authorized] is false
+
+  = must: accept IR8-S03 only when all checklist items are satisfied
+  = must: open IR8-S04 only after this handoff contract is reviewed in a completion review
