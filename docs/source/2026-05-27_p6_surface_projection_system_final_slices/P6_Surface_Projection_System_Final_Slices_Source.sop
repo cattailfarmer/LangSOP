@@ -1,0 +1,32 @@
+Subject: P6 Surface Projection System Final Slices Source
+Date: 2026-05-27
+Source UUID: 96c1ce02-d094-4e54-9f64-b3ef71465f91
+
+& [SourcePrompt: P6SurfaceProjectionSystemFinalSlices] is the preserved manager-derived source for minting P6 surface projection system final slices
+  + [source_kind] is manager-derived slice-minting source
+  + [origin] is post-P5 readiness after LangGraph procedure runtime planning acceptance
+  + [purpose] is convert accepted P2 authority records, P4 planning packetization, P5 runtime checkpoint and interrupt nonauthority, P8 proof ledger and generated-output nonpromotion, and prior FSC4/IR5 surface projection evidence into dependency-closed P6 final slices
+  + [reason] is P6 is ready for deeper-reasoning slice minting, but the system must define authority notice rendering, freshness and stale visibility, checkpoint nonauthority display, generated-output nonpromotion display, interrupt and human handoff projection, inbound action classification, surface-specific projection boundaries, projection fixtures, adapter deferral, and implementation activation boundaries before UI, adapter, chat, IRC, Matrix, web, Codex, terminal, or Langflow projection work can be trusted
+
+  = must: preserve surfaces as projections and interaction records, not direct canonical authority mutation paths
+  = must: preserve P2 authority states, P4 packet no-assignment and no-dispatch boundaries, P5 checkpoint nonauthority and SOP interrupt boundaries, and P8 proof/nonpromotion boundaries
+  = must: import P2 completion, P4 completion, P5 completion, Post_P5_Readiness_Surface, P8 completion, FSC4 surface invariant map, FSC4 completion, and IR5 implementation completion as boundary inputs
+  = must: split P6 so each slice has no dependency outside its declared boundary
+  = must: route authority notice, surface freshness, projection mutation, inbound action classification, adapter dependency, Langflow posture, and implementation activation to deeper reasoning
+  = should: make bounded projection fixture and snapshot planning GPT-5.3-Codex-Spark-suitable only after P6 surface contracts stabilize
+
+& [RequiredP6SliceFamilySet] is the source-level slice family set for P6
+  + [slice_family] is boundary import and projection obligation inventory
+  + [slice_family] is authority notice freshness and nonpromotion rendering contract
+  + [slice_family] is multi-surface projection envelope and surface-specific boundary contract
+  + [slice_family] is inbound action classification and surface mutation boundary contract
+  + [slice_family] is projection fixture snapshot plan and generated projection nonpromotion boundary
+  + [slice_family] is surface adapter Langflow dependency deferral and implementation activation boundary
+  + [slice_family] is P6 completion review and downstream gate
+
+  = must: execute boundary import before defining projection notice rendering or surface envelopes
+  = must: execute authority notice and freshness rendering before surface-specific projection boundaries
+  = must: execute surface-specific boundaries before inbound action classification
+  = must: execute inbound action classification before projection fixture planning becomes Spark-suitable
+  = must: execute dependency deferral before any adapter, UI, Langflow, IRC, Matrix, web, Codex, or terminal implementation is reconsidered
+  = must: execute completion review before P8 fixture material creation, P5 runtime implementation activation, P7 dispatch-adjacent coordination, or P9 operations live-control reconsideration consumes P6 authority

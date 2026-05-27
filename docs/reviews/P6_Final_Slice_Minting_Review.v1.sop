@@ -1,0 +1,105 @@
+Subject: P6 Final Slice Minting Review V1
+Date: 2026-05-27
+Review UUID: 8a262abc-73b8-49b0-b07d-4ef4b8262334
+
+@ [source_manifest] docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [work_state] docs/state/P6_Work_State.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P6-Final-Slice-Minting] is the completed-work review for minting P6 surface projection system final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/P6_Surface_Projection_System_Final_Slices_Source.sop
+  + [completed_output_sha256] is 0BD670DD19F59161D921582988011A7417528EE0930AEDBCA235CEC370BE05FF
+  + [completed_output] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
+  + [completed_output] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+  + [completed_output_sha256] is 94F907ED69E964B94C43E932DE48B254C2AE4C504BE0209185C7CD5963A64122
+  + [completed_output] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+  + [completed_output_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
+  + [completed_output] is docs/state/P6_Work_State.v1.sop
+  + [completed_output_sha256] is 3E4CAFC057D0AD7E29FF9A42D06B22D1795C80851D887A0ECBDC1E2271A2BE75
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P6 final slice surface and open P6-S01
+  + [next_gate_result] is P6-S01 may open
+  + [next_model_route] is requires deeper reasoning for P6-S01
+  + [next_model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
+
+  = must: treat this review as gate-opening evidence for P6-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, work state, post-P5 readiness surface, P5 completion review, P2/P4/P8 authority inputs, FSC4 surface boundary, or IR5 surface implementation completion changes
+  = must: keep UI implementation, adapter implementation, transport implementation, dependency installation, package metadata mutation, projection runtime execution, assignment, dispatch, operations control, and live machine control gated
+
+& [P6FinalSliceMintingVerification] is the verification result for P6 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [work_state_created] is true
+  + [slice_count] is 7
+  + [current_ready_slice] is P6-S01
+  + [gated_slice] is P6-S02
+  + [gated_slice] is P6-S03
+  + [gated_slice] is P6-S04
+  + [gated_slice] is P6-S05
+  + [gated_slice] is P6-S06
+  + [gated_slice] is P6-S07
+  + [UI_implemented] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [projection_runtime_executed] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+
+& [SupportDelta: P6-Final-Slice-Minting] is the support delta produced by minted P6 final slices
+  + [new_support_record] is P6-S01 may import accepted projection obligations before authority notice, surface envelope, action classification, fixture planning, or dependency posture is defined
+  + [new_support_record] is P6-S02 through P6-S07 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded P6-S05 projection fixture snapshot planning after P6-S01 through P6-S04 are accepted and only if projection authority, surface mutation, nonpromotion, and no-live-effect semantics remain stable
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-Final-Slice-Minting] is the requirement delta produced by minted P6 final slices
+  + [requirement_delta] is P6-S01 requires deeper reasoning
+  + [requirement_delta] is completion review required after every P6 slice
+  + [requirement_delta] is no UI implementation, adapter implementation, transport implementation, dependency installation, package metadata mutation, assignment, dispatch, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is every P6 planning slice must preserve projection nonauthority, checkpoint nonauthority, generated output nonpromotion, no-dispatch, and no-live-effect proof boundaries
+
+& [FaultReview: P6-Final-Slice-Minting] is the fault review for minted P6 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [UI_implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P6FinalSlicesAccepted] is accepted
+    @ [support] [P6FinalSliceMintingVerification]
+    @ [support] [SupportDelta: P6-Final-Slice-Minting]
+    @ [support] [RequirementDelta: P6-Final-Slice-Minting]
+    @ [support] [FaultReview: P6-Final-Slice-Minting]
+
+& [NextSliceGate: P6-S01] is opened
+  + [opened_slice] is P6-S01 boundary import and projection obligation inventory
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
+  + [safety_limit] is no UI implementation, adapter implementation, transport implementation, dependency installation, assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P6-S01 next unless user redirects or a new fault invalidates this review

@@ -1,0 +1,119 @@
+Subject: LangSOP P6 Surface Projection System Final Slices Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-27_p6_surface_projection_system_final_slices/P6_Surface_Projection_System_Final_Slices_Source.sop
+@ [slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [fsc4_surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [ir5_implementation_completion] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+& [CanonicalRecord: P6SurfaceProjectionSystemFinalSlices] is the processed planning authority for P6 surface projection system final slices
+  + [canonical_uuid] is 7cb3e0d9-6fd3-4a9e-9e9a-4bdd371424ea
+  + [source_manifest_uuid] is 23208a10-038c-4f20-b668-0fdb4d4e4c42
+  + [slice_surface_uuid] is 0be20e07-55b2-469e-b0be-31572e301a36
+  + [authority_scope] is P6 final slice order, projection obligation inventory, authority notice rendering, freshness and stale visibility, nonpromotion rendering, checkpoint nonauthority display, interrupt and handoff display, multi-surface projection envelope, surface-specific boundaries, inbound action classification, surface mutation boundary, projection fixture snapshot planning, generated projection nonpromotion, adapter and Langflow dependency deferral, implementation activation boundary, completion review obligations, model routing, and safety limits
+  + [implementation_scope] is P6 slice-minting authority only
+  + [depends_on] is docs/reviews/P2_Completion_Review.v1.sop
+  + [depends_on] is docs/reviews/P4_Completion_Review.v1.sop
+  + [depends_on] is docs/reviews/P5_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [depends_on] is docs/reviews/P8_Completion_Review.v1.sop
+  + [depends_on] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [depends_on] is docs/reviews/FSC4_Completion_Review.v1.sop
+  + [depends_on] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+  = must: use docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop as the executable P6 final slice surface
+  = must: execute P6-S01 before defining authority notices, surface envelopes, inbound action classification, projection fixtures, dependency posture, implementation activation, or downstream gates
+  = must: execute P6-S02 before any surface-specific projection boundary consumes authority notice or freshness semantics
+  = must: execute P6-S03 before inbound action classification consumes surface-specific boundary authority
+  = must: execute P6-S04 before projection fixture snapshot planning becomes Spark-suitable
+  = must: execute P6-S06 before adapter, UI, Langflow, IRC, Matrix, web, Codex, terminal, transport, or implementation activation work is reconsidered
+  = must: keep UI implementation, adapter implementation, transport implementation, dependency installation, package metadata mutation, projection runtime execution, assignment, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to implement UI, adapters, transports, Langflow, IRC, Matrix, web, Codex, terminal integrations, assign work, dispatch work, control operations, or control the live machine
+
+& [CanonicalP6FinalSliceSequence] is the accepted final slice sequence for P6
+  + [slice] is P6-S01 boundary import and projection obligation inventory
+  + [slice] is P6-S02 authority notice freshness and nonpromotion rendering contract
+  + [slice] is P6-S03 multi-surface projection envelope and surface-specific boundary contract
+  + [slice] is P6-S04 inbound action classification and surface mutation boundary contract
+  + [slice] is P6-S05 projection fixture snapshot plan and generated projection nonpromotion boundary
+  + [slice] is P6-S06 surface adapter Langflow dependency deferral and implementation activation boundary
+  + [slice] is P6-S07 P6 completion review and downstream gate
+  + [current_ready_slice] is P6-S01
+  + [gated_slice] is P6-S02 until P6-S01 accepted
+  + [gated_slice] is P6-S03 until P6-S02 accepted
+  + [gated_slice] is P6-S04 until P6-S03 accepted
+  + [gated_slice] is P6-S05 until P6-S04 accepted
+  + [gated_slice] is P6-S06 until P6-S05 accepted
+  + [gated_slice] is P6-S07 until P6-S06 accepted
+
+  = must: preserve this order unless a completed-work review rebakes the P6 surface
+  = must: mark downstream slices stale when upstream P6 output changes authority notice rendering, freshness display, nonpromotion display, surface envelope, inbound action classification, mutation boundary, fixture plan, dependency posture, implementation activation boundary, or downstream gate
+
+& [CanonicalP6ModelRouting] is the model routing for P6 final slices
+  + [P6-S01] is requires deeper reasoning
+  + [P6-S02] is requires deeper reasoning
+  + [P6-S03] is requires deeper reasoning
+  + [P6-S04] is requires deeper reasoning
+  + [P6-S05] is GPT-5.3-Codex-Spark-suitable only after P6-S04 acceptance unless projection authority, surface mutation, nonpromotion, or no-live-effect semantics change
+  + [P6-S06] is requires deeper reasoning
+  + [P6-S07] is requires deeper reasoning
+
+  = must: keep authority notice rendering, surface-specific boundaries, inbound action mutation, adapter posture, dependency posture, implementation activation, and downstream gates under deeper reasoning
+  = must: treat bounded projection fixture snapshot planning as Spark-suitable only after authority display, surface envelope, and inbound action contracts are accepted and stable
+
+& [CanonicalP6SafetyLimit] is the inherited safety limit for P6 final slices
+  + [UI_implementation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [projection_runtime_execution_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: block direct canonical mutation from surfaces, dependency installation, package metadata mutation, adapter effects, transport effects, UI effects, projection runtime execution, assignment, dispatch, operations control, and live machine control
+
+& [SatisfactionSignature: P6SurfaceProjectionSystemFinalSlices] is the valid SJS satisfaction signature for the P6 final slice specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 495eb866-18dc-428c-8922-18583a87c4b0
+  + [signed_subject] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 0BD670DD19F59161D921582988011A7417528EE0930AEDBCA235CEC370BE05FF
+  + [source_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
+  + [source_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [source_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [source_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [source_sha256] is 79B7CC40C2CC22355333E30B0FE3070BD09BC8BF9A19FD8D3841C635A8A13848
+  + [source_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [source_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [source_sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+  + [source_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [slice_surface_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
+  + [canonical_source_specification] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, P2_authority_imported, P4_packetization_imported, P5_runtime_planning_imported, P8_proof_imported, FSC4_surface_invariant_imported, IR5_surface_implementation_imported, slices_minted, gates_defined, expected_outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for P6 final slice execution only; no UI implementation, adapter implementation, transport implementation, dependency installation, package metadata mutation, assignment, dispatch, operations control, or live machine control authorized
+  + [invalidation_condition] is source_hash_change, P2_authority_change, P4_packetization_change, P5_runtime_change, P8_proof_change, FSC4_surface_invariant_change, IR5_surface_implementation_change, authority_notice_policy_change, surface_mutation_policy_change, dependency_posture_change, dispatch_authority_leak, or live_control_leak
+
+  = must: reprocess when P6 boundaries, authority inputs, proof inputs, slice order, model routing, safety limits, or required outputs materially change
+
+& [RegistryRecord: P6SurfaceProjectionSystemFinalSlices] is the durable identity ledger for P6 final slice minting
+  + [registry_uuid] is 81978304-f923-466a-b0b0-57e406c63f37
+  + [manifest_node_uuid] is 23208a10-038c-4f20-b668-0fdb4d4e4c42
+  + [canonical_node_uuid] is 7cb3e0d9-6fd3-4a9e-9e9a-4bdd371424ea
+  + [slice_surface_uuid] is 0be20e07-55b2-469e-b0be-31572e301a36
+  + [signature_uuid] is 495eb866-18dc-428c-8922-18583a87c4b0
+  + [slice_minting_review_uuid] is 8a262abc-73b8-49b0-b07d-4ef4b8262334
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for P6 completion reviews and downstream readiness

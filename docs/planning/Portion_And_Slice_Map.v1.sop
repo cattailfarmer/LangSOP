@@ -30,9 +30,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p5_slice_minting_review] docs/reviews/P5_Final_Slice_Minting_Review.v1.sop
 @ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
 @ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_slice_minting_review] docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P6_surface_projection_system_final_slice_minting
+  + [map_state] is ready_for_P6-S01_boundary_import_and_projection_obligation_inventory
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -196,7 +198,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: keep P5 accepted as planning and contract authority, not runtime implementation, dependency, adapter, graph execution, assignment, dispatch, operations-control, or live-control authority
   = should: route graph proof implementation to GPT-5.3-Codex-Spark after P5 final slices, implementation activation, contracts, and fixtures stabilize
 
-& [Portion: P6SurfaceProjectionSystem] is ready_for_final_slice_minting
+& [Portion: P6SurfaceProjectionSystem] is ready_for_slice_family
   + [portion_id] is P6
   + [portion_name] is surface projection system
   + [purpose] is render manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow projections from kernel records
@@ -206,7 +208,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [dependency_set] is P5 runtime planning authority
   + [support_record] is docs/reviews/P5_Completion_Review.v1.sop
   + [support_record] is docs/planning/Post_P5_Readiness_Surface.v1.sop
-  + [support_gap] is source-preserved P6 final slice surface not yet authored, SJS-processed, or accepted
+  + [support_record] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/P6_Surface_Projection_System_Final_Slices_Source.sop
+  + [support_record] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+  + [support_record] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+  + [support_record] is docs/state/P6_Work_State.v1.sop
+  + [support_record] is docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
   + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
@@ -214,8 +221,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [slice_family] is langflow-export-prototype
 
   = must: never let surfaces mutate canonical authority directly
-  = must: route P6 final slice minting as requiring deeper reasoning because projection surfaces expose authority, stale state, checkpoint nonauthority, interrupts, human handoffs, and nonpromotion across many conversation surfaces
-  = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 final slices, implementation activation, and fixture records stabilize
+  = must: route P6-S01 as requiring deeper reasoning because boundary import decides which projection obligations become P6 authority and which remain plan-only support
+  = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 final slices, P6-S01 through P6-S04, implementation activation, and fixture records stabilize
 
 & [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR8_readiness
   + [portion_id] is P7
@@ -478,20 +485,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6-SurfaceProjectionSystemFinalSliceMinting] is ready_for_execution
+& [CurrentReadyChunk: P6-S01-BoundaryImportAndProjectionObligationInventory] is ready_for_execution
   + [chunk_id] is P6
-  + [slice_id] is P6 final slice minting
-  + [chunk_name] is surface projection system final slice minting
-  + [authority_basis] is docs/reviews/P5_Completion_Review.v1.sop
-  + [readiness_surface] is docs/planning/Post_P5_Readiness_Surface.v1.sop
-  + [expected_output] is source-preserved P6 final slice source, canonical specification, final slice surface, work state, and minting review
-  + [completion_review_output] is docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+  + [slice_id] is P6-S01
+  + [chunk_name] is boundary import and projection obligation inventory
+  + [authority_basis] is docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+  + [readiness_surface] is docs/state/P6_Work_State.v1.sop
+  + [expected_output] is docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+  + [completion_review_output] is docs/reviews/P6_S01_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is surface projection decides how authority, stale state, nonpromotion, checkpoint nonauthority, interrupts, and human handoffs are visible across conversation surfaces
+  + [model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
 
-  = must: source-preserve and SJS-process P6 final slice source before trusting the P6 slice surface
-  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected ledgers, proof ledgers, generated databases, or silent edits to prior outputs
+  = must: import accepted P2, P4, P5, P8, FSC4, and IR5 projection obligations before authority notice rendering, surface envelopes, inbound action classification, projection fixture planning, dependency posture, implementation activation, or downstream gates
+  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected snapshots, proof ledgers, generated projections, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design
@@ -517,8 +524,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
     + [verification_oracle] is fixture validation tests
   + [slice_candidate] is manager-worker-debug-surface-projections
     + [portion_ref] is P6
-    + [model_route] is GPT-5.3-Codex-Spark-suitable after fixture records exist
-    + [reason] is bounded projection work with snapshot tests
+    + [model_route] is requires deeper reasoning until P6-S01 through P6-S04 are accepted; GPT-5.3-Codex-Spark-suitable only for bounded P6-S05 projection fixture planning after semantics stabilize
+    + [reason] is projection authority, surface mutation, freshness display, and nonpromotion semantics are still being accepted
     + [verification_oracle] is projection fixtures with authority_notice and freshness checks
 
   = must: complete deeper-reasoning design slices before Spark-suitable implementation slices depend on them

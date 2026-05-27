@@ -1,0 +1,53 @@
+Subject: P6 Work State V1
+Date: 2026-05-27
+State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
+
+@ [source_manifest] docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [fsc4_surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [fsc4_completion_review] docs/reviews/FSC4_Completion_Review.v1.sop
+@ [ir5_implementation_completion] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+& [P6WorkStateV1] is the current derived work state for P6 surface projection system
+  + [state_basis] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+  + [state_basis_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
+  + [surface_status] is P6_final_slices_minted_pending_P6-S01
+  + [source_manifest] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
+  + [canonical_specification] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is 94F907ED69E964B94C43E932DE48B254C2AE4C504BE0209185C7CD5963A64122
+  + [slice_surface] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+  + [slice_surface_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
+  + [current_ready_slice] is P6-S01
+  + [current_ready_slice_name] is boundary import and projection obligation inventory
+  + [current_ready_slice_expected_output] is docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
+  + [gated_slice] is P6-S02
+  + [gated_slice] is P6-S03
+  + [gated_slice] is P6-S04
+  + [gated_slice] is P6-S05
+  + [gated_slice] is P6-S06
+  + [gated_slice] is P6-S07
+  + [UI_implementation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [projection_runtime_execution_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute P6-S01 before authority notice rendering, surface envelopes, inbound action classification, projection fixture planning, dependency posture, implementation activation, surface implementation, adapter work, dispatch, or live-control work
+  = must: keep source authority, projection records, generated snapshots, adapter messages, human handoffs, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
+  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, or IR5 implementation completion changes

@@ -1,0 +1,143 @@
+Subject: P6 Surface Projection System Final Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 0be20e07-55b2-469e-b0be-31572e301a36
+
+@ [source_manifest] docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [fsc4_surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [fsc4_completion_review] docs/reviews/FSC4_Completion_Review.v1.sop
+@ [ir5_implementation_completion] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+& [P6SurfaceProjectionSystemFinalSliceSurfaceV1] is the final slice surface for P6 surface projection system
+  + [chunk_ref] is P6 surface projection system
+  + [chunk_boundary] is boundary import, authority notice rendering, freshness and stale visibility, nonpromotion rendering, checkpoint nonauthority display, interrupt and handoff display, multi-surface projection envelope, surface-specific boundaries, inbound action classification, surface mutation boundary, projection fixture snapshot plan, generated projection nonpromotion, adapter and Langflow dependency deferral, implementation activation boundary, completion review, and downstream gate
+  + [accepted_boundary_input] is docs/reviews/P2_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [accepted_boundary_input] is docs/reviews/P4_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [accepted_boundary_input] is docs/reviews/P5_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [accepted_boundary_input] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 79B7CC40C2CC22355333E30B0FE3070BD09BC8BF9A19FD8D3841C635A8A13848
+  + [accepted_boundary_input] is docs/reviews/P8_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [accepted_boundary_input] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_boundary_input_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [accepted_boundary_input] is docs/reviews/FSC4_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+  + [accepted_boundary_input] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [current_ready_slice] is P6-S01
+  + [gated_slice_set] is P6-S02, P6-S03, P6-S04, P6-S05, P6-S06, and P6-S07
+  + [safety_limit] is no UI implementation, no adapter implementation, no transport implementation, no dependency installation, no package metadata mutation, no projection runtime execution, no assignment, no dispatch, no operations control, and no live machine control authorized
+
+  = must: execute P6-S01 before defining authority notice rendering, surface envelopes, inbound action classification, fixture snapshot planning, dependency posture, implementation activation, or downstream gates
+  = must: run completed-work review after each P6 slice
+  = must: stale downstream slices when authority notice, freshness rendering, checkpoint nonauthority display, interrupt display, surface-specific boundaries, inbound action classification, generated projection nonpromotion, dependency posture, or implementation activation boundaries change
+  = must: preserve surfaces as projections and interaction records, not direct canonical authority mutation paths
+
+& [FinalWorkSlice: P6-S01-BoundaryImportAndProjectionObligationInventory] is ready
+  + [slice_id] is P6-S01
+  + [slice_name] is boundary import and projection obligation inventory
+  + [authority_basis] is docs/reviews/P5_Completion_Review.v1.sop
+  + [activation_gate] is post-P5 readiness accepted
+  + [expected_output_set] is docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+  + [verification_oracle] is inventory imports P2, P4, P5, P8, FSC4, and IR5 surface obligations, classifies projection materialization gaps, and assigns downstream P6 slices without UI, adapter, transport, dependency, assignment, dispatch, or live-control work
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
+  + [forbidden_scope] is UI implementation, adapter implementation, transport implementation, dependency installation, package metadata mutation, projection runtime execution, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-S02-AuthorityNoticeFreshnessAndNonpromotionRenderingContract] is gated
+  + [slice_id] is P6-S02
+  + [slice_name] is authority notice freshness and nonpromotion rendering contract
+  + [activation_gate] is P6-S01 accepted
+  + [expected_output_set] is docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+  + [verification_oracle] is contract defines authority notice fields, freshness display, stale and blocked visibility, checkpoint nonauthority rendering, generated-output nonpromotion rendering, human handoff visibility, and no-hidden-authority display rules
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is authority display determines how humans and agents recognize source authority, stale projections, checkpoint nonauthority, and generated-output limits
+  + [forbidden_scope] is UI implementation, adapter implementation, generated projection creation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-S03-MultiSurfaceProjectionEnvelopeAndSurfaceSpecificBoundaryContract] is gated
+  + [slice_id] is P6-S03
+  + [slice_name] is multi-surface projection envelope and surface-specific boundary contract
+  + [activation_gate] is P6-S02 accepted
+  + [expected_output_set] is docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+  + [verification_oracle] is contract defines common projection envelope and specific boundaries for manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow surfaces without implementing surfaces
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface-specific boundaries determine what each conversation surface may show, request, or classify without becoming authority
+  + [forbidden_scope] is UI implementation, adapter implementation, transport implementation, dependency installation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-S04-InboundActionClassificationAndSurfaceMutationBoundaryContract] is gated
+  + [slice_id] is P6-S04
+  + [slice_name] is inbound action classification and surface mutation boundary contract
+  + [activation_gate] is P6-S03 accepted
+  + [expected_output_set] is docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+  + [verification_oracle] is contract defines observation, comment, proposal, work_request, claim_request, human_override_request, interrupt_resolution_request, and unsupported action handling without direct source mutation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is inbound action classification decides which surface actions become proposals, interrupts, reviews, or rejected authority mutations
+  + [forbidden_scope] is direct canonical mutation, UI implementation, adapter implementation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-S05-ProjectionFixtureSnapshotPlanAndGeneratedProjectionNonpromotionBoundary] is gated
+  + [slice_id] is P6-S05
+  + [slice_name] is projection fixture snapshot plan and generated projection nonpromotion boundary
+  + [activation_gate] is P6-S04 accepted
+  + [expected_output_set] is docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+  + [verification_oracle] is plan defines future projection fixture families, expected snapshot records, generated projection nonpromotion, stale visibility, authority notice checks, and no-dispatch/no-live-effect checks without creating fixtures or snapshots
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P6-S04 acceptance unless projection authority, surface mutation, nonpromotion, or no-live-effect semantics change
+  + [model_route_reason] is bounded projection fixture planning can be mechanical after authority display, surface envelope, and inbound action contracts are accepted
+  + [forbidden_scope] is fixture file creation, expected snapshot creation, generated output creation, UI implementation, adapter implementation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-S06-SurfaceAdapterLangflowDependencyDeferralAndImplementationActivationBoundary] is gated
+  + [slice_id] is P6-S06
+  + [slice_name] is surface adapter Langflow dependency deferral and implementation activation boundary
+  + [activation_gate] is P6-S05 accepted
+  + [expected_output_set] is docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is decision records adapter, transport, UI, IRC, Matrix, web, Codex, terminal, and Langflow dependency deferral, implementation activation prerequisites, proof pack requirements, and no package metadata mutation boundary
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is adapter and dependency posture decide when surface implementation can safely enter the project
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-S07-P6CompletionReviewAndDownstreamGate] is gated
+  + [slice_id] is P6-S07
+  + [slice_name] is P6 completion review and downstream gate
+  + [activation_gate] is P6-S06 accepted
+  + [expected_output_set] is docs/reviews/P6_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [verification_oracle] is completion review accepts P6 outputs with hashes, support deltas, requirement deltas, P8/P7/P9 downstream gates, model-route recommendations, and no UI, adapter, transport, dependency, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P6 acceptance changes projection fixture readiness, fixture material readiness, coordination readiness, and implementation gates
+  + [forbidden_scope] is new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [P6FinalSliceClosureReview] is the dependency audit for minted P6 final slices
+  + [post_P5_readiness_status] is accepted
+  + [P2_authority_kernel_status] is accepted_boundary_input
+  + [P4_packetization_status] is accepted_boundary_input
+  + [P5_runtime_planning_status] is accepted_boundary_input
+  + [P8_proof_nonpromotion_status] is accepted_boundary_input
+  + [FSC4_surface_invariant_status] is accepted_boundary_input
+  + [IR5_surface_implementation_status] is accepted_boundary_input
+  + [P6-S01_ready] is true
+  + [UI_implementation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P6-S02 through P6-S07 as gated, not ready
+  = must: rerun closure review when P2, P4, P5, P8, FSC4, IR5, authority notice policy, surface mutation policy, nonpromotion policy, or no-live-effect boundary changes

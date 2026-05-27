@@ -26,11 +26,13 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
 @ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
 @ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_slice_minting_review] docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_completed_pending_P6_final_slice_minting
+  + [surface_status] is P5_completed_with_P6_final_slices_minted_pending_P6-S01
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -83,9 +85,11 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_portion_completion_review_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
   + [accepted_post_readiness_surface] is docs/planning/Post_P5_Readiness_Surface.v1.sop
   + [accepted_post_readiness_surface_sha256] is 79B7CC40C2CC22355333E30B0FE3070BD09BC8BF9A19FD8D3841C635A8A13848
-  + [current_ready_chunk] is P6 surface projection system final slice minting
+  + [accepted_downstream_minting_review] is docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+  + [accepted_downstream_minting_review_sha256] is 7FC478533DF5C151D176E916708ACB64B4B8154928335A45175C14C7B91D54B2
+  + [current_ready_chunk] is P6-S01 boundary import and projection obligation inventory
   + [current_ready_chunk_model_route] is requires deeper reasoning
-  + [current_ready_chunk_model_route_reason] is surface projection decides how authority, stale state, nonpromotion, checkpoint nonauthority, interrupts, and human handoffs are visible across conversation surfaces
+  + [current_ready_chunk_model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
   + [gated_chunk] is P5 runtime implementation activation until source-preserved activation authority is accepted
   + [gated_chunk] is P8 fixture material implementation activation until P6 surface projection requirements are reviewed
   + [dependency_installation_authorized] is false
@@ -107,6 +111,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: source-preserve and SJS-process P6 final slice authority before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
+  = must: execute P6-S01 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
   = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, or post-P8 readiness changes

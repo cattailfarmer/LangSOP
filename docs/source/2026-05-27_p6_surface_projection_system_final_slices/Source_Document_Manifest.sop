@@ -1,0 +1,39 @@
+Subject: P6 Surface Projection System Final Slices Source Manifest
+Date: 2026-05-27
+Manifest UUID: 23208a10-038c-4f20-b668-0fdb4d4e4c42
+
+& [SourceDocumentManifest: P6SurfaceProjectionSystemFinalSlices] is the source preservation manifest for P6 surface projection system final slice minting
+  + [dictated_source] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/P6_Surface_Projection_System_Final_Slices_Source.sop
+    + [sha256] is 0BD670DD19F59161D921582988011A7417528EE0930AEDBCA235CEC370BE05FF
+    + [source_role] is preserved manager-derived P6 slice-minting source
+  + [authority_source] is docs/reviews/P2_Completion_Review.v1.sop
+    + [sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+    + [source_role] is accepted P2 authority kernel completion review
+  + [authority_source] is docs/reviews/P4_Completion_Review.v1.sop
+    + [sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+    + [source_role] is accepted P4 whole-field planning and packetization completion review
+  + [authority_source] is docs/reviews/P5_Completion_Review.v1.sop
+    + [sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+    + [source_role] is accepted P5 LangGraph procedure runtime planning completion review
+  + [authority_source] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+    + [sha256] is 79B7CC40C2CC22355333E30B0FE3070BD09BC8BF9A19FD8D3841C635A8A13848
+    + [source_role] is accepted post-P5 readiness surface
+  + [authority_source] is docs/reviews/P8_Completion_Review.v1.sop
+    + [sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+    + [source_role] is accepted P8 proof fixtures evaluation and faults completion review
+  + [authority_source] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+    + [sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+    + [source_role] is accepted surface boundary and invariant map input
+  + [authority_source] is docs/reviews/FSC4_Completion_Review.v1.sop
+    + [sha256] is 9D4429F9C3FA29259D294F54426EADEA4D294B55BCBD0DA23672A30C9558ADAB
+    + [source_role] is accepted FSC4 surface projection completion review
+  + [authority_source] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+    + [sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+    + [source_role] is accepted bounded IR5 surface projection implementation completion review
+  + [canonical_target] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for P6 final slice minting
+  = must: invalidate P6 slice minting if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not surface implementation authority
+  - never: use this manifest to authorize UI implementation, adapter implementation, transport implementation, dependency installation, package metadata mutation, assignment, dispatch, operations control, or live machine control
