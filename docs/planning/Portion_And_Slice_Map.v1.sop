@@ -172,7 +172,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_S02_Completion_Review.v1.sop
   + [support_record] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
   + [support_record] is docs/reviews/IR8_S03_Completion_Review.v1.sop
-  + [support_gap] is IR8-S04 integrated manager fixture, trace, and fault plan not yet executed
+  + [support_record] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [support_record] is docs/reviews/IR8_S04_Completion_Review.v1.sop
+  + [support_gap] is IR8-S05 integrated manager implementation plan and activation pack not yet executed
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -265,28 +267,30 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_S02_Completion_Review.v1.sop
   + [support_record] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
   + [support_record] is docs/reviews/IR8_S03_Completion_Review.v1.sop
-  + [support_gap] is IR8-S04 integrated manager fixture, trace, and fault plan not yet executed
+  + [support_record] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [support_record] is docs/reviews/IR8_S04_Completion_Review.v1.sop
+  + [support_gap] is IR8-S05 integrated manager implementation plan and activation pack not yet executed
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-S04 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route IR8-S04 as GPT-5.3-Codex-Spark-suitable because fixture planning is bounded by accepted manager loop and handoff contracts
+  = must: execute IR8-S05 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route IR8-S05 as requires deeper reasoning because implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadySlice: IR8-S04-IntegratedManagerFixtureTraceAndFaultPlan] is ready
+& [CurrentReadySlice: IR8-S05-IntegratedManagerImplementationPlanAndActivationPack] is ready
   + [chunk_id] is IR8
-  + [slice_id] is IR8-S04
-  + [slice_name] is integrated manager fixture, trace, and fault plan
+  + [slice_id] is IR8-S05
+  + [slice_name] is integrated manager implementation plan and activation pack
   + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
   + [slice_surface] is docs/slices/IR8_Final_Slices.v1.sop
-  + [accepted_dependency] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
-  + [completion_review] is docs/reviews/IR8_S03_Completion_Review.v1.sop
-  + [model_route] is GPT-5.3-Codex-Spark-suitable
-  + [model_route_reason] is fixture planning is bounded by accepted manager loop and handoff contracts
+  + [accepted_dependency] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [completion_review] is docs/reviews/IR8_S04_Completion_Review.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
 
-  = must: execute IR8-S04 before implementation activation, dependencies, adapters, transports, UI, or generated outputs
+  = must: execute IR8-S05 before implementation activation, dependencies, adapters, transports, UI, or generated outputs
   = must: keep agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

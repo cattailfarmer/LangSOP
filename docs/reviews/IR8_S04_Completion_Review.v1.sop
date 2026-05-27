@@ -1,0 +1,95 @@
+Subject: IR8 S04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 9fb970a0-918c-43a8-87c5-21adfb754979
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [completed_output] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+@ [accepted_dependency] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [prior_completion_review] docs/reviews/IR8_S03_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR8-S04] is the completed-work review for IR8-S04 integrated manager fixture, trace, and fault plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-S04
+  + [completed_output] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [completed_output_sha256] is ABBC41BA43DE65A3F14BBD03672EBF6AB2FE92A10ACB2F35E47EF839E6CF1F1A
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8-S04 and open IR8-S05
+  + [next_gate_result] is IR8-S05 may open
+  + [next_model_route] is requires deeper reasoning for IR8-S05 integrated manager implementation plan and activation pack
+  + [next_model_route_reason] is implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
+
+  = must: treat this review as gate-opening evidence for IR8-S05 only
+  = must: rerun this review if the completed output, IR8-S01 through IR8-S03 outputs, IR8 slice surface, post-IR7 readiness surface, any accepted IR2 through IR7 implementation proof pack, IR7 implementation completion review, or FSC5 operations safety pack changes
+  = must: keep integrated manager implementation, fixture file creation, expected ledger creation, generated outputs, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
+
+& [IR8S04Verification] is the verification result for IR8-S04
+  + [fixture_case_set_present] is true
+  + [fixture_case_count] is 12
+  + [trace_expectation_set_present] is true
+  + [fault_expectation_set_present] is true
+  + [fixture_material_boundary_present] is true
+  + [Spark_suitable_route_declared] is true
+  + [fixture_source_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  ! [IR8S04VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+
+& [SupportDelta: IR8-S04] is the support delta produced by IR8-S04
+  + [new_support_record] is IR8 has a 12-case integrated manager fixture, trace, and fault plan
+  + [new_support_record] is future fixture file roots, expected ledger roots, and generated output roots are candidates only and remain unopened
+  + [new_support_record] is IR8-S05 has enough support to define implementation planning, file inventory, generated-output boundary, and activation pack without creating code or files
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-S04] is the requirement delta produced by IR8-S04
+  + [requirement_delta] is IR8-S05 must define future file inventory, fixture inventory, expected ledger inventory, generated-output roots, dependency boundary, adapter boundary, dispatch boundary, command plan, proof checklist, and no-live-effect proof without code or dependency changes
+  + [requirement_delta] is IR8-S05 requires deeper reasoning because implementation planning affects authority merging, generated-output policy, dispatch refusal, and future live-control boundaries
+  + [requirement_delta] is no integrated manager implementation, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized by IR8-S04
+
+& [FaultReview: IR8-S04] is the fault review for IR8-S04
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_fixture_case_set_found] is false
+  + [missing_trace_expectation_found] is false
+  + [missing_fault_expectation_found] is false
+  + [fixture_source_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [implementation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8S04Accepted] is accepted
+    @ [support] [IR8S04Verification]
+    @ [support] [SupportDelta: IR8-S04]
+    @ [support] [RequirementDelta: IR8-S04]
+    @ [support] [FaultReview: IR8-S04]
+
+& [NextSliceGate: IR8-S05] is opened
+  + [opened_slice] is IR8-S05 integrated manager implementation plan and activation pack
+  + [accepted_dependency] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [accepted_dependency_sha256] is ABBC41BA43DE65A3F14BBD03672EBF6AB2FE92A10ACB2F35E47EF839E6CF1F1A
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
+  + [safety_limit] is no agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-S05 next unless user redirects or a new fault invalidates this review

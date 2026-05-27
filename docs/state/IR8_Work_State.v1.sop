@@ -16,12 +16,14 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
 @ [completion_review] docs/reviews/IR8_S02_Completion_Review.v1.sop
 @ [accepted_output] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
 @ [completion_review] docs/reviews/IR8_S03_Completion_Review.v1.sop
+@ [accepted_output] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+@ [completion_review] docs/reviews/IR8_S04_Completion_Review.v1.sop
 
 & [IR8WorkStateV1] is the current derived work state for IR8 integrated manager orchestration planning
   + [chunk_ref] is IR8 integrated manager orchestration planning
-  + [state_basis] is docs/reviews/IR8_S03_Completion_Review.v1.sop
-  + [state_basis_sha256] is 7DDBDF7B8FBAD22E1B2287A766418E23678443F87F342C766889702DAFBB9C5D
-  + [surface_status] is IR8-S03_accepted_and_IR8-S04_open
+  + [state_basis] is docs/reviews/IR8_S04_Completion_Review.v1.sop
+  + [state_basis_sha256] is A2A32297B2BBAFC04908C67DEA6DBFE4EADE2A6437A93EFC2FCD1C7BF7F6650C
+  + [surface_status] is IR8-S04_accepted_and_IR8-S05_open
   + [source_document] is docs/source/2026-05-27_ir8_final_slices/Derived_IR8_Final_Slices_Source.sop
   + [source_document_sha256] is F31ECA5A6CAE0A4D05798C3C0580A2C51A57ADAB7904D77E535D1B4585CD2E78
   + [source_manifest] is docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
@@ -63,10 +65,15 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
   + [accepted_output_sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
   + [accepted_completion_review] is docs/reviews/IR8_S03_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 7DDBDF7B8FBAD22E1B2287A766418E23678443F87F342C766889702DAFBB9C5D
-  + [current_ready_slice] is IR8-S04
-  + [current_ready_slice_name] is integrated manager fixture, trace, and fault plan
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_reason] is fixture planning is bounded by accepted manager loop and handoff contracts
+  + [accepted_slice] is IR8-S04
+  + [accepted_output] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [accepted_output_sha256] is ABBC41BA43DE65A3F14BBD03672EBF6AB2FE92A10ACB2F35E47EF839E6CF1F1A
+  + [accepted_completion_review] is docs/reviews/IR8_S04_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is A2A32297B2BBAFC04908C67DEA6DBFE4EADE2A6437A93EFC2FCD1C7BF7F6650C
+  + [current_ready_slice] is IR8-S05
+  + [current_ready_slice_name] is integrated manager implementation plan and activation pack
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
   + [integrated_manager_implementation_authorized] is false
   + [fixture_file_creation_authorized] is false
   + [expected_ledger_creation_authorized] is false
@@ -79,9 +86,9 @@ State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
   + [agent_dispatch_authorized] is false
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
-  + [IR8_state] is IR8-S03_accepted_and_IR8-S04_open
+  + [IR8_state] is IR8-S04_accepted_and_IR8-S05_open
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR8-S04 before any manager implementation, dependency installation, package metadata mutation, adapters, transports, UI, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: execute IR8-S05 before any manager implementation, dependency installation, package metadata mutation, adapters, transports, UI, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
   = must: keep source, projections, graph checkpoints, coordination claims, mailbox carriers, dry-run outputs, human approvals, and generated reports in distinct authority classes
-  = must: mark this state stale if IR8 source document, IR8 source manifest, canonical specification, slice surface, minting review, IR8-S01 output, IR8-S01 completion review, IR8-S02 output, IR8-S02 completion review, IR8-S03 output, IR8-S03 completion review, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 proof packs, or FSC5 operations safety pack changes
+  = must: mark this state stale if IR8 source document, IR8 source manifest, canonical specification, slice surface, minting review, IR8-S01 output, IR8-S01 completion review, IR8-S02 output, IR8-S02 completion review, IR8-S03 output, IR8-S03 completion review, IR8-S04 output, IR8-S04 completion review, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 proof packs, or FSC5 operations safety pack changes

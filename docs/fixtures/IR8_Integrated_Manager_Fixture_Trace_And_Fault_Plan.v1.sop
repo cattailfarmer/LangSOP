@@ -1,0 +1,145 @@
+Subject: IR8 Integrated Manager Fixture Trace And Fault Plan V1
+Date: 2026-05-27
+Fixture Plan UUID: d5d2d1cb-1f32-402b-9573-15b220313a0f
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [boundary_map] docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+@ [manager_loop_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+@ [handoff_review] docs/reviews/IR8_S03_Completion_Review.v1.sop
+
+& [IR8IntegratedManagerFixtureTraceAndFaultPlanV1] is the IR8-S04 fixture, trace, and fault plan for integrated manager orchestration
+  + [fixture_plan_id] is ir8-integrated-manager-fixture-trace-and-fault-plan-v1
+  + [fixture_plan_uuid] is d5d2d1cb-1f32-402b-9573-15b220313a0f
+  + [slice_id] is IR8-S04
+  + [source_chunk] is IR8 integrated manager orchestration planning
+  + [authority_scope] is fixture case inventory, trace expectations, fault expectations, generated-output future boundary, and no-live-effect fixture planning
+  + [implementation_scope] is fixture and expected-ledger plan only
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+
+  = must: define fixture cases and expected trace/fault ledgers without creating fixture files, expected ledger files, generated outputs, implementation code, adapters, transports, UI, dependencies, package metadata, dispatch, operations control, or live machine control
+  = must: cover ready, blocked, stale, contested, unsafe, ambiguous, generated-output, graph-checkpoint, dry-run, human override, and live-control refusal paths
+  = must: preserve authority_notice, freshness_state, source_ref_set, proof_obligation_set, completion_gate, support_delta, requirement_delta, and fault_record expectations in every applicable fixture
+  = should: route future fixture file creation and deterministic expected ledger drafting to GPT-5.3-Codex-Spark after IR8 implementation activation explicitly opens it
+
+& [IR8IntegratedManagerFixtureCaseSet] is the planned fixture case set for integrated manager orchestration
+  + [fixture_case] is IR8M-001 accepted-source-ready-work-packet
+    + [purpose] is prove manager can classify accepted source authority, current readiness, and clean support into a ready_for_claim work packet candidate
+    + [expected_trace] is authority_classification, freshness_check, support_check, readiness_projection_ready, proof_obligation_attached, completion_gate_attached, and work_packet_candidate_ready_for_claim
+    + [expected_fault] is none
+  + [fixture_case] is IR8M-002 stale-boundary-input-blocks-ready-packet
+    + [purpose] is prove stale proof pack, slice surface, or readiness surface blocks false-ready work
+    + [expected_trace] is authority_classification, freshness_check_stale, stale_work_notice, proof_obligation_failed, and SOP_first_interrupt_context
+    + [expected_fault] is stale_boundary_input
+  + [fixture_case] is IR8M-003 unsupported-requirement-blocks-packet
+    + [purpose] is prove unresolved support_gap prevents ready output
+    + [expected_trace] is support_gap_detected, readiness_projection_blocked, blocked_work_notice, and completion_gate_not_opened
+    + [expected_fault] is unsupported_requirement
+  + [fixture_case] is IR8M-004 contested-coordination-claim-interrupts
+    + [purpose] is prove incompatible active claims block or interrupt packet readiness without collapsing conversation identities
+    + [expected_trace] is coordination_claim_classified, contested_claim_detected, contested_work_notice, and SOP_first_interrupt_context
+    + [expected_fault] is contested_coordination_claim
+  + [fixture_case] is IR8M-005 mailbox-carrier-is-not-authority
+    + [purpose] is prove mailbox or rendezvous carrier context can inform review but cannot accept source authority, completion, dispatch, or live effects
+    + [expected_trace] is carrier_context_classified, authority_notice_attached, lower_tier_context_preserved, and no_authority_promotion
+    + [expected_fault] is none
+  + [fixture_case] is IR8M-006 surface-action-request-requires-classification
+    + [purpose] is prove chat, UI, terminal, IRC, Matrix, web, or Codex action requests are classified before affecting readiness
+    + [expected_trace] is surface_action_request_received, carrier_context_classified, requested_effect_classified, safe_route_or_interrupt_selected
+    + [expected_fault] is unclassified_authority_sensitive_record when classification basis is missing
+  + [fixture_case] is IR8M-007 dry-run-success-not-dispatch-authority
+    + [purpose] is prove dry-run success can inform readiness only as operations planning evidence and cannot dispatch jobs or authorize live control
+    + [expected_trace] is operation_dry_run_result_classified, no_live_effect_notice_attached, readiness_evidence_recorded, dispatch_refused
+    + [expected_fault] is dry_run_to_live_control_promotion when promotion is attempted
+  + [fixture_case] is IR8M-008 human-override-scoped-revocable
+    + [purpose] is prove human override handoff requires scope, freshness, revocation route, risk context, and explicit authority notice
+    + [expected_trace] is human_override_request_classified, freshness_checked, scope_checked, revocation_route_checked, override_record_contextualized
+    + [expected_fault] is human_override_required when override is missing or stale
+  + [fixture_case] is IR8M-009 generated-projection-not-authority
+    + [purpose] is prove generated reports, surface projections, fixture outputs, and disposable manager projections cannot become source authority
+    + [expected_trace] is generated_projection_classified, authority_notice_attached, source_authority_requirement_preserved, promotion_refused
+    + [expected_fault] is generated_output_authority_promotion when promotion is attempted
+  + [fixture_case] is IR8M-010 graph-checkpoint-not-authority
+    + [purpose] is prove graph checkpoint state can resume procedure state but cannot define source truth or readiness alone
+    + [expected_trace] is checkpoint_context_classified, kernel_reference_checked, source_authority_required, checkpoint_authority_promotion_refused
+    + [expected_fault] is graph_checkpoint_authority_promotion when promotion is attempted
+  + [fixture_case] is IR8M-011 live-control-request-refused
+    + [purpose] is prove live-control, process, GPU, model runtime, job, credential, network, and destructive filesystem requests refuse without separate accepted authority
+    + [expected_trace] is requested_effect_classified_live_control, safety_boundary_checked, missing_live_authority_detected, refusal_record_emitted
+    + [expected_fault] is requested_forbidden_scope
+  + [fixture_case] is IR8M-012 model-route-required
+    + [purpose] is prove every work packet candidate states GPT-5.3-Codex-Spark-suitable or requires deeper reasoning
+    + [expected_trace] is model_route_checked, missing_route_refused, ready_packet_requires_route
+    + [expected_fault] is model_route_ambiguity when missing
+
+& [IR8ManagerTraceExpectationSet] is the trace expectation set for future fixture execution
+  + [trace_field] is fixture_case_id
+  + [trace_field] is source_authority_ref_set
+  + [trace_field] is classified_record_set
+  + [trace_field] is authority_notice_set
+  + [trace_field] is freshness_check_result
+  + [trace_field] is support_check_result
+  + [trace_field] is coordination_check_result
+  + [trace_field] is operations_dry_run_check_result
+  + [trace_field] is readiness_projection
+  + [trace_field] is work_packet_candidate_state
+  + [trace_field] is proof_obligation_set
+  + [trace_field] is completion_gate_state
+  + [trace_field] is support_delta
+  + [trace_field] is requirement_delta
+  + [trace_field] is fault_record_set
+  + [trace_field] is SOP_first_interrupt_context_ref when interrupted
+
+  = must: make traces deterministic enough for later fixture-ledger comparison
+  = must: keep traces as evidence, not source authority
+
+& [IR8FaultExpectationSet] is the planned fault expectation set for integrated manager orchestration fixtures
+  + [fault_kind] is stale_boundary_input
+  + [fault_kind] is unsupported_requirement
+  + [fault_kind] is contested_coordination_claim
+  + [fault_kind] is unclassified_authority_sensitive_record
+  + [fault_kind] is generated_output_authority_promotion
+  + [fault_kind] is graph_checkpoint_authority_promotion
+  + [fault_kind] is dry_run_to_live_control_promotion
+  + [fault_kind] is human_override_required
+  + [fault_kind] is requested_forbidden_scope
+  + [fault_kind] is model_route_ambiguity
+  + [fault_kind] is completion_gate_bypass
+  + [fault_kind] is proof_obligation_bypass
+
+  = must: require each fault fixture to preserve source refs, triggering record refs, missing requirement set, and next safe route
+
+& [IR8FixtureMaterialBoundary] is the fixture material boundary for IR8-S04
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_file_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [future_fixture_source_root_candidate] is tests/fixtures/sop/ir8_integrated_manager/
+  + [future_expected_ledger_root_candidate] is tests/fixtures/expected/ir8_integrated_manager/
+  + [future_generated_output_root_candidate] is tests/fixtures/generated/ir8_integrated_manager/
+  + [candidate_fixture_count] is 12
+
+  = must: treat root candidates as planning records only until a future implementation activation slice explicitly opens file creation
+  = must: keep generated outputs disposable and non-authoritative if later opened
+
+& [IR8S04CoverageReview] is the coverage checklist for IR8-S04
+  + [fixture_case_set_present] is true
+  + [fixture_case_count] is 12
+  + [trace_expectation_set_present] is true
+  + [fault_expectation_set_present] is true
+  + [fixture_material_boundary_present] is true
+  + [Spark_suitable_route_declared] is true
+  + [fixture_source_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  = must: accept IR8-S04 only when all checklist items are satisfied
+  = must: open IR8-S05 only after this fixture, trace, and fault plan is reviewed in a completion review
