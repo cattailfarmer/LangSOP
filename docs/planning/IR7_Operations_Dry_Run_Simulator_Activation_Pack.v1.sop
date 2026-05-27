@@ -1,0 +1,156 @@
+Subject: IR7 Operations Dry Run Simulator Activation Pack V1
+Date: 2026-05-27
+Activation Pack UUID: a29f1cbd-6f3b-46a5-adc2-377359cfabab
+
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [boundary_import] docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [dry_run_contract] docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+@ [resource_safety_contract] docs/operations/IR7_Resource_Safety_Human_Approval_And_Rollback_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+@ [implementation_plan] docs/implementation/IR7_Operations_Dry_Run_Simulator_Implementation_Plan.v1.sop
+@ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR7OperationsDryRunSimulatorActivationPackV1] is the activation pack for future bounded IR7 operations dry-run simulator implementation
+  + [activation_pack_id] is ir7-operations-dry-run-simulator-activation-pack-v1
+  + [activation_pack_uuid] is a29f1cbd-6f3b-46a5-adc2-377359cfabab
+  + [source_chunk] is IR7 operations dry-run request simulator planning
+  + [activation_pack_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation pack only
+  + [safety_limit] is no live operations control authorized
+
+  = must: require a future implementation activation slice surface before creating code, fixture source files, expected ledgers, generated outputs, dependency changes, package metadata changes, adapters, transports, operation simulator implementation, or tests
+  = must: keep every future operations dry-run output projection-only unless accepted by explicit source authority, proof, human override, or completion review
+  = must: keep process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, persistent operations automation, and live machine control behind a future separate source-preserved and SJS-processed authority path
+  - never: implement operations code, install dependencies, create fixtures, create expected ledgers, write generated projections, execute commands, dispatch jobs, access credentials, expose networks, authorize operations control, or authorize live machine control in this pack
+
+& [AcceptedIR7FinalPlanningDigestSet] is the accepted hash ledger exported by IR7 final planning
+  + [accepted_output] is docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_output_sha256] is 077E4B4F444B433DE7A81C9D68D364C15577E3EBACCF3020981F88D969C282F2
+  + [accepted_output] is docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+  + [accepted_output_sha256] is 94633588CEA8C07CA90168DD922BBEF308E68E2378225CEBEF99E509F16A1849
+  + [accepted_output] is docs/operations/IR7_Resource_Safety_Human_Approval_And_Rollback_Contract.v1.sop
+  + [accepted_output_sha256] is 65E858DF9C21ED3DC5C2E248D32A43F8B4EA16442444F17E707B4B7DB50C19DF
+  + [accepted_output] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+  + [accepted_output_sha256] is CA3C98ECB708BAF225C89EBF1B7C5B34704303B562EC12E26B738737326B03A3
+  + [accepted_output] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+  + [accepted_output_sha256] is 73E0E51DC51D89BA550B494F2C4CC021569EE527E97A1991DB9B87A83CA96CE2
+  + [accepted_output] is docs/implementation/IR7_Operations_Dry_Run_Simulator_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is EA2A980A2558887104C11313F785D69E944B06707FBC1EFEA30838C12685070F
+
+  = must: mark this activation pack stale if any listed output changes
+
+& [AcceptedIR7FinalPlanningReviewDigestSet] is the accepted completion review hash ledger
+  + [accepted_review] is docs/reviews/IR7_Final_Slice_Minting_Review.v1.sop
+  + [accepted_review_sha256] is 62E9297B3F8976F29F699E4350B92F946C36EFE403122026625A7AE7D45083B8
+  + [accepted_review] is docs/reviews/IR7_S01_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 78F24FE5BCF46D95BC320D864E2F73CD657B9FC1F8D13484D39C69E52D7D7F9B
+  + [accepted_review] is docs/reviews/IR7_S02_Completion_Review.v1.sop
+  + [accepted_review_sha256] is C790088CE395F5D5D1AE85BE30942B37E341B17EE769D6DA397B2534C17BAE2A
+  + [accepted_review] is docs/reviews/IR7_S03_Completion_Review.v1.sop
+  + [accepted_review_sha256] is BA5DDF674724E782F578405F542755D88296A0CD30C8CE380B405F955F4A5AF0
+  + [accepted_review] is docs/reviews/IR7_S04_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 0429E6A27749415DC671B22C454D74BC3609DE0E91D4028FC1915B62ED528798
+  + [accepted_review] is docs/reviews/IR7_S05_Completion_Review.v1.sop
+  + [accepted_review_sha256] is 43DD7E8364D5C679D4DBD9B71F79DE64C2FB65FF7E5DD0F7CE8FBFE99A96C58F
+
+  = must: mark this activation pack stale if any listed review changes
+
+& [FutureIR7ImplementationActivationShape] is the recommended future activation slice shape
+  + [future_activation_slice] is IR7-IA01 bounded operations dry-run implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR7-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR7-IA03 operation request, dry-run result, and refusal model implementation
+  + [future_activation_slice] is IR7-IA04 resource safety, human approval, rollback, and approval-stale model implementation
+  + [future_activation_slice] is IR7-IA05 generated path policy and fixture runner implementation
+  + [future_activation_slice] is IR7-IA06 contract tests and generated-output/no-live-effect proof
+  + [future_activation_slice] is IR7-IA07 operations adapter, dependency, and live-control deferral decision
+  + [future_activation_slice] is IR7-IA08 implementation completion review and proof pack
+
+  = must: mint implementation activation slices before writing code, fixture files, expected ledgers, generated outputs, dependencies, package metadata changes, adapters, transports, or operation simulator code
+  = must: keep package installation gated until a dependency-authorizing activation slice accepts or defers specific packages
+  = must: allow GPT-5.3-Codex-Spark-suitable work only after an activation slice isolates bounded fixture, model, runner, generated-output proof, or test work
+  = must: require deeper reasoning for activation minting, dependency decisions, adapter boundary changes, generated-output policy changes, operation safety changes, dispatch boundary changes, credential boundary changes, network boundary changes, or live-control boundary changes
+
+& [FutureImplementationSafetyBoundary: IR7OperationsDryRunSimulator] is the safety boundary for future implementation activation
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [mailbox_IO_initial_state] is unauthorized
+  + [UI_implementation_initial_state] is gated
+  + [process_control_initial_state] is unauthorized
+  + [GPU_control_initial_state] is unauthorized
+  + [model_runtime_control_initial_state] is unauthorized
+  + [job_dispatch_initial_state] is unauthorized
+  + [credential_access_initial_state] is unauthorized
+  + [network_mutation_initial_state] is unauthorized
+  + [destructive_filesystem_action_initial_state] is unauthorized
+  + [persistent_operations_automation_initial_state] is unauthorized
+  + [agent_dispatch_initial_state] is unauthorized
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+  + [allowed_dependency_route] is future dependency-authorizing activation slice only
+  + [allowed_generated_output_route] is future generated-output proof slice only
+  + [allowed_adapter_route] is future adapter boundary and dependency decision slice only
+  + [allowed_live_control_route] is separate future source-preserved SJS-processed authority path only
+
+  = must: fail any future activation review that silently installs dependencies, opens transports, starts UI services, writes generated outputs outside accepted roots, dispatches agents, controls processes, controls GPU, mutates model runtimes, dispatches jobs, accesses credentials, exposes networks, or exposes live-control APIs
+  = must: preserve FSC5 dry-run-only and live-control prohibition in every future IR7 operations dry-run implementation slice
+
+& [FutureIR7ImplementationProofTarget] is the target proof pack shape for future IR7 implementation completion
+  + [future_proof_pack] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [future_completion_review] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [required_proof] is accepted implementation output hash ledger
+  + [required_proof] is accepted fixture source and expected ledger hash ledger
+  + [required_proof] is generated operations projection proof showing projections and reports are ignored, disposable, reproducible, and non-authoritative
+  + [required_proof] is no-live-effect proof showing commands, processes, GPU, model runtimes, jobs, credentials, networks, destructive filesystem actions, persistent automation, and platform mailboxes are not mutated by tests
+  + [required_proof] is dependency decision or deferral review
+  + [required_proof] is command evidence for compile, baseline tests, targeted tests, and diff hygiene
+  + [required_proof] is support and requirement delta review before any future operations-manager capability can open
+
+  = must: keep downstream live resource operations gated until the future IR7 implementation proof pack and implementation completion review are accepted and a separate future live-control authority path exists
+
+& [FutureOperationsManagerGateExport] is the downstream readiness boundary exported by IR7 final planning
+  + [future_operations_manager_state] is gated_until_IR7_implementation_activation_and_separate_live_control_authority
+  + [future_operations_manager_model_route] is requires deeper reasoning for job-control simulation, resource-boundary modeling, process-control, GPU-control, model-runtime-control, credential, network, and live-control safety semantics
+  + [implementation_activation_state] is ready_for_implementation_activation_slice_minting
+  + [current_live_control_permission] is none_from_IR7_final_planning
+  + [current_dispatch_permission] is none_from_IR7_final_planning
+
+  = must: prevent false-ready operations manager, dispatch, job-control, process-control, GPU-control, model-runtime-control, credential-control, network-control, destructive-filesystem, or live-control work before future implementation activation and separate live-control authority exist
+  = must: keep operation request, dry-run result, refusal record, human approval, generated projection, fixture success, coordination claim, and mailbox carrier context non-authoritative for live effects
+
+& [IR7ActivationPackCoverageReview] is the coverage checklist for IR7 activation pack
+  + [accepted_final_planning_digest_set_present] is true
+  + [accepted_review_digest_set_present] is true
+  + [future_activation_shape_present] is true
+  + [future_implementation_safety_boundary_present] is true
+  + [future_implementation_proof_target_present] is true
+  + [future_operations_manager_gate_export_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept this activation pack only when all checklist items are satisfied
