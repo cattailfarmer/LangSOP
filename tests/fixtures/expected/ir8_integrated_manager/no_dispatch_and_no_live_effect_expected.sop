@@ -1,0 +1,19 @@
+Subject: IR8 Expected Ledger No Dispatch And No Live Effect
+Date: 2026-05-27
+
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedLedger: no_dispatch_and_no_live_effect_expected] is the expected global no-dispatch and no-live-effect ledger
+  + [covered_fixture_set] is IR8M-001 through IR8M-012
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false

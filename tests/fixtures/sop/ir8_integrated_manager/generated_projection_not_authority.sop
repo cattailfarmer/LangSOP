@@ -1,0 +1,17 @@
+Subject: IR8 Fixture IR8M-009 Generated Projection Not Authority
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+
+& [FixtureSource: IR8M-009] is generated_projection_not_authority
+  + [fixture_case_id] is IR8M-009
+  + [generated_projection_state] is present
+  + [requested_promotion] is source_authority
+  + [authority_notice_state] is generated_output_non_authority
+  + [expected_readiness_projection] is source_authority_required
+  + [expected_work_packet_candidate_state] is not_ready_from_projection_alone
+  + [expected_fault] is generated_output_authority_promotion
+  + [expected_source_authority_promoted] is false
+  + [expected_dispatch_authorized] is false
+  + [expected_live_effect_performed] is false

@@ -1,0 +1,15 @@
+Subject: IR8 Expected Ledger Carrier Surface Handoff
+Date: 2026-05-27
+
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedLedger: carrier_surface_handoff_expected] is the expected carrier and surface handoff ledger
+  + [covered_fixture] is IR8M-005
+  + [covered_fixture] is IR8M-006
+  + [required_trace] is carrier_context_classified
+  + [required_trace] is authority_notice_attached
+  + [required_trace] is requested_effect_classified
+  + [required_safe_route] is classify_or_interrupt
+  + [required_result] is mailbox_surface_terminal_chat_and_adapter_context_never_become_source_or_dispatch_authority
+  + [dispatch_authorized] is false
+  + [live_effect_performed] is false

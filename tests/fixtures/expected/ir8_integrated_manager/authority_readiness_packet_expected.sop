@@ -1,0 +1,17 @@
+Subject: IR8 Expected Ledger Authority Readiness Packet
+Date: 2026-05-27
+
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+
+& [ExpectedLedger: authority_readiness_packet_expected] is the expected authority, readiness, and packet ledger
+  + [covered_fixture] is IR8M-001
+  + [covered_fixture] is IR8M-012
+  + [required_trace] is authority_classification
+  + [required_trace] is freshness_check
+  + [required_trace] is support_check
+  + [required_trace] is readiness_projection
+  + [required_trace] is proof_obligation_attached
+  + [required_trace] is completion_gate_attached
+  + [required_result] is ready_packet_requires_accepted_source_support_and_model_route
+  + [dispatch_authorized] is false
+  + [live_effect_performed] is false

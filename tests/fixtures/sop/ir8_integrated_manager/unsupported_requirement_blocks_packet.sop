@@ -1,0 +1,17 @@
+Subject: IR8 Fixture IR8M-003 Unsupported Requirement Blocks Packet
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+
+& [FixtureSource: IR8M-003] is unsupported_requirement_blocks_packet
+  + [fixture_case_id] is IR8M-003
+  + [source_authority_state] is accepted_and_fresh
+  + [support_state] is missing_required_support
+  + [missing_requirement] is accepted_fixture_evidence
+  + [expected_readiness_projection] is blocked_unsupported
+  + [expected_work_packet_candidate_state] is not_ready
+  + [expected_completion_gate_state] is not_opened
+  + [expected_fault] is unsupported_requirement
+  + [expected_dispatch_authorized] is false
+  + [expected_live_effect_performed] is false
