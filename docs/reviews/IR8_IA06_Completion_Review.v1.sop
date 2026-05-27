@@ -1,0 +1,109 @@
+Subject: IR8 IA06 Completion Review V1
+Date: 2026-05-27
+Review UUID: 11a9b859-a874-40fc-b187-6bf9fcea9b95
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+@ [contract_tests] tests/test_ir8_integrated_manager_contracts.py
+@ [proof] docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+
+& [CompletedWorkReview: IR8-IA06] is the completed-work review for IR8-IA06 contract tests and generated-output/no-dispatch/no-live-effect proof
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-IA06
+  + [completed_output] is tests/test_ir8_integrated_manager_contracts.py
+  + [completed_output_sha256] is 3541005F6946A3C904197A71531B91DC4D77EFDCF8DE6F2C3E80DE146FD473F8
+  + [completed_output] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  + [completed_output_sha256] is DCD41A52D3D92A2CB483F2D7B339579FA780B46BAA544BBB03DAD68FF57E8A86
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8-IA06 and open IR8-IA07
+  + [next_gate_result] is IR8-IA07 may open
+  + [next_model_route] is requires deeper reasoning for adapter, dependency, dispatch, and live-control deferral decision
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as gate-opening evidence for IR8-IA07 only
+  = must: rerun this review if contract tests, generated-output proof, fixture runner, generated path policy, activation boundary, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control gated
+
+& [IR8IA06Verification] is the verification result for IR8-IA06
+  + [contract_test_file_present] is true
+  + [targeted_contract_test_passed] is true
+  + [full_unittest_discover_passed] is true
+  + [generated_output_proof_present] is true
+  + [generated_output_cleanup_proved] is true
+  + [generated_output_disposable_and_non_authoritative] is true
+  + [no_dispatch_proved] is true
+  + [no_live_effect_proved] is true
+  + [generated_output_persisted_after_validation] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR8IA06VerificationSatisfied] is accepted
+    @ [support] tests/test_ir8_integrated_manager_contracts.py
+    @ [support] docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+
+& [SupportDelta: IR8-IA06] is the support delta produced by IR8-IA06
+  + [new_support_record] is IR8 now has contract tests proving all 12 fixture cases, path policy refusal, generated output disposal, no-dispatch, and no-live-effect behavior
+  + [new_support_record] is IR8 generated-output proof records that generated manager outputs are ignored, disposable, rebuildable, and non-authoritative
+  + [new_support_record] is IR8-IA07 may make the adapter, dependency, dispatch, and live-control deferral decision under deeper reasoning
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-IA06] is the requirement delta produced by IR8-IA06
+  + [requirement_delta] is IR8-IA07 requires deeper reasoning because dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, or live machine control is authorized by IR8-IA06
+
+& [FaultReview: IR8-IA06] is the fault review for IR8-IA06
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [generated_output_leak_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8IA06Accepted] is accepted
+    @ [support] [IR8IA06Verification]
+    @ [support] [SupportDelta: IR8-IA06]
+    @ [support] [RequirementDelta: IR8-IA06]
+    @ [support] [FaultReview: IR8-IA06]
+
+& [NextSliceGate: IR8-IA07] is opened
+  + [opened_slice] is IR8-IA07 adapter, dependency, dispatch, and live-control deferral decision
+  + [accepted_dependency] is tests/test_ir8_integrated_manager_contracts.py
+  + [accepted_dependency] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  + [safety_limit] is no manager dispatch, agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-IA07 next unless user redirects or a new fault invalidates this review

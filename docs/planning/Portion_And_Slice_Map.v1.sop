@@ -203,7 +203,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is src/langsop/manager/generated_paths.py
   + [support_record] is src/langsop/manager/fixture_runner.py
   + [support_record] is docs/reviews/IR8_IA05_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA06 contract tests and generated-output/no-dispatch/no-live-effect proof not yet accepted
+  + [support_record] is tests/test_ir8_integrated_manager_contracts.py
+  + [support_record] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  + [support_record] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA07 adapter/dependency/dispatch/live-control deferral decision not yet accepted
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -324,26 +327,29 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is src/langsop/manager/generated_paths.py
   + [support_record] is src/langsop/manager/fixture_runner.py
   + [support_record] is docs/reviews/IR8_IA05_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA06 contract tests and generated-output/no-dispatch/no-live-effect proof not yet accepted
+  + [support_record] is tests/test_ir8_integrated_manager_contracts.py
+  + [support_record] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  + [support_record] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA07 adapter/dependency/dispatch/live-control deferral decision not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-IA06 before dependencies, adapters, transports, UI, or live operations control
-  = must: route IR8-IA06 as GPT-5.3-Codex-Spark-suitable because tests and proof are bounded by accepted implementation and fixture runner behavior
+  = must: execute IR8-IA07 before dependencies, adapters, transports, UI, or live operations control
+  = must: route IR8-IA07 as requiring deeper reasoning because dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: IR8-IA06-ContractTestsAndGeneratedOutputNoDispatchNoLiveEffectProof] is ready_for_execution
+& [CurrentReadyChunk: IR8-IA07-AdapterDependencyDispatchAndLiveControlDeferralDecision] is ready_for_execution
   + [chunk_id] is IR8
-  + [chunk_name] is IR8-IA06 contract tests and generated-output/no-dispatch/no-live-effect proof
-  + [authority_basis] is docs/reviews/IR8_IA05_Completion_Review.v1.sop
+  + [chunk_name] is IR8-IA07 adapter, dependency, dispatch, and live-control deferral decision
+  + [authority_basis] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
   + [activation_slice_surface] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
-  + [model_route] is GPT-5.3-Codex-Spark-suitable
-  + [model_route_depth] is Spark-suitable
-  + [model_route_reason] is tests and proof are bounded by accepted implementation and fixture runner behavior
+  + [model_route] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
 
-  = must: create only tests/test_ir8_integrated_manager_contracts.py and docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  = must: create only docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
   = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

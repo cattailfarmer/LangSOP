@@ -1,0 +1,70 @@
+Subject: IR8 Integrated Manager Generated Output No Dispatch And No Live Effect Proof V1
+Date: 2026-05-27
+Proof UUID: d0303214-22cb-4c21-8876-cdb53bd646ec
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+@ [fixture_runner] src/langsop/manager/fixture_runner.py
+@ [generated_path_policy] src/langsop/manager/generated_paths.py
+@ [contract_tests] tests/test_ir8_integrated_manager_contracts.py
+
+& [IR8IntegratedManagerGeneratedOutputNoDispatchAndNoLiveEffectProofV1] is the proof record for IR8 generated-output disposal, no-dispatch, and no-live-effect behavior
+  + [proof_id] is ir8-integrated-manager-generated-output-no-dispatch-and-no-live-effect-proof-v1
+  + [proof_uuid] is d0303214-22cb-4c21-8876-cdb53bd646ec
+  + [slice_id] is IR8-IA06
+  + [proof_scope] is contract tests, generated output path policy, fixture runner behavior, generated output disposal, no-dispatch proof, and no-live-effect proof
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+
+& [IR8GeneratedOutputDisposalProof] is the generated output disposal proof
+  + [generated_output_root] is tests/fixtures/generated/ir8_integrated_manager/
+  + [generated_output_root_status] is ignored_disposable_non_authoritative
+  + [path_policy_accepts_generated_root] is true
+  + [path_policy_refuses_docs_root] is true
+  + [path_policy_refuses_src_root] is true
+  + [path_policy_refuses_fixture_source_root] is true
+  + [path_policy_refuses_expected_ledger_root] is true
+  + [path_policy_refuses_platform_mailbox_root] is true
+  + [test_proves_generated_report_disposable] is true
+  + [test_proves_generated_report_rebuildable] is true
+  + [test_proves_generated_report_not_discovered_as_authority] is true
+
+  = must: treat generated output as disposable projection only
+  = must: remove generated output after validation
+
+& [IR8NoDispatchProof] is the no-dispatch proof
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [work_packet_candidate_dispatch_effect] is false
+  + [handoff_record_dispatch_effect] is false
+  + [refusal_record_dispatch_effect] is false
+  + [fixture_runner_dispatch_effect] is false
+
+  = must: keep manager outputs as records, packets, handoffs, refusals, faults, and reports only
+
+& [IR8NoLiveEffectProof] is the no-live-effect proof
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [platform_mailbox_created] is false
+  + [source_authority_mutated_by_runner] is false
+  + [expected_ledger_mutated_by_runner] is false
+
+  = must: refuse live-control claims until separate source-preserved authority explicitly opens bounded future work
+
+& [IR8ProofCommandEvidence] is the validation command evidence for this proof
+  + [validation_command] is python -m compileall -q src tests
+  + [validation_command] is python -m unittest discover -s tests
+  + [validation_command] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [validation_command] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [validation_command] is git diff --check
+  + [sentinel_check] is Test-Path tests\fixtures\generated\ir8_integrated_manager should be false after cleanup
+  + [sentinel_check] is Test-Path platform\coordination\mailboxes should be false
+
+  = must: accept proof only when all commands pass and sentinel checks are false
