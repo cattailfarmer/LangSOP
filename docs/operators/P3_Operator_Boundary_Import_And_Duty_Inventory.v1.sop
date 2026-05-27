@@ -1,0 +1,144 @@
+Subject: P3 Operator Boundary Import And Duty Inventory V1
+Date: 2026-05-27
+Inventory UUID: 91899d4f-0379-414e-a616-0763f38fcc1a
+
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P3_Final_Slice_Minting_Review.v1.sop
+@ [p3_work_state] docs/state/P3_Work_State.v1.sop
+@ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [operator_runner_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+
+& [P3OperatorBoundaryImportAndDutyInventoryV1] is the P3-S01 boundary import and operator duty inventory
+  + [slice_id] is P3-S01
+  + [slice_name] is boundary import and operator duty inventory
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [inventory_result] is existing_operator_contract_authority_accepted_as_boundary_input_with_P3_refresh_required_before_downstream_consumption
+  + [next_gate_result] is P3-S02 may open
+  + [operator_contract_rewrite_authorized] is false
+  + [operator_implementation_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this inventory as boundary import and gap record, not as an operator contract supersession
+  = must: preserve existing accepted operator contract files until P3-S02, P3-S03, or P3-S04 explicitly accepts, refines, or supersedes them
+  = must: prevent downstream P4, P5, P6, P8, adapter, dispatch, operations-control, or live-control work from consuming P3 as refreshed before P3-S02 through P3-S06 are accepted
+
+& [AcceptedOperatorBoundaryInputLedger: P3-S01] is the accepted boundary input ledger for P3-S01
+  + [accepted_boundary_input] is docs/operators/Operator_Contract_Template.v1.sop
+  + [accepted_boundary_input_sha256] is 2EEB32DAF55E28D007C930C2544A68AC1E94D0C727056127D3584517CB76B5DF
+  + [accepted_boundary_input_status] is accepted_common_operator_template_baseline
+  + [accepted_boundary_input] is docs/operators/Foundation_Operator_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is CFECB48599185245D402D729877E4FDD48F59CF60229CA4BDF45C4F3FD6ADC33
+  + [accepted_boundary_input_status] is accepted_foundation_operator_contract_baseline
+  + [accepted_boundary_input] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is 41E337EB765B6B93B667DE160A99A46DDA92B7EF1EAF1D1527E7DC6A2389AAE0
+  + [accepted_boundary_input_status] is accepted_planning_readiness_operator_contract_baseline
+  + [accepted_boundary_input] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [accepted_boundary_input_status] is accepted_operator_runner_trace_boundary
+  + [accepted_boundary_input] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [accepted_boundary_input_status] is accepted_P2_overlay_gate_opening_readiness_surface
+
+  ! [P3OperatorBoundaryInputsImported] is accepted
+    @ [support] docs/operators/Operator_Contract_Template.v1.sop
+    @ [support] docs/operators/Foundation_Operator_Contracts.v1.sop
+    @ [support] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+    @ [support] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+    @ [support] docs/planning/Post_P2_Readiness_Surface.v1.sop
+
+& [OperatorDutyInventory: P3-S01] is the operator duty inventory imported for P3 refresh
+  + [operator_duty] is signature_validation
+  + [operator_duty_status] is accepted_baseline_requires_P2_overlay_refresh
+  + [operator_duty] is support_readiness_recompute
+  + [operator_duty_status] is accepted_baseline_requires_P2_overlay_refresh
+  + [operator_duty] is planning_readiness_recompute
+  + [operator_duty_status] is accepted_baseline_requires_P2_overlay_refresh
+  + [operator_duty] is work_packet_generation
+  + [operator_duty_status] is accepted_stub_requires_future_packetization_gate
+  + [operator_duty] is completion_review_delta_gate
+  + [operator_duty_status] is accepted_boundary_input_requires_downstream_reconciliation
+  + [operator_duty] is contract_driven_operator_runner
+  + [operator_duty_status] is accepted_runner_boundary_requires_no-automation_confirmation
+  + [operator_duty] is stale_projection_detection
+  + [operator_duty_status] is required_common_behavior_for_P3_envelope
+  + [operator_duty] is SOP_first_interrupt
+  + [operator_duty_status] is required_common_behavior_for_P3_envelope
+
+  = must: preserve existing duty identities and lineage when refreshing contracts
+  = must: prevent generic operator runner or packetization contracts from hiding dispatch, operations-control, or live-control authority
+
+& [P3OperatorRefreshGapLedger] is the gap ledger produced by P3-S01
+  + [refresh_gap] is common operator envelope must expose P2 authority_class, effect_boundary, currentness_state, review_gate_ref, invalidation_ref_set, natural_key_state, source_ref_set, and lineage_edge_set as explicit contract terms
+  + [refresh_gap] is SOP-first interrupt semantics must distinguish semantic ambiguity, authority conflict, stale input, high-risk operation, missing proof route, and human override without hiding fault output
+  + [refresh_gap] is output mutation policy must preserve create_new_record, supersede_existing_record, append_lineage_edge, append_review, and no_hidden_write behavior
+  + [refresh_gap] is signature_validation must be refreshed against satisfaction signature protocol, source manifest hashes, wrong protocol, stale source hash, duplicate signatures, broken lineage, and ambiguous identity
+  + [refresh_gap] is support_readiness_recompute must be refreshed against P2 support gaps, requirement deltas, stale projections, contradicted support, missing proof route, authority conflict, hidden authority, and false-ready prevention
+  + [refresh_gap] is planning_readiness_recompute must be reconciled with support_readiness_recompute to prevent duplicate or contradictory readiness operators
+  + [refresh_gap] is operator trace schema must distinguish proof output, generated output, projection output, checkpoint state, carrier context, blocked output, fault output, and SOP-first interrupt context
+  + [refresh_gap] is fixture oracle remains plan-only and must not create fixture source files or expected ledgers
+  + [refresh_gap] is no-automation boundary must prevent operator contract acceptance from becoming implementation, graph node execution, dispatch, operations-control, or live-control authority
+
+  = must: resolve or explicitly defer these gaps in P3-S02 through P3-S05
+  = must: prevent any gap from silently becoming downstream support
+
+& [SupersessionPosture: P3-S01] is the supersession posture for existing operator authority
+  + [Operator_Contract_Template.v1.sop] is accepted_boundary_input_not_superseded
+  + [Foundation_Operator_Contracts.v1.sop] is accepted_boundary_input_not_superseded
+  + [Planning_Readiness_Operator_Contracts.v1.sop] is accepted_boundary_input_not_superseded
+  + [IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop] is accepted_boundary_input_not_superseded
+  + [next_possible_supersession_slice] is P3-S02 for common operator envelope and refusal semantics
+  + [next_possible_supersession_slice] is P3-S03 for signature validation operator contract
+  + [next_possible_supersession_slice] is P3-S04 for support readiness recompute operator contract
+  + [implementation_supersession_authorized] is false
+  + [runtime_supersession_authorized] is false
+
+  = must: preserve current operator authority for existing proof packs until refreshed and accepted
+  = must: mark downstream consumers stale if a later P3 slice supersedes an operator input
+
+& [DownstreamGateAssessment: P3-S01] is the downstream gate assessment after boundary import
+  + [P3-S02_gate] is opened_by_P3-S01_completion_review
+  + [P3-S03_gate] is gated_until_P3-S02
+  + [P3-S04_gate] is gated_until_P3-S03
+  + [P3-S05_gate] is gated_until_P3-S04
+  + [P3-S06_gate] is gated_until_P3-S05
+  + [P4_packetization_gate] is gated_until_P3_completion_or_explicit_rebake
+  + [P5_LangGraph_runtime_gate] is gated_until_P3_and_fixture_contracts_advance
+  + [P6_surface_projection_gate] is gated_until_P3_P4_and_fixture_records_advance
+  + [operator_implementation_gate] is gated_until_future_source_preserved_implementation_activation
+  + [adapter_dispatch_live_control_gate] is gated_until_future_source_preserved_SJS_authority
+
+  = must: open only P3-S02 after P3-S01 completion review
+  = must: keep all other downstream gates closed
+
+& [P3S01FaultReview] is the fault review for P3-S01
+  + [source_overwrite_found] is false
+  + [operator_contract_mutation_found] is false
+  + [operator_implementation_found] is false
+  + [LangGraph_node_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_gate_found] is false
+
+  ! [P3OperatorBoundaryImportAndDutyInventoryAccepted] is accepted
+    @ [support] [P3OperatorBoundaryInputsImported]
+    @ [support] [OperatorDutyInventory: P3-S01]
+    @ [support] [P3OperatorRefreshGapLedger]
+    @ [support] [SupersessionPosture: P3-S01]
+    @ [support] [DownstreamGateAssessment: P3-S01]
+    @ [support] [P3S01FaultReview]

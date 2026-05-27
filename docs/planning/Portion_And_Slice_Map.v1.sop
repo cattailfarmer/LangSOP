@@ -85,7 +85,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
   + [support_record] is docs/reviews/P3_Final_Slice_Minting_Review.v1.sop
   + [support_record] is docs/state/P3_Work_State.v1.sop
-  + [support_gap] is template not yet authored
+  + [support_record] is docs/operators/P3_Operator_Boundary_Import_And_Duty_Inventory.v1.sop
+  + [support_record] is docs/reviews/P3_S01_Completion_Review.v1.sop
+  + [support_gap] is common operator envelope refresh not yet accepted
   + [support_gap] is first operator examples not yet accepted
   + [proof_route] is example contracts for signature_validation and support_readiness_recompute
   + [slice_family] is operator-contract-template-design
@@ -379,16 +381,16 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P3-S01-BoundaryImportAndOperatorDutyInventory] is ready_for_execution
+& [CurrentReadyChunk: P3-S02-CommonOperatorEnvelopeAndRefusalSemantics] is ready_for_execution
   + [chunk_id] is P3
-  + [chunk_name] is P3-S01 boundary import and operator duty inventory
-  + [authority_basis] is docs/reviews/P3_Final_Slice_Minting_Review.v1.sop
+  + [chunk_name] is P3-S02 common operator envelope and SOP-first refusal semantics
+  + [authority_basis] is docs/reviews/P3_S01_Completion_Review.v1.sop
   + [activation_slice_surface] is docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is boundary import decides which existing operator contracts remain authority and which need P3 refresh
+  + [model_route_reason] is the common operator envelope controls all downstream mechanical SOP duties and runtime graph nodes
 
-  = must: create only docs/operators/P3_Operator_Boundary_Import_And_Duty_Inventory.v1.sop and docs/reviews/P3_S01_Completion_Review.v1.sop
+  = must: create only docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop and docs/reviews/P3_S02_Completion_Review.v1.sop
   = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior P2 outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
