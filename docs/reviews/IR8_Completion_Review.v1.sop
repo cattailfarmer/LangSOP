@@ -1,0 +1,118 @@
+Subject: IR8 Completion Review V1
+Date: 2026-05-27
+Review UUID: 57706a52-4ea3-4c61-a99b-b38aba731598
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [s01_review] docs/reviews/IR8_S01_Completion_Review.v1.sop
+@ [s02_review] docs/reviews/IR8_S02_Completion_Review.v1.sop
+@ [s03_review] docs/reviews/IR8_S03_Completion_Review.v1.sop
+@ [s04_review] docs/reviews/IR8_S04_Completion_Review.v1.sop
+@ [s05_review] docs/reviews/IR8_S05_Completion_Review.v1.sop
+@ [activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+
+& [CompletedWorkReview: IR8-S06] is the completed-work review for IR8 final planning and implementation activation recommendation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-S06
+  + [completed_output] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8 final planning and open implementation activation minting
+  + [next_gate_result] is IR8 implementation activation may be source-preserved and final-sliced
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_reason] is implementation activation controls file creation, generated-output roots, dependency deferral, adapter deferral, dispatch refusal, and future manager runtime boundaries
+
+  = must: treat this review as gate-opening evidence for IR8 implementation activation minting only
+  = must: require a separate source-preserved and SJS-processed IR8 implementation activation specification before implementation slices execute
+  = must: keep implementation code, fixture file creation, expected ledger creation, generated outputs, dependency installation, package metadata mutation, adapter work, transport work, UI work, agent dispatch, operations control, and live machine control gated until activation slices explicitly open bounded work
+
+& [IR8FinalPlanningVerification] is the verification result for IR8 final planning
+  + [IR8_final_slice_surface_present] is true
+  + [IR8-S01_status] is accepted
+  + [IR8-S01_output] is docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+  + [IR8-S01_output_sha256] is 739657AD4103B26220D5FE741C9041DBD727409A2290CDCD062F05797F44CF89
+  + [IR8-S01_review_sha256] is C7B8A5E35CB85534BA6FB9DB7A6B95CBCEFF26E514C930EFE6CEA652747A98A3
+  + [IR8-S02_status] is accepted
+  + [IR8-S02_output] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [IR8-S02_output_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [IR8-S02_review_sha256] is B8DF34316C6E992433AC0B2AE7D7E51CF860C283313D5FB6E9E9437B50EF971D
+  + [IR8-S03_status] is accepted
+  + [IR8-S03_output] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+  + [IR8-S03_output_sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
+  + [IR8-S03_review_sha256] is 7DDBDF7B8FBAD22E1B2287A766418E23678443F87F342C766889702DAFBB9C5D
+  + [IR8-S04_status] is accepted
+  + [IR8-S04_output] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [IR8-S04_output_sha256] is ABBC41BA43DE65A3F14BBD03672EBF6AB2FE92A10ACB2F35E47EF839E6CF1F1A
+  + [IR8-S04_review_sha256] is A2A32297B2BBAFC04908C67DEA6DBFE4EADE2A6437A93EFC2FCD1C7BF7F6650C
+  + [IR8-S05_status] is accepted
+  + [IR8-S05_output] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [IR8-S05_output_sha256] is 6C2B27221AAB3862845EC64EA1EE09AA598B7DBA00A818149AC0137DA1FEC4A3
+  + [IR8-S05_output] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [IR8-S05_output_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [IR8-S05_review_sha256] is DEFB8A9F98E6C623FF3A4B706E58803C5FF96F316F9E362338DB091C682980EF
+  + [IR8-S06_status] is accepted
+  + [activation_pack_status] is pending_activation_specification
+  + [implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  ! [IR8FinalPlanningVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR8_Final_Slices.v1.sop
+    @ [support] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+
+& [SupportDelta: IR8-Final-Planning] is the support delta produced by IR8 final planning
+  + [new_support_record] is IR8 integrated manager orchestration planning is complete enough to feed implementation activation minting
+  + [new_support_record] is future implementation activation is bounded to inert manager records, fixture material, generated path policy, fixture runner, tests, no-dispatch proof, no-live-effect proof, and dependency/adapter deferral
+  + [new_support_record] is live agent dispatch, operations control, and live machine control remain blocked
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-Final-Planning] is the requirement delta produced by IR8 final planning
+  + [requirement_delta] is next work must preserve source and run SJS processing for IR8 implementation activation before implementation slices execute
+  + [requirement_delta] is IR8 implementation activation minting requires deeper reasoning
+  + [requirement_delta] is future bounded implementation slices may become GPT-5.3-Codex-Spark-suitable after activation boundary acceptance
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized by final planning alone
+
+& [FaultReview: IR8-Final-Planning] is the fault review for IR8 final planning
+  + [source_overwrite_found] is false
+  + [missing_completion_review_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [implementation_leak_found] is false
+  + [fixture_source_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8FinalPlanningAccepted] is accepted
+    @ [support] [IR8FinalPlanningVerification]
+    @ [support] [SupportDelta: IR8-Final-Planning]
+    @ [support] [RequirementDelta: IR8-Final-Planning]
+    @ [support] [FaultReview: IR8-Final-Planning]
+
+& [NextSliceGate: IR8ImplementationActivation] is opened_for_minting
+  + [opened_chunk] is IR8 integrated manager orchestration implementation activation
+  + [opened_work] is source preservation, SJS canonicalization, and implementation activation slice minting
+  + [accepted_dependency] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [accepted_dependency_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation activation controls file creation, generated-output roots, dependency deferral, adapter deferral, dispatch refusal, and future manager runtime boundaries
+  + [future_Spark_suitable_work] is bounded implementation after activation boundary acceptance
+  + [safety_limit] is no agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: mint IR8 implementation activation slices next unless user redirects or a new fault invalidates this review

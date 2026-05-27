@@ -1,0 +1,64 @@
+Subject: IR8 Integrated Manager Orchestration Activation Pack V1
+Date: 2026-05-27
+Activation Pack UUID: e296e528-c329-4edd-b6cf-9a5f3ad21941
+
+@ [implementation_plan] docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+@ [manager_loop_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+
+& [IR8IntegratedManagerOrchestrationActivationPackV1] is the future implementation activation pack for IR8 integrated manager orchestration
+  + [activation_pack_id] is ir8-integrated-manager-orchestration-activation-pack-v1
+  + [activation_pack_uuid] is e296e528-c329-4edd-b6cf-9a5f3ad21941
+  + [activation_status] is pending_IR8_completion_review
+  + [activation_scope] is future inert manager orchestration model, fixture material, generated path policy, fixture runner, tests, no-dispatch proof, no-live-effect proof, dependency deferral, and implementation proof pack
+  + [activation_limit] is no dependency installation, no package metadata mutation, no adapter implementation, no transport implementation, no UI implementation, no agent dispatch, no job dispatch, no command execution, no process control, no GPU control, no model runtime mutation, no credential access, no network mutation, no destructive filesystem action, no operations control, and no live machine control
+
+  = must: remain pending until IR8-S06 completion review accepts IR8 planning
+  = must: require a separate implementation activation canonical specification before implementation slices execute
+  = must: keep all future implementation work bounded, inert, deterministic, and review-gated
+
+& [IR8ImplementationActivationSliceCandidateSet] is the recommended future implementation activation slice sequence
+  + [slice_candidate] is IR8-IA01 bounded manager implementation activation boundary and dependency decision
+  + [slice_candidate] is IR8-IA02 fixture source and expected-ledger seed material
+  + [slice_candidate] is IR8-IA03 manager authority, readiness, packet, proof, and interrupt model implementation
+  + [slice_candidate] is IR8-IA04 handoff, human override, refusal, and fault model implementation
+  + [slice_candidate] is IR8-IA05 generated path policy and fixture runner implementation
+  + [slice_candidate] is IR8-IA06 contract tests and generated-output/no-dispatch/no-live-effect proof
+  + [slice_candidate] is IR8-IA07 adapter, dependency, dispatch, and live-control deferral decision
+  + [slice_candidate] is IR8-IA08 implementation completion review and proof pack
+
+  = must: route IR8-IA01, IR8-IA07, and IR8-IA08 as requires deeper reasoning
+  = should: route IR8-IA02 through IR8-IA06 to GPT-5.3-Codex-Spark after IR8-IA01 accepts bounded implementation authority, unless semantics change
+  = must: require completed-work review after every implementation activation slice
+
+& [IR8ImplementationActivationForbiddenScope] is the forbidden scope for the future activation sequence
+  + [forbidden_scope] is live agent dispatch
+  + [forbidden_scope] is live job dispatch
+  + [forbidden_scope] is command execution beyond validation commands
+  + [forbidden_scope] is process control
+  + [forbidden_scope] is GPU control
+  + [forbidden_scope] is model runtime mutation
+  + [forbidden_scope] is credential access or mutation
+  + [forbidden_scope] is network exposure mutation
+  + [forbidden_scope] is destructive filesystem action
+  + [forbidden_scope] is persistent operations automation
+  + [forbidden_scope] is adapter transport effects
+  + [forbidden_scope] is UI effects
+  + [forbidden_scope] is operations control
+  + [forbidden_scope] is live machine control
+
+  = must: refuse or defer any future implementation slice that crosses this forbidden scope without separate source-preserved authority
+
+& [IR8ImplementationActivationProofGate] is the proof gate for future activation
+  + [proof_gate] is accepted IR8 final planning completion review
+  + [proof_gate] is accepted implementation activation canonical specification
+  + [proof_gate] is accepted IR8-IA01 boundary and dependency decision
+  + [proof_gate] is deterministic fixture and expected ledger material
+  + [proof_gate] is contract tests covering all accepted fixture cases
+  + [proof_gate] is generated-output disposal proof
+  + [proof_gate] is no-dispatch proof
+  + [proof_gate] is no-live-effect proof
+  + [proof_gate] is adapter, dependency, dispatch, and live-control deferral decision
+
+  = must: block implementation proof acceptance if any proof gate is missing or contradicted

@@ -174,7 +174,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_S03_Completion_Review.v1.sop
   + [support_record] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
   + [support_record] is docs/reviews/IR8_S04_Completion_Review.v1.sop
-  + [support_gap] is IR8-S05 integrated manager implementation plan and activation pack not yet executed
+  + [support_record] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [support_record] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [support_record] is docs/reviews/IR8_S05_Completion_Review.v1.sop
+  + [support_record] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [support_gap] is IR8 implementation activation slices not yet minted
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -269,28 +273,29 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_S03_Completion_Review.v1.sop
   + [support_record] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
   + [support_record] is docs/reviews/IR8_S04_Completion_Review.v1.sop
-  + [support_gap] is IR8-S05 integrated manager implementation plan and activation pack not yet executed
+  + [support_record] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [support_record] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [support_record] is docs/reviews/IR8_S05_Completion_Review.v1.sop
+  + [support_record] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [support_gap] is IR8 implementation activation slices not yet minted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-S05 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route IR8-S05 as requires deeper reasoning because implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
+  = must: mint IR8 implementation activation slices before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route IR8 implementation activation minting as requires deeper reasoning because implementation activation controls file creation, generated-output roots, dependency deferral, adapter deferral, dispatch refusal, and future manager runtime boundaries
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadySlice: IR8-S05-IntegratedManagerImplementationPlanAndActivationPack] is ready
+& [CurrentReadyChunk: IR8ImplementationActivationMinting] is ready_for_slice_minting
   + [chunk_id] is IR8
-  + [slice_id] is IR8-S05
-  + [slice_name] is integrated manager implementation plan and activation pack
-  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
-  + [slice_surface] is docs/slices/IR8_Final_Slices.v1.sop
-  + [accepted_dependency] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
-  + [completion_review] is docs/reviews/IR8_S04_Completion_Review.v1.sop
+  + [chunk_name] is IR8 integrated manager orchestration implementation activation
+  + [authority_basis] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [activation_pack] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
   + [model_route] is requires deeper reasoning
-  + [model_route_reason] is implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
+  + [model_route_reason] is implementation activation controls file creation, generated-output roots, dependency deferral, adapter deferral, dispatch refusal, and future manager runtime boundaries
 
-  = must: execute IR8-S05 before implementation activation, dependencies, adapters, transports, UI, or generated outputs
+  = must: mint IR8 implementation activation slices before implementation, dependencies, adapters, transports, UI, or generated outputs
   = must: keep agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

@@ -1,0 +1,109 @@
+Subject: IR8 Integrated Manager Orchestration Implementation Plan V1
+Date: 2026-05-27
+Implementation Plan UUID: a7cd09b4-c701-4aa2-97d9-bdc607fa5405
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [boundary_map] docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+@ [manager_loop_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+@ [fixture_plan] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+
+& [IR8IntegratedManagerOrchestrationImplementationPlanV1] is the IR8-S05 implementation plan for future inert integrated manager orchestration
+  + [implementation_plan_id] is ir8-integrated-manager-orchestration-implementation-plan-v1
+  + [implementation_plan_uuid] is a7cd09b4-c701-4aa2-97d9-bdc607fa5405
+  + [slice_id] is IR8-S05
+  + [source_chunk] is IR8 integrated manager orchestration planning
+  + [authority_scope] is future file inventory, fixture inventory, expected ledger inventory, generated-output roots, dependency boundary, adapter boundary, dispatch boundary, command plan, proof checklist, no-live-effect proof, and implementation activation boundary
+  + [implementation_scope] is plan only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: plan future implementation without writing implementation code, fixture source files, expected ledger files, generated output files, dependency changes, package metadata changes, adapters, transports, UI, dispatch mechanisms, process control, GPU control, model runtime mutation, job control, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+  = must: keep future implementation inert, deterministic, stdlib-only, and record-oriented until activation slices and completion reviews accept each step
+  = must: preserve manager authority ladder, manager loop contract, handoff contract, fixture plan, dry-run-only semantics, and no-live-control boundary
+
+& [FutureIR8ImplementationFileInventory] is the planned implementation file inventory
+  + [future_file] is src/langsop/manager/__init__.py
+    + [purpose] is export accepted manager model, readiness, packet, handoff, and fixture-runner APIs
+  + [future_file] is src/langsop/manager/records.py
+    + [purpose] is define manager cycle input, authority context, readiness projection, work packet candidate, proof obligation, completion gate, fault, and interrupt records
+  + [future_file] is src/langsop/manager/authority.py
+    + [purpose] is classify source authority, manager planning records, execution evidence, coordination records, operations records, generated projections, graph checkpoints, and carrier context
+  + [future_file] is src/langsop/manager/readiness.py
+    + [purpose] is recompute ready, blocked, stale, unsafe, contested, and ambiguous readiness states
+  + [future_file] is src/langsop/manager/packets.py
+    + [purpose] is produce bounded work packet candidates with model routing, proof obligations, completion gates, and stale triggers
+  + [future_file] is src/langsop/manager/handoffs.py
+    + [purpose] is model manager-to-surface, surface-to-manager, manager-coordination, manager-operations, human override, refusal, and interrupt handoffs
+  + [future_file] is src/langsop/manager/faults.py
+    + [purpose] is represent stale, unsupported, contested, unclassified, promotion, forbidden-scope, and model-route faults
+  + [future_file] is src/langsop/manager/generated_paths.py
+    + [purpose] is constrain future generated manager outputs to ignored disposable roots only
+  + [future_file] is src/langsop/manager/fixture_runner.py
+    + [purpose] is run accepted IR8 fixture records and compare deterministic traces without live effects
+  + [future_file] is tests/test_ir8_integrated_manager_contracts.py
+    + [purpose] is prove manager model, readiness, packet, handoff, fault, generated path, fixture runner, no-dispatch, and no-live-effect contracts
+
+  = must: not create any listed file until future implementation activation slices explicitly open it
+  = should: route bounded implementation files to GPT-5.3-Codex-Spark after activation boundaries are accepted unless semantics change
+
+& [FutureIR8FixtureAndLedgerInventory] is the planned fixture and expected ledger inventory
+  + [future_fixture_source_root] is tests/fixtures/sop/ir8_integrated_manager/
+  + [future_expected_ledger_root] is tests/fixtures/expected/ir8_integrated_manager/
+  + [future_generated_output_root] is tests/fixtures/generated/ir8_integrated_manager/
+  + [future_fixture_case_count] is 12
+  + [future_fixture_case_source] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+
+  = must: keep fixture roots unopened until implementation activation authorizes fixture source and expected ledger creation
+  = must: keep generated output root ignored, disposable, and non-authoritative if later opened
+
+& [IR8DependencyAdapterAndDispatchBoundary] is the implementation dependency, adapter, and dispatch boundary
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [external_manager_runtime_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [future_dependency_decision_required] is true before any external runtime, adapter, transport, UI, or dispatch implementation
+
+  = must: implement future manager prototype with existing local stdlib-only patterns unless a later accepted decision authorizes dependency or adapter changes
+  = must: preserve that manager outputs remain records, not dispatch or live effects
+
+& [IR8FutureCommandAndProofPlan] is the validation command and proof plan for future implementation activation
+  + [future_validation_command] is python -m compileall -q src tests
+  + [future_validation_command] is python -m unittest discover -s tests
+  + [future_validation_command] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [future_validation_command] is git diff --check
+  + [future_sentinel_check] is Test-Path tests\fixtures\generated\ir8_integrated_manager should be false after cleanup
+  + [future_sentinel_check] is Test-Path platform\coordination\mailboxes should be false unless an explicitly accepted mailbox IO slice opens it
+  + [proof_required] is accepted output hash ledger
+  + [proof_required] is fixture and expected ledger count
+  + [proof_required] is generated-output disposal proof
+  + [proof_required] is no-dispatch proof
+  + [proof_required] is no-live-effect proof
+  + [proof_required] is dependency and adapter deferral decision
+
+  = must: reject implementation completion if generated output, mailbox IO, dependency, adapter, dispatch, operation, credential, network, destructive filesystem, operations-control, or live-control effects leak outside accepted roots and contracts
+
+& [IR8S05CoverageReview] is the coverage checklist for IR8-S05
+  + [future_file_inventory_present] is true
+  + [future_fixture_and_ledger_inventory_present] is true
+  + [dependency_adapter_and_dispatch_boundary_present] is true
+  + [future_command_and_proof_plan_present] is true
+  + [activation_pack_required] is true
+  + [implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  = must: accept IR8-S05 only when all checklist items are satisfied

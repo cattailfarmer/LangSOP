@@ -1,0 +1,102 @@
+Subject: IR8 S05 Completion Review V1
+Date: 2026-05-27
+Review UUID: 7d7366ea-07fa-4953-a6e5-31d7a2e6e14f
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [implementation_plan] docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+@ [activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+@ [accepted_dependency] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [prior_completion_review] docs/reviews/IR8_S04_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR8-S05] is the completed-work review for IR8-S05 integrated manager implementation plan and activation pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-S05
+  + [completed_output] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [completed_output_sha256] is 6C2B27221AAB3862845EC64EA1EE09AA598B7DBA00A818149AC0137DA1FEC4A3
+  + [completed_output] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [completed_output_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8-S05 and open IR8-S06
+  + [next_gate_result] is IR8-S06 may open
+  + [next_model_route] is requires deeper reasoning for IR8 completion review and implementation activation recommendation
+  + [next_model_route_reason] is final IR8 planning acceptance affects implementation activation, dispatch boundaries, and future operations-manager capability
+
+  = must: treat this review as gate-opening evidence for IR8-S06 only
+  = must: rerun this review if the implementation plan, activation pack, IR8 fixture plan, IR8 slice surface, post-IR7 readiness surface, any accepted IR2 through IR7 implementation proof pack, IR7 implementation completion review, or FSC5 operations safety pack changes
+  = must: keep integrated manager implementation, fixture file creation, expected ledger creation, generated outputs, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
+
+& [IR8S05Verification] is the verification result for IR8-S05
+  + [future_file_inventory_present] is true
+  + [future_fixture_and_ledger_inventory_present] is true
+  + [dependency_adapter_and_dispatch_boundary_present] is true
+  + [future_command_and_proof_plan_present] is true
+  + [activation_pack_present] is true
+  + [implementation_activation_slice_candidate_count] is 8
+  + [implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  ! [IR8S05VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+    @ [support] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+
+& [SupportDelta: IR8-S05] is the support delta produced by IR8-S05
+  + [new_support_record] is IR8 has a future implementation file inventory, fixture inventory, expected ledger inventory, generated-output root plan, dependency boundary, adapter boundary, dispatch boundary, command plan, proof checklist, and no-live-effect proof plan
+  + [new_support_record] is IR8 has a pending implementation activation pack with eight recommended activation slices
+  + [new_support_record] is IR8-S06 has enough support to perform final planning completion review and decide whether implementation activation may open
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-S05] is the requirement delta produced by IR8-S05
+  + [requirement_delta] is IR8-S06 must accept or reject final IR8 planning and may open implementation activation only if no dispatch, live-control, command execution, process control, GPU control, job dispatch, dependency, generated output, credential, network, or destructive filesystem fault is present
+  + [requirement_delta] is future IR8 implementation activation must create a separate source-preserved canonical activation specification before implementation slices execute
+  + [requirement_delta] is no integrated manager implementation, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized by IR8-S05
+
+& [FaultReview: IR8-S05] is the fault review for IR8-S05
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_file_inventory_found] is false
+  + [missing_dependency_boundary_found] is false
+  + [missing_dispatch_boundary_found] is false
+  + [missing_activation_pack_found] is false
+  + [implementation_leak_found] is false
+  + [fixture_source_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8S05Accepted] is accepted
+    @ [support] [IR8S05Verification]
+    @ [support] [SupportDelta: IR8-S05]
+    @ [support] [RequirementDelta: IR8-S05]
+    @ [support] [FaultReview: IR8-S05]
+
+& [NextSliceGate: IR8-S06] is opened
+  + [opened_slice] is IR8-S06 IR8 completion review and implementation activation recommendation
+  + [accepted_dependency] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [accepted_dependency_sha256] is 6C2B27221AAB3862845EC64EA1EE09AA598B7DBA00A818149AC0137DA1FEC4A3
+  + [accepted_dependency] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [accepted_dependency_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR8 planning acceptance affects implementation activation, dispatch boundaries, and future operations-manager capability
+  + [safety_limit] is no agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-S06 next unless user redirects or a new fault invalidates this review
