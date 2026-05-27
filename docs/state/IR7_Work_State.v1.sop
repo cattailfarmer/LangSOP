@@ -36,6 +36,9 @@ State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
 @ [accepted_output] src/langsop/operations/resource_safety.py
 @ [accepted_output] src/langsop/operations/action_routes.py
 @ [completion_review] docs/reviews/IR7_IA04_Completion_Review.v1.sop
+@ [accepted_output] src/langsop/operations/generated_paths.py
+@ [accepted_output] src/langsop/operations/fixture_runner.py
+@ [completion_review] docs/reviews/IR7_IA05_Completion_Review.v1.sop
 @ [post_ir6_readiness] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
 @ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
 @ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
@@ -43,9 +46,9 @@ State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
 
 & [IR7WorkStateV1] is the current derived work state for IR7 operations dry-run request simulator planning
   + [chunk_ref] is IR7 operations dry-run request simulator planning
-  + [state_basis] is docs/reviews/IR7_IA04_Completion_Review.v1.sop
-  + [state_basis_sha256] is 0F9136D06B73E1D19EF8E477C347BC5075E861667B72987265FA4A4545F24D05
-  + [surface_status] is IR7-IA04_accepted_and_IR7-IA05_open
+  + [state_basis] is docs/reviews/IR7_IA05_Completion_Review.v1.sop
+  + [state_basis_sha256] is 7C7E365249E1C1B3381C34B84676C09B9FCD8AFAEA6115E2CE4E13012705EE44
+  + [surface_status] is IR7-IA05_accepted_and_IR7-IA06_open
   + [source_document] is docs/source/2026-05-26_ir7_final_slices/Derived_IR7_Final_Slices_Source.sop
   + [source_document_sha256] is 9482711BA29A4924479663F42DAE398AB93A05537F2751E6D9E3053200CB657E
   + [source_manifest] is docs/source/2026-05-26_ir7_final_slices/Source_Document_Manifest.sop
@@ -142,27 +145,38 @@ State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
   + [accepted_output_sha256] is 247C9D1FB8FCDB51BA1D563F532FEBC668E088EEB4B45CB59B0137BB7EC4F325
   + [accepted_completion_review] is docs/reviews/IR7_IA04_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 0F9136D06B73E1D19EF8E477C347BC5075E861667B72987265FA4A4545F24D05
-  + [current_ready_slice] is IR7-IA05
-  + [current_ready_slice_name] is generated path policy and fixture runner implementation
+  + [accepted_slice] is IR7-IA05
+  + [accepted_output] is src/langsop/operations/__init__.py
+  + [accepted_output_sha256] is CFEE010C76B4792F460F589F635F1DCD022E787C1F9C65AAE079F0CE0F693332
+  + [accepted_output] is src/langsop/operations/generated_paths.py
+  + [accepted_output_sha256] is D158D22FD0619B2D8A86D2E91B9F8994E62417CEB2D610DBDA4E8F785D3C07C6
+  + [accepted_output] is src/langsop/operations/fixture_runner.py
+  + [accepted_output_sha256] is A872D2EAD36AECF97A118D32DA6465B37218A9F0EB7E34C8CE8E86AFDBFD92D2
+  + [accepted_completion_review] is docs/reviews/IR7_IA05_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 7C7E365249E1C1B3381C34B84676C09B9FCD8AFAEA6115E2CE4E13012705EE44
+  + [current_ready_slice] is IR7-IA06
+  + [current_ready_slice_name] is contract tests and generated-output/no-live-effect proof
   + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_reason] is generated path policy and fixture runner behavior are bounded by accepted file inventory, fixtures, ledgers, and safety models
+  + [current_ready_slice_model_route_reason] is tests and proof are bounded by accepted runner behavior, generated path policy, fixtures, and expected ledgers
   + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after implementation activation slices are accepted and implementation tasks are bounded
-  + [operations_simulator_implementation_authorized] is true_for_IR7-IA05_generated_path_policy_and_fixture_runner_code_only
+  + [operations_simulator_implementation_authorized] is true_for_IR7-IA06_contract_tests_and_generated_output_no_live_effect_proof_only
   + [resource_safety_implementation_authorized] is completed_for_IR7-IA04
-  + [generated_path_policy_implementation_authorized] is true_for_IR7-IA05_only
-  + [fixture_runner_implementation_authorized] is true_for_IR7-IA05_only
+  + [generated_path_policy_implementation_authorized] is completed_for_IR7-IA05
+  + [fixture_runner_implementation_authorized] is completed_for_IR7-IA05
+  + [contract_test_creation_authorized_by_current_slice] is true_for_IR7-IA06_only
+  + [generated_output_proof_creation_authorized_by_current_slice] is true_for_IR7-IA06_disposable_ignored_output_only
   + [fixture_file_creation_authorized_by_current_slice] is false
   + [expected_ledger_creation_authorized_by_current_slice] is false
   + [dependency_installation_authorized_by_current_slice] is false
   + [package_metadata_mutation_authorized_by_current_slice] is false
-  + [generated_output_creation_authorized_by_current_slice] is false
+  + [generated_output_creation_authorized_by_current_slice] is true_for_IR7-IA06_disposable_ignored_proof_output_only
   + [agent_dispatch_authorized] is false
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
   + [implementation_activation_slice_minting_opened] is completed
-  + [IR7_state] is ready_for_IR7-IA05_generated_path_policy_and_fixture_runner_implementation
+  + [IR7_state] is ready_for_IR7-IA06_contract_tests_and_generated_output_no_live_effect_proof
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR7-IA05 before generated outputs, contract tests, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: execute IR7-IA06 before dependency installation, package metadata mutation, adapters, transports, UI, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
   = must: keep operation request, dry-run result, refusal, and human approval records non-authoritative until completion reviews accept their contracts
-  = must: mark this state stale if IR7 source document, IR7 source manifest, canonical specification, slice surface, minting review, IR7-S01 output, IR7-S01 completion review, IR7-S02 output, IR7-S02 completion review, IR7-S03 output, IR7-S03 completion review, IR7-S04 outputs, IR7-S04 completion review, IR7-S05 output, IR7-S05 completion review, IR7 activation pack, IR7 completion review, IR7 implementation activation source, IR7 implementation activation source manifest, IR7 implementation activation canonical specification, IR7 implementation activation slice surface, IR7 implementation activation minting review, IR7-IA01 output, IR7-IA01 completion review, IR7-IA02 fixture source set, IR7-IA02 expected ledger set, IR7-IA02 completion review, IR7-IA03 operation model outputs, IR7-IA03 completion review, IR7-IA04 resource safety outputs, IR7-IA04 completion review, post-IR6 readiness surface, FSC5 operations safety pack, IR6 proof pack, or IR6 implementation completion review changes
+  = must: mark this state stale if IR7 source document, IR7 source manifest, canonical specification, slice surface, minting review, IR7-S01 output, IR7-S01 completion review, IR7-S02 output, IR7-S02 completion review, IR7-S03 output, IR7-S03 completion review, IR7-S04 outputs, IR7-S04 completion review, IR7-S05 output, IR7-S05 completion review, IR7 activation pack, IR7 completion review, IR7 implementation activation source, IR7 implementation activation source manifest, IR7 implementation activation canonical specification, IR7 implementation activation slice surface, IR7 implementation activation minting review, IR7-IA01 output, IR7-IA01 completion review, IR7-IA02 fixture source set, IR7-IA02 expected ledger set, IR7-IA02 completion review, IR7-IA03 operation model outputs, IR7-IA03 completion review, IR7-IA04 resource safety outputs, IR7-IA04 completion review, IR7-IA05 generated path and fixture runner outputs, IR7-IA05 completion review, post-IR6 readiness surface, FSC5 operations safety pack, IR6 proof pack, or IR6 implementation completion review changes

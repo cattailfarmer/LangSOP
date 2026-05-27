@@ -1,0 +1,114 @@
+Subject: IR7 IA05 Completion Review V1
+Date: 2026-05-27
+Review UUID: 9d372b6f-0216-442d-a180-5ea4424163f8
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+@ [resource_safety_review] docs/reviews/IR7_IA04_Completion_Review.v1.sop
+@ [completed_output] src/langsop/operations/__init__.py
+@ [completed_output] src/langsop/operations/generated_paths.py
+@ [completed_output] src/langsop/operations/fixture_runner.py
+
+& [CompletedWorkReview: IR7-IA05] is the completed-work review for IR7-IA05 generated path policy and fixture runner implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA05
+  + [completed_output] is src/langsop/operations/__init__.py
+  + [completed_output_sha256] is CFEE010C76B4792F460F589F635F1DCD022E787C1F9C65AAE079F0CE0F693332
+  + [completed_output] is src/langsop/operations/generated_paths.py
+  + [completed_output_sha256] is D158D22FD0619B2D8A86D2E91B9F8994E62417CEB2D610DBDA4E8F785D3C07C6
+  + [completed_output] is src/langsop/operations/fixture_runner.py
+  + [completed_output_sha256] is A872D2EAD36AECF97A118D32DA6465B37218A9F0EB7E34C8CE8E86AFDBFD92D2
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-IA05 and open IR7-IA06
+  + [next_gate_result] is IR7-IA06 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for contract tests and generated-output/no-live-effect proof
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR7-IA06 only
+  = must: rerun this review if fixture source, expected ledger, path policy, fixture runner, operation models, activation boundary, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7IA05Verification] is the verification result for IR7-IA05
+  + [generated_path_policy_file_present] is true
+  + [fixture_runner_file_present] is true
+  + [package_exports_updated] is true
+  + [fixture_source_path_policy_present] is true
+  + [expected_ledger_path_policy_present] is true
+  + [generated_output_path_policy_present] is true
+  + [source_doc_write_refusal_present] is true
+  + [expected_ledger_write_refusal_present] is true
+  + [platform_mailbox_write_refusal_present] is true
+  + [fixture_runner_loads_tracked_fixture_source] is true
+  + [fixture_runner_loads_tracked_expected_ledgers] is true
+  + [fixture_runner_projects_all_13_fixtures_in_memory] is true
+  + [fixture_runner_comparison_reports_pass_for_13_fixtures] is true
+  + [generated_output_created_by_slice] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7IA05VerificationSatisfied] is accepted
+    @ [support] src/langsop/operations/generated_paths.py
+    @ [support] src/langsop/operations/fixture_runner.py
+    @ [support] src/langsop/operations/__init__.py
+
+& [SupportDelta: IR7-IA05] is the support delta produced by IR7-IA05
+  + [new_support_record] is IR7 now has generated path policy for operations dry-run projections and reports
+  + [new_support_record] is IR7 now has in-memory fixture runner coverage over all 13 accepted operations fixture sources and five expected ledgers
+  + [new_support_record] is IR7-IA06 may create contract tests and generated-output/no-live-effect proof against accepted runner behavior
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-IA05] is the requirement delta produced by IR7-IA05
+  + [requirement_delta] is IR7-IA06 is GPT-5.3-Codex-Spark-suitable because tests and proof are bounded by accepted runner behavior, generated path policy, and fixture material
+  + [requirement_delta] is IR7-IA06 may create tests/test_ir7_operations_dry_run_contracts.py and docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+  + [requirement_delta] is generated output may be created only as disposable ignored proof output under accepted generated roots during IR7-IA06 verification
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-IA05
+
+& [FaultReview: IR7-IA05] is the fault review for IR7-IA05
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [generated_output_created_by_slice] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7IA05Accepted] is accepted
+    @ [support] [IR7IA05Verification]
+    @ [support] [SupportDelta: IR7-IA05]
+    @ [support] [RequirementDelta: IR7-IA05]
+    @ [support] [FaultReview: IR7-IA05]
+
+& [NextSliceGate: IR7-IA06] is opened
+  + [opened_slice] is IR7-IA06 contract tests and generated-output/no-live-effect proof
+  + [accepted_dependency] is src/langsop/operations/generated_paths.py
+  + [accepted_dependency] is src/langsop/operations/fixture_runner.py
+  + [accepted_dependency] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [accepted_dependency] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is tests and proof are bounded by accepted runner behavior, path policy, fixtures, and expected ledgers
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA06 next unless user redirects or a new fault invalidates this review
