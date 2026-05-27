@@ -1,0 +1,152 @@
+Subject: IR7 Operations Dry Run Fixture Index V1
+Date: 2026-05-27
+Fixture Index UUID: 0beae578-89e1-43bc-9dc4-51bf84ee2eee
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [IR7_S02_dry_run_contract] docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+@ [IR7_S03_resource_safety_contract] docs/operations/IR7_Resource_Safety_Human_Approval_And_Rollback_Contract.v1.sop
+@ [IR7_S03_completion_review] docs/reviews/IR7_S03_Completion_Review.v1.sop
+
+& [FixtureIndex: IR7OperationsDryRunFixtureIndexV1] is the fixture index for IR7 operations dry-run fixtures
+  + [slice_id] is IR7-S04
+  + [fixture_plan] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+  + [fixture_count] is 13
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture planning is bounded by accepted IR7-S01 through IR7-S03 contracts
+
+  = must: index fixture cases only, not create fixture source files, expected ledgers, generated outputs, or implementation code
+
+& [FixtureIndexEntry: IR7X-001] is dry_run_resource_request
+  + [fixture_case] is IR7X-001-dry-run-resource-request
+  + [primary_contract] is DryRunResultRecordSchema
+  + [expected_status] is accepted
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is NoLiveEffectAndNonAuthorityRule
+  + [expected_ledger_family] is dry_run_result_non_authority_expected
+
+& [FixtureIndexEntry: IR7X-002] is blocked_live_control
+  + [fixture_case] is IR7X-002-blocked-live-control
+  + [primary_contract] is NoLiveEffectAndNonAuthorityRule
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_live_process_control or refused_gpu_control
+  + [expected_ledger_family] is refusal_and_interrupt_expected
+
+& [FixtureIndexEntry: IR7X-003] is gpu_contention
+  + [fixture_case] is IR7X-003-gpu-contention
+  + [primary_contract] is RiskAndBlastRadiusContract
+  + [expected_status] is review_required
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is no_gpu_workload_launch
+  + [expected_ledger_family] is resource_safety_and_human_approval_expected
+
+& [FixtureIndexEntry: IR7X-004] is model_runtime_unavailable
+  + [fixture_case] is IR7X-004-model-runtime-unavailable
+  + [primary_contract] is ResourceTargetSafetyClassification
+  + [expected_status] is blocked_for_live_effect
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is refused_model_runtime_control
+  + [expected_ledger_family] is dry_run_result_non_authority_expected
+
+& [FixtureIndexEntry: IR7X-005] is credential_boundary
+  + [fixture_case] is IR7X-005-credential-boundary
+  + [primary_contract] is CredentialBoundaryAndSecretHandlingContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_credential_control
+  + [expected_ledger_family] is resource_safety_and_human_approval_expected
+
+& [FixtureIndexEntry: IR7X-006] is network_exposure_refusal
+  + [fixture_case] is IR7X-006-network-exposure-refusal
+  + [primary_contract] is NetworkBoundaryAndExposureContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is refused_network_control
+  + [expected_ledger_family] is resource_safety_and_human_approval_expected
+
+& [FixtureIndexEntry: IR7X-007] is destructive_command_refusal
+  + [fixture_case] is IR7X-007-destructive-command-refusal
+  + [primary_contract] is RefusalAndInterruptOutputContract
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_destructive_filesystem_control
+  + [expected_ledger_family] is refusal_and_interrupt_expected
+
+& [FixtureIndexEntry: IR7X-008] is missing_authority_notice
+  + [fixture_case] is IR7X-008-missing-authority-notice
+  + [primary_contract] is OperationRequestIdentityAndLineageSchema
+  + [expected_status] is faulted
+  + [required_notice] is missing_or_stale_authority_notice refusal
+  + [required_refusal_or_gate] is blocked_operation_request
+  + [expected_ledger_family] is operation_request_identity_and_safety_expected
+
+& [FixtureIndexEntry: IR7X-009] is stale_or_revoked_human_approval
+  + [fixture_case] is IR7X-009-stale-or-revoked-human-approval
+  + [primary_contract] is ApprovalStaleAndRevocationRule
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_human_override
+  + [expected_ledger_family] is resource_safety_and_human_approval_expected
+
+& [FixtureIndexEntry: IR7X-010] is dry_run_success_not_live_approval
+  + [fixture_case] is IR7X-010-dry-run-success-not-live-approval
+  + [primary_contract] is NoLiveEffectAndNonAuthorityRule
+  + [expected_status] is blocked_for_live_effect
+  + [required_notice] is authority_notice_ref present_and_fresh
+  + [required_refusal_or_gate] is refused_job_control or refused_gpu_control
+  + [expected_ledger_family] is no_live_effect_and_authority_nonpromotion_expected
+
+& [FixtureIndexEntry: IR7X-011] is coordination_claim_dispatch_refusal
+  + [fixture_case] is IR7X-011-coordination-claim-dispatch-refusal
+  + [primary_contract] is SourceProjectionAndCompletionBoundary
+  + [expected_status] is blocked
+  + [required_notice] is authority_notice_ref present
+  + [required_refusal_or_gate] is refused_job_control
+  + [expected_ledger_family] is no_live_effect_and_authority_nonpromotion_expected
+
+& [FixtureIndexEntry: IR7X-012] is mailbox_carrier_not_dispatch_authority
+  + [fixture_case] is IR7X-012-mailbox-carrier-not-dispatch-authority
+  + [primary_contract] is SourceProjectionAndCompletionBoundary
+  + [expected_status] is blocked
+  + [required_notice] is carrier_context_only notice
+  + [required_refusal_or_gate] is refused_job_control
+  + [expected_ledger_family] is no_live_effect_and_authority_nonpromotion_expected
+
+& [FixtureIndexEntry: IR7X-013] is generated_projection_not_authority
+  + [fixture_case] is IR7X-013-generated-projection-not-authority
+  + [primary_contract] is NoLiveEffectAndNonAuthorityRule
+  + [expected_status] is blocked
+  + [required_notice] is generated_projection_non_authority
+  + [required_refusal_or_gate] is refused_live_control
+  + [expected_ledger_family] is no_live_effect_and_authority_nonpromotion_expected
+
+& [FixtureIndexCoverage: IR7-S04] is the fixture index coverage assertion
+  + [fixture_count] is 13
+  + [covered_fixture] is dry_run_resource_request
+  + [covered_fixture] is blocked_live_control
+  + [covered_fixture] is gpu_contention
+  + [covered_fixture] is model_runtime_unavailable
+  + [covered_fixture] is credential_boundary
+  + [covered_fixture] is network_exposure_refusal
+  + [covered_fixture] is destructive_command_refusal
+  + [covered_fixture] is missing_authority_notice
+  + [covered_fixture] is stale_or_revoked_human_approval
+  + [covered_fixture] is dry_run_success_not_live_approval
+  + [covered_fixture] is coordination_claim_dispatch_refusal
+  + [covered_fixture] is mailbox_carrier_not_dispatch_authority
+  + [covered_fixture] is generated_projection_not_authority
+  + [covered_contract] is IR7DryRunRequestResultAndRefusalContractV1
+  + [covered_contract] is IR7ResourceSafetyHumanApprovalAndRollbackContractV1
+  + [expected_ledger_family] is operation_request_identity_and_safety_expected
+  + [expected_ledger_family] is dry_run_result_non_authority_expected
+  + [expected_ledger_family] is refusal_and_interrupt_expected
+  + [expected_ledger_family] is resource_safety_and_human_approval_expected
+  + [expected_ledger_family] is no_live_effect_and_authority_nonpromotion_expected
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_outputs_created] is false
+  + [operations_simulator_code_created] is false
+
+  = must: reject IR7-S04 if fixture_count is less than 13
+  = must: reject IR7-S04 if any index entry lacks primary_contract, expected_status, required_notice, required_refusal_or_gate, or expected_ledger_family

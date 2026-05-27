@@ -1,0 +1,129 @@
+Subject: IR7 S04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 2fdd5bd0-5869-4648-a15c-b3ee9f08c808
+
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [completed_output] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [completed_output] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+@ [IR7_S02_dry_run_contract] docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+@ [IR7_S02_completion_review] docs/reviews/IR7_S02_Completion_Review.v1.sop
+@ [IR7_S03_resource_safety_contract] docs/operations/IR7_Resource_Safety_Human_Approval_And_Rollback_Contract.v1.sop
+@ [IR7_S03_completion_review] docs/reviews/IR7_S03_Completion_Review.v1.sop
+@ [FSC5_fixture_plan] docs/fixtures/FSC5_Operations_Safety_Fixture_Plan.v1.sop
+@ [FSC5_fixture_index] docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+
+& [CompletedWorkReview: IR7-S04] is the completed-work review for IR7-S04 operations dry-run fixture plan and expected ledger plan
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-S04
+  + [completed_output] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+  + [completed_output_sha256] is CA3C98ECB708BAF225C89EBF1B7C5B34704303B562EC12E26B738737326B03A3
+  + [completed_output] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+  + [completed_output_sha256] is 73E0E51DC51D89BA550B494F2C4CC021569EE527E97A1991DB9B87A83CA96CE2
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable bounded fixture planning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-S04 and open IR7-S05
+  + [next_gate_result] is IR7-S05 may open
+  + [next_model_route] is requires deeper reasoning for IR7-S05 operations dry-run simulator implementation plan and generated-output boundary
+  + [next_model_route_reason] is implementation planning and generated-output policy affect operation safety, future dispatch, and live-control boundaries
+
+  = must: treat this review as gate-opening evidence for IR7-S05 only
+  = must: rerun this review if the fixture plan, fixture index, IR7-S02 output, IR7-S03 output, their reviews, IR7 slice surface, FSC5 fixture plan, or FSC5 fixture index changes
+  = must: keep fixture source creation, expected ledger file creation, generated output creation, executable simulator implementation, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7S04Verification] is the verification result for IR7-S04
+  + [fixture_plan_present] is true
+  + [fixture_index_present] is true
+  + [fixture_case_count] is 13
+  + [expected_ledger_family_planned] is true
+  + [dry_run_resource_request_fixture_present] is true
+  + [blocked_live_control_fixture_present] is true
+  + [gpu_contention_fixture_present] is true
+  + [model_runtime_unavailable_fixture_present] is true
+  + [credential_boundary_fixture_present] is true
+  + [network_exposure_refusal_fixture_present] is true
+  + [destructive_command_refusal_fixture_present] is true
+  + [missing_authority_notice_fixture_present] is true
+  + [stale_or_revoked_human_approval_fixture_present] is true
+  + [dry_run_success_not_live_approval_fixture_present] is true
+  + [coordination_claim_dispatch_refusal_fixture_present] is true
+  + [mailbox_carrier_not_dispatch_authority_fixture_present] is true
+  + [generated_projection_not_authority_fixture_present] is true
+  + [fixture_source_files_created] is false
+  + [expected_ledger_files_created] is false
+  + [generated_outputs_created] is false
+  + [operations_simulator_code_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [command_executed] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_or_mutation_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7S04VerificationSatisfied] is accepted
+    @ [support] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+    @ [support] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [SupportDelta: IR7-S04] is the support delta produced by IR7-S04
+  + [new_support_record] is IR7 now has a 13-case fixture plan covering dry-run success, refusal, resource safety, authority notice, human approval staleness and revocation, coordination non-dispatch, mailbox carrier non-authority, and generated projection non-authority
+  + [new_support_record] is IR7 now has planned expected ledger families for operation request identity, dry-run non-authority, refusal and interrupt, resource safety and approval, and authority nonpromotion
+  + [new_support_record] is IR7 fixture planning explicitly preserves that fixture success is not live-control approval
+  + [new_support_record] is IR7-S05 has enough support to define future implementation inventory, generated-output roots, fixture runner boundary, dependency boundary, command plan, and proof checklist without creating executable code
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-S04] is the requirement delta produced by IR7-S04
+  + [requirement_delta] is IR7-S05 must define future implementation files, fixture source inventory, expected ledger inventory, generated output roots, dependency boundary, public API boundary, fixture runner boundary, command plan, and proof checklist
+  + [requirement_delta] is IR7-S05 must preserve fixture source and expected ledger creation as gated until a later implementation activation slice
+  + [requirement_delta] is IR7-S05 must keep generated operations projections disposable, reproducible, ignored, and non-authoritative
+  + [requirement_delta] is IR7-S05 requires deeper reasoning because implementation and generated-output policy affect operation safety and future live-control boundaries
+  + [requirement_delta] is no fixture source file, expected ledger file, generated output, executable simulator code, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-S04
+
+& [FaultReview: IR7-S04] is the fault review for IR7-S04
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_fixture_plan_found] is false
+  + [missing_fixture_index_found] is false
+  + [fixture_count_less_than_13_found] is false
+  + [missing_expected_ledger_family_found] is false
+  + [fixture_source_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [operations_simulator_implementation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_mutation_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_or_mutation_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7S04Accepted] is accepted
+    @ [support] [IR7S04Verification]
+    @ [support] [SupportDelta: IR7-S04]
+    @ [support] [RequirementDelta: IR7-S04]
+    @ [support] [FaultReview: IR7-S04]
+
+& [NextSliceGate: IR7-S05] is opened
+  + [opened_slice] is IR7-S05 operations dry-run simulator implementation plan and generated-output boundary
+  + [accepted_dependency] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+  + [accepted_dependency_sha256] is CA3C98ECB708BAF225C89EBF1B7C5B34704303B562EC12E26B738737326B03A3
+  + [accepted_dependency] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+  + [accepted_dependency_sha256] is 73E0E51DC51D89BA550B494F2C4CC021569EE527E97A1991DB9B87A83CA96CE2
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation planning and generated-output policy affect operation safety, future dispatch, and live-control boundaries
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-S05 next unless user redirects or a new fault invalidates this review

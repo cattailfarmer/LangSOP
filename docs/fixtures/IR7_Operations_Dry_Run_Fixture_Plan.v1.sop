@@ -1,0 +1,217 @@
+Subject: IR7 Operations Dry Run Fixture Plan V1
+Date: 2026-05-27
+Fixture Plan UUID: d82299ac-3547-4374-a305-21a4609bd088
+
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [IR7_S01_boundary_import] docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [IR7_S02_dry_run_contract] docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+@ [IR7_S03_resource_safety_contract] docs/operations/IR7_Resource_Safety_Human_Approval_And_Rollback_Contract.v1.sop
+@ [IR7_S03_completion_review] docs/reviews/IR7_S03_Completion_Review.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+@ [FSC5_fixture_plan] docs/fixtures/FSC5_Operations_Safety_Fixture_Plan.v1.sop
+@ [FSC5_fixture_index] docs/fixtures/FSC5_Operations_Safety_Fixture_Index.v1.sop
+@ [IR6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+
+& [FixturePlan: IR7OperationsDryRunFixturePlanV1] is the bounded fixture plan for IR7 operations dry-run request simulator planning
+  + [slice_id] is IR7-S04
+  + [fixture_family] is ir7-operations-dry-run-request-result-refusal-non-authority
+  + [fixture_case_count] is 13
+  + [fixture_index] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture planning is bounded by accepted IR7-S01 through IR7-S03 contracts
+
+  = must: treat this plan as fixture planning, not fixture source creation, expected ledger creation, generated output creation, or executable simulator implementation
+  = must: map every fixture case to request_shape, safety_contract_behavior, authority_notice_state, dry_run_result_shape, resource_safety_state, human_approval_state, refused_effect, non_authority_assertion, and acceptance_status
+  = must: preserve the rule that dry-run success, fixture success, generated projections, coordination claims, mailbox carrier context, and human approval records are not live-control approval
+  - never: create fixture files, create expected ledgers, write generated outputs, execute commands, start processes, control GPU, mutate model runtime, dispatch jobs, change credentials, expose networks, perform destructive filesystem actions, implement operations simulator code, authorize operations control, or authorize live machine control here
+
+& [PlannedExpectedLedgerFamily: IR7OperationsDryRun] is the expected ledger family planned for future activation
+  + [future_expected_ledger] is operation_request_identity_and_safety_expected
+  + [future_expected_ledger] is dry_run_result_non_authority_expected
+  + [future_expected_ledger] is refusal_and_interrupt_expected
+  + [future_expected_ledger] is resource_safety_and_human_approval_expected
+  + [future_expected_ledger] is no_live_effect_and_authority_nonpromotion_expected
+  + [future_expected_ledger_status] is planned_only_not_created
+
+  = must: keep expected ledgers planned, not created, until a future implementation activation slice accepts fixture source and expected-ledger creation
+  = must: keep expected ledgers as tracked review material only after future acceptance, never as live-control authority
+
+& [FixtureCase: IR7X-001-dry-run-resource-request] is the accepted dry-run resource request fixture
+  + [request_shape] is operation_request with intended_effect estimate_resource_use, resource_target gpu, fresh authority_notice_ref, complete safety field set, credential_boundary_ref present, network_boundary_ref present, rollback_or_abort_route present, and dry_run_required true
+  + [safety_contract_behavior] is classify target high risk, permit dry-run result record only, estimate resource use, and require no live effect
+  + [authority_notice_state] is present_and_fresh
+  + [dry_run_result_shape] is simulated_effect_summary with live_effect_performed false, completion_review_required true, and non_authority_notice present
+  + [resource_safety_state] is high_risk_planning_evidence
+  + [human_approval_state] is not_required_for_dry_run_only but required_before_future_live_control_reconsideration
+  + [refused_effect] is none_for_dry_run_record
+  + [non_authority_assertion] is dry_run_result_not_live_approval
+  + [acceptance_status] is accepted
+
+& [FixtureCase: IR7X-002-blocked-live-control] is the blocked live control fixture
+  + [request_shape] is operation_request with intended_effect live_process_start or gpu_workload_launch and resource_target process or gpu
+  + [safety_contract_behavior] is classify as live_effect_requested and route to refusal before execution
+  + [authority_notice_state] is present
+  + [dry_run_result_shape] is refused_operation_request with live_effect_performed false
+  + [resource_safety_state] is critical
+  + [human_approval_state] is insufficient_without_future_live_control_authority
+  + [refused_effect] is refused_live_process_control or refused_gpu_control
+  + [non_authority_assertion] is operation_request_not_command
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR7X-003-gpu-contention] is the GPU contention fixture
+  + [request_shape] is operation_request with intended_effect estimate_resource_use, resource_target gpu, predicted_side_effect_set includes contention, and blast_radius uncertain
+  + [safety_contract_behavior] is classify risk high or critical, require human review for future action, and keep dry-run non-mutating
+  + [authority_notice_state] is present_and_fresh
+  + [dry_run_result_shape] is dry_run_result with estimated_resource_use, predicted_side_effect_set gpu_contention, required_human_approval true, and live_effect_performed false
+  + [resource_safety_state] is review_required
+  + [human_approval_state] is required_for_future_live_control_reconsideration
+  + [refused_effect] is no_gpu_workload_launch
+  + [non_authority_assertion] is resource_estimate_not_scheduler_permission
+  + [acceptance_status] is review_required
+
+& [FixtureCase: IR7X-004-model-runtime-unavailable] is the model runtime unavailable fixture
+  + [request_shape] is operation_request with intended_effect inspect or simulate, resource_target model_runtime, and simulated dependency state unavailable
+  + [safety_contract_behavior] is report unavailable runtime as dry-run evidence and block model_runtime_start, install, upgrade, or configuration mutation
+  + [authority_notice_state] is present_and_fresh
+  + [dry_run_result_shape] is simulated_effect_summary model_runtime_unavailable with live_effect_performed false
+  + [resource_safety_state] is high_risk_planning_evidence
+  + [human_approval_state] is not_live_approval and cannot authorize runtime mutation
+  + [refused_effect] is refused_model_runtime_control
+  + [non_authority_assertion] is availability_report_not_runtime_control
+  + [acceptance_status] is blocked_for_live_effect
+
+& [FixtureCase: IR7X-005-credential-boundary] is the credential boundary fixture
+  + [request_shape] is operation_request with intended_effect inspect or simulate and resource_target credential_or_secret
+  + [safety_contract_behavior] is classify as critical risk, preserve opaque secret reference without secret value, and refuse reveal, mutate, persist, or use secret for unapproved live control
+  + [authority_notice_state] is present
+  + [dry_run_result_shape] is blocked_operation_request with credential_boundary_touched and live_effect_performed false
+  + [resource_safety_state] is critical
+  + [human_approval_state] is required_but_not_sufficient_for_secret_access_without_future_authority
+  + [refused_effect] is refused_credential_control
+  + [non_authority_assertion] is secret_reference_not_secret_access
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR7X-006-network-exposure-refusal] is the network exposure refusal fixture
+  + [request_shape] is operation_request with intended_effect network_exposure_mutation and resource_target network_service
+  + [safety_contract_behavior] is classify as critical risk, require endpoint inventory, blast radius, rollback route, monitoring, and fresh scoped approval for future reconsideration, and refuse current network mutation
+  + [authority_notice_state] is present_and_fresh
+  + [dry_run_result_shape] is refused_operation_request with network_exposure_requested and live_effect_performed false
+  + [resource_safety_state] is critical
+  + [human_approval_state] is required_for_future_reconsideration but insufficient_for_current_IR7
+  + [refused_effect] is refused_network_control
+  + [non_authority_assertion] is surface_event_not_network_authority
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR7X-007-destructive-command-refusal] is the destructive command refusal fixture
+  + [request_shape] is operation_request with intended_effect destructive_filesystem_action and resource_target filesystem_destructive_target
+  + [safety_contract_behavior] is classify as critical risk, require rollback_or_abort_route, and refuse destructive action as a record
+  + [authority_notice_state] is present
+  + [dry_run_result_shape] is refused_operation_request with destructive_action_possible and live_effect_performed false
+  + [resource_safety_state] is critical
+  + [human_approval_state] is insufficient_without_future_authority_and_explicit_completion_acceptance
+  + [refused_effect] is refused_destructive_filesystem_control
+  + [non_authority_assertion] is refusal_record_not_filesystem_action
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR7X-008-missing-authority-notice] is the missing authority notice fixture
+  + [request_shape] is operation_request missing authority_notice_ref or carrying stale authority_notice_ref
+  + [safety_contract_behavior] is reject before dry-run result can be trusted for authority-sensitive use
+  + [authority_notice_state] is missing_or_stale
+  + [dry_run_result_shape] is blocked_operation_request with missing_required_safety_field or stale_authority_notice
+  + [resource_safety_state] is invalid_until_authority_notice_repaired
+  + [human_approval_state] is invalid_until_authority_notice_repaired
+  + [refused_effect] is refused_operation_request
+  + [non_authority_assertion] is carrier_context_not_authority_notice
+  + [acceptance_status] is faulted
+
+& [FixtureCase: IR7X-009-stale-or-revoked-human-approval] is the stale or revoked human approval fixture
+  + [request_shape] is operation_request with human_approval_ref whose expiration passed, request changed, risk changed, boundary pack changed, or explicit revocation record is present
+  + [safety_contract_behavior] is apply ApprovalStaleAndRevocationRule and ResourceSafetyRefusalAndEscalationRouteContract
+  + [authority_notice_state] is present
+  + [dry_run_result_shape] is blocked_operation_request with stale_approval or revoked_approval and live_effect_performed false
+  + [resource_safety_state] is blocked_pending_new_review
+  + [human_approval_state] is stale_or_revoked_and_invalid
+  + [refused_effect] is refused_human_override
+  + [non_authority_assertion] is approval_record_not_live_control_authority
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR7X-010-dry-run-success-not-live-approval] is the dry-run success not live approval fixture
+  + [request_shape] is successful dry_run_result followed by a request attempting job_dispatch or gpu_workload_launch
+  + [safety_contract_behavior] is apply NoLiveEffectAndNonAuthorityRule and block dry-run success from becoming live-control authority
+  + [authority_notice_state] is present_and_fresh
+  + [dry_run_result_shape] is successful_dry_run_record with live_effect_performed false and non_authority_notice present
+  + [resource_safety_state] is planning_evidence_only
+  + [human_approval_state] is absent_or_not_live_authority
+  + [refused_effect] is refused_job_control or refused_gpu_control
+  + [non_authority_assertion] is dry_run_success_not_dispatch_permission
+  + [acceptance_status] is blocked_for_live_effect
+
+& [FixtureCase: IR7X-011-coordination-claim-dispatch-refusal] is the coordination claim dispatch refusal fixture
+  + [request_shape] is operation_request that cites a coordination_claim or work boundary claim as authority for job_dispatch
+  + [safety_contract_behavior] is preserve coordination claim as coordination evidence and refuse dispatch-like promotion
+  + [authority_notice_state] is present
+  + [dry_run_result_shape] is refused_operation_request with coordination_claim_promoted_to_dispatch
+  + [resource_safety_state] is high_risk_dispatch_like
+  + [human_approval_state] is insufficient_without_future_live_control_authority
+  + [refused_effect] is refused_job_control
+  + [non_authority_assertion] is coordination_claim_not_dispatch_authority
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR7X-012-mailbox-carrier-not-dispatch-authority] is the mailbox carrier not dispatch authority fixture
+  + [request_shape] is operation_request that treats mailbox_carrier_context, inbox notice, read cursor, IRC message, Matrix message, web event, terminal output, or Codex thread state as dispatch authority
+  + [safety_contract_behavior] is preserve carrier context and refuse carrier promotion to source authority or operations authority
+  + [authority_notice_state] is carrier_context_only
+  + [dry_run_result_shape] is refused_operation_request with mailbox_carrier_promoted_to_dispatch
+  + [resource_safety_state] is invalid_authority_tier
+  + [human_approval_state] is absent_or_invalid
+  + [refused_effect] is refused_job_control
+  + [non_authority_assertion] is mailbox_carrier_context_not_authority
+  + [acceptance_status] is blocked
+
+& [FixtureCase: IR7X-013-generated-projection-not-authority] is the generated projection not authority fixture
+  + [request_shape] is operation_request that cites generated projection, generated report, or fixture success as source authority for live operation
+  + [safety_contract_behavior] is preserve generated output as disposable evidence and refuse authority promotion
+  + [authority_notice_state] is generated_projection_non_authority
+  + [dry_run_result_shape] is refused_operation_request with generated_projection_promoted_to_authority
+  + [resource_safety_state] is invalid_authority_tier
+  + [human_approval_state] is insufficient
+  + [refused_effect] is refused_live_control
+  + [non_authority_assertion] is generated_projection_not_source_authority
+  + [acceptance_status] is blocked
+
+& [FixturePlanAcceptanceChecklist: IR7-S04] is the acceptance checklist for IR7 operations dry-run fixture planning
+  + [fixture_case_count] is 13
+  + [contract_coverage] is OperationRequestIdentityAndLineageSchema
+  + [contract_coverage] is OperationRequestSafetyFieldSet
+  + [contract_coverage] is IntendedEffectAndTargetClassifier
+  + [contract_coverage] is DryRunResultRecordSchema
+  + [contract_coverage] is RefusalAndInterruptOutputContract
+  + [contract_coverage] is NoLiveEffectAndNonAuthorityRule
+  + [contract_coverage] is SourceProjectionAndCompletionBoundary
+  + [contract_coverage] is ResourceTargetSafetyClassification
+  + [contract_coverage] is RiskAndBlastRadiusContract
+  + [contract_coverage] is CredentialBoundaryAndSecretHandlingContract
+  + [contract_coverage] is NetworkBoundaryAndExposureContract
+  + [contract_coverage] is RollbackAbortAndMonitoringRouteContract
+  + [contract_coverage] is HumanApprovalFreshnessExpirationAndRevocationContract
+  + [contract_coverage] is ApprovalStaleAndRevocationRule
+  + [contract_coverage] is ResourceSafetyRefusalAndEscalationRouteContract
+  + [forbidden_scope_absent] is fixture source file creation
+  + [forbidden_scope_absent] is expected ledger file creation
+  + [forbidden_scope_absent] is generated output creation
+  + [forbidden_scope_absent] is executable operations simulator implementation
+  + [forbidden_scope_absent] is dependency installation
+  + [forbidden_scope_absent] is package metadata mutation
+  + [forbidden_scope_absent] is command execution
+  + [forbidden_scope_absent] is process control
+  + [forbidden_scope_absent] is GPU control
+  + [forbidden_scope_absent] is model runtime mutation
+  + [forbidden_scope_absent] is job dispatch
+  + [forbidden_scope_absent] is credential access or mutation
+  + [forbidden_scope_absent] is network exposure mutation
+  + [forbidden_scope_absent] is destructive filesystem action
+  + [forbidden_scope_absent] is operations control
+  + [forbidden_scope_absent] is live machine control
+
+  = must: reject IR7-S04 if any required fixture case or safety mapping field is missing
+  = must: open IR7-S05 only after this plan and its index are accepted by completion review
