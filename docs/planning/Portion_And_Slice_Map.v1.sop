@@ -7,6 +7,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [capability_field] docs/planning/Capability_Field.v2.sop
 @ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
 @ [post_ir7_readiness_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+@ [ir8_slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [ir8_slice_minting_review] docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
   + [map_state] is ready_for_deeper_reasoning_design_slices
@@ -161,7 +163,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
   + [support_record] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
   + [support_record] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
-  + [support_gap] is IR8 integrated manager orchestration final slices not yet minted
+  + [support_record] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/IR8_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
+  + [support_gap] is IR8-S01 manager boundary import and proof-pack reconciliation not yet executed
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -171,7 +176,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: preserve conversation identity and work boundaries before multi-agent dispatch
   = must: keep mailbox transport, agent dispatch, operations control, and live machine control gated until future source-preserved authority explicitly opens bounded work
 
-& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_IR8_final_slice_minting
+& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_IR8-S01_boundary_import
   + [portion_id] is P8
   + [portion_name] is proof, fixtures, evaluation, and faults
   + [purpose] is provide deterministic evidence for schema validation, operator behavior, packet readiness, surface projections, and fault routing
@@ -245,27 +250,31 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
   + [support_record] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
   + [support_record] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
-  + [support_gap] is IR8 integrated manager orchestration final slices not yet minted
+  + [support_record] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/IR8_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
+  + [support_gap] is IR8-S01 manager boundary import and proof-pack reconciliation not yet executed
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: mint IR8 final slices before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route IR8 final-slice minting as requires deeper reasoning because manager orchestration merges authority, readiness, graph execution, surface projection, coordination, operation dry-run evidence, and future dispatch boundaries
+  = must: execute IR8-S01 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route IR8-S01 as requires deeper reasoning because integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: IR8IntegratedManagerOrchestrationPlanning] is ready_for_final_slice_minting
+& [CurrentReadySlice: IR8-S01-ManagerBoundaryImportAndProofPackReconciliation] is ready
   + [chunk_id] is IR8
-  + [chunk_name] is integrated manager orchestration planning
-  + [authority_basis] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
-  + [readiness_surface] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
-  + [rebake_review] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [slice_id] is IR8-S01
+  + [slice_name] is manager boundary import and proof-pack reconciliation
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR8_Final_Slices.v1.sop
+  + [slice_minting_review] is docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
   + [model_route] is requires deeper reasoning
-  + [model_route_reason] is manager orchestration merges authority, readiness, graph execution, surface projection, coordination, operation dry-run evidence, and future dispatch boundaries
-  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR8 boundary, manager loop, and handoff contracts are accepted
+  + [model_route_reason] is integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR8-S01 through IR8-S03 are accepted
 
-  = must: mint IR8 final slices before implementation activation
+  = must: execute IR8-S01 before IR8-S02, fixtures, implementation activation, dependencies, adapters, transports, UI, or generated outputs
   = must: keep agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

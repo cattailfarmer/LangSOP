@@ -1,0 +1,136 @@
+Subject: IR8 Final Slice Minting Review V1
+Date: 2026-05-27
+Review UUID: e74c2110-5cd7-4b35-b7b4-dffd41034149
+
+@ [source_manifest] docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [work_state] docs/state/IR8_Work_State.v1.sop
+@ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [post_ir7_rebake_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+@ [ir7_implementation_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir7_implementation_completion_review] docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR8-Final-Slice-Minting] is the completed-work review for minting IR8 final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_ir8_final_slices/Derived_IR8_Final_Slices_Source.sop
+  + [completed_output_sha256] is F31ECA5A6CAE0A4D05798C3C0580A2C51A57ADAB7904D77E535D1B4585CD2E78
+  + [completed_output] is docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 9A794C24143FC4FAF69F3A5F9F650CA743BEBF671836EFD58360D0582045B112
+  + [completed_output] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [completed_output_sha256] is A71AE54B55DB02C414A2BA478385B29CDFC5F2A23D6C757AC6E2D72F2EB66994
+  + [completed_output] is docs/slices/IR8_Final_Slices.v1.sop
+  + [completed_output_sha256] is 38A7B0B66DFFDEA8C6E6EFC65594AAD1A3A3612976EC9641716A9DD1F5565FBE
+  + [completed_output] is docs/state/IR8_Work_State.v1.sop
+  + [completed_output_sha256] is 2D77C081499352BF236EB7A6905CF3DC28C7A2B0C3D8B6F890EFEBEA5C0EA516
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8 final slice surface and open IR8-S01
+  + [next_gate_result] is IR8-S01 may open
+  + [next_model_route] is requires deeper reasoning for IR8-S01
+  + [next_model_route_reason] is integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
+
+  = must: treat this review as gate-opening evidence for IR8-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, work state, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 implementation proof packs, IR7 implementation completion review, or FSC5 operations safety pack changes
+  = must: keep integrated manager implementation, fixture file creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
+
+& [IR8FinalSliceMintingVerification] is the verification result for IR8 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [work_state_created] is true
+  + [slice_count] is 6
+  + [current_ready_slice] is IR8-S01
+  + [gated_slice] is IR8-S02
+  + [gated_slice] is IR8-S03
+  + [gated_slice] is IR8-S04
+  + [gated_slice] is IR8-S05
+  + [gated_slice] is IR8-S06
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [integrated_manager_implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [command_execution_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [credential_mutation_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR8FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR8_Final_Slices.v1.sop
+    @ [support] docs/state/IR8_Work_State.v1.sop
+
+& [SupportDelta: IR8-Final-Slice-Minting] is the support delta produced by minted IR8 final slices
+  + [new_support_record] is IR8-S01 may import and reconcile accepted proof packs, post-IR7 readiness gates, source/projection boundaries, graph checkpoint non-authority, coordination carrier non-authority, operation dry-run non-authority, generated-output non-authority rules, forbidden mutations, stale triggers, dispatch prohibition, and live-control prohibition
+  + [new_support_record] is IR8-S02 through IR8-S06 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded IR8-S04 fixture planning after IR8-S01 through IR8-S03 are accepted
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-Final-Slice-Minting] is the requirement delta produced by minted IR8 final slices
+  + [requirement_delta] is IR8-S01 requires deeper reasoning
+  + [requirement_delta] is no integrated manager implementation, fixture files, expected ledgers, generated output, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every IR8 slice
+
+& [FaultReview: IR8-Final-Slice-Minting] is the fault review for minted IR8 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [integrated_manager_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_mutation_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [credential_mutation_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [persistent_operations_automation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8FinalSlicesAccepted] is accepted
+    @ [support] [IR8FinalSliceMintingVerification]
+    @ [support] [SupportDelta: IR8-Final-Slice-Minting]
+    @ [support] [RequirementDelta: IR8-Final-Slice-Minting]
+    @ [support] [FaultReview: IR8-Final-Slice-Minting]
+
+& [NextSliceGate: IR8-S01] is opened
+  + [opened_slice] is IR8-S01 manager boundary import and proof-pack reconciliation
+  + [accepted_boundary_input] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
+  + [accepted_boundary_input] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 3A37A0D034EBDC248E9F9414249A176E8A9028ED89141760C94D6C470D073E48
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
+  + [safety_limit] is no agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-S01 next unless user redirects or a new fault invalidates this review

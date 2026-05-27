@@ -20,9 +20,9 @@ State UUID: b69c893a-d756-45e6-93a9-105e737b5acc
   + [state_basis] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
   + [surface_status] is accepted_for_IR8_final_slice_minting
   + [source_manifest] is docs/source/2026-05-27_post_ir7_implementation_readiness/Source_Document_Manifest.sop
-  + [source_manifest_sha256] is CDDBC9E1D019AFEC01AC54ED8B34A1FB7C35F425231DB62FB4B8D6A94D224096
+  + [source_manifest_sha256] is B2CB2474EF20A78F5B0CDB180228EB864BF31DBCF331815F15470CDD44CCF157
   + [canonical_specification] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
-  + [canonical_specification_sha256] is 28A9D22371A5A8DFD7BB2FC5CE0BA9FFE7DA18E81D81E5E1556DA2A91554A206
+  + [canonical_specification_sha256] is 3720714BC74AF3787EF53E8A87589679315AAD15CD7B7231B4E192848A78B698
   + [implementation_readiness_surface] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
   + [implementation_readiness_surface_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
   + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop

@@ -1,0 +1,101 @@
+Subject: LangSOP IR8 Final Slices Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [post_ir7_rebake_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+@ [ir7_implementation_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+
+& [CanonicalRecord: IR8FinalSlices] is the processed planning authority for IR8 final work slices
+  + [canonical_uuid] is 10640ba7-16c3-4309-8a41-edf52cafb87d
+  + [source_manifest_uuid] is c06bc08e-96d1-4486-a540-ce7f7491163d
+  + [slice_surface_uuid] is fdd45a25-de21-4e50-8278-fb0580bfad81
+  + [authority_scope] is IR8 slice order, gates, expected outputs, model routing, manager loop boundaries, authority and readiness boundaries, coordination/surface/operations handoff boundaries, fixture planning boundaries, implementation activation boundary, generated-output boundary, dispatch prohibition, and forbidden live-control scope
+  + [implementation_scope] is integrated manager orchestration planning plus gated implementation activation
+  + [depends_on] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [depends_on] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [depends_on] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [depends_on] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+
+  = must: use docs/slices/IR8_Final_Slices.v1.sop as the current IR8 slice surface
+  = must: execute IR8-S01 first
+  = must: run completion review after each IR8 slice before opening the next gated slice
+  = must: keep source records, canonical authority, projections, graph checkpoints, coordination claims, mailbox carriers, operation requests, dry-run results, human approval displays, generated projections, and generated reports non-authoritative outside their declared record class
+  - never: treat IR8 slices as permission for integrated manager implementation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control
+
+& [CanonicalIR8SliceSet] is the final IR8 slice sequence
+  + [slice] is IR8-S01 manager boundary import and proof-pack reconciliation
+  + [slice] is IR8-S02 manager loop authority, readiness, packet, and proof contract
+  + [slice] is IR8-S03 coordination, surface, and operations dry-run handoff contract
+  + [slice] is IR8-S04 integrated manager fixture, trace, and fault plan
+  + [slice] is IR8-S05 integrated manager implementation plan and activation pack
+  + [slice] is IR8-S06 IR8 completion review and implementation activation recommendation
+
+  = must: preserve this order unless completion review rebakes IR8
+
+& [CanonicalIR8ExecutionGate] is the activation rule for IR8
+  + [current_ready_slice] is IR8-S01
+  + [gated_slice] is IR8-S02 until IR8-S01 accepted
+  + [gated_slice] is IR8-S03 until IR8-S02 accepted
+  + [gated_slice] is IR8-S04 until IR8-S03 accepted
+  + [gated_slice] is IR8-S05 until IR8-S04 accepted
+  + [gated_slice] is IR8-S06 until IR8-S05 accepted
+  + [completion_gate] is IR8 implementation activation recommendation accepted after IR8-S06
+
+& [CanonicalIR8ModelRouting] is the model-routing record
+  + [IR8-S01] is requires deeper reasoning
+  + [IR8-S02] is requires deeper reasoning
+  + [IR8-S03] is requires deeper reasoning
+  + [IR8-S04] is GPT-5.3-Codex-Spark-suitable after IR8-S01 through IR8-S03 acceptance
+  + [IR8-S05] is requires deeper reasoning
+  + [IR8-S06] is requires deeper reasoning
+
+  = must: keep authority merging, manager readiness, packetization, coordination handoff, dry-run handoff, dispatch boundary, generated-output boundary, and final activation under deeper reasoning
+  = must: treat bounded fixture planning as Spark-suitable only after boundary, manager loop, and handoff contracts are accepted
+
+& [SatisfactionSignature: IR8FinalSlices] is the valid SJS satisfaction signature for the IR8 final slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 483cacb6-6a35-475c-8f1c-b95cd8c12eb5
+  + [signed_subject] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is F31ECA5A6CAE0A4D05798C3C0580A2C51A57ADAB7904D77E535D1B4585CD2E78
+  + [source_sha256] is 9A794C24143FC4FAF69F3A5F9F650CA743BEBF671836EFD58360D0582045B112
+  + [source_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
+  + [source_sha256] is 3A37A0D034EBDC248E9F9414249A176E8A9028ED89141760C94D6C470D073E48
+  + [source_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+  + [source_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [source_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [source_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [source_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [source_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [source_sha256] is 31184C312AA4A7FA727598B69AE9B8F7F556E35CED4F7C2092E9DE165FB65F3D
+  + [source_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [source_sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+  + [slice_surface_sha256] is 38A7B0B66DFFDEA8C6E6EFC65594AAD1A3A3612976EC9641716A9DD1F5565FBE
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/IR8_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, post_IR7_gate_imported, IR2_parser_projection_proof_imported, IR3_operator_harness_proof_imported, IR4_graph_runtime_proof_imported, IR5_surface_projection_proof_imported, IR6_coordination_proof_imported, IR7_operations_dry_run_proof_imported, FSC5_safety_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR8_S01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR8 final slices; no integrated manager implementation, dispatch authority, operations control, or live machine control authorized
+
+& [RegistryRecord: IR8FinalSlices] is the durable identity ledger for the IR8 final slice surface
+  + [registry_uuid] is 1c71888a-d452-4aeb-9cd1-3ed8c6ecccae
+  + [manifest_node_uuid] is c06bc08e-96d1-4486-a540-ce7f7491163d
+  + [canonical_node_uuid] is 10640ba7-16c3-4309-8a41-edf52cafb87d
+  + [slice_surface_uuid] is fdd45a25-de21-4e50-8278-fb0580bfad81
+  + [signature_uuid] is 483cacb6-6a35-475c-8f1c-b95cd8c12eb5
+  + [closure_review_uuid] is e74c2110-5cd7-4b35-b7b4-dffd41034149
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for IR8 slice execution and completion reviews

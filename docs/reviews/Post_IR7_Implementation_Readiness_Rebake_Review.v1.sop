@@ -11,13 +11,13 @@ Review UUID: 5878a761-80a1-4cb7-9713-1f05602c8356
   + [completed_by] is Codex project-manager session
   + [completed_at] is 2026-05-27
   + [completed_output] is docs/source/2026-05-27_post_ir7_implementation_readiness/Source_Document_Manifest.sop
-  + [completed_output_sha256] is CDDBC9E1D019AFEC01AC54ED8B34A1FB7C35F425231DB62FB4B8D6A94D224096
+  + [completed_output_sha256] is B2CB2474EF20A78F5B0CDB180228EB864BF31DBCF331815F15470CDD44CCF157
   + [completed_output] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
-  + [completed_output_sha256] is 28A9D22371A5A8DFD7BB2FC5CE0BA9FFE7DA18E81D81E5E1556DA2A91554A206
+  + [completed_output_sha256] is 3720714BC74AF3787EF53E8A87589679315AAD15CD7B7231B4E192848A78B698
   + [completed_output] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
   + [completed_output_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
   + [completed_output] is docs/state/Post_IR7_Implementation_Readiness_State.v1.sop
-  + [completed_output_sha256] is 10CD477B52573C11520E9F93874113ACC89398A87162B74F2FEA1FA8FC8632BD
+  + [completed_output_sha256] is 2E952B5F3846FEAC081D2E959B06B91E47D0C04C8233FD7B2D6C1CF808A85DD4
   + [model_route_used] is requires deeper reasoning
   + [review_result] is accepted
   + [next_gate_result] is IR8 may be final-sliced

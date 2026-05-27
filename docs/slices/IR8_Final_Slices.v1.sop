@@ -1,0 +1,148 @@
+Subject: IR8 Final Slices V1
+Date: 2026-05-27
+Slice Surface UUID: fdd45a25-de21-4e50-8278-fb0580bfad81
+
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
+@ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [post_ir7_rebake_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+@ [ir2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [ir3_implementation_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir7_implementation_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+
+& [IR8FinalSliceSurfaceV1] is the executable slice surface for IR8 integrated manager orchestration planning
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [chunk_boundary] is manager boundary import, manager loop authority and readiness contract, coordination/surface/operations handoff contract, fixture trace and fault plan, implementation plan, activation pack, and completion review
+  + [accepted_boundary_input] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR8-S01
+  + [gated_slice_set] is IR8-S02, IR8-S03, IR8-S04, IR8-S05, and IR8-S06
+  + [safety_limit] is no agent dispatch, operations control, or live machine control authorized
+
+  = must: execute IR8-S01 before creating manager-loop contracts, handoff contracts, fixture plans, implementation activation plans, dependency changes, executable manager code, generated outputs, adapters, transports, UI, or package metadata
+  = must: run completed-work review after each IR8 slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes source projections, graph checkpoints, coordination claims, mailbox carriers, dry-run outputs, generated reports, chat messages, or surface state to source authority, dispatch authority, operations control, or live-control authority
+
+& [FinalWorkSlice: IR8-S01-ManagerBoundaryImportAndProofPackReconciliation] is ready
+  + [slice_id] is IR8-S01
+  + [slice_name] is manager boundary import and proof-pack reconciliation
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [portion_ref] is integrated manager proof-pack handoff
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [activation_gate] is post-IR7 implementation readiness accepted
+  + [internal_dependency_set] is accepted IR2 through IR7 implementation proof packs, accepted FSC5 operations safety pack, and accepted post-IR7 readiness surface
+  + [expected_output_set] is docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+  + [verification_oracle] is boundary map imports parser/projection, operator harness, graph proof runtime, surface projection, coordination mailbox, operations dry-run, post-IR7 readiness, safety gates, stale triggers, forbidden mutations, dispatch prohibition, and live-control prohibition without implementing manager code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
+  + [forbidden_scope] is manager implementation, fixture file creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-S02-ManagerLoopAuthorityReadinessPacketAndProofContract] is gated
+  + [slice_id] is IR8-S02
+  + [slice_name] is manager loop authority, readiness, packet, and proof contract
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [portion_ref] is manager loop contract semantics
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [activation_gate] is IR8-S01 accepted
+  + [internal_dependency_set] is IR8-S01 output and accepted authority/kernel/operator/readiness proof packs
+  + [expected_output_set] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [verification_oracle] is contract defines manager-cycle inputs, source authority checks, readiness recomputation, work packet candidate production, proof obligations, completion review gates, stale handling, and SOP-first interrupts without implementation or dispatch
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager loop semantics control how the system decides what is ready, blocked, stale, or unsafe
+  + [forbidden_scope] is manager implementation, fixture creation, generated output creation, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-S03-CoordinationSurfaceAndOperationsDryRunHandoffContract] is gated
+  + [slice_id] is IR8-S03
+  + [slice_name] is coordination, surface, and operations dry-run handoff contract
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [portion_ref] is handoff semantics between manager, surfaces, coordination, and dry-run operations
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [activation_gate] is IR8-S02 accepted
+  + [internal_dependency_set] is IR8-S01 through IR8-S02 accepted outputs and accepted IR5, IR6, and IR7 proof packs
+  + [expected_output_set] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+  + [verification_oracle] is contract defines how manager outputs project to surfaces, how coordination claims and mailbox carriers constrain work packets, how operation requests become dry-run records, and how refusals and human overrides return without dispatch or live effects
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is handoff semantics sit directly on multi-agent coordination, user-facing surfaces, dry-run safety, dispatch boundaries, and live-control refusal
+  + [forbidden_scope] is adapter implementation, transport implementation, UI implementation, generated output creation, dependency installation, package metadata mutation, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-S04-IntegratedManagerFixtureTraceAndFaultPlan] is gated
+  + [slice_id] is IR8-S04
+  + [slice_name] is integrated manager fixture, trace, and fault plan
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [portion_ref] is integrated manager proof fixtures
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [activation_gate] is IR8-S03 accepted
+  + [internal_dependency_set] is IR8-S01 through IR8-S03 accepted outputs
+  + [expected_output_set] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [verification_oracle] is fixture plan covers accepted-source ready work, stale boundary input, false-ready slice refusal, conflicting coordination claim, mailbox carrier not authority, dry-run success not dispatch authority, human override interrupt, generated projection not authority, graph checkpoint not authority, and live-control refusal
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR8-S01 through IR8-S03 acceptance
+  + [model_route_reason] is fixture planning is bounded by accepted manager loop and handoff contracts
+  + [forbidden_scope] is fixture source file creation, expected ledger file creation, generated output creation, manager implementation, dependency installation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-S05-IntegratedManagerImplementationPlanAndActivationPack] is gated
+  + [slice_id] is IR8-S05
+  + [slice_name] is integrated manager implementation plan and activation pack
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [portion_ref] is implementation planning and generated-output boundary
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [activation_gate] is IR8-S04 accepted
+  + [internal_dependency_set] is IR8-S01 through IR8-S04 accepted outputs
+  + [expected_output_set] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [expected_output_set] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [verification_oracle] is implementation plan defines future file inventory, fixture inventory, expected ledger inventory, generated-output roots, dependency boundary, adapter boundary, dispatch boundary, command plan, proof checklist, and no-live-effect proof without code or dependency changes
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is implementation and generated-output policy affect authority merging, dispatch refusal, coordination, surface projections, operation dry-run evidence, and future live-control boundaries
+  + [forbidden_scope] is executable manager implementation, fixture file creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, job dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-S06-CompletionReviewAndImplementationActivationRecommendation] is gated
+  + [slice_id] is IR8-S06
+  + [slice_name] is IR8 completion review and implementation activation recommendation
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [portion_ref] is implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [activation_gate] is IR8-S05 accepted
+  + [internal_dependency_set] is IR8-S01 through IR8-S05 accepted outputs
+  + [expected_output_set] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [verification_oracle] is completion review accepts only bounded IR8 planning proof and opens implementation activation only if no dispatch, live-control, command execution, process control, GPU control, job dispatch, dependency, generated output, credential, network, or destructive filesystem fault is present
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final IR8 planning acceptance affects implementation activation, dispatch boundaries, and future operations-manager capability
+  + [forbidden_scope] is executable manager implementation, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, agent dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR8FinalSliceClosureReview] is the dependency audit for minted IR8 final slices
+  + [post_IR7_readiness_status] is accepted
+  + [IR2_implementation_proof_status] is accepted
+  + [IR3_implementation_proof_status] is accepted
+  + [IR4_implementation_proof_status] is accepted
+  + [IR5_implementation_proof_status] is accepted
+  + [IR6_implementation_proof_status] is accepted
+  + [IR7_implementation_proof_status] is accepted
+  + [FSC5_operations_safety_pack_status] is accepted
+  + [current_ready_slice_set] is IR8-S01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [integrated_manager_implementation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR8-S02 through IR8-S06 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

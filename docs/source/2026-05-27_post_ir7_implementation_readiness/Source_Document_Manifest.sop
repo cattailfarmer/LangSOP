@@ -66,9 +66,6 @@ Manifest UUID: a424ea99-9cf3-4c9d-9e58-0a45a76fc56a
   + [authority_source] is docs/planning/Capability_Field.v2.sop
     + [sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
     + [source_role] is capability field
-  + [authority_source] is docs/planning/Portion_And_Slice_Map.v1.sop
-    + [sha256] is 53C99869D8E4F941231324082F1242E325F3FAA927D52A3AA2814456794146E7
-    + [source_role] is current portion and slice map after IR7 implementation acceptance
   + [canonical_target] is docs/canonical/LangSOP_Post_IR7_Implementation_Readiness.canonical.sop
   + [surface_target] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
 

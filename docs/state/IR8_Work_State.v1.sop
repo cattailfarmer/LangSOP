@@ -1,0 +1,66 @@
+Subject: IR8 Work State V1
+Date: 2026-05-27
+State UUID: 028e3a1f-78ee-45ef-a43c-b03cb0e19124
+
+@ [source_manifest] docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
+@ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [post_ir7_readiness_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+@ [ir7_implementation_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir7_implementation_completion_review] docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+
+& [IR8WorkStateV1] is the current derived work state for IR8 integrated manager orchestration planning
+  + [chunk_ref] is IR8 integrated manager orchestration planning
+  + [state_basis] is docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
+  + [surface_status] is ready_for_IR8-S01_boundary_import_and_proof_pack_reconciliation
+  + [source_document] is docs/source/2026-05-27_ir8_final_slices/Derived_IR8_Final_Slices_Source.sop
+  + [source_document_sha256] is F31ECA5A6CAE0A4D05798C3C0580A2C51A57ADAB7904D77E535D1B4585CD2E78
+  + [source_manifest] is docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 9A794C24143FC4FAF69F3A5F9F650CA743BEBF671836EFD58360D0582045B112
+  + [canonical_specification] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is A71AE54B55DB02C414A2BA478385B29CDFC5F2A23D6C757AC6E2D72F2EB66994
+  + [slice_surface] is docs/slices/IR8_Final_Slices.v1.sop
+  + [slice_surface_sha256] is 38A7B0B66DFFDEA8C6E6EFC65594AAD1A3A3612976EC9641716A9DD1F5565FBE
+  + [accepted_boundary_input] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
+  + [accepted_boundary_input] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 3A37A0D034EBDC248E9F9414249A176E8A9028ED89141760C94D6C470D073E48
+  + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 31184C312AA4A7FA727598B69AE9B8F7F556E35CED4F7C2092E9DE165FB65F3D
+  + [current_ready_slice] is IR8-S01
+  + [current_ready_slice_name] is manager boundary import and proof-pack reconciliation
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR8-S01 through IR8-S03 are accepted
+  + [integrated_manager_implementation_authorized] is false
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [IR8_state] is ready_for_IR8-S01_boundary_import_and_proof_pack_reconciliation
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute IR8-S01 before any manager implementation, dependency installation, package metadata mutation, adapters, transports, UI, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: keep source, projections, graph checkpoints, coordination claims, mailbox carriers, dry-run outputs, human approvals, and generated reports in distinct authority classes
+  = must: mark this state stale if IR8 source document, IR8 source manifest, canonical specification, slice surface, minting review, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 proof packs, or FSC5 operations safety pack changes
