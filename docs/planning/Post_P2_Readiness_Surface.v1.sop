@@ -1,0 +1,110 @@
+Subject: Post P2 Readiness Surface V1
+Date: 2026-05-27
+Surface UUID: c23bcab5-06c4-4c3f-a324-37b7ccfbb0bd
+
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [p2_slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s01_review] docs/reviews/P2_S01_Completion_Review.v1.sop
+@ [p2_s02_review] docs/reviews/P2_S02_Completion_Review.v1.sop
+@ [p2_s03_review] docs/reviews/P2_S03_Completion_Review.v1.sop
+@ [p2_s04_review] docs/reviews/P2_S04_Completion_Review.v1.sop
+@ [p2_s05_review] docs/reviews/P2_S05_Completion_Review.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+
+& [PostP2ReadinessSurfaceV1] is the current readiness surface after P2 authority kernel and record schema acceptance
+  + [surface_state] is ready_for_next_deeper_reasoning_design_selection
+  + [accepted_boundary_input] is PostIR8ImplementationReadinessSurfaceV1
+  + [accepted_boundary_input] is P2AuthorityKernelFinalSliceSurfaceV1
+  + [accepted_boundary_input] is P2BoundaryImportAndSchemaGapReconciliationV1
+  + [accepted_boundary_input] is P2CommonEnvelopeAuthorityVocabularyAndFreshnessRefreshV1
+  + [accepted_boundary_input] is P2RecordSpecificSchemaAndNaturalKeyMatrixRefreshV1
+  + [accepted_boundary_input] is P2StoragePostureAndProjectionBoundaryDecisionV1
+  + [accepted_boundary_input] is P2AuthorityKernelFixtureAndValidationOraclePlanV1
+  + [active_implementation_chunk] is none
+  + [current_ready_chunk] is P3 compiled SOP operator contracts
+  + [secondary_ready_chunk] is P4 whole-field planning and packetization after P3 operator contract template acceptance
+  + [gated_chunk] is P5 LangGraph procedure runtime until P3 operator contracts and fixture contracts advance
+  + [gated_chunk] is P6 surface projection expansion until P3, P4, and fixture records advance
+  + [gated_chunk] is P8 fixture material creation until future source-preserved implementation activation explicitly opens files
+  + [gated_chunk] is storage implementation until future source-preserved implementation activation explicitly opens storage work
+  + [gated_chunk] is manager adapter, transport, UI, dependency, package metadata, and dispatch work until explicit non-live authority is accepted
+  + [gated_chunk] is live-control authority reconsideration until separate source-preserved SJS authority is accepted
+  + [safety_limit] is no dispatch, operations control, or live machine control authorized
+
+  = must: choose the next slice from current support, completed-work deltas, and whole-field dependency closure
+  = must: run completion review after each new design, planning, proof, or implementation slice before opening downstream slices
+  = must: preserve P2 source/projection separation, authority class, effect boundary, currentness, natural-key, lineage, review gate, invalidation, and fixture oracle boundaries
+  = must: keep dispatch and live-control work blocked unless a separate future authority is source-preserved, SJS-processed, least-privilege bounded, rollback-proved, abort-proved, monitored, and accepted
+
+& [ReadinessChunk: P3CompiledSOPOperatorContracts] is ready_for_slice_minting
+  + [chunk_id] is P3
+  + [chunk_name] is compiled SOP operator contracts
+  + [dependency_set] is P1 semantic authority and source lineage
+  + [dependency_set] is P2 authority kernel and record schema refresh
+  + [expected_output_set] is source-preserved P3 final slice surface
+  + [expected_output_set] is operator contract template design slice
+  + [expected_output_set] is signature validation operator contract
+  + [expected_output_set] is support readiness recompute operator contract
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is compiled SOP duty boundaries affect what may move from SOP proof into mechanical operators
+  + [future_operator_example_route] is GPT-5.3-Codex-Spark-suitable only after template acceptance and bounded examples are defined
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, operations control, and live machine control
+
+  = must: keep SOP as proof and semantic authority
+  = must: let compiled operators handle only stable, frequent, mechanically checkable duties after authority boundaries are explicit
+  = must: route P3 slice minting through Specification Governance and Data Driven Design because operator contracts consume P2 schema authority
+
+& [PostP2AuthorityKernelStatus] is the accepted P2 status for downstream design
+  + [common_envelope_status] is accepted_with_additive_overlay
+  + [record_specific_schema_status] is accepted_with_overlay_record_kind_set
+  + [natural_key_matrix_status] is accepted_with_overlay_matrix_entries
+  + [storage_posture_status] is source_projection_separation_accepted_and_physical_storage_implementation_deferred
+  + [fixture_oracle_status] is accepted_plan_only
+  + [baseline_schema_files_status] is preserved_as_accepted_boundary_inputs
+  + [P2_overlay_required_field] is authority_class
+  + [P2_overlay_required_field] is effect_boundary
+  + [P2_overlay_required_field] is currentness_state
+  + [P2_overlay_required_field] is review_gate_ref
+  + [P2_overlay_required_field] is invalidation_ref_set
+
+  = must: require downstream P3, P4, P5, P6, and P8 planning to consume P2 overlays explicitly
+  = must: mark downstream designs stale if P2 source, schema overlay, storage posture, fixture oracle, completion review, or this readiness surface changes
+
+& [PostP2SafetyBoundary] is the safety boundary after P2 acceptance
+  + [schema_implementation_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_file_creation_authorized] is false
+  + [generated_database_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P2 outputs as design authority for downstream contracts, not as runtime, storage, adapter, dispatch, operations-control, or live-control authority
+  = must: reject projection success, fixture plan success, graph checkpoint state, generated output, mailbox carrier state, dry-run evidence, or human override as live-control authority
+
+& [PostP2ReadinessClosureReview] is the dependency audit for the post-P2 readiness surface
+  + [P2-S01_status] is accepted
+  + [P2-S02_status] is accepted
+  + [P2-S03_status] is accepted
+  + [P2-S04_status] is accepted
+  + [P2-S05_status] is accepted
+  + [P2_completion_status] is accepted_after_review
+  + [current_ready_chunk_set] is P3 compiled SOP operator contracts
+  + [conditionally_ready_chunk_set] is P4 whole-field planning and packetization after P3 template acceptance
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat implementation activation, adapter work, transport work, dispatch authority, live-control authority, and downstream operations execution as gated, not ready
+  = must: rerun closure review when a P2 boundary pack changes, proof fails, or authority contradiction appears

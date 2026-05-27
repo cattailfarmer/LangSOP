@@ -16,15 +16,17 @@ State UUID: e84acdd3-4940-42ce-a491-712fe2aa72a3
 @ [completion_review] docs/reviews/P2_S04_Completion_Review.v1.sop
 @ [accepted_output] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
 @ [completion_review] docs/reviews/P2_S05_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
 @ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
 @ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
 @ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
 @ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
 
 & [P2WorkStateV1] is the current derived work state for P2 authority kernel and record schemas
-  + [state_basis] is docs/reviews/P2_S05_Completion_Review.v1.sop
-  + [state_basis_sha256] is D559E1D1A3D77C6554B8A52D818CEC236303CB25B306C54363BACCC91B277AE0
-  + [surface_status] is P2-S05_accepted_pending_P2-S06
+  + [state_basis] is docs/reviews/P2_Completion_Review.v1.sop
+  + [state_basis_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [surface_status] is P2_completed_pending_P3_slice_minting
   + [source_manifest] is docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 9BAACC3E88BA2C031DBADC46FCC466C5B4BE2625D1FAC6401FC3C8354E5A408A
   + [canonical_specification] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
@@ -66,10 +68,15 @@ State UUID: e84acdd3-4940-42ce-a491-712fe2aa72a3
   + [accepted_output_sha256] is F252635D3228050A4358C3FCE73C0BFC302BEAEF869F5EC31787CF2214D0ACFB
   + [accepted_completion_review] is docs/reviews/P2_S05_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is D559E1D1A3D77C6554B8A52D818CEC236303CB25B306C54363BACCC91B277AE0
-  + [current_ready_slice] is P2-S06
-  + [current_ready_slice_name] is P2 completion review and downstream gate
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is final P2 acceptance changes downstream operator contract readiness, packetization readiness, storage posture, fixture readiness, and runtime gates
+  + [accepted_slice] is P2-S06
+  + [accepted_output] is docs/reviews/P2_Completion_Review.v1.sop
+  + [accepted_output_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [accepted_output] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [accepted_output_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [current_ready_chunk] is P3
+  + [current_ready_chunk_name] is compiled SOP operator contracts
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is compiled SOP duty boundaries affect what may move from SOP proof into mechanical operators
   + [dependency_installation_authorized] is false
   + [package_metadata_mutation_authorized] is false
   + [schema_implementation_authorized] is false
@@ -86,6 +93,6 @@ State UUID: e84acdd3-4940-42ce-a491-712fe2aa72a3
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P2-S06 before downstream P3/P4 gates, adapter work, dispatch, or live-control work
+  = must: execute P3 slice minting before P4/P5/P6 runtime or projection gates, adapter work, dispatch, or live-control work
   = must: keep source authority, schema authority, generated projections, storage candidates, graph checkpoints, surface state, carrier state, and generated reports in distinct authority classes
   = must: mark this state stale if P2 source, manifest, canonical specification, slice surface, minting review, accepted schema inputs, post-IR8 readiness, or IR2 extraction mapping changes

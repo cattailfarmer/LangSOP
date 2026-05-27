@@ -61,7 +61,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P2_S04_Completion_Review.v1.sop
   + [support_record] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
   + [support_record] is docs/reviews/P2_S05_Completion_Review.v1.sop
-  + [support_gap] is P2 completion review and downstream gate not yet accepted
+  + [support_record] is docs/reviews/P2_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P2_Readiness_Surface.v1.sop
   + [proof_route] is schema fixtures for valid, stale, blocked, contradicted, and invalid records
   + [slice_family] is kernel-record-schema-design
   + [slice_family] is natural-key-and-state-matrix
@@ -76,6 +77,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [dependency_set] is P1
   + [dependency_set] is P2 for implementation
   + [support_record] is CanonicalOperatorContractV2
+  + [support_record] is docs/reviews/P2_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P2_Readiness_Surface.v1.sop
   + [support_gap] is template not yet authored
   + [support_gap] is first operator examples not yet accepted
   + [proof_route] is example contracts for signature_validation and support_readiness_recompute
@@ -370,17 +373,17 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P2-S06-P2CompletionReviewAndDownstreamGate] is ready_for_execution
-  + [chunk_id] is P2
-  + [chunk_name] is P2-S06 P2 completion review and downstream gate
-  + [authority_basis] is docs/reviews/P2_S05_Completion_Review.v1.sop
-  + [activation_slice_surface] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+& [CurrentReadyChunk: P3-CompiledSOPOperatorContractsFinalSliceMinting] is ready_for_execution
+  + [chunk_id] is P3
+  + [chunk_name] is P3 compiled SOP operator contracts final slice minting
+  + [authority_basis] is docs/reviews/P2_Completion_Review.v1.sop
+  + [readiness_surface] is docs/planning/Post_P2_Readiness_Surface.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is final P2 acceptance changes downstream operator contract readiness, packetization readiness, storage posture, fixture readiness, and runtime gates
+  + [model_route_reason] is compiled SOP duty boundaries affect what may move from SOP proof into mechanical operators
 
-  = must: create only docs/reviews/P2_Completion_Review.v1.sop and docs/planning/Post_P2_Readiness_Surface.v1.sop
-  = must: create no new implementation work, dependency changes, package metadata changes, adapters, transports, UI, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior slice outputs
+  = must: source-preserve, SJS-process, and final-slice P3 before trusting operator contract work as current authority
+  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior P2 outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design
