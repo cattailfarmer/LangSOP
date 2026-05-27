@@ -1,0 +1,150 @@
+Subject: P3 Support Readiness Recompute Operator Contract Refresh V1
+Date: 2026-05-27
+Refresh UUID: 7b79307a-e320-4864-9630-0edbf7bee1f0
+
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [p3_s03] docs/operators/P3_Signature_Validation_Operator_Contract_Refresh.v1.sop
+@ [p3_s03_review] docs/reviews/P3_S03_Completion_Review.v1.sop
+@ [p3_common_envelope] docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [feature_requirement_support] ../platform/refinement/Feature_Requirement_Support.sop
+
+& [P3SupportReadinessRecomputeOperatorContractRefreshV1] is the P3-S04 refresh for the support_readiness_recompute operator contract
+  + [slice_id] is P3-S04
+  + [slice_name] is support readiness recompute operator contract refresh
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [refresh_result] is support_readiness_recompute_contract_refreshed_as_P3_overlay_without_implementation
+  + [supersession_scope] is additive_operator_contract_refresh_not_in_place_rewrite
+  + [next_gate_result] is P3-S05 may open
+  + [operator_implementation_authorized] is false
+  + [work_packet_generation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this refresh as operator contract authority, not executable readiness implementation authority
+  = must: preserve Foundation_Operator_Contracts.v1.sop and Planning_Readiness_Operator_Contracts.v1.sop as historical baselines until future migration
+  = must: require future implementation activation before any readiness recompute code, fixture source files, expected ledgers, operator runner wiring, packetizer wiring, or graph nodes are created
+  = must: keep work packet generation, assignment, dispatch, operations control, and live machine control forbidden
+
+& [RefreshedOperatorContract: support_readiness_recompute] is the P3 refreshed contract for recomputing support readiness
+  + [operator_id] is support_readiness_recompute
+  + [operator_version] is v2_contract_refresh
+  + [operator_name] is Support Readiness Recompute
+  + [operator_purpose] is derive readiness_projection from requirements, support records, support gaps, proof status, authority artifacts, stale projections, completion reviews, coordination context, and P2/P3 freshness without creating work packets or assigning work
+  + [source_sop_ref] is platform/refinement/Feature_Requirement_Support.sop
+  + [source_sop_ref] is docs/canonical/LangSOP_Whole_Pie_Working_Pattern.canonical.sop
+  + [authority_basis_ref_set] is docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+  + [authority_basis_ref_set] is docs/operators/P3_Signature_Validation_Operator_Contract_Refresh.v1.sop
+  + [input_record_kind_set] is capability_node, requirement_record, support_record, support_gap, proof_result, authority_artifact, readiness_projection, stale_projection, coordination_claim, completion_review, and fault_record
+  + [output_record_kind_set] is readiness_projection, stale_projection, support_gap, proof_result, fault_record, and operator_trace
+  + [forbidden_output_record_kind] is work_packet
+  + [input_authority_requirement_set] is source, canonical, signed_sjs, accepted_decision, proof, or explicit non-authority projection classification for every claim-bearing input
+  + [output_authority_class_set] is surface_projection_non_authority for readiness_projection, proof_authority for proof_result, and generated_output_non_authority for operator_trace
+  + [effect_boundary_limit] is projection_only or proof_only
+  + [currentness_precondition_set] is requirements current, support current, proof current, authority basis current, prior readiness not stale unless explicitly superseded, and coordination context treated as non-authority
+  + [natural_key_requirement_set] is capability subject natural key resolved, requirement natural keys resolved, support and gap subject refs resolved, proof refs resolved, and readiness projection natural key unique for subject plus readiness scope plus recompute basis hash
+  + [source_lineage_requirement_set] is requirement source refs, support source refs, proof source refs, authority artifact refs, completion review refs, and supersession lineage for replaced projections
+  + [review_gate_requirement_set] is completion review or accepted gate required before readiness opens packetization or downstream work
+  + [invalidation_behavior_set] is stale when requirement, support, gap, proof, authority basis, freshness rule, natural key, or completion review changes
+  + [output_mutation_policy] is create_new_record or supersede_existing_record only with lineage_edge_set and invalidation_ref_set
+  + [nonpromotion_policy] is readiness_projection cannot itself become source authority, dispatch authority, operations authority, or live-control authority
+  + [SOP_first_interrupt_contract] is required for ambiguous requirement scope, authority conflict, unresolved human override, missing proof route requiring judgment, or high-risk downstream gate
+
+  = must: never emit ready_to_packetize while unresolved blocking support_gap remains
+  = must: never produce work_packet output
+  = must: preserve stale, blocked, contradicted, ambiguous, and faulted states as records or traceable refusal results
+
+& [SupportReadinessDecisionTable: P3-S04] is the decision table for support_readiness_recompute
+  + [decision_case] is ready when requirements are complete, support is current, proof route is present, authority basis is current, no blocking support_gap remains, no contradiction is active, and review gate is present
+  + [decision_case] is blocked when required support, source, review gate, natural key, proof route, or completion review is absent and no unsafe contradiction is proven
+  + [decision_case] is stale when any input requirement, support record, support gap, proof result, authority artifact, prior readiness projection, operator contract, or P2/P3 boundary basis is out of date
+  + [decision_case] is contradicted when support records, support gaps, proof results, authority artifacts, or completion reviews make incompatible claim-bearing statements
+  + [decision_case] is ambiguous when subject identity, requirement scope, source lineage, authority basis, ownership context, or proof route cannot be resolved mechanically
+  + [decision_case] is faulted when false-ready output, hidden authority, invalid input shape, forbidden output, projection promotion, generated-output promotion, or operator contract violation is proven
+
+  = must: prefer blocked over success when support is insufficient
+  = must: prefer stale over success when freshness cannot be proven
+  = must: prefer SOP_first_interrupt over guessing when semantic identity is ambiguous
+  = must: emit fault_record when false-ready readiness is proven
+
+& [SupportReadinessOutputContract: P3-S04] is the output and refusal contract for support_readiness_recompute
+  + [success_output] is readiness_projection with readiness_state ready_to_packetize, authority_class surface_projection_non_authority, effect_boundary review_gate_only or projection_only, currentness_state current, source_ref_set preserved, lineage_edge_set preserved, review_gate_ref present, and nonpromotion_policy attached
+  + [proof_output] is proof_result only when the recompute proof reviews inputs and explicitly records proof_status verified
+  + [blocked_output] is readiness_projection blocked plus blocker_ref_set or support_gap when missing support should be recorded
+  + [stale_output] is stale_projection plus stale_source_ref_set and required_refresh
+  + [contradicted_output] is readiness_projection contradicted or fault_record with contradiction_ref_set
+  + [ambiguous_output] is SOP_first_interrupt with required_context_ref_set
+  + [fault_output] is fault_record with fault_kind false_ready hidden_authority invalid_input_shape forbidden_output projection_to_authority_promotion generated_output_authority_promotion or operator_contract_violation
+  + [trace_output] is operator_trace with generated_output_non_authority and nonpromotion_policy attached
+
+  = must: return a traceable refusal rather than silently omitting output
+  = must: leave existing accepted readiness untouched unless supersession lineage is explicit
+  = must: never create, assign, dispatch, or execute a work packet
+
+& [PacketizationRefusalRule: P3-S04] is the rule that prevents readiness from becoming packetization
+  + [packetization_allowed] is false
+  + [work_packet_output_allowed] is false
+  + [assignment_allowed] is false
+  + [dispatch_allowed] is false
+  + [readiness_can_open_future_packetization_gate] is true only after completion_review accepts readiness output as support
+  + [readiness_projection_effect_boundary] is review_gate_only or projection_only
+
+  = must: force P4 packetization to consume readiness through a later accepted packetization contract
+  = must: classify any work_packet output, assignment claim, dispatch request, or live-control escalation as fault_forbidden_output
+
+& [SupportReadinessFixtureObligationRefresh: P3-S04] is the fixture obligation set for future validation
+  + [fixture_obligation] is ready_capability expects success readiness_projection ready_to_packetize and no work_packet output
+  + [fixture_obligation] is blocked_gap expects blocked_output and support_gap or blocked readiness_projection
+  + [fixture_obligation] is stale_support expects stale_projection and no ready readiness
+  + [fixture_obligation] is stale_boundary_input expects stale_projection or fault_output
+  + [fixture_obligation] is contradicted_support expects readiness_projection contradicted or fault_output
+  + [fixture_obligation] is ambiguous_dependency expects SOP_first_interrupt
+  + [fixture_obligation] is missing_proof_route expects blocked_output or SOP_first_interrupt
+  + [fixture_obligation] is authority_conflict expects SOP_first_interrupt
+  + [fixture_obligation] is false_ready_prevention expects fault_output and no ready readiness
+  + [fixture_obligation] is forbidden_packet_output expects fault_output if work_packet appears
+  + [fixture_obligation] is projection_promotion expects fault_output
+  + [fixture_obligation] is hidden_authority expects fault_output
+
+  = must: keep fixture obligations planned only until future fixture material activation opens file creation
+
+& [DownstreamOperatorRefreshInstruction: P3-S04] is the instruction to P3-S05 and downstream chunks
+  + [P3-S05_must_cover] is signature_validation fixture obligations from P3-S03
+  + [P3-S05_must_cover] is support_readiness_recompute fixture obligations from P3-S04
+  + [P3-S05_must_cover] is blocked output fault output SOP-first interrupt trace nonpromotion no-hidden-write and no-automation boundary
+  + [P4_gate] is gated_until_P3_completion_or_explicit_rebake
+  + [P5_gate] is gated_until_P3_and_fixture_contracts_advance
+  + [P6_gate] is gated_until_P3_P4_and_fixture_records_advance
+  + [operator_implementation_gate] is gated_until_future_implementation_activation
+
+& [P3S04FaultReview] is the fault review for P3-S04
+  + [work_packet_created_found] is false
+  + [assignment_created_found] is false
+  + [dispatch_leak_found] is false
+  + [operator_implementation_found] is false
+  + [LangGraph_node_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [trace_to_authority_promotion_found] is false
+  + [false_ready_packetization_found] is false
+
+  ! [P3SupportReadinessRecomputeOperatorContractRefreshAccepted] is accepted
+    @ [support] [RefreshedOperatorContract: support_readiness_recompute]
+    @ [support] [SupportReadinessDecisionTable: P3-S04]
+    @ [support] [SupportReadinessOutputContract: P3-S04]
+    @ [support] [PacketizationRefusalRule: P3-S04]
+    @ [support] [SupportReadinessFixtureObligationRefresh: P3-S04]
+    @ [support] [DownstreamOperatorRefreshInstruction: P3-S04]
+    @ [support] [P3S04FaultReview]

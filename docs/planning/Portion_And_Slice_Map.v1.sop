@@ -91,7 +91,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P3_S02_Completion_Review.v1.sop
   + [support_record] is docs/operators/P3_Signature_Validation_Operator_Contract_Refresh.v1.sop
   + [support_record] is docs/reviews/P3_S03_Completion_Review.v1.sop
-  + [support_gap] is support readiness recompute operator contract refresh not yet accepted
+  + [support_record] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+  + [support_record] is docs/reviews/P3_S04_Completion_Review.v1.sop
+  + [support_gap] is operator trace fixture oracle and no-automation boundary plan not yet accepted
   + [support_gap] is first operator examples not yet accepted
   + [proof_route] is example contracts for signature_validation and support_readiness_recompute
   + [slice_family] is operator-contract-template-design
@@ -385,16 +387,16 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P3-S04-SupportReadinessRecomputeOperatorContractRefresh] is ready_for_execution
+& [CurrentReadyChunk: P3-S05-OperatorTraceFixtureOracleAndNoAutomationBoundaryPlan] is ready_for_execution
   + [chunk_id] is P3
-  + [chunk_name] is P3-S04 support readiness recompute operator contract refresh
-  + [authority_basis] is docs/reviews/P3_S03_Completion_Review.v1.sop
+  + [chunk_name] is P3-S05 operator trace fixture oracle and no-automation boundary plan
+  + [authority_basis] is docs/reviews/P3_S04_Completion_Review.v1.sop
   + [activation_slice_surface] is docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
-  + [model_route] is requires deeper reasoning
-  + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is readiness recompute controls downstream packetization and false-ready prevention
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P3-S04 acceptance unless operator semantics or authority rules change
+  + [model_route_depth] is Spark_suitable_bounded_planning
+  + [model_route_reason] is fixture oracle planning becomes bounded after common envelope and specific operator refreshes are accepted
 
-  = must: create only docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop and docs/reviews/P3_S04_Completion_Review.v1.sop
+  = must: create only docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop and docs/reviews/P3_S05_Completion_Review.v1.sop
   = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior P2 outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
