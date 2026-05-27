@@ -15,6 +15,8 @@ State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
 @ [accepted_output] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
 @ [accepted_output] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
 @ [completion_review] docs/reviews/IR7_S04_Completion_Review.v1.sop
+@ [accepted_output] docs/implementation/IR7_Operations_Dry_Run_Simulator_Implementation_Plan.v1.sop
+@ [completion_review] docs/reviews/IR7_S05_Completion_Review.v1.sop
 @ [post_ir6_readiness] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
 @ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
 @ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
@@ -22,9 +24,9 @@ State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
 
 & [IR7WorkStateV1] is the current derived work state for IR7 operations dry-run request simulator planning
   + [chunk_ref] is IR7 operations dry-run request simulator planning
-  + [state_basis] is docs/reviews/IR7_S04_Completion_Review.v1.sop
-  + [state_basis_sha256] is 0429E6A27749415DC671B22C454D74BC3609DE0E91D4028FC1915B62ED528798
-  + [surface_status] is IR7-S04_accepted_and_IR7-S05_open
+  + [state_basis] is docs/reviews/IR7_S05_Completion_Review.v1.sop
+  + [state_basis_sha256] is 43DD7E8364D5C679D4DBD9B71F79DE64C2FB65FF7E5DD0F7CE8FBFE99A96C58F
+  + [surface_status] is IR7-S05_accepted_and_IR7-S06_open
   + [source_document] is docs/source/2026-05-26_ir7_final_slices/Derived_IR7_Final_Slices_Source.sop
   + [source_document_sha256] is 9482711BA29A4924479663F42DAE398AB93A05537F2751E6D9E3053200CB657E
   + [source_manifest] is docs/source/2026-05-26_ir7_final_slices/Source_Document_Manifest.sop
@@ -67,11 +69,16 @@ State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
   + [accepted_output_sha256] is 73E0E51DC51D89BA550B494F2C4CC021569EE527E97A1991DB9B87A83CA96CE2
   + [accepted_completion_review] is docs/reviews/IR7_S04_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 0429E6A27749415DC671B22C454D74BC3609DE0E91D4028FC1915B62ED528798
-  + [current_ready_slice] is IR7-S05
-  + [current_ready_slice_name] is operations dry-run simulator implementation plan and generated-output boundary
+  + [accepted_slice] is IR7-S05
+  + [accepted_output] is docs/implementation/IR7_Operations_Dry_Run_Simulator_Implementation_Plan.v1.sop
+  + [accepted_output_sha256] is EA2A980A2558887104C11313F785D69E944B06707FBC1EFEA30838C12685070F
+  + [accepted_completion_review] is docs/reviews/IR7_S05_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 43DD7E8364D5C679D4DBD9B71F79DE64C2FB65FF7E5DD0F7CE8FBFE99A96C58F
+  + [current_ready_slice] is IR7-S06
+  + [current_ready_slice_name] is completion review and implementation activation pack
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is implementation planning and generated-output policy affect operation safety, future dispatch, and live-control boundaries
-  + [future_bounded_fixture_route] is closed_pending_IR7-S05_implementation_boundary
+  + [current_ready_slice_model_route_reason] is final IR7 planning acceptance affects implementation activation and future operations-manager safety boundaries
+  + [future_bounded_fixture_route] is closed_pending_IR7-S06_activation_pack
   + [operations_simulator_implementation_authorized] is false
   + [fixture_file_creation_authorized_by_current_slice] is false
   + [expected_ledger_creation_authorized_by_current_slice] is false
@@ -81,9 +88,9 @@ State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
   + [agent_dispatch_authorized] is false
   + [operations_control_authorized] is false
   + [live_machine_control_authorized] is false
-  + [IR7_state] is ready_for_IR7-S05_operations_dry_run_simulator_implementation_plan_and_generated_output_boundary
+  + [IR7_state] is ready_for_IR7-S06_completion_review_and_implementation_activation_pack
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR7-S05 before implementation activation, dependency installation, generated outputs, operations simulator implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: execute IR7-S06 before implementation activation, dependency installation, generated outputs, operations simulator implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
   = must: keep operation request, dry-run result, refusal, and human approval records non-authoritative until completion reviews accept their contracts
-  = must: mark this state stale if IR7 source document, IR7 source manifest, canonical specification, slice surface, minting review, IR7-S01 output, IR7-S01 completion review, IR7-S02 output, IR7-S02 completion review, IR7-S03 output, IR7-S03 completion review, IR7-S04 outputs, IR7-S04 completion review, post-IR6 readiness surface, FSC5 operations safety pack, IR6 proof pack, or IR6 implementation completion review changes
+  = must: mark this state stale if IR7 source document, IR7 source manifest, canonical specification, slice surface, minting review, IR7-S01 output, IR7-S01 completion review, IR7-S02 output, IR7-S02 completion review, IR7-S03 output, IR7-S03 completion review, IR7-S04 outputs, IR7-S04 completion review, IR7-S05 output, IR7-S05 completion review, post-IR6 readiness surface, FSC5 operations safety pack, IR6 proof pack, or IR6 implementation completion review changes

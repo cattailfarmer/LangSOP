@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is ready_for_IR7-S05_implementation_plan
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7-S06_activation_pack
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -205,15 +205,17 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
   + [support_record] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
   + [support_record] is docs/reviews/IR7_S04_Completion_Review.v1.sop
-  + [support_gap] is IR7-S05 operations dry-run simulator implementation plan and generated-output boundary not yet executed
+  + [support_record] is docs/implementation/IR7_Operations_Dry_Run_Simulator_Implementation_Plan.v1.sop
+  + [support_record] is docs/reviews/IR7_S05_Completion_Review.v1.sop
+  + [support_gap] is IR7-S06 completion review and implementation activation pack not yet executed
   + [support_gap] is IR7 dry-run operations simulator implementation activation not yet accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7-S05 implementation plan and generated-output boundary, not implementation code, fixture source files, generated outputs, or live operations control
-  = must: require deeper reasoning for IR7-S05 because implementation planning and generated-output policy affect operation safety, future dispatch, and live-control boundaries
-  = should: keep later bounded implementation activation gated until IR7-S05 and IR7-S06 are accepted
+  = must: open only IR7-S06 completion review and implementation activation pack, not implementation code, fixture source files, generated outputs, or live operations control
+  = must: require deeper reasoning for IR7-S06 because final planning acceptance affects implementation activation and future operations-manager safety boundaries
+  = should: keep later bounded implementation activation gated until IR7-S06 is accepted
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design
