@@ -46,9 +46,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p8_ia06_test] tests/test_p8_fixture_material_contracts.py
 @ [p8_ia06_proof] docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
 @ [p8_ia06_review] docs/reviews/P8_IA06_Completion_Review.v1.sop
+@ [p8_ia07_decision] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [p8_ia07_review] docs/reviews/P8_IA07_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P8-IA07_dependency_adapter_transport_dispatch_operations_and_live_control_deferral_decision
+  + [map_state] is ready_for_P8-IA08_implementation_completion_review_proof_pack_and_downstream_readiness_rebake
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -539,22 +541,24 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P8-IA07-DependencyAdapterTransportDispatchOperationsAndLiveControlDeferralDecision] is ready_for_execution
+& [CurrentReadyChunk: P8-IA08-ImplementationCompletionReviewProofPackAndDownstreamReadinessRebake] is ready_for_execution
   + [chunk_id] is P8
-  + [slice_id] is P8-IA07
-  + [chunk_name] is dependency, adapter, transport, dispatch, operations, and live-control deferral decision
-  + [authority_basis] is docs/reviews/P8_IA06_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 8C5B011E2BF883D9F797AAF24B2202333901FA57881F217925A388830BF197A5
+  + [slice_id] is P8-IA08
+  + [chunk_name] is implementation completion review, proof pack, and downstream readiness rebake
+  + [authority_basis] is docs/reviews/P8_IA07_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 6895FF67893624685B6A4C1501ADB33ECCF9348BA7A071CE8B5AC91518A31F0E
   + [readiness_surface] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
-  + [expected_output] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
-  + [completion_review_output] is docs/reviews/P8_IA07_Completion_Review.v1.sop
+  + [expected_output] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [expected_output] is docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+  + [expected_output] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [completion_review_output] is docs/reviews/P8_IA08_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is dependency, adapter, transport, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
+  + [model_route_reason] is final implementation acceptance affects future P5 runtime implementation, P6 surface projection implementation, P7 coordination expansion, and P9 operations-manager readiness
 
-  = must: decide deferral or narrowly scoped future authority only; do not install dependencies, mutate package metadata, implement adapters, implement transports, implement UI, assign work, dispatch jobs, control operations, control live machines, or silently edit prior outputs
-  = must: keep generated outputs, fixture proof success, test success, dry-run success, human approval displays, manager packets, and mailbox carriers non-authoritative for dispatch, operations, and live control
-  = must: keep P8-IA08 gated until P8-IA07 completion review accepts
+  = must: create only proof pack, implementation completion review, downstream readiness surface, and P8-IA08 completion review outputs opened by P8-IA07
+  = must: include hashes, fixture source inventory, expected ledger inventory, proof ledger inventory, generated-output proof, no-dispatch proof, no-operations-control proof, no-live-effect proof, dependency decision, support deltas, requirement deltas, and no authority leaks
+  = must: avoid new implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

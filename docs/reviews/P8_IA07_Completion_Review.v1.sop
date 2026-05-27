@@ -1,0 +1,104 @@
+Subject: P8 IA07 Completion Review V1
+Date: 2026-05-27
+Review UUID: 6da8c8d7-3d8a-4c5c-aca7-1fd6a827be14
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [p8_ia06_review] docs/reviews/P8_IA06_Completion_Review.v1.sop
+@ [completed_output] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+
+& [CompletedWorkReview: P8-IA07] is the completed-work review for P8-IA07 dependency, adapter, transport, dispatch, operations, and live-control deferral decision
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA07
+  + [completed_output] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [completed_output_sha256] is 474263639406A6D1F01F084DF9B1C5F08CE6A8227FC8738C86F096AAD7BC9F44
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8-IA07 and open P8-IA08
+  + [next_gate_result] is P8-IA08 may open
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as gate-opening evidence for P8-IA08 only
+  = must: rerun this review if P8 dependency deferral decision, generated-output proof, generated path policy, contract tests, activation boundary, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control gated
+
+& [P8IA07Verification] is the verification result for P8-IA07
+  + [dependency_deferral_decision_present] is true
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [fixture_runner_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [future_adapter_authority_path_preserved] is true
+  + [future_dispatch_authority_path_preserved] is true
+  + [future_live_control_authority_path_preserved] is true
+  + [P8_IA08_may_proceed_without_external_dependency] is true
+
+  ! [P8IA07VerificationSatisfied] is accepted
+    @ [support] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+
+& [SupportDelta: P8-IA07] is the support delta produced by P8-IA07
+  + [new_support_record] is P8 fixture material implementation can complete its proof pack without external dependencies, package metadata mutation, adapters, transports, UI, assignment, dispatch, operations control, or live machine control
+  + [new_support_record] is future fixture runners, adapters, transports, LangGraph runtime integration, Langflow projection, dispatch paths, and live-control paths are preserved as future source-preserved activation work rather than silently rejected
+  + [new_support_record] is P8-IA08 may open as the final implementation proof pack, completion review, and downstream readiness rebake slice
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-IA07] is the requirement delta produced by P8-IA07
+  + [requirement_delta] is P8-IA08 requires deeper reasoning because final implementation acceptance affects future P5 runtime implementation, P6 surface projection implementation, P7 coordination expansion, and P9 operations-manager readiness
+  + [requirement_delta] is P8-IA08 must record dependency deferral, no-dispatch proof, no-operations-control proof, no-live-effect proof, support deltas, requirement deltas, and no authority leaks
+  + [requirement_delta] is no new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, or live machine control is authorized by P8-IA07
+
+& [FaultReview: P8-IA07] is the fault review for P8-IA07
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [fixture_runner_code_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [fixture_success_authority_promotion_found] is false
+  + [generated_output_authority_promotion_found] is false
+  + [test_success_authority_promotion_found] is false
+
+  ! [P8IA07Accepted] is accepted
+    @ [support] [P8IA07Verification]
+    @ [support] [SupportDelta: P8-IA07]
+    @ [support] [RequirementDelta: P8-IA07]
+    @ [support] [FaultReview: P8-IA07]
+
+& [NextSliceGate: P8-IA08] is opened
+  + [opened_slice] is P8-IA08 implementation completion review, proof pack, and downstream readiness rebake
+  + [accepted_dependency] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_dependency_sha256] is 474263639406A6D1F01F084DF9B1C5F08CE6A8227FC8738C86F096AAD7BC9F44
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects future P5 runtime implementation, P6 surface projection implementation, P7 coordination expansion, and P9 operations-manager readiness
+  + [safety_limit] is no new implementation work, assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-IA08 next unless user redirects or a new fault invalidates this review

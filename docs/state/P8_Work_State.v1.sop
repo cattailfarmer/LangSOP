@@ -59,11 +59,13 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [p8_ia06_test] tests/test_p8_fixture_material_contracts.py
 @ [p8_ia06_proof] docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
 @ [p8_ia06_review] docs/reviews/P8_IA06_Completion_Review.v1.sop
+@ [p8_ia07_decision] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [p8_ia07_review] docs/reviews/P8_IA07_Completion_Review.v1.sop
 
 & [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
   + [state_basis] is docs/reviews/P8_Completion_Review.v1.sop
   + [state_basis_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
-  + [surface_status] is P8_completed_with_fixture_material_activation_P8-IA06_accepted_pending_P8-IA07
+  + [surface_status] is P8_completed_with_fixture_material_activation_P8-IA07_accepted_pending_P8-IA08
   + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
   + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
@@ -192,11 +194,18 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_output_sha256] is E7604550BB4A82BAA40C6D9B8DB41D9B3908C50BBE2020851A59BF6F1DED5CB4
   + [accepted_completion_review] is docs/reviews/P8_IA06_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 8C5B011E2BF883D9F797AAF24B2202333901FA57881F217925A388830BF197A5
-  + [current_ready_slice] is P8-IA07
-  + [current_ready_slice_name] is dependency, adapter, transport, dispatch, operations, and live-control deferral decision
-  + [current_ready_slice_expected_output] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_slice] is P8-IA07
+  + [accepted_output] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_output_sha256] is 474263639406A6D1F01F084DF9B1C5F08CE6A8227FC8738C86F096AAD7BC9F44
+  + [accepted_completion_review] is docs/reviews/P8_IA07_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 6895FF67893624685B6A4C1501ADB33ECCF9348BA7A071CE8B5AC91518A31F0E
+  + [current_ready_slice] is P8-IA08
+  + [current_ready_slice_name] is implementation completion review, proof pack, and downstream readiness rebake
+  + [current_ready_slice_expected_output] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [current_ready_slice_expected_output] is docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+  + [current_ready_slice_expected_output] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is dependency, adapter, transport, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
+  + [current_ready_slice_model_route_reason] is final implementation acceptance affects future P5 runtime implementation, P6 surface projection implementation, P7 coordination expansion, and P9 operations-manager readiness
   + [gated_chunk] is P6 implementation and projection fixture materialization until P6 final slices and implementation activation are accepted
   + [gated_chunk] is fixture material creation until P8-IA01 accepts exact files and P8-IA02 opens material creation
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted
@@ -221,6 +230,6 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-IA07 before dependency work, proof runner code, surface expansion, adapter work, dispatch, or live-control work
+  = must: execute P8-IA08 before runtime implementation, surface implementation, coordination expansion, operations-manager planning, dependency work, proof runner code, adapter work, dispatch, or live-control work
   = must: keep fixture obligations, generated outputs, proof ledgers, graph checkpoints, surface projections, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P8 fixture material implementation activation source, activation manifest, activation canonical, activation slices, activation minting review, P8-IA01 output, P8-IA01 review, P8-IA02 review, P8-IA02 fixture files, P8-IA03 review, P8-IA03 expected ledgers, P8-IA03 proof ledger seeds, P8-IA04 output, P8-IA04 review, P8-IA05 output, P8-IA05 review, P8-IA06 test, P8-IA06 proof, P8-IA06 review, P4 completion, post-P4 readiness, P6 completion, post-P6 readiness, accepted fixture oracle, or accepted proof pack changes
+  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P8 fixture material implementation activation source, activation manifest, activation canonical, activation slices, activation minting review, P8-IA01 output, P8-IA01 review, P8-IA02 review, P8-IA02 fixture files, P8-IA03 review, P8-IA03 expected ledgers, P8-IA03 proof ledger seeds, P8-IA04 output, P8-IA04 review, P8-IA05 output, P8-IA05 review, P8-IA06 test, P8-IA06 proof, P8-IA06 review, P8-IA07 decision, P8-IA07 review, P4 completion, post-P4 readiness, P6 completion, post-P6 readiness, accepted fixture oracle, or accepted proof pack changes
