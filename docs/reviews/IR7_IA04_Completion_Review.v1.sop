@@ -1,0 +1,118 @@
+Subject: IR7 IA04 Completion Review V1
+Date: 2026-05-27
+Review UUID: c0234f60-aec4-444e-895d-287e529c4622
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+@ [request_models_review] docs/reviews/IR7_IA03_Completion_Review.v1.sop
+@ [completed_output] src/langsop/operations/__init__.py
+@ [completed_output] src/langsop/operations/resource_safety.py
+@ [completed_output] src/langsop/operations/action_routes.py
+
+& [CompletedWorkReview: IR7-IA04] is the completed-work review for IR7-IA04 resource safety, human approval, rollback, and approval-stale model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA04
+  + [completed_output] is src/langsop/operations/__init__.py
+  + [completed_output_sha256] is 9B0BFCC48FA8001B6646B58A9E05436B2C48BA6F2CB3E6FC8799C56DD258F91D
+  + [completed_output] is src/langsop/operations/resource_safety.py
+  + [completed_output_sha256] is 8DA6BD3446DC83A0A825EEC0BB91F89B083F1BE3804D0C67F70F85E9DE838D11
+  + [completed_output] is src/langsop/operations/action_routes.py
+  + [completed_output_sha256] is 247C9D1FB8FCDB51BA1D563F532FEBC668E088EEB4B45CB59B0137BB7EC4F325
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-IA04 and open IR7-IA05
+  + [next_gate_result] is IR7-IA05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for generated path policy and fixture runner implementation
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR7-IA05 only
+  = must: rerun this review if request, result, refusal, resource safety, action route, fixture source, expected ledger, activation boundary, or activation slice surface changes
+  = must: keep generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7IA04Verification] is the verification result for IR7-IA04
+  + [resource_safety_model_file_present] is true
+  + [action_route_model_file_present] is true
+  + [package_exports_updated] is true
+  + [resource_target_safety_classifier_present] is true
+  + [risk_level_classifier_present] is true
+  + [blast_radius_envelope_present] is true
+  + [rollback_abort_route_envelope_present] is true
+  + [human_approval_envelope_present] is true
+  + [approval_stale_revoked_mismatch_refusal_present] is true
+  + [credential_boundary_refusal_present] is true
+  + [network_boundary_refusal_present] is true
+  + [destructive_action_refusal_present] is true
+  + [live_control_implication_refusal_present] is true
+  + [operation_action_route_classifier_present] is true
+  + [operation_action_live_control_refusal_present] is true
+  + [fixture_runner_created] is false
+  + [generated_output_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7IA04VerificationSatisfied] is accepted
+    @ [support] src/langsop/operations/resource_safety.py
+    @ [support] src/langsop/operations/action_routes.py
+    @ [support] src/langsop/operations/__init__.py
+
+& [SupportDelta: IR7-IA04] is the support delta produced by IR7-IA04
+  + [new_support_record] is IR7 now has planning-only resource target, risk, blast radius, rollback, and human approval safety review models
+  + [new_support_record] is IR7 now has action route classification that refuses live control, credential access, network mutation, destructive filesystem action, and authority promotion
+  + [new_support_record] is IR7-IA05 may implement generated path policy and fixture runner against accepted request, refusal, resource safety, and action route models
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-IA04] is the requirement delta produced by IR7-IA04
+  + [requirement_delta] is IR7-IA05 is GPT-5.3-Codex-Spark-suitable because generated path policy and fixture runner behavior are bounded by accepted file inventory, generated-output roots, fixtures, expected ledgers, and safety models
+  + [requirement_delta] is IR7-IA05 may create src/langsop/operations/generated_paths.py and src/langsop/operations/fixture_runner.py only
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-IA04
+
+& [FaultReview: IR7-IA04] is the fault review for IR7-IA04
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_runner_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7IA04Accepted] is accepted
+    @ [support] [IR7IA04Verification]
+    @ [support] [SupportDelta: IR7-IA04]
+    @ [support] [RequirementDelta: IR7-IA04]
+    @ [support] [FaultReview: IR7-IA04]
+
+& [NextSliceGate: IR7-IA05] is opened
+  + [opened_slice] is IR7-IA05 generated path policy and fixture runner implementation
+  + [accepted_dependency] is src/langsop/operations/requests.py
+  + [accepted_dependency] is src/langsop/operations/dry_run.py
+  + [accepted_dependency] is src/langsop/operations/refusals.py
+  + [accepted_dependency] is src/langsop/operations/resource_safety.py
+  + [accepted_dependency] is src/langsop/operations/action_routes.py
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is generated path policy and fixture runner behavior are bounded by accepted file inventory, fixtures, ledgers, and safety models
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA05 next unless user redirects or a new fault invalidates this review
