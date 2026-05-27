@@ -1,0 +1,212 @@
+Subject: P3 Operator Trace Fixture Oracle And No Automation Boundary Plan V1
+Date: 2026-05-27
+Fixture Plan UUID: 63955d80-bf51-4da4-9145-3e4b879f27da
+
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [p3_common_envelope] docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+@ [p3_signature_validation] docs/operators/P3_Signature_Validation_Operator_Contract_Refresh.v1.sop
+@ [p3_support_readiness] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+@ [p3_s04_review] docs/reviews/P3_S04_Completion_Review.v1.sop
+
+& [P3OperatorTraceFixtureOracleAndNoAutomationBoundaryPlanV1] is the P3-S05 fixture oracle and no-automation boundary plan
+  + [slice_id] is P3-S05
+  + [slice_name] is operator trace fixture oracle and no-automation boundary plan
+  + [fixture_family] is p3-operator-contract-trace-refusal-nonautomation
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable only because this slice is bounded to fixture oracle planning without fixture file creation or implementation
+  + [model_route_depth] is Spark_suitable_bounded_planning
+  + [model_route_reason] is fixture oracle planning is bounded after common envelope and specific operator refreshes are accepted
+  + [fixture_case_count] is 15
+  + [next_gate_result] is P3-S06 may open after completion review
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_file_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [operator_runner_wiring_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this plan as fixture oracle design only
+  = must: define future fixture cases without creating fixture source files, expected ledgers, generated outputs, implementation code, dependencies, storage files, adapters, dispatch, operations control, or live machine control
+  = must: cover signature validation, support readiness recompute, common envelope refusal semantics, trace nonpromotion, forbidden output, projection promotion, hidden authority, and no-automation boundaries
+  = must: require every future fixture to expose operator_id, operator_version, input refs, output refs, precondition results, postcondition results, refusal kind, interrupt kind, fault kind, authority_class, effect_boundary, currentness_state, review_gate_ref, invalidation_ref_set, nonpromotion_assertion, and forbidden_effect_assertion
+
+& [P3OperatorFixtureOracleFieldSet] is the required field set for future P3 fixture validation
+  + [oracle_field] is fixture_case_id
+  + [oracle_field] is operator_id
+  + [oracle_field] is operator_version
+  + [oracle_field] is input_record_ref_set
+  + [oracle_field] is output_record_ref_set
+  + [oracle_field] is precondition_result_set
+  + [oracle_field] is postcondition_result_set
+  + [oracle_field] is outcome_kind
+  + [oracle_field] is refusal_kind
+  + [oracle_field] is interrupt_kind
+  + [oracle_field] is fault_kind
+  + [oracle_field] is authority_class
+  + [oracle_field] is effect_boundary
+  + [oracle_field] is currentness_state
+  + [oracle_field] is review_gate_ref
+  + [oracle_field] is invalidation_ref_set
+  + [oracle_field] is operator_trace_expectation
+  + [oracle_field] is nonpromotion_assertion
+  + [oracle_field] is forbidden_effect_assertion
+
+  = must: reject fixture cases whose authority, effect boundary, currentness, refusal, trace, or nonpromotion expectations are only implied in prose
+  = must: keep oracle fields deterministic enough for future expected-ledger comparison
+
+& [P3OperatorFixtureCaseSet] is the planned fixture case set for operator contract validation
+  + [fixture_case] is P3O-001-signature-valid
+    + [operator_id] is signature_validation
+    + [purpose] is prove valid satisfaction signature with current source lineage produces verified proof_result and non-authoritative operator_trace
+    + [expected_outcome] is success
+    + [expected_fault] is none
+    + [forbidden_effect_assertion] is no signature issuance, source mutation, dispatch, operations control, or live control
+  + [fixture_case] is P3O-002-signature-missing
+    + [operator_id] is signature_validation
+    + [purpose] is prove missing signature blocks or faults with repair route and no authority promotion
+    + [expected_outcome] is blocked_output_or_fault_output
+    + [expected_fault] is missing_signature_when_claiming_signed_sjs
+    + [forbidden_effect_assertion] is no signature repair or source mutation
+  + [fixture_case] is P3O-003-signature-wrong-protocol
+    + [operator_id] is signature_validation
+    + [purpose] is prove wrong protocol uuid emits fault_output
+    + [expected_outcome] is fault_output
+    + [expected_fault] is wrong_protocol_uuid
+    + [forbidden_effect_assertion] is no protocol rewrite
+  + [fixture_case] is P3O-004-signature-stale-source-hash
+    + [operator_id] is signature_validation
+    + [purpose] is prove stale source hash invalidates current authority and preserves trace
+    + [expected_outcome] is fault_output
+    + [expected_fault] is stale_source_hash
+    + [forbidden_effect_assertion] is no ready authority output
+  + [fixture_case] is P3O-005-signature-duplicate-ambiguous
+    + [operator_id] is signature_validation
+    + [purpose] is prove duplicate valid-looking signatures require SOP-first interrupt
+    + [expected_outcome] is SOP_first_interrupt
+    + [expected_fault] is none
+    + [forbidden_effect_assertion] is no guessed supersession
+  + [fixture_case] is P3O-006-signature-broken-lineage
+    + [operator_id] is signature_validation
+    + [purpose] is prove missing source manifest, signed subject, or lineage edge emits fault_output
+    + [expected_outcome] is fault_output
+    + [expected_fault] is broken_lineage
+    + [forbidden_effect_assertion] is no hidden authority
+  + [fixture_case] is P3O-007-readiness-ready-no-packet
+    + [operator_id] is support_readiness_recompute
+    + [purpose] is prove complete support produces ready readiness_projection without work_packet output
+    + [expected_outcome] is success
+    + [expected_fault] is none
+    + [forbidden_effect_assertion] is no work packet, assignment, dispatch, operations control, or live control
+  + [fixture_case] is P3O-008-readiness-blocked-gap
+    + [operator_id] is support_readiness_recompute
+    + [purpose] is prove unresolved support_gap produces blocked output
+    + [expected_outcome] is blocked_output
+    + [expected_fault] is none
+    + [forbidden_effect_assertion] is no false-ready output
+  + [fixture_case] is P3O-009-readiness-stale-support
+    + [operator_id] is support_readiness_recompute
+    + [purpose] is prove stale support or stale boundary produces stale_projection and no ready readiness
+    + [expected_outcome] is blocked_output_or_fault_output
+    + [expected_fault] is stale_projection_when_used_as_ready
+    + [forbidden_effect_assertion] is no packetization gate opened
+  + [fixture_case] is P3O-010-readiness-contradicted-support
+    + [operator_id] is support_readiness_recompute
+    + [purpose] is prove contradictory support emits contradicted readiness or fault
+    + [expected_outcome] is fault_output_or_blocked_output
+    + [expected_fault] is contradicted_support
+    + [forbidden_effect_assertion] is no ready readiness
+  + [fixture_case] is P3O-011-readiness-ambiguous-dependency
+    + [operator_id] is support_readiness_recompute
+    + [purpose] is prove ambiguous subject identity or dependency scope triggers SOP-first interrupt
+    + [expected_outcome] is SOP_first_interrupt
+    + [expected_fault] is none
+    + [forbidden_effect_assertion] is no guessed identity
+  + [fixture_case] is P3O-012-readiness-false-ready-prevention
+    + [operator_id] is support_readiness_recompute
+    + [purpose] is prove false-ready projection emits fault and cannot open packetization
+    + [expected_outcome] is fault_output
+    + [expected_fault] is false_ready
+    + [forbidden_effect_assertion] is no packetization gate opened
+  + [fixture_case] is P3O-013-forbidden-work-packet-output
+    + [operator_id] is support_readiness_recompute
+    + [purpose] is prove any work_packet output from readiness recompute is a contract violation
+    + [expected_outcome] is fault_output
+    + [expected_fault] is forbidden_output
+    + [forbidden_effect_assertion] is no assignment or dispatch
+  + [fixture_case] is P3O-014-trace-projection-nonpromotion
+    + [operator_id] is signature_validation and support_readiness_recompute
+    + [purpose] is prove operator_trace, checkpoint, projection, carrier, generated output, and dry-run context cannot become source authority
+    + [expected_outcome] is accepted_as_non_authority_trace_or_fault_when_promoted
+    + [expected_fault] is projection_to_authority_promotion when promotion is attempted
+    + [forbidden_effect_assertion] is no source, dispatch, operations, or live-control authority
+  + [fixture_case] is P3O-015-no-automation-boundary
+    + [operator_id] is common_operator_envelope
+    + [purpose] is prove operator contract acceptance cannot execute commands, create files, install dependencies, wire graph nodes, dispatch agents, or control operations
+    + [expected_outcome] is fault_output_when_automation_attempted
+    + [expected_fault] is forbidden_effect_boundary
+    + [forbidden_effect_assertion] is no automation effect
+
+& [P3OperatorExpectedFaultKindSet] is the planned fault kind inventory for future fixtures
+  + [fault_kind] is missing_signature_when_claiming_signed_sjs
+  + [fault_kind] is wrong_protocol_uuid
+  + [fault_kind] is stale_source_hash
+  + [fault_kind] is broken_lineage
+  + [fault_kind] is hidden_authority
+  + [fault_kind] is stale_projection_when_used_as_ready
+  + [fault_kind] is contradicted_support
+  + [fault_kind] is false_ready
+  + [fault_kind] is forbidden_output
+  + [fault_kind] is projection_to_authority_promotion
+  + [fault_kind] is generated_output_authority_promotion
+  + [fault_kind] is forbidden_effect_boundary
+  + [fault_kind] is operator_contract_violation
+
+  = must: require each future fault fixture to preserve triggering record refs, missing field set, violated boundary, and repair route
+
+& [P3FixtureMaterialBoundary] is the material boundary for P3-S05
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_file_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [future_fixture_source_root_candidate] is tests/fixtures/sop/p3_operator_contracts/
+  + [future_expected_ledger_root_candidate] is tests/fixtures/expected/p3_operator_contracts/
+  + [future_generated_output_root_candidate] is tests/fixtures/generated/p3_operator_contracts/
+  + [candidate_fixture_count] is 15
+
+  = must: treat root candidates as planning records only until a future implementation activation explicitly opens file creation
+  = must: keep generated outputs disposable and non-authoritative if later opened
+
+& [P3S05CoverageReview] is the coverage checklist for P3-S05
+  + [signature_validation_cases_present] is true
+  + [support_readiness_cases_present] is true
+  + [common_envelope_no_automation_case_present] is true
+  + [blocked_output_case_present] is true
+  + [fault_output_case_present] is true
+  + [SOP_first_interrupt_case_present] is true
+  + [trace_nonpromotion_case_present] is true
+  + [forbidden_output_case_present] is true
+  + [false_ready_case_present] is true
+  + [oracle_field_set_present] is true
+  + [fault_kind_inventory_present] is true
+  + [fixture_material_boundary_present] is true
+  + [Spark_suitable_route_declared] is true
+  + [fixture_source_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [dispatch_authorized] is false
+  + [operation_or_live_effect_authorized] is false
+
+  ! [P3OperatorTraceFixtureOracleAndNoAutomationBoundaryPlanAccepted] is accepted
+    @ [support] [P3OperatorFixtureOracleFieldSet]
+    @ [support] [P3OperatorFixtureCaseSet]
+    @ [support] [P3OperatorExpectedFaultKindSet]
+    @ [support] [P3FixtureMaterialBoundary]
+    @ [support] [P3S05CoverageReview]

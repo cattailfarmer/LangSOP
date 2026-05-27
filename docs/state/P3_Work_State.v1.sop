@@ -14,6 +14,8 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
 @ [completion_review] docs/reviews/P3_S03_Completion_Review.v1.sop
 @ [accepted_output] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
 @ [completion_review] docs/reviews/P3_S04_Completion_Review.v1.sop
+@ [accepted_output] docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+@ [completion_review] docs/reviews/P3_S05_Completion_Review.v1.sop
 @ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
 @ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
 @ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
@@ -22,9 +24,9 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
 @ [operator_runner_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
 
 & [P3WorkStateV1] is the current derived work state for P3 compiled SOP operator contracts
-  + [state_basis] is docs/reviews/P3_S04_Completion_Review.v1.sop
-  + [state_basis_sha256] is 176E5740C95734A4E5E67A94DEC897E516903903A276E7A1C73E55AA3D63505D
-  + [surface_status] is P3-S04_accepted_pending_P3-S05
+  + [state_basis] is docs/reviews/P3_S05_Completion_Review.v1.sop
+  + [state_basis_sha256] is BAFEFD46324C740238BA743433735B487F8788EA15E4A0A6CBF8B0E78EA14CF0
+  + [surface_status] is P3-S05_accepted_pending_P3-S06
   + [source_manifest] is docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is C1F84558BB7870C2F46FDE2FD8BCCBA2F3D8D0D89AF853372DD3C260DA182134
   + [canonical_specification] is docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
@@ -63,11 +65,15 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
   + [accepted_output_sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
   + [accepted_completion_review] is docs/reviews/P3_S04_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 176E5740C95734A4E5E67A94DEC897E516903903A276E7A1C73E55AA3D63505D
-  + [current_ready_slice] is P3-S05
-  + [current_ready_slice_name] is operator trace fixture oracle and no-automation boundary plan
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable only after P3-S04 acceptance unless operator semantics or authority rules change
-  + [current_ready_slice_model_route_reason] is fixture oracle planning becomes bounded after common envelope and specific operator refreshes are accepted
-  + [gated_slice] is P3-S06
+  + [accepted_slice] is P3-S05
+  + [accepted_output] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+  + [accepted_output_sha256] is 0F6CD13A806E09C6DC30EDCAAF987872DE18D249B2B2BD9C77A486CD67A460B8
+  + [accepted_completion_review] is docs/reviews/P3_S05_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is BAFEFD46324C740238BA743433735B487F8788EA15E4A0A6CBF8B0E78EA14CF0
+  + [current_ready_slice] is P3-S06
+  + [current_ready_slice_name] is P3 completion review and downstream gate
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is final P3 acceptance changes downstream packetization readiness, LangGraph runtime readiness, surface projection readiness, fixture readiness, and implementation gates
   + [operator_implementation_authorized] is false
   + [LangGraph_node_implementation_authorized] is false
   + [fixture_source_file_creation_authorized] is false
@@ -84,6 +90,6 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P3-S05 before P3 completion review, downstream packetization, graph runtime, or surface expansion
+  = must: execute P3-S06 before downstream packetization, graph runtime, or surface expansion
   = must: keep SOP proof authority, operator contract authority, generated traces, graph checkpoints, fixture plans, packetization candidates, and runtime outputs in distinct authority classes
   = must: mark this state stale if P3 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, or accepted operator boundary inputs change
