@@ -1,0 +1,128 @@
+Subject: P5 Final Slice Minting Review V1
+Date: 2026-05-27
+Review UUID: 8648a6ff-dd01-4f73-bda2-3da2b27bfd19
+
+@ [source_manifest] docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [work_state] docs/state/P5_Work_State.v1.sop
+@ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P5-Final-Slice-Minting] is the completed-work review for minting P5 LangGraph procedure runtime final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/P5_LangGraph_Procedure_Runtime_Final_Slices_Source.sop
+  + [completed_output_sha256] is D6DACABE035497044E31E6EFC431BAECA60077E950E9BA11AB008B125283BB12
+  + [completed_output] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
+  + [completed_output] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
+  + [completed_output_sha256] is 53350AF90E9960B2AB65493A592B572592A3342644466D1C9E6EE02230488A2C
+  + [completed_output] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+  + [completed_output_sha256] is C9B8ACF56464CC2F3813899A0D39DEECF9793BF4D2011EB7EF39740552476FAB
+  + [completed_output] is docs/state/P5_Work_State.v1.sop
+  + [completed_output_sha256] is 7B857C62DF256721FAADEB4D20B7143D81FD31DBDA27F8E30747BB4F588D1006
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P5 final slice surface and open P5-S01
+  + [next_gate_result] is P5-S01 may open
+  + [next_model_route] is requires deeper reasoning for P5-S01
+  + [next_model_route_reason] is boundary import decides which runtime obligations become P5 authority and which remain plan-only support
+
+  = must: treat this review as gate-opening evidence for P5-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, work state, post-P8 readiness surface, P8 completion review, P2 authority inputs, or P3 operator inputs change
+  = must: keep dependency installation, package metadata mutation, implementation code, adapter work, transport work, UI work, graph runtime execution, command execution beyond validation, process control, GPU control, model runtime mutation, job dispatch, assignment, dispatch, operations control, and live machine control gated
+
+& [P5FinalSliceMintingVerification] is the verification result for P5 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [work_state_created] is true
+  + [slice_count] is 7
+  + [current_ready_slice] is P5-S01
+  + [gated_slice] is P5-S02
+  + [gated_slice] is P5-S03
+  + [gated_slice] is P5-S04
+  + [gated_slice] is P5-S05
+  + [gated_slice] is P5-S06
+  + [gated_slice] is P5-S07
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [graph_runtime_executed] is false
+  + [command_execution_beyond_validation_found] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P5FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+
+& [SupportDelta: P5-Final-Slice-Minting] is the support delta produced by minted P5 final slices
+  + [new_support_record] is P5-S01 may import accepted P2 record obligations, P3 operator obligations, and P8 proof/nonpromotion obligations before graph state or node contracts are defined
+  + [new_support_record] is P5-S02 through P5-S07 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded P5-S05 runtime proof trace fixture planning after P5-S01 through P5-S04 are accepted and only if proof trace semantics, no-live-effect boundaries, and nonpromotion rules remain stable
+  + [support_status] is accepted
+
+& [RequirementDelta: P5-Final-Slice-Minting] is the requirement delta produced by minted P5 final slices
+  + [requirement_delta] is P5-S01 requires deeper reasoning
+  + [requirement_delta] is completion review required after every P5 slice
+  + [requirement_delta] is no dependency installation, package metadata mutation, implementation code, adapter work, graph runtime execution, assignment, dispatch, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is every P5 planning slice must preserve checkpoint nonauthority, SOP interrupt semantics, generated-output nonpromotion, no-dispatch, and no-live-effect proof boundaries
+
+& [FaultReview: P5-Final-Slice-Minting] is the fault review for minted P5 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [implementation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [graph_runtime_execution_leak_found] is false
+  + [command_execution_beyond_validation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P5FinalSlicesAccepted] is accepted
+    @ [support] [P5FinalSliceMintingVerification]
+    @ [support] [SupportDelta: P5-Final-Slice-Minting]
+    @ [support] [RequirementDelta: P5-Final-Slice-Minting]
+    @ [support] [FaultReview: P5-Final-Slice-Minting]
+
+& [NextSliceGate: P5-S01] is opened
+  + [opened_slice] is P5-S01 boundary import and runtime obligation inventory
+  + [accepted_boundary_input] is docs/reviews/P2_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [accepted_boundary_input] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [accepted_boundary_input] is docs/reviews/P3_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+  + [accepted_boundary_input] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+  + [accepted_boundary_input] is docs/reviews/P8_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [accepted_boundary_input] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is boundary import decides which runtime obligations become P5 authority and which remain plan-only support
+  + [safety_limit] is no dependency installation, package metadata mutation, implementation, adapter, graph runtime execution, assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P5-S01 next unless user redirects or a new fault invalidates this review

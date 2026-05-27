@@ -1,0 +1,70 @@
+Subject: P5 Work State V1
+Date: 2026-05-27
+State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
+
+@ [source_manifest] docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P5_Final_Slice_Minting_Review.v1.sop
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
+
+& [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
+  + [state_basis] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+  + [state_basis_sha256] is C9B8ACF56464CC2F3813899A0D39DEECF9793BF4D2011EB7EF39740552476FAB
+  + [surface_status] is P5_final_slices_minted_pending_P5-S01
+  + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
+  + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is 53350AF90E9960B2AB65493A592B572592A3342644466D1C9E6EE02230488A2C
+  + [slice_surface] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+  + [slice_surface_sha256] is C9B8ACF56464CC2F3813899A0D39DEECF9793BF4D2011EB7EF39740552476FAB
+  + [accepted_boundary_input] is docs/reviews/P2_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [accepted_boundary_input] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [accepted_boundary_input] is docs/reviews/P3_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+  + [accepted_boundary_input] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+  + [accepted_boundary_input] is docs/reviews/P8_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [accepted_boundary_input] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
+  + [current_ready_slice] is P5-S01
+  + [current_ready_slice_name] is boundary import and runtime obligation inventory
+  + [current_ready_slice_expected_output] is docs/runtime/P5_Boundary_Import_And_Runtime_Obligation_Inventory.v1.sop
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is boundary import decides which runtime obligations become P5 authority and which remain plan-only support
+  + [gated_slice] is P5-S02
+  + [gated_slice] is P5-S03
+  + [gated_slice] is P5-S04
+  + [gated_slice] is P5-S05
+  + [gated_slice] is P5-S06
+  + [gated_slice] is P5-S07
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [command_execution_beyond_validation_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute P5-S01 before graph state, checkpoint, operator-node mapping, SOP interrupt, proof trace, dependency posture, implementation activation, runtime implementation, surface expansion, adapter work, dispatch, or live-control work
+  = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
+  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, or post-P8 readiness changes

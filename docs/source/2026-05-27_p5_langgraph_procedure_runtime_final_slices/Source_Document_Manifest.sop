@@ -1,0 +1,33 @@
+Subject: P5 LangGraph Procedure Runtime Final Slices Source Manifest
+Date: 2026-05-27
+Manifest UUID: c2d1f7c2-55d0-4ba3-bd40-402bb621f131
+
+& [SourceDocumentManifest: P5LangGraphProcedureRuntimeFinalSlices] is the source preservation manifest for P5 LangGraph procedure runtime final slice minting
+  + [dictated_source] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/P5_LangGraph_Procedure_Runtime_Final_Slices_Source.sop
+    + [sha256] is D6DACABE035497044E31E6EFC431BAECA60077E950E9BA11AB008B125283BB12
+    + [source_role] is preserved manager-derived P5 slice-minting source
+  + [authority_source] is docs/reviews/P2_Completion_Review.v1.sop
+    + [sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+    + [source_role] is accepted P2 authority kernel and record schema completion review
+  + [authority_source] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+    + [sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+    + [source_role] is accepted post-P2 readiness surface
+  + [authority_source] is docs/reviews/P3_Completion_Review.v1.sop
+    + [sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+    + [source_role] is accepted compiled SOP operator contract completion review
+  + [authority_source] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+    + [sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+    + [source_role] is accepted post-P3 readiness surface
+  + [authority_source] is docs/reviews/P8_Completion_Review.v1.sop
+    + [sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+    + [source_role] is accepted P8 proof fixtures evaluation and faults completion review
+  + [authority_source] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+    + [sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
+    + [source_role] is accepted post-P8 readiness surface
+  + [canonical_target] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for P5 final slice minting
+  = must: invalidate P5 slice minting if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not runtime implementation authority
+  - never: use this manifest to authorize dependency installation, package metadata mutation, LangGraph adapter implementation, command execution beyond validation, process control, GPU control, model runtime mutation, job dispatch, assignment, dispatch, operations control, or live machine control

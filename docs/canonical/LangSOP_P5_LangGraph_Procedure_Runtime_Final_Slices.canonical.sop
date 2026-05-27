@@ -1,0 +1,122 @@
+Subject: LangSOP P5 LangGraph Procedure Runtime Final Slices Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/P5_LangGraph_Procedure_Runtime_Final_Slices_Source.sop
+@ [slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
+
+& [CanonicalRecord: P5LangGraphProcedureRuntimeFinalSlices] is the processed planning authority for P5 LangGraph procedure runtime final slices
+  + [canonical_uuid] is 13b5e745-3f8b-4ad2-891d-f90d2a91a0ff
+  + [source_manifest_uuid] is c2d1f7c2-55d0-4ba3-bd40-402bb621f131
+  + [slice_surface_uuid] is 7e84fb52-d93e-4358-a5be-883a0d52eb37
+  + [authority_scope] is P5 final slice order, graph procedure state envelope, checkpoint nonauthority, operator node mapping, deterministic transition records, SOP interrupts, human judgment handoffs, rebake routes, runtime proof traces, no-live-effect execution boundary, LangGraph adapter dependency deferral, implementation activation boundary, completion review obligations, model routing, and safety limits
+  + [implementation_scope] is P5 slice-minting authority only
+  + [depends_on] is docs/reviews/P2_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [depends_on] is docs/reviews/P3_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [depends_on] is docs/reviews/P8_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+
+  = must: use docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop as the executable P5 final slice surface
+  = must: execute P5-S01 before defining graph state, checkpoints, nodes, interrupts, proof traces, dependency posture, implementation activation, or downstream gates
+  = must: execute P5-S02 before any proof trace, surface projection, or implementation activation consumes checkpoint semantics
+  = must: execute P5-S03 before SOP interrupt semantics or runtime proof traces consume operator-node mapping
+  = must: execute P5-S04 before proof trace fixture planning becomes Spark-suitable
+  = must: execute P5-S06 before dependency, adapter, or implementation activation work is reconsidered
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, graph runtime execution, command execution beyond validation, process control, GPU control, model runtime mutation, job dispatch, assignment, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to install LangGraph, mutate package metadata, write runtime implementation code, execute graph runtime, assign work, dispatch work, control operations, or control the live machine
+
+& [CanonicalP5FinalSliceSequence] is the accepted final slice sequence for P5
+  + [slice] is P5-S01 boundary import and runtime obligation inventory
+  + [slice] is P5-S02 graph procedure state envelope and checkpoint nonauthority contract
+  + [slice] is P5-S03 operator node mapping and deterministic transition contract
+  + [slice] is P5-S04 SOP interrupt human judgment handoff and rebake route contract
+  + [slice] is P5-S05 runtime proof trace fixture plan and no-live-effect execution boundary
+  + [slice] is P5-S06 LangGraph adapter dependency deferral and implementation activation boundary
+  + [slice] is P5-S07 P5 completion review and downstream gate
+  + [current_ready_slice] is P5-S01
+  + [gated_slice] is P5-S02 until P5-S01 accepted
+  + [gated_slice] is P5-S03 until P5-S02 accepted
+  + [gated_slice] is P5-S04 until P5-S03 accepted
+  + [gated_slice] is P5-S05 until P5-S04 accepted
+  + [gated_slice] is P5-S06 until P5-S05 accepted
+  + [gated_slice] is P5-S07 until P5-S06 accepted
+
+  = must: preserve this order unless a completed-work review rebakes the P5 surface
+  = must: mark downstream slices stale when upstream P5 output changes graph state, checkpoint nonauthority, operator node mapping, transition semantics, interrupt semantics, proof trace rules, dependency posture, implementation activation boundary, or downstream gate
+
+& [CanonicalP5ModelRouting] is the model routing for P5 final slices
+  + [P5-S01] is requires deeper reasoning
+  + [P5-S02] is requires deeper reasoning
+  + [P5-S03] is requires deeper reasoning
+  + [P5-S04] is requires deeper reasoning
+  + [P5-S05] is GPT-5.3-Codex-Spark-suitable only after P5-S04 acceptance unless proof trace semantics, no-live-effect boundaries, or nonpromotion rules change
+  + [P5-S06] is requires deeper reasoning
+  + [P5-S07] is requires deeper reasoning
+
+  = must: keep checkpoint nonauthority, SOP interrupt semantics, human judgment handoff, dependency posture, graph adapter activation, and downstream gates under deeper reasoning
+  = must: treat bounded proof trace fixture planning as Spark-suitable only after graph state, node mapping, and interrupt contracts are accepted and stable
+
+& [CanonicalP5SafetyLimit] is the inherited safety limit for P5 final slices
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [command_execution_beyond_validation_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: block dependency installation, package metadata mutation, adapter implementation, runtime execution, command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, operations control, and live machine control
+
+& [SatisfactionSignature: P5LangGraphProcedureRuntimeFinalSlices] is the valid SJS satisfaction signature for the P5 final slice specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is a136ef25-e765-4e2d-9f8e-663692607d8a
+  + [signed_subject] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is D6DACABE035497044E31E6EFC431BAECA60077E950E9BA11AB008B125283BB12
+  + [source_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
+  + [source_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [source_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [source_sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+  + [source_sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+  + [source_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [source_sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
+  + [slice_surface_sha256] is C9B8ACF56464CC2F3813899A0D39DEECF9793BF4D2011EB7EF39740552476FAB
+  + [canonical_source_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, P2_authority_imported, P3_operator_imported, P8_proof_imported, slices_minted, gates_defined, expected_outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for P5 final slice execution only; no dependency installation, package metadata mutation, implementation code, adapter work, graph runtime execution, assignment, dispatch, operations control, or live machine control authorized
+  + [invalidation_condition] is source_hash_change, P2_authority_change, P3_operator_change, P8_proof_change, checkpoint_authority_leak, generated_output_promotion, dependency_posture_change, dispatch_authority_leak, live_control_leak, or runtime_proof_contradiction
+
+  = must: reprocess when P5 boundaries, authority inputs, proof inputs, slice order, model routing, safety limits, or required outputs materially change
+
+& [RegistryRecord: P5LangGraphProcedureRuntimeFinalSlices] is the durable identity ledger for P5 final slice minting
+  + [registry_uuid] is ed9705f6-a87c-4fbb-9be8-911a0ff5e72a
+  + [manifest_node_uuid] is c2d1f7c2-55d0-4ba3-bd40-402bb621f131
+  + [canonical_node_uuid] is 13b5e745-3f8b-4ad2-891d-f90d2a91a0ff
+  + [slice_surface_uuid] is 7e84fb52-d93e-4358-a5be-883a0d52eb37
+  + [signature_uuid] is a136ef25-e765-4e2d-9f8e-663692607d8a
+  + [slice_minting_review_uuid] is 8648a6ff-dd01-4f73-bda2-3da2b27bfd19
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for P5 completion reviews and downstream readiness

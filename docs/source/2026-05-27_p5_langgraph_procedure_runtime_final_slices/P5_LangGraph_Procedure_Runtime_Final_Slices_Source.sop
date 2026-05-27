@@ -1,0 +1,34 @@
+Subject: P5 LangGraph Procedure Runtime Final Slices Source
+Date: 2026-05-27
+Source UUID: 67e00f91-df71-46c3-91d5-a7f18585a5af
+
+& [SourcePrompt: P5LangGraphProcedureRuntimeFinalSlices] is the preserved manager-derived source for minting P5 LangGraph procedure runtime final slices
+  + [source_kind] is manager-derived slice-minting source
+  + [origin] is post-P8 readiness after proof fixtures evaluation and faults acceptance
+  + [purpose] is convert accepted P2 authority kernel records, P3 compiled SOP operator contracts, and P8 proof ledger and fixture nonpromotion authority into dependency-closed P5 final slices for a LangGraph-shaped procedure runtime
+  + [reason] is P5 is ready for deeper-reasoning slice minting, but the system must define graph procedure state, checkpoint nonauthority, operator node mapping, deterministic transition records, SOP interrupts, human judgment handoffs, proof traces, dependency deferral, and implementation activation boundaries before runtime implementation, dependency installation, or graph adapter work can be trusted
+
+  = must: preserve SOP source, canonical specifications, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment, dispatch, operations control, and live machine control as distinct authority classes
+  = must: preserve P2 authority states, natural keys, freshness, source/projection distinction, and record schemas
+  = must: preserve P3 operator envelopes, refusal semantics, trace requirements, no-automation boundaries, and support-readiness recomputation duties
+  = must: preserve P8 proof ledger required fields, evaluation result states, accepted absence proof, generated-output nonpromotion, stale/rebake rules, negative oracle cases, and downstream consumption gates
+  = must: import P2 completion and post-P2 readiness, P3 completion and post-P3 readiness, P8 completion and post-P8 readiness as boundary inputs
+  = must: split P5 so each slice has no dependency outside its declared boundary
+  = must: route graph checkpoint authority, SOP interrupt semantics, human judgment handoff, dependency posture, and downstream runtime gates to deeper reasoning
+  = should: make bounded graph fixture implementation GPT-5.3-Codex-Spark-suitable only after P5 final slices and source-preserved implementation activation accept exact graph contracts, fixture paths, proof ledgers, and no-live-effect boundaries
+
+& [RequiredP5SliceFamilySet] is the source-level slice family set for P5
+  + [slice_family] is boundary import and runtime obligation inventory
+  + [slice_family] is graph procedure state envelope and checkpoint nonauthority contract
+  + [slice_family] is operator node mapping and deterministic transition contract
+  + [slice_family] is SOP interrupt human judgment handoff and rebake route contract
+  + [slice_family] is runtime proof trace fixture plan and no-live-effect execution boundary
+  + [slice_family] is LangGraph adapter dependency deferral and implementation activation boundary
+  + [slice_family] is P5 completion review and downstream gate
+
+  = must: execute boundary import before defining graph state or node contracts
+  = must: execute checkpoint nonauthority before proof traces or downstream surfaces consume runtime state
+  = must: execute operator mapping before SOP interrupt and transition proof planning
+  = must: execute SOP interrupt semantics before runtime proof trace planning
+  = must: execute dependency deferral before any LangGraph adapter or package work is reconsidered
+  = must: execute completion review before P6 surface expansion, P8 fixture material implementation activation, P7 dispatch-adjacent coordination expansion, or P9 operations live-control reconsideration consumes P5 authority
