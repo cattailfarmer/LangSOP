@@ -1,0 +1,117 @@
+Subject: LangSOP P3 Compiled SOP Operator Contracts Final Slices Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices_Source.sop
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [operator_runner_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+
+& [CanonicalRecord: P3CompiledSOPOperatorContractsFinalSlices] is the processed planning authority for P3 compiled SOP operator contract final slices
+  + [canonical_uuid] is 1c77fccb-ef34-4fb1-adb7-107de557190f
+  + [source_manifest_uuid] is 65844689-e457-4a36-a555-987a15875a58
+  + [slice_surface_uuid] is d15c0d98-56ba-4168-a995-c0fdf5910231
+  + [authority_scope] is P3 final slice order, gate dependencies, expected outputs, model routing, operator contract boundary preservation, SOP-first refusal preservation, trace and fixture oracle boundary, no-automation boundary, downstream gate, forbidden scope, and completion review obligations
+  + [implementation_scope] is P3 slice-minting authority only
+  + [depends_on] is docs/reviews/P2_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [depends_on] is docs/operators/Operator_Contract_Template.v1.sop
+  + [depends_on] is docs/operators/Foundation_Operator_Contracts.v1.sop
+  + [depends_on] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+  + [depends_on] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+
+  = must: use docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop as the executable P3 final slice surface
+  = must: execute P3-S01 before revising or superseding existing operator contract authority
+  = must: execute P3-S02 before refreshing specific operator contracts
+  = must: execute P3-S03 and P3-S04 before downstream P4 packetization, P5 LangGraph runtime, or P6 surface projection consumes P3 authority
+  = must: preserve fixture oracle as a plan until a later source-preserved implementation activation opens fixture files
+  = must: keep dependency installation, package metadata mutation, adapter work, transport work, UI work, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to write implementation code, create fixture files, install dependencies, mutate package metadata, dispatch work, control operations, or control the live machine
+
+& [CanonicalP3FinalSliceSequence] is the accepted final slice sequence for P3
+  + [slice] is P3-S01 boundary import and operator duty inventory
+  + [slice] is P3-S02 common operator envelope and SOP-first refusal semantics
+  + [slice] is P3-S03 signature validation operator contract refresh
+  + [slice] is P3-S04 support readiness recompute operator contract refresh
+  + [slice] is P3-S05 operator trace fixture oracle and no-automation boundary plan
+  + [slice] is P3-S06 P3 completion review and downstream gate
+  + [current_ready_slice] is P3-S01
+  + [gated_slice] is P3-S02 until P3-S01 accepted
+  + [gated_slice] is P3-S03 until P3-S02 accepted
+  + [gated_slice] is P3-S04 until P3-S03 accepted
+  + [gated_slice] is P3-S05 until P3-S04 accepted
+  + [gated_slice] is P3-S06 until P3-S05 accepted
+
+  = must: preserve this order unless a completed-work review rebakes the P3 surface
+  = must: mark downstream slices stale when an upstream P3 output changes
+
+& [CanonicalP3ModelRouting] is the model routing for P3 final slices
+  + [P3-S01] is requires deeper reasoning
+  + [P3-S02] is requires deeper reasoning
+  + [P3-S03] is requires deeper reasoning
+  + [P3-S04] is requires deeper reasoning
+  + [P3-S05] is GPT-5.3-Codex-Spark-suitable only after P3-S04 acceptance unless operator semantics or authority rules change
+  + [P3-S06] is requires deeper reasoning
+
+  = must: keep operator envelope semantics, SOP-first interrupts, authority mutation boundaries, trace identity, false-ready prevention, downstream gates, dispatch boundaries, and live-control boundaries under deeper reasoning
+  = must: treat bounded fixture oracle planning as Spark-suitable only after common envelope and specific operator refreshes are accepted
+
+& [CanonicalP3SafetyLimit] is the inherited safety limit for P3 final slices
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [operator_implementation_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: block command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, operations control, and live machine control
+
+& [SatisfactionSignature: P3CompiledSOPOperatorContractsFinalSlices] is the valid SJS satisfaction signature for the P3 final slice specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 0dd9bd15-c514-4676-8b00-de0d6bca0526
+  + [signed_subject] is docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 1FC3334B8AC4CFF6D54FAD6DBA9CA62DDD7251E1D002F5BBA95615608B8563B6
+  + [source_sha256] is C1F84558BB7870C2F46FDE2FD8BCCBA2F3D8D0D89AF853372DD3C260DA182134
+  + [source_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [source_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [source_sha256] is 2EEB32DAF55E28D007C930C2544A68AC1E94D0C727056127D3584517CB76B5DF
+  + [source_sha256] is CFECB48599185245D402D729877E4FDD48F59CF60229CA4BDF45C4F3FD6ADC33
+  + [source_sha256] is 41E337EB765B6B93B667DE160A99A46DDA92B7EF1EAF1D1527E7DC6A2389AAE0
+  + [source_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [source_sha256] is D31925DEB0063F93376933089162FA5F128F05DEB72B29CE3D7DE8F4926D38AD
+  + [source_sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+  + [slice_surface_sha256] is B852974070132A85F6C23079A5EAD27F56C72EB958FD1009EA5BD211439F4261
+  + [canonical_source_specification] is docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, post_P2_readiness_imported, operator_boundary_imported, P2_overlay_requirements_imported, slices_minted, gates_defined, expected_outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for P3 final slice execution only; no implementation code, fixture creation, dependency installation, adapter work, dispatch, operations control, or live machine control authorized
+  + [invalidation_condition] is source_hash_change, operator_boundary_change, P2_readiness_change, P2_completion_change, forbidden_external_dependency_found, dispatch_authority_leak, live_control_leak, or operator_contract_contradiction
+
+  = must: reprocess when P3 boundaries, operator inputs, slice order, model routing, safety limits, or required outputs materially change
+
+& [RegistryRecord: P3CompiledSOPOperatorContractsFinalSlices] is the durable identity ledger for P3 final slice minting
+  + [registry_uuid] is 87974596-873a-4b6c-9149-5cbff88f9e09
+  + [manifest_node_uuid] is 65844689-e457-4a36-a555-987a15875a58
+  + [canonical_node_uuid] is 1c77fccb-ef34-4fb1-adb7-107de557190f
+  + [slice_surface_uuid] is d15c0d98-56ba-4168-a995-c0fdf5910231
+  + [signature_uuid] is 0dd9bd15-c514-4676-8b00-de0d6bca0526
+  + [slice_minting_review_uuid] is 5ddf3764-a038-4ffe-8878-00f1b7c3ab4a
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for P3 completion reviews and downstream readiness

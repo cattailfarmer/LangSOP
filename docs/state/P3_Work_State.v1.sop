@@ -1,0 +1,65 @@
+Subject: P3 Work State V1
+Date: 2026-05-27
+State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
+
+@ [source_manifest] docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P3_Final_Slice_Minting_Review.v1.sop
+@ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [operator_runner_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+
+& [P3WorkStateV1] is the current derived work state for P3 compiled SOP operator contracts
+  + [state_basis] is docs/reviews/P3_Final_Slice_Minting_Review.v1.sop
+  + [state_basis_sha256] is 86D39FDFD2DA150CEAF232637E9CFCC362860E9549551CF458402C20BB0D85CC
+  + [surface_status] is P3_final_slices_minted_pending_P3-S01
+  + [source_manifest] is docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is C1F84558BB7870C2F46FDE2FD8BCCBA2F3D8D0D89AF853372DD3C260DA182134
+  + [canonical_specification] is docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is 06EB44E3084C1C6D662EEE55593031FEE2EEBDF79A086781F38B159FADC5B121
+  + [slice_surface] is docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+  + [slice_surface_sha256] is B852974070132A85F6C23079A5EAD27F56C72EB958FD1009EA5BD211439F4261
+  + [accepted_boundary_input] is docs/reviews/P2_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [accepted_boundary_input] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [accepted_boundary_input] is docs/operators/Operator_Contract_Template.v1.sop
+  + [accepted_boundary_input_sha256] is 2EEB32DAF55E28D007C930C2544A68AC1E94D0C727056127D3584517CB76B5DF
+  + [accepted_boundary_input] is docs/operators/Foundation_Operator_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is CFECB48599185245D402D729877E4FDD48F59CF60229CA4BDF45C4F3FD6ADC33
+  + [accepted_boundary_input] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is 41E337EB765B6B93B667DE160A99A46DDA92B7EF1EAF1D1527E7DC6A2389AAE0
+  + [accepted_boundary_input] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [current_ready_slice] is P3-S01
+  + [current_ready_slice_name] is boundary import and operator duty inventory
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is boundary import decides which existing operator contracts remain authority and which need P3 refresh
+  + [gated_slice] is P3-S02
+  + [gated_slice] is P3-S03
+  + [gated_slice] is P3-S04
+  + [gated_slice] is P3-S05
+  + [gated_slice] is P3-S06
+  + [operator_implementation_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute P3-S01 before refreshing operator envelope or specific operator contracts
+  = must: keep SOP proof authority, operator contract authority, generated traces, graph checkpoints, fixture plans, packetization candidates, and runtime outputs in distinct authority classes
+  = must: mark this state stale if P3 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, or accepted operator boundary inputs change

@@ -1,0 +1,31 @@
+Subject: P3 Compiled SOP Operator Contracts Final Slices Source
+Date: 2026-05-27
+Source UUID: da076796-9758-4ed5-a511-d04d087d86ea
+
+& [SourcePrompt: P3CompiledSOPOperatorContractsFinalSlices] is the preserved manager-derived source for minting P3 compiled SOP operator contract slices
+  + [source_kind] is manager-derived slice-minting source
+  + [origin] is post-P2 readiness after authority kernel and record schema acceptance
+  + [purpose] is convert accepted operator template material, existing foundation operator contracts, P2 authority overlays, and post-P2 readiness into dependency-closed P3 final slices
+  + [reason] is P3 is ready for deeper-reasoning slice minting, but the system must decide which SOP duties can become traceable mechanical operators and which duties must remain soft-wire SOP proof before LangGraph runtime, packetization, surface expansion, fixture material, or adapter work consumes operator contracts
+
+  = must: preserve SOP as semantic proof and source authority
+  = must: preserve existing Operator_Contract_Template.v1.sop, Foundation_Operator_Contracts.v1.sop, Planning_Readiness_Operator_Contracts.v1.sop, and IR3 contract-driven operator runner contract as accepted boundary inputs until P3 review supersedes or refines them
+  = must: require every P3 operator contract to consume P2 authority_class, effect_boundary, currentness_state, review_gate_ref, invalidation_ref_set, natural keys, source refs, and lineage rules explicitly
+  = must: distinguish operator contracts from executable operator implementation, LangGraph node implementation, storage implementation, dispatch, operations control, and live-control authority
+  = must: split P3 so each slice has no dependency outside its declared boundary
+  = must: route operator template decisions, SOP-first interrupt semantics, output mutation policy, trace identity, and downstream gates to deeper reasoning
+  = should: make bounded operator examples, fixture cases, ledger updates, and proof updates GPT-5.3-Codex-Spark-suitable only after P3 template and contract boundaries are accepted
+
+& [RequiredP3SliceFamilySet] is the source-level slice family set for P3
+  + [slice_family] is boundary import and operator duty inventory
+  + [slice_family] is common operator contract envelope and SOP-first refusal semantics
+  + [slice_family] is signature validation operator contract refresh
+  + [slice_family] is support readiness recompute operator contract refresh
+  + [slice_family] is operator trace fixture oracle and no-automation boundary plan
+  + [slice_family] is P3 completion review and downstream gate
+
+  = must: execute boundary import before revising operator contract authority
+  = must: execute common operator envelope before refreshing specific operators
+  = must: refresh signature validation and support readiness contracts before downstream packetization or LangGraph runtime consumes them
+  = must: execute fixture oracle planning as plan-only work without fixture file creation
+  = must: execute completion review before P4, P5, P6, P8, adapter, dispatch, operations-control, or live-control work consumes P3 authority

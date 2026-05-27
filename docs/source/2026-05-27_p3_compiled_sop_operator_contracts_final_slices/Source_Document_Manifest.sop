@@ -1,0 +1,39 @@
+Subject: P3 Compiled SOP Operator Contracts Final Slices Source Manifest
+Date: 2026-05-27
+Manifest UUID: 65844689-e457-4a36-a555-987a15875a58
+
+& [SourceDocumentManifest: P3CompiledSOPOperatorContractsFinalSlices] is the source preservation manifest for P3 compiled SOP operator contract final slice minting
+  + [dictated_source] is docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices_Source.sop
+    + [sha256] is 1FC3334B8AC4CFF6D54FAD6DBA9CA62DDD7251E1D002F5BBA95615608B8563B6
+    + [source_role] is preserved manager-derived P3 slice-minting source
+  + [authority_source] is docs/reviews/P2_Completion_Review.v1.sop
+    + [sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+    + [source_role] is accepted P2 completion and gate-opening review
+  + [authority_source] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+    + [sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+    + [source_role] is accepted post-P2 readiness surface
+  + [authority_source] is docs/operators/Operator_Contract_Template.v1.sop
+    + [sha256] is 2EEB32DAF55E28D007C930C2544A68AC1E94D0C727056127D3584517CB76B5DF
+    + [source_role] is existing operator contract template boundary input
+  + [authority_source] is docs/operators/Foundation_Operator_Contracts.v1.sop
+    + [sha256] is CFECB48599185245D402D729877E4FDD48F59CF60229CA4BDF45C4F3FD6ADC33
+    + [source_role] is existing foundation signature validation and support readiness contract input
+  + [authority_source] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+    + [sha256] is 41E337EB765B6B93B667DE160A99A46DDA92B7EF1EAF1D1527E7DC6A2389AAE0
+    + [source_role] is existing planning readiness contract input
+  + [authority_source] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+    + [sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+    + [source_role] is accepted operator runner and trace boundary input
+  + [authority_source] is docs/canonical/LangSOP_Initial_Workflow.v2.canonical.sop
+    + [sha256] is D31925DEB0063F93376933089162FA5F128F05DEB72B29CE3D7DE8F4926D38AD
+    + [source_role] is initial workflow canonical authority containing CanonicalOperatorContractV2
+  + [authority_source] is docs/planning/Capability_Field.v2.sop
+    + [sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+    + [source_role] is capability field with operator-contract frontier
+  + [canonical_target] is docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for P3 final slice minting
+  = must: invalidate P3 slice minting if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not implementation authority
+  - never: use this manifest to authorize dependency installation, adapter implementation, dispatch, operations control, or live machine control

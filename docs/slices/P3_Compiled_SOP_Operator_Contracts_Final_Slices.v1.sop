@@ -1,0 +1,127 @@
+Subject: P3 Compiled SOP Operator Contracts Final Slices V1
+Date: 2026-05-27
+Slice Surface UUID: d15c0d98-56ba-4168-a995-c0fdf5910231
+
+@ [source_manifest] docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
+@ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
+@ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [planning_readiness_contracts] docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+@ [operator_runner_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+
+& [P3CompiledSOPOperatorContractsFinalSliceSurfaceV1] is the final slice surface for P3 compiled SOP operator contracts
+  + [chunk_ref] is P3 compiled SOP operator contracts
+  + [chunk_boundary] is boundary import, operator duty inventory, common operator envelope, SOP-first refusal semantics, signature validation refresh, support readiness recompute refresh, operator trace fixture oracle planning, no-automation boundary, completion review, and downstream gate
+  + [accepted_boundary_input] is docs/reviews/P2_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [accepted_boundary_input] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 8BBBD1CDF695FEDF895F520CED9F01CCE2F7E8E5975ACF03897B38D06F2E250B
+  + [accepted_boundary_input] is docs/operators/Operator_Contract_Template.v1.sop
+  + [accepted_boundary_input_sha256] is 2EEB32DAF55E28D007C930C2544A68AC1E94D0C727056127D3584517CB76B5DF
+  + [accepted_boundary_input] is docs/operators/Foundation_Operator_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is CFECB48599185245D402D729877E4FDD48F59CF60229CA4BDF45C4F3FD6ADC33
+  + [accepted_boundary_input] is docs/operators/Planning_Readiness_Operator_Contracts.v1.sop
+  + [accepted_boundary_input_sha256] is 41E337EB765B6B93B667DE160A99A46DDA92B7EF1EAF1D1527E7DC6A2389AAE0
+  + [accepted_boundary_input] is docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is D831718A6F1B13BE6AF2F41BE49BFD73A666A6EED90C5BEE9A802EB27E08DFC3
+  + [current_ready_slice] is P3-S01
+  + [gated_slice_set] is P3-S02, P3-S03, P3-S04, P3-S05, and P3-S06
+  + [safety_limit] is no implementation code, no dependency installation, no package metadata mutation, no adapter implementation, no dispatch, no operations control, and no live machine control authorized
+
+  = must: execute P3-S01 before revising or superseding existing operator contract authority
+  = must: run completed-work review after each P3 slice
+  = must: stale downstream slices when an upstream operator envelope, operator contract, trace oracle, or no-automation boundary changes
+  = must: preserve existing accepted operator files as boundary inputs unless a P3 completion review explicitly supersedes them
+
+& [FinalWorkSlice: P3-S01-BoundaryImportAndOperatorDutyInventory] is ready
+  + [slice_id] is P3-S01
+  + [slice_name] is boundary import and operator duty inventory
+  + [chunk_ref] is P3 compiled SOP operator contracts
+  + [authority_basis] is docs/reviews/P2_Completion_Review.v1.sop
+  + [activation_gate] is post-P2 readiness accepted
+  + [expected_output_set] is docs/operators/P3_Operator_Boundary_Import_And_Duty_Inventory.v1.sop
+  + [verification_oracle] is boundary import lists accepted operator contract inputs, identifies template and contract refresh deltas, records P2 overlay consumption requirements, and classifies implementation, graph runtime, adapter, dispatch, operations-control, and live-control gates without mutating operator contracts
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is boundary import decides which existing operator contracts remain authority and which need P3 refresh
+  + [forbidden_scope] is operator implementation, LangGraph node implementation, storage implementation, fixture source creation, expected ledger creation, dependency installation, package metadata mutation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P3-S02-CommonOperatorEnvelopeAndRefusalSemantics] is gated
+  + [slice_id] is P3-S02
+  + [slice_name] is common operator envelope and SOP-first refusal semantics
+  + [activation_gate] is P3-S01 accepted
+  + [expected_output_set] is docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+  + [verification_oracle] is refresh decision accepts, refines, or supersedes operator contract fields, input/output binding policy, precondition/postcondition policy, blocked output, fault output, SOP-first interrupt, trace schema, fixture obligations, no-hidden-write policy, and P2 overlay field requirements
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is the common operator envelope controls all downstream mechanical SOP duties and runtime graph nodes
+  + [forbidden_scope] is specific operator contract rewrite beyond declared deltas, executable implementation, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P3-S03-SignatureValidationOperatorContractRefresh] is gated
+  + [slice_id] is P3-S03
+  + [slice_name] is signature validation operator contract refresh
+  + [activation_gate] is P3-S02 accepted
+  + [expected_output_set] is docs/operators/P3_Signature_Validation_Operator_Contract_Refresh.v1.sop
+  + [verification_oracle] is refresh decision defines source, manifest, canonical, signature, proof, stale hash, wrong protocol, duplicate signature, broken lineage, ambiguous identity, and human override behavior without issuing signatures or mutating source artifacts
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is signature validation operator boundaries affect which artifacts may be trusted as processed authority
+  + [forbidden_scope] is signing new authority, rewriting source artifacts, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P3-S04-SupportReadinessRecomputeOperatorContractRefresh] is gated
+  + [slice_id] is P3-S04
+  + [slice_name] is support readiness recompute operator contract refresh
+  + [activation_gate] is P3-S03 accepted
+  + [expected_output_set] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+  + [verification_oracle] is refresh decision defines readiness inputs, support gaps, support deltas, requirement deltas, stale projections, contradicted support, missing proof route, authority conflict, false-ready prevention, and packetization refusal without generating work packets or assigning work
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is readiness recompute controls downstream packetization and false-ready prevention
+  + [forbidden_scope] is work packet generation, assignment, dispatch, executable implementation, dependency installation, adapter implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P3-S05-OperatorTraceFixtureOracleAndNoAutomationBoundaryPlan] is gated
+  + [slice_id] is P3-S05
+  + [slice_name] is operator trace fixture oracle and no-automation boundary plan
+  + [activation_gate] is P3-S04 accepted
+  + [expected_output_set] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+  + [verification_oracle] is plan defines valid, blocked, stale, contradicted, invalid, ambiguous, hidden-authority, missing-source-lineage, false-ready, forbidden-output, projection-promotion, and no-automation fixture cases without creating fixture files or implementation code
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P3-S04 acceptance unless operator semantics or authority rules change
+  + [model_route_reason] is fixture oracle planning becomes bounded after common envelope and specific operator refreshes are accepted
+  + [forbidden_scope] is fixture source creation, expected ledger creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P3-S06-P3CompletionReviewAndDownstreamGate] is gated
+  + [slice_id] is P3-S06
+  + [slice_name] is P3 completion review and downstream gate
+  + [activation_gate] is P3-S05 accepted
+  + [expected_output_set] is docs/reviews/P3_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [verification_oracle] is completion review accepts only P3 outputs with hashes, support deltas, requirement deltas, downstream P4/P5/P6 gates, model-route recommendations, and no implementation, dependency, adapter, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P3 acceptance changes downstream packetization readiness, LangGraph runtime readiness, surface projection readiness, fixture readiness, and implementation gates
+  + [forbidden_scope] is new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [P3FinalSliceClosureReview] is the dependency audit for minted P3 final slices
+  + [post_P2_readiness_status] is accepted
+  + [operator_template_status] is accepted_boundary_input
+  + [foundation_operator_contracts_status] is accepted_boundary_input
+  + [planning_readiness_contracts_status] is accepted_boundary_input
+  + [operator_runner_contract_status] is accepted_boundary_input
+  + [P3-S01_ready] is true
+  + [P3-S02_ready] is false
+  + [P3-S03_ready] is false
+  + [P3-S04_ready] is false
+  + [P3-S05_ready] is false
+  + [P3-S06_ready] is false
+  + [implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P3-S02 through P3-S06 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, operator contract contradiction appears, or P2 authority changes
