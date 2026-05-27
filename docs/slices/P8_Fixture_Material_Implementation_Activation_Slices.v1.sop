@@ -1,0 +1,151 @@
+Subject: P8 Fixture Material Implementation Activation Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 23ced4f5-60c7-4f09-aa03-2c44112eae8b
+
+@ [canonical_specification] docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_p8_fixture_material_implementation_activation/Source_Document_Manifest.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+@ [p8_materialization_boundary] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+
+& [P8FixtureMaterialImplementationActivationSliceSurfaceV1] is the executable slice surface for P8 fixture material implementation activation
+  + [chunk_ref] is P8 fixture material implementation activation
+  + [chunk_boundary] is exact fixture file inventory, source fixture material, expected ledgers, proof ledgers, negative oracle material, generated path policy, proof runner contract, validation tests, generated-output nonpromotion proof, dependency deferral, adapter deferral, transport deferral, dispatch deferral, operations-control deferral, live-control deferral, proof pack, and downstream readiness rebake
+  + [accepted_boundary_input] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [accepted_boundary_input] is docs/reviews/P6_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 1024C0B1B3AB56A147FCD7663292F2D224AF671D5BB0FCF11B2D1FAD11FF29CB
+  + [accepted_boundary_input] is docs/reviews/P8_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [accepted_boundary_input] is docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+  + [accepted_boundary_input_sha256] is C421893A5271DEA1F87F69B3B7D94D94226D2F304C2719EA65B15E95C6FF60A2
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is P8-IA01
+  + [gated_slice_set] is P8-IA02, P8-IA03, P8-IA04, P8-IA05, P8-IA06, P8-IA07, and P8-IA08
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: execute P8-IA01 before creating fixture source files, expected ledgers, proof ledgers, generated outputs, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+  = must: run completed-work review after each P8 implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes generated output, projection snapshots, graph checkpoints, packet candidates, dry-run success, displayed human approvals, surface displays, manager packets, or fixture success to source authority, dispatch authority, operations control, or live-control authority
+
+& [FinalWorkSlice: P8-IA01-FixtureMaterialActivationBoundaryAndExactFileInventory] is ready
+  + [slice_id] is P8-IA01
+  + [slice_name] is fixture material activation boundary and exact file inventory
+  + [chunk_ref] is P8 fixture material implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+  + [activation_gate] is P6 completion and post-P6 readiness accepted
+  + [expected_output_set] is docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is activation boundary confirms exact fixture source roots, expected ledger roots, proof ledger roots, generated-output roots, allowed file families, no-live-effect proof gates, no-dispatch proof gates, dependency boundary, adapter boundary, transport boundary, dispatch boundary, operations boundary, and live-control deferral boundary without creating fixture files
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, exact path inventory, generated-output roots, proof runner boundaries, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [forbidden_scope] is fixture source creation, expected ledger creation, proof ledger creation, generated output creation, proof runner code creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-IA02-KernelOperatorPacketRuntimeAndProjectionFixtureSourceMaterial] is gated
+  + [slice_id] is P8-IA02
+  + [slice_name] is kernel, operator, packet, runtime, and projection fixture source material
+  + [activation_gate] is P8-IA01 accepted
+  + [expected_output_set] is fixture source files at paths accepted by P8-IA01
+  + [verification_oracle] is tracked fixture source files cover accepted P2 authority kernel, P3 operator, P4 packet, P5 runtime, and P6 projection fixture families without expected ledgers, proof ledgers, generated outputs, implementation code, dependency changes, adapter work, dispatch, operations control, or live control
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after P8-IA01 acceptance
+  + [model_route_reason] is fixture source material is bounded by accepted fixture plans, exact path inventory, and no-live-effect boundary
+  + [forbidden_scope] is expected ledger creation, proof ledger creation, generated output creation, proof runner code creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-IA03-ExpectedLedgersAndProofLedgerSeedMaterial] is gated
+  + [slice_id] is P8-IA03
+  + [slice_name] is expected ledgers and proof ledger seed material
+  + [activation_gate] is P8-IA02 accepted
+  + [expected_output_set] is expected ledger files at paths accepted by P8-IA01
+  + [expected_output_set] is proof ledger seed files at paths accepted by P8-IA01
+  + [verification_oracle] is expected ledgers and proof ledger seeds cite fixture source files, authority classes, stale states, nonpromotion notices, no-dispatch notices, no-live-effect notices, and completion gates without generated outputs or runner execution
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after P8-IA02 acceptance
+  + [model_route_reason] is expected ledger and proof ledger material is bounded by accepted fixture source material and proof ledger contract
+  + [forbidden_scope] is generated output creation, proof runner code creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-IA04-NegativeOracleSourceMaterialForStaleFalseReadyContradictionAndFaultCases] is gated
+  + [slice_id] is P8-IA04
+  + [slice_name] is negative oracle source material for stale, false-ready, contradiction, and fault cases
+  + [activation_gate] is P8-IA03 accepted
+  + [expected_output_set] is negative oracle fixture files at paths accepted by P8-IA01
+  + [expected_output_set] is negative oracle expected ledgers at paths accepted by P8-IA01
+  + [verification_oracle] is negative oracle material covers stale source, stale projection, false-ready packet, generated-output promotion, graph checkpoint promotion, dry-run promotion, surface mutation, unscoped human approval, dispatch request, operations-control request, live-control request, unsupported dependency, and fault routing cases without live effects
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after P8-IA03 acceptance unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [model_route_reason] is negative oracle material is bounded when accepted authority and fault semantics remain stable
+  + [forbidden_scope] is generated output creation, proof runner code creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-IA05-GeneratedPathPolicyAndProofRunnerContract] is gated
+  + [slice_id] is P8-IA05
+  + [slice_name] is generated path policy and proof runner contract
+  + [activation_gate] is P8-IA04 accepted
+  + [expected_output_set] is docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+  + [expected_output_set] is optional source module inventory only if explicitly accepted by P8-IA01
+  + [verification_oracle] is proof runner contract reads only accepted fixture source and expected ledger paths, writes only generated outputs and proof results under accepted ignored roots, refuses path escapes, source paths, platform mailbox paths, credential paths, network paths, destructive filesystem targets, assignment records, dispatch records, operations targets, and live-control targets
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is generated-output roots, proof runner effects, path refusal, source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime mutation, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-IA06-FixtureMaterialValidationTestsAndGeneratedOutputNonpromotionProof] is gated
+  + [slice_id] is P8-IA06
+  + [slice_name] is fixture material validation tests and generated-output nonpromotion proof
+  + [activation_gate] is P8-IA05 accepted
+  + [expected_output_set] is tests for P8 fixture material contracts at paths accepted by P8-IA01
+  + [expected_output_set] is docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [verification_oracle] is tests cover accepted fixture families, expected ledgers, proof ledgers, negative oracle cases, generated output disposability, no-authority promotion, no-dispatch behavior, no-operations-control behavior, and no-live-effect behavior
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after P8-IA05 acceptance
+  + [model_route_reason] is validation tests and proof records are bounded by accepted fixture material, generated path policy, and proof runner contract
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution beyond validation commands, process control, GPU control, model runtime mutation, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-IA07-DependencyAdapterTransportDispatchOperationsAndLiveControlDeferralDecision] is gated
+  + [slice_id] is P8-IA07
+  + [slice_name] is dependency, adapter, transport, dispatch, operations, and live-control deferral decision
+  + [activation_gate] is P8-IA06 accepted
+  + [expected_output_set] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [verification_oracle] is decision either defers all dependency, adapter, transport, UI, dispatch, operations-control, and live-control work or explicitly authorizes narrowly scoped future work without command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, transport, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
+  + [forbidden_scope] is unreviewed dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-IA08-ImplementationCompletionReviewProofPackAndDownstreamReadinessRebake] is gated
+  + [slice_id] is P8-IA08
+  + [slice_name] is implementation completion review, proof pack, and downstream readiness rebake
+  + [activation_gate] is P8-IA07 accepted
+  + [expected_output_set] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [verification_oracle] is proof pack accepts only bounded implementation outputs with hashes, fixture source inventories, expected ledger inventories, proof ledger inventories, generated-output proof, no-dispatch proof, no-operations-control proof, no-live-effect proof, dependency decision, support deltas, requirement deltas, and no authority, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects future P5 runtime implementation, P6 surface projection implementation, P7 coordination expansion, and P9 operations-manager readiness
+  + [forbidden_scope] is new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [P8FixtureMaterialImplementationActivationClosureReview] is the dependency audit for minted P8 fixture material implementation activation slices
+  + [post_p6_readiness_status] is accepted
+  + [p6_completion_review_status] is accepted
+  + [p8_completion_review_status] is accepted
+  + [current_ready_slice_set] is P8-IA01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [proof_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [proof_runner_code_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P8-IA02 through P8-IA08 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

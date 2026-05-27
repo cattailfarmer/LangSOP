@@ -1,0 +1,72 @@
+Subject: Derived P8 Fixture Material Implementation Activation Source
+Date: 2026-05-27
+Source UUID: d61aefbb-5c8d-4e75-9b37-06e3507fd8e7
+
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [p8_materialization_boundary] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_path_policy] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [p8_proof_ledger_contract] docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+@ [p5_runtime_fixture_plan] docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
+@ [p6_projection_fixture_plan] docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+@ [ir7_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir8_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+
+& [DerivedP8FixtureMaterialImplementationActivationSource] is the preserved source for minting P8 fixture material implementation activation slices
+  + [source_basis] is accepted P8 proof fixtures evaluation and faults planning authority
+  + [source_basis] is accepted P5 runtime proof trace planning
+  + [source_basis] is accepted P6 projection fixture snapshot planning
+  + [source_basis] is accepted IR7 operations dry-run implementation proof pack
+  + [source_basis] is accepted IR8 integrated manager implementation proof pack
+  + [source_basis] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [source_basis] is docs/reviews/P6_Completion_Review.v1.sop
+  + [source_intent] is convert the accepted fixture material readiness surface into dependency-closed implementation activation slices
+  + [target_chunk] is P8 fixture material implementation activation
+  + [source_status] is preserved_before_canonical_processing
+
+  = must: preserve accepted P2, P3, P4, P5, P6, P8, IR7, and IR8 fixture/proof boundaries as boundary inputs
+  = must: mint implementation activation slices before creating fixture source files, expected ledgers, proof ledgers, generated outputs, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, or live machine control
+  = must: open only P8-IA01 after minting review acceptance
+  = must: keep future bounded fixture source and expected-ledger material GPT-5.3-Codex-Spark-suitable only after activation boundaries isolate exact paths and proof checks
+  = must: keep activation minting, path inventory, generated-output root decisions, proof runner boundaries, dependency decisions, adapter boundaries, transport boundaries, dispatch boundaries, operations boundaries, and live-control boundaries under deeper reasoning
+  - never: treat this source as fixture material creation permission by itself
+
+& [DerivedP8FixtureMaterialImplementationActivationShape] is the intended activation slice shape from the accepted post-P6 readiness surface
+  + [future_activation_slice] is P8-IA01 fixture material activation boundary and exact file inventory
+  + [future_activation_slice] is P8-IA02 kernel, operator, packet, runtime, and projection fixture source material
+  + [future_activation_slice] is P8-IA03 expected ledgers and proof ledger seed material
+  + [future_activation_slice] is P8-IA04 negative oracle source material for stale, false-ready, contradiction, and fault cases
+  + [future_activation_slice] is P8-IA05 generated path policy and proof runner contract
+  + [future_activation_slice] is P8-IA06 fixture material validation tests and generated-output nonpromotion proof
+  + [future_activation_slice] is P8-IA07 dependency, adapter, transport, dispatch, operations, and live-control deferral decision
+  + [future_activation_slice] is P8-IA08 implementation completion review, proof pack, and downstream readiness rebake
+
+& [DerivedP8FixtureMaterialImplementationActivationSafetyBoundary] is the safety boundary preserved for activation slice minting
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [proof_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [proof_runner_code_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [UI_implementation_initial_state] is gated
+  + [assignment_initial_state] is unauthorized
+  + [manager_dispatch_initial_state] is unauthorized
+  + [agent_dispatch_initial_state] is unauthorized
+  + [job_dispatch_initial_state] is unauthorized
+  + [command_execution_initial_state] is unauthorized_except_validation_commands_after_test_slice_opens
+  + [process_control_initial_state] is unauthorized
+  + [GPU_control_initial_state] is unauthorized
+  + [model_runtime_control_initial_state] is unauthorized
+  + [credential_access_initial_state] is unauthorized
+  + [network_mutation_initial_state] is unauthorized
+  + [destructive_filesystem_action_initial_state] is unauthorized
+  + [persistent_operations_automation_initial_state] is unauthorized
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+
+  = must: preserve source authority, fixture source, expected ledgers, proof ledgers, generated outputs, graph checkpoints, projection snapshots, packet candidates, dry-run evidence, manager packets, human approvals, and surface displays as distinct authority classes
+  = must: preserve that generated outputs remain ignored, rebuildable, and non-authoritative unless future source-preserved authority explicitly says otherwise

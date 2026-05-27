@@ -1,0 +1,134 @@
+Subject: P8 Fixture Material Implementation Activation Minting Review V1
+Date: 2026-05-27
+Review UUID: 6a14877f-5b64-4c65-bc33-15fba3659952
+
+@ [source_manifest] docs/source/2026-05-27_p8_fixture_material_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-Fixture-Material-Implementation-Activation-Minting] is the completed-work review for minting P8 fixture material implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_p8_fixture_material_implementation_activation/Derived_P8_Fixture_Material_Implementation_Activation_Source.sop
+  + [completed_output_sha256] is 8C2737C7F337900D40E7B209B112C0C816C8F9B1DC8095A62B2D1D472FF8FF4E
+  + [completed_output] is docs/source/2026-05-27_p8_fixture_material_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is F57FCC46628752C0E87AF4203C4774AE7031D13A0FBAF46A0E35050A80E2D72F
+  + [completed_output] is docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is D2009FF05E40E77BB9E462E53AEB9DF1789FD0EE9EBB45A5A266ECB2AB410067
+  + [completed_output] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is AED74D555D3CC25A8964A9CFD936D3D1B687C57E1CDC8835FD61A0AA67E0BA38
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8 fixture material implementation activation slice surface and open P8-IA01
+  + [next_gate_result] is P8-IA01 may open
+  + [next_model_route] is requires deeper reasoning for P8-IA01 activation boundary, exact file inventory, generated-output roots, proof runner boundaries, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries
+
+  = must: treat this review as gate-opening evidence for P8-IA01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, post-P6 readiness, P6 completion review, P8 completion review, P8 materialization boundary, P5 fixture plan, P6 fixture plan, IR7 proof pack, or IR8 proof pack changes
+  = must: keep fixture source files, expected ledgers, proof ledgers, generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated until explicit activation slices open bounded work
+
+& [P8FixtureMaterialImplementationActivationMintingVerification] is the verification result for P8 fixture material implementation activation slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [slice_count] is 8
+  + [current_ready_slice] is P8-IA01
+  + [gated_slice] is P8-IA02
+  + [gated_slice] is P8-IA03
+  + [gated_slice] is P8-IA04
+  + [gated_slice] is P8-IA05
+  + [gated_slice] is P8-IA06
+  + [gated_slice] is P8-IA07
+  + [gated_slice] is P8-IA08
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [fixture_source_file_created] is false
+  + [expected_ledger_created] is false
+  + [proof_ledger_created] is false
+  + [generated_output_created] is false
+  + [proof_runner_code_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [test_file_created] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8FixtureMaterialImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: P8-Fixture-Material-Implementation-Activation-Minting] is the support delta produced by minted P8 fixture material implementation activation slices
+  + [new_support_record] is P8-IA01 may define the bounded fixture material activation boundary and exact file inventory
+  + [new_support_record] is P8-IA02 through P8-IA08 remain gated until upstream completion reviews accept each output
+  + [new_support_record] is Spark-suitable fixture material work is limited to bounded P8-IA02, P8-IA03, P8-IA04, and P8-IA06 work after each upstream gate is accepted
+  + [new_support_record] is activation, exact path inventory, generated-output root, proof runner, dependency, adapter, transport, dispatch, operations safety, proof-pack, and live-control boundary work remains deeper-reasoning work
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-Fixture-Material-Implementation-Activation-Minting] is the requirement delta produced by minted P8 fixture material implementation activation slices
+  + [requirement_delta] is P8-IA01 requires deeper reasoning
+  + [requirement_delta] is no fixture source file, expected ledger, proof ledger, generated output, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, test file, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every P8 implementation activation slice
+
+& [FaultReview: P8-Fixture-Material-Implementation-Activation-Minting] is the fault review for minted P8 fixture material implementation activation slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [proof_ledger_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8FixtureMaterialImplementationActivationSlicesAccepted] is accepted
+    @ [support] [P8FixtureMaterialImplementationActivationMintingVerification]
+    @ [support] [SupportDelta: P8-Fixture-Material-Implementation-Activation-Minting]
+    @ [support] [RequirementDelta: P8-Fixture-Material-Implementation-Activation-Minting]
+    @ [support] [FaultReview: P8-Fixture-Material-Implementation-Activation-Minting]
+
+& [NextSliceGate: P8-IA01] is opened
+  + [opened_slice] is P8-IA01 fixture material activation boundary and exact file inventory
+  + [accepted_boundary_input] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [accepted_boundary_input] is docs/reviews/P6_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 1024C0B1B3AB56A147FCD7663292F2D224AF671D5BB0FCF11B2D1FAD11FF29CB
+  + [accepted_boundary_input] is docs/reviews/P8_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, exact path inventory, generated-output roots, proof runner boundaries, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-IA01 next unless user redirects or a new fault invalidates this review

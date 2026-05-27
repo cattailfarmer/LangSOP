@@ -1,0 +1,93 @@
+Subject: LangSOP P8 Fixture Material Implementation Activation Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p8_fixture_material_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+
+& [CanonicalRecord: P8FixtureMaterialImplementationActivation] is the processed planning authority for P8 fixture material implementation activation slices
+  + [canonical_uuid] is 26c348d3-7d86-4c74-b03c-5583b4bb8df8
+  + [source_manifest_uuid] is 6b1bedfa-99e4-47a7-ad60-511140c5aa61
+  + [slice_surface_uuid] is 23ced4f5-60c7-4f09-aa03-2c44112eae8b
+  + [authority_scope] is P8 fixture material activation slice order, gates, expected outputs, model routing, exact path inventory boundary, source fixture authority, expected ledger authority, proof ledger authority, generated-output nonpromotion, proof runner boundaries, dependency deferral, adapter deferral, transport deferral, UI deferral, dispatch prohibition, operations-control prohibition, live-control prohibition, and proof pack requirements
+  + [implementation_scope] is activation slice minting only
+  + [depends_on] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [depends_on] is docs/reviews/P6_Completion_Review.v1.sop
+  + [depends_on] is docs/reviews/P8_Completion_Review.v1.sop
+  + [depends_on] is docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+
+  = must: use docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop as the current P8 fixture material implementation activation slice surface
+  = must: execute P8-IA01 first
+  = must: run completion review after each P8 implementation activation slice before opening the next gated slice
+  = must: keep source fixtures, expected ledgers, proof ledgers, generated outputs, projection snapshots, graph checkpoints, packet candidates, dry-run results, displayed human approvals, and manager packets in distinct authority classes
+  = must: keep assignment, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to skip activation slices or directly create fixture files, expected ledgers, proof ledgers, generated outputs, proof runner code, dependencies, package metadata changes, adapters, transports, UI, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+
+& [CanonicalP8FixtureMaterialImplementationActivationSliceSet] is the final P8 fixture material implementation activation slice sequence
+  + [slice] is P8-IA01 fixture material activation boundary and exact file inventory
+  + [slice] is P8-IA02 kernel, operator, packet, runtime, and projection fixture source material
+  + [slice] is P8-IA03 expected ledgers and proof ledger seed material
+  + [slice] is P8-IA04 negative oracle source material for stale, false-ready, contradiction, and fault cases
+  + [slice] is P8-IA05 generated path policy and proof runner contract
+  + [slice] is P8-IA06 fixture material validation tests and generated-output nonpromotion proof
+  + [slice] is P8-IA07 dependency, adapter, transport, dispatch, operations, and live-control deferral decision
+  + [slice] is P8-IA08 implementation completion review, proof pack, and downstream readiness rebake
+
+  = must: preserve this order unless completion review rebakes P8 fixture material implementation activation
+
+& [CanonicalP8FixtureMaterialImplementationActivationGate] is the activation rule for P8 fixture material work
+  + [current_ready_slice] is P8-IA01
+  + [gated_slice] is P8-IA02 until P8-IA01 accepted
+  + [gated_slice] is P8-IA03 until P8-IA02 accepted
+  + [gated_slice] is P8-IA04 until P8-IA03 accepted
+  + [gated_slice] is P8-IA05 until P8-IA04 accepted
+  + [gated_slice] is P8-IA06 until P8-IA05 accepted
+  + [gated_slice] is P8-IA07 until P8-IA06 accepted
+  + [gated_slice] is P8-IA08 until P8-IA07 accepted
+
+& [CanonicalP8FixtureMaterialImplementationActivationModelRouting] is the model-routing record
+  + [P8-IA01] is requires deeper reasoning
+  + [P8-IA02] is GPT-5.3-Codex-Spark-suitable after P8-IA01 acceptance
+  + [P8-IA03] is GPT-5.3-Codex-Spark-suitable after P8-IA02 acceptance
+  + [P8-IA04] is GPT-5.3-Codex-Spark-suitable after P8-IA03 acceptance unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [P8-IA05] is requires deeper reasoning
+  + [P8-IA06] is GPT-5.3-Codex-Spark-suitable after P8-IA05 acceptance
+  + [P8-IA07] is requires deeper reasoning
+  + [P8-IA08] is requires deeper reasoning
+
+  = must: keep activation boundary, exact path inventory, generated-output root decisions, proof runner boundaries, dependency decisions, adapter decisions, dispatch boundaries, operations boundaries, proof-pack closure, and live-control boundaries under deeper reasoning
+  = must: treat bounded fixture source, expected ledger material, negative oracle material, validation tests, generated-output proof, no-dispatch proof, and no-live-effect proof as Spark-suitable only after upstream activation gates are accepted
+
+& [SatisfactionSignature: P8FixtureMaterialImplementationActivation] is the valid SJS satisfaction signature for the P8 fixture material implementation activation slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is f15c0e39-af2c-44ac-bf63-6b322deab046
+  + [signed_subject] is docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p8_fixture_material_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is 8C2737C7F337900D40E7B209B112C0C816C8F9B1DC8095A62B2D1D472FF8FF4E
+  + [source_sha256] is F57FCC46628752C0E87AF4203C4774AE7031D13A0FBAF46A0E35050A80E2D72F
+  + [source_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [source_sha256] is 1024C0B1B3AB56A147FCD7663292F2D224AF671D5BB0FCF11B2D1FAD11FF29CB
+  + [source_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [source_sha256] is C421893A5271DEA1F87F69B3B7D94D94226D2F304C2719EA65B15E95C6FF60A2
+  + [source_sha256] is 488D6E41A8D94EC8411A4C9E09392DB97E53C71F6E6A5EC34B70128152E58DD6
+  + [source_sha256] is E98F96EC50C45041E198D3C6131D2EBCF98A3C25367BF9917BB6846B876EADF3
+  + [source_sha256] is 65B6FCFF1C5243EE45C0ADA2B3B1DB340A252160A6A305B6D7E7902EEF5FDBAB
+  + [source_sha256] is EF2460E3D949D007AEF0ACAD5E09AD16706AC499CD35B976131791DBDBB81774
+  + [source_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [source_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [canonical_source_specification] is docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, post_p6_readiness_imported, p6_completion_imported, p8_completion_imported, p8_fixture_boundaries_imported, p5_runtime_fixture_plan_imported, p6_projection_fixture_plan_imported, ir7_proof_pack_imported, ir8_proof_pack_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, authority_classes_preserved, fixture_creation_limits_preserved, expected_ledger_limits_preserved, proof_ledger_limits_preserved, generated_output_limits_preserved, dependency_limits_preserved, dispatch_limits_preserved, live_control_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_P8_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for P8 fixture material implementation activation slices; no fixture material, generated output, assignment, dispatch, operations control, or live machine control authorized by minting alone
+
+& [RegistryRecord: P8FixtureMaterialImplementationActivation] is the durable identity ledger for the P8 fixture material implementation activation slice surface
+  + [registry_uuid] is a0fbe2d3-2917-4b2b-a23b-6d21889232da
+  + [manifest_node_uuid] is 6b1bedfa-99e4-47a7-ad60-511140c5aa61
+  + [canonical_node_uuid] is 26c348d3-7d86-4c74-b03c-5583b4bb8df8
+  + [slice_surface_uuid] is 23ced4f5-60c7-4f09-aa03-2c44112eae8b
+  + [signature_uuid] is f15c0e39-af2c-44ac-bf63-6b322deab046
+  + [closure_review_uuid] is 6a14877f-5b64-4c65-bc33-15fba3659952
