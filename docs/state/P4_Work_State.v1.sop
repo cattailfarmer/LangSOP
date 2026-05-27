@@ -1,0 +1,72 @@
+Subject: P4 Work State V1
+Date: 2026-05-27
+State UUID: 9016bd0d-dc79-4eb2-b13d-be291ffb92b3
+
+@ [source_manifest] docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [completion_delta_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [support_readiness_contract] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+@ [manager_packet_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [manager_handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+
+& [P4WorkStateV1] is the current derived work state for P4 whole-field planning and packetization
+  + [state_basis] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+  + [state_basis_sha256] is D8924D72DDD6B133B5BF22F25985CF1E7C000D8863F194909613A33405BFF8D7
+  + [surface_status] is P4_final_slices_minted_pending_P4-S01
+  + [source_manifest] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 930B0C592039EFD143C0A4A0878AADB0952A74629D8E223F21639847F7A0B1BE
+  + [canonical_specification] is docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is BDB54442DBAFC502338E6789A2F2E105732A7EB2D50BA340C9A59C01CFF61620
+  + [slice_surface] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+  + [slice_surface_sha256] is EA9374803617A60E3BF08F477E80C7E2118DCF6290F9897AB2AB825205C23B99
+  + [slice_minting_review] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+  + [slice_minting_review_sha256] is D8924D72DDD6B133B5BF22F25985CF1E7C000D8863F194909613A33405BFF8D7
+  + [accepted_boundary_input] is docs/reviews/P3_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+  + [accepted_boundary_input] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+  + [accepted_boundary_input] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
+  + [accepted_boundary_input] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
+  + [accepted_boundary_input] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+  + [accepted_boundary_input_sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
+  + [accepted_boundary_input] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [accepted_boundary_input] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
+  + [current_ready_slice] is P4-S01
+  + [current_ready_slice_name] is boundary import and packetization gap reconciliation
+  + [current_ready_slice_expected_output] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is packetization boundary import decides which existing packet contracts remain authority and which need P4 refresh
+  + [gated_slice] is P4-S02
+  + [gated_slice] is P4-S03
+  + [gated_slice] is P4-S04
+  + [gated_slice] is P4-S05
+  + [gated_slice] is P4-S06
+  + [packet_implementation_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute P4-S01 before downstream packet envelope, completion delta, manager handoff, fixture oracle, graph runtime, surface expansion, adapter, implementation, or dispatch work
+  = must: keep SOP proof authority, packetization contracts, generated traces, graph checkpoints, fixture plans, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
+  = must: mark this state stale if P4 source, manifest, canonical specification, slice surface, minting review, P3 completion, post-P3 readiness, or accepted packetization boundary inputs change

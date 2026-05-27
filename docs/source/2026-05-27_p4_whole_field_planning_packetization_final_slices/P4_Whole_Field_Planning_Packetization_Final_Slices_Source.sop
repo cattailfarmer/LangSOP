@@ -1,0 +1,30 @@
+Subject: P4 Whole Field Planning Packetization Final Slices Source
+Date: 2026-05-27
+Source UUID: 992b09ab-12a7-4a73-a54f-1ffa60eef804
+
+& [SourcePrompt: P4WholeFieldPlanningPacketizationFinalSlices] is the preserved manager-derived source for minting P4 whole-field planning and packetization slices
+  + [source_kind] is manager-derived slice-minting source
+  + [origin] is post-P3 readiness after compiled SOP operator contract acceptance
+  + [purpose] is convert accepted packetization, completion-review, readiness, and manager packet material into dependency-closed P4 final slices
+  + [reason] is P4 is ready for deeper-reasoning slice minting, but the system must define how readiness becomes reviewable work packets without assignment, dispatch, operations control, or live-control authority before LangGraph runtime, surface expansion, fixture material, or manager adapter work consumes packetization contracts
+
+  = must: preserve work packets as reviewable records, not commands, assignments, dispatches, or live-control routes
+  = must: preserve P2 authority overlays and P3 operator outcome, refusal, trace, nonpromotion, and no-automation boundaries
+  = must: import Work_Packet_Generation_Contract.v1.sop, Completion_Review_Delta_Gate_Contract.v1.sop, P3 support-readiness refresh, and IR8 manager packet evidence as boundary inputs
+  = must: split P4 so each slice has no dependency outside its declared boundary
+  = must: route packet envelope, dependency closure, model routing, completion review deltas, stale triggers, no-dispatch boundaries, and downstream gates to deeper reasoning
+  = should: make bounded packet fixture planning GPT-5.3-Codex-Spark-suitable only after P4 packetization and completion delta contracts are accepted
+
+& [RequiredP4SliceFamilySet] is the source-level slice family set for P4
+  + [slice_family] is boundary import and packetization gap reconciliation
+  + [slice_family] is work packet envelope and readiness packetization contract
+  + [slice_family] is completion review delta gate and rebake trigger contract
+  + [slice_family] is manager handoff and no-dispatch packet boundary contract
+  + [slice_family] is packet trace fixture oracle and no-live-effect plan
+  + [slice_family] is P4 completion review and downstream gate
+
+  = must: execute boundary import before revising packetization authority
+  = must: execute work packet envelope before completion-gate refresh and manager handoff packet planning
+  = must: execute no-dispatch boundary before downstream manager, graph, or surface work consumes packet records
+  = must: execute fixture oracle planning as plan-only work without fixture file creation
+  = must: execute completion review before P5, P6, P8, adapter, dispatch, operations-control, or live-control work consumes P4 authority

@@ -1,0 +1,119 @@
+Subject: P4 Whole Field Planning Packetization Final Slices V1
+Date: 2026-05-27
+Slice Surface UUID: ddcc4570-aa8f-4c29-a916-ffd41b202fef
+
+@ [source_manifest] docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [completion_delta_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [support_readiness_contract] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+@ [manager_packet_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+
+& [P4WholeFieldPlanningPacketizationFinalSliceSurfaceV1] is the final slice surface for P4 whole-field planning and packetization
+  + [chunk_ref] is P4 whole-field planning and packetization
+  + [chunk_boundary] is boundary import, packetization gap reconciliation, work packet envelope, readiness packetization contract, completion review delta gate, rebake trigger contract, manager handoff packet boundary, no-dispatch packet boundary, packet trace fixture oracle, no-live-effect plan, completion review, and downstream gate
+  + [accepted_boundary_input] is docs/reviews/P3_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+  + [accepted_boundary_input] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+  + [accepted_boundary_input] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
+  + [accepted_boundary_input] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
+  + [accepted_boundary_input] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+  + [accepted_boundary_input_sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
+  + [accepted_boundary_input] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [current_ready_slice] is P4-S01
+  + [gated_slice_set] is P4-S02, P4-S03, P4-S04, P4-S05, and P4-S06
+  + [safety_limit] is no implementation code, no dependency installation, no package metadata mutation, no adapter implementation, no assignment, no dispatch, no operations control, and no live machine control authorized
+
+  = must: execute P4-S01 before revising or superseding existing packetization authority
+  = must: run completed-work review after each P4 slice
+  = must: stale downstream slices when packet envelope, completion gate, no-dispatch boundary, or fixture oracle changes
+  = must: preserve existing accepted packetization files as boundary inputs unless a P4 completion review explicitly supersedes them
+
+& [FinalWorkSlice: P4-S01-BoundaryImportAndPacketizationGapReconciliation] is ready
+  + [slice_id] is P4-S01
+  + [slice_name] is boundary import and packetization gap reconciliation
+  + [authority_basis] is docs/reviews/P3_Completion_Review.v1.sop
+  + [activation_gate] is post-P3 readiness accepted
+  + [expected_output_set] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+  + [verification_oracle] is boundary import lists accepted packetization inputs, identifies packet envelope, completion gate, manager handoff, no-dispatch, fixture oracle, and downstream runtime gaps without mutating packet contracts
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is packetization boundary import decides which existing work-packet and completion-gate contracts remain authority and which need P4 refresh
+  + [forbidden_scope] is packet implementation, assignment, dispatch, graph runtime, storage implementation, fixture source creation, expected ledger creation, dependency installation, package metadata mutation, adapter implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P4-S02-WorkPacketEnvelopeAndReadinessPacketizationContract] is gated
+  + [slice_id] is P4-S02
+  + [slice_name] is work packet envelope and readiness packetization contract
+  + [activation_gate] is P4-S01 accepted
+  + [expected_output_set] is docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+  + [verification_oracle] is contract defines packet required fields, readiness input requirements, dependency closure, proof obligations, model route, verification oracle, completion review obligations, support and requirement deltas, stale triggers, and no assignment or dispatch semantics
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is packet envelope controls how readiness becomes work packets without becoming dispatch
+  + [forbidden_scope] is work assignment, dispatch, executable implementation, dependency installation, adapter implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P4-S03-CompletionReviewDeltaGateAndRebakeTriggerContract] is gated
+  + [slice_id] is P4-S03
+  + [slice_name] is completion review delta gate and rebake trigger contract
+  + [activation_gate] is P4-S02 accepted
+  + [expected_output_set] is docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+  + [verification_oracle] is contract defines support_delta, requirement_delta, stale output, contradiction, coordination blocker, fault blocker, rebake trigger, and next-gate opening behavior without implementing review automation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is completion gates decide whether learning changes the whole-pie surface before next work opens
+  + [forbidden_scope] is review automation implementation, source mutation, assignment, dispatch, graph node implementation, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P4-S04-ManagerHandoffAndNoDispatchPacketBoundaryContract] is gated
+  + [slice_id] is P4-S04
+  + [slice_name] is manager handoff and no-dispatch packet boundary contract
+  + [activation_gate] is P4-S03 accepted
+  + [expected_output_set] is docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+  + [verification_oracle] is contract distinguishes packet candidate, manager handoff, coordination handoff, operations dry-run handoff, dispatch decision, and live-control deferral records without authorizing dispatch or live effects
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager handoff packet boundaries affect future multi-agent coordination and operations safety
+  + [forbidden_scope] is manager dispatch, agent dispatch, job dispatch, operations control, live control, adapter implementation, and transport implementation
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P4-S05-PacketTraceFixtureOracleAndNoLiveEffectPlan] is gated
+  + [slice_id] is P4-S05
+  + [slice_name] is packet trace fixture oracle and no-live-effect plan
+  + [activation_gate] is P4-S04 accepted
+  + [expected_output_set] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [verification_oracle] is plan defines valid packet, blocked gap, stale readiness, contradicted readiness, missing oracle, missing model route, dependency leak, missing completion review, false-ready packet, forbidden dispatch, no-live-effect, and rebake-required cases without creating fixture files or implementation code
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P4-S04 acceptance unless packet semantics or authority rules change
+  + [model_route_reason] is fixture oracle planning becomes bounded after packet envelope, delta gate, and no-dispatch boundaries are accepted
+  + [forbidden_scope] is fixture source creation, expected ledger creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P4-S06-P4CompletionReviewAndDownstreamGate] is gated
+  + [slice_id] is P4-S06
+  + [slice_name] is P4 completion review and downstream gate
+  + [activation_gate] is P4-S05 accepted
+  + [expected_output_set] is docs/reviews/P4_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [verification_oracle] is completion review accepts only P4 outputs with hashes, support deltas, requirement deltas, downstream P5/P6 gates, model-route recommendations, and no implementation, dependency, adapter, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P4 acceptance changes LangGraph runtime readiness, surface projection readiness, fixture readiness, and implementation gates
+  + [forbidden_scope] is new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [P4FinalSliceClosureReview] is the dependency audit for minted P4 final slices
+  + [post_P3_readiness_status] is accepted
+  + [work_packet_contract_status] is accepted_boundary_input
+  + [completion_delta_contract_status] is accepted_boundary_input
+  + [support_readiness_contract_status] is accepted_boundary_input
+  + [manager_packet_contract_status] is accepted_boundary_input
+  + [P4-S01_ready] is true
+  + [implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P4-S02 through P4-S06 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, packet contradiction appears, or P2/P3 authority changes

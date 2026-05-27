@@ -1,0 +1,36 @@
+Subject: P4 Whole Field Planning Packetization Final Slices Source Manifest
+Date: 2026-05-27
+Manifest UUID: c36d8ff9-2069-4878-80e2-76c5481c0396
+
+& [SourceDocumentManifest: P4WholeFieldPlanningPacketizationFinalSlices] is the source preservation manifest for P4 whole-field planning and packetization final slice minting
+  + [dictated_source] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/P4_Whole_Field_Planning_Packetization_Final_Slices_Source.sop
+    + [sha256] is 584C135562CA7008C0C20690D023148771703771AFCC60807EF8A2BA8ED8F996
+    + [source_role] is preserved manager-derived P4 slice-minting source
+  + [authority_source] is docs/reviews/P3_Completion_Review.v1.sop
+    + [sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+    + [source_role] is accepted P3 completion and gate-opening review
+  + [authority_source] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+    + [sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+    + [source_role] is accepted post-P3 readiness surface
+  + [authority_source] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+    + [sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
+    + [source_role] is existing work packet generation contract input
+  + [authority_source] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+    + [sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
+    + [source_role] is existing completion review delta gate contract input
+  + [authority_source] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+    + [sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
+    + [source_role] is accepted support readiness recompute contract refresh
+  + [authority_source] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+    + [sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+    + [source_role] is accepted manager packet and proof contract input
+  + [authority_source] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+    + [sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
+    + [source_role] is accepted handoff and operations dry-run packet boundary input
+  + [canonical_target] is docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for P4 final slice minting
+  = must: invalidate P4 slice minting if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not implementation authority
+  - never: use this manifest to authorize dependency installation, adapter implementation, dispatch, operations control, or live machine control

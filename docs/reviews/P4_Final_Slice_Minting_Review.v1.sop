@@ -1,0 +1,124 @@
+Subject: P4 Final Slice Minting Review V1
+Date: 2026-05-27
+Review UUID: bd5f0603-cad8-43fc-98ff-211f95ee88c5
+
+@ [source_manifest] docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [completion_delta_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+
+& [CompletedWorkReview: P4-Final-Slice-Minting] is the completed-work review for minting P4 whole-field planning and packetization final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/P4_Whole_Field_Planning_Packetization_Final_Slices_Source.sop
+  + [completed_output_sha256] is 584C135562CA7008C0C20690D023148771703771AFCC60807EF8A2BA8ED8F996
+  + [completed_output] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 930B0C592039EFD143C0A4A0878AADB0952A74629D8E223F21639847F7A0B1BE
+  + [completed_output] is docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+  + [completed_output_sha256] is BDB54442DBAFC502338E6789A2F2E105732A7EB2D50BA340C9A59C01CFF61620
+  + [completed_output] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+  + [completed_output_sha256] is EA9374803617A60E3BF08F477E80C7E2118DCF6290F9897AB2AB825205C23B99
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P4 final slice surface and open P4-S01
+  + [next_gate_result] is P4-S01 may open
+  + [next_model_route] is requires deeper reasoning for P4-S01
+  + [next_model_route_reason] is packetization boundary import decides which existing work-packet, completion-gate, support-readiness, manager packet, and handoff contracts remain authority and which need P4 refresh
+
+  = must: treat this review as gate-opening evidence for P4-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, post-P3 readiness surface, P3 completion review, work packet contract, completion delta contract, support readiness contract, manager packet contract, or manager handoff contract changes
+  = must: keep packet implementation, LangGraph node implementation, fixture creation, dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control gated
+
+& [P4FinalSliceMintingVerification] is the verification result for P4 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [work_state_created] is true
+  + [slice_count] is 6
+  + [current_ready_slice] is P4-S01
+  + [gated_slice] is P4-S02
+  + [gated_slice] is P4-S03
+  + [gated_slice] is P4-S04
+  + [gated_slice] is P4-S05
+  + [gated_slice] is P4-S06
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [packet_contract_rewrite_created] is false
+  + [packet_implementation_created] is false
+  + [LangGraph_node_implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P4FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+
+& [SupportDelta: P4-Final-Slice-Minting] is the support delta produced by minted P4 final slices
+  + [new_support_record] is P4-S01 may import accepted packetization inputs and reconcile packetization gaps before contract refresh
+  + [new_support_record] is P4-S02 through P4-S06 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded P4-S05 packet fixture oracle planning after P4-S01 through P4-S04 are accepted and only if packet semantics remain stable
+  + [support_status] is accepted
+
+& [RequirementDelta: P4-Final-Slice-Minting] is the requirement delta produced by minted P4 final slices
+  + [requirement_delta] is P4-S01 requires deeper reasoning
+  + [requirement_delta] is completion review required after every P4 slice
+  + [requirement_delta] is no packet implementation, LangGraph node implementation, fixture creation, expected ledger creation, dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is every P4 planning slice must distinguish packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals
+
+& [FaultReview: P4-Final-Slice-Minting] is the fault review for minted P4 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [packet_implementation_leak_found] is false
+  + [LangGraph_node_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P4FinalSlicesAccepted] is accepted
+    @ [support] [P4FinalSliceMintingVerification]
+    @ [support] [SupportDelta: P4-Final-Slice-Minting]
+    @ [support] [RequirementDelta: P4-Final-Slice-Minting]
+    @ [support] [FaultReview: P4-Final-Slice-Minting]
+
+& [NextSliceGate: P4-S01] is opened
+  + [opened_slice] is P4-S01 boundary import and packetization gap reconciliation
+  + [accepted_boundary_input] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
+  + [accepted_boundary_input] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
+  + [accepted_boundary_input] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+  + [accepted_boundary_input_sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
+  + [accepted_boundary_input] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [accepted_boundary_input] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+  + [accepted_boundary_input_sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is packetization boundary import decides which existing packet contracts remain authority and which need P4 refresh
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P4-S01 next unless user redirects or a new fault invalidates this review

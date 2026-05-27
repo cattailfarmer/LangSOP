@@ -16,9 +16,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [post_ir8_readiness_review] docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
 @ [p2_slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
 @ [p2_slice_minting_review] docs/reviews/P2_Authority_Kernel_Final_Slice_Minting_Review.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [p4_slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [p4_slice_minting_review] docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P2-S01_boundary_import_and_schema_gap_reconciliation
+  + [map_state] is ready_for_P4-S01_boundary_import_and_packetization_gap_reconciliation
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -113,15 +117,24 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [dependency_set] is P3
   + [support_record] is docs/reviews/P3_Completion_Review.v1.sop
   + [support_record] is docs/planning/Post_P3_Readiness_Surface.v1.sop
-  + [support_gap] is packetization contract not yet authored
-  + [support_gap] is work-packet generator no-dispatch boundary not yet proved
+  + [support_record] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/P4_Whole_Field_Planning_Packetization_Final_Slices_Source.sop
+  + [support_record] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+  + [support_record] is docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+  + [support_record] is docs/state/P4_Work_State.v1.sop
+  + [support_gap] is P4-S01 packetization boundary import and gap reconciliation not yet accepted
+  + [support_gap] is P4-S02 work packet envelope and readiness packetization contract not yet authored
+  + [support_gap] is P4-S03 completion review delta gate and rebake trigger contract not yet authored
+  + [support_gap] is P4-S04 manager handoff and no-dispatch packet boundary contract not yet authored
   + [proof_route] is fixture capability field that produces ready, blocked, stale, unsupported, and verified cases
   + [slice_family] is support-readiness-operator
   + [slice_family] is work-packet-generator
   + [slice_family] is completion-review-delta-gate
 
   = must: not mint implementation slices until readiness and packetization contracts exist
-  = may: mint preparation slices to define those contracts
+  = must: execute P4-S01 next before revising packetization authority or opening P4-S02
+  = may: execute preparation slices to define packetization contracts without assignment, dispatch, operations control, or live machine control
 
 & [Portion: P5LangGraphProcedureRuntime] is blocked
   + [portion_id] is P5
@@ -391,17 +404,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P4-WholeFieldPlanningAndPacketizationFinalSliceMinting] is ready_for_execution
+& [CurrentReadyChunk: P4-S01-BoundaryImportAndPacketizationGapReconciliation] is ready_for_execution
   + [chunk_id] is P4
-  + [chunk_name] is P4 whole-field planning and packetization final slice minting
-  + [authority_basis] is docs/reviews/P3_Completion_Review.v1.sop
-  + [readiness_surface] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [slice_id] is P4-S01
+  + [chunk_name] is boundary import and packetization gap reconciliation
+  + [authority_basis] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+  + [readiness_surface] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+  + [expected_output] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+  + [completion_review_output] is docs/reviews/P4_S01_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is packetization decides how readiness becomes work packets without assignment, dispatch, operations control, or live-control authority
+  + [model_route_reason] is packetization boundary import decides which existing packet contracts remain authority and which need P4 refresh
 
-  = must: source-preserve, SJS-process, and final-slice P4 before trusting packetization work as current authority
-  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior P2 outputs
+  = must: create only the P4-S01 boundary import output and P4-S01 completion review unless a completed-work delta rebakes this map
+  = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

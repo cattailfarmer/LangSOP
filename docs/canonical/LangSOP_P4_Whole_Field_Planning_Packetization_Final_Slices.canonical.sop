@@ -1,0 +1,121 @@
+Subject: LangSOP P4 Whole Field Planning Packetization Final Slices Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/P4_Whole_Field_Planning_Packetization_Final_Slices_Source.sop
+@ [slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [completion_delta_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [support_readiness_contract] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+@ [manager_packet_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [manager_handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+
+& [CanonicalRecord: P4WholeFieldPlanningPacketizationFinalSlices] is the processed planning authority for P4 whole-field planning and packetization final slices
+  + [canonical_uuid] is 3005c81b-e672-4ee8-a612-43e7db224e26
+  + [source_manifest_uuid] is c36d8ff9-2069-4878-80e2-76c5481c0396
+  + [slice_surface_uuid] is ddcc4570-aa8f-4c29-a916-ffd41b202fef
+  + [authority_scope] is P4 final slice order, packetization boundary import, readiness packet envelope, completion-review delta gate, rebake trigger, manager handoff packet boundary, no-dispatch boundary, packet fixture oracle planning, downstream gate, model routing, safety limits, and completion review obligations
+  + [implementation_scope] is P4 slice-minting authority only
+  + [depends_on] is docs/reviews/P3_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/Post_P3_Readiness_Surface.v1.sop
+  + [depends_on] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [depends_on] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+  + [depends_on] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+  + [depends_on] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [depends_on] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+
+  = must: use docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop as the executable P4 final slice surface
+  = must: execute P4-S01 before revising, superseding, or consuming packetization authority
+  = must: execute P4-S02 before completion gate refresh, manager handoff packet planning, fixture oracle planning, or downstream packet consumption
+  = must: execute P4-S03 before manager handoff packet boundary acceptance
+  = must: execute P4-S04 before packet fixture oracle planning or downstream surface, graph, adapter, or implementation work consumes packet records
+  = must: preserve P4-S05 as fixture oracle planning only until a later source-preserved implementation activation opens fixture files
+  = must: keep dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to write implementation code, create fixture files, create expected ledgers, install dependencies, mutate package metadata, assign work, dispatch work, control operations, or control the live machine
+
+& [CanonicalP4FinalSliceSequence] is the accepted final slice sequence for P4
+  + [slice] is P4-S01 boundary import and packetization gap reconciliation
+  + [slice] is P4-S02 work packet envelope and readiness packetization contract
+  + [slice] is P4-S03 completion review delta gate and rebake trigger contract
+  + [slice] is P4-S04 manager handoff and no-dispatch packet boundary contract
+  + [slice] is P4-S05 packet trace fixture oracle and no-live-effect plan
+  + [slice] is P4-S06 P4 completion review and downstream gate
+  + [current_ready_slice] is P4-S01
+  + [gated_slice] is P4-S02 until P4-S01 accepted
+  + [gated_slice] is P4-S03 until P4-S02 accepted
+  + [gated_slice] is P4-S04 until P4-S03 accepted
+  + [gated_slice] is P4-S05 until P4-S04 accepted
+  + [gated_slice] is P4-S06 until P4-S05 accepted
+
+  = must: preserve this order unless a completed-work review rebakes the P4 surface
+  = must: mark downstream slices stale when upstream P4 output changes packet envelope, completion-review deltas, rebake triggers, manager handoff boundaries, no-dispatch boundaries, fixture oracle requirements, or downstream gates
+
+& [CanonicalP4ModelRouting] is the model routing for P4 final slices
+  + [P4-S01] is requires deeper reasoning
+  + [P4-S02] is requires deeper reasoning
+  + [P4-S03] is requires deeper reasoning
+  + [P4-S04] is requires deeper reasoning
+  + [P4-S05] is GPT-5.3-Codex-Spark-suitable only after P4-S04 acceptance unless packet semantics or authority rules change
+  + [P4-S06] is requires deeper reasoning
+
+  = must: keep packet authority import, readiness-to-packet semantics, completion-review deltas, stale/rebake decisions, no-dispatch boundaries, downstream gates, and live-control boundaries under deeper reasoning
+  = must: treat bounded packet fixture oracle planning as Spark-suitable only after packet envelope, completion delta gate, and no-dispatch boundaries are accepted
+
+& [CanonicalP4SafetyLimit] is the inherited safety limit for P4 final slices
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [operator_implementation_authorized] is false
+  + [LangGraph_node_implementation_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [packet_implementation_authorized] is false
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: block command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, operations control, and live machine control
+
+& [SatisfactionSignature: P4WholeFieldPlanningPacketizationFinalSlices] is the valid SJS satisfaction signature for the P4 final slice specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is f14b70ef-7ed0-4b0c-b890-6d403248465b
+  + [signed_subject] is docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 584C135562CA7008C0C20690D023148771703771AFCC60807EF8A2BA8ED8F996
+  + [source_sha256] is 930B0C592039EFD143C0A4A0878AADB0952A74629D8E223F21639847F7A0B1BE
+  + [source_sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
+  + [source_sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
+  + [source_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
+  + [source_sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
+  + [source_sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
+  + [source_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [source_sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
+  + [slice_surface_sha256] is EA9374803617A60E3BF08F477E80C7E2118DCF6290F9897AB2AB825205C23B99
+  + [canonical_source_specification] is docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, post_P3_readiness_imported, packetization_boundary_imported, manager_packet_inputs_imported, slices_minted, gates_defined, expected_outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for P4 final slice execution only; no implementation code, fixture creation, dependency installation, adapter work, assignment, dispatch, operations control, or live machine control authorized
+  + [invalidation_condition] is source_hash_change, packetization_boundary_change, P3_readiness_change, P3_completion_change, forbidden_external_dependency_found, assignment_authority_leak, dispatch_authority_leak, live_control_leak, or packet_contract_contradiction
+
+  = must: reprocess when P4 boundaries, packetization inputs, slice order, model routing, safety limits, or required outputs materially change
+
+& [RegistryRecord: P4WholeFieldPlanningPacketizationFinalSlices] is the durable identity ledger for P4 final slice minting
+  + [registry_uuid] is 4b575648-d54d-4d70-b99f-44217317f87d
+  + [manifest_node_uuid] is c36d8ff9-2069-4878-80e2-76c5481c0396
+  + [canonical_node_uuid] is 3005c81b-e672-4ee8-a612-43e7db224e26
+  + [slice_surface_uuid] is ddcc4570-aa8f-4c29-a916-ffd41b202fef
+  + [signature_uuid] is f14b70ef-7ed0-4b0c-b890-6d403248465b
+  + [slice_minting_review_uuid] is bd5f0603-cad8-43fc-98ff-211f95ee88c5
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for P4 completion reviews and downstream readiness
