@@ -1,0 +1,127 @@
+Subject: P5 SOP Interrupt Human Judgment Handoff And Rebake Route Contract V1
+Date: 2026-05-27
+Contract UUID: 26af670b-a551-483b-a48c-386e1a05712c
+
+@ [p5_slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [p5_s03_output] docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+@ [p5_s03_review] docs/reviews/P5_S03_Completion_Review.v1.sop
+@ [p5_s02_output] docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
+
+& [P5SOPInterruptHumanJudgmentHandoffAndRebakeRouteContractV1] is the P5-S04 SOP interrupt human judgment handoff and rebake route contract
+  + [slice_id] is P5-S04
+  + [slice_name] is SOP interrupt human judgment handoff and rebake route contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is interrupt semantics define the boundary between mechanical graph execution and SOP-first authority reconsideration
+  + [contract_result] is interrupt_handoff_and_rebake_routes_defined_without_runtime_execution
+  + [next_gate_result] is P5-S05 may open
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define interrupt, human handoff, and rebake routes as contracts only
+  = must: stop mechanical graph progression when meaning, authority, identity, contradiction, safety, or repair state is not mechanically decidable under accepted contracts
+  = must: preserve interrupt records as reviewable handoff records, not assignment, dispatch, operations-control, or live-control commands
+
+& [P5InterruptCauseVocabulary] is the SOP interrupt cause vocabulary
+  + [interrupt_cause] is ambiguous_identity
+  + [interrupt_cause] is contested_authority
+  + [interrupt_cause] is missing_source_authority
+  + [interrupt_cause] is stale_source_authority
+  + [interrupt_cause] is stale_checkpoint_basis
+  + [interrupt_cause] is contradicted_support
+  + [interrupt_cause] is hidden_authority_in_projection
+  + [interrupt_cause] is checkpoint_to_authority_promotion_attempt
+  + [interrupt_cause] is generated_output_to_authority_promotion_attempt
+  + [interrupt_cause] is missing_review_gate
+  + [interrupt_cause] is missing_model_route
+  + [interrupt_cause] is no_live_effect_uncertain
+  + [interrupt_cause] is no_dispatch_uncertain
+  + [interrupt_cause] is human_override_required
+  + [interrupt_cause] is rebake_required
+  + [interrupt_cause] is repair_path_ambiguous
+
+  = must: use this vocabulary for future interrupt fixture plans and runtime proof traces
+  = must: add a new interrupt cause only through source-preserved authority and completion review
+
+& [P5HumanJudgmentHandoffRequiredFieldSet] is the required field set for human judgment handoff records
+  + [required_field] is handoff_id
+  + [required_field] is handoff_uuid
+  + [required_field] is graph_run_uuid
+  + [required_field] is node_uuid
+  + [required_field] is transition_uuid
+  + [required_field] is interrupt_cause
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is authority_basis_sha256_set
+  + [required_field] is checkpoint_ref
+  + [required_field] is checkpoint_sha256
+  + [required_field] is unresolved_question
+  + [required_field] is candidate_resolution_set
+  + [required_field] is required_human_authority
+  + [required_field] is required_SOP_review_ref
+  + [required_field] is narrative_anchor_ref
+  + [required_field] is affected_slice_or_record_set
+  + [required_field] is no_assignment_notice
+  + [required_field] is no_dispatch_notice
+  + [required_field] is no_live_effect_notice
+  + [required_field] is resume_condition_set
+  + [required_field] is rebake_route_ref
+
+  = must: reject human judgment handoffs that omit unresolved question, authority basis, candidate resolutions, required SOP review, no-assignment notice, no-dispatch notice, no-live-effect notice, or resume conditions
+  = must: keep required_human_authority descriptive, not an assignment command
+
+& [P5RebakeRouteRequiredFieldSet] is the required field set for rebake route records
+  + [required_field] is rebake_route_id
+  + [required_field] is rebake_route_uuid
+  + [required_field] is rebake_trigger
+  + [required_field] is stale_authority_ref_set
+  + [required_field] is affected_record_ref_set
+  + [required_field] is affected_slice_ref_set
+  + [required_field] is source_preservation_required
+  + [required_field] is SJS_reprocessing_required
+  + [required_field] is completion_review_required
+  + [required_field] is downstream_stale_mark_set
+  + [required_field] is resume_after_rebake_gate
+  + [required_field] is forbidden_effect_set
+
+  = must: require source preservation and SJS reprocessing when rebake changes source specification, canonical authority, slice order, model route, safety limit, proof ledger, graph state, or interrupt meaning
+  = must: mark downstream records stale before resume when rebake changes accepted authority
+
+& [P5InterruptResumeConditionSet] is the accepted resume condition vocabulary
+  + [resume_condition] is accepted_human_judgment_record
+  + [resume_condition] is accepted_SOP_review
+  + [resume_condition] is rebake_completed_and_reviewed
+  + [resume_condition] is stale_authority_refreshed
+  + [resume_condition] is contradiction_resolved
+  + [resume_condition] is missing_review_gate_completed
+  + [resume_condition] is no_dispatch_review_completed
+  + [resume_condition] is no_live_effect_review_completed
+  + [resume_condition] is checkpoint_discarded_and_regenerated
+  + [resume_condition] is graph_run_abandoned
+
+  = must: require explicit resume condition before any future graph implementation continues from an interrupt
+  = must: treat graph_run_abandoned as safe termination, not failure to dispatch
+
+& [P5NarrativeAnchorAndFrontierPreservationRules] is the narrative anchor and unresolved frontier preservation rule set
+  + [rule] is interrupt handoffs must cite narrative anchors when the unresolved question depends on project story, user intent, prior deliberation, or cross-surface meaning
+  + [rule] is interrupt handoffs must preserve unresolved frontier records instead of flattening them into a single chat message
+  + [rule] is rebake routes must cite affected slices and records so downstream stale markings are reviewable
+  + [rule] is human judgment handoffs must remain reviewable records and must not become assignments or dispatches
+
+  = must: preserve narrative continuity across compaction, surface projection, and future graph resume
+  = must: keep unresolved frontier state visible until accepted review closes it
+
+& [P5S04DownstreamGate] is the gate opened by P5-S04
+  + [opened_slice] is P5-S05 runtime proof trace fixture plan and no-live-effect execution boundary
+  + [activation_basis] is SOP interrupt human judgment handoff and rebake route contract accepted
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P5-S04 acceptance unless proof trace semantics, no-live-effect boundaries, or nonpromotion rules change
+  + [model_route_reason] is bounded proof trace planning can be mechanical after graph state, node, and interrupt contracts are accepted
+  + [completion_review_required] is true
+
+  = must: open P5-S05 only after P5-S04 completion review accepts this interrupt, handoff, and rebake route contract

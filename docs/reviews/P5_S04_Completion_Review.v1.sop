@@ -1,0 +1,71 @@
+Subject: P5 S04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 22429d2d-1323-4f27-b0f3-dacb79b09d31
+
+@ [completed_output] docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+@ [p5_s03_output] docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+@ [p5_s03_review] docs/reviews/P5_S03_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P5-S04] is the completed-work review for P5-S04 SOP interrupt human judgment handoff and rebake route contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P5-S04
+  + [completed_output] is docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+  + [completed_output_sha256] is E5C228358C7FB864E737714530E20C07B679249BEA49675054E40B8EFF346FC2
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P5-S05
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P5-S05 may open
+  + [model_route_for_next_work] is GPT-5.3-Codex-Spark-suitable only if proof trace semantics, no-live-effect boundaries, and nonpromotion rules remain unchanged
+  + [model_route_reason] is bounded proof trace planning can be mechanical after graph state, node, and interrupt contracts are accepted
+
+  = must: treat this review as gate-opening evidence for P5-S05 only
+  = must: rerun this review if P5-S04 output, P5-S03 output, P5-S03 review, interrupt vocabulary, human handoff fields, rebake route fields, or resume conditions change
+  = must: keep dependency installation, package metadata mutation, implementation code, adapter work, graph runtime execution, assignment, dispatch, operations control, and live machine control gated
+
+& [P5S04Verification] is the verification result for P5-S04
+  + [interrupt_cause_vocabulary_present] is true
+  + [human_judgment_handoff_required_field_set_present] is true
+  + [rebake_route_required_field_set_present] is true
+  + [interrupt_resume_condition_set_present] is true
+  + [narrative_anchor_and_frontier_preservation_rules_present] is true
+  + [P5-S05_opened] is true
+  + [P5-S06_opened] is false
+  + [P5-S07_opened] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [graph_runtime_executed] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P5S04Accepted] is accepted
+    @ [support] docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+
+& [SupportDelta: P5-S04] is the support delta produced by P5-S04
+  + [new_support_record] is interrupt causes, human judgment handoff fields, rebake route fields, resume conditions, and narrative anchors are defined before proof trace fixture planning
+  + [new_support_record] is interrupt handoffs are reviewable records, not assignment, dispatch, operations-control, or live-control commands
+  + [new_support_record] is future P5-S05 proof trace planning is Spark-suitable only while proof trace semantics, no-live-effect boundaries, and nonpromotion rules remain unchanged
+  + [support_status] is accepted
+
+& [RequirementDelta: P5-S04] is the requirement delta produced by P5-S04
+  + [requirement_delta] is P5-S05 must include interrupt, handoff, resume, and rebake cases in runtime proof trace fixture planning
+  + [requirement_delta] is future graph implementation must require explicit accepted resume condition before continuing from an interrupt
+  + [requirement_delta] is future surfaces must keep unresolved frontier state visible until accepted review closes it
+
+& [NextSliceGate: P5-S05] is opened
+  + [opened_slice] is P5-S05 runtime proof trace fixture plan and no-live-effect execution boundary
+  + [authority_basis] is docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+  + [authority_basis_sha256] is E5C228358C7FB864E737714530E20C07B679249BEA49675054E40B8EFF346FC2
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only if proof trace semantics, no-live-effect boundaries, and nonpromotion rules remain unchanged
+  + [completion_review_required] is true
+
+  = must: execute P5-S05 next unless user redirects, proof trace semantics become ambiguous, or no-live-effect/nonpromotion boundaries change
