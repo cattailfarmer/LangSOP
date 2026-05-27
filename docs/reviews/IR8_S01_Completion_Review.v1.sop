@@ -1,0 +1,129 @@
+Subject: IR8 S01 Completion Review V1
+Date: 2026-05-27
+Review UUID: 9f767fb1-e592-4496-b385-e3c8a7f0a301
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [completed_output] docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [ir7_implementation_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir7_implementation_completion_review] docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR8-S01] is the completed-work review for IR8-S01 manager boundary import and proof-pack reconciliation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-S01
+  + [completed_output] is docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+  + [completed_output_sha256] is 739657AD4103B26220D5FE741C9041DBD727409A2290CDCD062F05797F44CF89
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8-S01 and open IR8-S02
+  + [next_gate_result] is IR8-S02 may open
+  + [next_model_route] is requires deeper reasoning for IR8-S02 manager loop authority, readiness, packet, and proof contract
+  + [next_model_route_reason] is manager loop semantics control how the system decides what is ready, blocked, stale, or unsafe
+
+  = must: treat this review as gate-opening evidence for IR8-S02 only
+  = must: rerun this review if the completed output, IR8 slice surface, post-IR7 readiness surface, any accepted IR2 through IR7 implementation proof pack, IR7 implementation completion review, or FSC5 operations safety pack changes
+  = must: keep integrated manager implementation, fixture creation, expected ledger creation, generated outputs, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
+
+& [IR8S01Verification] is the verification result for IR8-S01
+  + [boundary_digest_set_present] is true
+  + [reconciled_invariant_set_present] is true
+  + [manager_authority_ladder_present] is true
+  + [proof_pack_interaction_map_present] is true
+  + [generated_output_and_fixture_boundary_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [source_projection_boundary_preserved] is true
+  + [operator_trace_non_completion_boundary_preserved] is true
+  + [graph_checkpoint_non_authority_preserved] is true
+  + [surface_projection_non_mutation_boundary_preserved] is true
+  + [coordination_dispatch_refusal_preserved] is true
+  + [dry_run_live_control_refusal_preserved] is true
+  + [manager_output_non_command_boundary_preserved] is true
+  + [integrated_manager_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [command_executed] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [credential_mutation_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR8S01VerificationSatisfied] is accepted
+    @ [support] docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+
+& [SupportDelta: IR8-S01] is the support delta produced by IR8-S01
+  + [new_support_record] is IR8 has a reconciled manager authority ladder distinguishing source authority, manager planning records, accepted execution evidence, coordination boundary records, operations planning records, generated projection evidence, graph checkpoint context, and carrier context
+  + [new_support_record] is IR8 downstream contracts must preserve proof-pack interaction limits before manager readiness, packetization, handoff, fixture, or implementation planning can proceed
+  + [new_support_record] is IR8-S02 has enough support to define manager loop authority, readiness, packet, and proof semantics without creating implementation code
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-S01] is the requirement delta produced by IR8-S01
+  + [requirement_delta] is IR8-S02 must define manager-cycle inputs, source authority checks, readiness recomputation, work packet candidate production, proof obligations, completion review gates, stale handling, and SOP-first interrupts
+  + [requirement_delta] is IR8-S02 must preserve source/projection, operator trace/completion, graph checkpoint/authority, coordination/dispatch, dry-run/live-control, and manager output/command boundaries
+  + [requirement_delta] is IR8-S04 remains gated and Spark-suitable only after IR8-S02 through IR8-S03 acceptance because fixture planning needs accepted manager loop and handoff semantics
+  + [requirement_delta] is no integrated manager implementation, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized by IR8-S01
+
+& [FaultReview: IR8-S01] is the fault review for IR8-S01
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [source_projection_authority_promotion_found] is false
+  + [operator_trace_completion_promotion_found] is false
+  + [graph_checkpoint_authority_promotion_found] is false
+  + [surface_projection_mutation_authority_found] is false
+  + [coordination_dispatch_authority_promotion_found] is false
+  + [dry_run_to_live_control_promotion_found] is false
+  + [manager_output_command_promotion_found] is false
+  + [integrated_manager_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_mutation_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [credential_mutation_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [persistent_operations_automation_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8S01Accepted] is accepted
+    @ [support] [IR8S01Verification]
+    @ [support] [SupportDelta: IR8-S01]
+    @ [support] [RequirementDelta: IR8-S01]
+    @ [support] [FaultReview: IR8-S01]
+
+& [NextSliceGate: IR8-S02] is opened
+  + [opened_slice] is IR8-S02 manager loop authority, readiness, packet, and proof contract
+  + [accepted_dependency] is docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+  + [accepted_dependency_sha256] is 739657AD4103B26220D5FE741C9041DBD727409A2290CDCD062F05797F44CF89
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager loop semantics control how the system decides what is ready, blocked, stale, or unsafe
+  + [safety_limit] is no agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-S02 next unless user redirects or a new fault invalidates this review

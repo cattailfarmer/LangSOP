@@ -5,7 +5,6 @@ Review UUID: e74c2110-5cd7-4b35-b7b4-dffd41034149
 @ [source_manifest] docs/source/2026-05-27_ir8_final_slices/Source_Document_Manifest.sop
 @ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
 @ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
-@ [work_state] docs/state/IR8_Work_State.v1.sop
 @ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
 @ [post_ir7_rebake_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
 @ [ir7_implementation_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
@@ -22,8 +21,6 @@ Review UUID: e74c2110-5cd7-4b35-b7b4-dffd41034149
   + [completed_output_sha256] is A71AE54B55DB02C414A2BA478385B29CDFC5F2A23D6C757AC6E2D72F2EB66994
   + [completed_output] is docs/slices/IR8_Final_Slices.v1.sop
   + [completed_output_sha256] is 38A7B0B66DFFDEA8C6E6EFC65594AAD1A3A3612976EC9641716A9DD1F5565FBE
-  + [completed_output] is docs/state/IR8_Work_State.v1.sop
-  + [completed_output_sha256] is 2D77C081499352BF236EB7A6905CF3DC28C7A2B0C3D8B6F890EFEBEA5C0EA516
   + [model_route_used] is requires deeper reasoning
   + [review_result] is accepted
   + [closure_recommendation] is accept IR8 final slice surface and open IR8-S01
@@ -32,7 +29,7 @@ Review UUID: e74c2110-5cd7-4b35-b7b4-dffd41034149
   + [next_model_route_reason] is integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
 
   = must: treat this review as gate-opening evidence for IR8-S01 only
-  = must: rerun this review if source manifest, canonical specification, slice surface, work state, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 implementation proof packs, IR7 implementation completion review, or FSC5 operations safety pack changes
+  = must: rerun this review if source manifest, canonical specification, slice surface, post-IR7 readiness surface, post-IR7 readiness review, IR2 through IR7 implementation proof packs, IR7 implementation completion review, or FSC5 operations safety pack changes
   = must: keep integrated manager implementation, fixture file creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
 
 & [IR8FinalSliceMintingVerification] is the verification result for IR8 final-slice minting
@@ -75,7 +72,6 @@ Review UUID: e74c2110-5cd7-4b35-b7b4-dffd41034149
 
   ! [IR8FinalSliceMintingVerificationSatisfied] is accepted
     @ [support] docs/slices/IR8_Final_Slices.v1.sop
-    @ [support] docs/state/IR8_Work_State.v1.sop
 
 & [SupportDelta: IR8-Final-Slice-Minting] is the support delta produced by minted IR8 final slices
   + [new_support_record] is IR8-S01 may import and reconcile accepted proof packs, post-IR7 readiness gates, source/projection boundaries, graph checkpoint non-authority, coordination carrier non-authority, operation dry-run non-authority, generated-output non-authority rules, forbidden mutations, stale triggers, dispatch prohibition, and live-control prohibition

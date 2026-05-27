@@ -166,7 +166,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
   + [support_record] is docs/slices/IR8_Final_Slices.v1.sop
   + [support_record] is docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
-  + [support_gap] is IR8-S01 manager boundary import and proof-pack reconciliation not yet executed
+  + [support_record] is docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+  + [support_record] is docs/reviews/IR8_S01_Completion_Review.v1.sop
+  + [support_gap] is IR8-S02 manager loop authority, readiness, packet, and proof contract not yet executed
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -253,28 +255,31 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
   + [support_record] is docs/slices/IR8_Final_Slices.v1.sop
   + [support_record] is docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
-  + [support_gap] is IR8-S01 manager boundary import and proof-pack reconciliation not yet executed
+  + [support_record] is docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+  + [support_record] is docs/reviews/IR8_S01_Completion_Review.v1.sop
+  + [support_gap] is IR8-S02 manager loop authority, readiness, packet, and proof contract not yet executed
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-S01 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route IR8-S01 as requires deeper reasoning because integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
+  = must: execute IR8-S02 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route IR8-S02 as requires deeper reasoning because manager loop semantics control how the system decides what is ready, blocked, stale, or unsafe
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadySlice: IR8-S01-ManagerBoundaryImportAndProofPackReconciliation] is ready
+& [CurrentReadySlice: IR8-S02-ManagerLoopAuthorityReadinessPacketAndProofContract] is ready
   + [chunk_id] is IR8
-  + [slice_id] is IR8-S01
-  + [slice_name] is manager boundary import and proof-pack reconciliation
+  + [slice_id] is IR8-S02
+  + [slice_name] is manager loop authority, readiness, packet, and proof contract
   + [authority_basis] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
   + [slice_surface] is docs/slices/IR8_Final_Slices.v1.sop
-  + [slice_minting_review] is docs/reviews/IR8_Final_Slice_Minting_Review.v1.sop
+  + [accepted_dependency] is docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+  + [completion_review] is docs/reviews/IR8_S01_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
-  + [model_route_reason] is integrated manager boundary import decides how accepted proof packs can interact without collapsing authority distinctions
+  + [model_route_reason] is manager loop semantics control how the system decides what is ready, blocked, stale, or unsafe
   + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR8-S01 through IR8-S03 are accepted
 
-  = must: execute IR8-S01 before IR8-S02, fixtures, implementation activation, dependencies, adapters, transports, UI, or generated outputs
+  = must: execute IR8-S02 before IR8-S03, fixtures, implementation activation, dependencies, adapters, transports, UI, or generated outputs
   = must: keep agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

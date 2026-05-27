@@ -1,0 +1,237 @@
+Subject: IR8 Manager Orchestration Boundary Import And Proof Reconciliation V1
+Date: 2026-05-27
+Boundary Map UUID: 087a7a64-b292-471e-b8a6-471e4b4a3d1e
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [post_ir7_readiness] docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+@ [post_ir7_rebake_review] docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+@ [ir2_implementation_proof_pack] docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+@ [ir3_implementation_proof_pack] docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+@ [ir4_implementation_proof_pack] docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+@ [ir5_implementation_proof_pack] docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir7_implementation_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [IR8ManagerOrchestrationBoundaryImportAndProofReconciliationV1] is the IR8-S01 boundary map for integrated manager orchestration planning
+  + [boundary_map_id] is ir8-manager-orchestration-boundary-import-and-proof-reconciliation-v1
+  + [boundary_map_uuid] is 087a7a64-b292-471e-b8a6-471e4b4a3d1e
+  + [slice_id] is IR8-S01
+  + [source_chunk] is IR8 integrated manager orchestration planning
+  + [authority_scope] is imported parser/projection proof, imported operator harness proof, imported LangGraph proof runtime boundary, imported surface projection proof, imported coordination mailbox proof, imported operations dry-run proof, post-IR7 readiness gates, manager authority ladder, proof-pack interaction rules, stale triggers, and forbidden mutation boundaries
+  + [implementation_scope] is boundary import and invariant reconciliation only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: import accepted IR2 through IR7 proof boundaries before defining manager loop, readiness, packet, coordination handoff, surface handoff, operations dry-run handoff, fixture, implementation, or activation contracts
+  = must: preserve source authority, derived projections, graph execution checkpoints, coordination carriers, dry-run outputs, and generated reports as separate record classes
+  = must: preserve manager-loop outputs as planning and proof records, not commands, dispatch authority, completion authority, operations authority, or live-control authority
+  = must: preserve coordination claims as work-boundary records that constrain readiness and conflict review but cannot dispatch agents or jobs
+  = must: preserve dry-run-only operations semantics and live-control refusal when manager plans resemble dispatch, process control, job control, GPU control, model runtime control, or machine-control authority
+  - never: implement manager orchestration code, execute manager loops, create fixture files, create expected ledgers, create generated outputs, install dependencies, mutate package metadata, implement adapters, implement transports, implement UI, dispatch agents, dispatch jobs, execute commands, control processes, control GPU, mutate model runtimes, access credentials, mutate network exposure, perform destructive filesystem actions, create persistent operations automation, authorize operations control, or authorize live machine control in this slice
+
+& [ImportedIR8BoundaryDigestSet] is the accepted boundary input hash ledger for IR8-S01
+  + [accepted_boundary_input] is docs/slices/IR8_Final_Slices.v1.sop
+  + [accepted_boundary_input_sha256] is 38A7B0B66DFFDEA8C6E6EFC65594AAD1A3A3612976EC9641716A9DD1F5565FBE
+  + [accepted_boundary_input] is docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+  + [accepted_boundary_input_sha256] is A71AE54B55DB02C414A2BA478385B29CDFC5F2A23D6C757AC6E2D72F2EB66994
+  + [accepted_boundary_input] is docs/planning/Post_IR7_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 637919F0BDF14D457531B16CE387C3986EF609E32102EE35F5F0E30881D5B0ED
+  + [accepted_boundary_input] is docs/reviews/Post_IR7_Implementation_Readiness_Rebake_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 3A37A0D034EBDC248E9F9414249A176E8A9028ED89141760C94D6C470D073E48
+  + [accepted_boundary_input] is docs/planning/IR2_Parser_Projection_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5660CB74C3F973983F136662CDD7289B8A647E428DB718A88621FFDDEF83F8C1
+  + [accepted_boundary_input] is docs/planning/IR3_Operator_Harness_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5BCD5E619E55332236B1FAC81DDF81854044D625C185C66DF8A77934F12EC53F
+  + [accepted_boundary_input] is docs/planning/IR4_LangGraph_Proof_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 5E065891DFE7747FE5E128E6B2C8D2FACAD5D807BDBE56DFD97FC76BFA6E77D3
+  + [accepted_boundary_input] is docs/planning/IR5_Surface_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 87327D909E9E02D1D3D8FEA04C3E20D94F003F47493250FCE3D3EEE6CAE821FC
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 31184C312AA4A7FA727598B69AE9B8F7F556E35CED4F7C2092E9DE165FB65F3D
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+
+  = must: mark IR8-S01 and downstream IR8 slices stale if any listed boundary input hash changes
+
+& [ReconciledIR8InvariantSet] is the reconciled invariant set for integrated manager orchestration planning
+  + [invariant] is SOP source documents, accepted canonical specifications, accepted packs, accepted proofs, accepted completion reviews, accepted human override records, and SJS-signed artifacts remain source authority
+  + [invariant] is parser and projection outputs describe source-derived structure but cannot create authority without accepted source, canonical signature, or completion review
+  + [invariant] is operator traces are execution evidence only and require accepted operator contracts and proof review before they can affect readiness
+  + [invariant] is LangGraph checkpoint state stores procedure state and kernel references, not source truth, dispatch authority, or live-control authority
+  + [invariant] is manager loop records may recompute readiness, propose work packets, request SOP-first interrupts, and emit proof obligations, but they cannot execute work or accept completion by themselves
+  + [invariant] is work packets are bounded candidate assignments until accepted by source authority, readiness proof, coordination claim rules, and completion review gates
+  + [invariant] is surface projections display authority notice, freshness state, blockers, faults, claims, and proof state but cannot mutate canonical authority directly
+  + [invariant] is coordination claims coordinate work boundaries only and cannot dispatch agents, run commands, mutate resources, or accept completion
+  + [invariant] is operation requests and dry-run results remain operations planning records and cannot approve live effects
+  + [invariant] is human approval records must remain explicit, fresh, scoped, revocable, and tied to rollback or abort routes before they can be considered as future safety inputs
+  + [invariant] is broad approval, stale approval, fixture success, dry-run success, graph checkpoint state, projected user intent, mailbox notice, active claim, or carrier state cannot authorize dispatch or live control
+  + [invariant] is manager orchestration must route ambiguous authority, stale proof, hidden scope expansion, contested claims, dry-run/live-control confusion, and generated-output promotion through SOP-first interrupt, coordination review, completion review, or rebake
+  + [invariant] is live-control escalation requires separate future source preservation, SJS processing, least-privilege credential boundary, rollback proof, explicit human approval rules, monitoring and abort routes, and completion review
+
+  = must: preserve these invariants through IR8-S02 through IR8-S06
+  = must: route invariant contradictions through completion review and rebake rather than silent edits
+
+& [ManagerAuthorityLadder: IR8] is the authority ladder that all downstream IR8 contracts must preserve
+  + [authority_tier] is source_authority
+  + [source_authority_member] is preserved source specification
+  + [source_authority_member] is accepted canonical specification
+  + [source_authority_member] is accepted SJS satisfaction signature
+  + [source_authority_member] is accepted proof pack
+  + [source_authority_member] is accepted completion review
+  + [source_authority_member] is explicit accepted human override record with authority notice
+  + [authority_tier] is manager_planning_record
+  + [manager_planning_record_member] is readiness_projection
+  + [manager_planning_record_member] is work_packet_candidate
+  + [manager_planning_record_member] is proof_obligation
+  + [manager_planning_record_member] is SOP_first_interrupt_context
+  + [manager_planning_record_member] is completion_review_gate
+  + [authority_tier] is accepted_execution_evidence
+  + [accepted_execution_evidence_member] is operator_trace accepted through proof or completion review
+  + [accepted_execution_evidence_member] is fixture_result accepted through proof or completion review
+  + [authority_tier] is coordination_boundary_record
+  + [coordination_boundary_record_member] is coordination_claim
+  + [coordination_boundary_record_member] is mailbox_carrier_context
+  + [coordination_boundary_record_member] is conflict_review_context
+  + [authority_tier] is operations_planning_record
+  + [operations_planning_record_member] is operation_request
+  + [operations_planning_record_member] is dry_run_result
+  + [operations_planning_record_member] is refusal_record
+  + [operations_planning_record_member] is resource_safety_review
+  + [authority_tier] is generated_projection_evidence
+  + [generated_projection_evidence_member] is generated surface projection
+  + [generated_projection_evidence_member] is generated dry-run projection
+  + [generated_projection_evidence_member] is generated manager report
+  + [authority_tier] is graph_checkpoint_context
+  + [graph_checkpoint_context_member] is procedure_state
+  + [graph_checkpoint_context_member] is node_resume_pointer
+  + [graph_checkpoint_context_member] is kernel_record_reference
+  + [authority_tier] is carrier_context
+  + [carrier_context_member] is terminal output
+  + [carrier_context_member] is chat message
+  + [carrier_context_member] is Codex thread state
+  + [carrier_context_member] is mailbox path
+  + [carrier_context_member] is UI event
+  + [carrier_context_member] is IRC log
+  + [carrier_context_member] is Matrix event
+
+  = must: display lower authority tier and trust limit anywhere lower-tier records may influence action
+  = must: prevent lower tiers from satisfying source-authority, dispatch, completion, operations-control, or live-control obligations without separate accepted authority
+
+& [ProofPackInteractionMap: IR8] is the imported proof-pack handoff map for downstream manager contracts
+  + [proof_pack] is IR2 parser and projection implementation proof
+  + [manager_use] is source parsing and projection identity evidence for manager input normalization
+  + [manager_limit] is parsed projection is not source authority unless backed by accepted source and canonical signature
+  + [proof_pack] is IR3 operator harness implementation proof
+  + [manager_use] is deterministic operator execution and trace evidence pattern
+  + [manager_limit] is operator trace is evidence, not completion acceptance without review
+  + [proof_pack] is IR4 LangGraph proof runtime implementation proof
+  + [manager_use] is graph node flow, checkpoint, interrupt, and proof-of-shape pattern
+  + [manager_limit] is checkpoint state is procedure context, not authority
+  + [proof_pack] is IR5 surface projection implementation proof
+  + [manager_use] is manager, worker, narrative, debug, and conversation projection pattern
+  + [manager_limit] is surface state is projection evidence, not mutation authority
+  + [proof_pack] is IR6 coordination mailbox implementation proof
+  + [manager_use] is claim, mailbox, rendezvous, conflict, stale, and human override projection pattern
+  + [manager_limit] is carrier state and claim state constrain coordination only and do not dispatch work
+  + [proof_pack] is IR7 operations dry-run simulator implementation proof
+  + [manager_use] is operation request, resource safety, refusal, generated path, fixture runner, and no-live-effect proof
+  + [manager_limit] is dry-run success is not live approval or dispatch authority
+
+  = must: require IR8-S02 to define the manager loop contract before any fixture plan, implementation plan, or activation pack can consume this interaction map
+  = must: reject any proof-pack merge that collapses record classes or authority tiers
+
+& [IR8GeneratedOutputAndFixtureBoundary] is the generated-output and fixture boundary for IR8-S01
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [future_fixture_slice] is IR8-S04 after IR8-S01 through IR8-S03 acceptance
+  + [future_generated_output_policy_slice] is IR8-S05 after IR8-S04 acceptance
+  + [current_generated_output_role] is none_created_by_this_slice
+  + [future_generated_output_default_authority] is non_authoritative_projection_only
+
+  = must: reject IR8-S01 completion if fixture sources, expected ledgers, generated output files, manager reports, carrier caches, or projection reports are created
+  = must: require later accepted generated-output policy before any generated manager projection root can be trusted even as disposable evidence
+
+& [ForbiddenIR8S01MutationList] is the forbidden mutation set for IR8-S01
+  + [forbidden_mutation] is editing accepted IR2, IR3, IR4, IR5, IR6, IR7, FSC5, post-IR7, or IR8 authority inputs to make reconciliation easier
+  + [forbidden_mutation] is treating parsed projections as source authority without accepted source and canonical signature
+  + [forbidden_mutation] is treating operator traces as completion acceptance without review
+  + [forbidden_mutation] is treating graph checkpoints as authority
+  + [forbidden_mutation] is treating surface projections as mutation authority
+  + [forbidden_mutation] is treating coordination claims, mailbox carriers, or conflict reviews as dispatch authority
+  + [forbidden_mutation] is treating operation requests or dry-run results as commands or live approval
+  + [forbidden_mutation] is implementing manager orchestration code
+  + [forbidden_mutation] is creating fixture source files
+  + [forbidden_mutation] is creating expected ledger files
+  + [forbidden_mutation] is creating generated output files
+  + [forbidden_mutation] is installing dependencies or mutating package metadata
+  + [forbidden_mutation] is implementing adapters, transports, UI, or live surfaces
+  + [forbidden_mutation] is executing commands
+  + [forbidden_mutation] is starting, stopping, killing, or reprioritizing live processes
+  + [forbidden_mutation] is launching, cancelling, or scheduling GPU workloads
+  + [forbidden_mutation] is starting, stopping, installing, upgrading, or configuring model runtimes
+  + [forbidden_mutation] is dispatching agents or jobs
+  + [forbidden_mutation] is accessing, writing, rotating, or mutating credentials or secrets
+  + [forbidden_mutation] is opening, exposing, or mutating network listeners or firewall state
+  + [forbidden_mutation] is performing destructive filesystem actions
+  + [forbidden_mutation] is creating persistent operations automation
+  + [forbidden_mutation] is authorizing operations control or live machine control
+
+  = must: fail IR8-S01 review if any forbidden mutation appears in the output
+
+& [DownstreamStaleTriggerList: IR8] is the stale trigger set for downstream IR8 work
+  + [stale_trigger] is IR8 canonical specification hash changes
+  + [stale_trigger] is IR8 final slice surface changes
+  + [stale_trigger] is IR8 minting review changes
+  + [stale_trigger] is post-IR7 readiness surface or review changes
+  + [stale_trigger] is IR2 through IR7 implementation proof pack hash changes
+  + [stale_trigger] is IR7 implementation completion review changes
+  + [stale_trigger] is FSC5 operations safety pack hash changes
+  + [stale_trigger] is parser projection treated as source authority without canonical backing
+  + [stale_trigger] is operator trace treated as completion acceptance
+  + [stale_trigger] is graph checkpoint treated as source authority
+  + [stale_trigger] is surface projection treated as mutation authority
+  + [stale_trigger] is coordination claim or mailbox carrier treated as dispatch authority
+  + [stale_trigger] is dry-run result treated as live approval
+  + [stale_trigger] is manager output treated as command execution, job dispatch, process control, GPU control, model runtime mutation, credential mutation, network mutation, destructive filesystem action, operations control, or live-control effect
+
+  = must: mark affected downstream slices stale when any listed trigger fires
+  = must: route stale-trigger repair through completion review and rebake rather than silent edits
+
+& [IR8S01CoverageReview] is the coverage checklist for IR8-S01
+  + [boundary_digest_set_present] is true
+  + [reconciled_invariant_set_present] is true
+  + [manager_authority_ladder_present] is true
+  + [proof_pack_interaction_map_present] is true
+  + [generated_output_and_fixture_boundary_present] is true
+  + [forbidden_mutation_list_present] is true
+  + [downstream_stale_trigger_list_present] is true
+  + [integrated_manager_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [command_executed] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [credential_mutation_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR8-S01 only when all checklist items are satisfied
+  = must: open IR8-S02 only after this boundary map is reviewed in a completion review
