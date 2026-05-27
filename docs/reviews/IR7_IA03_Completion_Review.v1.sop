@@ -1,0 +1,125 @@
+Subject: IR7 IA03 Completion Review V1
+Date: 2026-05-27
+Review UUID: c6e6fc4e-6709-4b2c-a739-61fed2b86a55
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+@ [fixture_source_root] tests/fixtures/sop/ir7_operations_dry_run/
+@ [expected_ledger_root] tests/fixtures/expected/ir7_operations_dry_run/
+@ [completed_output] src/langsop/operations/__init__.py
+@ [completed_output] src/langsop/operations/requests.py
+@ [completed_output] src/langsop/operations/dry_run.py
+@ [completed_output] src/langsop/operations/refusals.py
+
+& [CompletedWorkReview: IR7-IA03] is the completed-work review for IR7-IA03 operation request, dry-run result, and refusal model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA03
+  + [completed_output] is src/langsop/operations/__init__.py
+  + [completed_output_sha256] is 91369BA4C609F4200646F2EBB846DC2B7BB9321D1ED448940F55B88657D459CA
+  + [completed_output] is src/langsop/operations/requests.py
+  + [completed_output_sha256] is 34CB7F1E5808B8ED7F18EF6BB84F9D3D5D4AD651541555C011716A9270CB064F
+  + [completed_output] is src/langsop/operations/dry_run.py
+  + [completed_output_sha256] is 53B69BBB6F75653469792C92FB1F471B9925885979A8D9A1CF870A9C3B2CD77F
+  + [completed_output] is src/langsop/operations/refusals.py
+  + [completed_output_sha256] is 4449270177EC9E081FEEF1F40DCDD1155E96EB76F4B09E9E6462F7FAF65B55D5
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-IA03 and open IR7-IA04
+  + [next_gate_result] is IR7-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for resource safety, human approval, rollback, and approval-stale model implementation
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR7-IA04 only
+  = must: rerun this review if operation request, dry-run result, refusal model, fixture source, expected ledger, activation boundary, or activation slice surface changes
+  = must: keep fixture runner implementation, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7IA03Verification] is the verification result for IR7-IA03
+  + [request_model_file_present] is true
+  + [dry_run_model_file_present] is true
+  + [refusal_model_file_present] is true
+  + [package_exports_updated] is true
+  + [operation_request_identity_validation_present] is true
+  + [operation_request_safety_validation_present] is true
+  + [intended_effect_classifier_present] is true
+  + [target_risk_classifier_present] is true
+  + [blocked_live_effect_refusal_present] is true
+  + [dry_run_result_non_authority_notice_present] is true
+  + [dry_run_live_effect_performed_default_false] is true
+  + [dry_run_completion_review_required_default_true] is true
+  + [refusal_record_non_authority_notice_present] is true
+  + [sop_first_interrupt_context_present] is true
+  + [authority_promotion_refusal_present] is true
+  + [resource_safety_model_created] is false
+  + [action_route_model_created] is false
+  + [fixture_runner_created] is false
+  + [generated_output_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7IA03VerificationSatisfied] is accepted
+    @ [support] src/langsop/operations/requests.py
+    @ [support] src/langsop/operations/dry_run.py
+    @ [support] src/langsop/operations/refusals.py
+    @ [support] src/langsop/operations/__init__.py
+
+& [SupportDelta: IR7-IA03] is the support delta produced by IR7-IA03
+  + [new_support_record] is IR7 now has pure operation request identity and safety validation models
+  + [new_support_record] is IR7 now has dry-run result records that preserve live_effect_performed false and completion_review_required true
+  + [new_support_record] is IR7 now has refusal and SOP-first interrupt records for unsafe, stale, ambiguous, or authority-promoting operation requests
+  + [new_support_record] is IR7-IA04 may implement resource safety, human approval, rollback, approval stale, and operation action-route models against accepted request and refusal models
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-IA03] is the requirement delta produced by IR7-IA03
+  + [requirement_delta] is IR7-IA04 is GPT-5.3-Codex-Spark-suitable because resource safety and approval models are bounded by accepted request, result, refusal contracts, and fixture material
+  + [requirement_delta] is IR7-IA04 may create or update src/langsop/operations/resource_safety.py, src/langsop/operations/action_routes.py, and src/langsop/operations/__init__.py only
+  + [requirement_delta] is no fixture runner implementation, generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-IA03
+
+& [FaultReview: IR7-IA03] is the fault review for IR7-IA03
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [resource_safety_scope_leak_found] is false
+  + [fixture_runner_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7IA03Accepted] is accepted
+    @ [support] [IR7IA03Verification]
+    @ [support] [SupportDelta: IR7-IA03]
+    @ [support] [RequirementDelta: IR7-IA03]
+    @ [support] [FaultReview: IR7-IA03]
+
+& [NextSliceGate: IR7-IA04] is opened
+  + [opened_slice] is IR7-IA04 resource safety, human approval, rollback, and approval-stale model implementation
+  + [accepted_dependency] is src/langsop/operations/requests.py
+  + [accepted_dependency] is src/langsop/operations/dry_run.py
+  + [accepted_dependency] is src/langsop/operations/refusals.py
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is resource safety and approval models are bounded by accepted request, result, refusal contracts, and fixture material
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA04 next unless user redirects or a new fault invalidates this review
