@@ -30,11 +30,12 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
 @ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
 @ [p8_implementation_activation_minting_review] docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
 @ [p8_ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
+@ [p8_ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
 
 & [P6WorkStateV1] is the current derived work state for P6 surface projection system
   + [state_basis] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
   + [state_basis_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
-  + [surface_status] is P6_completed_with_P8_fixture_material_P8-IA01_accepted_pending_P8-IA02
+  + [surface_status] is P6_completed_with_P8_fixture_material_P8-IA02_accepted_pending_P8-IA03
   + [source_manifest] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
   + [canonical_specification] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
@@ -79,10 +80,12 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [accepted_downstream_activation_minting_review_sha256] is 9A469FF897B4127E577AFED8E7DD74EBB0E5909F8133E7320E105748FED6D399
   + [accepted_downstream_slice_review] is docs/reviews/P8_IA01_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is 4173FCEF7D9AF5AAB14F6FA8A127D1F2FFC50E90273673F89552E7286A80199F
-  + [current_ready_slice] is P8-IA02
-  + [current_ready_slice_name] is kernel, operator, packet, runtime, and projection fixture source material
+  + [accepted_downstream_slice_review] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is B5D709E9F667DC350DF74B69B3459AABDAD890FF9BE2C4EF83D3C4059171BDF8
+  + [current_ready_slice] is P8-IA03
+  + [current_ready_slice_name] is expected ledgers and proof ledger seed material
   + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_reason] is fixture source material is bounded by accepted fixture plans, exact path inventory, and no-live-effect boundary
+  + [current_ready_slice_model_route_reason] is expected ledger and proof ledger material is bounded by accepted fixture source material and proof ledger contract
   + [UI_implementation_authorized] is false
   + [adapter_implementation_authorized] is false
   + [transport_implementation_authorized] is false
@@ -95,6 +98,6 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-IA02 before expected ledger creation, generated output creation, surface implementation, adapter work, dispatch, or live-control work
+  = must: execute P8-IA03 before generated output creation, surface implementation, adapter work, dispatch, or live-control work
   = must: keep source authority, projection records, generated snapshots, adapter messages, human handoffs, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P6 completion review, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, or IR5 implementation completion changes
+  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P6 completion review, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, or IR5 implementation completion changes

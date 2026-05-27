@@ -1,0 +1,14 @@
+Subject: P5 Fixture SOP Interrupt Handoff
+Date: 2026-05-27
+Fixture ID: p5-sop-interrupt-handoff
+
+& [FixtureCase: P5SOPInterruptHandoff] is an interrupt handoff fixture
+  + [runtime_record_kind] is SOP_interrupt
+  + [interrupt_reason] is ambiguous_authority
+  + [human_judgment_required] is true
+  + [expected_runtime_state] is interrupted
+  + [dispatch_authority] is false
+  + [live_control_authority] is false
+
+  = must: create a reviewable human judgment handoff
+  = must: avoid dispatch or live effect

@@ -1,0 +1,14 @@
+Subject: P5 Fixture Stale Checkpoint Rebake Required
+Date: 2026-05-27
+Fixture ID: p5-stale-checkpoint-rebake-required
+
+& [FixtureCase: P5StaleCheckpointRebakeRequired] is a stale checkpoint fixture
+  + [runtime_record_kind] is graph_checkpoint
+  + [checkpoint_state] is stale
+  + [source_input_state] is changed
+  + [expected_runtime_state] is rebake_required
+  + [expected_refusal_kind] is stale_checkpoint
+  + [generated_trace_authority] is false
+
+  = must: require rebake before continuing runtime planning
+  = must: preserve stale checkpoint lineage

@@ -1,0 +1,14 @@
+Subject: P3 Fixture Generated Output As Authority Fault
+Date: 2026-05-27
+Fixture ID: p3-generated-output-as-authority-fault
+
+& [FixtureCase: P3GeneratedOutputAsAuthorityFault] is an operator output promotion fault fixture
+  + [operator_kind] is projection_builder
+  + [output_authority_class] is generated_output_non_authority
+  + [claimed_authority_class] is operator_contract_authority
+  + [expected_operator_result] is faulted
+  + [expected_fault_kind] is generated_output_promoted_to_authority
+  + [required_notice] is not_source_authority
+
+  = must: reject generated output as operator contract authority
+  = must: keep generated output rebuildable and disposable

@@ -1,0 +1,15 @@
+Subject: P2 Fixture Missing SJS Signature Refusal
+Date: 2026-05-27
+Fixture ID: p2-missing-sjs-signature-refusal
+
+& [FixtureCase: P2MissingSJSSignatureRefusal] is an unsigned source refusal fixture
+  + [record_kind] is canonical_specification
+  + [authority_class] is unprocessed_source
+  + [signature_protocol_uuid] is absent
+  + [signature_status] is missing
+  + [expected_readiness] is refused
+  + [expected_refusal_kind] is missing_satisfaction_signature
+  + [required_route] is SJS_processing
+
+  = must: refuse trust as processed authority
+  = must: route through SJS before acceptance

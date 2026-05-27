@@ -1,0 +1,14 @@
+Subject: P6 Fixture Manager Authority Notice Projection
+Date: 2026-05-27
+Fixture ID: p6-manager-authority-notice-projection
+
+& [FixtureCase: P6ManagerAuthorityNoticeProjection] is a positive projection fixture
+  + [surface_kind] is manager
+  + [source_authority_state] is accepted
+  + [freshness_state] is current
+  + [required_notice] is accepted_source_authority
+  + [generated_projection_authority] is false
+  + [expected_projection_state] is visible_authority_notice
+
+  = must: render source authority notice
+  = must: keep rendered projection non-authoritative

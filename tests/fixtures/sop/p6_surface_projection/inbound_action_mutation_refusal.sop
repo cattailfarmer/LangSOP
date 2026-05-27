@@ -1,0 +1,14 @@
+Subject: P6 Fixture Inbound Action Mutation Refusal
+Date: 2026-05-27
+Fixture ID: p6-inbound-action-mutation-refusal
+
+& [FixtureCase: P6InboundActionMutationRefusal] is an inbound action boundary fixture
+  + [surface_kind] is web
+  + [inbound_action_kind] is edit_canonical_source
+  + [surface_authority] is projection_only
+  + [expected_action_result] is refused
+  + [expected_refusal_kind] is surface_cannot_mutate_source_authority
+  + [dispatch_authority] is false
+
+  = must: refuse direct source mutation from a surface
+  = must: route accepted actions through authority review

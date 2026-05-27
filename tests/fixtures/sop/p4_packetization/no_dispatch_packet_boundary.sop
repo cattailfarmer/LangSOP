@@ -1,0 +1,15 @@
+Subject: P4 Fixture No Dispatch Packet Boundary
+Date: 2026-05-27
+Fixture ID: p4-no-dispatch-packet-boundary
+
+& [FixtureCase: P4NoDispatchPacketBoundary] is a no-dispatch boundary fixture
+  + [packet_kind] is manager_handoff_packet
+  + [packet_state] is reviewable
+  + [assignment_authority] is false
+  + [dispatch_authority] is false
+  + [operations_authority] is false
+  + [live_control_authority] is false
+  + [expected_packet_state] is handoff_only
+
+  = must: preserve packet as planning evidence
+  = must: refuse dispatch authority from packet presence

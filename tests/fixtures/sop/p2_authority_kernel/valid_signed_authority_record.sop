@@ -1,0 +1,15 @@
+Subject: P2 Fixture Valid Signed Authority Record
+Date: 2026-05-27
+Fixture ID: p2-valid-signed-authority-record
+
+& [FixtureCase: P2ValidSignedAuthorityRecord] is a positive P2 authority kernel fixture
+  + [record_kind] is canonical_specification
+  + [authority_class] is source_authority
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [freshness_state] is current
+  + [expected_readiness] is ready
+  + [forbidden_promotion] is none
+
+  = must: be accepted by authority kernel validation
+  = must: remain source authority only through its valid SJS signature

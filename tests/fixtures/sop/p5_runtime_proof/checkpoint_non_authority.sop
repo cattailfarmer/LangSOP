@@ -1,0 +1,14 @@
+Subject: P5 Fixture Checkpoint Non Authority
+Date: 2026-05-27
+Fixture ID: p5-checkpoint-non-authority
+
+& [FixtureCase: P5CheckpointNonAuthority] is a checkpoint nonpromotion fixture
+  + [runtime_record_kind] is graph_checkpoint
+  + [checkpoint_state] is current
+  + [claimed_authority_class] is source_authority
+  + [expected_runtime_state] is refused
+  + [expected_refusal_kind] is checkpoint_not_authority
+  + [required_notice] is checkpoint_state_is_not_source_authority
+
+  = must: reject checkpoint as source authority
+  = must: preserve checkpoint as runtime evidence only

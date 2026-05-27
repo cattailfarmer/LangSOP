@@ -50,11 +50,12 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [p8_implementation_activation_minting_review] docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
 @ [p8_ia01_output] docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
 @ [p8_ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
+@ [p8_ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
 
 & [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
   + [state_basis] is docs/reviews/P8_Completion_Review.v1.sop
   + [state_basis_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
-  + [surface_status] is P8_completed_with_fixture_material_activation_P8-IA01_accepted_pending_P8-IA02
+  + [surface_status] is P8_completed_with_fixture_material_activation_P8-IA02_accepted_pending_P8-IA03
   + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
   + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
@@ -155,11 +156,16 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_output_sha256] is 03F0ABD00D318C5C9F6B45E7BB48E5525709639FA5E135E9E9B86B736A81632D
   + [accepted_completion_review] is docs/reviews/P8_IA01_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 4173FCEF7D9AF5AAB14F6FA8A127D1F2FFC50E90273673F89552E7286A80199F
-  + [current_ready_slice] is P8-IA02
-  + [current_ready_slice_name] is kernel, operator, packet, runtime, and projection fixture source material
-  + [current_ready_slice_expected_output] is fixture source files at paths accepted by P8-IA01
+  + [accepted_slice] is P8-IA02
+  + [accepted_output] is fixture source files at paths accepted by P8-IA01
+  + [accepted_output_count] is 24
+  + [accepted_completion_review] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is B5D709E9F667DC350DF74B69B3459AABDAD890FF9BE2C4EF83D3C4059171BDF8
+  + [current_ready_slice] is P8-IA03
+  + [current_ready_slice_name] is expected ledgers and proof ledger seed material
+  + [current_ready_slice_expected_output] is expected ledger files and proof ledger seed files at paths accepted by P8-IA01
   + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_reason] is fixture source material is bounded by accepted fixture plans, exact path inventory, and no-live-effect boundary
+  + [current_ready_slice_model_route_reason] is expected ledger and proof ledger material is bounded by accepted fixture source material and proof ledger contract
   + [gated_chunk] is P6 implementation and projection fixture materialization until P6 final slices and implementation activation are accepted
   + [gated_chunk] is fixture material creation until P8-IA01 accepts exact files and P8-IA02 opens material creation
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted
@@ -182,6 +188,6 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-IA02 before expected ledger creation, proof ledger creation, generated output creation, proof runner code, surface expansion, adapter work, dispatch, or live-control work
+  = must: execute P8-IA03 before generated output creation, proof runner code, surface expansion, adapter work, dispatch, or live-control work
   = must: keep fixture obligations, generated outputs, proof ledgers, graph checkpoints, surface projections, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P8 fixture material implementation activation source, activation manifest, activation canonical, activation slices, activation minting review, P8-IA01 output, P8-IA01 review, P4 completion, post-P4 readiness, P6 completion, post-P6 readiness, accepted fixture oracle, or accepted proof pack changes
+  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P8 fixture material implementation activation source, activation manifest, activation canonical, activation slices, activation minting review, P8-IA01 output, P8-IA01 review, P8-IA02 review, P8-IA02 fixture files, P4 completion, post-P4 readiness, P6 completion, post-P6 readiness, accepted fixture oracle, or accepted proof pack changes

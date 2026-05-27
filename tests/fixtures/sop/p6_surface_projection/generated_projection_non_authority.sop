@@ -1,0 +1,14 @@
+Subject: P6 Fixture Generated Projection Non Authority
+Date: 2026-05-27
+Fixture ID: p6-generated-projection-non-authority
+
+& [FixtureCase: P6GeneratedProjectionNonAuthority] is a generated projection nonpromotion fixture
+  + [surface_kind] is debug
+  + [projection_record_kind] is generated_projection
+  + [claimed_authority_class] is source_authority
+  + [expected_projection_state] is faulted
+  + [expected_fault_kind] is generated_projection_promoted_to_authority
+  + [required_notice] is not_source_authority
+
+  = must: reject generated projection as source authority
+  = must: preserve generated projection as disposable view evidence

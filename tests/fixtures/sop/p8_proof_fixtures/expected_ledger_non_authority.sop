@@ -1,0 +1,14 @@
+Subject: P8 Fixture Expected Ledger Non Authority
+Date: 2026-05-27
+Fixture ID: p8-expected-ledger-non-authority
+
+& [FixtureCase: P8ExpectedLedgerNonAuthority] is an expected ledger nonpromotion fixture
+  + [ledger_kind] is expected_output_ledger
+  + [claimed_authority_class] is source_authority
+  + [actual_authority_class] is reviewable_expected_evidence
+  + [expected_result] is refused
+  + [expected_refusal_kind] is expected_ledger_not_source_authority
+  + [required_notice] is comparison_evidence_only
+
+  = must: refuse expected ledger as canonical authority
+  = must: preserve expected ledger as comparison evidence

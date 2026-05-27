@@ -1,0 +1,162 @@
+Subject: P8 IA02 Completion Review V1
+Date: 2026-05-27
+Review UUID: 08fdc985-5ac4-4021-bf95-056a2105171f
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+@ [p8_ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-IA02] is the completed-work review for P8-IA02 kernel, operator, packet, runtime, and projection fixture source material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA02
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8-IA02 and open P8-IA03
+  + [next_gate_result] is P8-IA03 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for expected ledgers and proof ledger seed material
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for P8-IA03 only
+  = must: rerun this review if P8-IA01 activation boundary, P8-IA01 completion review, activation slice surface, fixture source inventory, or any fixture source file changes
+  = must: keep expected ledgers, proof ledgers, generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P8IA02FixtureSourceHashLedger] is the accepted fixture source hash ledger for P8-IA02
+  + [fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/generated_projection_promotion_fault.sop
+  + [fixture_source_sha256] is 366B1F1C2F3A5244E7E3142C770FFB9D35E812F186EC165A5894446A6776FF71
+  + [fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/missing_sjs_signature_refusal.sop
+  + [fixture_source_sha256] is C94220639E14C92890B69A4EBBE8A930F87B640380D04F0EF4675719EC3AB997
+  + [fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/stale_source_hash_blocks_ready.sop
+  + [fixture_source_sha256] is 18B00B1C9CE24346698B04C44ABF90DF2C6A67A9440F25FA38E6DCBFAE8DE00E
+  + [fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/valid_signed_authority_record.sop
+  + [fixture_source_sha256] is 83663FDDF4A2A509A2DDA5BACB8435E8C2BDF7E6769A7DEBB26EA944E7BD911C
+  + [fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/deterministic_replay_mismatch_fault.sop
+  + [fixture_source_sha256] is 632B228D4A7D110A55FAB47B9C05EA414F0FCE9730B82796C66601FD894E97BB
+  + [fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/generated_output_as_authority_fault.sop
+  + [fixture_source_sha256] is 150989407F45697BCCDE804F53C88039C386B38744D7F7444699966BC00F95F7
+  + [fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/unsupported_operator_scope_refusal.sop
+  + [fixture_source_sha256] is 40CE699F38D5C5962052AB6F7BBE9407A5B8422576819BF73C840962BCD6479D
+  + [fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/valid_signature_validation_operator.sop
+  + [fixture_source_sha256] is 23C549431F9F6119DF17C6FFC72A9FEB2F67D5FBF04F0260DC1D373252347A68
+  + [fixture_source_file] is tests/fixtures/sop/p4_packetization/blocked_requirement_packet.sop
+  + [fixture_source_sha256] is C0E977DE8CBCDCABD188C753F7A5514783C86DBCB16000B454F43F6C00894AC3
+  + [fixture_source_file] is tests/fixtures/sop/p4_packetization/false_ready_packet_fault.sop
+  + [fixture_source_sha256] is D9208230FC4C8B95CBEA913486429EBD5F05C376EBDB6542421D0A2D0A79E31D
+  + [fixture_source_file] is tests/fixtures/sop/p4_packetization/no_dispatch_packet_boundary.sop
+  + [fixture_source_sha256] is 04AFE036055DBBC8DC0B88DC6457E31FB98F7F48C5209D33C70F892553652359
+  + [fixture_source_file] is tests/fixtures/sop/p4_packetization/ready_packet_candidate.sop
+  + [fixture_source_sha256] is 055A1696BE3AE5B05849FD83E5CEA165BCBB8BF03BB1FEB36B96F9E5CDDDFC69
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/checkpoint_non_authority.sop
+  + [fixture_source_sha256] is 4963DD73A84890556BA71F84596A7B64BB66AC31431CF2C391E0FA7A283BEBF3
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/sop_interrupt_handoff.sop
+  + [fixture_source_sha256] is A09B7B59A97F4F5CC726443CB337DF4CECA16AA55285DA5A00DCEFDDF0D43C89
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/stale_checkpoint_rebake_required.sop
+  + [fixture_source_sha256] is 3206427C96BE9B9B5E7CDE123930EFC3BE4A4260AD8079E0536E2D52B9AD6944
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/valid_runtime_transition_trace.sop
+  + [fixture_source_sha256] is B13CAB1B9720DAB1E84B7311F38D695FD4CAAAF4A5319568B62014CB3E77EDFA
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/generated_projection_non_authority.sop
+  + [fixture_source_sha256] is 95EA56EE8F4A41B200DCF7AC5DC02D293D2B48600D67D5919882C14BD0D8B560
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/inbound_action_mutation_refusal.sop
+  + [fixture_source_sha256] is 812B86EEE226551451428AEE861FC3413F3FC4D3E4DBDC2943BFB34A0C2DD3F1
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/manager_authority_notice_projection.sop
+  + [fixture_source_sha256] is 0286721CE667303CE6A16B48428E5ACBE61883B4A6D0F9147C89A272C262BCE8
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/stale_surface_projection.sop
+  + [fixture_source_sha256] is 38D9C2EC3DBEDF2CFBD40B5D64B6E3D1AE818BDC03F87BBC1325B2782B8FBF36
+  + [fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/expected_ledger_non_authority.sop
+  + [fixture_source_sha256] is 630F5AB8605223B557BCEFD7B6BD225EB4CB19F4C6C71CA28F8A5CCC8070E60F
+  + [fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/fixture_path_policy_valid.sop
+  + [fixture_source_sha256] is 95E75C96327D69569F6A16798EAC9C8B14DB0D0638371F8F7234CF1219DD4F9A
+  + [fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/negative_oracle_fault_route.sop
+  + [fixture_source_sha256] is 47659CB04F69BB1D71E8C7FF07F33F5D634D646AF45F5403BA9A532F07AEC166
+  + [fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/proof_ledger_acceptance.sop
+  + [fixture_source_sha256] is DB5708FE36FA7CAC0BE3A495C66984F4CF8A7AA6016811AC38BFE8BE711EC204
+
+& [P8IA02Verification] is the verification result for P8-IA02
+  + [fixture_source_file_count] is 24
+  + [fixture_family_count] is 6
+  + [p2_fixture_count] is 4
+  + [p3_fixture_count] is 4
+  + [p4_fixture_count] is 4
+  + [p5_fixture_count] is 4
+  + [p6_fixture_count] is 4
+  + [p8_fixture_count] is 4
+  + [fixture_source_files_match_P8_IA01_inventory] is true
+  + [expected_ledger_created] is false
+  + [proof_ledger_created] is false
+  + [generated_output_created] is false
+  + [proof_runner_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8IA02VerificationSatisfied] is accepted
+    @ [support] [P8IA02FixtureSourceHashLedger]
+
+& [SupportDelta: P8-IA02] is the support delta produced by P8-IA02
+  + [new_support_record] is P8 fixture source material exists for P2 authority kernel, P3 operator contracts, P4 packetization, P5 runtime proof, P6 surface projection, and P8 proof fixture policies
+  + [new_support_record] is P8-IA03 may create only expected ledgers and proof ledger seed material inside accepted roots
+  + [new_support_record] is P8-IA03 is GPT-5.3-Codex-Spark-suitable because expected ledger and proof ledger seed scope is bounded by accepted fixture source material and P8-IA01 inventory
+  + [new_support_record] is generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, and live machine control remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-IA02] is the requirement delta produced by P8-IA02
+  + [requirement_delta] is P8-IA03 must create expected ledgers and proof ledger seeds only for accepted fixture source files
+  + [requirement_delta] is P8-IA03 must keep expected ledgers as comparison evidence, not canonical authority or source authority
+  + [requirement_delta] is future validation must treat fixture source success as evidence only and not as dispatch, operations-control, or live-control authority
+
+& [FaultReview: P8-IA02] is the fault review for P8-IA02
+  + [source_overwrite_found] is false
+  + [unexpected_fixture_file_found] is false
+  + [expected_ledger_file_leak_found] is false
+  + [proof_ledger_file_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8IA02Accepted] is accepted
+    @ [support] [P8IA02Verification]
+    @ [support] [SupportDelta: P8-IA02]
+    @ [support] [RequirementDelta: P8-IA02]
+    @ [support] [FaultReview: P8-IA02]
+
+& [NextSliceGate: P8-IA03] is opened
+  + [opened_slice] is P8-IA03 expected ledgers and proof ledger seed material
+  + [accepted_dependency] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is expected ledger and proof ledger material is bounded by accepted fixture source material and proof ledger contract
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-IA03 next unless user redirects or a new fault invalidates this review

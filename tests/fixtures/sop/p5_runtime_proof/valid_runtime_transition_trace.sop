@@ -1,0 +1,14 @@
+Subject: P5 Fixture Valid Runtime Transition Trace
+Date: 2026-05-27
+Fixture ID: p5-valid-runtime-transition-trace
+
+& [FixtureCase: P5ValidRuntimeTransitionTrace] is a positive runtime trace fixture
+  + [runtime_record_kind] is transition_trace
+  + [operator_result] is accepted
+  + [checkpoint_authority] is false
+  + [source_authority_preserved] is true
+  + [expected_runtime_state] is transition_accepted
+  + [live_effect] is false
+
+  = must: accept deterministic transition evidence
+  = must: keep checkpoint state non-authoritative

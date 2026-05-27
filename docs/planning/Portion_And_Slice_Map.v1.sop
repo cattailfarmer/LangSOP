@@ -38,9 +38,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p8_implementation_activation_slices] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
 @ [p8_implementation_activation_minting_review] docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
 @ [p8_ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
+@ [p8_ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P8-IA02_fixture_source_material
+  + [map_state] is ready_for_P8-IA03_expected_ledgers_and_proof_ledger_seed_material
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -388,6 +389,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
   + [support_record] is docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
   + [support_record] is docs/reviews/P8_IA01_Completion_Review.v1.sop
+  + [support_record] is tests/fixtures/sop/p2_authority_kernel/
+  + [support_record] is tests/fixtures/sop/p3_operator_contracts/
+  + [support_record] is tests/fixtures/sop/p4_packetization/
+  + [support_record] is tests/fixtures/sop/p5_runtime_proof/
+  + [support_record] is tests/fixtures/sop/p6_surface_projection/
+  + [support_record] is tests/fixtures/sop/p8_proof_fixtures/
+  + [support_record] is docs/reviews/P8_IA02_Completion_Review.v1.sop
   + [support_gap] is fixture material files not yet authored and remain gated until source-preserved implementation activation
   + [support_gap] is expected ledgers, proof ledgers, generated outputs, and material false-ready/stale fixtures not yet generated
   + [proof_route] is fixture validation tests and expected trace records
@@ -514,21 +522,21 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P8-IA02-FixtureSourceMaterial] is ready_for_execution
+& [CurrentReadyChunk: P8-IA03-ExpectedLedgersAndProofLedgerSeedMaterial] is ready_for_execution
   + [chunk_id] is P8
-  + [slice_id] is P8-IA02
-  + [chunk_name] is kernel, operator, packet, runtime, and projection fixture source material
-  + [authority_basis] is docs/reviews/P8_IA01_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 4173FCEF7D9AF5AAB14F6FA8A127D1F2FFC50E90273673F89552E7286A80199F
+  + [slice_id] is P8-IA03
+  + [chunk_name] is expected ledgers and proof ledger seed material
+  + [authority_basis] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [authority_basis_sha256] is B5D709E9F667DC350DF74B69B3459AABDAD890FF9BE2C4EF83D3C4059171BDF8
   + [readiness_surface] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
-  + [expected_output] is fixture source files at paths accepted by docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
-  + [completion_review_output] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [expected_output] is expected ledger files and proof ledger seed files at paths accepted by docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+  + [completion_review_output] is docs/reviews/P8_IA03_Completion_Review.v1.sop
   + [model_route] is GPT-5.3-Codex-Spark-suitable
   + [model_route_depth] is Spark-suitable
-  + [model_route_reason] is fixture source material is bounded by accepted fixture plans, exact path inventory, and no-live-effect boundary
+  + [model_route_reason] is expected ledger and proof ledger material is bounded by accepted fixture source material and proof ledger contract
 
-  = must: create only accepted fixture source files and no expected ledgers, proof ledgers, generated outputs, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P8-IA03 through P8-IA08 gated until P8-IA02 completion review accepts
+  = must: create only accepted expected ledgers and proof ledger seeds and no generated outputs, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
+  = must: keep P8-IA04 through P8-IA08 gated until P8-IA03 completion review accepts
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

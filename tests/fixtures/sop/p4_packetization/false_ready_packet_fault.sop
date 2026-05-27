@@ -1,0 +1,14 @@
+Subject: P4 Fixture False Ready Packet Fault
+Date: 2026-05-27
+Fixture ID: p4-false-ready-packet-fault
+
+& [FixtureCase: P4FalseReadyPacketFault] is a false-ready packet fixture
+  + [packet_kind] is work_packet_candidate
+  + [support_state] is partial
+  + [requirement_state] is unsatisfied
+  + [claimed_packet_state] is ready
+  + [expected_packet_state] is faulted
+  + [expected_fault_kind] is false_ready_packet
+
+  = must: reject false-ready packet state
+  = must: require rebake before downstream slicing

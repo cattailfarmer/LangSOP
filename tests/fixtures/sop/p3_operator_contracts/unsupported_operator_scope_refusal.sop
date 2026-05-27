@@ -1,0 +1,14 @@
+Subject: P3 Fixture Unsupported Operator Scope Refusal
+Date: 2026-05-27
+Fixture ID: p3-unsupported-operator-scope-refusal
+
+& [FixtureCase: P3UnsupportedOperatorScopeRefusal] is an unsupported operator scope fixture
+  + [operator_kind] is live_dispatch
+  + [input_authority_class] is planning_record
+  + [declared_scope] is unsupported_by_P3
+  + [expected_operator_result] is refused
+  + [expected_refusal_kind] is unsupported_operator_scope
+  + [dispatch_authorized] is false
+
+  = must: refuse operator execution outside accepted scope
+  = must: create no dispatch effect

@@ -1,0 +1,15 @@
+Subject: P2 Fixture Generated Projection Promotion Fault
+Date: 2026-05-27
+Fixture ID: p2-generated-projection-promotion-fault
+
+& [FixtureCase: P2GeneratedProjectionPromotionFault] is a generated-output promotion fault fixture
+  + [record_kind] is generated_projection
+  + [authority_class] is generated_output_non_authority
+  + [claimed_authority_class] is source_authority
+  + [source_signature_status] is absent
+  + [expected_readiness] is faulted
+  + [expected_fault_kind] is generated_output_promoted_to_authority
+  + [required_notice] is not_source_authority
+
+  = must: reject generated projections as source authority
+  = must: preserve generated output only as disposable evidence

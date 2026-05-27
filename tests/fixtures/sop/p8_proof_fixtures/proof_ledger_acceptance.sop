@@ -1,0 +1,14 @@
+Subject: P8 Fixture Proof Ledger Acceptance
+Date: 2026-05-27
+Fixture ID: p8-proof-ledger-acceptance
+
+& [FixtureCase: P8ProofLedgerAcceptance] is a proof ledger acceptance fixture
+  + [proof_ledger_kind] is validation_result_ledger
+  + [source_fixture_ref_present] is true
+  + [expected_ledger_ref_present] is true
+  + [generated_output_ref_present] is true
+  + [no_live_effect_notice_present] is true
+  + [expected_result] is accepted_as_reviewable_evidence
+
+  = must: accept only as evidence after review
+  = must: prevent proof ledger from becoming canonical source

@@ -1,0 +1,15 @@
+Subject: P3 Fixture Valid Signature Validation Operator
+Date: 2026-05-27
+Fixture ID: p3-valid-signature-validation-operator
+
+& [FixtureCase: P3ValidSignatureValidationOperator] is a positive operator contract fixture
+  + [operator_kind] is signature_validation
+  + [input_authority_class] is canonical_source_specification
+  + [input_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [input_signature_status] is valid
+  + [determinism_requirement] is deterministic
+  + [expected_operator_result] is accepted
+  + [generated_output_authority] is none
+
+  = must: produce a traceable validation result
+  = must: preserve input authority class without promotion

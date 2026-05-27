@@ -38,11 +38,12 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
 @ [p8_implementation_activation_minting_review] docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
 @ [p8_ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
+@ [p8_ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_completed_with_P6_and_P8_fixture_material_P8-IA01_accepted_pending_P8-IA02
+  + [surface_status] is P5_completed_with_P6_and_P8_fixture_material_P8-IA02_accepted_pending_P8-IA03
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -117,10 +118,12 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_downstream_activation_minting_review_sha256] is 9A469FF897B4127E577AFED8E7DD74EBB0E5909F8133E7320E105748FED6D399
   + [accepted_downstream_slice_review] is docs/reviews/P8_IA01_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is 4173FCEF7D9AF5AAB14F6FA8A127D1F2FFC50E90273673F89552E7286A80199F
-  + [current_ready_slice] is P8-IA02
-  + [current_ready_slice_name] is kernel, operator, packet, runtime, and projection fixture source material
+  + [accepted_downstream_slice_review] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is B5D709E9F667DC350DF74B69B3459AABDAD890FF9BE2C4EF83D3C4059171BDF8
+  + [current_ready_slice] is P8-IA03
+  + [current_ready_slice_name] is expected ledgers and proof ledger seed material
   + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_reason] is fixture source material is bounded by accepted fixture plans, exact path inventory, and no-live-effect boundary
+  + [current_ready_slice_model_route_reason] is expected ledger and proof ledger material is bounded by accepted fixture source material and proof ledger contract
   + [gated_chunk] is P5 runtime implementation activation until source-preserved activation authority is accepted
   + [gated_chunk] is P8 fixture material creation until P8-IA01 and downstream fixture-material slices accept exact files
   + [dependency_installation_authorized] is false
@@ -142,6 +145,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-IA02 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
+  = must: execute P8-IA03 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, or P8-IA01 review changes
+  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, or P8-IA02 review changes

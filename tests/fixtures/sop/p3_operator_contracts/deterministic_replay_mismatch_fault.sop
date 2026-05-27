@@ -1,0 +1,14 @@
+Subject: P3 Fixture Deterministic Replay Mismatch Fault
+Date: 2026-05-27
+Fixture ID: p3-deterministic-replay-mismatch-fault
+
+& [FixtureCase: P3DeterministicReplayMismatchFault] is a deterministic replay fault fixture
+  + [operator_kind] is support_readiness_recompute
+  + [first_trace_hash] is TRACE_A
+  + [replay_trace_hash] is TRACE_B
+  + [determinism_requirement] is deterministic
+  + [expected_operator_result] is faulted
+  + [expected_fault_kind] is deterministic_replay_mismatch
+
+  = must: flag trace mismatch as a fault
+  = must: block downstream readiness until reviewed

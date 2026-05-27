@@ -1,0 +1,16 @@
+Subject: P2 Fixture Stale Source Hash Blocks Ready
+Date: 2026-05-27
+Fixture ID: p2-stale-source-hash-blocks-ready
+
+& [FixtureCase: P2StaleSourceHashBlocksReady] is a stale-source P2 authority kernel fixture
+  + [record_kind] is canonical_specification
+  + [authority_class] is source_authority
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_status] is valid
+  + [manifest_source_hash_state] is stale
+  + [freshness_state] is stale
+  + [expected_readiness] is blocked
+  + [expected_fault_kind] is stale_source_hash
+
+  = must: block ready state until source hash is refreshed through accepted authority
+  = must: preserve stale lineage rather than deleting the record

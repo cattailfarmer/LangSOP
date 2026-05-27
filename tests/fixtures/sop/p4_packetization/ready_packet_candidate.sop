@@ -1,0 +1,15 @@
+Subject: P4 Fixture Ready Packet Candidate
+Date: 2026-05-27
+Fixture ID: p4-ready-packet-candidate
+
+& [FixtureCase: P4ReadyPacketCandidate] is a positive packetization fixture
+  + [packet_kind] is work_packet_candidate
+  + [support_state] is supported
+  + [requirement_state] is satisfied
+  + [stale_state] is current
+  + [expected_packet_state] is ready_candidate
+  + [assignment_authority] is false
+  + [dispatch_authority] is false
+
+  = must: produce a ready packet candidate
+  = must: preserve no-assignment and no-dispatch notices

@@ -1,0 +1,14 @@
+Subject: P8 Fixture Path Policy Valid
+Date: 2026-05-27
+Fixture ID: p8-fixture-path-policy-valid
+
+& [FixtureCase: P8FixturePathPolicyValid] is a positive fixture path policy case
+  + [fixture_family] is p8_proof_fixtures
+  + [fixture_source_path] is tests/fixtures/sop/p8_proof_fixtures/fixture_path_policy_valid.sop
+  + [expected_ledger_path] is tests/fixtures/expected/p8_proof_fixtures/fixture_policy_expected.sop
+  + [generated_output_root] is tests/fixtures/generated/p8_proof_fixtures/
+  + [path_escape] is false
+  + [expected_result] is accepted
+
+  = must: accept paths inside the inventory
+  = must: keep generated root ignored and disposable

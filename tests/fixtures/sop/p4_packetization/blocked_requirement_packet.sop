@@ -1,0 +1,15 @@
+Subject: P4 Fixture Blocked Requirement Packet
+Date: 2026-05-27
+Fixture ID: p4-blocked-requirement-packet
+
+& [FixtureCase: P4BlockedRequirementPacket] is a blocked packetization fixture
+  + [packet_kind] is work_packet_candidate
+  + [support_state] is partial
+  + [requirement_state] is unsatisfied
+  + [blocked_requirement] is missing_fixture_material
+  + [expected_packet_state] is blocked
+  + [assignment_authority] is false
+  + [dispatch_authority] is false
+
+  = must: block ready packet creation
+  = must: preserve blocker as reviewable evidence

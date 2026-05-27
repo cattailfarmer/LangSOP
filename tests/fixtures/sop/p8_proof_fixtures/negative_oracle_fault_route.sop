@@ -1,0 +1,14 @@
+Subject: P8 Fixture Negative Oracle Fault Route
+Date: 2026-05-27
+Fixture ID: p8-negative-oracle-fault-route
+
+& [FixtureCase: P8NegativeOracleFaultRoute] is a negative oracle routing fixture
+  + [oracle_case] is live_control_request_from_fixture_success
+  + [fixture_success_state] is true
+  + [claimed_live_control_authority] is true
+  + [expected_result] is faulted
+  + [expected_fault_kind] is fixture_success_promoted_to_live_control
+  + [live_control_authorized] is false
+
+  = must: reject fixture success as live-control authority
+  = must: preserve fault route for downstream proof

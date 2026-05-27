@@ -1,0 +1,14 @@
+Subject: P6 Fixture Stale Surface Projection
+Date: 2026-05-27
+Fixture ID: p6-stale-surface-projection
+
+& [FixtureCase: P6StaleSurfaceProjection] is a stale projection fixture
+  + [surface_kind] is narrative
+  + [source_authority_state] is accepted
+  + [freshness_state] is stale
+  + [required_notice] is stale_projection
+  + [expected_projection_state] is visible_stale_notice
+  + [surface_mutation_authority] is false
+
+  = must: render stale status clearly
+  = must: prevent stale projection from steering authority
