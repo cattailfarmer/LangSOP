@@ -1,0 +1,78 @@
+Subject: P8 S01 Completion Review V1
+Date: 2026-05-27
+Review UUID: 0bb0a0e1-d3cc-4752-8da1-76cacc052760
+
+@ [completed_output] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_minting_review] docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+
+& [CompletedWorkReview: P8-S01] is the completed-work review for P8-S01 boundary import and fixture obligation inventory
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P8-S01
+  + [completed_output] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [completed_output_sha256] is B061E1EEE06EA492260C191EC121F85F069D2274E0CCDF48B0C7F4449AD2FEC6
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P8-S02
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P8-S02 may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is fixture path policy and generated-output nonpromotion affect all downstream proof and runtime authority
+
+  = must: treat this review as gate-opening evidence for P8-S02 only
+  = must: rerun this review if P8-S01 output, P8 slice surface, P8 minting review, accepted fixture oracle plans, accepted proof packs, or post-P4 readiness changes
+  = must: keep fixture source file creation, expected ledger creation, generated output creation, implementation code, dependency installation, package metadata mutation, assignment, dispatch, operations control, and live machine control gated
+
+& [P8S01Verification] is the verification result for P8-S01
+  + [accepted_inputs_listed] is true
+  + [accepted_input_hashes_present] is true
+  + [fixture_obligation_inventory_present] is true
+  + [fixture_path_policy_gap_identified] is true
+  + [materialization_boundary_gap_identified] is true
+  + [stale_false_ready_fault_gap_identified] is true
+  + [proof_ledger_gap_identified] is true
+  + [downstream_gate_gap_identified] is true
+  + [authority_class_matrix_present] is true
+  + [P8-S02_opened] is true
+  + [P8-S03_opened] is false
+  + [P8-S04_opened] is false
+  + [P8-S05_opened] is false
+  + [P8-S06_opened] is false
+  + [fixture_source_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8S01Accepted] is accepted
+    @ [support] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+
+& [SupportDelta: P8-S01] is the support delta produced by P8-S01
+  + [new_support_record] is P2, P3, P4, IR7, and IR8 fixture and proof obligations are imported with preserved material status
+  + [new_support_record] is P8-G01 through P8-G05 gaps are assigned to P8-S02 through P8-S06
+  + [new_support_record] is P8 authority classes distinguish fixture oracle plan, fixture source file, expected ledger, generated output, and proof pack
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-S01] is the requirement delta produced by P8-S01
+  + [requirement_delta] is P8-S02 must define fixture path policy and generated-output nonpromotion before materialization planning
+  + [requirement_delta] is downstream P8 slices must preserve no fixture creation, no expected ledger creation, no generated output creation, no dispatch, and no-live-effect boundaries
+  + [requirement_delta] is unknown or mixed fixture authority must route to SOP_first_interrupt or blocked review rather than fixture readiness
+
+& [NextSliceGate: P8-S02] is opened
+  + [opened_slice] is P8-S02 fixture path policy and generated-output nonpromotion contract
+  + [authority_basis] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [authority_basis_sha256] is B061E1EEE06EA492260C191EC121F85F069D2274E0CCDF48B0C7F4449AD2FEC6
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute P8-S02 next unless user redirects or a new fault invalidates this review

@@ -1,0 +1,135 @@
+Subject: P8 Boundary Import And Fixture Obligation Inventory V1
+Date: 2026-05-27
+Boundary Import UUID: 05d3c5fd-56f7-49ed-aa2c-c33c85e10b8f
+
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_minting_review] docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+@ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
+@ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+@ [p3_fixture_oracle] docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+@ [p4_fixture_oracle] docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+@ [ir7_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir8_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+
+& [P8BoundaryImportAndFixtureObligationInventoryV1] is the P8-S01 boundary import and fixture obligation inventory
+  + [slice_id] is P8-S01
+  + [slice_name] is boundary import and fixture obligation inventory
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [inventory_result] is accepted_fixture_and_proof_obligations_imported_and_P8_gap_set_defined
+  + [next_gate_result] is P8-S02 may open
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as fixture obligation inventory authority only
+  = must: preserve accepted fixture oracle plans and proof packs as boundary inputs until a later completion review explicitly supersedes them
+  = must: define P8 gaps as work needed for P8-S02 through P8-S06, not as immediate fixture material permission
+  = must: keep fixture plans, fixture source files, expected ledgers, generated outputs, proof ledgers, runtime tests, and live effects in distinct authority classes
+
+& [AcceptedFixtureAndProofInputSet: P8-S01] is the imported boundary input set
+  + [accepted_input] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+  + [accepted_input_sha256] is F252635D3228050A4358C3FCE73C0BFC302BEAEF869F5EC31787CF2214D0ACFB
+  + [accepted_role] is authority kernel fixture oracle for source, projection, currentness, lineage, review gate, invalidation, natural key, hidden authority, and generated-output nonpromotion cases
+  + [material_status] is plan_only
+  + [accepted_input] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+  + [accepted_input_sha256] is 0F6CD13A806E09C6DC30EDCAAF987872DE18D249B2B2BD9C77A486CD67A460B8
+  + [accepted_role] is operator trace fixture oracle for signature validation, support readiness, refusal, interrupt, fault, trace nonpromotion, and no-automation cases
+  + [material_status] is plan_only
+  + [accepted_input] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [accepted_input_sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+  + [accepted_role] is packet trace fixture oracle for valid, blocked, stale, contradicted, ambiguous, missing oracle, missing model route, dependency leak, false-ready, forbidden dispatch, handoff promotion, dry-run/live-control promotion, and rebake cases
+  + [material_status] is plan_only
+  + [accepted_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_role] is operations dry-run proof pack input for no-live-effect and operations refusal evidence
+  + [material_status] is accepted_proof_pack_input
+  + [accepted_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [accepted_input_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [accepted_role] is integrated manager proof pack input for packet, proof, handoff, no-dispatch, and no-live-effect evidence
+  + [material_status] is accepted_proof_pack_input
+
+  = must: require every downstream P8 slice to cite relevant accepted_input and material_status
+  = must: mark P8 downstream work stale if any accepted_input hash changes
+
+& [P8FixtureObligationInventory] is the consolidated fixture obligation inventory
+  + [obligation_family] is authority_kernel_record_validation
+  + [source] is P2 fixture oracle
+  + [required_case_count] is 13 planned cases
+  + [materialization_gap] is fixture source roots and expected ledger roots are candidate paths only
+  + [obligation_family] is operator_contract_trace_validation
+  + [source] is P3 fixture oracle
+  + [required_case_count] is 15 planned cases
+  + [materialization_gap] is operator trace fixtures and expected ledgers are not yet file-authorized
+  + [obligation_family] is packet_trace_and_no_live_effect_validation
+  + [source] is P4 fixture oracle
+  + [required_case_count] is 16 planned cases
+  + [materialization_gap] is packet trace fixtures and no-live-effect ledgers are not yet file-authorized
+  + [obligation_family] is operations_dry_run_no_live_effect_validation
+  + [source] is IR7 proof pack
+  + [required_case_count] is proof-pack-derived cases pending P8 extraction
+  + [materialization_gap] is proof pack evidence is accepted support but not generalized fixture family material
+  + [obligation_family] is integrated_manager_packet_handoff_validation
+  + [source] is IR8 proof pack
+  + [required_case_count] is proof-pack-derived cases pending P8 extraction
+  + [materialization_gap] is proof pack evidence is accepted support but not generalized fixture family material
+
+  = must: preserve fixture obligations as plan authority until P8-S02 and P8-S03 define path policy and materialization boundaries
+  = must: require future fixture material to cover positive, blocked, stale, contradicted, ambiguous, false-ready, hidden-authority, projection-promotion, generated-output-promotion, forbidden-effect, no-dispatch, and no-live-effect cases
+
+& [P8GapMatrix] is the gap matrix opened by the imported boundary set
+  + [gap] is P8-G01 fixture path policy and generated-output nonpromotion are not yet consolidated across P2, P3, P4, IR7, and IR8
+  + [gap_status] is assigned_to_P8-S02
+  + [gap] is P8-G02 fixture pack materialization and implementation activation boundary are not yet defined
+  + [gap_status] is assigned_to_P8-S03
+  + [gap] is P8-G03 stale false-ready contradiction and fault oracle is not yet consolidated across fixture families
+  + [gap_status] is assigned_to_P8-S04
+  + [gap] is P8-G04 proof ledger and evaluation acceptance contract is not yet defined
+  + [gap_status] is assigned_to_P8-S05
+  + [gap] is P8-G05 downstream P5, P6, P8 implementation activation, and P9 gates need P8 completion review before consuming proof or fixture authority
+  + [gap_status] is assigned_to_P8-S06
+
+  = must: keep P8-G01 through P8-G05 as contiguous downstream slices
+  = must: block P5 LangGraph runtime, P6 surface projection expansion, P8 fixture material creation, P7 dispatch-adjacent coordination expansion, and P9 live-control reconsideration until P8-S06 accepts the relevant gates
+
+& [P8AuthorityClassMatrix: P8-S01] is the authority distinction matrix for P8
+  + [record_kind] is fixture_oracle_plan
+  + [authority_class] is planning_authority_for_future_fixture_obligations
+  + [allowed_effect] is may define future fixture expectations and acceptance rules
+  + [forbidden_effect] is cannot create fixture files, expected ledgers, generated outputs, or runtime effects
+  + [record_kind] is fixture_source_file
+  + [authority_class] is not_authorized_in_P8-S01
+  + [allowed_effect] is none
+  + [forbidden_effect] is file creation and test execution
+  + [record_kind] is expected_ledger
+  + [authority_class] is not_authorized_in_P8-S01
+  + [allowed_effect] is none
+  + [forbidden_effect] is ledger creation and proof acceptance
+  + [record_kind] is generated_output
+  + [authority_class] is generated_output_non_authority_when_future_authorized
+  + [allowed_effect] is none in P8-S01
+  + [forbidden_effect] is source authority, dispatch authority, operations authority, or live-control authority
+  + [record_kind] is proof_pack
+  + [authority_class] is accepted_proof_support
+  + [allowed_effect] is may inform fixture obligation inventory and proof ledger planning
+  + [forbidden_effect] is cannot become generalized fixture file policy without P8 review
+
+  = must: use this matrix to reject authority promotion in P8-S02 through P8-S06
+  = must: preserve unknown or mixed authority as SOP_first_interrupt or blocked review rather than fixture readiness
+
+& [P8S01DownstreamGate] is the gate opened by P8-S01
+  + [opened_slice] is P8-S02 fixture path policy and generated-output nonpromotion contract
+  + [activation_basis] is P8-G01 assigned and accepted inputs imported
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is fixture path policy and generated-output nonpromotion affect all downstream proof and runtime authority
+  + [completion_review_required] is true
+
+  = must: open P8-S02 only after P8-S01 completion review accepts this boundary import
+  = must: keep P8-S03 through P8-S06 gated until their predecessor reviews accept

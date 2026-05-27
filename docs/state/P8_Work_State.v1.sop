@@ -6,6 +6,8 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [canonical_specification] docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
 @ [slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
 @ [slice_minting_review] docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+@ [accepted_output] docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+@ [completion_review] docs/reviews/P8_S01_Completion_Review.v1.sop
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
 @ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
@@ -15,9 +17,9 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [ir8_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
 
 & [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
-  + [state_basis] is docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
-  + [state_basis_sha256] is 23A4F845D673F6439ABA281E5AF4379933703FBC0E386C0212CB1939A817868B
-  + [surface_status] is P8_final_slices_minted_pending_P8-S01
+  + [state_basis] is docs/reviews/P8_S01_Completion_Review.v1.sop
+  + [state_basis_sha256] is BB388B6C5C5EC5E7B42E1419B730CCAE30C7D3B97712E05C34F147B117DA01F0
+  + [surface_status] is P8_S01_accepted_pending_P8-S02
   + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
   + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
@@ -40,12 +42,16 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
   + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
   + [accepted_boundary_input_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
-  + [current_ready_slice] is P8-S01
-  + [current_ready_slice_name] is boundary import and fixture obligation inventory
-  + [current_ready_slice_expected_output] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [accepted_slice] is P8-S01
+  + [accepted_output] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [accepted_output_sha256] is B061E1EEE06EA492260C191EC121F85F069D2274E0CCDF48B0C7F4449AD2FEC6
+  + [accepted_completion_review] is docs/reviews/P8_S01_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is BB388B6C5C5EC5E7B42E1419B730CCAE30C7D3B97712E05C34F147B117DA01F0
+  + [current_ready_slice] is P8-S02
+  + [current_ready_slice_name] is fixture path policy and generated-output nonpromotion contract
+  + [current_ready_slice_expected_output] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is boundary import decides which fixture obligations become P8 authority and which remain plan-only support
-  + [gated_slice] is P8-S02
+  + [current_ready_slice_model_route_reason] is fixture path policy and generated-output nonpromotion affect all downstream proof and runtime authority
   + [gated_slice] is P8-S03
   + [gated_slice] is P8-S04
   + [gated_slice] is P8-S05
@@ -67,6 +73,6 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-S01 before fixture path policy, materialization planning, fault oracle consolidation, proof ledger planning, runtime work, surface expansion, fixture material creation, adapter work, dispatch, or live-control work
+  = must: execute P8-S02 before fixture materialization planning, fault oracle consolidation, proof ledger planning, runtime work, surface expansion, fixture material creation, adapter work, dispatch, or live-control work
   = must: keep fixture obligations, generated outputs, proof ledgers, graph checkpoints, surface projections, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
   = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P4 completion, post-P4 readiness, accepted fixture oracles, or accepted proof packs change
