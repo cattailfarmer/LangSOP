@@ -1,0 +1,161 @@
+Subject: P6 Projection Fixture Snapshot Plan And Generated Projection Nonpromotion Boundary V1
+Date: 2026-05-27
+Plan UUID: 49b7b34c-fd3a-4416-9508-7ba8752d5351
+
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_s04_output] docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+@ [p6_s04_review] docs/reviews/P6_S04_Completion_Review.v1.sop
+@ [p6_s03_output] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+@ [p6_s02_output] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+@ [p8_path_policy] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+
+& [P6ProjectionFixtureSnapshotPlanAndGeneratedProjectionNonpromotionBoundaryV1] is the P6-S05 projection fixture snapshot plan and generated projection nonpromotion boundary
+  + [slice_id] is P6-S05
+  + [slice_name] is projection fixture snapshot plan and generated projection nonpromotion boundary
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_condition] is Spark-suitable because P6-S01 through P6-S04 projection authority, surface mutation, nonpromotion, and no-live-effect semantics are accepted and unchanged
+  + [plan_result] is projection_fixture_snapshot_plan_defined_without_fixture_material_creation
+  + [next_gate_result] is P6-S06 may open
+  + [next_model_route] is requires deeper reasoning
+  + [projection_fixture_file_creation_authorized] is false
+  + [expected_snapshot_creation_authorized] is false
+  + [generated_projection_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define fixture families, expected snapshot schemas, generated projection nonpromotion, stale visibility, authority notice checks, and no-dispatch/no-live-effect checks only
+  = must: treat all paths as candidate future roots until a later source-preserved implementation activation opens bounded file creation
+  = must: keep generated projection snapshots disposable, rebuildable, staleable, ignored when materialized, and non-authoritative
+
+& [P6FutureProjectionFixturePathPolicy] is the candidate path policy for future P6 projection fixture material
+  + [fixture_family] is p6_surface_projection
+  + [future_fixture_source_root] is tests/fixtures/sop/p6_surface_projection/
+  + [future_expected_snapshot_root] is tests/fixtures/expected/p6_surface_projection/
+  + [future_generated_projection_root] is tests/fixtures/generated/p6_surface_projection/
+  + [future_proof_ledger_root] is tests/fixtures/generated/p6_surface_projection/proof_ledgers/
+  + [path_status] is candidate_future_root_only
+
+  = must: create no directories, fixture source files, expected snapshots, generated projections, or proof ledgers in P6-S05
+  = must: require future implementation activation before materializing any candidate path
+  = must: keep future generated roots ignored, disposable, and rebuildable
+
+& [P6ProjectionFixtureFamilyPlan] is the planned fixture family set for P6 projection snapshots
+  + [fixture_case] is manager_ready_slice_projection
+  + [fixture_case] is worker_forbidden_scope_projection
+  + [fixture_case] is narrative_reentry_projection
+  + [fixture_case] is debug_fault_trace_projection
+  + [fixture_case] is chat_low_authority_proposal_projection
+  + [fixture_case] is Codex_thread_current_ready_projection
+  + [fixture_case] is terminal_output_nonpromotion_projection
+  + [fixture_case] is IRC_channel_log_carrier_context_projection
+  + [fixture_case] is Matrix_room_event_carrier_context_projection
+  + [fixture_case] is web_surface_action_request_projection
+  + [fixture_case] is Langflow_explanatory_graph_nonexecution_projection
+  + [fixture_case] is stale_projection_hidden_action_refusal
+  + [fixture_case] is missing_authority_notice_refusal
+  + [fixture_case] is checkpoint_authority_promotion_refusal
+  + [fixture_case] is generated_projection_promotion_refusal
+  + [fixture_case] is multi_surface_divergence_interrupt
+  + [fixture_case] is human_override_scope_boundary
+  + [fixture_case] is dry_run_success_not_live_control_projection
+  + [fixture_case] is dispatch_request_refusal
+  + [fixture_case] is live_control_request_refusal
+  + [planned_case_count] is 20
+
+  = must: cover positive ready, blocked, stale, faulted, interrupted, carrier-context, divergence, nonpromotion, refusal, no-dispatch, and no-live-effect paths
+  = must: let future implementation activation prune, split, or expand planned cases only through completion review
+
+& [P6ExpectedProjectionSnapshotSchema] is the expected snapshot schema for future P6 projection cases
+  + [required_field] is fixture_case_id
+  + [required_field] is fixture_case_kind
+  + [required_field] is source_fixture_ref
+  + [required_field] is projection_family
+  + [required_field] is carrier_surface
+  + [required_field] is expected_projection_kind
+  + [required_field] is expected_authority_notice_present
+  + [required_field] is expected_freshness_state
+  + [required_field] is expected_source_ref_set
+  + [required_field] is expected_lineage_edge_set
+  + [required_field] is expected_projected_status
+  + [required_field] is expected_nonpromotion_notice_set
+  + [required_field] is expected_supported_action_route_set
+  + [required_field] is expected_forbidden_action_set
+  + [required_field] is expected_refusal_reason_set
+  + [required_field] is expected_interrupt_or_handoff_ref
+  + [required_field] is expected_no_dispatch_notice
+  + [required_field] is expected_no_live_effect_notice
+  + [required_field] is expected_generated_projection_authority_class
+  + [required_field] is expected_completion_review_required
+
+  = must: treat expected snapshots as reviewable comparison evidence, not canonical source authority
+  = must: require every expected snapshot to carry no-dispatch and no-live-effect expectations when the case touches action routing, dry-run display, dispatch refusal, or live-control refusal
+
+& [P6GeneratedProjectionNonpromotionBoundary] is the generated projection nonpromotion boundary for future fixture outputs
+  + [generated_projection_authority_class] is generated_projection_non_authority
+  + [generated_projection_effect_boundary] is disposable_projection_evidence_only
+  + [generated_projection_required_notice] is not_source_authority
+  + [generated_projection_required_notice] is not_canonical_specification
+  + [generated_projection_required_notice] is not_completion_review
+  + [generated_projection_required_notice] is not_assignment_authority
+  + [generated_projection_required_notice] is not_dispatch_authority
+  + [generated_projection_required_notice] is not_operations_authority
+  + [generated_projection_required_notice] is not_live_control_authority
+  + [promotion_rule] is generated projection may support proof only through accepted proof ledger or completion review
+  + [promotion_rule] is generated projection cannot become canonical source, source manifest, work packet authority, claim authority, dispatch authority, operations authority, or live-control authority
+
+  = must: emit fault evidence when generated projections are used as source authority or effect authority
+  = must: mark generated projections stale when source fixtures, expected snapshots, projection contracts, action classification contracts, nonpromotion rules, or no-live-effect boundaries change
+
+& [P6ProjectionFixtureCoverageMatrix] is the coverage matrix for future P6 projection fixtures
+  + [coverage_axis] is authority_notice_present
+  + [coverage_axis] is freshness_state_visible
+  + [coverage_axis] is source_lineage_visible
+  + [coverage_axis] is stop_state_visible
+  + [coverage_axis] is checkpoint_nonauthority_visible
+  + [coverage_axis] is generated_projection_nonpromotion_visible
+  + [coverage_axis] is carrier_context_non_authority_visible
+  + [coverage_axis] is inbound_action_classified
+  + [coverage_axis] is forbidden_action_refused
+  + [coverage_axis] is no_dispatch_notice_visible
+  + [coverage_axis] is no_live_effect_notice_visible
+  + [coverage_axis] is multi_surface_divergence_visible
+  + [coverage_axis] is human_override_scope_bounded
+  + [coverage_axis] is dry_run_success_not_live_control
+
+  = must: require future fixture cases to prove both positive projection behavior and negative authority-promotion refusal behavior
+  = must: reject a future fixture pack that covers only happy-path display without stale, blocked, refused, divergent, dispatch-like, and live-control-like cases
+
+& [P6ProjectionNoDispatchNoLiveEffectProofPlan] is the no-dispatch and no-live-effect proof plan for future projection fixtures
+  + [proof_check] is no_assignment_record_created
+  + [proof_check] is no_dispatch_record_created
+  + [proof_check] is no_job_dispatch_created
+  + [proof_check] is no_command_execution_created
+  + [proof_check] is no_process_control_created
+  + [proof_check] is no_GPU_control_created
+  + [proof_check] is no_model_runtime_mutation_created
+  + [proof_check] is no_network_mutation_created
+  + [proof_check] is no_credential_access_created
+  + [proof_check] is no_destructive_filesystem_action_created
+  + [proof_check] is no_operations_control_created
+  + [proof_check] is no_live_machine_control_created
+
+  = must: prove future projection fixture runs cannot dispatch agents, jobs, commands, processes, GPU work, model runtime changes, network changes, credential access, destructive filesystem work, operations control, or live machine control
+  = must: preserve proof evidence as generated non-authority output until accepted by completion review
+
+& [P6S05DownstreamGate] is the gate opened by P6-S05
+  + [opened_slice] is P6-S06 surface adapter Langflow dependency deferral and implementation activation boundary
+  + [activation_basis] is projection fixture snapshot plan and generated projection nonpromotion boundary accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is adapter and dependency posture decide when surface implementation can safely enter the project
+  + [completion_review_required] is true
+
+  = must: open P6-S06 only after P6-S05 completion review accepts this fixture plan
+  = must: keep P6-S07 gated until P6-S06 review accepts
