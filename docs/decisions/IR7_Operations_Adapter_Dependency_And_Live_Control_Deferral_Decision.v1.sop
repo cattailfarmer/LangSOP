@@ -1,0 +1,183 @@
+Subject: IR7 Operations Adapter Dependency And Live Control Deferral Decision V1
+Date: 2026-05-27
+Decision UUID: ddfb07cf-21ff-494b-a476-dce13db838c5
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [ia06_completion_review] docs/reviews/IR7_IA06_Completion_Review.v1.sop
+@ [generated_output_no_live_effect_proof] docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+@ [contract_tests] tests/test_ir7_operations_dry_run_contracts.py
+@ [activation_boundary] docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+@ [pyproject] pyproject.toml
+@ [ir4_langgraph_dependency_decision] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+@ [ir5_surface_adapter_dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+@ [ir6_mailbox_transport_dependency_decision] docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+
+& [IR7OperationsAdapterDependencyAndLiveControlDeferralDecisionV1] is the operations adapter, dependency, and live-control deferral decision for IR7-IA07
+  + [slice_id] is IR7-IA07
+  + [slice_name] is operations adapter, dependency, and live-control deferral decision
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [decision_result] is defer_all_operations_adapters_external_dependencies_package_metadata_mutation_and_live_control_for_current_IR7_proof_pass
+  + [operations_adapter_status] is deferred_to_future_explicit_operations_adapter_activation_slice
+  + [process_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [GPU_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [model_runtime_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [job_queue_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [credential_access_status] is deferred_to_future_explicit_least_privilege_credential_authority_path
+  + [network_mutation_status] is deferred_to_future_explicit_network_exposure_authority_path
+  + [destructive_filesystem_action_status] is deferred_to_future_explicit_live_control_authority_path
+  + [persistent_operations_automation_status] is deferred_to_future_explicit_automation_authority_path
+  + [package_metadata_mutation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [current_pure_operations_runner_status] is sufficient_for_IR7_bounded_operations_dry_run_projection_proof
+
+  = must: preserve this decision as a deferral, not a rejection of future operations adapters, telemetry, schedulers, process/GPU/model/job integrations, or machine-management capabilities
+  = must: require a later explicit activation slice before adding package dependencies, lockfiles, imports from external machine-management packages, adapters, transports, UI surfaces, socket listeners, telemetry collectors, process controllers, GPU controllers, model runtime clients, job queue clients, credential readers, network mutators, or persistent operations automation
+  = must: require a separate future source-preserved and SJS-processed live-control authority path before any live machine control can be reconsidered
+  = must: keep SOP, SJS, completion reviews, accepted decision documents, tracked fixture sources, expected ledgers, and canonical specifications as source authority
+  = must: treat operation requests, dry-run results, resource estimates, generated reports, adapter state, telemetry, human approvals, carrier messages, terminal output, and chat events as projections or evidence until rewritten into accepted SOP authority by a later reviewed process
+
+& [DependencyEvidence: CurrentIR7ProofNeed] is the current proof sufficiency evidence for deferring external dependency installation
+  + [request_model_output] is src/langsop/operations/requests.py
+  + [dry_run_model_output] is src/langsop/operations/dry_run.py
+  + [refusal_model_output] is src/langsop/operations/refusals.py
+  + [resource_safety_model_output] is src/langsop/operations/resource_safety.py
+  + [action_route_model_output] is src/langsop/operations/action_routes.py
+  + [generated_path_policy_output] is src/langsop/operations/generated_paths.py
+  + [fixture_runner_output] is src/langsop/operations/fixture_runner.py
+  + [contract_test_output] is tests/test_ir7_operations_dry_run_contracts.py
+  + [contract_test_output_sha256] is A5B835EB5B57044870CB66F33EE91CB542A9FAA219EE06C814F59B5097765826
+  + [generated_output_no_live_effect_proof] is docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+  + [generated_output_no_live_effect_proof_sha256] is 90D3CDE434181A3322921981F4EB5CDC4061FA6F604C62D1E2EFDDCA5B98A185
+  + [ia06_completion_review] is docs/reviews/IR7_IA06_Completion_Review.v1.sop
+  + [ia06_completion_review_sha256] is 58A50A6D5D6F0603C54D53A48E125FCB4DD80445B96E3C42F0E909CF0CA10649
+  + [current_test_result] is python -m unittest discover -s tests passed 40 tests after IR7-IA06
+  + [current_targeted_test_result] is python -m unittest tests.test_ir7_operations_dry_run_contracts passed 7 tests after IR7-IA06
+  + [current_dependency_set] is empty
+  + [pyproject_dependency_list] is empty
+  + [pyproject_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+  + [current_operations_proof_need] is deterministic in-process proof of operation request validation, dry-run non-authority, refusal records, resource safety review, action route refusal, path policy, fixture corpus coverage, generated-output disposability, no platform mailbox IO, no dispatch, and no live control
+  + [external_operations_adapter_needed_for_current_proof] is false
+  + [external_process_library_needed_for_current_proof] is false
+  + [external_GPU_library_needed_for_current_proof] is false
+  + [external_model_runtime_client_needed_for_current_proof] is false
+  + [external_job_queue_client_needed_for_current_proof] is false
+  + [external_network_or_firewall_library_needed_for_current_proof] is false
+
+  ! [CurrentIR7ProofNeedSatisfiedWithoutDependency] is accepted
+    @ [support] docs/reviews/IR7_IA06_Completion_Review.v1.sop
+    @ [support] tests/test_ir7_operations_dry_run_contracts.py
+    @ [support] pyproject.toml
+
+& [FutureOperationsAdapterActivationBoundary] is the required boundary for any later operations adapter, transport, UI, telemetry, or machine-control implementation slice
+  + [future_slice_required] is true
+  + [future_slice_must_authorize] is dependency installation
+  + [future_slice_must_authorize] is package_metadata_mutation
+  + [future_slice_must_authorize] is adapter module inventory
+  + [future_slice_must_authorize] is process control boundary
+  + [future_slice_must_authorize] is GPU control boundary
+  + [future_slice_must_authorize] is model runtime control boundary
+  + [future_slice_must_authorize] is job queue boundary
+  + [future_slice_must_authorize] is least-privilege credential boundary
+  + [future_slice_must_authorize] is network exposure boundary
+  + [future_slice_must_authorize] is destructive filesystem refusal boundary
+  + [future_slice_must_authorize] is rollback, abort, and monitoring proof
+  + [future_slice_must_authorize] is source-to-adapter projection mapping
+  + [future_slice_must_authorize] is adapter-to-SOP-review reentry mapping
+  + [future_slice_must_authorize] is generated telemetry boundary
+  + [future_slice_must_authorize] is fixture expansion or adapter fixture mapping
+  + [future_forbidden_without_slice] is dependency installation
+  + [future_forbidden_without_slice] is lockfile mutation
+  + [future_forbidden_without_slice] is runtime requirements mutation
+  + [future_forbidden_without_slice] is process inspection beyond fixture simulation
+  + [future_forbidden_without_slice] is process start, stop, or priority mutation
+  + [future_forbidden_without_slice] is GPU workload launch, cancel, or scheduler mutation
+  + [future_forbidden_without_slice] is model runtime start, stop, install, upgrade, or configuration mutation
+  + [future_forbidden_without_slice] is job dispatch or cancellation
+  + [future_forbidden_without_slice] is credential access or mutation
+  + [future_forbidden_without_slice] is network exposure mutation
+  + [future_forbidden_without_slice] is destructive filesystem action
+  + [future_forbidden_without_slice] is persistent operations automation
+  + [future_forbidden_without_slice] is operations control
+  + [future_forbidden_without_slice] is live machine control
+
+  = must: require generated adapter outputs, telemetry snapshots, reports, and dry-run estimates to remain ignored, disposable, and reproducible unless accepted by a later review
+  = must: require adapter tests to prove telemetry, dry-run success, human approval records, terminal output, chat events, and carrier state cannot open live-control gates or mutate source authority
+  = must: require adapter tests to prove user or agent interactions route back to operation request records, SOP-first interrupts, human approval reviews, resource safety reviews, dependency decisions, or completion reviews rather than direct mutation
+
+& [FutureLiveControlAuthorityPath] is the only path by which live machine control may be reconsidered later
+  + [required_future_step] is preserve new live-control source document
+  + [required_future_step] is SJS-process new source into signed canonical safety authority
+  + [required_future_step] is define target host inventory and resource API boundaries
+  + [required_future_step] is define least-privilege credential and secret boundary
+  + [required_future_step] is define network exposure boundary
+  + [required_future_step] is define dry-run, rollback, abort, and monitoring proof
+  + [required_future_step] is define explicit fresh scoped human approval and expiration rule
+  + [required_future_step] is define emergency stop and revocation path
+  + [required_future_step] is run completion review that explicitly accepts live-control scope
+  + [forbidden_shortcut] is relying on IR7 dry-run success
+  + [forbidden_shortcut] is relying on broad human approval
+  + [forbidden_shortcut] is relying on generated fixture success
+  + [forbidden_shortcut] is relying on terminal, chat, mailbox, IRC, Matrix, web, or Codex carrier state
+  + [forbidden_shortcut] is relying on this deferral decision as permission
+
+  = must: require a future, separate authority path for any live-control capability
+  = must: keep current IR7 work non-live even after IR7 implementation completion
+
+& [AuthorityBoundaryAssessment: IR7OperationsAdapters] is the authority fit assessment for future operations surfaces
+  + [fit_status] is future_adapter_candidates_preserved
+  + [fit_reason] is process, GPU, model-runtime, job-queue, telemetry, scheduler, and machine-management integrations may become useful projections or controlled execution surfaces after authority-preserving boundaries exist
+  + [mismatch_status] is authority_boundary_mismatch_if_used_directly_as_truth
+  + [mismatch_reason] is resource telemetry, process state, GPU state, model runtime state, job queues, terminal output, chat commands, adapter callbacks, UI events, and generated dry-run results are projections or execution state rather than accepted SOP authority
+  + [adapter_need] is map accepted LangSOP authority records into adapter inputs and map adapter outputs back into non-authoritative operation requests, resource safety reviews, refusal records, SOP-first interrupts, or completion reviews until accepted by SOP review
+
+  = must: prevent telemetry availability, dry-run success, generated report success, approval display state, adapter callback success, UI click, chat command, or terminal output from satisfying readiness, completion review, source specification processing, dispatch authority, operations authority, or live-control gates by itself
+  = must: preserve human approval and resource safety as reviewed SOP records rather than direct UI, transport, terminal, adapter, or dispatch effects
+
+& [DecisionConsequences: IR7-IA07] is the consequence ledger for the deferral decision
+  + [IR7_IA08_may_proceed_without_external_dependency] is true
+  + [IR7_IA08_must_record_dependency_deferral] is true
+  + [IR7_IA08_must_record_no_live_control_boundary] is true
+  + [downstream_operations_adapter_work] is future_slice_after_IR7_implementation_completion_or_rebake
+  + [dependency_risk_reduced] is no unreviewed package, lockfile, UI runtime, network transport, process controller, GPU controller, model runtime client, job queue client, credential boundary, operations adapter, or live-control runtime enters current proof
+  + [architecture_option_preserved] is future Ryzen 9 RTX 5090 operations manager integrations can be introduced later with explicit authority-preserving adapter and live-control boundaries
+
+& [IR7IA07FaultReview] is the fault review for the operations adapter, dependency, and live-control deferral decision
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [process_control_created] is false
+  + [GPU_control_created] is false
+  + [model_runtime_control_created] is false
+  + [job_dispatch_created] is false
+  + [credential_access_created] is false
+  + [network_mutation_created] is false
+  + [destructive_filesystem_action_created] is false
+  + [operations_control_created] is false
+  + [live_machine_control_created] is false
+  + [carrier_state_authority_promotion_found] is false
+  + [dry_run_success_authority_promotion_found] is false
+  + [human_approval_authority_promotion_found] is false
+
+  ! [IR7OperationsAdapterDependencyAndLiveControlDeferralDecisionAccepted] is accepted
+    @ [support] [DependencyEvidence: CurrentIR7ProofNeed]
+    @ [support] [FutureOperationsAdapterActivationBoundary]
+    @ [support] [FutureLiveControlAuthorityPath]
+    @ [support] [AuthorityBoundaryAssessment: IR7OperationsAdapters]
+    @ [support] [DecisionConsequences: IR7-IA07]
+    @ [support] [IR7IA07FaultReview]

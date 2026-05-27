@@ -1,0 +1,94 @@
+Subject: IR7 IA07 Completion Review V1
+Date: 2026-05-27
+Review UUID: d467c136-65b5-4d50-abde-2065bf80cad9
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [ia06_completion_review] docs/reviews/IR7_IA06_Completion_Review.v1.sop
+@ [decision] docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+
+& [CompletedWorkReview: IR7-IA07] is the completed-work review for IR7-IA07 operations adapter, dependency, and live-control deferral decision
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA07
+  + [completed_output] is docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+  + [completed_output_sha256] is 5FD5BBD21CE743A69080522E09F83A736A99A66A1DD7E6C8753D437C04438020
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-IA07 and open IR7-IA08
+  + [next_gate_result] is IR7-IA08 may open
+  + [next_model_route] is requires deeper reasoning for implementation completion review and proof pack
+  + [next_model_route_depth] is deeper reasoning required
+
+  = must: treat this review as gate-opening evidence for IR7-IA08 only
+  = must: rerun this review if dependency decision, generated-output proof, contract tests, path policy, fixture runner, operation models, activation boundary, or activation slice surface changes
+  = must: keep new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7IA07Verification] is the verification result for IR7-IA07
+  + [decision_file_present] is true
+  + [decision_result] is defer_all_operations_adapters_external_dependencies_package_metadata_mutation_and_live_control_for_current_IR7_proof_pass
+  + [current_proof_need_satisfied_without_dependency] is true
+  + [future_operations_adapter_activation_boundary_present] is true
+  + [future_live_control_authority_path_present] is true
+  + [authority_boundary_assessment_present] is true
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [process_control_created] is false
+  + [GPU_control_created] is false
+  + [model_runtime_control_created] is false
+  + [job_dispatch_created] is false
+  + [credential_access_created] is false
+  + [network_mutation_created] is false
+  + [destructive_filesystem_action_created] is false
+  + [operations_control_created] is false
+  + [live_machine_control_created] is false
+
+  ! [IR7IA07VerificationSatisfied] is accepted
+    @ [support] docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+
+& [SupportDelta: IR7-IA07] is the support delta produced by IR7-IA07
+  + [new_support_record] is IR7 now has explicit deferral for operations adapters, dependencies, package metadata mutation, and live control
+  + [new_support_record] is IR7 now preserves a future live-control authority path that requires separate source preservation, SJS processing, and completion review
+  + [new_support_record] is IR7-IA08 may assemble final implementation proof pack and completion review
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-IA07] is the requirement delta produced by IR7-IA07
+  + [requirement_delta] is IR7-IA08 requires deeper reasoning because final implementation acceptance affects future operations-manager readiness
+  + [requirement_delta] is IR7-IA08 may create docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop and docs/reviews/IR7_Implementation_Completion_Review.v1.sop only
+  + [requirement_delta] is no new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-IA07
+
+& [FaultReview: IR7-IA07] is the fault review for IR7-IA07
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7IA07Accepted] is accepted
+    @ [support] [IR7IA07Verification]
+    @ [support] [SupportDelta: IR7-IA07]
+    @ [support] [RequirementDelta: IR7-IA07]
+    @ [support] [FaultReview: IR7-IA07]
+
+& [NextSliceGate: IR7-IA08] is opened
+  + [opened_slice] is IR7-IA08 implementation completion review and proof pack
+  + [accepted_dependency] is docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects future operations-manager readiness
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA08 next unless user redirects or a new fault invalidates this review
