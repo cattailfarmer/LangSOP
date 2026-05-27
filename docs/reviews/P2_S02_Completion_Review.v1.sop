@@ -1,0 +1,94 @@
+Subject: P2 S02 Completion Review V1
+Date: 2026-05-27
+Review UUID: 2bc28318-b3e9-49d2-b474-e48505609953
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s01_review] docs/reviews/P2_S01_Completion_Review.v1.sop
+@ [completed_output] docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+
+& [CompletedWorkReview: P2-S02] is the completed-work review for P2-S02 common envelope, authority vocabulary, and freshness refresh
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P2-S02
+  + [completed_output] is docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+  + [completed_output_sha256] is 66AD76A4426F71A4EFD47DF9ADBDA6F2E4B8EAF8A0A1250D2C3A2E0161DC598C
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P2-S02 and open P2-S03
+  + [next_gate_result] is P2-S03 may open
+  + [next_model_route] is requires deeper reasoning for record-specific schema and natural-key matrix refresh
+  + [next_model_route_depth] is deeper reasoning required
+
+  = must: treat this review as gate-opening evidence for P2-S03 only
+  = must: rerun this review if P2 common envelope refresh, P2-S01, slice surface, minting review, core schema, record schema inventory, natural-key matrix, IR2 extraction mapping, or post-IR8 readiness changes
+  = must: keep schema implementation, storage implementation, fixture creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, and live machine control gated
+
+& [P2S02Verification] is the verification result for P2-S02
+  + [common_envelope_refresh_file_present] is true
+  + [authority_class_defined] is true
+  + [effect_boundary_defined] is true
+  + [currentness_state_defined] is true
+  + [review_gate_rule_defined] is true
+  + [invalidation_rule_defined] is true
+  + [downstream_schema_refresh_instruction_present] is true
+  + [in_place_schema_rewrite_created] is false
+  + [storage_implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P2S02VerificationSatisfied] is accepted
+    @ [support] docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+
+& [SupportDelta: P2-S02] is the support delta produced by P2-S02
+  + [new_support_record] is P2 now has a common AuthorityClass vocabulary that separates source, canonical, decision, proof, human override, projection, carrier, execution, generated, dry-run, dispatch, operations, and live-control classes
+  + [new_support_record] is P2 now has EffectBoundary and CurrentnessState vocabularies for downstream schema refresh
+  + [new_support_record] is KernelRecordCoreV1 remains accepted for existing records, with P2 overlay required for refreshed downstream schemas after P2 completion
+  + [new_support_record] is P2-S03 may apply the overlay to record-specific schemas and natural-key matrix decisions
+  + [support_status] is accepted
+
+& [RequirementDelta: P2-S02] is the requirement delta produced by P2-S02
+  + [requirement_delta] is P2-S03 requires deeper reasoning because record-specific schemas and natural keys define stable identity for downstream requirements, support, proof, packet, trace, and fault records
+  + [requirement_delta] is P2-S03 may create docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop and docs/reviews/P2_S03_Completion_Review.v1.sop only
+  + [requirement_delta] is no schema implementation, storage implementation, fixture creation, dependency installation, package metadata mutation, adapter work, dispatch, operations control, or live machine control is authorized by P2-S02
+
+& [FaultReview: P2-S02] is the fault review for P2-S02
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [in_place_schema_rewrite_found] is false
+  + [storage_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [projection_to_authority_promotion_found] is false
+
+  ! [P2S02Accepted] is accepted
+    @ [support] [P2S02Verification]
+    @ [support] [SupportDelta: P2-S02]
+    @ [support] [RequirementDelta: P2-S02]
+    @ [support] [FaultReview: P2-S02]
+
+& [NextSliceGate: P2-S03] is opened
+  + [opened_slice] is P2-S03 record-specific schema and natural-key matrix refresh
+  + [accepted_dependency] is docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is record-specific schemas and natural keys define stable identity for every downstream requirement, support, proof, packet, trace, and fault record
+  + [safety_limit] is no dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P2-S03 next unless user redirects or a new fault invalidates this review

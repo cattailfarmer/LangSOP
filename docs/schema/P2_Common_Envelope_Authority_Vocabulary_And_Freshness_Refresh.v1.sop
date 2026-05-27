@@ -1,0 +1,211 @@
+Subject: P2 Common Envelope Authority Vocabulary And Freshness Refresh V1
+Date: 2026-05-27
+Refresh UUID: d65cabb9-f437-442e-8172-db5e8982408b
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s01] docs/schema/P2_Boundary_Import_And_Schema_Gap_Reconciliation.v1.sop
+@ [p2_s01_review] docs/reviews/P2_S01_Completion_Review.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+
+& [P2CommonEnvelopeAuthorityVocabularyAndFreshnessRefreshV1] is the P2-S02 refresh for common envelope, authority vocabulary, and freshness semantics
+  + [slice_id] is P2-S02
+  + [slice_name] is common envelope, authority vocabulary, and freshness refresh
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [refresh_result] is KernelRecordCoreV1_remains_accepted_for_existing_records_and_P2_common_classification_overlay_is_required_for_new_or_refreshed_downstream_records_after_P2_completion
+  + [supersession_scope] is additive_overlay_not_in_place_rewrite
+  + [next_gate_result] is P2-S03 may open
+  + [schema_implementation_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this refresh as the common semantic overlay for downstream P2-S03 record-specific schema work
+  = must: preserve Kernel_Record_Core.v1.sop as accepted historical schema authority for records already built against it
+  = must: require downstream refreshed schemas to declare how they map v1 authority_state, freshness_rule, and status into the P2 overlay
+  = must: keep implementation, storage code, dependency installation, adapters, dispatch, operations control, and live machine control gated
+
+& [CommonEnvelopeRefreshDecision: P2-S02] is the common envelope decision
+  + [existing_required_field] is record_id
+  + [existing_required_field] is record_kind
+  + [existing_required_field] is natural_key
+  + [existing_required_field] is subject_ref
+  + [existing_required_field] is authority_state
+  + [existing_required_field] is source_ref_set
+  + [existing_required_field] is lineage_edge_set
+  + [existing_required_field] is freshness_rule
+  + [existing_required_field] is status
+  + [P2_overlay_required_field] is authority_class
+  + [P2_overlay_required_field] is effect_boundary
+  + [P2_overlay_required_field] is currentness_state
+  + [P2_overlay_required_field] is review_gate_ref
+  + [P2_overlay_required_field] is invalidation_ref_set
+  + [field_policy] is P2 overlay fields may be represented as record-specific payload fields or common envelope extensions until a future implementation activation selects storage shape
+  + [field_policy] is downstream schemas must expose overlay fields in validation and projections even if persisted as payload material
+
+  = must: preserve the original nine-field envelope for compatibility
+  = must: require P2 overlay fields for all newly refreshed schemas before P3, P4, P5, or P6 consumes them
+  = must: reject downstream records that hide authority_class, effect_boundary, currentness_state, review_gate_ref, or invalidation_ref_set inside prose when the record can affect readiness, packetization, operator execution, dispatch, operations, or live-control gates
+
+| [AuthorityClass] is (
+  source_authority |
+  canonical_authority |
+  accepted_decision_authority |
+  signed_sjs_authority |
+  proof_authority |
+  human_override_authority |
+  narrative_projection_non_authority |
+  surface_projection_non_authority |
+  carrier_state_non_authority |
+  execution_state_non_authority |
+  generated_output_non_authority |
+  dry_run_evidence_non_authority |
+  dispatch_authority |
+  operations_control_authority |
+  live_control_authority |
+  explicit_absence_evidence |
+  none
+)
+
+| [EffectBoundary] is (
+  no_effect |
+  proof_only |
+  projection_only |
+  carrier_only |
+  dry_run_only |
+  review_gate_only |
+  dispatch_candidate_only |
+  dispatch_authorized |
+  operations_candidate_only |
+  operations_authorized |
+  live_control_candidate_only |
+  live_control_authorized |
+  forbidden
+)
+
+| [CurrentnessState] is (
+  current |
+  fresh |
+  stale |
+  unknown |
+  blocked |
+  contested |
+  interrupted |
+  faulted |
+  pending_review |
+  superseded |
+  contradicted |
+  invalidated |
+  not_applicable
+)
+
+& [AuthorityClassMapping: P2-S02] is the mapping from KernelRecordCoreV1 authority_state into P2 AuthorityClass
+  + [mapping] is none maps_to none unless record payload declares projection or generated evidence
+  + [mapping] is source_only maps_to source_authority
+  + [mapping] is narrative_projection maps_to narrative_projection_non_authority
+  + [mapping] is accepted_decision maps_to accepted_decision_authority
+  + [mapping] is signed_sjs maps_to signed_sjs_authority
+  + [mapping] is proof_backed maps_to proof_authority
+  + [mapping] is stale_projection maps_to surface_projection_non_authority with currentness_state stale
+  + [mapping] is contradicted maps_to proof_authority with currentness_state contradicted and invalidation_ref_set required
+  + [mapping] is invalidated maps_to proof_authority with currentness_state invalidated and invalidation_ref_set required
+  + [mapping] is human_override maps_to human_override_authority with review_gate_ref, scope, expiration, and revocation route required
+  + [post_IR5_mapping] is surface projection maps_to surface_projection_non_authority
+  + [post_IR6_mapping] is mailbox carrier maps_to carrier_state_non_authority
+  + [post_IR7_mapping] is operation dry-run result maps_to dry_run_evidence_non_authority
+  + [post_IR8_mapping] is manager work packet candidate maps_to surface_projection_non_authority unless future dispatch authority is accepted
+  + [post_IR8_mapping] is graph checkpoint maps_to execution_state_non_authority
+  + [post_IR8_mapping] is generated report maps_to generated_output_non_authority
+
+  = must: prevent non-authority classes from satisfying source, canonical, dispatch, operations-control, or live-control gates
+  = must: require future source-preserved SJS authority before dispatch_authority, operations_control_authority, or live_control_authority can be assigned
+
+& [EffectBoundaryRule: P2-S02] is the effect boundary rule for common records
+  + [default_effect_boundary] is no_effect
+  + [source_record_effect_boundary] is proof_only unless a later process explicitly imports it into reviewed authority
+  + [projection_effect_boundary] is projection_only
+  + [carrier_state_effect_boundary] is carrier_only
+  + [execution_state_effect_boundary] is projection_only
+  + [generated_output_effect_boundary] is projection_only
+  + [dry_run_result_effect_boundary] is dry_run_only
+  + [work_packet_candidate_effect_boundary] is review_gate_only
+  + [dispatch_effect_boundary] is dispatch_candidate_only unless dispatch_authority is accepted by separate future authority
+  + [operations_effect_boundary] is operations_candidate_only unless operations_control_authority is accepted by separate future authority
+  + [live_control_effect_boundary] is live_control_candidate_only unless live_control_authority is accepted by separate future authority
+  + [forbidden_without_future_authority] is dispatch_authorized
+  + [forbidden_without_future_authority] is operations_authorized
+  + [forbidden_without_future_authority] is live_control_authorized
+
+  = must: keep effect_boundary independent from record status
+  = must: require review_gate_ref before any candidate can open downstream work
+  = must: reject any record that claims live_control_authorized without cited source-preserved SJS safety authority, least-privilege boundary, rollback or abort proof, monitoring proof, and completion review
+
+& [CurrentnessRefreshRule: P2-S02] is the unified currentness and freshness vocabulary
+  + [currentness_state] is current for accepted, hash-stable, and freshness-checked kernel authority
+  + [currentness_state] is fresh as accepted synonym for surface compatibility, normalized to current in kernel validation
+  + [currentness_state] is stale when source, support, proof, boundary, or freshness basis changed
+  + [currentness_state] is unknown when no adequate freshness rule can be proven
+  + [currentness_state] is blocked when required authority, support, source, lineage, proof, or human review is absent
+  + [currentness_state] is contested when claims, support, authority, or interpretation conflict
+  + [currentness_state] is interrupted when a human or model judgment interrupt must resolve ambiguity before action
+  + [currentness_state] is faulted when an operational, reasoning, parsing, validation, or authority-boundary fault exists
+  + [currentness_state] is pending_review when completion review, human approval review, conflict review, or mailbox/readiness review is required
+  + [currentness_state] is superseded when newer accepted authority replaces the record
+  + [currentness_state] is contradicted when accepted proof or source conflicts with the record
+  + [currentness_state] is invalidated when the record no longer governs current work
+  + [currentness_state] is not_applicable only for immutable root records or explicit absence evidence
+
+  = must: expose currentness_state on decision-making projections
+  = must: block readiness and packetization when currentness_state is stale, unknown, blocked, contested, interrupted, faulted, pending_review, contradicted, or invalidated unless a reviewed exception explicitly permits limited non-mutating work
+  = must: preserve stale, superseded, contradicted, and invalidated records as trace
+
+& [ReviewGateAndInvalidationRule: P2-S02] is the common review and invalidation rule
+  + [review_gate_ref_required_for] is accepted_decision_authority
+  + [review_gate_ref_required_for] is proof_authority
+  + [review_gate_ref_required_for] is human_override_authority
+  + [review_gate_ref_required_for] is dispatch_authority
+  + [review_gate_ref_required_for] is operations_control_authority
+  + [review_gate_ref_required_for] is live_control_authority
+  + [invalidation_ref_set_required_when] is currentness_state superseded
+  + [invalidation_ref_set_required_when] is currentness_state contradicted
+  + [invalidation_ref_set_required_when] is currentness_state invalidated
+  + [invalidation_ref_set_required_when] is authority_class changes across authority/projection boundary
+  + [invalidation_ref_set_required_when] is effect_boundary changes toward more effect
+
+  = must: require explicit lineage from old authority to superseding or invalidating authority
+  = must: reject silent promotion from projection, carrier, execution state, generated output, or dry-run evidence into source, dispatch, operations, or live-control authority
+
+& [DownstreamSchemaRefreshInstruction: P2-S02] is the instruction to P2-S03
+  + [P2-S03_must_apply] is AuthorityClass
+  + [P2-S03_must_apply] is EffectBoundary
+  + [P2-S03_must_apply] is CurrentnessState
+  + [P2-S03_must_apply] is review_gate_ref
+  + [P2-S03_must_apply] is invalidation_ref_set
+  + [P2-S03_must_decide] is whether each schema stores the overlay as common extension or record-specific payload
+  + [P2-S03_must_decide] is whether any new KernelRecordKind values are needed for post-IR8 manager, operation, coordination, dependency, dispatch, or live-control records
+  + [P2-S03_must_preserve] is existing schema compatibility until completion review accepts a supersession
+
+& [P2S02FaultReview] is the fault review for P2-S02
+  + [in_place_schema_rewrite_found] is false
+  + [storage_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [projection_to_authority_promotion_found] is false
+
+  ! [P2CommonEnvelopeAuthorityVocabularyAndFreshnessRefreshAccepted] is accepted
+    @ [support] [CommonEnvelopeRefreshDecision: P2-S02]
+    @ [support] [AuthorityClassMapping: P2-S02]
+    @ [support] [EffectBoundaryRule: P2-S02]
+    @ [support] [CurrentnessRefreshRule: P2-S02]
+    @ [support] [ReviewGateAndInvalidationRule: P2-S02]
+    @ [support] [DownstreamSchemaRefreshInstruction: P2-S02]
+    @ [support] [P2S02FaultReview]
