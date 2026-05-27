@@ -1,0 +1,141 @@
+Subject: IR6 Coordination Mailbox Projection Prototype Implementation Proof Pack V1
+Date: 2026-05-26
+Proof Pack UUID: 4575bc49-c73b-463d-9b43-af2338db8bad
+
+@ [implementation_activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+@ [generated_output_proof] docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+@ [dependency_decision] docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+@ [contract_tests] tests/test_ir6_coordination_mailbox_contracts.py
+
+& [ImplementationProofPack: IR6CoordinationMailboxProjectionPrototype] is the final implementation proof pack for IR6-IA08
+  + [proof_pack_status] is accepted_by_pack_pending_completion_review
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [activation_boundary] is docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+  + [activation_boundary_sha256] is F2AA7543D4C7D3197E4C269A6CDC1A4A8456539FE95E8894E57319C267D782BD
+  + [fixture_index] is docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+  + [fixture_index_sha256] is C046AC90227836D04847FCFEBB93F92CE1B6A9C88ED40382B0FD814AD618A3EB
+  + [fixture_source_count] is 13
+  + [expected_ledger_count] is 5
+  + [code_file_count] is 7
+  + [test_file_count] is 1
+  + [external_dependency_set] is empty
+  + [package_metadata_mutated] is false
+  + [dependency_installation_authorized] is false
+  + [mailbox_IO_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this pack as proof of bounded IR6 coordination mailbox projection implementation only
+  = must: keep downstream IR7 gated until completion review accepts this proof pack and a future rebake or readiness review opens the next work surface
+  = must: preserve all generated outputs as ignored, disposable, and non-authoritative
+  = must: preserve mailbox carriers, read cursors, transport messages, adapter state, dispatch state, and operations state as non-authoritative unless a future explicit activation slice says otherwise
+
+& [ImplementationOutputLedger: IR6CoordinationMailboxProjectionPrototype] is the code and test output ledger
+  + [implemented_output] is src/langsop/coordination/__init__.py
+  + [implemented_output_sha256] is 50648E7AFF217A4469CD287A931D9FF18303CFB1540CB39594E25E1671D2B83A
+  + [implemented_output] is src/langsop/coordination/claims.py
+  + [implemented_output_sha256] is A781562614687FB9BB74FD2EA37B46B7BE4888C05D75D50C9F9F0110BCF2F32F
+  + [implemented_output] is src/langsop/coordination/mailbox.py
+  + [implemented_output_sha256] is 5C8F82BEEDB262EA3AC559D447FAC65C37FF56637A46C883D7A4675AF1ECFBD2
+  + [implemented_output] is src/langsop/coordination/reviews.py
+  + [implemented_output_sha256] is 689FE3EFE30402CE9854F0B8BAFE795569B13C6F26EBFFF73D65EEE4C5431329
+  + [implemented_output] is src/langsop/coordination/action_routes.py
+  + [implemented_output_sha256] is 8499C01EFE67485157CEC048BAAD6B5BB1BEA78CBB0EA7F7430668A28B362B6B
+  + [implemented_output] is src/langsop/coordination/generated_paths.py
+  + [implemented_output_sha256] is 6FCB0DB9C6BBD1CA778584A77F546AD6746F2776821C7EE677ACB29D07F0E55D
+  + [implemented_output] is src/langsop/coordination/fixture_runner.py
+  + [implemented_output_sha256] is 259FFC19E1132CC3482D6FD04B6ADBB2854F01F1A96A16246C7318182D82B797
+  + [test_output] is tests/test_ir6_coordination_mailbox_contracts.py
+  + [test_output_sha256] is 2FF67DC7C0D3B41975B19C9DBEB4B124770B7FF6EFF528EBF8466209057AAC61
+
+& [ReviewLedger: IR6CoordinationMailboxProjectionPrototype] is the implementation activation review ledger
+  + [completion_review] is docs/reviews/IR6_IA01_Completion_Review.v1.sop
+  + [completion_review_sha256] is 1091FD627E6A843A5F8EB58E79CC5972C169A713839044DD4652184A9A28CF90
+  + [completion_review] is docs/reviews/IR6_IA02_Completion_Review.v1.sop
+  + [completion_review_sha256] is 0A9E037DDF3D21C9060FCD5AFED4006DA83F9716CA7C2DF5F9C38432F148738B
+  + [completion_review] is docs/reviews/IR6_IA03_Completion_Review.v1.sop
+  + [completion_review_sha256] is 734142CC01C35DD634C05132DC30BBB17D783335B4206958DA3A350C73182173
+  + [completion_review] is docs/reviews/IR6_IA04_Completion_Review.v1.sop
+  + [completion_review_sha256] is 96CE959FA42201322FDABAC8F07499527F7873E59611BC1FD0260ABB315C9486
+  + [completion_review] is docs/reviews/IR6_IA05_Completion_Review.v1.sop
+  + [completion_review_sha256] is 97E45CACCEB82CA4107484A962FB05ED49704297962723C7CD8C695123E34544
+  + [completion_review] is docs/reviews/IR6_IA06_Completion_Review.v1.sop
+  + [completion_review_sha256] is 4DC8916CB88CD55078F86F278278F03EDFD3585AE2CC4CBD41AB1CEB167BFD42
+  + [completion_review] is docs/reviews/IR6_IA07_Completion_Review.v1.sop
+  + [completion_review_sha256] is B5601989EC340B077849E44F0B1097E1CC65320C9B0E175D78D221A9D2B3B9F8
+
+& [GeneratedOutputDependencyAndMailboxLedger: IR6CoordinationMailboxProjectionPrototype] is the generated-output, dependency, and no-mailbox-IO proof ledger
+  + [generated_output_proof] is docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+  + [generated_output_proof_sha256] is 1CADD25146E4783C92546DD3D0D08BCA662B94D15F02D101A015E6E0E9D3C7D9
+  + [dependency_decision] is docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+  + [dependency_decision_sha256] is 9CB64A4732922967FADD21E107EA319743ED73DFB34E1092ADAAE4AB61F8C039
+  + [pyproject] is pyproject.toml
+  + [pyproject_sha256] is 0C88CAB81D0E3CAE7C36DDF8AA83734F86C5197FDCE1441FBB97752CCF7CC3EE
+  + [generated_output_present_after_tests] is false
+  + [generated_output_discovered_as_authority] is false
+  + [platform_mailbox_root_created_by_tests] is false
+  + [mailbox_message_file_created] is false
+  + [read_cursor_persisted] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [mailbox_IO_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+
+& [CommandEvidence: IR6CoordinationMailboxProjectionPrototype] is the command evidence for the final proof pack
+  + [command] is python -m compileall -q src tests
+  + [result] is passed
+  + [command] is python -m unittest tests.test_ir6_coordination_mailbox_contracts
+  + [result] is 8 tests passed
+  + [command] is python -m unittest discover -s tests
+  + [result] is 33 tests passed
+  + [command] is git diff --check
+  + [result] is passed with LF-to-CRLF warnings only
+  + [generated_fixture_root_present_after_tests] is false
+  + [platform_mailbox_root_present_after_tests] is false
+
+& [SupportDelta: IR6-IA08] is the support delta accepted by this proof pack
+  + [new_support_record] is IR6 coordination mailbox projection implementation satisfies claim identity, work-boundary, mailbox carrier, freshness review, conflict review, action route, generated path, fixture runner, contract test, generated-output, no-mailbox-IO, and dependency deferral proof obligations
+  + [new_support_record] is generated outputs remain ignored, disposable, reproducible, and non-authoritative
+  + [new_support_record] is mailbox carriers, inbox references, read cursors, and transport references remain projection context only
+  + [new_support_record] is no agent dispatch, operations control, or live machine control is authorized
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-IA08] is the requirement delta accepted by this proof pack
+  + [requirement_delta] is downstream IR7 may be considered only by future rebake or readiness review using this proof pack as accepted input
+  + [requirement_delta] is future mailbox IO, IRC, Matrix, MCP, web, LangGraph, Langflow, adapter, UI, transport, dependency, operations simulator, operations control, or live machine control work requires a new explicit boundary
+  + [requirement_delta] is future multi-agent dispatch requires proof that work claims, mailbox carriers, human overrides, conflict review, and completion gates cannot be bypassed by carrier state
+
+& [FaultReview: IR6CoordinationMailboxProjectionPrototype] is the proof pack fault review
+  + [source_overwrite_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [generated_output_tracked_found] is false
+  + [platform_mailbox_created] is false
+  + [mailbox_message_file_created] is false
+  + [read_cursor_persisted] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [mailbox_IO_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6CoordinationMailboxProjectionImplementationProofPackAccepted] is accepted
+    @ [support] [ImplementationOutputLedger: IR6CoordinationMailboxProjectionPrototype]
+    @ [support] [ReviewLedger: IR6CoordinationMailboxProjectionPrototype]
+    @ [support] [GeneratedOutputDependencyAndMailboxLedger: IR6CoordinationMailboxProjectionPrototype]
+    @ [support] [CommandEvidence: IR6CoordinationMailboxProjectionPrototype]
+    @ [support] [SupportDelta: IR6-IA08]
+    @ [support] [RequirementDelta: IR6-IA08]
+    @ [support] [FaultReview: IR6CoordinationMailboxProjectionPrototype]
