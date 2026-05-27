@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is IR7_final_planning_accepted_pending_implementation_activation_minting
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7-IA01_activation_boundary
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -209,16 +209,21 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR7_S05_Completion_Review.v1.sop
   + [support_record] is docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
   + [support_record] is docs/reviews/IR7_Completion_Review.v1.sop
-  + [support_gap] is IR7 implementation activation slices not yet minted
+  + [support_record] is docs/source/2026-05-27_ir7_implementation_activation/Derived_IR7_Implementation_Activation_Source.sop
+  + [support_record] is docs/source/2026-05-27_ir7_implementation_activation/Source_Document_Manifest.sop
+  + [support_record] is docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+  + [support_record] is docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+  + [support_record] is docs/reviews/IR7_Implementation_Activation_Minting_Review.v1.sop
+  + [support_gap] is IR7-IA01 bounded operations dry-run implementation activation boundary and dependency decision not yet executed
   + [support_gap] is IR7 dry-run operations simulator implementation not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7 implementation activation slice minting, not implementation code, fixture source files, generated outputs, or live operations control
-  = must: require deeper reasoning for implementation activation slice minting because it affects future code, fixtures, generated-output proof, dependency, adapter, dispatch, credential, network, and live-control safety boundaries
-  = should: route future bounded implementation slices to GPT-5.3-Codex-Spark only after activation slices isolate scope
+  = must: open only IR7-IA01 activation boundary and dependency decision, not implementation code, fixture source files, generated outputs, or live operations control
+  = must: require deeper reasoning for IR7-IA01 because activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary control future implementation authority
+  = should: route future bounded implementation slices to GPT-5.3-Codex-Spark only after IR7-IA01 accepts activation scope
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

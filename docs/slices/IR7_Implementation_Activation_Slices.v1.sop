@@ -1,0 +1,138 @@
+Subject: IR7 Implementation Activation Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 8d99e554-4cdc-4891-b9ae-bfa95333bed0
+
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_ir7_implementation_activation/Source_Document_Manifest.sop
+@ [activation_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR7_Completion_Review.v1.sop
+
+& [IR7ImplementationActivationSliceSurfaceV1] is the executable slice surface for IR7 operations dry-run simulator implementation activation
+  + [chunk_ref] is IR7 operations dry-run simulator implementation activation
+  + [chunk_boundary] is activation boundary, fixture material, operation request and dry-run models, resource safety and approval models, generated path and fixture runner implementation, contract tests, generated-output and no-live-effect proof, dependency and live-control deferral decision, proof pack, and completion review
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 42422316F815194538CC36C6DC5F66902E95F92983D47806FFFCC39A8368B959
+  + [accepted_boundary_input] is docs/reviews/IR7_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is F4D53FEF583FE94495D99F1DE0253CEDE3107FAB80317ACAAF1A2644CA72A96E
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR7-IA01
+  + [gated_slice_set] is IR7-IA02, IR7-IA03, IR7-IA04, IR7-IA05, IR7-IA06, IR7-IA07, and IR7-IA08
+  + [safety_limit] is no live operations control authorized
+
+  = must: execute IR7-IA01 before creating fixture source files, expected ledgers, implementation code, generated outputs, dependency changes, adapters, transports, UI, operation simulator code, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, agent dispatch, operations control, or live machine control
+  = must: run completed-work review after each IR7 implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes operation requests, dry-run results, refusal records, human approval records, generated projections, fixture success, coordination claims, mailbox carriers, terminal output, chat messages, or carrier state to source authority, dispatch authority, operations control, or live-control authority
+
+& [FinalWorkSlice: IR7-IA01-BoundedOperationsDryRunImplementationActivationBoundaryAndDependencyDecision] is ready
+  + [slice_id] is IR7-IA01
+  + [slice_name] is bounded operations dry-run implementation activation boundary and dependency decision
+  + [chunk_ref] is IR7 operations dry-run simulator implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR7 final planning completion accepted
+  + [expected_output_set] is docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is activation boundary confirms file inventory, fixture inventory, expected ledger inventory, generated-output roots, dependency boundary, adapter boundary, live-control deferral boundary, command plan, and proof gates without creating implementation code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary control future implementation authority
+  + [forbidden_scope] is implementation code creation, fixture source creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR7-IA02-FixtureSourceAndExpectedLedgerSeedMaterial] is gated
+  + [slice_id] is IR7-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [activation_gate] is IR7-IA01 accepted
+  + [expected_output_set] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [expected_output_set] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [expected_output_set] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+  + [verification_oracle] is tracked fixture source and expected ledgers cover all 13 accepted fixture cases without implementation code, generated outputs, commands, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, or live control
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR7-IA01 acceptance
+  + [model_route_reason] is fixture and expected-ledger material is bounded by accepted fixture plan, implementation plan, and activation boundary
+  + [forbidden_scope] is implementation code creation, generated output creation, dependency installation, adapter implementation, transport implementation, UI implementation, tests, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR7-IA03-OperationRequestDryRunResultAndRefusalModelImplementation] is gated
+  + [slice_id] is IR7-IA03
+  + [slice_name] is operation request, dry-run result, and refusal model implementation
+  + [activation_gate] is IR7-IA02 accepted
+  + [expected_output_set] is src/langsop/operations/__init__.py
+  + [expected_output_set] is src/langsop/operations/requests.py
+  + [expected_output_set] is src/langsop/operations/dry_run.py
+  + [expected_output_set] is src/langsop/operations/refusals.py
+  + [verification_oracle] is models validate operation request identity, safety fields, intended effects, target classes, dry-run results, refusal records, SOP-first interrupt contexts, and no-authority-promotion behavior over accepted fixtures
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR7-IA02 acceptance
+  + [model_route_reason] is model implementation is bounded by accepted contracts and fixture material
+  + [forbidden_scope] is resource safety implementation, fixture runner implementation, generated output creation, dependency installation, adapter implementation, transport implementation, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR7-IA04-ResourceSafetyHumanApprovalRollbackAndApprovalStaleModelImplementation] is gated
+  + [slice_id] is IR7-IA04
+  + [slice_name] is resource safety, human approval, rollback, and approval-stale model implementation
+  + [activation_gate] is IR7-IA03 accepted
+  + [expected_output_set] is src/langsop/operations/resource_safety.py
+  + [expected_output_set] is src/langsop/operations/action_routes.py
+  + [expected_output_set] is src/langsop/operations/__init__.py
+  + [verification_oracle] is resource safety and approval models classify targets, risk, blast radius, credential boundary, network boundary, rollback route, monitoring, approval freshness, revocation, mismatches, and refusal without live mutation or authority promotion
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR7-IA03 acceptance unless resource safety or approval semantics change
+  + [model_route_reason] is implementation is bounded when accepted request models and fixtures are stable; semantic changes require deeper reasoning
+  + [forbidden_scope] is fixture runner implementation, generated output creation, dependency installation, adapter implementation, transport implementation, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR7-IA05-GeneratedPathPolicyAndFixtureRunnerImplementation] is gated
+  + [slice_id] is IR7-IA05
+  + [slice_name] is generated path policy and fixture runner implementation
+  + [activation_gate] is IR7-IA04 accepted
+  + [expected_output_set] is src/langsop/operations/generated_paths.py
+  + [expected_output_set] is src/langsop/operations/fixture_runner.py
+  + [verification_oracle] is fixture runner reads only accepted fixture source and expected ledgers, writes only generated projection/report outputs under accepted roots, and refuses path escapes, source paths, platform mailbox paths, credential paths, network paths, and destructive filesystem targets
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR7-IA04 acceptance
+  + [model_route_reason] is runner and generated path policy are bounded by accepted implementation plan
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR7-IA06-ContractTestsAndGeneratedOutputNoLiveEffectProof] is gated
+  + [slice_id] is IR7-IA06
+  + [slice_name] is contract tests and generated-output/no-live-effect proof
+  + [activation_gate] is IR7-IA05 accepted
+  + [expected_output_set] is tests/test_ir7_operations_dry_run_contracts.py
+  + [expected_output_set] is docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+  + [verification_oracle] is tests cover all 13 fixture cases, no-authority promotion, path refusal, generated output disposability, and proof that commands, processes, GPU, model runtime, jobs, credentials, network state, destructive filesystem targets, platform mailboxes, source docs, and expected ledgers are not mutated by projection code or tests
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR7-IA05 acceptance
+  + [model_route_reason] is tests, generated-output proof, and no-live-effect proof are bounded by accepted implementation and fixture runner behavior
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR7-IA07-OperationsAdapterDependencyAndLiveControlDeferralDecision] is gated
+  + [slice_id] is IR7-IA07
+  + [slice_name] is operations adapter, dependency, and live-control deferral decision
+  + [activation_gate] is IR7-IA06 accepted
+  + [expected_output_set] is docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+  + [verification_oracle] is decision either defers all operations adapter, transport, UI, external dependencies, machine-control APIs, and live-control capability or explicitly authorizes narrowly scoped future work without process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  + [forbidden_scope] is unreviewed dependency installation, adapter transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR7-IA08-ImplementationCompletionReviewAndProofPack] is gated
+  + [slice_id] is IR7-IA08
+  + [slice_name] is implementation completion review and proof pack
+  + [activation_gate] is IR7-IA07 accepted
+  + [expected_output_set] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [verification_oracle] is proof pack accepts only bounded implementation outputs with hashes, fixture and expected ledger ledgers, generated-output proof, no-live-effect proof, dependency decision, command evidence, support deltas, requirement deltas, and no authority, dispatch, credential, network, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects future operations-manager readiness
+  + [forbidden_scope] is new implementation work, dependency installation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR7ImplementationActivationClosureReview] is the dependency audit for minted IR7 implementation activation slices
+  + [IR7_activation_pack_status] is accepted
+  + [IR7_completion_review_status] is accepted
+  + [current_ready_slice_set] is IR7-IA01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR7-IA02 through IR7-IA08 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

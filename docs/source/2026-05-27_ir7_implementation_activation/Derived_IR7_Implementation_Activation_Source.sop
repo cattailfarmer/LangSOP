@@ -1,0 +1,56 @@
+Subject: Derived IR7 Implementation Activation Source
+Date: 2026-05-27
+Source UUID: 86ed10d7-d8af-4dad-a384-18ad0aa471b2
+
+@ [activation_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR7_Completion_Review.v1.sop
+@ [work_state] docs/state/IR7_Work_State.v1.sop
+
+& [DerivedIR7ImplementationActivationSource] is the preserved source for minting IR7 implementation activation slices
+  + [source_basis] is accepted IR7 final planning completion
+  + [source_basis] is docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+  + [source_basis] is docs/reviews/IR7_Completion_Review.v1.sop
+  + [source_intent] is convert the accepted future implementation activation shape into dependency-closed implementation activation slices
+  + [target_chunk] is IR7 operations dry-run simulator implementation activation
+  + [source_status] is preserved_before_canonical_processing
+
+  = must: preserve accepted IR7 final planning outputs as boundary inputs
+  = must: mint implementation activation slices before creating code, fixture files, expected ledgers, generated outputs, dependencies, package metadata changes, adapters, transports, UI, operation simulator code, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+  = must: open only IR7-IA01 after minting review acceptance
+  = must: keep future bounded fixture, model, runner, generated-output proof, no-live-effect proof, and test slices GPT-5.3-Codex-Spark-suitable only after activation boundaries isolate scope
+  = must: keep activation minting, dependency decisions, adapter boundaries, transport boundaries, generated-output boundaries, dispatch boundaries, credential boundaries, network boundaries, operations safety changes, and live-control boundaries under deeper reasoning
+  - never: treat this source as implementation permission by itself
+
+& [DerivedIR7ImplementationActivationShape] is the intended activation slice shape from the accepted IR7 activation pack
+  + [future_activation_slice] is IR7-IA01 bounded operations dry-run implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR7-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR7-IA03 operation request, dry-run result, and refusal model implementation
+  + [future_activation_slice] is IR7-IA04 resource safety, human approval, rollback, and approval-stale model implementation
+  + [future_activation_slice] is IR7-IA05 generated path policy and fixture runner implementation
+  + [future_activation_slice] is IR7-IA06 contract tests and generated-output/no-live-effect proof
+  + [future_activation_slice] is IR7-IA07 operations adapter, dependency, and live-control deferral decision
+  + [future_activation_slice] is IR7-IA08 implementation completion review and proof pack
+
+& [DerivedIR7ImplementationActivationSafetyBoundary] is the safety boundary preserved for activation slice minting
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [UI_implementation_initial_state] is gated
+  + [process_control_initial_state] is unauthorized
+  + [GPU_control_initial_state] is unauthorized
+  + [model_runtime_control_initial_state] is unauthorized
+  + [job_dispatch_initial_state] is unauthorized
+  + [credential_access_initial_state] is unauthorized
+  + [network_mutation_initial_state] is unauthorized
+  + [destructive_filesystem_action_initial_state] is unauthorized
+  + [persistent_operations_automation_initial_state] is unauthorized
+  + [agent_dispatch_initial_state] is unauthorized
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+
+  = must: preserve FSC5 dry-run-only and live-control prohibition in every future operations dry-run implementation slice

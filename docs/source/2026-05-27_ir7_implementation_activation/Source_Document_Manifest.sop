@@ -1,0 +1,24 @@
+Subject: IR7 Implementation Activation Source Document Manifest
+Date: 2026-05-27
+Manifest UUID: 607fb0cd-4543-4dc7-b402-8ad625037ab2
+
+@ [source_document] docs/source/2026-05-27_ir7_implementation_activation/Derived_IR7_Implementation_Activation_Source.sop
+@ [activation_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR7_Completion_Review.v1.sop
+@ [work_state] docs/state/IR7_Work_State.v1.sop
+
+& [SourceDocumentManifest: IR7ImplementationActivation] is the source manifest for IR7 implementation activation slice minting
+  + [manifest_uuid] is 607fb0cd-4543-4dc7-b402-8ad625037ab2
+  + [source_document] is docs/source/2026-05-27_ir7_implementation_activation/Derived_IR7_Implementation_Activation_Source.sop
+  + [source_document_sha256] is 01D3D78A28921D312C44DAF08FA1717E52DB6B0476A9373EAD81B06DCCCC543D
+  + [boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+  + [boundary_input_sha256] is 42422316F815194538CC36C6DC5F66902E95F92983D47806FFFCC39A8368B959
+  + [boundary_input] is docs/reviews/IR7_Completion_Review.v1.sop
+  + [boundary_input_sha256] is F4D53FEF583FE94495D99F1DE0253CEDE3107FAB80317ACAAF1A2644CA72A96E
+  + [boundary_input] is docs/state/IR7_Work_State.v1.sop
+  + [boundary_input_sha256] is 456479A2BE7D9D07FE5339DFD2EEE2592D57F4D5C28D06487161236BBA883468
+  + [manifest_scope] is IR7 implementation activation slice minting only
+
+  = must: preserve the source document unchanged as provenance
+  = must: treat this manifest as stale if any listed source or boundary input hash changes
+  = must: run canonical processing before trusting activation slices as processed authority

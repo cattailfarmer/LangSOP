@@ -1,0 +1,82 @@
+Subject: LangSOP IR7 Implementation Activation Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_ir7_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR7_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR7ImplementationActivation] is the processed planning authority for IR7 implementation activation slices
+  + [canonical_uuid] is 6a4b4cec-ef73-4512-8647-7993eeded7a3
+  + [source_manifest_uuid] is 607fb0cd-4543-4dc7-b402-8ad625037ab2
+  + [slice_surface_uuid] is 8d99e554-4cdc-4891-b9ae-bfa95333bed0
+  + [authority_scope] is IR7 implementation activation slice order, gates, expected outputs, model routing, dependency boundaries, generated-output boundaries, adapter boundaries, dispatch boundaries, credential boundaries, network boundaries, live-control prohibition, safety limits, and proof pack requirements
+  + [implementation_scope] is activation slice minting only
+  + [depends_on] is docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR7_Completion_Review.v1.sop
+
+  = must: use docs/slices/IR7_Implementation_Activation_Slices.v1.sop as the current IR7 implementation activation slice surface
+  = must: execute IR7-IA01 first
+  = must: run completion review after each IR7 implementation activation slice before opening the next gated slice
+  = must: keep agent dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to skip activation slices or directly implement code, fixtures, expected ledgers, generated outputs, dependencies, adapters, transports, UI, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+
+& [CanonicalIR7ImplementationActivationSliceSet] is the final IR7 implementation activation slice sequence
+  + [slice] is IR7-IA01 bounded operations dry-run implementation activation boundary and dependency decision
+  + [slice] is IR7-IA02 fixture source and expected-ledger seed material
+  + [slice] is IR7-IA03 operation request, dry-run result, and refusal model implementation
+  + [slice] is IR7-IA04 resource safety, human approval, rollback, and approval-stale model implementation
+  + [slice] is IR7-IA05 generated path policy and fixture runner implementation
+  + [slice] is IR7-IA06 contract tests and generated-output/no-live-effect proof
+  + [slice] is IR7-IA07 operations adapter, dependency, and live-control deferral decision
+  + [slice] is IR7-IA08 implementation completion review and proof pack
+
+  = must: preserve this order unless completion review rebakes IR7 implementation activation
+
+& [CanonicalIR7ImplementationActivationGate] is the activation rule for IR7 implementation work
+  + [current_ready_slice] is IR7-IA01
+  + [gated_slice] is IR7-IA02 until IR7-IA01 accepted
+  + [gated_slice] is IR7-IA03 until IR7-IA02 accepted
+  + [gated_slice] is IR7-IA04 until IR7-IA03 accepted
+  + [gated_slice] is IR7-IA05 until IR7-IA04 accepted
+  + [gated_slice] is IR7-IA06 until IR7-IA05 accepted
+  + [gated_slice] is IR7-IA07 until IR7-IA06 accepted
+  + [gated_slice] is IR7-IA08 until IR7-IA07 accepted
+
+& [CanonicalIR7ImplementationActivationModelRouting] is the model-routing record
+  + [IR7-IA01] is requires deeper reasoning
+  + [IR7-IA02] is GPT-5.3-Codex-Spark-suitable after IR7-IA01 acceptance
+  + [IR7-IA03] is GPT-5.3-Codex-Spark-suitable after IR7-IA02 acceptance
+  + [IR7-IA04] is GPT-5.3-Codex-Spark-suitable after IR7-IA03 acceptance unless resource safety or approval semantics change
+  + [IR7-IA05] is GPT-5.3-Codex-Spark-suitable after IR7-IA04 acceptance
+  + [IR7-IA06] is GPT-5.3-Codex-Spark-suitable after IR7-IA05 acceptance
+  + [IR7-IA07] is requires deeper reasoning
+  + [IR7-IA08] is requires deeper reasoning
+
+  = must: keep activation boundary, dependency decisions, adapter decisions, generated-output policy changes, dispatch boundaries, credential boundaries, network boundaries, operations safety changes, proof pack closure, and live-control boundaries under deeper reasoning
+  = must: treat bounded fixture, model, runner, generated-output proof, no-live-effect proof, and test implementation as Spark-suitable only after upstream activation gates are accepted
+
+& [SatisfactionSignature: IR7ImplementationActivation] is the valid SJS satisfaction signature for the IR7 implementation activation slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 152ff0a8-654d-4b3f-ba81-612d228e94f1
+  + [signed_subject] is docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_ir7_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is 01D3D78A28921D312C44DAF08FA1717E52DB6B0476A9373EAD81B06DCCCC543D
+  + [source_sha256] is 06C7C4BD16852E7139C74440256D2E3C2AAEB5D0CA4C744C985B2FD2BFB2884B
+  + [source_sha256] is 42422316F815194538CC36C6DC5F66902E95F92983D47806FFFCC39A8368B959
+  + [source_sha256] is F4D53FEF583FE94495D99F1DE0253CEDE3107FAB80317ACAAF1A2644CA72A96E
+  + [source_sha256] is 456479A2BE7D9D07FE5339DFD2EEE2592D57F4D5C28D06487161236BBA883468
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, activation_pack_imported, completion_review_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, dependency_limits_preserved, generated_output_limits_preserved, dispatch_limits_preserved, credential_limits_preserved, network_limits_preserved, live_control_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR7_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR7 implementation activation slices; no agent dispatch, operations control, or live machine control authorized
+
+& [RegistryRecord: IR7ImplementationActivation] is the durable identity ledger for the IR7 implementation activation slice surface
+  + [registry_uuid] is b8dff836-16c1-46ea-9bb6-ca949dddf3e8
+  + [manifest_node_uuid] is 607fb0cd-4543-4dc7-b402-8ad625037ab2
+  + [canonical_node_uuid] is 6a4b4cec-ef73-4512-8647-7993eeded7a3
+  + [slice_surface_uuid] is 8d99e554-4cdc-4891-b9ae-bfa95333bed0
+  + [signature_uuid] is 152ff0a8-654d-4b3f-ba81-612d228e94f1
+  + [closure_review_uuid] is a310870b-4e33-4298-9dae-1f14220b7123

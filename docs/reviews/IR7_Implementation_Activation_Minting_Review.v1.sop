@@ -1,0 +1,123 @@
+Subject: IR7 Implementation Activation Minting Review V1
+Date: 2026-05-27
+Review UUID: a310870b-4e33-4298-9dae-1f14220b7123
+
+@ [source_manifest] docs/source/2026-05-27_ir7_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR7_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR7-Implementation-Activation-Minting] is the completed-work review for minting IR7 implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_ir7_implementation_activation/Derived_IR7_Implementation_Activation_Source.sop
+  + [completed_output_sha256] is 01D3D78A28921D312C44DAF08FA1717E52DB6B0476A9373EAD81B06DCCCC543D
+  + [completed_output] is docs/source/2026-05-27_ir7_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 06C7C4BD16852E7139C74440256D2E3C2AAEB5D0CA4C744C985B2FD2BFB2884B
+  + [completed_output] is docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is 7F350A37C8E59BB13AB780DDA044723D49949CF759D9A6056CABA8C22DFA7C6D
+  + [completed_output] is docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is 3EF6170C2C8741A7342545A4BA0A55C3C13AACA6F9FDF92DB7F91830C58880E3
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7 implementation activation slice surface and open IR7-IA01
+  + [next_gate_result] is IR7-IA01 may open
+  + [next_model_route] is requires deeper reasoning for IR7-IA01 activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary
+
+  = must: treat this review as gate-opening evidence for IR7-IA01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, IR7 activation pack, IR7 completion review, or IR7 work state changes
+  = must: keep fixture source files, expected ledgers, implementation code, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated until explicit activation slices open bounded work
+
+& [IR7ImplementationActivationMintingVerification] is the verification result for IR7 implementation activation slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [slice_count] is 8
+  + [current_ready_slice] is IR7-IA01
+  + [gated_slice] is IR7-IA02
+  + [gated_slice] is IR7-IA03
+  + [gated_slice] is IR7-IA04
+  + [gated_slice] is IR7-IA05
+  + [gated_slice] is IR7-IA06
+  + [gated_slice] is IR7-IA07
+  + [gated_slice] is IR7-IA08
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [test_file_created] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7ImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: IR7-Implementation-Activation-Minting] is the support delta produced by minted IR7 implementation activation slices
+  + [new_support_record] is IR7-IA01 may define bounded operations dry-run implementation activation boundary and dependency decision
+  + [new_support_record] is IR7-IA02 through IR7-IA08 remain gated until upstream completion reviews accept each output
+  + [new_support_record] is Spark-suitable IR7 implementation work is limited to bounded IR7-IA02 through IR7-IA06 work after each upstream gate is accepted
+  + [new_support_record] is dependency, adapter, dispatch, credential, network, proof-pack, operations safety, and live-control boundary work remains deeper-reasoning work
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-Implementation-Activation-Minting] is the requirement delta produced by minted IR7 implementation activation slices
+  + [requirement_delta] is IR7-IA01 requires deeper reasoning
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, test file, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every IR7 implementation activation slice
+
+& [FaultReview: IR7-Implementation-Activation-Minting] is the fault review for minted IR7 implementation activation slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [implementation_leak_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7ImplementationActivationSlicesAccepted] is accepted
+    @ [support] [IR7ImplementationActivationMintingVerification]
+    @ [support] [SupportDelta: IR7-Implementation-Activation-Minting]
+    @ [support] [RequirementDelta: IR7-Implementation-Activation-Minting]
+    @ [support] [FaultReview: IR7-Implementation-Activation-Minting]
+
+& [NextSliceGate: IR7-IA01] is opened
+  + [opened_slice] is IR7-IA01 bounded operations dry-run implementation activation boundary and dependency decision
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 42422316F815194538CC36C6DC5F66902E95F92983D47806FFFCC39A8368B959
+  + [accepted_boundary_input] is docs/reviews/IR7_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is F4D53FEF583FE94495D99F1DE0253CEDE3107FAB80317ACAAF1A2644CA72A96E
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary control future implementation authority
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA01 next unless user redirects or a new fault invalidates this review
