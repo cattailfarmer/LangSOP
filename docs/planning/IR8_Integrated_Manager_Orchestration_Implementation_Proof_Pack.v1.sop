@@ -1,0 +1,175 @@
+Subject: IR8 Integrated Manager Orchestration Implementation Proof Pack V1
+Date: 2026-05-27
+Proof Pack UUID: e7d3691d-f250-413e-b6c5-8ca6b02aa588
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [ia01_review] docs/reviews/IR8_IA01_Completion_Review.v1.sop
+@ [ia02_review] docs/reviews/IR8_IA02_Completion_Review.v1.sop
+@ [ia03_review] docs/reviews/IR8_IA03_Completion_Review.v1.sop
+@ [ia04_review] docs/reviews/IR8_IA04_Completion_Review.v1.sop
+@ [ia05_review] docs/reviews/IR8_IA05_Completion_Review.v1.sop
+@ [ia06_review] docs/reviews/IR8_IA06_Completion_Review.v1.sop
+@ [ia07_review] docs/reviews/IR8_IA07_Completion_Review.v1.sop
+@ [dependency_dispatch_live_control_decision] docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+@ [generated_output_no_dispatch_no_live_effect_proof] docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+@ [contract_tests] tests/test_ir8_integrated_manager_contracts.py
+
+& [IR8IntegratedManagerOrchestrationImplementationProofPackV1] is the proof pack for accepting the bounded IR8 integrated manager orchestration implementation
+  + [proof_pack_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [implementation_scope] is manager authority classification, readiness recomputation, work packet candidates, proof obligations, completion gates, interrupt contexts, handoff records, human override records, refusal records, fault records, generated path policy, fixture runner, contract tests, generated-output proof, no-dispatch proof, no-live-effect proof, and dependency/dispatch/live-control deferral
+  + [implementation_limit] is no adapter, no dependency installation, no package metadata mutation, no transport, no UI, no command dispatch, no manager dispatch, no agent dispatch, no job dispatch, no process control, no GPU control, no model runtime control, no credential access, no network mutation, no destructive filesystem action, no operations control, and no live machine control
+  + [current_compile_result] is python -m compileall -q src tests passed after IR8-IA07
+  + [current_test_result] is python -m unittest discover -s tests passed 48 tests
+  + [current_targeted_ir8_test_result] is python -m unittest tests.test_ir8_integrated_manager_contracts passed 8 tests
+  + [current_targeted_ir7_test_result] is python -m unittest tests.test_ir7_operations_dry_run_contracts passed 7 tests
+  + [current_diff_check_result] is git diff --check passed with CRLF warnings only
+  + [generated_output_left_after_tests] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this proof pack as acceptance evidence for the bounded integrated manager orchestration implementation only
+  = must: preserve source documents, canonical specifications, completion reviews, and accepted decision documents as source authority
+  = must: preserve readiness projections, work packets, handoffs, refusals, faults, operation dry-runs, generated reports, fixture results, graph checkpoints, terminal output, chat messages, and carrier state as non-authoritative until rewritten into accepted SOP authority by a later reviewed process
+  = must: require a future source-preserved and SJS-processed authority path before manager dispatch, agent dispatch, job dispatch, operations control, live-control, dependency, adapter, transport, UI, credential, network, or machine-management implementation can be reconsidered
+
+& [AcceptedImplementationDigestLedger: IR8IntegratedManagerOrchestration] is the accepted digest ledger for IR8 implementation outputs
+  + [accepted_output] is docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+  + [accepted_output_sha256] is 0620088035E131857644334CB6BEF75300EE0EFCD171D757375F88291BDF76C5
+  + [accepted_output] is src/langsop/manager/__init__.py
+  + [accepted_output_sha256] is 51C9514ED8E28874DBEFABDCCB63B592630AAE1A0E8FADECE52864CEE219F7B5
+  + [accepted_output] is src/langsop/manager/records.py
+  + [accepted_output_sha256] is 6A057EBE5A9C7EE4348B2284A28E327A513EB4FD9FC17A7341423DD5A79E7CA6
+  + [accepted_output] is src/langsop/manager/authority.py
+  + [accepted_output_sha256] is 8BA59D90738A2D0D3621EB3D213F2BDBA9799A820DB2A20E3597CC0E097F496E
+  + [accepted_output] is src/langsop/manager/readiness.py
+  + [accepted_output_sha256] is AFAC896AA9801CD455275EBBEAB23899E6379E690AD42F2012FC7FF2310367E0
+  + [accepted_output] is src/langsop/manager/packets.py
+  + [accepted_output_sha256] is 31BA6AAC7CE8934A2FC39AAAAEC175EE3D8AA61BCED5AE0FDECC51843E627B3B
+  + [accepted_output] is src/langsop/manager/handoffs.py
+  + [accepted_output_sha256] is 030FDB63B93F32364119CD833B892DAB3D332CE61C5860ACD6258D0A54D63518
+  + [accepted_output] is src/langsop/manager/faults.py
+  + [accepted_output_sha256] is 6A8F91F3C1B081F5E159842E95FC2EC528597C7D7C10C021F7D6BC1148458F20
+  + [accepted_output] is src/langsop/manager/generated_paths.py
+  + [accepted_output_sha256] is 99945CCCA071150FCB8A7F8B6532B406D5A028BF5ED975E6E7820761318958F2
+  + [accepted_output] is src/langsop/manager/fixture_runner.py
+  + [accepted_output_sha256] is E7FC4BE250AA96CA7C6B0CE0750B67E652755D5DBBFBDE5A402AC4D318A6B37F
+  + [accepted_output] is tests/test_ir8_integrated_manager_contracts.py
+  + [accepted_output_sha256] is 3541005F6946A3C904197A71531B91DC4D77EFDCF8DE6F2C3E80DE146FD473F8
+  + [accepted_output] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  + [accepted_output_sha256] is DCD41A52D3D92A2CB483F2D7B339579FA780B46BAA544BBB03DAD68FF57E8A86
+  + [accepted_output] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_output_sha256] is 2D9768BA9C72598CD5A18CC3D0D74835749940F18908112E522BEBA568B53BD9
+
+& [AcceptedFixtureAndExpectedLedgerCoverage: IR8IntegratedManagerOrchestration] is the accepted fixture coverage ledger
+  + [fixture_source_root] is tests/fixtures/sop/ir8_integrated_manager/
+  + [fixture_source_count] is 12
+  + [expected_ledger_root] is tests/fixtures/expected/ir8_integrated_manager/
+  + [expected_ledger_count] is 6
+  + [fixture_corpus_run_count] is 12
+  + [fixture_corpus_failure_count] is 0
+  + [covered_case] is IR8M-001 accepted_source_ready_work_packet
+  + [covered_case] is IR8M-002 stale_boundary_input_blocks_ready_packet
+  + [covered_case] is IR8M-003 unsupported_requirement_blocks_packet
+  + [covered_case] is IR8M-004 contested_coordination_claim_interrupts
+  + [covered_case] is IR8M-005 mailbox_carrier_is_not_authority
+  + [covered_case] is IR8M-006 surface_action_request_requires_classification
+  + [covered_case] is IR8M-007 dry_run_success_not_dispatch_authority
+  + [covered_case] is IR8M-008 human_override_scoped_revocable
+  + [covered_case] is IR8M-009 generated_projection_not_authority
+  + [covered_case] is IR8M-010 graph_checkpoint_not_authority
+  + [covered_case] is IR8M-011 live_control_request_refused
+  + [covered_case] is IR8M-012 model_route_required
+  + [expected_ledger] is authority_readiness_packet_expected.sop
+  + [expected_ledger] is carrier_surface_handoff_expected.sop
+  + [expected_ledger] is dry_run_human_override_refusal_expected.sop
+  + [expected_ledger] is generated_checkpoint_model_route_expected.sop
+  + [expected_ledger] is no_dispatch_and_no_live_effect_expected.sop
+  + [expected_ledger] is stale_blocked_contested_fault_expected.sop
+
+& [NoDispatchLiveEffectAndNoAuthorityPromotionProof: IR8IntegratedManagerOrchestration] is the no-dispatch, no-live-effect, and no-authority-promotion proof ledger
+  + [readiness_projection_source_authority_status] is non_authoritative_projection
+  + [work_packet_dispatch_effect_performed] is false
+  + [work_packet_completion_review_required] is true
+  + [proof_obligation_non_authority_notice_required] is true
+  + [handoff_record_dispatch_generated] is false
+  + [human_override_direct_dispatch_authorized] is false
+  + [refusal_record_command_generated] is false
+  + [fault_record_live_control_authorized] is false
+  + [operations_dry_run_success_to_dispatch_permission] is false
+  + [coordination_claim_to_dispatch_authority] is false
+  + [mailbox_carrier_context_to_authority] is false
+  + [graph_checkpoint_to_authority] is false
+  + [generated_projection_to_source_authority] is false
+  + [generated_report_status] is generated_projection_only
+  + [generated_report_authority_status] is non_authoritative
+  + [source_doc_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [platform_mailbox_mutation_found] is false
+  + [credential_access_found] is false
+  + [network_mutation_found] is false
+  + [destructive_filesystem_action_found] is false
+  + [manager_dispatch_found] is false
+  + [agent_dispatch_found] is false
+  + [job_dispatch_found] is false
+  + [operations_control_found] is false
+  + [live_machine_control_found] is false
+
+& [DependencyDispatchAndLiveControlDeferralLedger: IR8IntegratedManagerOrchestration] is the accepted dependency, dispatch, and live-control deferral ledger
+  + [dependency_dispatch_live_control_decision] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  + [dependency_dispatch_live_control_decision_sha256] is 2D9768BA9C72598CD5A18CC3D0D74835749940F18908112E522BEBA568B53BD9
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [future_dispatch_authority_path_required] is true
+  + [future_live_control_authority_path_required] is true
+
+& [IR8ImplementationProofPackFaultReview] is the fault review for the IR8 implementation proof pack
+  + [missing_required_output_found] is false
+  + [fixture_coverage_gap_found] is false
+  + [test_failure_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [command_dispatch_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8IntegratedManagerOrchestrationImplementationProofPackAccepted] is accepted
+    @ [support] [AcceptedImplementationDigestLedger: IR8IntegratedManagerOrchestration]
+    @ [support] [AcceptedFixtureAndExpectedLedgerCoverage: IR8IntegratedManagerOrchestration]
+    @ [support] [NoDispatchLiveEffectAndNoAuthorityPromotionProof: IR8IntegratedManagerOrchestration]
+    @ [support] [DependencyDispatchAndLiveControlDeferralLedger: IR8IntegratedManagerOrchestration]
+    @ [support] [IR8ImplementationProofPackFaultReview]

@@ -1,0 +1,117 @@
+Subject: IR8 Implementation Completion Review V1
+Date: 2026-05-27
+Review UUID: 5a4fcef8-0bbc-408f-952d-417ec5367521
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+@ [ia07_review] docs/reviews/IR8_IA07_Completion_Review.v1.sop
+@ [dependency_dispatch_live_control_decision] docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+@ [contract_tests] tests/test_ir8_integrated_manager_contracts.py
+
+& [CompletedWorkReview: IR8-IA08] is the completed-work review for IR8-IA08 implementation completion review and proof pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-IA08
+  + [completed_output] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [completed_output] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8 implementation and close IR8 implementation activation sequence
+  + [next_gate_result] is no IR8 implementation activation slice remains open
+  + [future_rebake_required_for_manager_adapters_dispatch_and_live_control] is true
+
+  = must: treat this review as final acceptance evidence for the bounded IR8 integrated manager orchestration implementation only
+  = must: require a future whole-field rebake before any manager adapter, dispatch, dependency, live-control, operations-control, machine-management, UI, transport, credential, network, process, GPU, model-runtime, or job-control implementation can open
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR8ImplementationCompletionVerification] is the verification result for IR8 implementation completion
+  + [implementation_proof_pack_present] is true
+  + [implementation_proof_pack_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [manager_init_present] is true
+  + [record_model_present] is true
+  + [authority_model_present] is true
+  + [readiness_model_present] is true
+  + [packet_model_present] is true
+  + [handoff_model_present] is true
+  + [fault_model_present] is true
+  + [generated_path_policy_present] is true
+  + [fixture_runner_present] is true
+  + [contract_tests_present] is true
+  + [generated_output_no_dispatch_no_live_effect_proof_present] is true
+  + [dependency_dispatch_and_live_control_deferral_decision_present] is true
+  + [fixture_source_count] is 12
+  + [expected_ledger_count] is 6
+  + [fixture_corpus_run_count] is 12
+  + [baseline_test_count] is 48
+  + [targeted_ir8_test_count] is 8
+  + [targeted_ir7_test_count] is 7
+  + [test_failure_count] is 0
+  + [generated_output_left_after_tests] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR8ImplementationCompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+    @ [support] tests/test_ir8_integrated_manager_contracts.py
+    @ [support] docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+    @ [support] docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+
+& [SupportDelta: IR8ImplementationCompletion] is the support delta produced by IR8 implementation completion
+  + [new_support_record] is P7 coordination and multi-agent governance now has a bounded integrated manager orchestration implementation proof for preserving claims, handoffs, conflicts, human overrides, and no-dispatch boundaries
+  + [new_support_record] is P8 proof, fixtures, evaluation, and faults now has a manager fixture corpus, expected ledger set, fixture runner, contract tests, and proof pack for manager orchestration behavior
+  + [new_support_record] is P9 operations-manager safety now has manager-to-operations dry-run handoff proof without opening operations control or live control
+  + [new_support_record] is future AI collaboration platform manager work remains blocked until new source-preserved, SJS-processed, and reviewed adapter, dispatch, dependency, or live-control authority exists
+  + [new_support_record] is future rebake can use IR8 proof pack as integrated manager orchestration evidence
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8ImplementationCompletion] is the requirement delta produced by IR8 implementation completion
+  + [requirement_delta] is no current IR8 implementation activation slice remains open
+  + [requirement_delta] is future work requires rebake before opening manager adapter, dependency, dispatch, live-control, operations-control, machine-management, UI, transport, credential, network, process, GPU, model-runtime, or job-control implementation
+  + [requirement_delta] is any future dispatch or live-control work requires source preservation, SJS processing, explicit least-privilege boundaries, dry-run proof, rollback or abort proof, and completion review before implementation
+  + [requirement_delta] is any future model-routing recommendation must state Spark-suitable or deeper-reasoning status under the model budget routing SOP
+
+& [FaultReview: IR8ImplementationCompletion] is the fault review for IR8 implementation completion
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_output_found] is false
+  + [test_failure_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [command_dispatch_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8ImplementationAccepted] is accepted
+    @ [support] [IR8ImplementationCompletionVerification]
+    @ [support] [SupportDelta: IR8ImplementationCompletion]
+    @ [support] [RequirementDelta: IR8ImplementationCompletion]
+    @ [support] [FaultReview: IR8ImplementationCompletion]

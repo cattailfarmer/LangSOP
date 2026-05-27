@@ -208,7 +208,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
   + [support_record] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
   + [support_record] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA08 implementation completion proof pack and review not yet accepted
+  + [support_record] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [support_record] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  + [support_gap] is post-IR8 implementation readiness rebake not yet accepted
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -334,26 +336,28 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR8_IA06_Completion_Review.v1.sop
   + [support_record] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
   + [support_record] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
-  + [support_gap] is IR8-IA08 implementation completion proof pack and review not yet accepted
+  + [support_record] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [support_record] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  + [support_gap] is post-IR8 implementation readiness rebake not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-IA08 before dependencies, adapters, transports, UI, or live operations control
-  = must: route IR8-IA08 as requiring deeper reasoning because final implementation acceptance affects future operations-manager readiness, dispatch readiness, and live-control boundaries
+  = must: run post-IR8 implementation readiness rebake before dependencies, adapters, transports, UI, or live operations control
+  = must: route post-IR8 readiness rebake as requiring deeper reasoning because completed IR8 implementation changes whole-field support, manager readiness, dispatch readiness, and live-control gates
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: IR8-IA08-ImplementationCompletionReviewAndProofPack] is ready_for_execution
-  + [chunk_id] is IR8
-  + [chunk_name] is IR8-IA08 implementation completion review and proof pack
-  + [authority_basis] is docs/reviews/IR8_IA07_Completion_Review.v1.sop
-  + [activation_slice_surface] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+& [CurrentReadyChunk: PostIR8ImplementationReadinessRebake] is ready_for_execution
+  + [chunk_id] is post-IR8
+  + [chunk_name] is post-IR8 implementation readiness rebake
+  + [authority_basis] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  + [activation_slice_surface] is docs/planning/Portion_And_Slice_Map.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is final implementation acceptance affects future operations-manager readiness, dispatch readiness, and live-control boundaries
+  + [model_route_reason] is completed IR8 implementation changes whole-field support, manager readiness, dispatch readiness, and live-control gates
 
-  = must: create only docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop and docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  = must: create only docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop, docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop, and docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop unless a new source-preservation need is discovered
   = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence
