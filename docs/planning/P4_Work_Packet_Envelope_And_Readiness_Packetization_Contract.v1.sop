@@ -1,0 +1,157 @@
+Subject: P4 Work Packet Envelope And Readiness Packetization Contract V1
+Date: 2026-05-27
+Contract UUID: 7f85b44e-70d9-4cf7-b409-d64320050df9
+
+@ [p4_slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [p4_s01_output] docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+@ [p4_s01_review] docs/reviews/P4_S01_Completion_Review.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [support_readiness_contract] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+@ [manager_packet_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+
+& [P4WorkPacketEnvelopeAndReadinessPacketizationContractV1] is the P4-S02 packet envelope contract
+  + [slice_id] is P4-S02
+  + [slice_name] is work packet envelope and readiness packetization contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [contract_result] is P4_packet_envelope_defined_without_assignment_or_dispatch
+  + [next_gate_result] is P4-S03 may open
+  + [packet_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat work packets as reviewable records that organize work, not as commands
+  = must: require every packet to preserve authority basis, dependency closure, proof obligations, completion review, model route, forbidden scope, stale triggers, and no-dispatch notices
+  = must: reject packetization when readiness is blocked, stale, contradicted, ambiguous, unsupported, unreviewed, or missing proof obligations
+  = must: preserve P3 support readiness nonpromotion rules and P4-S01 authority class distinctions
+
+& [P4WorkPacketRecordEnvelope] is the required envelope for P4 work_packet_candidate records
+  + [required_field] is packet_id
+  + [required_field] is packet_uuid
+  + [required_field] is packet_kind
+  + [required_field] is packet_subject_ref
+  + [required_field] is packet_state
+  + [required_field] is authority_basis_ref_set
+  + [required_field] is readiness_projection_ref
+  + [required_field] is capability_ref_set
+  + [required_field] is requirement_ref_set
+  + [required_field] is support_ref_set
+  + [required_field] is support_gap_review
+  + [required_field] is dependency_closure_set
+  + [required_field] is accepted_boundary_input_set
+  + [required_field] is expected_output_set
+  + [required_field] is verification_oracle
+  + [required_field] is proof_obligation_set
+  + [required_field] is model_route
+  + [required_field] is model_route_reason
+  + [required_field] is forbidden_scope_set
+  + [required_field] is completion_review_required
+  + [required_field] is support_delta_obligation
+  + [required_field] is requirement_delta_obligation
+  + [required_field] is stale_trigger_set
+  + [required_field] is coordination_prerequisite
+  + [required_field] is no_assignment_notice
+  + [required_field] is no_dispatch_notice
+  + [required_field] is no_live_effect_notice
+  + [required_field] is authority_notice
+  + [required_field] is freshness_state
+  + [required_field] is lineage_edge_set
+
+  = must: reject packetization when any required_field is absent
+  = must: keep field values traceable to accepted readiness, support, authority, proof, or boundary records
+
+| [P4PacketKind] is (design_slice | planning_contract | fixture_oracle_plan | implementation_activation_candidate | proof_pack_candidate | blocker_resolution)
+
+| [P4PacketState] is (candidate | blocked | stale | contradicted | ambiguous | contested | unsafe | ready_for_claim | accepted_for_review)
+
+& [P4ReadinessPacketizationInputContract] is the input contract for producing P4 work_packet_candidate records
+  + [required_input] is readiness_projection with readiness_state ready_to_packetize
+  + [required_input] is currentness_state current
+  + [required_input] is authority_basis_ref_set current and hash-checked
+  + [required_input] is requirement_ref_set complete for the packet boundary
+  + [required_input] is support_ref_set current or explicit support_gap_review accepted as nonblocking
+  + [required_input] is proof_route present and reviewable
+  + [required_input] is completion_review_required true
+  + [required_input] is expected_output_set explicit and bounded
+  + [required_input] is verification_oracle explicit and reviewable
+  + [required_input] is model_route explicit with Spark-suitable or requires deeper reasoning classification
+  + [required_input] is forbidden_scope_set explicit
+  + [required_input] is coordination_prerequisite declared as unclaimed_allowed, claim_required_before_execution, or claim_present
+  + [required_input] is no_assignment_notice present
+  + [required_input] is no_dispatch_notice present
+  + [required_input] is no_live_effect_notice present
+
+  = must: reject missing or unknown input state as blocked, not ready
+  = must: route ambiguous authority, semantic identity, or scope to SOP_first_interrupt
+  = must: treat readiness_projection as a source for packetization only through accepted review, never as source authority
+
+& [P4DependencyClosureRuleSet] is the dependency rule set for P4 packet boundaries
+  + [closure_rule] is every dependency must be inside packet expected_output_set, accepted_boundary_input_set, or explicit blocker_resolution route
+  + [closure_rule] is external dependency must be cited as accepted_boundary_input or support_gap
+  + [closure_rule] is downstream packet may not depend on a gated P4 slice except through its accepted completion review
+  + [closure_rule] is fixture material, implementation code, adapters, transports, UI, assignment, dispatch, operations control, and live-control work are always outside P4 planning packet closure
+  + [closure_rule] is Spark-suitable packetization requires stable accepted contract boundaries and no semantic authority question
+
+  = must: emit blocked packet when dependency closure cannot be proven
+  = must: emit fault_record when a packet hides dependency leakage as readiness
+
+& [P4PacketizationDecisionMatrix] is the decision matrix for packet creation
+  + [decision_case] is valid_packet when readiness is ready_to_packetize, input contract is satisfied, dependencies are closed, no blocking gap remains, authority is current, completion review is required, model route is explicit, and no forbidden scope appears
+  + [decision_case] is blocked_gap when required support, proof, field, review, or dependency closure is missing
+  + [decision_case] is stale_readiness when readiness, authority basis, accepted input, completion review, or coordination basis is stale
+  + [decision_case] is contradicted_readiness when readiness conflicts with accepted support, gap, proof, authority, or review evidence
+  + [decision_case] is ambiguous_readiness when packet subject, authority basis, requirement scope, or model route cannot be resolved mechanically
+  + [decision_case] is contested_packet when coordination claim state blocks or contests the packet boundary
+  + [decision_case] is unsafe_packet when requested scope touches operations control, live control, credentials, network exposure, process control, GPU control, destructive filesystem action, or job dispatch
+  + [decision_case] is missing_oracle when verification_oracle or completion_review_required is absent
+  + [decision_case] is missing_model_route when model_route is absent or lacks Spark-suitable versus requires deeper reasoning classification
+  + [decision_case] is false_ready_fault when a packet would be generated from any non-ready state
+
+  = must: preserve blocked, stale, contradicted, ambiguous, contested, unsafe, and false-ready cases as reviewable output
+  = must: refuse packet generation rather than filling missing authority fields from guesswork
+
+& [P4WorkPacketOutputContract] is the output contract for packetization
+  + [success_output] is work_packet_candidate with packet_state ready_for_claim or candidate, authority_class derived_projection_or_proof_backed_candidate, and no_assignment_notice no_dispatch_notice no_live_effect_notice attached
+  + [blocked_output] is blocked work_packet_candidate or support_gap with blocker_ref_set and required_resolution
+  + [stale_output] is stale_projection or stale work_packet_candidate with stale_source_ref_set and required_refresh
+  + [contradicted_output] is contradicted work_packet_candidate or fault_record with contradiction_ref_set
+  + [ambiguous_output] is SOP_first_interrupt with required_context_ref_set
+  + [contested_output] is contested work_packet_candidate with coordination_claim_ref_set and required_rendezvous
+  + [unsafe_output] is unsafe_work_notice or refusal record with required_authority_ref_set
+  + [fault_output] is fault_record with fault_kind false_ready_packet dependency_leak hidden_authority_drift invalid_input_shape forbidden_scope_leak or operator_contract_violation
+
+  = must: keep every output non-executing and reviewable
+  = must: never emit assignment, dispatch, command, queue, adapter call, transport call, UI effect, operation effect, or live-control effect
+
+& [P4PacketProofObligationSet] is the required proof set for P4 packet records
+  + [proof_obligation] is source_authority_basis_check
+  + [proof_obligation] is SJS_signature_check when canonical authority is trusted
+  + [proof_obligation] is boundary_hash_check for accepted inputs
+  + [proof_obligation] is readiness_currentness_check
+  + [proof_obligation] is dependency_closure_check
+  + [proof_obligation] is required_field_check
+  + [proof_obligation] is model_route_check
+  + [proof_obligation] is completion_review_required_check
+  + [proof_obligation] is support_delta_obligation_check
+  + [proof_obligation] is requirement_delta_obligation_check
+  + [proof_obligation] is stale_trigger_check
+  + [proof_obligation] is forbidden_scope_absence_check
+  + [proof_obligation] is no_assignment_no_dispatch_no_live_effect_check
+
+  = must: block packet acceptance when any proof obligation is missing, stale, contradicted, or unsupported
+
+& [P4S02DownstreamGate] is the gate opened by P4-S02
+  + [opened_slice] is P4-S03 completion review delta gate and rebake trigger contract
+  + [activation_basis] is P4 packet envelope accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is completion gates decide whether learning changes the whole-pie surface before next work opens
+  + [completion_review_required] is true
+
+  = must: open P4-S03 only after P4-S02 completion review accepts this packet envelope
+  = must: keep P4-S04 through P4-S06 gated until their predecessor reviews accept

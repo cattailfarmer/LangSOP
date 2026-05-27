@@ -1,0 +1,75 @@
+Subject: P4 S04 Completion Review V1
+Date: 2026-05-27
+Review UUID: ab4108aa-1005-4455-a621-bd678156e5ac
+
+@ [completed_output] docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+@ [p4_s03_output] docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+@ [p4_s03_review] docs/reviews/P4_S03_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P4-S04] is the completed-work review for P4-S04 manager handoff and no-dispatch packet boundary contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P4-S04
+  + [completed_output] is docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+  + [completed_output_sha256] is F971C0DBE018918D8A976A8BECDAAAD036208393DA0B60BC18C3297738055F7A
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P4-S05
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P4-S05 may open
+  + [model_route_for_next_work] is GPT-5.3-Codex-Spark-suitable only if packet semantics and authority rules remain unchanged during P4-S05
+  + [model_route_reason] is fixture oracle planning is bounded after packet envelope, delta gate, and no-dispatch boundaries are accepted
+
+  = must: treat this review as gate-opening evidence for P4-S05 only
+  = must: rerun this review if P4-S04 output, P4-S03 output, P4-S03 review, packet envelope, completion gate, manager packet contract, or manager handoff contract changes
+  = must: keep adapter implementation, transport implementation, mailbox IO, assignment, dispatch, operations control, and live machine control gated
+
+& [P4S04Verification] is the verification result for P4-S04
+  + [handoff_boundary_class_set_present] is true
+  + [common_handoff_required_field_set_present] is true
+  + [packet_candidate_to_claim_boundary_present] is true
+  + [surface_and_carrier_boundary_present] is true
+  + [operations_dry_run_and_live_control_deferral_boundary_present] is true
+  + [no_dispatch_decision_matrix_present] is true
+  + [packet_candidate_distinguished_from_dispatch_decision] is true
+  + [ready_for_claim_distinguished_from_assigned] is true
+  + [claim_present_distinguished_from_dispatched] is true
+  + [surface_context_distinguished_from_authority] is true
+  + [dry_run_context_distinguished_from_live_control] is true
+  + [P4-S05_opened] is true
+  + [P4-S06_opened] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [mailbox_io_created] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P4S04Accepted] is accepted
+    @ [support] docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+
+& [SupportDelta: P4-S04] is the support delta produced by P4-S04
+  + [new_support_record] is P4 handoff classes distinguish packet candidates, surface handoffs, surface requests, coordination handoffs, operations dry-run handoffs, dispatch decisions, and live-control deferrals
+  + [new_support_record] is P4 ready_for_claim means coordination readiness only and never assignment or dispatch
+  + [new_support_record] is P4 surfaces and carriers remain context or projection until classified
+  + [support_status] is accepted
+
+& [RequirementDelta: P4-S04] is the requirement delta produced by P4-S04
+  + [requirement_delta] is P4-S05 fixture oracle planning must include forbidden dispatch, no-live-effect, handoff-promotion, and rebake-required cases
+  + [requirement_delta] is downstream surfaces and manager work must preserve no-dispatch and no-live-effect notices across projections
+
+& [NextSliceGate: P4-S05] is opened
+  + [opened_slice] is P4-S05 packet trace fixture oracle and no-live-effect plan
+  + [authority_basis] is docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+  + [authority_basis_sha256] is F971C0DBE018918D8A976A8BECDAAAD036208393DA0B60BC18C3297738055F7A
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P4-S04 acceptance unless packet semantics or authority rules change
+  + [completion_review_required] is true
+
+  = must: execute P4-S05 next unless user redirects, packet semantics change, or a new authority fault invalidates this review

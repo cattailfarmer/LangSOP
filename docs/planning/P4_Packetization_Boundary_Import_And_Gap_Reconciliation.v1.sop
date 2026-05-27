@@ -1,0 +1,114 @@
+Subject: P4 Packetization Boundary Import And Gap Reconciliation V1
+Date: 2026-05-27
+Boundary Import UUID: ec7e4a4f-8adf-44aa-ade4-c651790244a1
+
+@ [p4_slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [p4_minting_review] docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+@ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+@ [completion_delta_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [support_readiness_contract] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+@ [manager_packet_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [manager_handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+
+& [P4PacketizationBoundaryImportAndGapReconciliationV1] is the P4-S01 boundary import for packetization
+  + [slice_id] is P4-S01
+  + [slice_name] is boundary import and packetization gap reconciliation
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [reconciliation_result] is accepted_packetization_inputs_imported_and_P4_gap_set_defined
+  + [next_gate_result] is P4-S02 may open
+  + [packet_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as planning boundary authority only
+  = must: preserve accepted packetization inputs as boundary inputs until a later completion review explicitly supersedes them
+  = must: define P4 gaps as work needed for P4-S02 through P4-S05, not as immediate implementation permission
+  = must: keep readiness projections, work packet candidates, handoff records, dispatch decisions, and live-control decisions in distinct authority classes
+
+& [AcceptedPacketizationInputSet: P4-S01] is the imported boundary input set
+  + [accepted_input] is docs/operators/Work_Packet_Generation_Contract.v1.sop
+  + [accepted_input_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
+  + [accepted_role] is baseline operator contract for turning current ready_to_packetize readiness into bounded work_packet records
+  + [preserved_limit] is work_packet records are bounded work views and never assignment, claim, dispatch, execution, or live-control commands
+  + [accepted_input] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+  + [accepted_input_sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
+  + [accepted_role] is baseline completion review gate for support_delta, requirement_delta, stale, contradiction, coordination blocker, and rebake decisions
+  + [preserved_limit] is next gate opens only through accepted completion_review evidence
+  + [accepted_input] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
+  + [accepted_input_sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
+  + [accepted_role] is readiness_projection contract that can open packetization gates after review
+  + [preserved_limit] is readiness recompute cannot create work_packet output, assignment, dispatch, or live-control authority
+  + [accepted_input] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [accepted_input_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [accepted_role] is manager-cycle packet candidate and proof contract
+  + [preserved_limit] is manager-cycle outputs remain records until later accepted implementation and execution authority defines bounded effect routes
+  + [accepted_input] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+  + [accepted_input_sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
+  + [accepted_role] is manager handoff and carrier boundary contract
+  + [preserved_limit] is handoff records may inform readiness and review but cannot implement adapters, mailbox IO, dry-run execution, dispatch, operations control, or live effects
+
+  = must: require every P4 downstream output to cite the relevant accepted_input and preserved_limit
+  = must: mark P4 downstream work stale if any accepted_input hash changes
+
+& [P4PacketizationGapMatrix] is the gap matrix opened by the imported boundary set
+  + [gap] is P4-G01 work packet envelope lacks P4-specific required field vocabulary for packet candidates, readiness packetization, support and requirement deltas, model route, proof obligations, and stale triggers
+  + [gap_status] is assigned_to_P4-S02
+  + [gap] is P4-G02 completion review delta gate needs P4-specific rebake and next-gate wording tied to whole-pie packetization
+  + [gap_status] is assigned_to_P4-S03
+  + [gap] is P4-G03 manager handoff needs a no-dispatch packet boundary that separates packet candidate, ready_for_claim, claim request, handoff notice, dispatch decision, and live-control deferral
+  + [gap_status] is assigned_to_P4-S04
+  + [gap] is P4-G04 packet trace fixture oracle and no-live-effect plan needs scenario coverage without creating fixture files or expected ledgers
+  + [gap_status] is assigned_to_P4-S05
+  + [gap] is P4-G05 downstream P5, P6, P7, P8, and P9 gates need a P4 completion review before consuming packetization authority
+  + [gap_status] is assigned_to_P4-S06
+
+  = must: keep P4-G01 through P4-G05 as contiguous downstream slices
+  = must: block P5 LangGraph runtime, P6 surface projection expansion, P7 dispatch-adjacent coordination expansion, P8 fixture material creation, and P9 live-control reconsideration until P4-S06 accepts the relevant gates
+
+& [PacketizationAuthorityClassMatrix: P4-S01] is the authority distinction matrix for P4 packetization
+  + [record_kind] is readiness_projection
+  + [authority_class] is surface_projection_non_authority_or_proof_backed_projection
+  + [allowed_effect] is may support packetization when current, reviewed, and non-stale
+  + [forbidden_effect] is cannot assign, dispatch, execute, or authorize operations
+  + [record_kind] is work_packet_candidate
+  + [authority_class] is derived_projection_or_proof_backed_candidate
+  + [allowed_effect] is may be reviewed, claimed through coordination, or projected to surfaces
+  + [forbidden_effect] is cannot itself become assignment, dispatch, execution, or live-control command
+  + [record_kind] is coordination_claim
+  + [authority_class] is coordination_boundary_evidence
+  + [allowed_effect] is may constrain readiness, conflict review, and work boundary visibility
+  + [forbidden_effect] is cannot dispatch agents or accept completion
+  + [record_kind] is manager_handoff_record
+  + [authority_class] is authority_noticed_handoff_projection
+  + [allowed_effect] is may route requests to manager classification, refusal, SOP-first interrupt, or human review
+  + [forbidden_effect] is cannot implement adapters, mutate canonical authority, dispatch, or control operations
+  + [record_kind] is dispatch_decision
+  + [authority_class] is not_authorized_in_P4
+  + [allowed_effect] is none
+  + [forbidden_effect] is all dispatch remains gated until separate source-preserved authority exists
+  + [record_kind] is live_control_decision
+  + [authority_class] is not_authorized_in_P4
+  + [allowed_effect] is none
+  + [forbidden_effect] is all operations control and live machine control remain gated
+
+  = must: use this matrix to reject authority promotion in P4-S02 through P4-S06
+  = must: preserve unknown or mixed authority as SOP_first_interrupt or blocked review rather than treating it as ready
+
+& [P4S01DownstreamGate] is the gate opened by P4-S01
+  + [opened_slice] is P4-S02 work packet envelope and readiness packetization contract
+  + [activation_basis] is P4-G01 assigned and accepted inputs imported
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is the packet envelope controls how readiness becomes work packets without becoming assignment or dispatch
+  + [completion_review_required] is true
+
+  = must: open P4-S02 only after P4-S01 completion review accepts this boundary import
+  = must: keep P4-S03 through P4-S06 gated until their predecessor reviews accept

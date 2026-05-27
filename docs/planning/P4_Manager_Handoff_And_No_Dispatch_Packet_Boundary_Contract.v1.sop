@@ -1,0 +1,143 @@
+Subject: P4 Manager Handoff And No Dispatch Packet Boundary Contract V1
+Date: 2026-05-27
+Contract UUID: 2100d0d3-c821-4937-b5b6-b20606b93534
+
+@ [p4_slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [p4_s03_output] docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+@ [p4_s03_review] docs/reviews/P4_S03_Completion_Review.v1.sop
+@ [p4_s02_output] docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+@ [manager_packet_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [manager_handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+
+& [P4ManagerHandoffAndNoDispatchPacketBoundaryContractV1] is the P4-S04 manager handoff and no-dispatch packet boundary contract
+  + [slice_id] is P4-S04
+  + [slice_name] is manager handoff and no-dispatch packet boundary contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [contract_result] is manager_handoff_records_bound_without_assignment_dispatch_or_live_effect
+  + [next_gate_result] is P4-S05 may open
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [mailbox_io_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define handoff records as reviewable authority-noticed records, not adapter, transport, mailbox, dispatch, or live-control effects
+  = must: distinguish packet candidate, manager handoff, coordination handoff, operations dry-run handoff, dispatch decision, and live-control deferral records
+  = must: require every handoff to carry authority_notice, freshness_state, source refs, producing component, consuming component, expected response route, stale triggers, forbidden scope, and no-effect notices
+  = must: route ambiguous or forbidden handoff requests to SOP_first_interrupt or refusal
+
+& [P4HandoffBoundaryClassSet] is the boundary class set for P4 manager handoff records
+  + [handoff_class] is packet_candidate
+  + [authority_class] is derived_projection_or_proof_backed_candidate
+  + [allowed_effect] is may be reviewed, displayed, filtered, claimed through coordination, or used as input to manager classification
+  + [forbidden_effect] is assignment, dispatch, command execution, adapter effect, transport effect, operations effect, or live-control effect
+  + [handoff_class] is manager_surface_handoff
+  + [authority_class] is authority_noticed_projection_request
+  + [allowed_effect] is may ask surfaces to display packet state, blockers, proof obligations, and no-effect notices
+  + [forbidden_effect] is surface mutation of canonical authority, acceptance of completion, dispatch, or operations control
+  + [handoff_class] is surface_manager_request
+  + [authority_class] is carrier_context_until_classified
+  + [allowed_effect] is may request manager classification, refusal, SOP-first interrupt, or human review
+  + [forbidden_effect] is direct readiness mutation, packet acceptance, dispatch, command execution, or live control
+  + [handoff_class] is manager_coordination_handoff
+  + [authority_class] is coordination_boundary_evidence
+  + [allowed_effect] is may request or report coordination claim state, conflict state, stale state, and release condition
+  + [forbidden_effect] is dispatching agents, assigning work, accepting completion, or authorizing operations
+  + [handoff_class] is manager_operations_dry_run_handoff
+  + [authority_class] is operation_like_review_context
+  + [allowed_effect] is may request dry-run review only when accepted dry-run authority exists
+  + [forbidden_effect] is live operations, command execution, process control, GPU control, job dispatch, credential access, network exposure mutation, or live machine control
+  + [handoff_class] is dispatch_decision
+  + [authority_class] is not_authorized_in_P4
+  + [allowed_effect] is none
+  + [forbidden_effect] is all dispatch effects
+  + [handoff_class] is live_control_deferral
+  + [authority_class] is explicit_deferral_notice
+  + [allowed_effect] is may preserve a blocked request and missing authority basis
+  + [forbidden_effect] is operations control or live machine control
+
+  = must: classify every handoff record into exactly one handoff_class before it can influence readiness
+  = must: block or interrupt when a record mixes packet candidate and dispatch decision authority
+
+& [P4CommonHandoffRequiredFieldSet] is the required field set for every P4 handoff record
+  + [required_field] is handoff_id
+  + [required_field] is handoff_uuid
+  + [required_field] is handoff_class
+  + [required_field] is producing_component_ref
+  + [required_field] is consuming_component_ref
+  + [required_field] is source_ref_set
+  + [required_field] is source_authority_basis_ref_set
+  + [required_field] is packet_or_request_ref
+  + [required_field] is authority_notice
+  + [required_field] is freshness_state
+  + [required_field] is expected_response_route
+  + [required_field] is stale_trigger_set
+  + [required_field] is forbidden_scope_set
+  + [required_field] is no_assignment_notice
+  + [required_field] is no_dispatch_notice
+  + [required_field] is no_live_effect_notice
+  + [required_field] is refusal_route
+  + [required_field] is SOP_first_interrupt_route
+
+  = must: reject handoff record acceptance when any required_field is absent
+  = must: preserve no_dispatch_notice and no_live_effect_notice through all projections and carrier surfaces
+
+& [P4PacketCandidateToClaimBoundary] is the boundary between packet readiness and coordination claims
+  + [packet_state] is candidate
+  + [packet_state] is ready_for_claim
+  + [claim_effect] is coordination readiness only
+  + [claim_required_before_execution] is a future coordination prerequisite, not dispatch
+  + [claim_record_allowed] is coordination_claim_request and coordination_claim_state_notice
+  + [claim_record_forbidden_effect] is assignment, dispatch, command execution, completion acceptance, operations control, or live-control authority
+
+  = must: keep ready_for_claim distinct from assigned
+  = must: keep claim_present distinct from dispatched
+  = must: route contested claims to blocked review or rendezvous, not dispatch
+
+& [P4SurfaceAndCarrierBoundary] is the boundary for chat, terminal, web, IRC, Matrix, Codex, and debug surfaces
+  + [surface_role] is carrier_or_projection_until_later_adapter_authority
+  + [allowed_action] is display, filter, summarize, propose response, request classification, request review, or request rebake
+  + [forbidden_action] is mutate canonical authority, accept completion, write source authority, dispatch agents, run commands, control operations, or authorize live control
+  + [required_notice] is authority_notice
+  + [required_notice] is freshness_state
+  + [required_notice] is no_assignment_notice
+  + [required_notice] is no_dispatch_notice
+  + [required_notice] is no_live_effect_notice
+
+  = must: classify all carrier text, UI events, chat messages, terminal output, mailbox messages, and projection actions before they affect readiness
+  = must: treat carrier intent as evidence or request only, not authority
+
+& [P4OperationsDryRunAndLiveControlDeferralBoundary] is the boundary for operation-like handoffs
+  + [dry_run_allowed_in_P4] is false unless a previously accepted dry-run authority is cited for review-only context
+  + [live_control_allowed_in_P4] is false
+  + [operation_request_output] is refusal_return_notice, SOP_first_interrupt_context, unsafe_work_notice, or live_control_deferral
+  + [required_missing_authority_notice] is separate source-preserved live-control authority absent
+  + [required_missing_proof_notice] is rollback, abort, monitoring, credential boundary, network boundary, and human approval proof absent unless separately cited
+
+  = must: prevent dry-run success, fixture success, carrier request, or human approval display from becoming live-control authority
+  = must: require future source-preserved SJS authority before operation-like effects can be reconsidered
+
+& [P4NoDispatchDecisionMatrix] is the decision matrix for handoff requests
+  + [decision_case] is display_or_review when handoff is classified, fresh, authority-noticed, no-effect, and within P4 forbidden scope
+  + [decision_case] is request_coordination_claim when packet is ready_for_claim and coordination prerequisite says claim_required_before_execution
+  + [decision_case] is block_for_missing_authority when dispatch, adapter, transport, live-control, command, process, GPU, job, credential, network, destructive filesystem, or operation effect is requested
+  + [decision_case] is SOP_first_interrupt when authority class is ambiguous, mixed, stale, contradicted, or hidden scope expansion appears
+  + [decision_case] is refusal when requested effect is forbidden by P4 safety boundary
+  + [decision_case] is rebake_required when handoff semantics change packet shape, stale triggers, no-dispatch boundary, or downstream gates
+
+  = must: never emit dispatch as a decision_case in P4
+  = must: preserve blocked and refused handoff requests for review rather than erasing them
+
+& [P4S04DownstreamGate] is the gate opened by P4-S04
+  + [opened_slice] is P4-S05 packet trace fixture oracle and no-live-effect plan
+  + [activation_basis] is P4 manager handoff and no-dispatch boundary accepted
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P4-S04 acceptance unless packet semantics or authority rules change
+  + [model_route_reason] is fixture oracle planning is bounded after packet envelope, delta gate, and no-dispatch boundaries are accepted
+  + [completion_review_required] is true
+
+  = must: open P4-S05 only after P4-S04 completion review accepts this no-dispatch handoff boundary
+  = must: keep P4-S06 gated until P4-S05 completion review accepts

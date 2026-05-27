@@ -1,0 +1,122 @@
+Subject: P4 Packet Trace Fixture Oracle And No Live Effect Plan V1
+Date: 2026-05-27
+Fixture Plan UUID: bafd8e53-0824-49ca-beda-6ba25261c305
+
+@ [p4_slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [p4_s04_output] docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+@ [p4_s04_review] docs/reviews/P4_S04_Completion_Review.v1.sop
+@ [p4_s02_output] docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+@ [p4_s03_output] docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+
+& [P4PacketTraceFixtureOracleAndNoLiveEffectPlanV1] is the P4-S05 packet trace fixture oracle and no-live-effect plan
+  + [slice_id] is P4-S05
+  + [slice_name] is packet trace fixture oracle and no-live-effect plan
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark_suitable_bounded_planning
+  + [model_route_reason] is packet semantics, delta gates, and no-dispatch boundaries are already accepted by P4-S02 through P4-S04
+  + [plan_result] is packet_fixture_oracle_scenarios_defined_without_fixture_file_creation
+  + [next_gate_result] is P4-S06 may open
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define fixture oracle cases as planning obligations only
+  = must: not create fixture source files, expected ledgers, generated outputs, test code, implementation code, adapters, transports, or live effects
+  = must: require future source-preserved implementation activation before these scenarios become files or executable tests
+
+& [P4PacketFixtureOracleRequiredTraceShape] is the required trace shape for future P4 packet fixtures
+  + [required_trace_field] is fixture_id
+  + [required_trace_field] is fixture_subject
+  + [required_trace_field] is input_record_ref_set
+  + [required_trace_field] is accepted_authority_basis_ref_set
+  + [required_trace_field] is readiness_state
+  + [required_trace_field] is packet_state
+  + [required_trace_field] is expected_output_kind
+  + [required_trace_field] is expected_refusal_or_interrupt_kind
+  + [required_trace_field] is proof_obligation_result_set
+  + [required_trace_field] is completion_review_gate_result
+  + [required_trace_field] is stale_trigger_result
+  + [required_trace_field] is support_delta_result
+  + [required_trace_field] is requirement_delta_result
+  + [required_trace_field] is no_assignment_check
+  + [required_trace_field] is no_dispatch_check
+  + [required_trace_field] is no_live_effect_check
+  + [required_trace_field] is generated_output_authority_notice
+
+  = must: require future fixture traces to prove absence of assignment, dispatch, and live effects
+  = must: mark generated fixture traces non-authoritative unless later accepted proof review says otherwise
+
+& [P4PacketFixtureScenarioSet] is the fixture oracle scenario set for future P4 packet validation
+  + [scenario] is valid_packet
+  + [expected_result] is work_packet_candidate with ready_for_claim or candidate state plus proof_result and no assignment, dispatch, or live effect
+  + [scenario] is blocked_gap
+  + [expected_result] is blocked work_packet_candidate or support_gap with no work_packet success
+  + [scenario] is stale_readiness
+  + [expected_result] is stale_projection and no ready packet
+  + [scenario] is contradicted_readiness
+  + [expected_result] is contradicted packet or fault_record and no ready packet
+  + [scenario] is ambiguous_readiness
+  + [expected_result] is SOP_first_interrupt and no packet success
+  + [scenario] is missing_verification_oracle
+  + [expected_result] is blocked output and no packet success
+  + [scenario] is missing_model_route
+  + [expected_result] is blocked output and no packet success
+  + [scenario] is dependency_leak
+  + [expected_result] is fault_record and no ready packet
+  + [scenario] is missing_completion_review
+  + [expected_result] is blocked output and closed downstream gate
+  + [scenario] is false_ready_packet
+  + [expected_result] is fault_record and closed downstream gate
+  + [scenario] is contested_coordination_claim
+  + [expected_result] is contested packet or blocked review with required rendezvous
+  + [scenario] is forbidden_dispatch_request
+  + [expected_result] is refusal or fault_record with no dispatch output
+  + [scenario] is handoff_to_adapter_effect_promotion
+  + [expected_result] is fault_record or SOP_first_interrupt with no adapter or transport effect
+  + [scenario] is dry_run_to_live_control_promotion
+  + [expected_result] is live_control_deferral or refusal with no live effect
+  + [scenario] is rebake_required
+  + [expected_result] is rebake_required record and closed downstream gate
+  + [scenario] is hidden_authority_drift
+  + [expected_result] is fault_record and no ready packet
+
+  = must: include both positive and negative cases in future fixture material
+  = must: keep forbidden dispatch and live-control cases as proof of refusal, not execution tests
+
+& [P4PacketFixtureOracleAcceptanceRules] is the acceptance rule set for future P4 fixture material
+  + [acceptance_rule] is every scenario must cite the P4 packet envelope, completion gate, and no-dispatch boundary that defines expected behavior
+  + [acceptance_rule] is every success case must prove completion_review_required true
+  + [acceptance_rule] is every blocked, stale, contradicted, ambiguous, contested, unsafe, or forbidden case must preserve a reviewable refusal, fault, interrupt, stale, or blocker record
+  + [acceptance_rule] is no fixture may create source authority, signed authority, dispatch authority, operations authority, or live-control authority
+  + [acceptance_rule] is no fixture may touch mailbox IO, network, credentials, process control, GPU control, job dispatch, destructive filesystem actions, or live machine control
+  + [acceptance_rule] is generated outputs must stay in ignored fixture/generated paths and remain non-authoritative until reviewed
+
+  = must: reject future fixture material that lacks no_assignment_check, no_dispatch_check, or no_live_effect_check
+  = must: reject future fixture material that treats generated trace success as dispatch or live-control authority
+
+& [P4FixtureMaterialActivationGate] is the future gate for turning this plan into files
+  + [current_status] is plan_only
+  + [future_required_authority] is source-preserved implementation activation specification
+  + [future_required_authority] is accepted fixture file path policy
+  + [future_required_authority] is expected ledger policy
+  + [future_required_authority] is generated output nonpromotion policy
+  + [future_required_authority] is test execution and no-live-effect proof route
+  + [Spark_suitable_future_work] is fixture material creation after implementation activation if packet semantics remain stable
+
+  = must: require a future source manifest and completion review before creating fixture files
+  = must: keep this P4-S05 artifact as fixture oracle authority, not fixture material authority
+
+& [P4S05DownstreamGate] is the gate opened by P4-S05
+  + [opened_slice] is P4-S06 P4 completion review and downstream gate
+  + [activation_basis] is P4 fixture oracle plan accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P4 acceptance changes LangGraph runtime readiness, surface projection readiness, fixture readiness, and implementation gates
+  + [completion_review_required] is true
+
+  = must: open P4-S06 only after P4-S05 completion review accepts this fixture oracle plan

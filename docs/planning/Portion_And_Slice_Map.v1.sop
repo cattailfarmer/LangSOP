@@ -20,9 +20,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
 @ [p4_slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
 @ [p4_slice_minting_review] docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+@ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
+@ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P4-S01_boundary_import_and_packetization_gap_reconciliation
+  + [map_state] is ready_for_P8_proof_fixtures_evaluation_and_faults_final_slice_minting
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -123,18 +125,26 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
   + [support_record] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
   + [support_record] is docs/state/P4_Work_State.v1.sop
-  + [support_gap] is P4-S01 packetization boundary import and gap reconciliation not yet accepted
-  + [support_gap] is P4-S02 work packet envelope and readiness packetization contract not yet authored
-  + [support_gap] is P4-S03 completion review delta gate and rebake trigger contract not yet authored
-  + [support_gap] is P4-S04 manager handoff and no-dispatch packet boundary contract not yet authored
+  + [support_record] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+  + [support_record] is docs/reviews/P4_S01_Completion_Review.v1.sop
+  + [support_record] is docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+  + [support_record] is docs/reviews/P4_S02_Completion_Review.v1.sop
+  + [support_record] is docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+  + [support_record] is docs/reviews/P4_S03_Completion_Review.v1.sop
+  + [support_record] is docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+  + [support_record] is docs/reviews/P4_S04_Completion_Review.v1.sop
+  + [support_record] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [support_record] is docs/reviews/P4_S05_Completion_Review.v1.sop
+  + [support_record] is docs/reviews/P4_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P4_Readiness_Surface.v1.sop
   + [proof_route] is fixture capability field that produces ready, blocked, stale, unsupported, and verified cases
   + [slice_family] is support-readiness-operator
   + [slice_family] is work-packet-generator
   + [slice_family] is completion-review-delta-gate
 
-  = must: not mint implementation slices until readiness and packetization contracts exist
-  = must: execute P4-S01 next before revising packetization authority or opening P4-S02
-  = may: execute preparation slices to define packetization contracts without assignment, dispatch, operations control, or live machine control
+  = must: preserve P4 packetization contracts as planning authority, not implementation, assignment, dispatch, operations-control, or live-control authority
+  = must: route downstream fixture, runtime, surface, coordination, and operations planning through PostP4ReadinessSurfaceV1
+  = may: use P4 outputs to packetize future work only as reviewable records with explicit no-assignment, no-dispatch, and no-live-effect notices
 
 & [Portion: P5LangGraphProcedureRuntime] is blocked
   + [portion_id] is P5
@@ -274,12 +284,16 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: preserve conversation identity and work boundaries before multi-agent dispatch
   = must: keep mailbox transport, agent dispatch, operations control, and live machine control gated until future source-preserved authority explicitly opens bounded work
 
-& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_IR8-S01_boundary_import
+& [Portion: P8ProofFixturesEvaluationAndFaults] is ready_for_slice_family
   + [portion_id] is P8
   + [portion_name] is proof, fixtures, evaluation, and faults
   + [purpose] is provide deterministic evidence for schema validation, operator behavior, packet readiness, surface projections, and fault routing
   + [dependency_set] is P2 for schema fixtures
   + [dependency_set] is P3 for operator fixtures
+  + [dependency_set] is P4 for packet fixtures and no-live-effect boundaries
+  + [support_record] is docs/reviews/P4_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [support_record] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
   + [support_gap] is fixture pack not yet authored
   + [support_gap] is false-ready and stale-slice fault examples not yet encoded
   + [proof_route] is fixture validation tests and expected trace records
@@ -287,7 +301,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [slice_family] is stale-and-false-ready-fault-cases
   + [slice_family] is proof-output-ledger
 
-  = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
+  = must: source-preserve, SJS-process, and final-slice P8 before trusting fixture material work as current authority
+  = must: route P8 final slice minting as requiring deeper reasoning because fixture material, generated output, proof ledger, and nonpromotion rules affect P5 runtime and P6 surface authority
+  = should: route fixture generation to GPT-5.3-Codex-Spark after P8 fixture contracts and implementation activation stabilize
 
 & [Portion: P9OperationsManagerSafety] is supported_by_post_IR8_readiness_live_control_gated
   + [portion_id] is P9
@@ -404,19 +420,19 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P4-S01-BoundaryImportAndPacketizationGapReconciliation] is ready_for_execution
-  + [chunk_id] is P4
-  + [slice_id] is P4-S01
-  + [chunk_name] is boundary import and packetization gap reconciliation
-  + [authority_basis] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
-  + [readiness_surface] is docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
-  + [expected_output] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
-  + [completion_review_output] is docs/reviews/P4_S01_Completion_Review.v1.sop
+& [CurrentReadyChunk: P8-ProofFixturesEvaluationAndFaultsFinalSliceMinting] is ready_for_execution
+  + [chunk_id] is P8
+  + [chunk_name] is P8 proof fixtures evaluation and faults final slice minting
+  + [authority_basis] is docs/reviews/P4_Completion_Review.v1.sop
+  + [readiness_surface] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [expected_output] is source-preserved P8 final slice surface
+  + [expected_output] is P8 fixture, evaluation, fault, proof ledger, generated-output, and no-live-effect planning slices
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is packetization boundary import decides which existing packet contracts remain authority and which need P4 refresh
+  + [model_route_reason] is P8 decides when planned fixture obligations become material fixtures, generated outputs, proof ledgers, and nonpromotion rules that downstream runtime and surfaces depend on
+  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable fixture material creation only after P8 implementation activation accepts fixture paths and no-live-effect proof boundaries
 
-  = must: create only the P4-S01 boundary import output and P4-S01 completion review unless a completed-work delta rebakes this map
+  = must: source-preserve, SJS-process, and final-slice P8 before trusting fixture work as current authority
   = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence

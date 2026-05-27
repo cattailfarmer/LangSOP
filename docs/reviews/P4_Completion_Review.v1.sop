@@ -1,0 +1,137 @@
+Subject: P4 Completion Review V1
+Date: 2026-05-27
+Review UUID: 92e1f7d2-1db7-47a5-8ee7-439220913b50
+
+@ [slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
+@ [s01_review] docs/reviews/P4_S01_Completion_Review.v1.sop
+@ [s02_review] docs/reviews/P4_S02_Completion_Review.v1.sop
+@ [s03_review] docs/reviews/P4_S03_Completion_Review.v1.sop
+@ [s04_review] docs/reviews/P4_S04_Completion_Review.v1.sop
+@ [s05_review] docs/reviews/P4_S05_Completion_Review.v1.sop
+@ [post_p4_readiness_surface] docs/planning/Post_P4_Readiness_Surface.v1.sop
+
+& [CompletedWorkReview: P4-S06] is the completed-work review for P4 whole-field planning and packetization
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P4-S06
+  + [completed_output] is docs/reviews/P4_Completion_Review.v1.sop
+  + [completed_output] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [completed_output_sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P4 whole-field planning and packetization and open P8 proof fixtures evaluation and faults final slice minting
+  + [next_gate_result] is P8 proof fixtures evaluation and faults may be final-sliced
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_reason] is P8 decides when planned fixture obligations become material fixtures, generated outputs, proof ledgers, and nonpromotion rules that downstream runtime and surfaces depend on
+  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable fixture material creation only after P8 implementation activation accepts file paths, expected ledgers, and no-live-effect proof boundaries
+
+  = must: treat this review as gate-opening evidence for P8 slice minting only
+  = must: preserve P4 packet envelope, completion review delta gate, rebake trigger, manager handoff no-dispatch boundary, fixture oracle plan, and no-live-effect boundaries in downstream work
+  = must: keep implementation code, fixture source creation, expected ledger creation, generated databases, dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control gated until later accepted authority opens bounded work
+
+& [P4FinalVerification] is the verification result for P4 final slices
+  + [P4_final_slice_surface_present] is true
+  + [P4-S01_status] is accepted
+  + [P4-S01_output] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+  + [P4-S01_output_sha256] is D86DF1F34148ECCF46E39E0DB692AD438F19A1C46534C0E354090CFA4769E80D
+  + [P4-S01_review_sha256] is 3C89A1BE80823A1A6CBB35272C9243CFF4471F7E19C75346CFBFF5AB9CCD0BF5
+  + [P4-S02_status] is accepted
+  + [P4-S02_output] is docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+  + [P4-S02_output_sha256] is CFDDC650CA1E90909EFB1884FD5A7C38812C15FC27C20B27DAB24587E8005089
+  + [P4-S02_review_sha256] is A18CA6DD0C28B2BBDA65CB52E353A8F98CEDA70C48806923D036BFA8A62E1D2F
+  + [P4-S03_status] is accepted
+  + [P4-S03_output] is docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+  + [P4-S03_output_sha256] is E060B8DA1C8AC4C32D08E4B3567A9719C8A0DB0E53AD7F749A01FE9760ED6B8B
+  + [P4-S03_review_sha256] is D97997500167A1AA44D08E87EEB000D9F90AA99577BF1A5F91F51890921BF051
+  + [P4-S04_status] is accepted
+  + [P4-S04_output] is docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+  + [P4-S04_output_sha256] is F971C0DBE018918D8A976A8BECDAAAD036208393DA0B60BC18C3297738055F7A
+  + [P4-S04_review_sha256] is 6AF878E17617B6778409A93C697CD4766F50D796E845FDF877898BA79E94B642
+  + [P4-S05_status] is accepted
+  + [P4-S05_output] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [P4-S05_output_sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+  + [P4-S05_review_sha256] is AE76D0C37983ABCF660EC5EBE55F54004DFE8569AF9EFBA13C358004524BFD08
+  + [Post_P4_readiness_surface_status] is accepted
+  + [Post_P4_readiness_surface_sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+  + [packet_boundary_import_status] is accepted
+  + [work_packet_envelope_status] is accepted_contract_only
+  + [completion_review_delta_gate_status] is accepted_contract_only
+  + [manager_handoff_no_dispatch_status] is accepted_contract_only
+  + [fixture_oracle_status] is accepted_plan_only
+  + [assignment_status] is not_authorized
+  + [dispatch_status] is not_authorized
+  + [operations_control_status] is not_authorized
+  + [live_control_status] is not_authorized
+  + [implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_database_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  ! [P4FinalVerificationSatisfied] is accepted
+    @ [support] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+    @ [support] docs/planning/Post_P4_Readiness_Surface.v1.sop
+
+& [SupportDelta: P4-Final] is the support delta produced by P4 final completion
+  + [new_support_record] is packetization boundary import accepted with accepted packetization inputs and gap assignments
+  + [new_support_record] is P4 work packet envelope accepted for reviewable work_packet_candidate records with required proof and no-effect fields
+  + [new_support_record] is P4 completion review delta gate accepted for support_delta, requirement_delta, stale, contradiction, fault, and rebake gating
+  + [new_support_record] is P4 manager handoff and no-dispatch packet boundary accepted for packet, surface, coordination, operation-like, dispatch, and live-control class distinctions
+  + [new_support_record] is P4 packet trace fixture oracle and no-live-effect plan accepted with planned positive and negative cases
+  + [new_support_record] is P8 proof fixtures evaluation and faults opened for deeper-reasoning slice minting
+  + [support_status] is accepted
+
+& [RequirementDelta: P4-Final] is the requirement delta produced by P4 final completion
+  + [requirement_delta] is P8 must turn P2, P3, P4, IR7, and IR8 fixture obligations into a source-preserved fixture/evaluation/fault slice plan before fixture material or runtime work advances
+  + [requirement_delta] is P5 LangGraph runtime remains gated until P8 fixture pack planning and fixture material authority advance
+  + [requirement_delta] is P6 surface expansion remains gated until P8 fixture pack planning and projection fixture records advance
+  + [requirement_delta] is future fixture material creation remains gated until source-preserved implementation activation opens file creation
+  + [requirement_delta] is future packet consumers must preserve readiness_projection, work_packet_candidate, coordination_claim, manager_handoff_record, dispatch_decision, and live_control_decision authority distinctions
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized by P4 final completion
+
+& [FaultReview: P4-Final] is the fault review for P4 final completion
+  + [source_overwrite_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [missing_completion_review_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [packet_implementation_leak_found] is false
+  + [LangGraph_node_implementation_leak_found] is false
+  + [fixture_source_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_database_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P4FinalAccepted] is accepted
+    @ [support] [P4FinalVerification]
+    @ [support] [SupportDelta: P4-Final]
+    @ [support] [RequirementDelta: P4-Final]
+    @ [support] [FaultReview: P4-Final]
+
+& [NextSliceGate: P8] is opened_for_minting
+  + [opened_chunk] is P8 proof fixtures evaluation and faults
+  + [opened_work] is source preservation, SJS canonicalization, and final slice minting for fixture, evaluation, proof ledger, generated-output, fault, and no-live-effect planning
+  + [accepted_dependency] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [accepted_dependency_sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is P8 decides when planned fixture obligations become material fixtures, generated outputs, proof ledgers, and nonpromotion rules that downstream runtime and surfaces depend on
+  + [future_Spark_suitable_work] is bounded fixture material creation, ledger updates, and proof updates only after P8 implementation activation accepts fixture paths and no-live-effect boundaries
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: mint P8 final slices next unless user redirects or a new fault invalidates this review

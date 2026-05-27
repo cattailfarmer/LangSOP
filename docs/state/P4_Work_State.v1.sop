@@ -6,18 +6,24 @@ State UUID: 9016bd0d-dc79-4eb2-b13d-be291ffb92b3
 @ [canonical_specification] docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
 @ [slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
 @ [slice_minting_review] docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
+@ [accepted_output] docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+@ [completion_review] docs/reviews/P4_S01_Completion_Review.v1.sop
+@ [accepted_output] docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+@ [completion_review] docs/reviews/P4_S02_Completion_Review.v1.sop
+@ [accepted_output] docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+@ [completion_review] docs/reviews/P4_S03_Completion_Review.v1.sop
+@ [accepted_output] docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+@ [completion_review] docs/reviews/P4_S04_Completion_Review.v1.sop
+@ [accepted_output] docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+@ [completion_review] docs/reviews/P4_S05_Completion_Review.v1.sop
+@ [completion_review] docs/reviews/P4_Completion_Review.v1.sop
+@ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [post_p3_readiness] docs/planning/Post_P3_Readiness_Surface.v1.sop
-@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
-@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
-@ [completion_delta_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
-@ [support_readiness_contract] docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
-@ [manager_packet_contract] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
-@ [manager_handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
 
 & [P4WorkStateV1] is the current derived work state for P4 whole-field planning and packetization
-  + [state_basis] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
-  + [state_basis_sha256] is D8924D72DDD6B133B5BF22F25985CF1E7C000D8863F194909613A33405BFF8D7
-  + [surface_status] is P4_final_slices_minted_pending_P4-S01
+  + [state_basis] is docs/reviews/P4_Completion_Review.v1.sop
+  + [state_basis_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [surface_status] is P4_completed_pending_P8_slice_minting
   + [source_manifest] is docs/source/2026-05-27_p4_whole_field_planning_packetization_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 930B0C592039EFD143C0A4A0878AADB0952A74629D8E223F21639847F7A0B1BE
   + [canonical_specification] is docs/canonical/LangSOP_P4_Whole_Field_Planning_Packetization_Final_Slices.canonical.sop
@@ -26,30 +32,41 @@ State UUID: 9016bd0d-dc79-4eb2-b13d-be291ffb92b3
   + [slice_surface_sha256] is EA9374803617A60E3BF08F477E80C7E2118DCF6290F9897AB2AB825205C23B99
   + [slice_minting_review] is docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
   + [slice_minting_review_sha256] is D8924D72DDD6B133B5BF22F25985CF1E7C000D8863F194909613A33405BFF8D7
-  + [accepted_boundary_input] is docs/reviews/P3_Completion_Review.v1.sop
-  + [accepted_boundary_input_sha256] is B338344CCA252AA6C5734D2DA429B92940BCB466DBA64419EF2E5E2AC1780295
-  + [accepted_boundary_input] is docs/planning/Post_P3_Readiness_Surface.v1.sop
-  + [accepted_boundary_input_sha256] is EED2C4D6C215EED13EF063EB508B5BE78FF79315249CCD4DF022D917EBBC8D9B
-  + [accepted_boundary_input] is docs/operators/Work_Packet_Generation_Contract.v1.sop
-  + [accepted_boundary_input_sha256] is E21B1478ABD1EF38E0FF36A5C141D4A1B36BA85A56F1DE9342326537B3EF7650
-  + [accepted_boundary_input] is docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
-  + [accepted_boundary_input_sha256] is 51F9B942DD72AB40B1727746355362D6D7A68D968DA14BD8D63DBCA3E1CF009D
-  + [accepted_boundary_input] is docs/operators/P3_Support_Readiness_Recompute_Operator_Contract_Refresh.v1.sop
-  + [accepted_boundary_input_sha256] is CA4F86D48F132341F17F803F896E345B33AF3DF9D40C452D8B5472977E4976DF
-  + [accepted_boundary_input] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
-  + [accepted_boundary_input_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
-  + [accepted_boundary_input] is docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
-  + [accepted_boundary_input_sha256] is 3FE4AE81D8849DA2AF6D89D4884D1C07985274EB18CEA2B54E07EE0068FB8FF2
-  + [current_ready_slice] is P4-S01
-  + [current_ready_slice_name] is boundary import and packetization gap reconciliation
-  + [current_ready_slice_expected_output] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is packetization boundary import decides which existing packet contracts remain authority and which need P4 refresh
-  + [gated_slice] is P4-S02
-  + [gated_slice] is P4-S03
-  + [gated_slice] is P4-S04
-  + [gated_slice] is P4-S05
-  + [gated_slice] is P4-S06
+  + [accepted_slice] is P4-S01
+  + [accepted_output] is docs/planning/P4_Packetization_Boundary_Import_And_Gap_Reconciliation.v1.sop
+  + [accepted_output_sha256] is D86DF1F34148ECCF46E39E0DB692AD438F19A1C46534C0E354090CFA4769E80D
+  + [accepted_completion_review] is docs/reviews/P4_S01_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 3C89A1BE80823A1A6CBB35272C9243CFF4471F7E19C75346CFBFF5AB9CCD0BF5
+  + [accepted_slice] is P4-S02
+  + [accepted_output] is docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+  + [accepted_output_sha256] is CFDDC650CA1E90909EFB1884FD5A7C38812C15FC27C20B27DAB24587E8005089
+  + [accepted_completion_review] is docs/reviews/P4_S02_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is A18CA6DD0C28B2BBDA65CB52E353A8F98CEDA70C48806923D036BFA8A62E1D2F
+  + [accepted_slice] is P4-S03
+  + [accepted_output] is docs/planning/P4_Completion_Review_Delta_Gate_And_Rebake_Trigger_Contract.v1.sop
+  + [accepted_output_sha256] is E060B8DA1C8AC4C32D08E4B3567A9719C8A0DB0E53AD7F749A01FE9760ED6B8B
+  + [accepted_completion_review] is docs/reviews/P4_S03_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is D97997500167A1AA44D08E87EEB000D9F90AA99577BF1A5F91F51890921BF051
+  + [accepted_slice] is P4-S04
+  + [accepted_output] is docs/planning/P4_Manager_Handoff_And_No_Dispatch_Packet_Boundary_Contract.v1.sop
+  + [accepted_output_sha256] is F971C0DBE018918D8A976A8BECDAAAD036208393DA0B60BC18C3297738055F7A
+  + [accepted_completion_review] is docs/reviews/P4_S04_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 6AF878E17617B6778409A93C697CD4766F50D796E845FDF877898BA79E94B642
+  + [accepted_slice] is P4-S05
+  + [accepted_output] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [accepted_output_sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+  + [accepted_completion_review] is docs/reviews/P4_S05_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is AE76D0C37983ABCF660EC5EBE55F54004DFE8569AF9EFBA13C358004524BFD08
+  + [accepted_slice] is P4-S06
+  + [accepted_output] is docs/reviews/P4_Completion_Review.v1.sop
+  + [accepted_output_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [accepted_output] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [accepted_output_sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+  + [current_ready_chunk] is P8
+  + [current_ready_chunk_name] is proof fixtures evaluation and faults
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is P8 decides when planned fixture obligations become material fixtures, generated outputs, proof ledgers, and nonpromotion rules that downstream runtime and surfaces depend on
+  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable fixture material creation only after P8 implementation activation accepts file paths, expected ledgers, and no-live-effect proof boundaries
   + [packet_implementation_authorized] is false
   + [LangGraph_node_implementation_authorized] is false
   + [fixture_source_file_creation_authorized] is false
@@ -67,6 +84,6 @@ State UUID: 9016bd0d-dc79-4eb2-b13d-be291ffb92b3
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P4-S01 before downstream packet envelope, completion delta, manager handoff, fixture oracle, graph runtime, surface expansion, adapter, implementation, or dispatch work
+  = must: execute P8 slice minting before downstream LangGraph runtime, surface expansion, fixture material, adapter, implementation, dispatch, or live-control work
   = must: keep SOP proof authority, packetization contracts, generated traces, graph checkpoints, fixture plans, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P4 source, manifest, canonical specification, slice surface, minting review, P3 completion, post-P3 readiness, or accepted packetization boundary inputs change
+  = must: mark this state stale if P4 source, manifest, canonical specification, slice surface, minting review, accepted P4 outputs, completion reviews, or post-P4 readiness changes

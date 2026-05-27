@@ -1,0 +1,132 @@
+Subject: P4 Completion Review Delta Gate And Rebake Trigger Contract V1
+Date: 2026-05-27
+Contract UUID: a030c0cb-33d4-4c9e-9cfe-6fa1094e97b0
+
+@ [p4_slice_surface] docs/slices/P4_Whole_Field_Planning_Packetization_Final_Slices.v1.sop
+@ [p4_s02_output] docs/planning/P4_Work_Packet_Envelope_And_Readiness_Packetization_Contract.v1.sop
+@ [p4_s02_review] docs/reviews/P4_S02_Completion_Review.v1.sop
+@ [completion_delta_contract] docs/operators/Completion_Review_Delta_Gate_Contract.v1.sop
+@ [work_packet_contract] docs/operators/Work_Packet_Generation_Contract.v1.sop
+
+& [P4CompletionReviewDeltaGateAndRebakeTriggerContractV1] is the P4-S03 completion review and rebake trigger contract
+  + [slice_id] is P4-S03
+  + [slice_name] is completion review delta gate and rebake trigger contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [contract_result] is P4_completion_review_delta_gate_bound_to_packet_envelope_without_review_automation
+  + [next_gate_result] is P4-S04 may open
+  + [review_automation_authorized] is false
+  + [source_mutation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [graph_node_implementation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: evaluate every P4 completed slice before a downstream gate opens
+  = must: preserve support_delta, requirement_delta, stale output, contradiction, coordination blocker, fault blocker, and rebake trigger as explicit review fields
+  = must: close downstream gates when learning changes packet shape, dependency closure, expected outputs, model route, fixture expectations, or safety boundary
+  = must: keep review as an authority-bearing record, not automation implementation
+
+& [P4CompletionReviewRequiredFieldSet] is the required field set for P4 completion reviews
+  + [required_field] is review_id
+  + [required_field] is reviewed_slice_ref or reviewed_packet_ref
+  + [required_field] is completed_output_ref_set
+  + [required_field] is completed_output_hash_set
+  + [required_field] is packet_or_slice_obligation_review
+  + [required_field] is support_delta_classification
+  + [required_field] is requirement_delta_classification
+  + [required_field] is stale_output_review
+  + [required_field] is contradiction_review
+  + [required_field] is coordination_claim_review
+  + [required_field] is fault_review
+  + [required_field] is forbidden_scope_review
+  + [required_field] is proof_obligation_review
+  + [required_field] is rebake_decision
+  + [required_field] is next_gate_decision
+  + [required_field] is next_gate_result
+  + [required_field] is model_route_for_next_work
+  + [required_field] is no_assignment_no_dispatch_no_live_effect_review
+
+  = must: reject completion review acceptance when any required field is absent
+  = must: require completed_output_hash_set for every artifact accepted as support
+
+& [P4DeltaClassificationMatrix] is the P4 classification matrix for support_delta and requirement_delta
+  + [classification] is accepted when the delta is reviewed, supported, non-stale, non-contradicted, and compatible with downstream packet assumptions
+  + [classification] is blocked when required support, proof, review hash, authority basis, or coordination resolution is missing
+  + [classification] is stale when delta relies on stale source, stale packet, stale readiness, stale claim, stale proof, or stale accepted boundary input
+  + [classification] is contradicted when delta conflicts with accepted requirements, support, authority, packet obligations, handoff boundaries, or coordination claims
+  + [classification] is not_applicable when completed work produces no meaningful delta for that dimension
+  + [classification] is rebake_required when delta changes slice boundary, packet shape, dependency closure, expected outputs, model route, fixture expectations, handoff semantics, no-dispatch boundary, or downstream chunk activation assumptions
+
+  = must: record support_delta and requirement_delta independently
+  = must: treat unknown delta as blocked rather than accepted
+  = must: preserve rebake_required before any next gate opens
+
+& [P4NextGateDecisionMatrix] is the decision matrix for P4 downstream gate opening
+  + [decision_case] is open_next_slice when completion_review is accepted, support_delta accepted or not_applicable, requirement_delta accepted or not_applicable, no stale output exists, no contradiction exists, no contested claim blocks the packet, no unresolved fault remains, no forbidden scope leak appears, and next gate target is explicit
+  + [decision_case] is keep_gate_blocked when support, requirement, proof, review hash, packet, authority, or coordination evidence is incomplete
+  + [decision_case] is mark_stale when accepted input, packet, readiness, output, proof, handoff, claim, or safety basis freshness fails
+  + [decision_case] is mark_contradicted when completed work conflicts with accepted authority, packet obligations, handoff boundaries, or no-effect notices
+  + [decision_case] is rebake_before_next when work changes downstream boundary, expected outputs, fixture obligations, model route, packet envelope, or safety boundary
+  + [decision_case] is fault_false_ready when a gate would open despite an active blocker
+
+  = must: preserve gate decision as completion_review, proof_result, stale_projection, or fault_record
+  = must: keep next gate closed unless open_next_slice is proven
+
+& [P4RebakeTriggerSet] is the rebake trigger set for P4
+  + [rebake_trigger] is requirement_delta changes packet required fields
+  + [rebake_trigger] is requirement_delta changes work boundary or expected outputs
+  + [rebake_trigger] is requirement_delta changes fixture obligations
+  + [rebake_trigger] is requirement_delta changes model route between Spark-suitable and requires deeper reasoning
+  + [rebake_trigger] is support_delta invalidates readiness assumptions
+  + [rebake_trigger] is completed output introduces forbidden external dependency
+  + [rebake_trigger] is completion review reveals false-ready packetization
+  + [rebake_trigger] is completion review reveals hidden authority promotion
+  + [rebake_trigger] is coordination conflict changes ownership boundary or readiness
+  + [rebake_trigger] is handoff semantics change packet-to-manager or packet-to-surface boundaries
+  + [rebake_trigger] is no-dispatch or no-live-effect boundary changes
+  + [rebake_trigger] is stale accepted input invalidates downstream packetization
+
+  = must: close downstream gates when rebake_trigger is active
+  = must: update portion map or post-readiness surface when rebake changes current ready work
+
+& [P4FaultBlockerSet] is the fault set that blocks P4 downstream gates
+  + [fault_blocker] is unreviewed_completion
+  + [fault_blocker] is missing_completed_output_hash
+  + [fault_blocker] is false_ready_packet
+  + [fault_blocker] is stale_projection
+  + [fault_blocker] is invalid_input_shape
+  + [fault_blocker] is hidden_authority_drift
+  + [fault_blocker] is packet_to_assignment_promotion
+  + [fault_blocker] is packet_to_dispatch_promotion
+  + [fault_blocker] is handoff_to_adapter_effect_promotion
+  + [fault_blocker] is dry_run_to_live_control_promotion
+  + [fault_blocker] is forbidden_external_dependency
+  + [fault_blocker] is operator_contract_violation
+
+  = must: keep next gate closed while any fault_blocker remains unresolved
+  = must: route unresolved fault blockers to SOP-first review, human review where permitted, or rebake
+
+& [P4CompletionReviewOutputContract] is the output contract for P4 completion review decisions
+  + [accepted_output] is completion_review with next_gate_decision open_next_slice and next_gate_result explicit
+  + [blocked_output] is completion_review with blocker_ref_set and required_resolution
+  + [stale_output] is stale_projection with stale_source_ref_set and required_refresh
+  + [contradicted_output] is completion_review contradicted or fault_record with contradiction_ref_set
+  + [rebake_output] is rebake_required record with rebake_trigger_set and blocked downstream gate
+  + [fault_output] is fault_record with fault_kind and blocked downstream gate
+  + [interrupt_output] is SOP_first_interrupt when authority, identity, packet, or safety semantics are ambiguous
+
+  = must: never open a next gate through omission
+  = must: never let completed work mutate source authority silently
+  = must: never let completion review assign, dispatch, execute, or authorize operations control
+
+& [P4S03DownstreamGate] is the gate opened by P4-S03
+  + [opened_slice] is P4-S04 manager handoff and no-dispatch packet boundary contract
+  + [activation_basis] is P4 completion review delta gate accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is manager handoff packet boundaries affect future multi-agent coordination and operations safety
+  + [completion_review_required] is true
+
+  = must: open P4-S04 only after P4-S03 completion review accepts this completion gate
+  = must: keep P4-S05 and P4-S06 gated until their predecessor reviews accept
