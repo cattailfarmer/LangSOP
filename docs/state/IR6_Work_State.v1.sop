@@ -39,12 +39,14 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
 @ [completion_review] docs/reviews/IR6_IA03_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/IR6_IA04_Completion_Review.v1.sop
 @ [completion_review] docs/reviews/IR6_IA05_Completion_Review.v1.sop
+@ [generated_output_proof] docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+@ [completion_review] docs/reviews/IR6_IA06_Completion_Review.v1.sop
 
 & [IR6WorkStateV1] is the current derived work state for IR6 coordination mailbox and claim projection prototype planning
   + [chunk_ref] is IR6 coordination mailbox and claim projection prototype
-  + [state_basis] is docs/reviews/IR6_IA05_Completion_Review.v1.sop
-  + [state_basis_sha256] is 97E45CACCEB82CA4107484A962FB05ED49704297962723C7CD8C695123E34544
-  + [surface_status] is IR6-IA05_accepted_and_IR6-IA06_open
+  + [state_basis] is docs/reviews/IR6_IA06_Completion_Review.v1.sop
+  + [state_basis_sha256] is 4DC8916CB88CD55078F86F278278F03EDFD3585AE2CC4CBD41AB1CEB167BFD42
+  + [surface_status] is IR6-IA06_accepted_and_IR6-IA07_open
   + [source_document] is docs/source/2026-05-26_ir6_final_slices/Derived_IR6_Final_Slices_Source.sop
   + [source_document_sha256] is ABB5882E6E23A50B4A40A7F4E6D270F46E500D31F2649F69F44AD2F98A383B53
   + [source_manifest] is docs/source/2026-05-26_ir6_final_slices/Source_Document_Manifest.sop
@@ -159,11 +161,17 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [accepted_output_sha256] is 259FFC19E1132CC3482D6FD04B6ADBB2854F01F1A96A16246C7318182D82B797
   + [accepted_completion_review] is docs/reviews/IR6_IA05_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 97E45CACCEB82CA4107484A962FB05ED49704297962723C7CD8C695123E34544
-  + [current_ready_slice] is IR6-IA06
-  + [current_ready_slice_name] is contract tests and generated-output/no-mailbox-IO proof
-  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
-  + [current_ready_slice_model_route_depth] is Spark-suitable
-  + [current_ready_slice_model_route_reason] is contract tests and generated-output/no-mailbox-IO proof are bounded by accepted fixture runner behavior
+  + [accepted_slice] is IR6-IA06
+  + [accepted_output] is tests/test_ir6_coordination_mailbox_contracts.py
+  + [accepted_output_sha256] is 2FF67DC7C0D3B41975B19C9DBEB4B124770B7FF6EFF528EBF8466209057AAC61
+  + [accepted_output] is docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+  + [accepted_output_sha256] is 1CADD25146E4783C92546DD3D0D08BCA662B94D15F02D101A015E6E0E9D3C7D9
+  + [accepted_completion_review] is docs/reviews/IR6_IA06_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 4DC8916CB88CD55078F86F278278F03EDFD3585AE2CC4CBD41AB1CEB167BFD42
+  + [current_ready_slice] is IR6-IA07
+  + [current_ready_slice_name] is mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is dependency, mailbox IO, adapter, transport, UI, dispatch, and safety boundaries affect authority and live-control semantics
   + [future_bounded_implementation_model_route] is GPT-5.3-Codex-Spark-suitable only after IR6 implementation activation slices are accepted and implementation tasks are bounded
   + [implementation_code_creation_authorized_by_current_slice] is false
   + [claim_identity_model_implementation_authorized_by_current_slice] is false
@@ -183,10 +191,13 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [implementation_activation_slice_minting_opened] is completed
   + [activation_boundary_document_creation_authorized_by_current_slice] is false
   + [boundary_document_creation_authorized_by_current_slice] is false
-  + [test_file_creation_authorized_by_current_slice] is true_for_IR6-IA06_only
+  + [test_file_creation_authorized_by_current_slice] is false
   + [mailbox_file_creation_authorized_by_current_slice] is false
-  + [generated_output_creation_authorized_by_current_slice] is true_for_IR6-IA06_generated_output_proof_only
-  + [generated_output_proof_document_creation_authorized_by_current_slice] is true_for_IR6-IA06_only
+  + [generated_output_creation_authorized_by_current_slice] is false
+  + [generated_output_proof_document_creation_authorized_by_current_slice] is false
+  + [dependency_decision_document_creation_authorized_by_current_slice] is true_for_IR6-IA07_only
+  + [mailbox_IO_decision_document_creation_authorized_by_current_slice] is true_for_IR6-IA07_only
+  + [adapter_transport_decision_document_creation_authorized_by_current_slice] is true_for_IR6-IA07_only
   + [dependency_installation_authorized_by_current_slice] is false
   + [mailbox_transport_implementation_authorized] is false
   + [adapter_implementation_authorized_by_current_slice] is false
@@ -196,12 +207,12 @@ State UUID: 5de71628-8b85-4f9f-a0c5-d5084102160b
   + [coordination_claim_authority_status] is work_boundary_record_only
   + [rendezvous_packet_authority_status] is carrier_context_only
   + [mailbox_authority_status] is carrier_context_only
-  + [IR6_state] is ready_for_IR6-IA06_contract_tests_and_generated_output_no_mailbox_IO_proof
+  + [IR6_state] is ready_for_IR6-IA07_mailbox_IO_transport_adapter_and_dependency_decision_or_deferral_review
   + [downstream_IR7_state] is gated_until_IR6_implementation_proof_acceptance_or_future_rebake
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute IR6-IA06 before dependency decision, mailbox IO decision, adapter work, transports, UI, or operations simulator code
+  = must: execute IR6-IA07 before implementation proof pack, dependency installation, mailbox IO implementation, adapter work, transports, UI, or operations simulator code
   = must: keep downstream IR7 gated until IR6 implementation proof is accepted or a future rebake explicitly reclassifies IR7 scope
   = must: keep coordination claims, rendezvous packets, mailboxes, IRC, Matrix, web, terminal, Codex, Langflow, generated projection, and generated report state non-authoritative
-  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, IR6-S01 output, IR6-S01 completion review, IR6-S02 output, IR6-S02 completion review, IR6-S03 output, IR6-S03 completion review, IR6-S04 output, IR6-S04 completion review, IR6-S05 fixture plan, IR6-S05 fixture index, IR6-S05 completion review, IR6-S06 implementation plan, IR6-S06 completion review, IR6 activation pack, IR6 completion review, IR6 implementation activation source, IR6 implementation activation source manifest, IR6 implementation activation canonical specification, IR6 implementation activation slice surface, IR6 implementation activation minting review, IR6-IA01 activation boundary, IR6-IA01 completion review, IR6-IA02 fixture source set, IR6-IA02 expected ledger set, IR6-IA02 completion review, IR6-IA03 claim identity model, IR6-IA03 completion review, IR6-IA04 mailbox carrier model, IR6-IA04 conflict review model, IR6-IA04 action routes, IR6-IA04 completion review, IR6-IA05 generated path policy, IR6-IA05 fixture runner, IR6-IA05 completion review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
+  = must: mark this state stale if IR6 source document, IR6 source manifest, IR6 canonical specification, IR6 slice surface, IR6 minting review, IR6-S01 output, IR6-S01 completion review, IR6-S02 output, IR6-S02 completion review, IR6-S03 output, IR6-S03 completion review, IR6-S04 output, IR6-S04 completion review, IR6-S05 fixture plan, IR6-S05 fixture index, IR6-S05 completion review, IR6-S06 implementation plan, IR6-S06 completion review, IR6 activation pack, IR6 completion review, IR6 implementation activation source, IR6 implementation activation source manifest, IR6 implementation activation canonical specification, IR6 implementation activation slice surface, IR6 implementation activation minting review, IR6-IA01 activation boundary, IR6-IA01 completion review, IR6-IA02 fixture source set, IR6-IA02 expected ledger set, IR6-IA02 completion review, IR6-IA03 claim identity model, IR6-IA03 completion review, IR6-IA04 mailbox carrier model, IR6-IA04 conflict review model, IR6-IA04 action routes, IR6-IA04 completion review, IR6-IA05 generated path policy, IR6-IA05 fixture runner, IR6-IA05 completion review, IR6-IA06 contract tests, IR6-IA06 generated-output/no-mailbox-IO proof, IR6-IA06 completion review, Post-FSC5 readiness surface, FSC2 planning coordination pack, coordination contracts, FSC4 surface projection pack, FSC5 operations safety pack, IR5 implementation proof pack, IR5 implementation completion review, or IR5 work state changes
   = must: keep agent dispatch, operations control, and live machine control unauthorized

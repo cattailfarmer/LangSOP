@@ -1,0 +1,107 @@
+Subject: IR6 IA06 Completion Review V1
+Date: 2026-05-26
+Review UUID: d6474a00-3868-458e-80c4-03e66ff6afb1
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+@ [generated_output_proof] docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+@ [contract_tests] tests/test_ir6_coordination_mailbox_contracts.py
+@ [previous_completion_review] docs/reviews/IR6_IA05_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR6-IA06] is the completed-work review for IR6-IA06 contract tests and generated-output/no-mailbox-IO proof
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-IA06
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-IA06 and open IR6-IA07
+  + [next_gate_result] is IR6-IA07 may open
+  + [next_model_route] is requires deeper reasoning for mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [completed_output] is tests/test_ir6_coordination_mailbox_contracts.py
+  + [completed_output_sha256] is 2FF67DC7C0D3B41975B19C9DBEB4B124770B7FF6EFF528EBF8466209057AAC61
+  + [completed_output] is docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+  + [completed_output_sha256] is 1CADD25146E4783C92546DD3D0D08BCA662B94D15F02D101A015E6E0E9D3C7D9
+
+  = must: treat this review as gate-opening evidence for IR6-IA07 only
+  = must: rerun this review if contract tests, generated-output proof, generated path policy, fixture runner, accepted fixture ledgers, or IR6-IA05 completion review changes
+  = must: keep dependency installation, package metadata mutation, mailbox IO, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control gated
+
+& [IR6IA06Verification] is the verification result for IR6-IA06
+  + [contract_test_file_present] is true
+  + [generated_output_no_mailbox_IO_proof_present] is true
+  + [targeted_test_command] is python -m unittest tests.test_ir6_coordination_mailbox_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 8
+  + [baseline_compile_command] is passed
+  + [baseline_test_command] is passed
+  + [baseline_test_count] is 33
+  + [diff_hygiene_command] is passed
+  + [fixture_corpus_size] is 13
+  + [fixture_corpus_in_memory_comparison_passed] is true
+  + [generated_report_written_during_test] is true
+  + [generated_report_cleaned_after_test] is true
+  + [retained_generated_output_in_repo] is false
+  + [platform_mailbox_root_created_by_tests] is false
+  + [mailbox_file_created] is false
+  + [mailbox_message_mutated] is false
+  + [read_cursor_persisted] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6IA06VerificationSatisfied] is accepted
+    @ [support] tests/test_ir6_coordination_mailbox_contracts.py
+    @ [support] docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+
+& [SupportDelta: IR6-IA06] is the support delta produced by IR6-IA06
+  + [new_support_record] is IR6 has bounded contract tests for fixture corpus, claim validation, work-boundary stop-state rejection, mailbox carrier refusals, freshness review, conflict review, action route refusals, generated path policy, disposable generated reports, and no platform mailbox IO
+  + [new_support_record] is generated reports are proved non-authoritative, disposable, ignored by source discovery, and absent from the retained repo state after tests
+  + [new_support_record] is platform mailbox paths are proved refused by path policy and not created by tests
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-IA06] is the requirement delta produced by IR6-IA06
+  + [requirement_delta] is IR6-IA07 requires deeper reasoning for mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [requirement_delta] is no dependency installation, mailbox IO, adapter implementation, transport implementation, UI implementation, operations simulator, agent dispatch, operations control, or live machine control is authorized by IR6-IA06
+
+& [FaultReview: IR6-IA06] is the fault review for IR6-IA06
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [retained_generated_output_found] is false
+  + [mailbox_file_created] is false
+  + [mailbox_message_mutated] is false
+  + [read_cursor_persisted] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6IA06Accepted] is accepted
+    @ [support] [IR6IA06Verification]
+    @ [support] [SupportDelta: IR6-IA06]
+    @ [support] [RequirementDelta: IR6-IA06]
+    @ [support] [FaultReview: IR6-IA06]
+
+& [NextSliceGate: IR6-IA07] is opened
+  + [opened_slice] is IR6-IA07 mailbox IO, transport, adapter, and dependency decision or deferral review
+  + [accepted_dependency] is tests/test_ir6_coordination_mailbox_contracts.py
+  + [accepted_dependency_sha256] is 2FF67DC7C0D3B41975B19C9DBEB4B124770B7FF6EFF528EBF8466209057AAC61
+  + [accepted_dependency] is docs/reviews/IR6_Coordination_Mailbox_Generated_Output_And_No_Mailbox_IO_Proof.v1.sop
+  + [accepted_dependency_sha256] is 1CADD25146E4783C92546DD3D0D08BCA662B94D15F02D101A015E6E0E9D3C7D9
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, mailbox IO, adapter, transport, UI, dispatch, and safety boundaries affect authority and live-control semantics
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-IA07 next unless user redirects or a new fault invalidates this review

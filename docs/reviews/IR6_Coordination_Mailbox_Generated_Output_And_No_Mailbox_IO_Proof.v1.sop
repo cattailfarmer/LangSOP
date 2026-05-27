@@ -1,0 +1,83 @@
+Subject: IR6 Coordination Mailbox Generated Output And No Mailbox IO Proof V1
+Date: 2026-05-26
+Proof UUID: 2bf27bdb-a95e-424c-a768-13590926c00c
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+@ [fixture_runner] src/langsop/coordination/fixture_runner.py
+@ [generated_path_policy] src/langsop/coordination/generated_paths.py
+@ [contract_tests] tests/test_ir6_coordination_mailbox_contracts.py
+@ [previous_completion_review] docs/reviews/IR6_IA05_Completion_Review.v1.sop
+
+& [IR6GeneratedOutputAndNoMailboxIOProofV1] is the generated-output and no-mailbox-IO proof for IR6 coordination mailbox projection
+  + [proof_uuid] is 2bf27bdb-a95e-424c-a768-13590926c00c
+  + [slice_id] is IR6-IA06
+  + [proof_status] is accepted_by_completion_review_pending
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [test_file] is tests/test_ir6_coordination_mailbox_contracts.py
+  + [test_file_sha256] is 2FF67DC7C0D3B41975B19C9DBEB4B124770B7FF6EFF528EBF8466209057AAC61
+
+  = must: prove generated coordination reports are disposable, non-authoritative, and excluded from source discovery
+  = must: prove platform coordination mailbox paths are refused by generated path policy
+  = must: prove tests do not create platform mailbox directories, inboxes, message files, read cursors, dispatch state, operations state, or live-control state
+  - never: treat generated reports, mailbox carrier state, read cursors, test outputs, or fixture comparison reports as source authority
+
+& [GeneratedOutputProof: IR6CoordinationMailbox] is the generated-output proof result
+  + [accepted_generated_report_path] is tests/fixtures/generated/ir6_coordination_mailbox/reports/proof_report.json
+  + [accepted_generated_report_path_policy] is accepted
+  + [generated_report_written_during_test] is true
+  + [generated_report_cleanup_required] is true
+  + [generated_report_status] is generated_projection_only
+  + [generated_report_non_authority_warning_present] is true
+  + [source_discovery_includes_generated_report] is false
+  + [generated_output_rebuild_after_deletion_passed] is true
+  + [retained_generated_output_in_repo] is false
+
+& [NoMailboxIOProof: IR6CoordinationMailbox] is the no-mailbox-IO proof result
+  + [platform_mailbox_path_tested] is platform/coordination/mailboxes/conversation.inbox/1.sop
+  + [platform_mailbox_path_policy_result] is source_or_mailbox_mutation_refusal
+  + [platform_mailbox_root_created_by_tests] is false
+  + [mailbox_file_created_by_tests] is false
+  + [mailbox_message_mutated_by_tests] is false
+  + [read_cursor_persisted_by_tests] is false
+  + [filesystem_watch_started_by_tests] is false
+  + [socket_or_network_listener_started_by_tests] is false
+  + [agent_dispatch_authorized_by_tests] is false
+  + [operations_control_authorized_by_tests] is false
+  + [live_machine_control_authorized_by_tests] is false
+
+& [ContractTestProof: IR6CoordinationMailbox] is the contract test proof result
+  + [targeted_test_command] is python -m unittest tests.test_ir6_coordination_mailbox_contracts
+  + [targeted_test_result] is passed
+  + [targeted_test_count] is 8
+  + [fixture_corpus_count] is 13
+  + [fixture_corpus_in_memory_comparison_passed] is true
+  + [claim_identity_refusal_tested] is true
+  + [work_boundary_stop_evidence_refusal_tested] is true
+  + [mailbox_carrier_authority_refusal_tested] is true
+  + [mailbox_freshness_pending_review_tested] is true
+  + [conflict_review_block_tested] is true
+  + [coordination_action_mailbox_IO_refusal_tested] is true
+  + [coordination_action_dispatch_refusal_tested] is true
+  + [coordination_action_live_control_refusal_tested] is true
+  + [generated_path_escape_refusal_tested] is true
+  + [source_path_mutation_refusal_tested] is true
+  + [platform_mailbox_mutation_refusal_tested] is true
+
+& [ProofBoundaryReview: IR6CoordinationMailbox] is the proof boundary review
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [mailbox_IO_implemented] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6GeneratedOutputAndNoMailboxIOProofAccepted] is accepted
+    @ [support] [GeneratedOutputProof: IR6CoordinationMailbox]
+    @ [support] [NoMailboxIOProof: IR6CoordinationMailbox]
+    @ [support] [ContractTestProof: IR6CoordinationMailbox]
+    @ [support] [ProofBoundaryReview: IR6CoordinationMailbox]
