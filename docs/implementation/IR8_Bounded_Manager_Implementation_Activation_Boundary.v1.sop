@@ -1,0 +1,203 @@
+Subject: IR8 Bounded Manager Implementation Activation Boundary V1
+Date: 2026-05-27
+Activation Boundary UUID: 25cb6e3d-0e56-46b6-aed7-549cef560781
+
+@ [activation_slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
+@ [IR8_activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+
+& [IR8BoundedManagerImplementationActivationBoundaryV1] is the IR8-IA01 activation boundary for future bounded integrated manager orchestration implementation work
+  + [activation_boundary_id] is ir8-bounded-manager-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is 25cb6e3d-0e56-46b6-aed7-549cef560781
+  + [slice_id] is IR8-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary and dependency decision only
+
+  = must: confirm future file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, dependency boundary, adapter boundary, dispatch boundary, live-control deferral boundary, command plan, and proof gate for implementation slices
+  = must: preserve accepted IR8 source authority, manager planning record, readiness projection, work packet, proof obligation, completion gate, handoff, human override, refusal, fault, dry-run evidence, generated-output, dispatch, credential, network, operations safety, and no-live-control semantics without implementation code creation in this slice
+  = must: keep package dependency changes, adapters, transports, UI, dispatch mechanisms, live-control APIs, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, and live machine control gated until IR8-IA07 or a later dependency-authorizing slice
+  - never: create manager implementation code, fixture source files, expected ledgers, generated projections, generated reports, tests, dependencies, adapter transports, UI, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, or live machine control in this slice
+
+& [ConfirmedImplementationFileInventory: IR8IntegratedManager] is the maximum code and test file inventory for first-pass IR8 integrated manager implementation
+  + [future_code_file] is src/langsop/manager/__init__.py
+  + [future_code_file] is src/langsop/manager/records.py
+  + [future_code_file] is src/langsop/manager/authority.py
+  + [future_code_file] is src/langsop/manager/readiness.py
+  + [future_code_file] is src/langsop/manager/packets.py
+  + [future_code_file] is src/langsop/manager/handoffs.py
+  + [future_code_file] is src/langsop/manager/faults.py
+  + [future_code_file] is src/langsop/manager/generated_paths.py
+  + [future_code_file] is src/langsop/manager/fixture_runner.py
+  + [future_test_file] is tests/test_ir8_integrated_manager_contracts.py
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+
+& [ConfirmedFixtureSourceInventory: IR8IntegratedManager] is the fixture source inventory opened by IR8-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/accepted_source_ready_work_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/stale_boundary_input_blocks_ready_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/unsupported_requirement_blocks_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/contested_coordination_claim_interrupts.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/mailbox_carrier_is_not_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/surface_action_request_requires_classification.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/dry_run_success_not_dispatch_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/human_override_scoped_revocable.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/generated_projection_not_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/graph_checkpoint_not_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/live_control_request_refused.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir8_integrated_manager/model_route_required.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to IR8IntegratedManagerFixtureTraceAndFaultPlanV1
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR8IntegratedManager] is the expected ledger inventory opened by IR8-IA02 after this boundary is accepted
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir8_integrated_manager/authority_readiness_packet_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir8_integrated_manager/stale_blocked_contested_fault_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir8_integrated_manager/carrier_surface_handoff_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir8_integrated_manager/dry_run_human_override_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir8_integrated_manager/generated_checkpoint_model_route_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir8_integrated_manager/no_dispatch_and_no_live_effect_expected.sop
+
+  = must: make expected ledgers reviewable without generated projections, generated reports, carrier state, runtime state, dispatch, credential access, network mutation, operations control, or live control
+  = must: keep expected ledgers as tracked fixture authority only after IR8-IA02 completion review accepts them
+
+& [ConfirmedGeneratedOutputBoundary: IR8IntegratedManager] is the generated-output boundary for future tests and fixture runs
+  + [generated_output_root] is .langsop/projections/ir8_integrated_manager/
+  + [generated_output_root] is .langsop/reports/ir8_integrated_manager/
+  + [generated_output_root] is tests/fixtures/generated/ir8_integrated_manager/
+  + [generated_output_root] is tests/fixtures/generated/ir8_integrated_manager/projections/
+  + [generated_output_root] is tests/fixtures/generated/ir8_integrated_manager/reports/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is projection_only
+  + [source_authority_status] is docs/ and accepted tracked fixture source or expected ledgers only
+
+  = must: refuse writes outside accepted generated roots during projection or test execution
+  = must: refuse generated writes to docs/, src/, tests/fixtures/sop/, tests/fixtures/expected/, platform/, .git/, and platform/coordination/mailboxes/
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject manager projections, reports, manifests, caches, carrier state, adapter state, dry-runs, work packets, approval displays, graph checkpoints, or runtime state as source authority, dispatch authority, operations authority, or live-control authority
+
+& [ConfirmedDependencyBoundary: IR8IntegratedManager] is the dependency boundary for the first IR8 implementation pass
+  + [allowed_dependency_set] is Python standard library only through IR8-IA06
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [langgraph_runtime_dependency_state] is gated_until_future_dependency_authorization
+  + [langflow_dependency_state] is gated_until_future_dependency_authorization
+  + [transport_library_state] is gated_until_future_dependency_authorization
+  + [machine_control_library_state] is gated_until_future_dependency_authorization
+  + [GPU_management_library_state] is gated_until_future_dependency_authorization
+  + [local_model_runtime_client_state] is gated_until_future_dependency_authorization
+  + [job_queue_client_state] is gated_until_future_dependency_authorization
+  + [network_or_firewall_library_state] is gated_until_future_dependency_authorization
+
+  = must: require IR8-IA07 or a later dependency-authorizing slice before adding package dependencies, lockfiles, imports from external adapter packages, UI frameworks, machine-management libraries, GPU libraries, model runtime clients, network libraries, watcher libraries, job queue clients, LangGraph runtime integrations, or Langflow integrations
+  = must: keep first-pass integrated manager implementation clearly marked as record projection and deterministic fixture evaluation, not live adapter, UI, transport, dispatch, process control, GPU control, model runtime control, credential access, network mutation, or orchestration integration
+
+& [ConfirmedAdapterDispatchAndLiveControlBoundary: IR8IntegratedManager] is the adapter, transport, UI, dispatch, and live-control boundary for first-pass implementation
+  + [adapter_status] is carrier_context_projection_only
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve carrier context, graph checkpoint context, coordination context, and dry-run context as traceable evidence without granting authority
+  = must: refuse future implementation that opens live transports, UI surfaces, manager dispatch, agent dispatch, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, operations control, or live machine control without a separate accepted activation slice and separate live-control authority path
+
+& [ConfirmedCommandPlan: IR8IntegratedManager] is the command and verification plan for future implementation slices
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated projections and reports are ignored, disposable, reproducible, and non-authoritative
+  + [no_dispatch_review] is prove manager outputs remain records and packets, not dispatch effects
+  + [no_live_effect_review] is prove commands, processes, GPU, model runtimes, jobs, credentials, network state, destructive filesystem targets, platform mailboxes, source docs, and expected ledgers are not mutated by projection code or tests
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir8_integrated_manager_contracts exists
+
+& [ImplementationSliceProofGate: IR8IntegratedManager] is the proof gate opened by this activation boundary
+  + [IR8-IA02_opened_after_review] is fixture source and expected-ledger seed material
+  + [IR8-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after IR8-IA01 acceptance
+  + [IR8-IA02_scope] is fixture source files and expected ledger files only
+  + [code_creation_authorized_after_IR8-IA01] is false
+  + [fixture_creation_authorized_after_IR8-IA01] is true_for_IR8-IA02_only
+  + [expected_ledger_creation_authorized_after_IR8-IA01] is true_for_IR8-IA02_only
+  + [generated_projection_creation_authorized_after_IR8-IA01] is false
+  + [test_file_creation_authorized_after_IR8-IA01] is false
+  + [dependency_installation_authorized_after_IR8-IA01] is false
+  + [package_metadata_mutation_authorized_after_IR8-IA01] is false
+  + [adapter_implementation_authorized_after_IR8-IA01] is false
+  + [transport_implementation_authorized_after_IR8-IA01] is false
+  + [UI_implementation_authorized_after_IR8-IA01] is false
+  + [manager_dispatch_authorized_after_IR8-IA01] is false
+  + [agent_dispatch_authorized_after_IR8-IA01] is false
+  + [command_execution_authorized_after_IR8-IA01] is validation_commands_only
+  + [process_control_authorized_after_IR8-IA01] is false
+  + [GPU_control_authorized_after_IR8-IA01] is false
+  + [model_runtime_control_authorized_after_IR8-IA01] is false
+  + [job_dispatch_authorized_after_IR8-IA01] is false
+  + [credential_access_authorized_after_IR8-IA01] is false
+  + [network_mutation_authorized_after_IR8-IA01] is false
+  + [destructive_filesystem_action_authorized_after_IR8-IA01] is false
+  + [operations_control_authorized_after_IR8-IA01] is false
+  + [live_machine_control_authorized_after_IR8-IA01] is false
+
+  = must: open only IR8-IA02 after this boundary is accepted
+  = must: keep manager models, handoff models, fault models, generated path policy, fixture runner, tests, generated outputs, dependency changes, adapter work, transport work, UI work, proof packs, dispatch, credential access, network mutation, operations control, and live machine control gated until their specific slices open
+
+& [IR8IA01CoverageReview] is the coverage checklist for IR8-IA01
+  + [confirmed_implementation_file_inventory_present] is ConfirmedImplementationFileInventory: IR8IntegratedManager
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceInventory: IR8IntegratedManager
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory: IR8IntegratedManager
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary: IR8IntegratedManager
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: IR8IntegratedManager
+  + [confirmed_adapter_dispatch_and_live_control_boundary_present] is ConfirmedAdapterDispatchAndLiveControlBoundary: IR8IntegratedManager
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: IR8IntegratedManager
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: IR8IntegratedManager
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_projection_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR8-IA01 only when all checklist items are satisfied
+  = must: open IR8-IA02 only after this activation boundary is reviewed in a completion review

@@ -186,7 +186,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
   + [support_record] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
   + [support_record] is docs/reviews/IR8_Implementation_Activation_Minting_Review.v1.sop
-  + [support_gap] is IR8-IA01 bounded manager implementation activation boundary not yet accepted
+  + [support_record] is docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+  + [support_record] is docs/reviews/IR8_IA01_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA02 fixture source and expected ledger material not yet accepted
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
@@ -290,25 +292,28 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
   + [support_record] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
   + [support_record] is docs/reviews/IR8_Implementation_Activation_Minting_Review.v1.sop
-  + [support_gap] is IR8-IA01 bounded manager implementation activation boundary not yet accepted
+  + [support_record] is docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+  + [support_record] is docs/reviews/IR8_IA01_Completion_Review.v1.sop
+  + [support_gap] is IR8-IA02 fixture source and expected ledger material not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: execute IR8-IA01 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route IR8-IA01 as requires deeper reasoning because activation boundary controls file creation, generated-output roots, dependency deferral, adapter deferral, dispatch refusal, and future manager runtime boundaries
+  = must: execute IR8-IA02 before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route IR8-IA02 as GPT-5.3-Codex-Spark-suitable because fixture and expected-ledger material is bounded by accepted fixture plan and activation boundary
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: IR8-IA01-BoundedManagerImplementationActivationBoundaryAndDependencyDecision] is ready_for_execution
+& [CurrentReadyChunk: IR8-IA02-FixtureSourceAndExpectedLedgerSeedMaterial] is ready_for_execution
   + [chunk_id] is IR8
-  + [chunk_name] is IR8-IA01 bounded manager implementation activation boundary and dependency decision
-  + [authority_basis] is docs/reviews/IR8_Implementation_Activation_Minting_Review.v1.sop
+  + [chunk_name] is IR8-IA02 fixture source and expected-ledger seed material
+  + [authority_basis] is docs/reviews/IR8_IA01_Completion_Review.v1.sop
   + [activation_slice_surface] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
-  + [model_route] is requires deeper reasoning
-  + [model_route_reason] is activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary control future implementation authority
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [model_route_reason] is fixture and expected-ledger material is bounded by accepted fixture plan and activation boundary
 
-  = must: produce docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop before implementation, dependencies, adapters, transports, UI, tests, or generated outputs
+  = must: create only tracked IR8 fixture source and expected-ledger seed material inside accepted roots
   = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence
