@@ -1,0 +1,45 @@
+Subject: P2 Authority Kernel Final Slices Source Manifest
+Date: 2026-05-27
+Manifest UUID: 41c185db-300e-4f5d-bfeb-2f641345b6fe
+
+& [SourceDocumentManifest: P2AuthorityKernelFinalSlices] is the source preservation manifest for P2 authority kernel final slice minting
+  + [dictated_source] is docs/source/2026-05-27_p2_authority_kernel_final_slices/P2_Authority_Kernel_Final_Slices_Source.sop
+    + [sha256] is 4A3A7EFB36228E8861BBFFD3D38114296E1D4051712DD0F642AA6E2A16F728A4
+    + [source_role] is preserved manager-derived P2 slice-minting source
+  + [authority_source] is docs/schema/Kernel_Record_Core.v1.sop
+    + [sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+    + [source_role] is accepted common KernelRecord envelope schema
+  + [authority_source] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+    + [sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+    + [source_role] is accepted record-specific KernelRecord schema inventory
+  + [authority_source] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+    + [sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+    + [source_role] is accepted natural-key, lifecycle, freshness, and invalidation matrix
+  + [authority_source] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+    + [sha256] is A5A5A9C6647D7CE7D16C29FAEA83B77F21E71D92E7248DCC370EF69D94F079B6
+    + [source_role] is accepted extraction and validation mapping that consumes KernelRecord schemas
+  + [authority_source] is docs/planning/IR2_Authority_Projection_Pack.v1.sop
+    + [sha256] is F716C3DFA819B956195F1C5D7920FE5AEFB408EE7E57A06099F8893E2DE223B2
+    + [source_role] is accepted parser/projection boundary pack
+  + [authority_source] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+    + [sha256] is 5BC668F0D5B0FF85D1600040C33A736978C9FE88E9BBD545D541354EB14D658A
+    + [source_role] is accepted post-IR8 readiness canonical authority
+  + [authority_source] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+    + [sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+    + [source_role] is accepted post-IR8 readiness surface
+  + [authority_source] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+    + [sha256] is 2F4198E73BCCFA1981A7C13501D47635709E0C70571BFB4C0461FE09A995FEDA
+    + [source_role] is accepted post-IR8 readiness rebake review
+  + [authority_source] is docs/product/LangSOP_Whole_Pie_Product_Overview.sop
+    + [sha256] is CFD6DE0F1C0C1DF20917B2B9CBC2B80AE9C48EF6B79B7386BEFF40C124EC7402
+    + [source_role] is whole-pie product overview
+  + [authority_source] is docs/planning/Capability_Field.v2.sop
+    + [sha256] is B21C3FB629C7BD237E6025F08C1359B93A11C2F7BA1767AAD83CEC96C516067D
+    + [source_role] is capability field
+  + [canonical_target] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for P2 final slice minting
+  = must: invalidate P2 slice minting if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not implementation authority
+  - never: use this manifest to authorize dependency installation, dispatch, operations control, or live machine control

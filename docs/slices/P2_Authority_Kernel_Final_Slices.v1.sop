@@ -1,0 +1,118 @@
+Subject: P2 Authority Kernel Final Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 53c17f7c-d002-4de5-88d2-f29569e9e5b9
+
+@ [canonical_specification] docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [ir2_extraction_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+
+& [P2AuthorityKernelFinalSliceSurfaceV1] is the final slice surface for P2 authority kernel and record schemas
+  + [chunk_ref] is P2 authority kernel and record schemas
+  + [chunk_boundary] is boundary import, schema gap reconciliation, common envelope refresh, authority vocabulary refresh, record-specific schema refresh, natural-key and lifecycle matrix refresh, storage posture decision, validation oracle plan, downstream gate, and completion review
+  + [accepted_boundary_input] is docs/schema/Kernel_Record_Core.v1.sop
+  + [accepted_boundary_input_sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+  + [accepted_boundary_input] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [accepted_boundary_input_sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+  + [accepted_boundary_input] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [accepted_boundary_input_sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+  + [accepted_boundary_input] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [accepted_boundary_input_sha256] is A5A5A9C6647D7CE7D16C29FAEA83B77F21E71D92E7248DCC370EF69D94F079B6
+  + [accepted_boundary_input] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [current_ready_slice] is P2-S01
+  + [gated_slice_set] is P2-S02, P2-S03, P2-S04, P2-S05, and P2-S06
+  + [safety_limit] is no dependency installation, no package metadata mutation, no adapter implementation, no dispatch, no operations control, and no live machine control authorized
+
+  = must: execute P2-S01 before editing or superseding existing schema authority
+  = must: run completed-work review after each P2 slice
+  = must: stale downstream slices when an upstream schema, matrix, storage posture, or validation oracle changes
+  = must: preserve existing accepted schema files as boundary inputs unless a P2 completion review explicitly supersedes them
+
+& [FinalWorkSlice: P2-S01-BoundaryImportAndSchemaGapReconciliation] is ready
+  + [slice_id] is P2-S01
+  + [slice_name] is boundary import and schema gap reconciliation
+  + [chunk_ref] is P2 authority kernel and record schemas
+  + [authority_basis] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+  + [activation_gate] is post-IR8 readiness accepted
+  + [expected_output_set] is docs/schema/P2_Boundary_Import_And_Schema_Gap_Reconciliation.v1.sop
+  + [verification_oracle] is boundary import lists accepted schema inputs, identifies schema refresh deltas, records natural-key and lifecycle matrix status, and classifies storage, fixture, packetization, adapter, dispatch, and live-control gates without mutating schemas
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is schema gap reconciliation affects which accepted contracts remain authority and which need supersession
+  + [forbidden_scope] is schema rewrite, storage implementation, fixture creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P2-S02-CommonEnvelopeAuthorityVocabularyAndFreshnessRefresh] is gated
+  + [slice_id] is P2-S02
+  + [slice_name] is common envelope, authority vocabulary, and freshness refresh
+  + [activation_gate] is P2-S01 accepted
+  + [expected_output_set] is docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+  + [verification_oracle] is refresh decision accepts, refines, or supersedes KernelRecord common fields, KernelRecordKind, AuthorityState, ReadinessState, RecordStatus, NaturalKeyState, FreshnessState, LineageEdgeKind, freshness rules, and lineage invariants while preserving source/projection separation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is common envelope and vocabulary changes affect all downstream schemas, operators, projections, and runtime records
+  + [forbidden_scope] is record-specific schema rewrite beyond declared deltas, storage implementation, fixture creation, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P2-S03-RecordSpecificSchemaAndNaturalKeyMatrixRefresh] is gated
+  + [slice_id] is P2-S03
+  + [slice_name] is record-specific schema and natural-key matrix refresh
+  + [activation_gate] is P2-S02 accepted
+  + [expected_output_set] is docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+  + [verification_oracle] is refresh decision accepts, refines, or supersedes record-specific payloads, natural-key rules, source-ref rules, lifecycle states, freshness rules, invalidation rules, and coverage for every KernelRecordKind
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is record-specific schemas and natural keys define stable identity for every downstream requirement, support, proof, packet, trace, and fault record
+  + [forbidden_scope] is storage implementation, fixture creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P2-S04-StoragePostureAndProjectionBoundaryDecision] is gated
+  + [slice_id] is P2-S04
+  + [slice_name] is storage posture and projection boundary decision
+  + [activation_gate] is P2-S03 accepted
+  + [expected_output_set] is docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+  + [verification_oracle] is decision distinguishes source authority, canonical authority, kernel record persistence candidates, generated projections, SQLite projections, graph checkpoints, surface state, carrier state, and generated reports without installing dependencies or creating storage code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is physical storage posture affects source preservation, query, concurrency, Git workflow, projection rebuild, and LangGraph integration
+  + [forbidden_scope] is storage implementation, dependency installation, lockfile mutation, package metadata mutation, generated database creation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P2-S05-FixtureAndValidationOraclePlan] is gated
+  + [slice_id] is P2-S05
+  + [slice_name] is fixture and validation oracle plan
+  + [activation_gate] is P2-S04 accepted
+  + [expected_output_set] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+  + [verification_oracle] is plan defines valid, stale, blocked, contradicted, invalidated, unresolved-natural-key, hidden-authority, missing-source, broken-lineage, storage-projection, and false-ready schema fixture cases without creating fixture files or implementation code
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P2-S04 acceptance unless fixture semantics or authority rules change
+  + [model_route_reason] is fixture planning becomes bounded after schema, matrix, and storage posture decisions are accepted
+  + [forbidden_scope] is fixture source creation, expected ledger creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P2-S06-P2CompletionReviewAndDownstreamGate] is gated
+  + [slice_id] is P2-S06
+  + [slice_name] is P2 completion review and downstream gate
+  + [activation_gate] is P2-S05 accepted
+  + [expected_output_set] is docs/reviews/P2_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P2_Readiness_Surface.v1.sop
+  + [verification_oracle] is completion review accepts only P2 outputs with hashes, support deltas, requirement deltas, downstream P3/P4 gates, model-route recommendations, and no storage, dependency, adapter, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P2 acceptance changes downstream operator contract readiness, packetization readiness, storage posture, fixture readiness, and runtime gates
+  + [forbidden_scope] is new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [P2FinalSliceClosureReview] is the dependency audit for minted P2 final slices
+  + [post_IR8_readiness_status] is accepted
+  + [core_schema_status] is accepted_boundary_input
+  + [record_schema_inventory_status] is accepted_boundary_input
+  + [natural_key_matrix_status] is accepted_boundary_input
+  + [IR2_extraction_mapping_status] is accepted_boundary_input
+  + [current_ready_slice_set] is P2-S01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P2-S02 through P2-S06 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or schema contradiction appears

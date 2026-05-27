@@ -14,9 +14,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [ir8_implementation_activation_review] docs/reviews/IR8_Implementation_Activation_Minting_Review.v1.sop
 @ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
 @ [post_ir8_readiness_review] docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+@ [p2_slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_slice_minting_review] docs/reviews/P2_Authority_Kernel_Final_Slice_Minting_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P2_authority_kernel_schema_slices
+  + [map_state] is ready_for_P2-S01_boundary_import_and_schema_gap_reconciliation
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -46,9 +48,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
   + [support_record] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
   + [support_record] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
-  + [support_gap] is record-specific schemas not yet drafted
-  + [support_gap] is natural-key matrix not yet accepted
-  + [support_gap] is physical storage not yet chosen
+  + [support_record] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/P2_Authority_Kernel_Final_Slice_Minting_Review.v1.sop
+  + [support_gap] is P2-S01 boundary import and schema gap reconciliation not yet accepted
+  + [support_gap] is P2 schema and natural-key refresh outputs not yet accepted
+  + [support_gap] is P2 storage posture decision not yet accepted
   + [proof_route] is schema fixtures for valid, stale, blocked, contradicted, and invalid records
   + [slice_family] is kernel-record-schema-design
   + [slice_family] is natural-key-and-state-matrix
@@ -357,16 +362,16 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P2AuthorityKernelAndRecordSchemas] is ready_for_execution
+& [CurrentReadyChunk: P2-S01-BoundaryImportAndSchemaGapReconciliation] is ready_for_execution
   + [chunk_id] is P2
-  + [chunk_name] is authority kernel and record schemas
-  + [authority_basis] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
-  + [activation_slice_surface] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [chunk_name] is P2-S01 boundary import and schema gap reconciliation
+  + [authority_basis] is docs/reviews/P2_Authority_Kernel_Final_Slice_Minting_Review.v1.sop
+  + [activation_slice_surface] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
+  + [model_route_reason] is schema gap reconciliation affects which accepted contracts remain authority and which need supersession
 
-  = must: mint P2 schema and natural-key design slices before fixture expansion, storage backend selection, broad packetization, adapter work, dispatch, or live-control implementation
+  = must: create only docs/schema/P2_Boundary_Import_And_Schema_Gap_Reconciliation.v1.sop and docs/reviews/P2_S01_Completion_Review.v1.sop
   = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

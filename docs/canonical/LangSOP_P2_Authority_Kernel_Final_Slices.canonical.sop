@@ -1,0 +1,113 @@
+Subject: LangSOP P2 Authority Kernel Final Slices Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-27_p2_authority_kernel_final_slices/P2_Authority_Kernel_Final_Slices_Source.sop
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [post_ir8_readiness] docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+& [CanonicalRecord: P2AuthorityKernelFinalSlices] is the processed planning authority for P2 authority kernel final slices
+  + [canonical_uuid] is 372c682a-05e6-445b-8253-a453e2c0cd4f
+  + [source_manifest_uuid] is 41c185db-300e-4f5d-bfeb-2f641345b6fe
+  + [slice_surface_uuid] is 53c17f7c-d002-4de5-88d2-f29569e9e5b9
+  + [authority_scope] is P2 final slice order, gate dependencies, expected outputs, model routing, schema boundary preservation, natural-key boundary preservation, storage decision boundary, fixture oracle boundary, downstream gate, forbidden scope, and completion review obligations
+  + [implementation_scope] is P2 slice-minting authority only
+  + [depends_on] is docs/schema/Kernel_Record_Core.v1.sop
+  + [depends_on] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [depends_on] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [depends_on] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [depends_on] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+
+  = must: use docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop as the executable P2 final slice surface
+  = must: execute P2-S01 before revising or superseding schema authority
+  = must: execute P2-S02 and P2-S03 before storage posture, fixture oracle planning, or downstream P3/P4 gates claim support
+  = must: preserve storage posture as a decision until a later source-preserved implementation activation opens storage code
+  = must: keep dependency installation, package metadata mutation, adapter work, transport work, UI work, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to write implementation code, create fixture files, install dependencies, mutate package metadata, dispatch work, control operations, or control the live machine
+
+& [CanonicalP2FinalSliceSequence] is the accepted final slice sequence for P2
+  + [slice] is P2-S01 boundary import and schema gap reconciliation
+  + [slice] is P2-S02 common envelope, authority vocabulary, and freshness refresh
+  + [slice] is P2-S03 record-specific schema and natural-key matrix refresh
+  + [slice] is P2-S04 storage posture and projection boundary decision
+  + [slice] is P2-S05 fixture and validation oracle plan
+  + [slice] is P2-S06 P2 completion review and downstream gate
+  + [current_ready_slice] is P2-S01
+  + [gated_slice] is P2-S02 until P2-S01 accepted
+  + [gated_slice] is P2-S03 until P2-S02 accepted
+  + [gated_slice] is P2-S04 until P2-S03 accepted
+  + [gated_slice] is P2-S05 until P2-S04 accepted
+  + [gated_slice] is P2-S06 until P2-S05 accepted
+
+  = must: preserve this order unless a completed-work review rebakes the P2 surface
+  = must: mark downstream slices stale when an upstream P2 output changes
+
+& [CanonicalP2ModelRouting] is the model routing for P2 final slices
+  + [P2-S01] is requires deeper reasoning
+  + [P2-S02] is requires deeper reasoning
+  + [P2-S03] is requires deeper reasoning
+  + [P2-S04] is requires deeper reasoning
+  + [P2-S05] is GPT-5.3-Codex-Spark-suitable only after P2-S04 acceptance unless fixture semantics or authority rules change
+  + [P2-S06] is requires deeper reasoning
+
+  = must: keep schema semantics, natural keys, authority states, freshness, lineage, storage posture, downstream gates, dispatch boundaries, and live-control boundaries under deeper reasoning
+  = must: treat bounded fixture planning as Spark-suitable only after schema, matrix, and storage posture decisions are accepted
+
+& [CanonicalP2SafetyLimit] is the inherited safety limit for P2 final slices
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [schema_implementation_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: block command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, operations control, and live machine control
+
+& [SatisfactionSignature: P2AuthorityKernelFinalSlices] is the valid SJS satisfaction signature for the P2 final slice specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 26e7f2a8-5741-4a2b-a940-03931b540698
+  + [signed_subject] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 4A3A7EFB36228E8861BBFFD3D38114296E1D4051712DD0F642AA6E2A16F728A4
+  + [source_sha256] is 9BAACC3E88BA2C031DBADC46FCC466C5B4BE2625D1FAC6401FC3C8354E5A408A
+  + [source_sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+  + [source_sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+  + [source_sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+  + [source_sha256] is A5A5A9C6647D7CE7D16C29FAEA83B77F21E71D92E7248DCC370EF69D94F079B6
+  + [source_sha256] is F716C3DFA819B956195F1C5D7920FE5AEFB408EE7E57A06099F8893E2DE223B2
+  + [source_sha256] is 5BC668F0D5B0FF85D1600040C33A736978C9FE88E9BBD545D541354EB14D658A
+  + [source_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [source_sha256] is 2F4198E73BCCFA1981A7C13501D47635709E0C70571BFB4C0461FE09A995FEDA
+  + [slice_surface_sha256] is 9401668EFF2BB9167227A433C3C1F542F50790752B68DE4B320119FDC065CBD3
+  + [canonical_source_specification] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, post_IR8_readiness_imported, schema_boundary_imported, natural_key_matrix_imported, IR2_extraction_mapping_imported, slices_minted, gates_defined, expected_outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for P2 final slice execution only; no implementation code, fixture creation, dependency installation, adapter work, dispatch, operations control, or live machine control authorized
+  + [invalidation_condition] is source_hash_change, schema_boundary_change, natural_key_matrix_change, post_IR8_readiness_change, forbidden_external_dependency_found, dispatch_authority_leak, live_control_leak, or schema_contradiction
+
+  = must: reprocess when P2 boundaries, schema inputs, slice order, model routing, safety limits, or required outputs materially change
+
+& [RegistryRecord: P2AuthorityKernelFinalSlices] is the durable identity ledger for P2 final slice minting
+  + [registry_uuid] is 61f56ab6-155a-4882-8b5d-02d6d75244f6
+  + [manifest_node_uuid] is 41c185db-300e-4f5d-bfeb-2f641345b6fe
+  + [canonical_node_uuid] is 372c682a-05e6-445b-8253-a453e2c0cd4f
+  + [slice_surface_uuid] is 53c17f7c-d002-4de5-88d2-f29569e9e5b9
+  + [signature_uuid] is 26e7f2a8-5741-4a2b-a940-03931b540698
+  + [slice_minting_review_uuid] is 90a752ce-c095-4074-a1fc-2289ef64bda0
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for P2 completion reviews and downstream readiness

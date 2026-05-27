@@ -1,0 +1,33 @@
+Subject: P2 Authority Kernel Final Slices Source
+Date: 2026-05-27
+Source UUID: 120470d9-c4fa-4304-a8a8-10b8d86c1169
+
+& [SourcePrompt: P2AuthorityKernelFinalSlices] is the preserved manager-derived source for minting P2 authority kernel and record schema slices
+  + [source_kind] is manager-derived slice-minting source
+  + [origin] is post-IR8 implementation readiness rebake after integrated manager orchestration implementation acceptance
+  + [purpose] is convert accepted kernel schema material, natural-key matrix material, IR2 extraction mapping, and post-IR8 readiness into dependency-closed P2 final slices
+  + [reason] is P2 is ready for deeper-reasoning slice minting, but schema refresh, natural-key acceptance, storage posture, and downstream packetization gates must be made explicit before broader fixture, operator, runtime, adapter, or dispatch work consumes them
+
+  = must: preserve Kernel_Record_Core.v1.sop as accepted common envelope authority
+  = must: preserve Authority_Kernel_Record_Schemas.v1.sop as accepted record-specific schema inventory authority until a P2 refresh supersedes it
+  = must: preserve Natural_Key_And_Lifecycle_Matrix.v1.sop as accepted natural-key, lifecycle, freshness, and invalidation matrix authority until a P2 refresh supersedes it
+  = must: preserve IR2 extraction and validation mapping as implementation evidence for current schema consumption
+  = must: preserve post-IR8 readiness as the gate-opening authority for P2 slice minting
+  = must: split P2 work so each slice has no dependency outside its declared boundary
+  = must: keep storage decision separate from logical schema refresh
+  = must: keep generated fixtures, implementation code, dependency installation, package metadata mutation, adapters, transports, UI, dispatch, operations control, and live machine control gated
+  = must: route schema semantics, natural keys, authority states, freshness, lineage, storage posture, and downstream gates to deeper reasoning
+  = should: make later bounded fixture updates GPT-5.3-Codex-Spark-suitable only after P2 schema and matrix refresh are accepted
+
+& [RequiredP2SliceFamilySet] is the source-level slice family set for P2
+  + [slice_family] is boundary import and schema gap reconciliation
+  + [slice_family] is common envelope and authority vocabulary refresh
+  + [slice_family] is record-specific schema and natural-key matrix refresh
+  + [slice_family] is logical storage posture and projection boundary decision
+  + [slice_family] is fixture and validation oracle planning
+  + [slice_family] is P2 completion review and downstream gate
+
+  = must: execute boundary import before refreshing schema semantics
+  = must: execute schema and matrix refresh before storage posture or broad fixture planning claims downstream readiness
+  = must: execute storage posture as a decision, not an implementation or dependency installation
+  = must: execute completion review before P3 or P4 consumes refreshed P2 authority

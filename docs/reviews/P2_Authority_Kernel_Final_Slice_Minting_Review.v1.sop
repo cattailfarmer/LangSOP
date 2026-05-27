@@ -1,0 +1,120 @@
+Subject: P2 Authority Kernel Final Slice Minting Review V1
+Date: 2026-05-27
+Review UUID: 90a752ce-c095-4074-a1fc-2289ef64bda0
+
+@ [source_manifest] docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [work_state] docs/state/P2_Work_State.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [post_ir8_rebake_review] docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+
+& [CompletedWorkReview: P2-Final-Slice-Minting] is the completed-work review for minting P2 authority kernel final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_p2_authority_kernel_final_slices/P2_Authority_Kernel_Final_Slices_Source.sop
+  + [completed_output_sha256] is 4A3A7EFB36228E8861BBFFD3D38114296E1D4051712DD0F642AA6E2A16F728A4
+  + [completed_output] is docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is 9BAACC3E88BA2C031DBADC46FCC466C5B4BE2625D1FAC6401FC3C8354E5A408A
+  + [completed_output] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+  + [completed_output_sha256] is B2756275F14B3274E730A97F7C75236005DB299817B74EC73DBA858BA36284CA
+  + [completed_output] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+  + [completed_output_sha256] is 9401668EFF2BB9167227A433C3C1F542F50790752B68DE4B320119FDC065CBD3
+  + [completed_output] is docs/state/P2_Work_State.v1.sop
+  + [completed_output_sha256] is B2BFC1F8ED73F31C653FAE7A3973C1D82EF54CE0589A43D0EC1328E41EAC91F7
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P2 final slice surface and open P2-S01
+  + [next_gate_result] is P2-S01 may open
+  + [next_model_route] is requires deeper reasoning for P2-S01
+  + [next_model_route_reason] is schema gap reconciliation affects which accepted contracts remain authority and which need supersession
+
+  = must: treat this review as gate-opening evidence for P2-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, P2 work state, post-IR8 readiness surface, post-IR8 readiness review, core schema, record-specific schema inventory, natural-key matrix, or IR2 extraction mapping changes
+  = must: keep schema implementation, storage implementation, fixture creation, dependency installation, package metadata mutation, adapter work, transport work, UI work, dispatch, operations control, and live machine control gated
+
+& [P2FinalSliceMintingVerification] is the verification result for P2 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [work_state_created] is true
+  + [slice_count] is 6
+  + [current_ready_slice] is P2-S01
+  + [gated_slice] is P2-S02
+  + [gated_slice] is P2-S03
+  + [gated_slice] is P2-S04
+  + [gated_slice] is P2-S05
+  + [gated_slice] is P2-S06
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [schema_rewrite_created] is false
+  + [storage_implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P2FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+    @ [support] docs/state/P2_Work_State.v1.sop
+
+& [SupportDelta: P2-Final-Slice-Minting] is the support delta produced by minted P2 final slices
+  + [new_support_record] is P2-S01 may import accepted schema inputs and reconcile gaps before schema refresh
+  + [new_support_record] is P2-S02 through P2-S06 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded P2-S05 fixture planning after P2-S01 through P2-S04 are accepted and only if fixture semantics remain stable
+  + [support_status] is accepted
+
+& [RequirementDelta: P2-Final-Slice-Minting] is the requirement delta produced by minted P2 final slices
+  + [requirement_delta] is P2-S01 requires deeper reasoning
+  + [requirement_delta] is completion review required after every P2 slice
+  + [requirement_delta] is no schema implementation, storage implementation, fixture creation, expected ledger creation, dependency installation, package metadata mutation, adapter work, transport work, UI work, dispatch, operations control, or live machine control is authorized by slice minting
+
+& [FaultReview: P2-Final-Slice-Minting] is the fault review for minted P2 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [schema_implementation_leak_found] is false
+  + [storage_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P2FinalSlicesAccepted] is accepted
+    @ [support] [P2FinalSliceMintingVerification]
+    @ [support] [SupportDelta: P2-Final-Slice-Minting]
+    @ [support] [RequirementDelta: P2-Final-Slice-Minting]
+    @ [support] [FaultReview: P2-Final-Slice-Minting]
+
+& [NextSliceGate: P2-S01] is opened
+  + [opened_slice] is P2-S01 boundary import and schema gap reconciliation
+  + [accepted_boundary_input] is docs/schema/Kernel_Record_Core.v1.sop
+  + [accepted_boundary_input_sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+  + [accepted_boundary_input] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [accepted_boundary_input_sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+  + [accepted_boundary_input] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [accepted_boundary_input_sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+  + [accepted_boundary_input] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is schema gap reconciliation affects which accepted contracts remain authority and which need supersession
+  + [safety_limit] is no dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P2-S01 next unless user redirects or a new fault invalidates this review

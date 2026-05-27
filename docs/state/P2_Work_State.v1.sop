@@ -1,0 +1,60 @@
+Subject: P2 Work State V1
+Date: 2026-05-27
+State UUID: e84acdd3-4940-42ce-a491-712fe2aa72a3
+
+@ [source_manifest] docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P2_Authority_Kernel_Final_Slice_Minting_Review.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+& [P2WorkStateV1] is the current derived work state for P2 authority kernel and record schemas
+  + [state_basis] is docs/reviews/P2_Authority_Kernel_Final_Slice_Minting_Review.v1.sop
+  + [surface_status] is P2_final_slices_minted_pending_P2-S01
+  + [source_manifest] is docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 9BAACC3E88BA2C031DBADC46FCC466C5B4BE2625D1FAC6401FC3C8354E5A408A
+  + [canonical_specification] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is B2756275F14B3274E730A97F7C75236005DB299817B74EC73DBA858BA36284CA
+  + [slice_surface] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+  + [slice_surface_sha256] is 9401668EFF2BB9167227A433C3C1F542F50790752B68DE4B320119FDC065CBD3
+  + [accepted_boundary_input] is docs/schema/Kernel_Record_Core.v1.sop
+  + [accepted_boundary_input_sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+  + [accepted_boundary_input] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [accepted_boundary_input_sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+  + [accepted_boundary_input] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [accepted_boundary_input_sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+  + [accepted_boundary_input] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [accepted_boundary_input_sha256] is A5A5A9C6647D7CE7D16C29FAEA83B77F21E71D92E7248DCC370EF69D94F079B6
+  + [accepted_boundary_input] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [current_ready_slice] is P2-S01
+  + [current_ready_slice_name] is boundary import and schema gap reconciliation
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is schema gap reconciliation affects which accepted contracts remain authority and which need supersession
+  + [gated_slice] is P2-S02
+  + [gated_slice] is P2-S03
+  + [gated_slice] is P2-S04
+  + [gated_slice] is P2-S05
+  + [gated_slice] is P2-S06
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [schema_implementation_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [fixture_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute P2-S01 before revising schemas, natural-key matrices, storage posture, fixture plans, downstream P3/P4 gates, adapter work, dispatch, or live-control work
+  = must: keep source authority, schema authority, generated projections, storage candidates, graph checkpoints, surface state, carrier state, and generated reports in distinct authority classes
+  = must: mark this state stale if P2 source, manifest, canonical specification, slice surface, minting review, accepted schema inputs, post-IR8 readiness, or IR2 extraction mapping changes
