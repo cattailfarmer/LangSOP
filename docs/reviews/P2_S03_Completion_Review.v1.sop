@@ -1,0 +1,92 @@
+Subject: P2 S03 Completion Review V1
+Date: 2026-05-27
+Review UUID: 6994daa9-2ff2-4243-b69f-7eb1d4e425ff
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s02_review] docs/reviews/P2_S02_Completion_Review.v1.sop
+@ [completed_output] docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+
+& [CompletedWorkReview: P2-S03] is the completed-work review for P2-S03 record-specific schema and natural-key matrix refresh
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P2-S03
+  + [completed_output] is docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+  + [completed_output_sha256] is CA4AE1FED9724EB568993A31621B9605057ED7BDE5BAC41F2EA09E12680DF6F2
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P2-S03 and open P2-S04
+  + [next_gate_result] is P2-S04 may open
+  + [next_model_route] is requires deeper reasoning for storage posture and projection boundary decision
+  + [next_model_route_depth] is deeper reasoning required
+
+  = must: treat this review as gate-opening evidence for P2-S04 only
+  = must: rerun this review if P2 record-specific schema refresh, P2 common envelope refresh, slice surface, minting review, baseline schema inventory, natural-key matrix, IR8 manager proof, or post-IR8 readiness changes
+  = must: keep schema implementation, storage implementation, fixture creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, and live machine control gated
+
+& [P2S03Verification] is the verification result for P2-S03
+  + [record_specific_refresh_file_present] is true
+  + [baseline_record_kind_posture_present] is true
+  + [overlay_record_kind_set_present] is true
+  + [overlay_record_kind_count] is 10
+  + [overlay_record_schema_count] is 10
+  + [natural_key_matrix_refresh_present] is true
+  + [downstream_gate_instruction_present] is true
+  + [in_place_schema_rewrite_created] is false
+  + [storage_implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P2S03VerificationSatisfied] is accepted
+    @ [support] docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+
+& [SupportDelta: P2-S03] is the support delta produced by P2-S03
+  + [new_support_record] is P2 now has overlay record schemas and natural-key rules for manager_handoff, human_override_record, refusal_record, operation_request, operation_dry_run_result, resource_safety_review, dependency_decision, dispatch_decision, live_control_deferral, and generated_output_proof
+  + [new_support_record] is baseline KernelRecord schemas and natural-key matrix remain accepted without in-place rewrite
+  + [new_support_record] is P2-S04 may decide storage posture and projection boundary using baseline plus overlay record kinds
+  + [support_status] is accepted
+
+& [RequirementDelta: P2-S03] is the requirement delta produced by P2-S03
+  + [requirement_delta] is P2-S04 requires deeper reasoning because physical storage posture affects source preservation, query, concurrency, Git workflow, projection rebuild, and LangGraph integration
+  + [requirement_delta] is P2-S04 may create docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop and docs/reviews/P2_S04_Completion_Review.v1.sop only
+  + [requirement_delta] is no schema implementation, storage implementation, fixture creation, dependency installation, package metadata mutation, adapter work, dispatch, operations control, or live machine control is authorized by P2-S03
+
+& [FaultReview: P2-S03] is the fault review for P2-S03
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [in_place_schema_rewrite_found] is false
+  + [storage_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P2S03Accepted] is accepted
+    @ [support] [P2S03Verification]
+    @ [support] [SupportDelta: P2-S03]
+    @ [support] [RequirementDelta: P2-S03]
+    @ [support] [FaultReview: P2-S03]
+
+& [NextSliceGate: P2-S04] is opened
+  + [opened_slice] is P2-S04 storage posture and projection boundary decision
+  + [accepted_dependency] is docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is physical storage posture affects source preservation, query, concurrency, Git workflow, projection rebuild, and LangGraph integration
+  + [safety_limit] is no dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P2-S04 next unless user redirects or a new fault invalidates this review

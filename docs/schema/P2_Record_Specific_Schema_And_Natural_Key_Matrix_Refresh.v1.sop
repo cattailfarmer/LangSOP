@@ -1,0 +1,206 @@
+Subject: P2 Record Specific Schema And Natural Key Matrix Refresh V1
+Date: 2026-05-27
+Refresh UUID: 1ad426c1-7600-4098-8a0b-691545319851
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s02] docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+@ [p2_s02_review] docs/reviews/P2_S02_Completion_Review.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [ir8_manager_proof] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+
+& [P2RecordSpecificSchemaAndNaturalKeyMatrixRefreshV1] is the P2-S03 refresh for record-specific schemas and natural-key matrix
+  + [slice_id] is P2-S03
+  + [slice_name] is record-specific schema and natural-key matrix refresh
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [refresh_result] is record_inventory_extended_with_post_IR8_operational_and_manager_record_kinds_as_P2_refresh_overlay
+  + [supersession_scope] is additive_record_kind_and_matrix_overlay_not_in_place_rewrite
+  + [next_gate_result] is P2-S04 may open
+  + [schema_implementation_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this refresh as the record-specific overlay for downstream storage posture and fixture planning work
+  = must: preserve Authority_Kernel_Record_Schemas.v1.sop and Natural_Key_And_Lifecycle_Matrix.v1.sop as accepted historical baseline for existing records
+  = must: require downstream P2-S04 storage posture to account for both baseline record kinds and P2 overlay record kinds
+  = must: keep implementation, storage code, dependency installation, adapters, dispatch, operations control, and live machine control gated
+
+& [BaselineRecordKindPosture: P2-S03] is the posture for existing KernelRecordKind values
+  + [baseline_record_kind_set_status] is accepted_without_in_place_rewrite
+  + [baseline_record_kind] is source_log
+  + [baseline_record_kind] is log_entry
+  + [baseline_record_kind] is citation_ref
+  + [baseline_record_kind] is narrative_node
+  + [baseline_record_kind] is understanding_anchor
+  + [baseline_record_kind] is capability_node
+  + [baseline_record_kind] is requirement_record
+  + [baseline_record_kind] is support_record
+  + [baseline_record_kind] is support_gap
+  + [baseline_record_kind] is authority_artifact
+  + [baseline_record_kind] is coordination_claim
+  + [baseline_record_kind] is operator_contract
+  + [baseline_record_kind] is operator_trace
+  + [baseline_record_kind] is work_packet
+  + [baseline_record_kind] is completion_review
+  + [baseline_record_kind] is readiness_projection
+  + [baseline_record_kind] is stale_projection
+  + [baseline_record_kind] is proof_result
+  + [baseline_record_kind] is fault_record
+
+  = must: apply P2 AuthorityClass, EffectBoundary, CurrentnessState, review_gate_ref, and invalidation_ref_set overlay to refreshed downstream uses of baseline record kinds
+  = must: keep existing records valid until a future implementation migration or storage decision explicitly remaps them
+
+& [P2OverlayRecordKindSet] is the added record-kind set required by post-IR8 evidence
+  + [overlay_record_kind] is manager_handoff
+  + [overlay_record_kind] is human_override_record
+  + [overlay_record_kind] is refusal_record
+  + [overlay_record_kind] is operation_request
+  + [overlay_record_kind] is operation_dry_run_result
+  + [overlay_record_kind] is resource_safety_review
+  + [overlay_record_kind] is dependency_decision
+  + [overlay_record_kind] is dispatch_decision
+  + [overlay_record_kind] is live_control_deferral
+  + [overlay_record_kind] is generated_output_proof
+
+  = must: treat overlay record kinds as refreshed schema requirements for new downstream planning
+  = must: not require immediate migration of older records into overlay kinds
+  = must: prevent generic proof_result, fault_record, authority_artifact, or work_packet records from hiding these meanings when the specialized overlay kind applies
+
+& [OverlayRecordSchema: manager_handoff] is the refreshed schema for manager handoff records
+  + [payload_field_set] is handoff_id, handoff_kind, source_surface_ref, target_surface_ref, subject_ref, input_record_ref_set, output_expectation_ref_set, authority_class, effect_boundary, currentness_state, review_gate_ref, invalidation_ref_set, and refusal_route_ref
+  + [natural_key_rule] is subject_ref plus handoff_kind plus source_surface_ref plus target_surface_ref plus handoff_revision
+  + [authority_class_rule] is surface_projection_non_authority unless accepted review explicitly promotes evidence
+  + [effect_boundary_rule] is review_gate_only
+  + [freshness_rule] is stale when source surface, target surface, subject, accepted inputs, or review gate changes
+  + [invalidation_behavior] is superseded by revised handoff or invalidated by contradiction, stale input, or missing review gate
+
+& [OverlayRecordSchema: human_override_record] is the refreshed schema for scoped human override records
+  + [payload_field_set] is override_id, human_actor_ref, override_scope, override_statement_ref, authority_basis_ref_set, expiration_rule, revocation_route, risk_context_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is human_actor_ref plus override_scope plus override_statement_hash plus override_revision
+  + [authority_class_rule] is human_override_authority only with explicit scope, expiration, revocation route, risk context, and review gate
+  + [effect_boundary_rule] is review_gate_only unless future dispatch or live-control authority explicitly accepts more effect
+  + [freshness_rule] is stale when expiration triggers, scope changes, revocation occurs, or risk context changes
+  + [invalidation_behavior] is invalidated by revocation, expiration, contradicted authority, or superseding override
+
+& [OverlayRecordSchema: refusal_record] is the refreshed schema for refusal and blocked-action records
+  + [payload_field_set] is refusal_id, refused_action_kind, refused_action_ref, refusal_reason, authority_basis_ref_set, forbidden_scope_ref_set, repair_route_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is refused_action_kind plus refused_action_ref plus refusal_reason_hash plus refusal_revision
+  + [authority_class_rule] is proof_authority when supported by accepted boundary input or reviewed proof, otherwise explicit_absence_evidence
+  + [effect_boundary_rule] is forbidden
+  + [freshness_rule] is stale when forbidden scope, authority basis, or repair route changes
+  + [invalidation_behavior] is superseded by reviewed repair or invalidated by accepted authority change
+
+& [OverlayRecordSchema: operation_request] is the refreshed schema for operations-facing request records
+  + [payload_field_set] is operation_request_id, requested_effect, request_source_ref, subject_ref, resource_scope_ref, approval_ref_set, dry_run_requirement_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is request_source_ref plus subject_ref plus requested_effect plus request_revision
+  + [authority_class_rule] is surface_projection_non_authority or accepted_decision_authority only after review
+  + [effect_boundary_rule] is operations_candidate_only
+  + [freshness_rule] is stale when request source, resource scope, approval, dry-run requirement, or review gate changes
+  + [invalidation_behavior] is invalidated by refusal, superseded request, stale approval, or live-control boundary violation
+
+& [OverlayRecordSchema: operation_dry_run_result] is the refreshed schema for dry-run evidence
+  + [payload_field_set] is dry_run_id, operation_request_ref, simulated_effect_set, resource_estimate_ref, refusal_ref_set, proof_output_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is operation_request_ref plus dry_run_method plus proof_output_hash
+  + [authority_class_rule] is dry_run_evidence_non_authority
+  + [effect_boundary_rule] is dry_run_only
+  + [freshness_rule] is stale when operation_request_ref, dry_run method, proof output, resource estimate, or refusal set changes
+  + [invalidation_behavior] is superseded by newer dry-run or invalidated by failed proof, stale request, or authority contradiction
+
+& [OverlayRecordSchema: resource_safety_review] is the refreshed schema for resource and safety review records
+  + [payload_field_set] is resource_review_id, operation_request_ref, resource_scope_ref, risk_level, approval_requirement_ref, rollback_or_abort_ref, monitor_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is operation_request_ref plus resource_scope_ref plus review_revision
+  + [authority_class_rule] is proof_authority only after accepted review
+  + [effect_boundary_rule] is review_gate_only
+  + [freshness_rule] is stale when resource scope, risk level, approval requirement, rollback, abort, monitor, or operation request changes
+  + [invalidation_behavior] is superseded by revised safety review or invalidated by missing approval, missing rollback, or risk contradiction
+
+& [OverlayRecordSchema: dependency_decision] is the refreshed schema for dependency and package metadata decisions
+  + [payload_field_set] is dependency_decision_id, dependency_scope, decision_result, package_metadata_scope, authority_basis_ref_set, allowed_dependency_set, forbidden_dependency_set, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is dependency_scope plus decision_result plus decision_revision
+  + [authority_class_rule] is accepted_decision_authority
+  + [effect_boundary_rule] is review_gate_only unless a later implementation activation explicitly authorizes package mutation
+  + [freshness_rule] is stale when dependency scope, package metadata scope, allowed set, forbidden set, or authority basis changes
+  + [invalidation_behavior] is superseded by newer dependency decision or invalidated by package mutation outside scope
+
+& [OverlayRecordSchema: dispatch_decision] is the refreshed schema for dispatch authority decisions
+  + [payload_field_set] is dispatch_decision_id, dispatch_scope, dispatch_subject_ref_set, actor_capability_ref_set, recipient_ref_set, approval_rule_ref, audit_rule_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is dispatch_scope plus dispatch_subject_ref_set hash plus decision_revision
+  + [authority_class_rule] is accepted_decision_authority unless separate source-preserved SJS dispatch authority grants dispatch_authority
+  + [effect_boundary_rule] is dispatch_candidate_only unless dispatch_authority is accepted
+  + [freshness_rule] is stale when dispatch scope, actor capability, recipient, approval, audit, or authority basis changes
+  + [invalidation_behavior] is superseded by new dispatch decision or invalidated by missing approval, missing audit, or unauthorized dispatch
+
+& [OverlayRecordSchema: live_control_deferral] is the refreshed schema for live-control boundary records
+  + [payload_field_set] is live_control_deferral_id, target_scope, prohibited_effect_set, required_future_authority_path, safety_basis_ref_set, rollback_requirement_ref, emergency_stop_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is target_scope plus prohibited_effect_set hash plus deferral_revision
+  + [authority_class_rule] is accepted_decision_authority
+  + [effect_boundary_rule] is forbidden
+  + [freshness_rule] is stale when target scope, prohibited effect set, future authority path, safety basis, rollback, or emergency stop requirements change
+  + [invalidation_behavior] is superseded only by future source-preserved SJS live-control authority with completion review
+
+& [OverlayRecordSchema: generated_output_proof] is the refreshed schema for generated-output disposability and non-authority proofs
+  + [payload_field_set] is generated_output_proof_id, generated_root_ref, allowed_output_set, forbidden_output_set, cleanup_rule, authority_nonpromotion_rule, proof_output_ref, authority_class, effect_boundary, currentness_state, review_gate_ref, and invalidation_ref_set
+  + [natural_key_rule] is generated_root_ref plus proof_output_hash plus proof_revision
+  + [authority_class_rule] is proof_authority for the non-authority proof and generated_output_non_authority for generated artifacts
+  + [effect_boundary_rule] is proof_only
+  + [freshness_rule] is stale when generated root policy, forbidden output set, cleanup rule, or proof output changes
+  + [invalidation_behavior] is invalidated by generated output leak, source mutation, mailbox mutation, dispatch leak, operations leak, or live-control leak
+
+& [P2NaturalKeyMatrixRefresh] is the natural-key matrix refresh for overlay record kinds
+  + [matrix_entry_added] is manager_handoff
+  + [matrix_entry_added] is human_override_record
+  + [matrix_entry_added] is refusal_record
+  + [matrix_entry_added] is operation_request
+  + [matrix_entry_added] is operation_dry_run_result
+  + [matrix_entry_added] is resource_safety_review
+  + [matrix_entry_added] is dependency_decision
+  + [matrix_entry_added] is dispatch_decision
+  + [matrix_entry_added] is live_control_deferral
+  + [matrix_entry_added] is generated_output_proof
+  + [baseline_matrix_status] is accepted_without_in_place_rewrite
+  + [overlay_matrix_status] is accepted_for_downstream_planning_after_P2_completion
+
+  = must: require natural-key key_state unresolved when any required natural-key term is missing
+  = must: preserve older natural keys through lineage when a record is superseded, split, merged, contradicted, or invalidated
+  = must: use explicit invalidation_ref_set when an overlay record changes authority_class or effect_boundary
+
+& [DownstreamGateInstruction: P2-S03] is the instruction to P2-S04 and downstream chunks
+  + [P2-S04_must_decide] is whether source authority, kernel records, generated projections, SQLite projections, graph checkpoints, surface state, carrier state, and generated reports share storage or remain separated by physical boundary
+  + [P2-S04_must_preserve] is P2 overlay record kinds, authority classes, effect boundaries, currentness states, review gates, and invalidation references
+  + [P3_gate] is gated_until_P2_completion_or_explicit_rebake
+  + [P4_gate] is gated_until_P2_and_P3_advance
+  + [storage_implementation_gate] is gated_until_future_implementation_activation
+
+& [P2S03FaultReview] is the fault review for P2-S03
+  + [in_place_schema_rewrite_found] is false
+  + [storage_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [overlay_record_kind_hidden_in_generic_record_found] is false
+
+  ! [P2RecordSpecificSchemaAndNaturalKeyMatrixRefreshAccepted] is accepted
+    @ [support] [BaselineRecordKindPosture: P2-S03]
+    @ [support] [P2OverlayRecordKindSet]
+    @ [support] [OverlayRecordSchema: manager_handoff]
+    @ [support] [OverlayRecordSchema: human_override_record]
+    @ [support] [OverlayRecordSchema: refusal_record]
+    @ [support] [OverlayRecordSchema: operation_request]
+    @ [support] [OverlayRecordSchema: operation_dry_run_result]
+    @ [support] [OverlayRecordSchema: resource_safety_review]
+    @ [support] [OverlayRecordSchema: dependency_decision]
+    @ [support] [OverlayRecordSchema: dispatch_decision]
+    @ [support] [OverlayRecordSchema: live_control_deferral]
+    @ [support] [OverlayRecordSchema: generated_output_proof]
+    @ [support] [P2NaturalKeyMatrixRefresh]
+    @ [support] [DownstreamGateInstruction: P2-S03]
+    @ [support] [P2S03FaultReview]
