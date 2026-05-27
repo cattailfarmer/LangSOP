@@ -10,6 +10,8 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
 @ [completion_review] docs/reviews/P3_S01_Completion_Review.v1.sop
 @ [accepted_output] docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
 @ [completion_review] docs/reviews/P3_S02_Completion_Review.v1.sop
+@ [accepted_output] docs/operators/P3_Signature_Validation_Operator_Contract_Refresh.v1.sop
+@ [completion_review] docs/reviews/P3_S03_Completion_Review.v1.sop
 @ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
 @ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
 @ [operator_template] docs/operators/Operator_Contract_Template.v1.sop
@@ -18,9 +20,9 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
 @ [operator_runner_contract] docs/operators/IR3_Contract_Driven_Operator_Runner_And_Trace_Contract.v1.sop
 
 & [P3WorkStateV1] is the current derived work state for P3 compiled SOP operator contracts
-  + [state_basis] is docs/reviews/P3_S02_Completion_Review.v1.sop
-  + [state_basis_sha256] is 8E5A6FC754E5934BD928DE6BBE94BEF92EA8231BAB730DEE63D66F9C0A206E96
-  + [surface_status] is P3-S02_accepted_pending_P3-S03
+  + [state_basis] is docs/reviews/P3_S03_Completion_Review.v1.sop
+  + [state_basis_sha256] is 112CE30A98DA6AE67D20E513DAB3CBFBE3277BEEBD97FFCB02E9668D486D45D0
+  + [surface_status] is P3-S03_accepted_pending_P3-S04
   + [source_manifest] is docs/source/2026-05-27_p3_compiled_sop_operator_contracts_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is C1F84558BB7870C2F46FDE2FD8BCCBA2F3D8D0D89AF853372DD3C260DA182134
   + [canonical_specification] is docs/canonical/LangSOP_P3_Compiled_SOP_Operator_Contracts_Final_Slices.canonical.sop
@@ -49,11 +51,15 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
   + [accepted_output_sha256] is A7DD9F962924B33773F9D846390C1725209C27C2607ABAD6BBCAE0C396FD8C25
   + [accepted_completion_review] is docs/reviews/P3_S02_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 8E5A6FC754E5934BD928DE6BBE94BEF92EA8231BAB730DEE63D66F9C0A206E96
-  + [current_ready_slice] is P3-S03
-  + [current_ready_slice_name] is signature validation operator contract refresh
+  + [accepted_slice] is P3-S03
+  + [accepted_output] is docs/operators/P3_Signature_Validation_Operator_Contract_Refresh.v1.sop
+  + [accepted_output_sha256] is 181344ED5149E1CCED01446899FC7B852B59493D8C48BCE120801D218655CFE1
+  + [accepted_completion_review] is docs/reviews/P3_S03_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 112CE30A98DA6AE67D20E513DAB3CBFBE3277BEEBD97FFCB02E9668D486D45D0
+  + [current_ready_slice] is P3-S04
+  + [current_ready_slice_name] is support readiness recompute operator contract refresh
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is signature validation operator boundaries affect which artifacts may be trusted as processed authority
-  + [gated_slice] is P3-S04
+  + [current_ready_slice_model_route_reason] is readiness recompute controls downstream packetization and false-ready prevention
   + [gated_slice] is P3-S05
   + [gated_slice] is P3-S06
   + [operator_implementation_authorized] is false
@@ -72,6 +78,6 @@ State UUID: 4410d52e-9e88-420c-a64e-25e3e0ca4bf7
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P3-S03 before support readiness refresh, fixture plans, downstream packetization, graph runtime, or surface expansion
+  = must: execute P3-S04 before fixture plans, downstream packetization, graph runtime, or surface expansion
   = must: keep SOP proof authority, operator contract authority, generated traces, graph checkpoints, fixture plans, packetization candidates, and runtime outputs in distinct authority classes
   = must: mark this state stale if P3 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, or accepted operator boundary inputs change

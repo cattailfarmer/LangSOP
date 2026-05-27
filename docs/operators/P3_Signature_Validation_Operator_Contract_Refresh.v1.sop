@@ -1,0 +1,131 @@
+Subject: P3 Signature Validation Operator Contract Refresh V1
+Date: 2026-05-27
+Refresh UUID: 6cb16d53-1d15-461b-84ae-b20a3636b2a1
+
+@ [slice_surface] docs/slices/P3_Compiled_SOP_Operator_Contracts_Final_Slices.v1.sop
+@ [p3_s02] docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+@ [p3_s02_review] docs/reviews/P3_S02_Completion_Review.v1.sop
+@ [foundation_operator_contracts] docs/operators/Foundation_Operator_Contracts.v1.sop
+@ [specification_governance] ../platform/refinement/Specification_Governance.sop
+@ [sjs_protocol] ../platform/refinement/Specification_Justification_Solution.sop
+
+& [P3SignatureValidationOperatorContractRefreshV1] is the P3-S03 refresh for the signature_validation operator contract
+  + [slice_id] is P3-S03
+  + [slice_name] is signature validation operator contract refresh
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [refresh_result] is signature_validation_contract_refreshed_as_P3_overlay_without_implementation
+  + [supersession_scope] is additive_operator_contract_refresh_not_in_place_rewrite
+  + [next_gate_result] is P3-S04 may open
+  + [operator_implementation_authorized] is false
+  + [signature_issuance_authorized] is false
+  + [source_artifact_mutation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this refresh as operator contract authority, not executable validator authority
+  = must: preserve Foundation_Operator_Contracts.v1.sop as historical baseline for existing proof packs until future migration
+  = must: require future implementation activation before any signature validation code, fixture source files, expected ledgers, or operator runner wiring are created
+  = must: keep signature issuance, source mutation, dispatch, operations control, and live machine control forbidden
+
+& [RefreshedOperatorContract: signature_validation] is the P3 refreshed contract for validating candidate SOP authority artifacts
+  + [operator_id] is signature_validation
+  + [operator_version] is v2_contract_refresh
+  + [operator_name] is Signature Validation
+  + [operator_purpose] is classify whether a candidate SOP or canonical artifact has preserved source lineage, a valid satisfaction signature, current source hashes, and no hidden authority promotion
+  + [source_sop_ref] is platform/refinement/Specification_Governance.sop
+  + [source_sop_ref] is platform/refinement/Specification_Justification_Solution.sop
+  + [authority_basis_ref_set] is docs/operators/P3_Common_Operator_Contract_Envelope_And_Refusal_Semantics.v1.sop
+  + [input_record_kind_set] is authority_artifact, citation_ref, source_log, proof_result, completion_review, and fault_record
+  + [output_record_kind_set] is authority_artifact, proof_result, fault_record, and operator_trace
+  + [input_authority_requirement_set] is candidate artifact authority_class source_authority canonical_authority signed_sjs_authority accepted_decision_authority proof_authority or explicit_absence_evidence
+  + [output_authority_class_set] is proof_authority for validation proof_result and generated_output_non_authority for operator_trace
+  + [effect_boundary_limit] is proof_only
+  + [currentness_precondition_set] is source_manifest current, source_hash_set current, canonical artifact current, signature protocol current, and no invalidation_ref_set active
+  + [natural_key_requirement_set] is candidate artifact path or artifact hash plus signature protocol uuid plus source manifest ref
+  + [source_lineage_requirement_set] is source_manifest_ref, source_hash_set, signed_subject_ref, canonical_source_specification_ref when applicable, and lineage from source to canonical to signature
+  + [review_gate_requirement_set] is completion review required before validation proof opens downstream readiness
+  + [invalidation_behavior_set] is superseded when source hash, manifest, protocol, signed subject, or canonical source changes
+  + [output_mutation_policy] is create_new_record or supersede_existing_record only with lineage_edge_set and invalidation_ref_set
+  + [nonpromotion_policy] is operator_trace, generated report, checkpoint, carrier context, and projection output cannot themselves satisfy signed_sjs authority
+  + [SOP_first_interrupt_contract] is required for ambiguous artifact identity, duplicate valid-looking signatures, authority conflict, unclear human override, or semantic uncertainty about source lineage
+
+  = must: never convert source_only, projection, generated output, carrier state, or checkpoint state into signed_sjs authority without valid signature evidence
+  = must: preserve invalid, stale, duplicate, superseded, and contradicted signatures as trace
+  = must: return SOP_first_interrupt for ambiguous lineage rather than guessing
+
+& [SignatureValidationDecisionTable: P3-S03] is the decision table for signature_validation
+  + [decision_case] is valid_signature when protocol uuid is ad10f10f-d506-48ef-a805-f8b0a133766c, source manifest is present, source hashes match, signed subject matches, lineage is complete, and currentness is current
+  + [decision_case] is missing_signature when artifact claims signed_sjs authority but no satisfaction signature is present
+  + [decision_case] is wrong_protocol_uuid when signature protocol differs from ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [decision_case] is stale_source_hash when any source hash, manifest hash, canonical hash, or signed subject hash differs from accepted current authority
+  + [decision_case] is duplicate_signature when more than one current signature claims the same subject and protocol without explicit supersession lineage
+  + [decision_case] is broken_lineage when source manifest, source hash set, canonical subject, or signature edge is missing or inconsistent
+  + [decision_case] is hidden_authority when signature result is implied by prose, projection, checkpoint, or generated output without explicit proof record
+  + [decision_case] is ambiguous_artifact_identity when artifact path, natural key, signed subject, or manifest identity cannot be resolved mechanically
+
+  = must: emit proof_result verified only for valid_signature
+  = must: emit blocked_output for missing but repairable source or signature evidence when no fault is proven
+  = must: emit fault_output for wrong_protocol_uuid, stale_source_hash, broken_lineage, hidden_authority, or operator contract violation
+  = must: emit SOP_first_interrupt for duplicate_signature, ambiguous_artifact_identity, authority conflict, or unresolved human override
+
+& [SignatureValidationOutputContract: P3-S03] is the output and refusal contract for signature_validation
+  + [success_output] is proof_result with proof_status verified, authority_class proof_authority, effect_boundary proof_only, currentness_state current, source_ref_set preserved, lineage_edge_set preserved, review_gate_ref required, and invalidation_ref_set empty
+  + [success_output] is authority_artifact with authority_state signed_sjs only by explicit supersession or review lineage
+  + [blocked_output] is authority_artifact or proof_result with currentness_state blocked and repair_route_ref when signature evidence is absent but source lineage can be repaired
+  + [fault_output] is fault_record with fault_kind wrong_protocol_uuid stale_source_hash broken_lineage hidden_authority projection_to_authority_promotion generated_output_authority_promotion or operator_contract_violation
+  + [interrupt_output] is SOP_first_interrupt with interrupt_kind ambiguous_identity authority_conflict human_override_required or missing_proof_route
+  + [trace_output] is operator_trace with generated_output_non_authority and nonpromotion_policy attached
+
+  = must: preserve triggering artifact refs, source refs, signature refs, hash values, failure reason, and repair route for every blocked, fault, or interrupt output
+  = must: never issue, rewrite, repair, or delete a signature
+  = must: never modify source documents, canonical documents, manifests, reviews, or package metadata
+
+& [SignatureValidationFixtureObligationRefresh: P3-S03] is the fixture obligation set for future validation
+  + [fixture_obligation] is valid_signature expects success proof_result verified and no source mutation
+  + [fixture_obligation] is missing_signature expects blocked_output or fault_output with repair route
+  + [fixture_obligation] is wrong_protocol_uuid expects fault_output
+  + [fixture_obligation] is stale_source_hash expects fault_output or stale proof result and no ready authority
+  + [fixture_obligation] is duplicate_signature expects SOP_first_interrupt
+  + [fixture_obligation] is broken_lineage expects fault_output
+  + [fixture_obligation] is ambiguous_artifact_identity expects SOP_first_interrupt
+  + [fixture_obligation] is hidden_authority expects fault_output
+  + [fixture_obligation] is generated_output_signature_promotion expects fault_output
+
+  = must: keep fixture obligations planned only until future fixture material activation opens file creation
+
+& [DownstreamOperatorRefreshInstruction: P3-S03] is the instruction to P3-S04 and downstream chunks
+  + [P3-S04_must_preserve] is P3 common envelope fields
+  + [P3-S04_must_preserve] is proof_only effect boundary for validation proof records
+  + [P3-S04_must_apply] is blocked fault and SOP-first interrupt distinction
+  + [P3-S04_must_apply] is no hidden authority and no hidden write policy
+  + [P3-S05_must_cover] is signature_validation valid missing wrong_protocol stale duplicate broken-lineage ambiguous hidden-authority and generated-output-promotion fixture cases
+  + [P4_gate] is gated_until_P3_completion_or_explicit_rebake
+  + [P5_gate] is gated_until_P3_and_fixture_contracts_advance
+  + [operator_implementation_gate] is gated_until_future_implementation_activation
+
+& [P3S03FaultReview] is the fault review for P3-S03
+  + [signature_issued_found] is false
+  + [source_artifact_mutation_found] is false
+  + [operator_implementation_found] is false
+  + [LangGraph_node_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [trace_to_authority_promotion_found] is false
+
+  ! [P3SignatureValidationOperatorContractRefreshAccepted] is accepted
+    @ [support] [RefreshedOperatorContract: signature_validation]
+    @ [support] [SignatureValidationDecisionTable: P3-S03]
+    @ [support] [SignatureValidationOutputContract: P3-S03]
+    @ [support] [SignatureValidationFixtureObligationRefresh: P3-S03]
+    @ [support] [DownstreamOperatorRefreshInstruction: P3-S03]
+    @ [support] [P3S03FaultReview]
