@@ -1,0 +1,135 @@
+Subject: P2 Boundary Import And Schema Gap Reconciliation V1
+Date: 2026-05-27
+Reconciliation UUID: 965c28d2-e4d4-45a3-a9b5-1a3e89c36d4e
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P2_Authority_Kernel_Final_Slice_Minting_Review.v1.sop
+@ [p2_work_state] docs/state/P2_Work_State.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [ir2_extraction_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+
+& [P2BoundaryImportAndSchemaGapReconciliationV1] is the P2-S01 boundary import and schema gap reconciliation
+  + [slice_id] is P2-S01
+  + [slice_name] is boundary import and schema gap reconciliation
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [reconciliation_result] is existing_schema_authority_accepted_as_boundary_input_with_refresh_required_before_downstream_consumption
+  + [next_gate_result] is P2-S02 may open
+  + [schema_rewrite_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [fixture_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this reconciliation as a boundary import and gap record, not as a schema supersession
+  = must: preserve existing accepted schema documents until P2-S02 or P2-S03 explicitly accepts, refines, or supersedes them
+  = must: prevent downstream P3, P4, P5, P6, adapter, dispatch, operations-control, or live-control work from consuming P2 as refreshed before P2-S02 through P2-S06 are accepted
+
+& [AcceptedBoundaryInputLedger: P2-S01] is the accepted boundary input ledger for P2-S01
+  + [accepted_boundary_input] is docs/schema/Kernel_Record_Core.v1.sop
+  + [accepted_boundary_input_sha256] is E5D3E599DC03FE60CF9C2655440B07E33FE4A983E6B2A4074BB91476E1814AB2
+  + [accepted_boundary_input_status] is accepted_common_envelope_baseline
+  + [accepted_boundary_input] is docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+  + [accepted_boundary_input_sha256] is 0E2A5E58E516EA7EC728A3CADFE74CE06559AD38F87DA0DC1F1F7460E9C78B71
+  + [accepted_boundary_input_status] is accepted_record_specific_schema_baseline
+  + [accepted_boundary_input] is docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [accepted_boundary_input_sha256] is 9582B8505A6927BBE03C7F04EFBCE045979384738413869FA9D3A628AD93FD24
+  + [accepted_boundary_input_status] is accepted_natural_key_lifecycle_freshness_invalidation_baseline
+  + [accepted_boundary_input] is docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [accepted_boundary_input_sha256] is A5A5A9C6647D7CE7D16C29FAEA83B77F21E71D92E7248DCC370EF69D94F079B6
+  + [accepted_boundary_input_status] is accepted_extraction_consumption_evidence
+  + [accepted_boundary_input] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [accepted_boundary_input_status] is accepted_gate_opening_readiness_surface
+
+  ! [P2BoundaryInputsImported] is accepted
+    @ [support] docs/schema/Kernel_Record_Core.v1.sop
+    @ [support] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+    @ [support] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+    @ [support] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+    @ [support] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+
+& [CoverageAssessment: ExistingP2SchemaAuthority] is the current coverage assessment for accepted P2 schema inputs
+  + [common_envelope_coverage] is present
+  + [common_envelope_coverage_source] is Kernel_Record_Core.v1.sop
+  + [record_kind_inventory_coverage] is present
+  + [record_kind_inventory_coverage_source] is Authority_Kernel_Record_Schemas.v1.sop
+  + [natural_key_matrix_coverage] is present
+  + [natural_key_matrix_coverage_source] is Natural_Key_And_Lifecycle_Matrix.v1.sop
+  + [source_ref_lineage_freshness_extraction_coverage] is present
+  + [source_ref_lineage_freshness_extraction_coverage_source] is IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+  + [post_IR8_manager_evidence_coverage] is partial
+  + [storage_posture_coverage] is partial_projection_policy_only
+  + [fixture_oracle_coverage] is partial_from_IR2_extraction_fixtures_only
+  + [downstream_packetization_coverage] is partial_from_IR8_manager_packet_models_only
+
+  = must: treat present coverage as baseline support, not as proof that no refresh is required
+  = must: route partial coverage to later P2 slices rather than declaring downstream readiness
+
+& [SchemaGapLedger: P2-S01] is the gap ledger produced by P2-S01
+  + [schema_gap] is common envelope must decide whether IR8 manager handoff, human override, refusal, operation dry-run handoff, dependency decision, dispatch deferral, and live-control deferral remain encoded under existing record kinds or require new KernelRecordKind values
+  + [schema_gap] is authority vocabulary must reconcile source_only, narrative_projection, accepted_decision, signed_sjs, proof_backed, stale_projection, contradicted, invalidated, and human_override with projection-only, carrier-only, execution-state-only, generated-output-only, dispatch-authority, and live-control-authority distinctions used after IR5 through IR8
+  + [schema_gap] is freshness vocabulary must reconcile current/stale/unknown/not_applicable/invalidated with fresh, blocked, faulted, interrupted, pending_review, contested, and dry-run-only projection states used by surfaces, coordination, operations, and manager models
+  + [schema_gap] is lineage edge vocabulary must decide whether generated, projected_from, reviewed_by, gates, activates, assigned_to, carrier_of, checkpoint_of, and handoff_to need normalized edge roles before P3 operator contracts consume them
+  + [schema_gap] is record-specific payloads must decide how operation_request, dry_run_result, human_approval, resource_safety_review, manager_handoff, human_override, refusal_record, dependency_decision, dispatch_decision, and live_control_deferral records map into existing or new record schemas
+  + [schema_gap] is natural-key matrix must decide stable identity rules for manager packet revisions, handoff revisions, override expiration, refusal evidence, generated output proofs, dependency decisions, dispatch decisions, and live-control deferral records
+  + [schema_gap] is storage posture remains undecided for truth-bearing kernel records and must not be collapsed into IR2 SQLite projection policy
+  + [schema_gap] is fixture oracle must cover valid, stale, blocked, contradicted, invalidated, unresolved-natural-key, hidden-authority, missing-source, broken-lineage, projection-only, and false-ready cases before broad implementation activation
+
+  = must: resolve or explicitly defer these gaps in P2-S02 through P2-S05
+  = must: prevent any gap from silently becoming downstream support
+
+& [SupersessionPosture: P2-S01] is the supersession posture for existing schema authority
+  + [Kernel_Record_Core.v1.sop] is accepted_boundary_input_not_superseded
+  + [Authority_Kernel_Record_Schemas.v1.sop] is accepted_boundary_input_not_superseded
+  + [Natural_Key_And_Lifecycle_Matrix.v1.sop] is accepted_boundary_input_not_superseded
+  + [IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop] is accepted_boundary_input_not_superseded
+  + [next_possible_supersession_slice] is P2-S02 for common envelope, authority vocabulary, and freshness refresh
+  + [next_possible_supersession_slice] is P2-S03 for record-specific schema and natural-key matrix refresh
+  + [storage_supersession_authorized] is false
+  + [implementation_supersession_authorized] is false
+
+  = must: preserve current schema authority for existing implemented proof packs until refreshed and accepted
+  = must: mark downstream consumers stale if a later P2 slice supersedes a schema input
+
+& [DownstreamGateAssessment: P2-S01] is the downstream gate assessment after boundary import
+  + [P2-S02_gate] is opened_by_P2-S01_completion_review
+  + [P2-S03_gate] is gated_until_P2-S02
+  + [P2-S04_gate] is gated_until_P2-S03
+  + [P2-S05_gate] is gated_until_P2-S04
+  + [P2-S06_gate] is gated_until_P2-S05
+  + [P3_operator_contract_template_gate] is gated_until_P2_completion_or_explicit_rebake
+  + [P4_packetization_gate] is gated_until_P2_and_P3_advance
+  + [storage_implementation_gate] is gated_until_future_source_preserved_implementation_activation
+  + [adapter_dispatch_live_control_gate] is gated_until_future_source_preserved_SJS_authority
+
+  = must: open only P2-S02 after P2-S01 completion review
+  = must: keep all other downstream gates closed
+
+& [P2S01FaultReview] is the fault review for P2-S01
+  + [source_overwrite_found] is false
+  + [schema_mutation_found] is false
+  + [storage_implementation_found] is false
+  + [fixture_creation_found] is false
+  + [dependency_installation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [adapter_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [false_ready_downstream_gate_found] is false
+
+  ! [P2BoundaryImportAndSchemaGapReconciliationAccepted] is accepted
+    @ [support] [P2BoundaryInputsImported]
+    @ [support] [CoverageAssessment: ExistingP2SchemaAuthority]
+    @ [support] [SchemaGapLedger: P2-S01]
+    @ [support] [SupersessionPosture: P2-S01]
+    @ [support] [DownstreamGateAssessment: P2-S01]
+    @ [support] [P2S01FaultReview]

@@ -5,7 +5,6 @@ Review UUID: 90a752ce-c095-4074-a1fc-2289ef64bda0
 @ [source_manifest] docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
 @ [canonical_specification] docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
 @ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
-@ [work_state] docs/state/P2_Work_State.v1.sop
 @ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
 @ [post_ir8_rebake_review] docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
 
@@ -20,8 +19,6 @@ Review UUID: 90a752ce-c095-4074-a1fc-2289ef64bda0
   + [completed_output_sha256] is B2756275F14B3274E730A97F7C75236005DB299817B74EC73DBA858BA36284CA
   + [completed_output] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
   + [completed_output_sha256] is 9401668EFF2BB9167227A433C3C1F542F50790752B68DE4B320119FDC065CBD3
-  + [completed_output] is docs/state/P2_Work_State.v1.sop
-  + [completed_output_sha256] is B2BFC1F8ED73F31C653FAE7A3973C1D82EF54CE0589A43D0EC1328E41EAC91F7
   + [model_route_used] is requires deeper reasoning
   + [review_result] is accepted
   + [closure_recommendation] is accept P2 final slice surface and open P2-S01
@@ -66,7 +63,6 @@ Review UUID: 90a752ce-c095-4074-a1fc-2289ef64bda0
 
   ! [P2FinalSliceMintingVerificationSatisfied] is accepted
     @ [support] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
-    @ [support] docs/state/P2_Work_State.v1.sop
 
 & [SupportDelta: P2-Final-Slice-Minting] is the support delta produced by minted P2 final slices
   + [new_support_record] is P2-S01 may import accepted schema inputs and reconcile gaps before schema refresh
