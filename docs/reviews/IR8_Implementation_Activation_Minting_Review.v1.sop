@@ -1,0 +1,127 @@
+Subject: IR8 Implementation Activation Minting Review V1
+Date: 2026-05-27
+Review UUID: 58ad715f-8693-4640-9ff2-b6640d547b53
+
+@ [source_manifest] docs/source/2026-05-27_ir8_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR8_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR8-Implementation-Activation-Minting] is the completed-work review for minting IR8 implementation activation slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_ir8_implementation_activation/Derived_IR8_Implementation_Activation_Source.sop
+  + [completed_output_sha256] is 3BCA34EC42C5D3D47E9F65B9D5978876457542CD9D51CF98F10D111C24B173E1
+  + [completed_output] is docs/source/2026-05-27_ir8_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is F743B872FDC8BECA7B7D718BB374B59008A3608AB69BCB622FE42135DA4192B0
+  + [completed_output] is docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is CAB875D544A9EB24F81D6AB722BD808D15CCBD02C88F546628CBCFEB03098C15
+  + [completed_output] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is 37CD8415B2403413DA1F39C872DCECAC51DFD800AE170FC7032EBDB99B77DEA2
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8 implementation activation slice surface and open IR8-IA01
+  + [next_gate_result] is IR8-IA01 may open
+  + [next_model_route] is requires deeper reasoning for IR8-IA01 activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary
+
+  = must: treat this review as gate-opening evidence for IR8-IA01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, IR8 activation pack, IR8 completion review, implementation plan, or fixture plan changes
+  = must: keep fixture source files, expected ledgers, implementation code, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control gated until explicit activation slices open bounded work
+
+& [IR8ImplementationActivationMintingVerification] is the verification result for IR8 implementation activation slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [slice_count] is 8
+  + [current_ready_slice] is IR8-IA01
+  + [gated_slice] is IR8-IA02
+  + [gated_slice] is IR8-IA03
+  + [gated_slice] is IR8-IA04
+  + [gated_slice] is IR8-IA05
+  + [gated_slice] is IR8-IA06
+  + [gated_slice] is IR8-IA07
+  + [gated_slice] is IR8-IA08
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [test_file_created] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR8ImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: IR8-Implementation-Activation-Minting] is the support delta produced by minted IR8 implementation activation slices
+  + [new_support_record] is IR8-IA01 may define bounded manager implementation activation boundary and dependency decision
+  + [new_support_record] is IR8-IA02 through IR8-IA08 remain gated until upstream completion reviews accept each output
+  + [new_support_record] is Spark-suitable IR8 implementation work is limited to bounded IR8-IA02 through IR8-IA06 work after each upstream gate is accepted
+  + [new_support_record] is activation, dependency, adapter, dispatch, credential, network, proof-pack, operations safety, and live-control boundary work remains deeper-reasoning work
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-Implementation-Activation-Minting] is the requirement delta produced by minted IR8 implementation activation slices
+  + [requirement_delta] is IR8-IA01 requires deeper reasoning
+  + [requirement_delta] is no implementation code, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, test file, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is completion review required after every IR8 implementation activation slice
+
+& [FaultReview: IR8-Implementation-Activation-Minting] is the fault review for minted IR8 implementation activation slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [implementation_leak_found] is false
+  + [fixture_file_leak_found] is false
+  + [expected_ledger_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8ImplementationActivationSlicesAccepted] is accepted
+    @ [support] [IR8ImplementationActivationMintingVerification]
+    @ [support] [SupportDelta: IR8-Implementation-Activation-Minting]
+    @ [support] [RequirementDelta: IR8-Implementation-Activation-Minting]
+    @ [support] [FaultReview: IR8-Implementation-Activation-Minting]
+
+& [NextSliceGate: IR8-IA01] is opened
+  + [opened_slice] is IR8-IA01 bounded manager implementation activation boundary and dependency decision
+  + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [accepted_boundary_input] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 5509060D2E4764168A7A76A65F2370829F92DD1F1C4C757D9E40D15236B266F0
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary control future implementation authority
+  + [safety_limit] is no manager dispatch, agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-IA01 next unless user redirects or a new fault invalidates this review

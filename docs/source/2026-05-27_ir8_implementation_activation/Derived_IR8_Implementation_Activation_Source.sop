@@ -1,0 +1,61 @@
+Subject: Derived IR8 Implementation Activation Source
+Date: 2026-05-27
+Source UUID: a8582809-ada9-43c9-86f4-3f5da8dd9212
+
+@ [activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR8_Completion_Review.v1.sop
+@ [implementation_plan] docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+
+& [DerivedIR8ImplementationActivationSource] is the preserved source for minting IR8 implementation activation slices
+  + [source_basis] is accepted IR8 final planning completion
+  + [source_basis] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [source_basis] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [source_basis] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [source_intent] is convert the accepted future integrated manager implementation activation shape into dependency-closed implementation activation slices
+  + [target_chunk] is IR8 integrated manager orchestration implementation activation
+  + [source_status] is preserved_before_canonical_processing
+
+  = must: preserve accepted IR8 final planning outputs as boundary inputs
+  = must: mint implementation activation slices before creating manager implementation code, fixture source files, expected ledgers, generated outputs, dependency changes, package metadata changes, adapters, transports, UI, manager dispatch mechanisms, agent dispatch, job dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+  = must: open only IR8-IA01 after minting review acceptance
+  = must: keep future bounded fixture, manager model, handoff model, runner, generated-output proof, no-dispatch proof, no-live-effect proof, and test slices GPT-5.3-Codex-Spark-suitable only after activation boundaries isolate scope
+  = must: keep activation minting, dependency decisions, adapter boundaries, transport boundaries, generated-output boundaries, dispatch boundaries, credential boundaries, network boundaries, proof-pack closure, and live-control boundaries under deeper reasoning
+  - never: treat this source as implementation permission by itself
+
+& [DerivedIR8ImplementationActivationShape] is the intended activation slice shape from the accepted IR8 activation pack
+  + [future_activation_slice] is IR8-IA01 bounded manager implementation activation boundary and dependency decision
+  + [future_activation_slice] is IR8-IA02 fixture source and expected-ledger seed material
+  + [future_activation_slice] is IR8-IA03 manager authority, readiness, packet, proof, and interrupt model implementation
+  + [future_activation_slice] is IR8-IA04 handoff, human override, refusal, and fault model implementation
+  + [future_activation_slice] is IR8-IA05 generated path policy and fixture runner implementation
+  + [future_activation_slice] is IR8-IA06 contract tests and generated-output/no-dispatch/no-live-effect proof
+  + [future_activation_slice] is IR8-IA07 adapter, dependency, dispatch, and live-control deferral decision
+  + [future_activation_slice] is IR8-IA08 implementation completion review and proof pack
+
+& [DerivedIR8ImplementationActivationSafetyBoundary] is the safety boundary preserved for activation slice minting
+  + [code_creation_initial_state] is gated
+  + [fixture_source_creation_initial_state] is gated
+  + [expected_ledger_creation_initial_state] is gated
+  + [generated_output_creation_initial_state] is gated
+  + [dependency_installation_initial_state] is gated
+  + [package_metadata_mutation_initial_state] is gated
+  + [adapter_implementation_initial_state] is gated
+  + [transport_implementation_initial_state] is gated
+  + [UI_implementation_initial_state] is gated
+  + [manager_dispatch_initial_state] is unauthorized
+  + [agent_dispatch_initial_state] is unauthorized
+  + [job_dispatch_initial_state] is unauthorized
+  + [command_execution_initial_state] is unauthorized_except_validation_commands
+  + [process_control_initial_state] is unauthorized
+  + [GPU_control_initial_state] is unauthorized
+  + [model_runtime_control_initial_state] is unauthorized
+  + [credential_access_initial_state] is unauthorized
+  + [network_mutation_initial_state] is unauthorized
+  + [destructive_filesystem_action_initial_state] is unauthorized
+  + [persistent_operations_automation_initial_state] is unauthorized
+  + [operations_control_initial_state] is unauthorized
+  + [live_machine_control_initial_state] is unauthorized
+
+  = must: preserve source authority, manager planning records, execution evidence, coordination records, operations dry-run records, generated projections, graph checkpoints, carrier state, and human overrides as distinct authority classes
+  = must: preserve that manager outputs remain records and packets until later accepted authority explicitly opens bounded dispatch or live-control work

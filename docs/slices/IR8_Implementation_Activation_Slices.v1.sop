@@ -1,0 +1,141 @@
+Subject: IR8 Implementation Activation Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 44e90995-6e1a-475d-b9e3-e44443a85788
+
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_ir8_implementation_activation/Source_Document_Manifest.sop
+@ [activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR8_Completion_Review.v1.sop
+
+& [IR8ImplementationActivationSliceSurfaceV1] is the executable slice surface for IR8 integrated manager orchestration implementation activation
+  + [chunk_ref] is IR8 integrated manager orchestration implementation activation
+  + [chunk_boundary] is activation boundary, fixture material, manager authority and readiness model, work packet and proof model, interrupt model, handoff and human override model, refusal and fault model, generated path and fixture runner implementation, contract tests, generated-output proof, no-dispatch proof, no-live-effect proof, dependency and live-control deferral decision, proof pack, and completion review
+  + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [accepted_boundary_input] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 5509060D2E4764168A7A76A65F2370829F92DD1F1C4C757D9E40D15236B266F0
+  + [accepted_boundary_input] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 6C2B27221AAB3862845EC64EA1EE09AA598B7DBA00A818149AC0137DA1FEC4A3
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [current_ready_slice] is IR8-IA01
+  + [gated_slice_set] is IR8-IA02, IR8-IA03, IR8-IA04, IR8-IA05, IR8-IA06, IR8-IA07, and IR8-IA08
+  + [safety_limit] is no manager dispatch, agent dispatch, operations control, or live machine control authorized
+
+  = must: execute IR8-IA01 before creating fixture source files, expected ledgers, manager implementation code, generated outputs, dependency changes, adapters, transports, UI, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, manager dispatch, agent dispatch, operations control, or live machine control
+  = must: run completed-work review after each IR8 implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes manager records, readiness projections, work packets, proof obligations, completion gates, handoff records, human overrides, refusals, faults, operations dry-run records, fixture success, coordination claims, mailbox carriers, terminal output, chat messages, graph checkpoints, or carrier state to source authority, dispatch authority, operations control, or live-control authority
+
+& [FinalWorkSlice: IR8-IA01-BoundedManagerImplementationActivationBoundaryAndDependencyDecision] is ready
+  + [slice_id] is IR8-IA01
+  + [slice_name] is bounded manager implementation activation boundary and dependency decision
+  + [chunk_ref] is IR8 integrated manager orchestration implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
+  + [activation_gate] is IR8 final planning completion accepted
+  + [expected_output_set] is docs/implementation/IR8_Bounded_Manager_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is activation boundary confirms file inventory, fixture inventory, expected ledger inventory, generated-output roots, dependency boundary, adapter boundary, dispatch boundary, live-control deferral boundary, command plan, and proof gates without creating implementation code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, dependency decision, adapter boundary, dispatch boundary, credential boundary, network boundary, and live-control boundary control future implementation authority
+  + [forbidden_scope] is implementation code creation, fixture source creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-IA02-FixtureSourceAndExpectedLedgerSeedMaterial] is gated
+  + [slice_id] is IR8-IA02
+  + [slice_name] is fixture source and expected-ledger seed material
+  + [activation_gate] is IR8-IA01 accepted
+  + [expected_output_set] is tests/fixtures/sop/ir8_integrated_manager/
+  + [expected_output_set] is tests/fixtures/expected/ir8_integrated_manager/
+  + [verification_oracle] is tracked fixture source and expected ledgers cover all 12 accepted fixture cases without implementation code, generated outputs, commands, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live control
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR8-IA01 acceptance
+  + [model_route_reason] is fixture and expected-ledger material is bounded by accepted fixture plan, implementation plan, and activation boundary
+  + [forbidden_scope] is implementation code creation, generated output creation, dependency installation, adapter implementation, transport implementation, UI implementation, tests, manager dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-IA03-ManagerAuthorityReadinessPacketProofAndInterruptModelImplementation] is gated
+  + [slice_id] is IR8-IA03
+  + [slice_name] is manager authority, readiness, packet, proof, and interrupt model implementation
+  + [activation_gate] is IR8-IA02 accepted
+  + [expected_output_set] is src/langsop/manager/__init__.py
+  + [expected_output_set] is src/langsop/manager/records.py
+  + [expected_output_set] is src/langsop/manager/authority.py
+  + [expected_output_set] is src/langsop/manager/readiness.py
+  + [expected_output_set] is src/langsop/manager/packets.py
+  + [verification_oracle] is models validate authority class separation, readiness recomputation, packet candidates, proof obligations, completion gates, stale triggers, interrupt contexts, model routing, and no-authority-promotion behavior over accepted fixtures
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR8-IA02 acceptance
+  + [model_route_reason] is model implementation is bounded by accepted contracts and fixture material
+  + [forbidden_scope] is handoff implementation, fault implementation, fixture runner implementation, generated output creation, dependency installation, adapter implementation, transport implementation, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-IA04-HandoffHumanOverrideRefusalAndFaultModelImplementation] is gated
+  + [slice_id] is IR8-IA04
+  + [slice_name] is handoff, human override, refusal, and fault model implementation
+  + [activation_gate] is IR8-IA03 accepted
+  + [expected_output_set] is src/langsop/manager/__init__.py
+  + [expected_output_set] is src/langsop/manager/handoffs.py
+  + [expected_output_set] is src/langsop/manager/faults.py
+  + [verification_oracle] is handoff and fault models classify manager-to-surface, surface-to-manager, manager-coordination, manager-operations, human override, refusal, stale, unsupported, contested, unclassified, promotion, forbidden-scope, and model-route cases without live mutation or authority promotion
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR8-IA03 acceptance unless handoff, refusal, human override, or fault semantics change
+  + [model_route_reason] is implementation is bounded when accepted manager models and fixtures are stable; semantic changes require deeper reasoning
+  + [forbidden_scope] is fixture runner implementation, generated output creation, dependency installation, adapter implementation, transport implementation, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-IA05-GeneratedPathPolicyAndFixtureRunnerImplementation] is gated
+  + [slice_id] is IR8-IA05
+  + [slice_name] is generated path policy and fixture runner implementation
+  + [activation_gate] is IR8-IA04 accepted
+  + [expected_output_set] is src/langsop/manager/generated_paths.py
+  + [expected_output_set] is src/langsop/manager/fixture_runner.py
+  + [verification_oracle] is fixture runner reads only accepted fixture source and expected ledgers, writes only generated projection/report outputs under accepted roots, and refuses path escapes, source paths, platform mailbox paths, credential paths, network paths, and destructive filesystem targets
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR8-IA04 acceptance
+  + [model_route_reason] is runner and generated path policy are bounded by accepted implementation plan
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-IA06-ContractTestsAndGeneratedOutputNoDispatchNoLiveEffectProof] is gated
+  + [slice_id] is IR8-IA06
+  + [slice_name] is contract tests and generated-output/no-dispatch/no-live-effect proof
+  + [activation_gate] is IR8-IA05 accepted
+  + [expected_output_set] is tests/test_ir8_integrated_manager_contracts.py
+  + [expected_output_set] is docs/reviews/IR8_Integrated_Manager_Generated_Output_No_Dispatch_And_No_Live_Effect_Proof.v1.sop
+  + [verification_oracle] is tests cover all 12 fixture cases, no-authority promotion, path refusal, generated output disposability, no-dispatch behavior, and proof that commands, processes, GPU, model runtime, jobs, credentials, network state, destructive filesystem targets, platform mailboxes, source docs, and expected ledgers are not mutated by projection code or tests
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after IR8-IA05 acceptance
+  + [model_route_reason] is tests, generated-output proof, no-dispatch proof, and no-live-effect proof are bounded by accepted implementation and fixture runner behavior
+  + [forbidden_scope] is dependency installation, adapter transport implementation, UI implementation, command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, manager dispatch, agent dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-IA07-AdapterDependencyDispatchAndLiveControlDeferralDecision] is gated
+  + [slice_id] is IR8-IA07
+  + [slice_name] is adapter, dependency, dispatch, and live-control deferral decision
+  + [activation_gate] is IR8-IA06 accepted
+  + [expected_output_set] is docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  + [verification_oracle] is decision either defers all manager adapter, transport, UI, external dependencies, dispatch mechanisms, machine-control APIs, and live-control capability or explicitly authorizes narrowly scoped future work without command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  + [forbidden_scope] is unreviewed dependency installation, adapter transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: IR8-IA08-ImplementationCompletionReviewAndProofPack] is gated
+  + [slice_id] is IR8-IA08
+  + [slice_name] is implementation completion review and proof pack
+  + [activation_gate] is IR8-IA07 accepted
+  + [expected_output_set] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  + [verification_oracle] is proof pack accepts only bounded implementation outputs with hashes, fixture and expected ledger ledgers, generated-output proof, no-dispatch proof, no-live-effect proof, dependency decision, command evidence, support deltas, requirement deltas, and no authority, dispatch, credential, network, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final implementation acceptance affects future operations-manager readiness, dispatch readiness, and live-control boundaries
+  + [forbidden_scope] is new implementation work, dependency installation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [IR8ImplementationActivationClosureReview] is the dependency audit for minted IR8 implementation activation slices
+  + [IR8_activation_pack_status] is accepted
+  + [IR8_completion_review_status] is accepted
+  + [current_ready_slice_set] is IR8-IA01
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [forbidden_external_dependency_found] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat IR8-IA02 through IR8-IA08 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

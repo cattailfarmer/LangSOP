@@ -1,0 +1,28 @@
+Subject: IR8 Implementation Activation Source Document Manifest
+Date: 2026-05-27
+Manifest UUID: 25d6a8a5-bc95-46bc-9e32-e646b72e09b4
+
+@ [source_document] docs/source/2026-05-27_ir8_implementation_activation/Derived_IR8_Implementation_Activation_Source.sop
+@ [activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR8_Completion_Review.v1.sop
+@ [implementation_plan] docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+
+& [SourceDocumentManifest: IR8ImplementationActivation] is the source manifest for IR8 implementation activation slice minting
+  + [manifest_uuid] is 25d6a8a5-bc95-46bc-9e32-e646b72e09b4
+  + [source_document] is docs/source/2026-05-27_ir8_implementation_activation/Derived_IR8_Implementation_Activation_Source.sop
+  + [source_document_sha256] is 3BCA34EC42C5D3D47E9F65B9D5978876457542CD9D51CF98F10D111C24B173E1
+  + [boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [boundary_input_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [boundary_input] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [boundary_input_sha256] is 5509060D2E4764168A7A76A65F2370829F92DD1F1C4C757D9E40D15236B266F0
+  + [boundary_input] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+  + [boundary_input_sha256] is 6C2B27221AAB3862845EC64EA1EE09AA598B7DBA00A818149AC0137DA1FEC4A3
+  + [boundary_input] is docs/fixtures/IR8_Integrated_Manager_Fixture_Trace_And_Fault_Plan.v1.sop
+  + [boundary_input_sha256] is ABBC41BA43DE65A3F14BBD03672EBF6AB2FE92A10ACB2F35E47EF839E6CF1F1A
+  + [manifest_scope] is IR8 implementation activation slice minting only
+
+  = must: preserve the source document unchanged as provenance
+  = must: treat this manifest as stale if any listed source or boundary input hash changes
+  = must: run canonical processing before trusting activation slices as processed authority
+  = must: treat mutable work-state and portion-map surfaces as consumers of this manifest, not as hashed authority inputs to this manifest

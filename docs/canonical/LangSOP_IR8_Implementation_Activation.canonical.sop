@@ -1,0 +1,85 @@
+Subject: LangSOP IR8 Implementation Activation Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_ir8_implementation_activation/Source_Document_Manifest.sop
+@ [slice_surface] docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+@ [activation_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+@ [completion_review] docs/reviews/IR8_Completion_Review.v1.sop
+
+& [CanonicalRecord: IR8ImplementationActivation] is the processed planning authority for IR8 implementation activation slices
+  + [canonical_uuid] is 562b4b50-a276-4112-af69-f98871568ad1
+  + [source_manifest_uuid] is 25d6a8a5-bc95-46bc-9e32-e646b72e09b4
+  + [slice_surface_uuid] is 44e90995-6e1a-475d-b9e3-e44443a85788
+  + [authority_scope] is IR8 implementation activation slice order, gates, expected outputs, model routing, authority-class preservation, readiness packet boundaries, handoff boundaries, refusal boundaries, dependency boundaries, generated-output boundaries, adapter boundaries, dispatch boundaries, credential boundaries, network boundaries, live-control prohibition, safety limits, and proof pack requirements
+  + [implementation_scope] is activation slice minting only
+  + [depends_on] is docs/planning/IR8_Integrated_Manager_Orchestration_Activation_Pack.v1.sop
+  + [depends_on] is docs/reviews/IR8_Completion_Review.v1.sop
+  + [depends_on] is docs/implementation/IR8_Integrated_Manager_Orchestration_Implementation_Plan.v1.sop
+
+  = must: use docs/slices/IR8_Implementation_Activation_Slices.v1.sop as the current IR8 implementation activation slice surface
+  = must: execute IR8-IA01 first
+  = must: run completion review after each IR8 implementation activation slice before opening the next gated slice
+  = must: keep manager outputs as records, readiness projections, packets, handoffs, refusals, faults, traces, or proofs until later accepted authority explicitly opens bounded dispatch
+  = must: keep agent dispatch, job dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to skip activation slices or directly implement code, fixtures, expected ledgers, generated outputs, dependencies, adapters, transports, UI, command execution, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+
+& [CanonicalIR8ImplementationActivationSliceSet] is the final IR8 implementation activation slice sequence
+  + [slice] is IR8-IA01 bounded manager implementation activation boundary and dependency decision
+  + [slice] is IR8-IA02 fixture source and expected-ledger seed material
+  + [slice] is IR8-IA03 manager authority, readiness, packet, proof, and interrupt model implementation
+  + [slice] is IR8-IA04 handoff, human override, refusal, and fault model implementation
+  + [slice] is IR8-IA05 generated path policy and fixture runner implementation
+  + [slice] is IR8-IA06 contract tests and generated-output/no-dispatch/no-live-effect proof
+  + [slice] is IR8-IA07 adapter, dependency, dispatch, and live-control deferral decision
+  + [slice] is IR8-IA08 implementation completion review and proof pack
+
+  = must: preserve this order unless completion review rebakes IR8 implementation activation
+
+& [CanonicalIR8ImplementationActivationGate] is the activation rule for IR8 implementation work
+  + [current_ready_slice] is IR8-IA01
+  + [gated_slice] is IR8-IA02 until IR8-IA01 accepted
+  + [gated_slice] is IR8-IA03 until IR8-IA02 accepted
+  + [gated_slice] is IR8-IA04 until IR8-IA03 accepted
+  + [gated_slice] is IR8-IA05 until IR8-IA04 accepted
+  + [gated_slice] is IR8-IA06 until IR8-IA05 accepted
+  + [gated_slice] is IR8-IA07 until IR8-IA06 accepted
+  + [gated_slice] is IR8-IA08 until IR8-IA07 accepted
+
+& [CanonicalIR8ImplementationActivationModelRouting] is the model-routing record
+  + [IR8-IA01] is requires deeper reasoning
+  + [IR8-IA02] is GPT-5.3-Codex-Spark-suitable after IR8-IA01 acceptance
+  + [IR8-IA03] is GPT-5.3-Codex-Spark-suitable after IR8-IA02 acceptance
+  + [IR8-IA04] is GPT-5.3-Codex-Spark-suitable after IR8-IA03 acceptance unless handoff, refusal, human override, or fault semantics change
+  + [IR8-IA05] is GPT-5.3-Codex-Spark-suitable after IR8-IA04 acceptance
+  + [IR8-IA06] is GPT-5.3-Codex-Spark-suitable after IR8-IA05 acceptance
+  + [IR8-IA07] is requires deeper reasoning
+  + [IR8-IA08] is requires deeper reasoning
+
+  = must: keep activation boundary, dependency decisions, adapter decisions, generated-output policy changes, dispatch boundaries, credential boundaries, network boundaries, proof pack closure, and live-control boundaries under deeper reasoning
+  = must: treat bounded fixture, manager record, handoff record, runner, generated-output proof, no-dispatch proof, no-live-effect proof, and test implementation as Spark-suitable only after upstream activation gates are accepted
+
+& [SatisfactionSignature: IR8ImplementationActivation] is the valid SJS satisfaction signature for the IR8 implementation activation slice surface
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is a88370d2-0cbb-4b18-a6d4-bdc6e668ab1c
+  + [signed_subject] is docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_ir8_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is 3BCA34EC42C5D3D47E9F65B9D5978876457542CD9D51CF98F10D111C24B173E1
+  + [source_sha256] is F743B872FDC8BECA7B7D718BB374B59008A3608AB69BCB622FE42135DA4192B0
+  + [source_sha256] is A18EBED6F31285730256A41F307508EA1A22B4E59ACC7A23D3FB86BB8383B989
+  + [source_sha256] is 5509060D2E4764168A7A76A65F2370829F92DD1F1C4C757D9E40D15236B266F0
+  + [source_sha256] is 6C2B27221AAB3862845EC64EA1EE09AA598B7DBA00A818149AC0137DA1FEC4A3
+  + [source_sha256] is ABBC41BA43DE65A3F14BBD03672EBF6AB2FE92A10ACB2F35E47EF839E6CF1F1A
+  + [canonical_source_specification] is docs/canonical/LangSOP_IR8_Implementation_Activation.canonical.sop
+  + [slice_surface] is docs/slices/IR8_Implementation_Activation_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, activation_pack_imported, completion_review_imported, implementation_plan_imported, fixture_plan_imported, slices_minted, gates_defined, outputs_defined, model_routes_defined, authority_classes_preserved, dependency_limits_preserved, generated_output_limits_preserved, dispatch_limits_preserved, credential_limits_preserved, network_limits_preserved, live_control_limits_preserved, justified, and signed
+  + [exhaustion_state] is phase_locked_for_IR8_IA01_execution
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for IR8 implementation activation slices; no manager dispatch, agent dispatch, operations control, or live machine control authorized
+
+& [RegistryRecord: IR8ImplementationActivation] is the durable identity ledger for the IR8 implementation activation slice surface
+  + [registry_uuid] is e0bb747a-5432-4540-b3f3-e4c571b30511
+  + [manifest_node_uuid] is 25d6a8a5-bc95-46bc-9e32-e646b72e09b4
+  + [canonical_node_uuid] is 562b4b50-a276-4112-af69-f98871568ad1
+  + [slice_surface_uuid] is 44e90995-6e1a-475d-b9e3-e44443a85788
+  + [signature_uuid] is a88370d2-0cbb-4b18-a6d4-bdc6e668ab1c
+  + [closure_review_uuid] is 58ad715f-8693-4640-9ff2-b6640d547b53
