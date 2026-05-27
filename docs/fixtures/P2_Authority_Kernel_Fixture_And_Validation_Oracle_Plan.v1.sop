@@ -1,0 +1,207 @@
+Subject: P2 Authority Kernel Fixture And Validation Oracle Plan V1
+Date: 2026-05-27
+Fixture Plan UUID: 1d6011a5-9180-4c26-a080-d8d60414cb81
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s04_decision] docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+@ [p2_s04_review] docs/reviews/P2_S04_Completion_Review.v1.sop
+@ [p2_s03_schema_refresh] docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+@ [p2_s02_common_overlay] docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+
+& [P2AuthorityKernelFixtureAndValidationOraclePlanV1] is the P2-S05 fixture and validation oracle plan
+  + [slice_id] is P2-S05
+  + [slice_name] is fixture and validation oracle plan
+  + [fixture_family] is p2-authority-kernel-schema-authority-projection-boundary
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable only because this slice is bounded to fixture and validation oracle planning without fixture file creation or implementation
+  + [model_route_depth] is Spark_suitable_bounded_planning
+  + [model_route_reason] is fixture planning is bounded after schema, record-kind, natural-key, and storage posture decisions are accepted
+  + [fixture_case_count] is 13
+  + [next_gate_result] is P2-S06 may open after completion review
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_file_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [storage_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [generated_database_creation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this plan as fixture and validation oracle design only
+  = must: define future fixture cases without creating fixture source files, expected ledgers, generated outputs, implementation code, dependencies, storage files, adapters, dispatch, operations control, or live machine control
+  = must: cover valid, stale, blocked, contradicted, invalidated, unresolved-natural-key, hidden-authority, missing-source, broken-lineage, storage-projection, generated-output, human-override, and false-ready cases
+  = must: require every future fixture to expose authority_class, effect_boundary, currentness_state, natural_key_state, source_ref_set, lineage_edge_set, review_gate_ref, invalidation_ref_set, and storage_projection_boundary
+
+& [P2ValidationOracleFieldSet] is the required field set for future P2 fixture validation
+  + [oracle_field] is fixture_case_id
+  + [oracle_field] is record_kind
+  + [oracle_field] is baseline_or_overlay_kind
+  + [oracle_field] is natural_key
+  + [oracle_field] is natural_key_state
+  + [oracle_field] is authority_class
+  + [oracle_field] is effect_boundary
+  + [oracle_field] is currentness_state
+  + [oracle_field] is source_ref_set
+  + [oracle_field] is source_hash_set
+  + [oracle_field] is lineage_edge_set
+  + [oracle_field] is review_gate_ref
+  + [oracle_field] is invalidation_ref_set
+  + [oracle_field] is storage_projection_boundary
+  + [oracle_field] is expected_acceptance_status
+  + [oracle_field] is expected_fault_kind
+  + [oracle_field] is repair_route_ref
+  + [oracle_field] is nonpromotion_assertion
+
+  = must: reject fixture cases whose authority, currentness, natural key, source refs, lineage, review gate, invalidation, or projection boundary is only implied in prose
+  = must: keep oracle fields deterministic enough for future expected-ledger comparison
+
+& [P2AuthorityKernelFixtureCaseSet] is the planned fixture case set for authority kernel validation
+  + [fixture_case] is P2K-001-valid-current-source-authority
+    + [purpose] is prove a source-preserved accepted authority record with complete natural key, source refs, lineage, review gate, and current hashes validates as current authority
+    + [record_shape] is requirement_record or support_record with authority_class source_authority or accepted_decision_authority
+    + [expected_acceptance_status] is accepted
+    + [expected_fault_kind] is none
+    + [nonpromotion_assertion] is not_applicable
+  + [fixture_case] is P2K-002-stale-projection-after-source-change
+    + [purpose] is prove a surface or SQLite projection becomes stale when its source hash set or projection build rule changes
+    + [record_shape] is readiness_projection with authority_class surface_projection_non_authority and currentness_state stale
+    + [expected_acceptance_status] is rejected_for_readiness
+    + [expected_fault_kind] is stale_projection
+    + [nonpromotion_assertion] is projection_cannot_satisfy_source_authority_gate
+  + [fixture_case] is P2K-003-blocked-missing-review-gate
+    + [purpose] is prove proof, decision, human override, dispatch candidate, operations candidate, or live-control candidate records block when review_gate_ref is missing
+    + [record_shape] is proof_result or human_override_record with review_gate_ref absent
+    + [expected_acceptance_status] is blocked
+    + [expected_fault_kind] is missing_review_gate
+    + [nonpromotion_assertion] is unreviewed_record_cannot_open_downstream_gate
+  + [fixture_case] is P2K-004-contradicted-authority
+    + [purpose] is prove a record contradicted by accepted source authority cannot remain current and must carry invalidation refs
+    + [record_shape] is authority_artifact with currentness_state contradicted and invalidation_ref_set present
+    + [expected_acceptance_status] is rejected_for_current_use
+    + [expected_fault_kind] is contradicted_authority
+    + [nonpromotion_assertion] is contradicted_record_is_trace_only
+  + [fixture_case] is P2K-005-invalidated-record-preserved-as-trace
+    + [purpose] is prove invalidated records remain inspectable as trace but cannot satisfy readiness, packetization, dispatch, operations, or live-control gates
+    + [record_shape] is requirement_record or dependency_decision with currentness_state invalidated and invalidation_ref_set present
+    + [expected_acceptance_status] is trace_only
+    + [expected_fault_kind] is invalidated_record_used_as_current
+    + [nonpromotion_assertion] is invalidated_record_cannot_satisfy_gate
+  + [fixture_case] is P2K-006-unresolved-natural-key
+    + [purpose] is prove missing natural-key terms force natural_key_state unresolved and block source authority acceptance
+    + [record_shape] is manager_handoff or operation_request missing required natural key term
+    + [expected_acceptance_status] is blocked
+    + [expected_fault_kind] is unresolved_natural_key
+    + [nonpromotion_assertion] is unresolved_identity_cannot_anchor_authority
+  + [fixture_case] is P2K-007-hidden-authority-in-projection
+    + [purpose] is prove projection records cannot hide authority_class, effect_boundary, currentness_state, review gate, or invalidation terms inside narrative prose
+    + [record_shape] is narrative_projection_non_authority or surface_projection_non_authority carrying implied authority in prose only
+    + [expected_acceptance_status] is rejected
+    + [expected_fault_kind] is hidden_authority
+    + [nonpromotion_assertion] is hidden_authority_must_be_promoted_to_explicit_source_record_or_refused
+  + [fixture_case] is P2K-008-missing-source-reference
+    + [purpose] is prove records that affect readiness, proof, packetization, dispatch, operations, or live-control gates require source_ref_set
+    + [record_shape] is support_record or dispatch_decision with source_ref_set absent
+    + [expected_acceptance_status] is blocked
+    + [expected_fault_kind] is missing_source
+    + [nonpromotion_assertion] is unsupported_record_cannot_be_authority
+  + [fixture_case] is P2K-009-broken-lineage
+    + [purpose] is prove superseded, derived, projected, reviewed, generated, or invalidated records require valid lineage_edge_set
+    + [record_shape] is stale_projection, proof_result, generated_output_proof, or live_control_deferral with broken lineage
+    + [expected_acceptance_status] is rejected
+    + [expected_fault_kind] is broken_lineage
+    + [nonpromotion_assertion] is orphan_record_cannot_satisfy_downstream_gate
+  + [fixture_case] is P2K-010-storage-projection-nonpromotion
+    + [purpose] is prove SQLite, JSONL, LangGraph checkpoint, surface state, mailbox carrier state, and generated report records remain projection, carrier, execution, or generated-output non-authority
+    + [record_shape] is readiness_projection or operator_trace derived from projection store
+    + [expected_acceptance_status] is accepted_as_projection_only
+    + [expected_fault_kind] is projection_to_authority_promotion when used as authority
+    + [nonpromotion_assertion] is projection_storage_is_rebuildable_non_authority
+  + [fixture_case] is P2K-011-false-ready-projection
+    + [purpose] is prove ready-looking surface state blocks when required source authority, support, proof, natural key, or review gate is stale, missing, contradicted, invalidated, or unresolved
+    + [record_shape] is readiness_projection with ready label but stale or blocked basis
+    + [expected_acceptance_status] is blocked
+    + [expected_fault_kind] is false_ready_projection
+    + [nonpromotion_assertion] is surface_ready_label_cannot_override_kernel_readiness
+  + [fixture_case] is P2K-012-scoped-human-override-expired
+    + [purpose] is prove human_override_record requires actor, scope, basis, risk context, expiration, revocation route, review gate, and currentness
+    + [record_shape] is human_override_record with expired or revoked override
+    + [expected_acceptance_status] is invalidated
+    + [expected_fault_kind] is stale_or_revoked_human_override
+    + [nonpromotion_assertion] is human_override_does_not_grant_dispatch_operations_or_live_control_without_future_authority
+  + [fixture_case] is P2K-013-generated-output-proof-nonpromotion
+    + [purpose] is prove generated reports, fixture outputs, disposable projections, and proof outputs can be cited as evidence only through generated_output_proof and cannot become source authority
+    + [record_shape] is generated_output_proof with generated_output_non_authority target artifacts
+    + [expected_acceptance_status] is accepted_as_nonpromotion_proof_only
+    + [expected_fault_kind] is generated_output_authority_promotion when target artifact is used as authority
+    + [nonpromotion_assertion] is generated_output_is_disposable_and_non_authoritative
+
+& [P2FixtureExpectedFaultKindSet] is the planned fault kind inventory for future fixtures
+  + [fault_kind] is stale_projection
+  + [fault_kind] is missing_review_gate
+  + [fault_kind] is contradicted_authority
+  + [fault_kind] is invalidated_record_used_as_current
+  + [fault_kind] is unresolved_natural_key
+  + [fault_kind] is hidden_authority
+  + [fault_kind] is missing_source
+  + [fault_kind] is broken_lineage
+  + [fault_kind] is projection_to_authority_promotion
+  + [fault_kind] is false_ready_projection
+  + [fault_kind] is stale_or_revoked_human_override
+  + [fault_kind] is generated_output_authority_promotion
+
+  = must: require each future fault fixture to preserve triggering record refs, missing field set, violated boundary, and repair route
+
+& [P2FixtureMaterialBoundary] is the material boundary for P2-S05
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_file_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [future_fixture_source_root_candidate] is tests/fixtures/sop/p2_authority_kernel/
+  + [future_expected_ledger_root_candidate] is tests/fixtures/expected/p2_authority_kernel/
+  + [future_generated_output_root_candidate] is tests/fixtures/generated/p2_authority_kernel/
+  + [future_projection_index_candidate] is tests/fixtures/generated/p2_authority_kernel/projection_index/
+  + [candidate_fixture_count] is 13
+
+  = must: treat root candidates as planning records only until a future implementation activation explicitly opens file creation
+  = must: keep generated outputs disposable and non-authoritative if later opened
+
+& [P2S05CoverageReview] is the coverage checklist for P2-S05
+  + [valid_case_present] is true
+  + [stale_case_present] is true
+  + [blocked_case_present] is true
+  + [contradicted_case_present] is true
+  + [invalidated_case_present] is true
+  + [unresolved_natural_key_case_present] is true
+  + [hidden_authority_case_present] is true
+  + [missing_source_case_present] is true
+  + [broken_lineage_case_present] is true
+  + [storage_projection_case_present] is true
+  + [generated_output_case_present] is true
+  + [human_override_case_present] is true
+  + [false_ready_case_present] is true
+  + [oracle_field_set_present] is true
+  + [fault_kind_inventory_present] is true
+  + [fixture_material_boundary_present] is true
+  + [Spark_suitable_route_declared] is true
+  + [fixture_source_file_created] is false
+  + [expected_ledger_file_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [storage_file_created] is false
+  + [adapter_implemented] is false
+  + [dispatch_authorized] is false
+  + [operation_or_live_effect_authorized] is false
+
+  ! [P2AuthorityKernelFixtureAndValidationOraclePlanAccepted] is accepted
+    @ [support] [P2ValidationOracleFieldSet]
+    @ [support] [P2AuthorityKernelFixtureCaseSet]
+    @ [support] [P2FixtureExpectedFaultKindSet]
+    @ [support] [P2FixtureMaterialBoundary]
+    @ [support] [P2S05CoverageReview]
