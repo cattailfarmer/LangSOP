@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is ready_for_IR7-IA06_contract_tests_and_no_live_effect_proof
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7-IA07_dependency_adapter_live_control_deferral_decision
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -230,16 +230,19 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is src/langsop/operations/generated_paths.py
   + [support_record] is src/langsop/operations/fixture_runner.py
   + [support_record] is docs/reviews/IR7_IA05_Completion_Review.v1.sop
-  + [support_gap] is IR7-IA06 contract tests and generated-output/no-live-effect proof not yet executed
+  + [support_record] is tests/test_ir7_operations_dry_run_contracts.py
+  + [support_record] is docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+  + [support_record] is docs/reviews/IR7_IA06_Completion_Review.v1.sop
+  + [support_gap] is IR7-IA07 operations adapter, dependency, and live-control deferral decision not yet executed
   + [support_gap] is IR7 dry-run operations simulator implementation not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7-IA06 contract tests, disposable ignored generated proof output, and generated-output/no-live-effect proof record, not dependencies, adapters, transports, UI, or live operations control
-  = must: route IR7-IA06 as GPT-5.3-Codex-Spark-suitable because tests and proof are bounded by accepted runner behavior, generated path policy, fixtures, and expected ledgers
-  = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted slices
+  = must: open only IR7-IA07 operations adapter, dependency, and live-control deferral decision record, not dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route IR7-IA07 as requires deeper reasoning because dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

@@ -1,0 +1,77 @@
+Subject: IR7 Operations Dry Run Generated Output And No Live Effect Proof V1
+Date: 2026-05-27
+Proof UUID: 77eb0a27-4d96-47ba-9fb5-824b0f99e9f4
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [path_policy] src/langsop/operations/generated_paths.py
+@ [fixture_runner] src/langsop/operations/fixture_runner.py
+@ [contract_tests] tests/test_ir7_operations_dry_run_contracts.py
+
+& [IR7OperationsDryRunGeneratedOutputAndNoLiveEffectProofV1] is the generated-output and no-live-effect proof for IR7-IA06
+  + [proof_status] is accepted_by_completion_review_pending
+  + [test_file] is tests/test_ir7_operations_dry_run_contracts.py
+  + [test_file_sha256] is A5B835EB5B57044870CB66F33EE91CB542A9FAA219EE06C814F59B5097765826
+  + [targeted_test_command] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [targeted_test_result] is 7 tests OK
+  + [fixture_corpus_count] is 13
+  + [fixture_corpus_failure_count] is 0
+  + [accepted_generated_path] is tests/fixtures/generated/ir7_operations_dry_run/reports/report.json
+  + [refused_generated_path] is docs/reviews/not_allowed.json
+  + [refused_generated_path] is tests/fixtures/expected/ir7_operations_dry_run/not_allowed.sop
+  + [refused_generated_path] is platform/coordination/mailboxes/conversation.inbox/1.sop
+  + [generated_output_status] is disposable_generated_projection_only
+  + [generated_output_authority_status] is non_authoritative
+  + [generated_output_cleanup_status] is generated root removed by test teardown
+  + [source_doc_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [platform_mailbox_created_or_mutated] is false
+  + [credential_access_found] is false
+  + [network_mutation_found] is false
+  + [destructive_filesystem_action_found] is false
+  + [command_execution_found] is false
+  + [process_control_found] is false
+  + [GPU_control_found] is false
+  + [model_runtime_control_found] is false
+  + [job_dispatch_found] is false
+  + [operations_control_found] is false
+  + [live_machine_control_found] is false
+
+  = must: treat generated operations projections and reports as disposable non-authority artifacts
+  = must: preserve source SOP documents, expected ledgers, platform mailboxes, credentials, network state, destructive filesystem targets, and live machine state from mutation
+  = must: rerun this proof if path policy, fixture runner, operation models, fixtures, expected ledgers, or contract tests change
+
+& [GeneratedOutputBoundaryProof] is the path and output proof for IR7 operations dry-run generated artifacts
+  + [accepted_write_root] is tests/fixtures/generated/ir7_operations_dry_run/
+  + [accepted_write_root] is .langsop/projections/ir7_operations_dry_run/
+  + [accepted_write_root] is .langsop/reports/ir7_operations_dry_run/
+  + [forbidden_write_root] is docs/
+  + [forbidden_write_root] is src/
+  + [forbidden_write_root] is tests/fixtures/sop/
+  + [forbidden_write_root] is tests/fixtures/expected/
+  + [forbidden_write_root] is platform/
+  + [forbidden_write_root] is .git/
+  + [forbidden_write_root] is platform/coordination/mailboxes/
+  + [proof_result] is path policy refuses source, expected-ledger, platform, and mailbox writes
+  + [proof_result] is generated report carries report_status generated_projection_only
+  + [proof_result] is generated report carries non_authority_warning
+  + [proof_result] is generated report can be deleted and rebuilt without losing authority
+
+& [NoLiveEffectProof] is the live-effect absence proof for IR7 operations dry-run tests
+  + [shell_execution_by_runner] is false
+  + [subprocess_control_by_runner] is false
+  + [process_control_by_runner] is false
+  + [GPU_control_by_runner] is false
+  + [model_runtime_mutation_by_runner] is false
+  + [job_dispatch_by_runner] is false
+  + [credential_access_by_runner] is false
+  + [network_mutation_by_runner] is false
+  + [destructive_filesystem_action_by_runner] is false
+  + [persistent_automation_by_runner] is false
+  + [agent_dispatch_by_runner] is false
+  + [operations_control_by_runner] is false
+  + [live_machine_control_by_runner] is false
+
+  ! [IR7NoLiveEffectProofAccepted] is accepted
+    @ [support] tests/test_ir7_operations_dry_run_contracts.py
+    @ [support] src/langsop/operations/generated_paths.py
+    @ [support] src/langsop/operations/fixture_runner.py

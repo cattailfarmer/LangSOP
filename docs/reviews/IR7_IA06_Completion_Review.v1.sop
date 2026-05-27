@@ -1,0 +1,107 @@
+Subject: IR7 IA06 Completion Review V1
+Date: 2026-05-27
+Review UUID: 39b77b08-abb3-402b-9217-704cde36c6c9
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [fixture_runner_review] docs/reviews/IR7_IA05_Completion_Review.v1.sop
+@ [contract_tests] tests/test_ir7_operations_dry_run_contracts.py
+@ [generated_output_proof] docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+
+& [CompletedWorkReview: IR7-IA06] is the completed-work review for IR7-IA06 contract tests and generated-output/no-live-effect proof
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA06
+  + [completed_output] is tests/test_ir7_operations_dry_run_contracts.py
+  + [completed_output_sha256] is A5B835EB5B57044870CB66F33EE91CB542A9FAA219EE06C814F59B5097765826
+  + [completed_output] is docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+  + [completed_output_sha256] is 90D3CDE434181A3322921981F4EB5CDC4061FA6F604C62D1E2EFDDCA5B98A185
+  + [targeted_test_command] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [targeted_test_result] is 7 tests OK
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-IA06 and open IR7-IA07
+  + [next_gate_result] is IR7-IA07 may open
+  + [next_model_route] is requires deeper reasoning for operations adapter, dependency, and live-control deferral decision
+  + [next_model_route_depth] is deeper reasoning required
+
+  = must: treat this review as gate-opening evidence for IR7-IA07 only
+  = must: rerun this review if tests, generated-output proof, path policy, fixture runner, operation models, fixture source, expected ledgers, activation boundary, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7IA06Verification] is the verification result for IR7-IA06
+  + [contract_test_file_present] is true
+  + [generated_output_no_live_effect_proof_present] is true
+  + [targeted_test_count] is 7
+  + [targeted_test_failure_count] is 0
+  + [fixture_corpus_count] is 13
+  + [fixture_corpus_failure_count] is 0
+  + [dry_run_result_non_authority_test_present] is true
+  + [refusal_record_test_present] is true
+  + [resource_safety_review_test_present] is true
+  + [action_route_refusal_test_present] is true
+  + [generated_path_policy_test_present] is true
+  + [generated_report_disposability_test_present] is true
+  + [generated_output_left_after_tests] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7IA06VerificationSatisfied] is accepted
+    @ [support] tests/test_ir7_operations_dry_run_contracts.py
+    @ [support] docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+
+& [SupportDelta: IR7-IA06] is the support delta produced by IR7-IA06
+  + [new_support_record] is IR7 now has contract tests for operation request validation, dry-run non-authority, refusal records, resource safety review, action route refusal, fixture corpus projection, generated path policy, and disposable generated reports
+  + [new_support_record] is IR7 now has explicit generated-output and no-live-effect proof
+  + [new_support_record] is IR7-IA07 may decide dependency, adapter, and live-control deferral boundaries using deeper reasoning
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-IA06] is the requirement delta produced by IR7-IA06
+  + [requirement_delta] is IR7-IA07 requires deeper reasoning because dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  + [requirement_delta] is IR7-IA07 may create docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop only
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-IA06
+
+& [FaultReview: IR7-IA06] is the fault review for IR7-IA06
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7IA06Accepted] is accepted
+    @ [support] [IR7IA06Verification]
+    @ [support] [SupportDelta: IR7-IA06]
+    @ [support] [RequirementDelta: IR7-IA06]
+    @ [support] [FaultReview: IR7-IA06]
+
+& [NextSliceGate: IR7-IA07] is opened
+  + [opened_slice] is IR7-IA07 operations adapter, dependency, and live-control deferral decision
+  + [accepted_dependency] is tests/test_ir7_operations_dry_run_contracts.py
+  + [accepted_dependency] is docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, dispatch, credential, network, safety, and live-control boundaries affect authority and live-control semantics
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA07 next unless user redirects or a new fault invalidates this review
