@@ -1,0 +1,105 @@
+Subject: P2 S04 Completion Review V1
+Date: 2026-05-27
+Review UUID: f6ed535e-dda8-471d-a9c5-46e725f71fa2
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s04_output] docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+@ [p2_s03_review] docs/reviews/P2_S03_Completion_Review.v1.sop
+@ [p2_work_state] docs/state/P2_Work_State.v1.sop
+
+& [P2S04CompletionReviewV1] is the completion review for P2-S04 storage posture and projection boundary decision
+  + [slice_id] is P2-S04
+  + [slice_name] is storage posture and projection boundary decision
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [accepted_output] is docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+  + [accepted_output_sha256] is 74319F4ABB2FCF8C707168B1C3BD776F4532EB38D68C115AB6E90A1E7D16ACE6
+  + [next_gate_result] is P2-S05 may open
+  + [P2-S05_model_route] is GPT-5.3-Codex-Spark-suitable only if bounded to fixture and validation oracle planning without fixture file creation or implementation
+  + [P2-S05_model_route_reason] is fixture planning is bounded after schema, record-kind, natural-key, and storage posture decisions are accepted
+  + [storage_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [generated_database_creation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this review as acceptance of a storage posture, not acceptance of storage implementation
+  = must: open only P2-S05 fixture and validation oracle planning
+  = must: keep storage implementation, fixture source creation, expected ledger creation, dependencies, adapters, dispatch, operations control, and live machine control gated
+
+& [VerificationAgainstSlice: P2-S04] is the verification result for the P2-S04 slice contract
+  + [expected_output_present] is true
+  + [expected_output_hash] is 74319F4ABB2FCF8C707168B1C3BD776F4532EB38D68C115AB6E90A1E7D16ACE6
+  + [source_authority_distinguished] is true
+  + [canonical_authority_distinguished] is true
+  + [kernel_record_persistence_candidate_distinguished] is true
+  + [generated_projection_distinguished] is true
+  + [SQLite_projection_distinguished] is true
+  + [graph_checkpoint_distinguished] is true
+  + [surface_state_distinguished] is true
+  + [carrier_state_distinguished] is true
+  + [generated_report_distinguished] is true
+  + [dependency_installation_found] is false
+  + [storage_code_creation_found] is false
+  + [generated_database_creation_found] is false
+
+  ! [P2S04SliceContractSatisfied] is accepted
+    @ [support] docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+
+& [SupportDelta: P2-S04] is the support delta created by the accepted storage posture decision
+  + [support_added] is source authority remains Git-tracked SOP/canonical/review authority and can be inspected without database runtime
+  + [support_added] is future kernel record persistence must preserve overlay fields, natural keys, source refs, lineage refs, review gates, invalidation refs, and content hashes
+  + [support_added] is SQLite, JSONL, LangGraph checkpoints, surface state, mailbox carrier state, generated reports, and dry-run outputs are rebuildable or trace-only non-authority unless future authority says otherwise
+  + [support_added] is P2-S05 fixture planning must cover storage-projection nonpromotion and false-ready projection cases
+  + [support_gap_closed] is storage posture remains undecided for truth-bearing kernel records
+  + [support_gap_remaining] is no physical storage implementation is authorized
+  + [support_gap_remaining] is no dependency or package metadata change is authorized
+  + [support_gap_remaining] is no generated database, fixture source, expected ledger, adapter, dispatch, operations-control, or live-control work is authorized
+
+& [RequirementDelta: P2-S04] is the requirement delta after storage posture acceptance
+  + [requirement_added] is downstream fixtures must distinguish authority records from projection-only records
+  + [requirement_added] is future storage implementation must route through source-preserved activation and nonpromotion proof
+  + [requirement_added] is projection freshness must derive from source hash sets, projection build rules, and latest basis changes
+  + [requirement_added] is future storage candidates must fail closed when required source authority is missing or unresolved
+  + [requirement_preserved] is source specification preservation contract
+  + [requirement_preserved] is P2 overlay authority_class effect_boundary currentness_state review_gate_ref and invalidation_ref_set
+  + [requirement_preserved] is dispatch operations-control and live-control gates remain closed
+
+& [FaultReview: P2-S04] is the completed-work fault review
+  + [source_overwrite_found] is false
+  + [storage_implementation_found] is false
+  + [dependency_installation_found] is false
+  + [lockfile_mutation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [generated_database_creation_found] is false
+  + [fixture_file_creation_found] is false
+  + [expected_ledger_creation_found] is false
+  + [adapter_implementation_found] is false
+  + [transport_implementation_found] is false
+  + [UI_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [projection_to_authority_promotion_found] is false
+  + [false_downstream_ready_found] is false
+
+& [DownstreamReadinessAfterP2S04] is the downstream readiness result after P2-S04
+  + [P2-S05] is ready_for_execution
+  + [P2-S05_name] is fixture and validation oracle plan
+  + [P2-S05_model_route] is GPT-5.3-Codex-Spark-suitable only if bounded to fixture and validation oracle planning without fixture file creation or implementation
+  + [P2-S05_model_route_reason] is fixture planning is bounded after schema, record-kind, natural-key, and storage posture decisions are accepted
+  + [P2-S06] is gated_until_P2-S05_accepted
+  + [P3] is gated_until_P2_completion_or_explicit_rebake
+  + [P4] is gated_until_P2_and_P3_advance
+  + [storage_implementation] is gated_until_future_source_preserved_implementation_activation
+
+  ! [P2S04CompletionAccepted] is accepted
+    @ [support] [P2S04SliceContractSatisfied]
+    @ [support] [SupportDelta: P2-S04]
+    @ [support] [RequirementDelta: P2-S04]
+    @ [support] [FaultReview: P2-S04]
+    @ [support] [DownstreamReadinessAfterP2S04]

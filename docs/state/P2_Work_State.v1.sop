@@ -12,15 +12,17 @@ State UUID: e84acdd3-4940-42ce-a491-712fe2aa72a3
 @ [completion_review] docs/reviews/P2_S02_Completion_Review.v1.sop
 @ [accepted_output] docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
 @ [completion_review] docs/reviews/P2_S03_Completion_Review.v1.sop
+@ [accepted_output] docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+@ [completion_review] docs/reviews/P2_S04_Completion_Review.v1.sop
 @ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
 @ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
 @ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
 @ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
 
 & [P2WorkStateV1] is the current derived work state for P2 authority kernel and record schemas
-  + [state_basis] is docs/reviews/P2_S03_Completion_Review.v1.sop
-  + [state_basis_sha256] is 9F293AECADC025A83B31EA22021E2E719E8A955679146E07F5FC9FF58FFF2F5E
-  + [surface_status] is P2-S03_accepted_pending_P2-S04
+  + [state_basis] is docs/reviews/P2_S04_Completion_Review.v1.sop
+  + [state_basis_sha256] is 5EB9975D9FFAC10790BBC2E420027AC84B405A19121CCA09D107159BB3835E2A
+  + [surface_status] is P2-S04_accepted_pending_P2-S05
   + [source_manifest] is docs/source/2026-05-27_p2_authority_kernel_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 9BAACC3E88BA2C031DBADC46FCC466C5B4BE2625D1FAC6401FC3C8354E5A408A
   + [canonical_specification] is docs/canonical/LangSOP_P2_Authority_Kernel_Final_Slices.canonical.sop
@@ -52,11 +54,15 @@ State UUID: e84acdd3-4940-42ce-a491-712fe2aa72a3
   + [accepted_output_sha256] is CA4AE1FED9724EB568993A31621B9605057ED7BDE5BAC41F2EA09E12680DF6F2
   + [accepted_completion_review] is docs/reviews/P2_S03_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 9F293AECADC025A83B31EA22021E2E719E8A955679146E07F5FC9FF58FFF2F5E
-  + [current_ready_slice] is P2-S04
-  + [current_ready_slice_name] is storage posture and projection boundary decision
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is physical storage posture affects source preservation, query, concurrency, Git workflow, projection rebuild, and LangGraph integration
-  + [gated_slice] is P2-S05
+  + [accepted_slice] is P2-S04
+  + [accepted_output] is docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+  + [accepted_output_sha256] is 74319F4ABB2FCF8C707168B1C3BD776F4532EB38D68C115AB6E90A1E7D16ACE6
+  + [accepted_completion_review] is docs/reviews/P2_S04_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 5EB9975D9FFAC10790BBC2E420027AC84B405A19121CCA09D107159BB3835E2A
+  + [current_ready_slice] is P2-S05
+  + [current_ready_slice_name] is fixture and validation oracle plan
+  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable only if bounded to fixture and validation oracle planning without fixture file creation or implementation
+  + [current_ready_slice_model_route_reason] is fixture planning is bounded after schema, record-kind, natural-key, and storage posture decisions are accepted
   + [gated_slice] is P2-S06
   + [dependency_installation_authorized] is false
   + [package_metadata_mutation_authorized] is false
@@ -74,6 +80,6 @@ State UUID: e84acdd3-4940-42ce-a491-712fe2aa72a3
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P2-S04 before fixture plans, downstream P3/P4 gates, adapter work, dispatch, or live-control work
+  = must: execute P2-S05 before P2 completion review, downstream P3/P4 gates, adapter work, dispatch, or live-control work
   = must: keep source authority, schema authority, generated projections, storage candidates, graph checkpoints, surface state, carrier state, and generated reports in distinct authority classes
   = must: mark this state stale if P2 source, manifest, canonical specification, slice surface, minting review, accepted schema inputs, post-IR8 readiness, or IR2 extraction mapping changes

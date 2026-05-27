@@ -57,7 +57,9 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P2_S02_Completion_Review.v1.sop
   + [support_record] is docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
   + [support_record] is docs/reviews/P2_S03_Completion_Review.v1.sop
-  + [support_gap] is P2 storage posture decision not yet accepted
+  + [support_record] is docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop
+  + [support_record] is docs/reviews/P2_S04_Completion_Review.v1.sop
+  + [support_gap] is P2 fixture and validation oracle plan not yet accepted
   + [proof_route] is schema fixtures for valid, stale, blocked, contradicted, and invalid records
   + [slice_family] is kernel-record-schema-design
   + [slice_family] is natural-key-and-state-matrix
@@ -366,17 +368,17 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P2-S04-StoragePostureAndProjectionBoundaryDecision] is ready_for_execution
+& [CurrentReadyChunk: P2-S05-FixtureAndValidationOraclePlan] is ready_for_execution
   + [chunk_id] is P2
-  + [chunk_name] is P2-S04 storage posture and projection boundary decision
-  + [authority_basis] is docs/reviews/P2_S03_Completion_Review.v1.sop
+  + [chunk_name] is P2-S05 fixture and validation oracle plan
+  + [authority_basis] is docs/reviews/P2_S04_Completion_Review.v1.sop
   + [activation_slice_surface] is docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
-  + [model_route] is requires deeper reasoning
-  + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is physical storage posture affects source preservation, query, concurrency, Git workflow, projection rebuild, and LangGraph integration
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only if bounded to fixture and validation oracle planning without fixture file creation or implementation
+  + [model_route_depth] is Spark_suitable_bounded_planning
+  + [model_route_reason] is fixture planning is bounded after schema, record-kind, natural-key, and storage posture decisions are accepted
 
-  = must: create only docs/decisions/P2_Storage_Posture_And_Projection_Boundary_Decision.v1.sop and docs/reviews/P2_S04_Completion_Review.v1.sop
-  = must: keep manager dispatch, agent dispatch, operations control, and live machine control gated
+  = must: create only docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop and docs/reviews/P2_S05_Completion_Review.v1.sop
+  = must: create no fixture source files, expected ledgers, implementation code, generated databases, dependencies, adapters, manager dispatch, agent dispatch, operations control, or live machine control
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

@@ -1,0 +1,154 @@
+Subject: P2 Storage Posture And Projection Boundary Decision V1
+Date: 2026-05-27
+Decision UUID: e0e2af06-5f80-4b30-b25c-4c0a6ad88bdf
+
+@ [slice_surface] docs/slices/P2_Authority_Kernel_Final_Slices.v1.sop
+@ [p2_s03] docs/schema/P2_Record_Specific_Schema_And_Natural_Key_Matrix_Refresh.v1.sop
+@ [p2_s03_review] docs/reviews/P2_S03_Completion_Review.v1.sop
+@ [p2_common_overlay] docs/schema/P2_Common_Envelope_Authority_Vocabulary_And_Freshness_Refresh.v1.sop
+@ [core_schema] docs/schema/Kernel_Record_Core.v1.sop
+@ [record_schema_inventory] docs/schema/Authority_Kernel_Record_Schemas.v1.sop
+@ [natural_key_matrix] docs/schema/Natural_Key_And_Lifecycle_Matrix.v1.sop
+@ [ir2_projection_mapping] docs/implementation/IR2_Kernel_Record_Extraction_And_Validation_Mapping.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+
+& [P2StoragePostureAndProjectionBoundaryDecisionV1] is the P2-S04 storage posture and projection boundary decision
+  + [slice_id] is P2-S04
+  + [slice_name] is storage posture and projection boundary decision
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [decision_result] is source_projection_separation_accepted_and_physical_storage_implementation_deferred
+  + [storage_posture] is source_preserved_SOP_authority_with_rebuildable_projection_indices
+  + [next_gate_result] is P2-S05 may open
+  + [storage_implementation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [generated_database_creation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this decision as a posture decision, not as storage implementation authority
+  = must: preserve source authority, canonical authority, proof authority, projection state, carrier state, execution state, generated output, dispatch authority, operations authority, and live-control authority as separate authority classes
+  = must: prevent SQLite, LangGraph checkpoints, surface state, mailbox carrier files, generated reports, or fixture outputs from becoming truth-bearing authority by convenience
+  = must: route any future physical storage implementation through a separate source-preserved activation pack, completion review, and generated-output nonpromotion proof
+
+& [SourceAuthorityStoragePosture: P2-S04] is the accepted source authority storage posture
+  + [source_specification_storage] is preserved_source_documents_in_Git_tracked_sop_files
+  + [canonical_specification_storage] is SJS_processed_canonical_sop_files_with_satisfaction_signatures
+  + [completion_review_storage] is Git_tracked_sop_review_files_with_support_and_requirement_delta
+  + [schema_overlay_storage] is Git_tracked_sop_schema_and_decision_files
+  + [current_state_storage] is derived_current_state_sop_files_that_do_not_replace_canonical_authority
+  + [git_role] is preservation_lineage_review_and_change_transport_not_authority_by_itself
+  + [authority_basis] is authority_class plus source_ref_set plus lineage_edge_set plus review_gate_ref plus content_hash
+  + [truth_bearing_record_condition] is source_preserved_record_or_reviewed_canonical_record_with_valid_lineage_and_currentness
+
+  = must: keep dictated source documents, preserved source snapshots, canonical specifications, schema overlays, decisions, and completion reviews readable without a database
+  = must: require content hashes for accepted slice outputs before downstream slices claim support
+  = must: treat derived state files as reentry and coordination aids that can become stale when their basis changes
+  = must: never promote a Git commit, generated projection, or local cache into authority without cited source-preserved record authority
+
+& [KernelRecordPersistenceCandidate: P2-S04] is the future persistence posture for kernel records
+  + [candidate_primary_source_shape] is append_only_source_preserved_kernel_record_ledger_or_sop_record_set
+  + [candidate_query_projection_shape] is rebuildable_SQLite_or_JSONL_index_derived_from_source_preserved_records
+  + [candidate_checkpoint_shape] is LangGraph_or_runtime_checkpoint_mapped_to_execution_state_non_authority
+  + [candidate_surface_shape] is surface_projection_non_authority_with_source_record_backlinks
+  + [candidate_carrier_shape] is mailbox_or_transport_carrier_state_non_authority_with_source_record_backlinks
+  + [candidate_report_shape] is generated_output_non_authority_with_nonpromotion_proof
+  + [storage_selection_status] is deferred_until_future_implementation_activation
+  + [migration_status] is no_existing_record_migration_authorized
+
+  = must: require future storage to preserve natural_key, record_kind, authority_class, effect_boundary, currentness_state, source_ref_set, lineage_edge_set, review_gate_ref, invalidation_ref_set, and content_hash
+  = must: allow query/index storage to be destroyed and rebuilt without losing authority
+  = must: require projections to carry source record references and projection build inputs
+  = must: keep baseline KernelRecord kinds and P2 overlay record kinds equally representable before downstream fixture planning
+
+& [ProjectionBoundaryDecision: P2-S04] is the accepted boundary between authority and projection
+  + [source_authority_boundary] is source_authority canonical_authority accepted_decision_authority signed_sjs_authority proof_authority and scoped_human_override_authority_only_when_reviewed
+  + [non_authority_projection_boundary] is narrative_projection_non_authority surface_projection_non_authority carrier_state_non_authority execution_state_non_authority generated_output_non_authority and dry_run_evidence_non_authority
+  + [SQLite_projection_status] is rebuildable_non_authority_index
+  + [LangGraph_checkpoint_status] is execution_state_non_authority
+  + [surface_state_status] is surface_projection_non_authority
+  + [mailbox_carrier_status] is carrier_state_non_authority
+  + [generated_report_status] is generated_output_non_authority
+  + [dry_run_result_status] is dry_run_evidence_non_authority
+  + [dispatch_status] is candidate_or_forbidden_until_future_dispatch_authority
+  + [operations_control_status] is candidate_or_forbidden_until_future_operations_control_authority
+  + [live_control_status] is candidate_or_forbidden_until_future_live_control_authority
+
+  = must: block any readiness decision that depends only on projection data without current source authority
+  = must: require projection freshness to be recomputed from source hashes, dependency hashes, and projection build rules
+  = must: require projection consumers to expose stale, blocked, contradicted, invalidated, pending_review, and unknown currentness states
+  = must: keep mailbox carriers and surface projections useful for coordination without treating carrier arrival as signed authority
+
+& [StorageProjectionFreshnessRule: P2-S04] is the freshness rule for storage and projections
+  + [projection_current_when] is source_record_hash_set current and projection_build_rule_hash current and projection_timestamp_after_latest_basis_change
+  + [projection_stale_when] is any source_ref source_hash schema_overlay decision review gate natural_key_rule or projection_build_rule changes
+  + [projection_blocked_when] is required source_ref_set lineage_edge_set review_gate_ref or natural_key term missing
+  + [projection_contested_when] is projection output conflicts with accepted source authority or another reviewed projection
+  + [projection_invalidated_when] is accepted source authority invalidates the basis or generated output leak is found
+  + [checkpoint_stale_when] is graph definition prompt authority tool contract source authority or checkpoint schema changes
+  + [carrier_stale_when] is message source surface target surface subject authority basis or mailbox protocol changes
+
+  = must: make stale projection detection part of fixture planning in P2-S05
+  = must: preserve stale projections as trace only when doing so does not create hidden authority or generated-output leakage
+  = must: require future projection builders to fail closed when source authority is missing or unresolved
+
+& [FutureStorageActivationPreconditions: P2-S04] is the precondition set for any future physical storage work
+  + [precondition] is accepted P2 completion review
+  + [precondition] is source-preserved implementation activation pack
+  + [precondition] is dependency and package metadata decision if new libraries or lockfile changes are required
+  + [precondition] is generated-output nonpromotion proof
+  + [precondition] is fixture oracle covering valid stale blocked contradicted invalidated unresolved-natural-key hidden-authority missing-source broken-lineage storage-projection and false-ready cases
+  + [precondition] is rollback_or_cleanup_plan_for_generated_storage_outputs
+  + [precondition] is no dispatch operations-control or live-control effect without separate future authority
+
+  = must: prevent storage implementation from being smuggled into fixture planning, projection planning, adapter planning, or manager dispatch work
+  = must: require deeper reasoning for physical storage activation unless a later accepted specification narrows it into bounded Spark-suitable implementation
+
+& [DownstreamGateInstruction: P2-S04] is the instruction to P2-S05 and downstream chunks
+  + [P2-S05_must_plan_fixture_case] is valid_authority_record
+  + [P2-S05_must_plan_fixture_case] is stale_projection
+  + [P2-S05_must_plan_fixture_case] is blocked_missing_source
+  + [P2-S05_must_plan_fixture_case] is contradicted_authority
+  + [P2-S05_must_plan_fixture_case] is invalidated_record
+  + [P2-S05_must_plan_fixture_case] is unresolved_natural_key
+  + [P2-S05_must_plan_fixture_case] is hidden_authority_in_projection
+  + [P2-S05_must_plan_fixture_case] is broken_lineage
+  + [P2-S05_must_plan_fixture_case] is storage_projection_nonpromotion
+  + [P2-S05_must_plan_fixture_case] is false_ready_projection
+  + [P2-S05_model_route] is GPT-5.3-Codex-Spark-suitable only if fixture planning remains bounded to oracle design without file creation or implementation
+  + [P2-S05_model_route_reason] is fixture planning is bounded after schema, record-kind, natural-key, and storage posture decisions are accepted
+  + [P3_gate] is gated_until_P2_completion_or_explicit_rebake
+  + [P4_gate] is gated_until_P2_and_P3_advance
+  + [storage_implementation_gate] is gated_until_future_source_preserved_implementation_activation
+
+  = must: keep P2-S05 as a plan-only slice unless a later review explicitly authorizes fixture source creation
+  = must: keep downstream P3, P4, P5, P6, adapter, dispatch, operations-control, and live-control work gated
+
+& [P2S04FaultReview] is the fault review for P2-S04
+  + [storage_implementation_found] is false
+  + [dependency_installation_found] is false
+  + [lockfile_mutation_found] is false
+  + [package_metadata_mutation_found] is false
+  + [generated_database_creation_found] is false
+  + [adapter_implementation_found] is false
+  + [transport_implementation_found] is false
+  + [UI_implementation_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+  + [projection_to_authority_promotion_found] is false
+  + [source_projection_collapse_found] is false
+
+  ! [P2StoragePostureAndProjectionBoundaryDecisionAccepted] is accepted
+    @ [support] [SourceAuthorityStoragePosture: P2-S04]
+    @ [support] [KernelRecordPersistenceCandidate: P2-S04]
+    @ [support] [ProjectionBoundaryDecision: P2-S04]
+    @ [support] [StorageProjectionFreshnessRule: P2-S04]
+    @ [support] [FutureStorageActivationPreconditions: P2-S04]
+    @ [support] [DownstreamGateInstruction: P2-S04]
+    @ [support] [P2S04FaultReview]
