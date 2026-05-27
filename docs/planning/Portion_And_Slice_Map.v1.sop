@@ -28,9 +28,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
 @ [p5_slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
 @ [p5_slice_minting_review] docs/reviews/P5_Final_Slice_Minting_Review.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P5-S06_LangGraph_adapter_dependency_deferral_and_implementation_activation_boundary
+  + [map_state] is ready_for_P6_surface_projection_system_final_slice_minting
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -152,7 +154,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route downstream fixture, runtime, surface, coordination, and operations planning through PostP4ReadinessSurfaceV1
   = may: use P4 outputs to packetize future work only as reviewable records with explicit no-assignment, no-dispatch, and no-live-effect notices
 
-& [Portion: P5LangGraphProcedureRuntime] is ready_for_slice_family
+& [Portion: P5LangGraphProcedureRuntime] is accepted_plan_and_contract_authority
   + [portion_id] is P5
   + [portion_name] is LangGraph procedure runtime
   + [purpose] is execute compiled operators over kernel records with checkpointed procedure state and judgment interrupts
@@ -181,30 +183,39 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P5_S04_Completion_Review.v1.sop
   + [support_record] is docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
   + [support_record] is docs/reviews/P5_S05_Completion_Review.v1.sop
-  + [support_gap] is graph proof-of-shape not implemented and remains gated until P5 final slices plus implementation activation accept it
+  + [support_record] is docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+  + [support_record] is docs/reviews/P5_S06_Completion_Review.v1.sop
+  + [support_record] is docs/reviews/P5_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [support_gap] is graph proof-of-shape implementation not implemented and remains gated until source-preserved implementation activation accepts it
   + [proof_route] is graph run over fixture records with expected operator traces
   + [slice_family] is whole-field-planner-graph-proof
   + [slice_family] is graph-interrupt-fixtures
 
   = must: keep LangGraph checkpoint state non-authoritative
-  = must: execute P5-S06 before implementation activation, runtime implementation, surface expansion, adapter work, dispatch, or live-control work
+  = must: keep P5 accepted as planning and contract authority, not runtime implementation, dependency, adapter, graph execution, assignment, dispatch, operations-control, or live-control authority
   = should: route graph proof implementation to GPT-5.3-Codex-Spark after P5 final slices, implementation activation, contracts, and fixtures stabilize
 
-& [Portion: P6SurfaceProjectionSystem] is blocked
+& [Portion: P6SurfaceProjectionSystem] is ready_for_final_slice_minting
   + [portion_id] is P6
   + [portion_name] is surface projection system
   + [purpose] is render manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow projections from kernel records
   + [dependency_set] is P2
   + [dependency_set] is P4
   + [dependency_set] is P8 fixture pack
-  + [support_gap] is projection fixtures not yet generated
+  + [dependency_set] is P5 runtime planning authority
+  + [support_record] is docs/reviews/P5_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [support_gap] is source-preserved P6 final slice surface not yet authored, SJS-processed, or accepted
+  + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
   + [slice_family] is chat-and-adapter-projection-contracts
   + [slice_family] is langflow-export-prototype
 
   = must: never let surfaces mutate canonical authority directly
-  = should: route bounded projection rendering to GPT-5.3-Codex-Spark after fixture records exist
+  = must: route P6 final slice minting as requiring deeper reasoning because projection surfaces expose authority, stale state, checkpoint nonauthority, interrupts, human handoffs, and nonpromotion across many conversation surfaces
+  = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 final slices, implementation activation, and fixture records stabilize
 
 & [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR8_readiness
   + [portion_id] is P7
@@ -467,19 +478,19 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P5-S06-LangGraphAdapterDependencyDeferralAndImplementationActivationBoundary] is ready_for_execution
-  + [chunk_id] is P5
-  + [slice_id] is P5-S06
-  + [chunk_name] is LangGraph adapter dependency deferral and implementation activation boundary
-  + [authority_basis] is docs/reviews/P5_S05_Completion_Review.v1.sop
-  + [readiness_surface] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
-  + [expected_output] is docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
-  + [completion_review_output] is docs/reviews/P5_S06_Completion_Review.v1.sop
+& [CurrentReadyChunk: P6-SurfaceProjectionSystemFinalSliceMinting] is ready_for_execution
+  + [chunk_id] is P6
+  + [slice_id] is P6 final slice minting
+  + [chunk_name] is surface projection system final slice minting
+  + [authority_basis] is docs/reviews/P5_Completion_Review.v1.sop
+  + [readiness_surface] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [expected_output] is source-preserved P6 final slice source, canonical specification, final slice surface, work state, and minting review
+  + [completion_review_output] is docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is dependency posture and adapter activation decide when external LangGraph code may enter the project and when runtime implementation becomes safe
+  + [model_route_reason] is surface projection decides how authority, stale state, nonpromotion, checkpoint nonauthority, interrupts, and human handoffs are visible across conversation surfaces
 
-  = must: create only the P5-S06 LangGraph adapter dependency deferral and implementation activation boundary output and P5-S06 completion review unless a completed-work delta rebakes this map
+  = must: source-preserve and SJS-process P6 final slice source before trusting the P6 slice surface
   = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected ledgers, proof ledgers, generated databases, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence

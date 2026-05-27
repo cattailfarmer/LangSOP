@@ -16,6 +16,10 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [completion_review] docs/reviews/P5_S04_Completion_Review.v1.sop
 @ [accepted_output] docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
 @ [completion_review] docs/reviews/P5_S05_Completion_Review.v1.sop
+@ [accepted_output] docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+@ [completion_review] docs/reviews/P5_S06_Completion_Review.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
 @ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
 @ [post_p2_readiness] docs/planning/Post_P2_Readiness_Surface.v1.sop
 @ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
@@ -24,9 +28,9 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
-  + [state_basis] is docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
-  + [state_basis_sha256] is C9B8ACF56464CC2F3813899A0D39DEECF9793BF4D2011EB7EF39740552476FAB
-  + [surface_status] is P5_S05_accepted_pending_P5-S06
+  + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
+  + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [surface_status] is P5_completed_pending_P6_final_slice_minting
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -70,12 +74,20 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_output_sha256] is 65B6FCFF1C5243EE45C0ADA2B3B1DB340A252160A6A305B6D7E7902EEF5FDBAB
   + [accepted_completion_review] is docs/reviews/P5_S05_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 4529D4BF5629AB7E7E17444E0CC63B23746ECEB1CD9E99AF118BBDB085BACE38
-  + [current_ready_slice] is P5-S06
-  + [current_ready_slice_name] is LangGraph adapter dependency deferral and implementation activation boundary
-  + [current_ready_slice_expected_output] is docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is dependency posture and adapter activation decide when external LangGraph code may enter the project and when runtime implementation becomes safe
-  + [gated_slice] is P5-S07
+  + [accepted_slice] is P5-S06
+  + [accepted_output] is docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+  + [accepted_output_sha256] is C09839285E0740AF8B267E7AB4C6698C274D1DE42EA756B58A5D1FE5FAD4024F
+  + [accepted_completion_review] is docs/reviews/P5_S06_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 6DFA37F9F6A81F592BECA3196B0F3DDB2879EE2A96ACDBCCB5A63B8E0657928D
+  + [accepted_portion_completion_review] is docs/reviews/P5_Completion_Review.v1.sop
+  + [accepted_portion_completion_review_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [accepted_post_readiness_surface] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [accepted_post_readiness_surface_sha256] is 79B7CC40C2CC22355333E30B0FE3070BD09BC8BF9A19FD8D3841C635A8A13848
+  + [current_ready_chunk] is P6 surface projection system final slice minting
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is surface projection decides how authority, stale state, nonpromotion, checkpoint nonauthority, interrupts, and human handoffs are visible across conversation surfaces
+  + [gated_chunk] is P5 runtime implementation activation until source-preserved activation authority is accepted
+  + [gated_chunk] is P8 fixture material implementation activation until P6 surface projection requirements are reviewed
   + [dependency_installation_authorized] is false
   + [package_metadata_mutation_authorized] is false
   + [implementation_code_authorized] is false
@@ -95,6 +107,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P5-S06 before implementation activation, runtime implementation, surface expansion, adapter work, dispatch, or live-control work
+  = must: source-preserve and SJS-process P6 final slice authority before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
   = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, or post-P8 readiness changes

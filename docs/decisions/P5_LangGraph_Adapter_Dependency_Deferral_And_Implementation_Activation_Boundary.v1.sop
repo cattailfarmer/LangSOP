@@ -1,0 +1,91 @@
+Subject: P5 LangGraph Adapter Dependency Deferral And Implementation Activation Boundary V1
+Date: 2026-05-27
+Decision UUID: 5a29e20a-d196-45f5-bf22-69b5ebf54758
+
+@ [p5_slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [p5_s05_output] docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
+@ [p5_s05_review] docs/reviews/P5_S05_Completion_Review.v1.sop
+@ [ir4_langgraph_dependency_decision] docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+
+& [P5LangGraphAdapterDependencyDeferralAndImplementationActivationBoundaryV1] is the P5-S06 LangGraph adapter dependency deferral and implementation activation boundary
+  + [slice_id] is P5-S06
+  + [slice_name] is LangGraph adapter dependency deferral and implementation activation boundary
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is dependency posture and adapter activation decide when external LangGraph code may enter the project and when runtime implementation becomes safe
+  + [decision_result] is defer_dependency_installation_and_adapter_implementation
+  + [next_gate_result] is P5-S07 may open
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve the existing external LangGraph dependency deferral until source-preserved implementation activation is separately authored, SJS-processed, reviewed, and accepted
+  = must: treat this decision as a boundary, not permission to install packages, mutate package metadata, write adapter code, execute graph runtime, assign work, dispatch work, or control operations
+
+& [P5DependencyDeferralDecision] is the dependency deferral decision for P5
+  + [external_dependency] is LangGraph
+  + [current_dependency_status] is deferred
+  + [package_metadata_mutation_status] is not_authorized
+  + [installation_status] is not_authorized
+  + [adapter_status] is not_implemented
+  + [runtime_execution_status] is not_authorized
+  + [deferral_basis] is docs/decisions/IR4_LangGraph_Adapter_Dependency_Decision.v1.sop
+  + [deferral_basis] is docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
+
+  = must: require a future dependency decision refresh if LangGraph package choice, version policy, dependency manager, execution environment, or adapter boundary changes
+  = must: keep dependency work out of P5 planning completion
+
+& [P5ImplementationActivationPrerequisiteSet] is the prerequisite set for future P5 implementation activation
+  + [prerequisite] is source-preserved P5 implementation activation source
+  + [prerequisite] is SJS-processed P5 implementation activation canonical specification
+  + [prerequisite] is implementation activation slice surface
+  + [prerequisite] is accepted dependency and package metadata decision
+  + [prerequisite] is exact graph contract and adapter boundary
+  + [prerequisite] is accepted fixture source paths and expected trace paths
+  + [prerequisite] is accepted generated trace root policy
+  + [prerequisite] is accepted proof ledger and absence proof requirements
+  + [prerequisite] is no-dispatch and no-live-effect proof boundary
+  + [prerequisite] is completion review before any downstream surface or operations consumption
+
+  = must: require all prerequisites before runtime implementation, dependency installation, adapter work, graph execution, or generated trace materialization
+
+& [P5AdapterBoundarySet] is the future adapter boundary set
+  + [adapter_boundary] is graph state adapter must translate accepted kernel records into graph state without changing source authority
+  + [adapter_boundary] is node adapter must call accepted operator duties only
+  + [adapter_boundary] is checkpoint adapter must persist runtime continuity only and must not promote checkpoint state to authority
+  + [adapter_boundary] is interrupt adapter must emit handoff records and stop, not assign or dispatch
+  + [adapter_boundary] is proof trace adapter must emit generated traces under ignored generated roots only after activation
+  + [adapter_boundary] is dependency adapter must be covered by accepted package and environment policy
+
+  = must: keep adapter boundaries as future implementation authority only after source-preserved activation
+  = must: reject adapter behavior that writes source authority, dispatches work, controls operations, or controls live machine state
+
+& [P5ImplementationProofPackRequirementSet] is the future implementation proof pack requirement set
+  + [proof_requirement] is compile and unit test proof
+  + [proof_requirement] is fixture proof over pass, blocked, stale, contradicted, interrupted, faulted, rebake_required, and not_run cases
+  + [proof_requirement] is checkpoint nonauthority proof
+  + [proof_requirement] is generated trace nonpromotion proof
+  + [proof_requirement] is no assignment proof
+  + [proof_requirement] is no dispatch proof
+  + [proof_requirement] is no operations control proof
+  + [proof_requirement] is no live machine control proof
+  + [proof_requirement] is dependency and package metadata mutation proof
+
+  = must: require implementation proof pack acceptance before P6, P7, P8 material, or P9 work consumes P5 runtime implementation evidence
+
+& [P5S06DownstreamGate] is the gate opened by P5-S06
+  + [opened_slice] is P5-S07 P5 completion review and downstream gate
+  + [activation_basis] is LangGraph adapter dependency deferral and implementation activation boundary accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P5 acceptance changes surface projection readiness, fixture material readiness, coordination readiness, and implementation gates
+  + [completion_review_required] is true
+
+  = must: open P5-S07 only after P5-S06 completion review accepts this dependency deferral and implementation activation boundary

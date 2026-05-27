@@ -24,6 +24,9 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [p5_s03_review] docs/reviews/P5_S03_Completion_Review.v1.sop
 @ [p5_s04_review] docs/reviews/P5_S04_Completion_Review.v1.sop
 @ [p5_s05_review] docs/reviews/P5_S05_Completion_Review.v1.sop
+@ [p5_s06_review] docs/reviews/P5_S06_Completion_Review.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
 @ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
@@ -35,7 +38,7 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 & [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
   + [state_basis] is docs/reviews/P8_Completion_Review.v1.sop
   + [state_basis_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
-  + [surface_status] is P8_completed_pending_P5_final_slice_minting
+  + [surface_status] is P8_completed_pending_P6_final_slice_minting
   + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
   + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
@@ -99,11 +102,15 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_downstream_slice_review_sha256] is E674C277434FC566A7CC481835EA1C1FB0807962BE459D76E567051CC346DA7B
   + [accepted_downstream_slice_review] is docs/reviews/P5_S05_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is 4529D4BF5629AB7E7E17444E0CC63B23746ECEB1CD9E99AF118BBDB085BACE38
-  + [current_ready_chunk] is P5-S06 LangGraph adapter dependency deferral and implementation activation boundary
-  + [current_ready_chunk_expected_output] is docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+  + [accepted_downstream_portion_review] is docs/reviews/P5_Completion_Review.v1.sop
+  + [accepted_downstream_portion_review_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [accepted_downstream_readiness_surface] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [accepted_downstream_readiness_surface_sha256] is 79B7CC40C2CC22355333E30B0FE3070BD09BC8BF9A19FD8D3841C635A8A13848
+  + [current_ready_chunk] is P6 surface projection system final slice minting
+  + [current_ready_chunk_expected_output] is source-preserved P6 final slice surface
   + [current_ready_chunk_model_route] is requires deeper reasoning
-  + [current_ready_chunk_model_route_reason] is dependency posture and adapter activation decide when external LangGraph code may enter the project and when runtime implementation becomes safe
-  + [gated_chunk] is P6 surface projection expansion until P5 runtime authority and projection fixture authority are reminted
+  + [current_ready_chunk_model_route_reason] is surface projection decides how authority, stale state, nonpromotion, checkpoint nonauthority, interrupts, and human handoffs are visible across conversation surfaces
+  + [gated_chunk] is P6 implementation and projection fixture materialization until P6 final slices and implementation activation are accepted
   + [gated_chunk] is P8 fixture material implementation activation until future source-preserved implementation activation opens exact files
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted
   + [gated_chunk] is P9 operations live-control reconsideration until separate source-preserved live-control authority is accepted
