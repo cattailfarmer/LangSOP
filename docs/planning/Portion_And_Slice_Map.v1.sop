@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is ready_for_IR7-S03_resource_safety_contract
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7-S04_fixture_plan
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -200,15 +200,17 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR7_S01_Completion_Review.v1.sop
   + [support_record] is docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
   + [support_record] is docs/reviews/IR7_S02_Completion_Review.v1.sop
-  + [support_gap] is IR7-S03 resource safety, human approval, credential, network, and rollback contract not yet executed
+  + [support_record] is docs/operations/IR7_Resource_Safety_Human_Approval_And_Rollback_Contract.v1.sop
+  + [support_record] is docs/reviews/IR7_S03_Completion_Review.v1.sop
+  + [support_gap] is IR7-S04 operations dry-run fixture plan and expected ledger plan not yet executed
   + [support_gap] is IR7 dry-run operations fixture implementation not yet accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7-S03 resource safety contract design, not implementation or live operations control
-  = must: require deeper reasoning for IR7-S03 because resource, credential, network, approval, and rollback boundaries are high-risk safety semantics
-  = should: route bounded fixture drafting to GPT-5.3-Codex-Spark only after IR7 safety and dry-run contracts are accepted
+  = must: open only IR7-S04 fixture plan and expected ledger plan, not fixture source files, generated outputs, implementation, or live operations control
+  = must: route IR7-S04 as GPT-5.3-Codex-Spark-suitable because accepted IR7-S01 through IR7-S03 contracts bound the fixture cases
+  = should: keep later implementation and generated-output policy in deeper-reasoning mode until IR7-S04 is accepted
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design
