@@ -1,0 +1,79 @@
+Subject: P6 S02 Completion Review V1
+Date: 2026-05-27
+Review UUID: 07961cf0-176c-4efa-96e5-90fd91a39e96
+
+@ [completed_output] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+@ [p6_s01_output] docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+@ [p6_s01_review] docs/reviews/P6_S01_Completion_Review.v1.sop
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+
+& [CompletedWorkReview: P6-S02] is the completed-work review for P6-S02 authority notice freshness and nonpromotion rendering contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P6-S02
+  + [completed_output] is docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+  + [completed_output_sha256] is 7E5C7FF23525DBA0831F1E712C74A669A775E35FFD7E5ED5EC97E49E412B0D9D
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P6-S03
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P6-S03 may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is surface-specific boundaries determine what each conversation surface may show, request, or classify without becoming authority
+
+  = must: treat this review as gate-opening evidence for P6-S03 only
+  = must: rerun this review if P6-S02 output, P6-S01 output, P6-S01 review, P6 slice surface, FSC4 authority notice contract, IR5 authority display contract, P5 checkpoint contract, P5 interrupt handoff contract, or P8 nonpromotion contract changes
+  = must: keep projection fixture files, expected snapshots, generated projections, dependency installation, package metadata mutation, implementation code, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control gated
+
+& [P6S02Verification] is the verification result for P6-S02
+  + [authority_notice_rendering_envelope_present] is true
+  + [freshness_and_lineage_rendering_contract_present] is true
+  + [checkpoint_and_generated_projection_nonpromotion_rule_present] is true
+  + [stop_state_and_handoff_rendering_contract_present] is true
+  + [no_hidden_authority_refusal_contract_present] is true
+  + [authority_display_stale_trigger_set_present] is true
+  + [P6-S03_opened] is true
+  + [P6-S04_opened] is false
+  + [P6-S05_opened] is false
+  + [P6-S06_opened] is false
+  + [P6-S07_opened] is false
+  + [projection_fixture_files_created] is false
+  + [expected_snapshots_created] is false
+  + [generated_projections_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6S02Accepted] is accepted
+    @ [support] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+
+& [SupportDelta: P6-S02] is the support delta produced by P6-S02
+  + [new_support_record] is every decision-making projection now requires a visible authority notice, freshness state, lineage basis, trust limit, permitted actions, forbidden actions, and required routes
+  + [new_support_record] is checkpoint state, graph traces, generated outputs, generated projections, terminal output, dry-run output, handoff display, and human approval display remain nonpromoted unless accepted proof, review, human override, or source-preserved authority elevates them
+  + [new_support_record] is P6-S03 may define surface-specific envelopes only after preserving the P6-S02 display contract
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-S02] is the requirement delta produced by P6-S02
+  + [requirement_delta] is P6-S03 must preserve P6 authority notice, freshness, nonpromotion, stop-state, and refusal semantics for manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow surfaces
+  + [requirement_delta] is no carrier surface may offer authority-sensitive actions when it cannot display required authority context
+  + [requirement_delta] is P6-S05 fixture planning must include hidden-authority, missing-freshness, checkpoint-promotion, generated-projection-promotion, dry-run-promotion, and human-approval-promotion negative cases
+
+& [NextSliceGate: P6-S03] is opened
+  + [opened_slice] is P6-S03 multi-surface projection envelope and surface-specific boundary contract
+  + [authority_basis] is docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+  + [authority_basis_sha256] is 7E5C7FF23525DBA0831F1E712C74A669A775E35FFD7E5ED5EC97E49E412B0D9D
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute P6-S03 next unless user redirects, surface-specific authority display becomes ambiguous, or imported projection authority changes

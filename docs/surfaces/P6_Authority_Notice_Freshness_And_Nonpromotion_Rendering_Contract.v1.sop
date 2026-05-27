@@ -1,0 +1,192 @@
+Subject: P6 Authority Notice Freshness And Nonpromotion Rendering Contract V1
+Date: 2026-05-27
+Contract UUID: 598cf0cc-0461-41e3-bd8b-19d9fafc4175
+
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_s01_output] docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+@ [p6_s01_review] docs/reviews/P6_S01_Completion_Review.v1.sop
+@ [fsc4_authority_notice_contract] docs/surfaces/Authority_Notice_Projection_Contract.v1.sop
+@ [ir5_authority_display_contract] docs/surfaces/IR5_Authority_Display_And_Projection_State_Contract.v1.sop
+@ [p5_checkpoint_contract] docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
+@ [p5_interrupt_handoff_contract] docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+@ [p8_nonpromotion_contract] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+
+& [P6AuthorityNoticeFreshnessAndNonpromotionRenderingContractV1] is the P6-S02 authority notice freshness and nonpromotion rendering contract
+  + [slice_id] is P6-S02
+  + [slice_name] is authority notice freshness and nonpromotion rendering contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is authority display determines how humans and agents recognize source authority, stale projections, checkpoint nonauthority, and generated-output limits
+  + [contract_result] is authority_notice_freshness_and_nonpromotion_rendering_defined_without_surface_implementation
+  + [next_gate_result] is P6-S03 may open
+  + [projection_fixture_file_creation_authorized] is false
+  + [expected_snapshot_creation_authorized] is false
+  + [generated_projection_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define rendering semantics only, not component layout, adapter logic, transport behavior, generated projection material, or fixture files
+  = must: make authority, freshness, lineage, stop state, checkpoint nonauthority, generated projection nonpromotion, and handoff limits visible before any action route is offered
+  = must: reject or block projections whose carrier surface cannot show required authority context
+
+& [P6AuthorityNoticeRenderingEnvelope] is the required authority notice envelope for every decision-making P6 projection
+  + [required_field] is projection_id
+  + [required_field] is projection_kind
+  + [required_field] is projected_subject_ref
+  + [required_field] is carrier_surface
+  + [required_field] is source_authority_ref_set
+  + [required_field] is source_authority_sha256_set
+  + [required_field] is derived_from_ref_set
+  + [required_field] is lineage_edge_set
+  + [required_field] is authority_tier
+  + [required_field] is projected_authority_state
+  + [required_field] is trust_limit
+  + [required_field] is freshness_state
+  + [required_field] is stale_trigger_set
+  + [required_field] is invalidation_ref_set
+  + [required_field] is permitted_action_set
+  + [required_field] is forbidden_action_set
+  + [required_field] is required_route_set
+  + [required_field] is risk_reason
+  + [required_field] is visible_before_action
+  + [authority_tier] is source_authority
+  + [authority_tier] is accepted_review_authority
+  + [authority_tier] is accepted_proof_support
+  + [authority_tier] is generated_projection_evidence
+  + [authority_tier] is carrier_context
+
+  = must: show lower-tier records as lower-tier records even when they summarize accepted work
+  = must: require visible_before_action for claim, override, interrupt resolution, review, work packet, dispatch-like, operation-like, or live-control-adjacent actions
+  = must: reject any authority notice that cannot cite source_authority_ref_set, trust_limit, forbidden_action_set, and required_route_set
+
+& [P6FreshnessAndLineageRenderingContract] is the freshness and lineage rendering contract
+  + [freshness_state] is fresh
+  + [freshness_state] is stale
+  + [freshness_state] is unknown
+  + [freshness_state] is contested
+  + [freshness_state] is interrupted
+  + [freshness_state] is blocked
+  + [freshness_state] is faulted
+  + [freshness_state] is pending_review
+  + [freshness_input] is source_authority_ref_set
+  + [freshness_input] is source_authority_sha256_set
+  + [freshness_input] is accepted_boundary_hash_set
+  + [freshness_input] is completion_review_ref_set
+  + [freshness_input] is proof_ledger_ref_set
+  + [freshness_input] is checkpoint_ref
+  + [freshness_input] is interrupt_context_ref_set
+  + [freshness_input] is invalidation_ref_set
+  + [display_obligation] is source authority path or record identifier
+  + [display_obligation] is accepted proof or review path
+  + [display_obligation] is currentness basis
+  + [display_obligation] is invalidation reason when not fresh
+
+  = must: display stale, unknown, contested, interrupted, blocked, faulted, or pending-review freshness before dependent action routes are offered
+  = must: force unknown freshness when lineage cannot prove current authority against accepted hashes
+  = must: mark projections stale when source authority, completion review, proof ledger, runtime contract, surface boundary, nonpromotion rule, or implementation activation boundary changes
+
+& [P6CheckpointAndGeneratedProjectionNonpromotionRenderingRule] is the nonpromotion rendering rule set
+  + [nonpromoted_class] is graph_checkpoint_state
+  + [nonpromoted_class] is graph_transition_trace
+  + [nonpromoted_class] is generated_output_trace
+  + [nonpromoted_class] is generated_projection
+  + [nonpromoted_class] is surface_snapshot
+  + [nonpromoted_class] is terminal_output_projection
+  + [nonpromoted_class] is dry_run_output
+  + [nonpromoted_class] is human_handoff_display
+  + [nonpromoted_class] is human_approval_display
+  + [required_notice] is not_source_authority
+  + [required_notice] is not_canonical_specification
+  + [required_notice] is not_completion_review
+  + [required_notice] is not_assignment_authority
+  + [required_notice] is not_dispatch_authority
+  + [required_notice] is not_operations_authority
+  + [required_notice] is not_live_control_authority
+  + [promotion_route] is accepted completion review
+  + [promotion_route] is accepted proof ledger
+  + [promotion_route] is accepted human override record with authority notice
+  + [promotion_route] is source-preserved SJS-processed specification
+
+  = must: render checkpoint state as execution continuity only
+  = must: render generated projections as disposable, rebuildable, and staleable evidence only
+  = must: render dry-run and human approval displays as scoped evidence only, never live-control permission
+  = must: emit a fault or refusal when a nonpromoted class is presented as source authority, proof authority, assignment authority, dispatch authority, operations authority, or live-control authority
+
+& [P6StopStateAndHandoffRenderingContract] is the stop-state and handoff display contract
+  + [stop_state] is blocked
+  + [stop_state] is stale
+  + [stop_state] is faulted
+  + [stop_state] is interrupted
+  + [stop_state] is contested
+  + [stop_state] is pending_review
+  + [stop_state] is unsupported_scope
+  + [stop_state] is refused
+  + [handoff_context] is unresolved_question
+  + [handoff_context] is candidate_resolution_set
+  + [handoff_context] is required_human_authority
+  + [handoff_context] is required_SOP_review_ref
+  + [handoff_context] is no_assignment_notice
+  + [handoff_context] is no_dispatch_notice
+  + [handoff_context] is no_live_effect_notice
+  + [handoff_context] is resume_condition_set
+  + [handoff_context] is rebake_route_ref
+
+  = must: prevent stopped projections from rendering as ready, completed, accepted, assigned, dispatched, operation-authorized, or live-control-authorized
+  = must: preserve enough handoff context for another user, agent, or conversation to resume by accepted route rather than carrier memory
+  = must: show no-assignment, no-dispatch, and no-live-effect notices wherever handoff state is visible
+
+& [P6NoHiddenAuthorityProjectionRefusalContract] is the refusal contract for unsafe authority display
+  + [refusal_reason] is missing_source_authority_ref_set
+  + [refusal_reason] is missing_source_authority_sha256_set
+  + [refusal_reason] is missing_lineage_edge_set
+  + [refusal_reason] is missing_authority_notice
+  + [refusal_reason] is missing_freshness_state
+  + [refusal_reason] is missing_nonpromotion_notice
+  + [refusal_reason] is hidden_stop_state
+  + [refusal_reason] is hidden_checkpoint_nonauthority
+  + [refusal_reason] is unsupported_action_route
+  + [refusal_reason] is carrier_cannot_show_required_context
+  + [refusal_reason] is lower_authority_tier_misrepresented
+  + [refusal_reason] is dry_run_or_human_approval_treated_as_live_control
+  + [refusal_output] is blocked_projection
+  + [refusal_output] is stale_projection
+  + [refusal_output] is projection_fault_record
+  + [refusal_output] is divergence_notice
+  + [refusal_output] is sop_first_interrupt_context
+  + [refusal_output] is refused_operation_request
+
+  = must: refuse the projection before user or agent action when required authority context cannot be rendered
+  = must: preserve refusal reason and evidence for P6 fixture planning and completion review
+
+& [P6AuthorityDisplayStaleTriggerSet] is the stale trigger set exported by P6-S02
+  + [stale_trigger] is P6-S01 boundary import output changes
+  + [stale_trigger] is P6-S01 completion review changes
+  + [stale_trigger] is authority notice envelope changes
+  + [stale_trigger] is freshness and lineage rendering changes
+  + [stale_trigger] is checkpoint nonpromotion rendering changes
+  + [stale_trigger] is generated projection nonpromotion rendering changes
+  + [stale_trigger] is stop-state or handoff rendering changes
+  + [stale_trigger] is refusal contract changes
+  + [stale_trigger] is hidden authority discovered in a projected surface
+  + [stale_trigger] is carrier surface cannot preserve required authority context
+
+  = must: mark P6-S03 and downstream slices stale when any listed trigger fires after they begin
+  = must: route stale-trigger repair through completion review and rebake rather than silent projection edits
+
+& [P6S02DownstreamGate] is the gate opened by P6-S02
+  + [opened_slice] is P6-S03 multi-surface projection envelope and surface-specific boundary contract
+  + [activation_basis] is authority notice freshness and nonpromotion rendering contract accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface-specific boundaries determine what each conversation surface may show, request, or classify without becoming authority
+  + [completion_review_required] is true
+
+  = must: open P6-S03 only after P6-S02 completion review accepts this rendering contract
+  = must: keep P6-S04 through P6-S07 gated until their predecessor reviews accept
