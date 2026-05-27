@@ -1,0 +1,310 @@
+Subject: IR7 Dry Run Request Result And Refusal Contract V1
+Date: 2026-05-27
+Contract UUID: 1b84b359-73cf-4e5c-b174-6b8922e9d287
+
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+@ [IR7_S01_boundary_import] docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+@ [IR7_S01_completion_review] docs/reviews/IR7_S01_Completion_Review.v1.sop
+@ [post_ir6_readiness] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [FSC5_operations_boundary] docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+@ [FSC5_dry_run_contract] docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+@ [FSC5_resource_safety_contract] docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+@ [FSC5_live_control_prohibition] docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+@ [IR6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [IR6_implementation_completion_review] docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+
+& [IR7DryRunRequestResultAndRefusalContractV1] is the IR7-S02 contract for dry-run operation request, result, refusal, and non-authority semantics
+  + [contract_id] is ir7-dry-run-request-result-and-refusal-contract-v1
+  + [contract_uuid] is 1b84b359-73cf-4e5c-b174-6b8922e9d287
+  + [slice_id] is IR7-S02
+  + [source_chunk] is IR7 operations dry-run request simulator planning
+  + [authority_scope] is operation request identity, operation request lineage, required safety fields, intended effect classification, target classification, dry-run result schema, refusal and interrupt output, no-live-effect rule, source/projection boundary, and completion boundary
+  + [implementation_scope] is safety contract only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: let future operation-shaped work be represented, simulated, refused, and reviewed without performing live effects
+  = must: preserve the IR7 operations authority ladder from IR7-S01
+  = must: treat operation_request, dry_run_result, refusal_record, interrupt_context, human_approval_ref, coordination_claim, mailbox_carrier_context, fixture success, generated projection, and carrier output as non-authoritative for live control
+  = must: require completion review before IR7-S03 resource safety work opens
+  - never: implement a simulator, create fixture files, create expected ledgers, create generated outputs, install dependencies, mutate package metadata, execute commands, control processes, control GPU, mutate model runtime, dispatch jobs, access credentials, mutate network exposure, perform destructive filesystem actions, create persistent automation, dispatch agents, authorize operations control, or authorize live machine control in this slice
+
+& [IR7S02AcceptedBoundaryDigestSet] is the accepted boundary input hash ledger for IR7-S02
+  + [accepted_boundary_input] is docs/slices/IR7_Final_Slices.v1.sop
+  + [accepted_boundary_input_sha256] is A52969918D00039D4E4BD1CF3B8C599CF4A38D40492811F5FB08FBA831100112
+  + [accepted_boundary_input] is docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+  + [accepted_boundary_input_sha256] is 727CD73B6180D5794B8E2FAE5D8EA65CEBA837356E797CE6808065120F54E6DD
+  + [accepted_boundary_input] is docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
+  + [accepted_boundary_input_sha256] is 077E4B4F444B433DE7A81C9D68D364C15577E3EBACCF3020981F88D969C282F2
+  + [accepted_boundary_input] is docs/reviews/IR7_S01_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 78F24FE5BCF46D95BC320D864E2F73CD657B9FC1F8D13484D39C69E52D7D7F9B
+  + [accepted_boundary_input] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 32B7C88C80115C05A1606B9618B154A6D1365D94531F2D6EA46BACAB1F5D3B0C
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [accepted_contract] is docs/operations/FSC5_Operations_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_contract_sha256] is 4C7F2B224A3CD4D9497DD28ABEDC3750CA4979EB132D3DE0DAD2DF5D0E564024
+  + [accepted_contract] is docs/operations/Dry_Run_Operation_Request_Contract.v1.sop
+  + [accepted_contract_sha256] is 19D818B72B680AEEB9897A819F4DAD294627F226B9F1E7E2AEB65E90D42EFF57
+  + [accepted_contract] is docs/operations/Resource_Safety_Human_Override_Contract.v1.sop
+  + [accepted_contract_sha256] is 45B49390D2AB8CE5B85B809128865D4B689A8113BCE87D1AC329153D5DEBDD01
+  + [accepted_contract] is docs/operations/Machine_Control_NonAuthority_And_Live_Control_Prohibition.v1.sop
+  + [accepted_contract_sha256] is 12ACEBB9B110F3572F5B6E087D4B8D50273D135A6C887047932A58B32357BF54
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is F200CA49FD087B486D601AB95749CA98B63D7F9246869DB417B4BE2CB2AE4C0C
+
+  = must: mark IR7-S02 and downstream IR7 work stale if any listed input hash changes
+
+& [OperationRequestIdentityAndLineageSchema] is the identity and lineage schema for IR7 dry-run operation requests
+  + [required_field] is operation_request_id
+  + [required_field] is operation_request_uuid
+  + [required_field] is request_created_at
+  + [required_field] is requested_by
+  + [required_field] is conversation_uuid
+  + [required_field] is carrier_surface
+  + [required_field] is source_ref_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is authority_tier
+  + [required_field] is freshness_state
+  + [required_field] is parent_request_ref
+  + [required_field] is completion_review_ref
+  + [required_field] is supersedes_request_ref_set
+  + [required_field] is source_projection_boundary_ref
+  + [natural_key] is operation_request_uuid
+  + [lineage_key] is operation_request_id plus conversation_uuid plus source_ref_set
+  + [authority_tier_allowed] is operations_planning_record
+  + [authority_tier_forbidden] is source_authority
+  + [authority_tier_forbidden] is live_control_authority
+
+  = must: reject operation requests with missing identity, missing conversation lineage, missing authority notice, stale authority notice, missing source_ref_set, or missing completion_review_ref
+  = must: preserve carrier_surface as context, not authority
+  = must: preserve supersession lineage rather than deleting or silently replacing prior requests
+
+& [OperationRequestSafetyFieldSet] is the required safety field set before an IR7 operation request can be trusted as dry-run input
+  + [required_field] is intended_effect
+  + [required_field] is resource_target
+  + [required_field] is resource_target_classification
+  + [required_field] is risk_classification
+  + [required_field] is blast_radius
+  + [required_field] is dry_run_required
+  + [required_field] is rollback_or_abort_route
+  + [required_field] is credential_boundary_ref
+  + [required_field] is network_boundary_ref
+  + [required_field] is human_approval_ref
+  + [required_field] is predicted_side_effect_set
+  + [required_field] is stale_after
+  + [required_field] is refusal_policy_ref
+  + [required_field] is no_live_effect_rule_ref
+  + [field_default] is dry_run_required true
+  + [field_default] is human_approval_ref empty_until_explicit_fresh_scoped_approval_exists
+  + [field_default] is credential_boundary_ref required_even_when_no_secret_access_is_requested
+  + [field_default] is network_boundary_ref required_even_when_no_network_change_is_requested
+
+  = must: reject operation requests missing any required safety field
+  = must: reject operation requests whose safety field is ambiguous, stale, mismatched with source_ref_set, or contradicted by a boundary pack
+  = must: route missing, stale, ambiguous, credential-touching, network-touching, destructive, process, GPU, model-runtime, and job-queue requests to refusal or IR7-S03 resource safety review
+
+& [IntendedEffectAndTargetClassifier] is the IR7 classifier for operation request effects and targets
+  + [safe_dry_run_effect] is inspect
+  + [safe_dry_run_effect] is simulate
+  + [safe_dry_run_effect] is estimate_resource_use
+  + [safe_dry_run_effect] is classify_risk
+  + [safe_dry_run_effect] is prepare_dry_run
+  + [blocked_live_effect] is live_process_start
+  + [blocked_live_effect] is live_process_stop
+  + [blocked_live_effect] is live_process_priority_change
+  + [blocked_live_effect] is gpu_workload_launch
+  + [blocked_live_effect] is gpu_workload_cancel
+  + [blocked_live_effect] is gpu_scheduler_mutation
+  + [blocked_live_effect] is model_runtime_start
+  + [blocked_live_effect] is model_runtime_stop
+  + [blocked_live_effect] is model_runtime_install
+  + [blocked_live_effect] is model_runtime_upgrade
+  + [blocked_live_effect] is model_runtime_configuration_mutation
+  + [blocked_live_effect] is job_dispatch
+  + [blocked_live_effect] is job_cancellation
+  + [blocked_live_effect] is credential_access_or_mutation
+  + [blocked_live_effect] is network_exposure_mutation
+  + [blocked_live_effect] is destructive_filesystem_action
+  + [blocked_live_effect] is persistent_operations_automation
+  + [target_kind] is workspace_file
+  + [target_kind] is process
+  + [target_kind] is gpu
+  + [target_kind] is model_runtime
+  + [target_kind] is job_queue
+  + [target_kind] is credential_or_secret
+  + [target_kind] is network_service
+  + [target_kind] is filesystem_destructive_target
+  + [target_kind] is coordination_claim
+  + [target_kind] is mailbox_carrier_context
+  + [target_kind] is generated_projection
+  + [target_kind] is unknown_or_ambiguous
+  + [high_risk_target] is process
+  + [high_risk_target] is gpu
+  + [high_risk_target] is model_runtime
+  + [high_risk_target] is job_queue
+  + [high_risk_target] is credential_or_secret
+  + [high_risk_target] is network_service
+  + [high_risk_target] is filesystem_destructive_target
+  + [high_risk_target] is unknown_or_ambiguous
+
+  = must: classify safe dry-run effects as planning evidence only
+  = must: classify blocked live effects as refused before any execution path exists
+  = must: classify coordination_claim and mailbox_carrier_context targets as coordination evidence, not dispatch authority
+  = must: classify generated_projection targets as disposable evidence, not source authority
+
+& [DryRunResultRecordSchema] is the required schema for IR7 dry-run results
+  + [required_field] is dry_run_result_id
+  + [required_field] is dry_run_result_uuid
+  + [required_field] is operation_request_ref
+  + [required_field] is source_ref_set
+  + [required_field] is authority_notice_ref
+  + [required_field] is simulated_effect_summary
+  + [required_field] is resource_target_ref
+  + [required_field] is risk_classification
+  + [required_field] is estimated_resource_use
+  + [required_field] is predicted_side_effect_set
+  + [required_field] is refused_effect_set
+  + [required_field] is required_human_approval
+  + [required_field] is rollback_or_abort_route
+  + [required_field] is live_effect_performed
+  + [required_field] is generated_output_ref
+  + [required_field] is completion_review_required
+  + [required_field] is non_authority_notice
+  + [required_field] is stale_after
+  + [field_default] is live_effect_performed false
+  + [field_default] is completion_review_required true
+  + [field_default] is generated_output_ref empty_until_IR7_generated_output_policy_is_accepted
+  + [authority_tier] is operations_planning_record
+
+  = must: set live_effect_performed to false for every dry-run result
+  = must: reject any dry-run result that omits non_authority_notice or completion_review_required
+  = must: reject any dry-run result that claims source_authority, live_control_authority, dispatch authority, credential authority, network authority, or destructive filesystem authority
+  = must: preserve dry-run result usefulness for planning while making it insufficient for live action
+
+& [RefusalAndInterruptOutputContract] is the refusal and SOP-first interrupt contract for IR7 unsafe or under-supported operation requests
+  + [refusal_record_required_field] is refusal_id
+  + [refusal_record_required_field] is operation_request_ref
+  + [refusal_record_required_field] is requested_effect
+  + [refusal_record_required_field] is resource_target
+  + [refusal_record_required_field] is actor_ref
+  + [refusal_record_required_field] is carrier_surface
+  + [refusal_record_required_field] is authority_notice_ref
+  + [refusal_record_required_field] is refusal_reason
+  + [refusal_record_required_field] is refused_effect_set
+  + [refusal_record_required_field] is safe_next_route
+  + [refusal_record_required_field] is evidence_ref_set
+  + [refusal_record_required_field] is non_authority_notice
+  + [refusal_reason] is missing_required_identity_field
+  + [refusal_reason] is missing_required_safety_field
+  + [refusal_reason] is stale_authority_notice
+  + [refusal_reason] is stale_boundary_input
+  + [refusal_reason] is ambiguous_resource_target
+  + [refusal_reason] is live_effect_requested
+  + [refusal_reason] is high_risk_target_without_IR7-S03_review
+  + [refusal_reason] is missing_rollback_or_abort_route
+  + [refusal_reason] is credential_boundary_touched
+  + [refusal_reason] is network_exposure_requested
+  + [refusal_reason] is destructive_action_possible
+  + [refusal_reason] is coordination_claim_promoted_to_dispatch
+  + [refusal_reason] is mailbox_carrier_promoted_to_dispatch
+  + [refusal_reason] is generated_projection_promoted_to_authority
+  + [refusal_output] is refused_operation_request
+  + [refusal_output] is blocked_operation_request
+  + [refusal_output] is refused_live_control
+  + [refusal_output] is required_resource_safety_review
+  + [refusal_output] is required_human_review
+  + [refusal_output] is sop_first_interrupt_context
+
+  = must: emit refusal outputs as records, not commands
+  = must: preserve enough evidence for IR7-S03 resource safety review and IR7-S04 fixture planning
+  = must: use SOP-first interrupt context when an operation request has unclear authority, ambiguous scope, contradiction, stale input, or future live-control implication
+
+& [NoLiveEffectAndNonAuthorityRule] is the IR7 rule that blocks live effects and authority promotion
+  + [blocked_effect] is command_execution
+  + [blocked_effect] is process_control
+  + [blocked_effect] is GPU_control
+  + [blocked_effect] is model_runtime_mutation
+  + [blocked_effect] is job_dispatch_or_cancellation
+  + [blocked_effect] is credential_access_or_mutation
+  + [blocked_effect] is network_exposure_mutation
+  + [blocked_effect] is destructive_filesystem_action
+  + [blocked_effect] is persistent_operations_automation
+  + [blocked_effect] is agent_dispatch
+  + [blocked_effect] is operations_control
+  + [blocked_effect] is live_machine_control
+  + [non_authority_artifact] is operation_request
+  + [non_authority_artifact] is dry_run_result
+  + [non_authority_artifact] is refusal_record
+  + [non_authority_artifact] is human_approval_ref
+  + [non_authority_artifact] is coordination_claim
+  + [non_authority_artifact] is mailbox_carrier_context
+  + [non_authority_artifact] is fixture_case
+  + [non_authority_artifact] is fixture_success
+  + [non_authority_artifact] is generated_projection
+  + [non_authority_artifact] is terminal_output
+  + [non_authority_artifact] is chat_message
+
+  = must: fail IR7-S02 review if any listed blocked effect is authorized
+  = must: fail IR7-S02 review if any non-authority artifact can satisfy source authority, completion authority, dispatch authority, operations control, or live-control authority
+  = must: require a separate future source-preserved and SJS-processed authority path before live control can ever be reconsidered
+
+& [SourceProjectionAndCompletionBoundary] is the source, projection, and completion boundary for IR7 dry-run records
+  + [source_authority_member] is preserved source specification
+  + [source_authority_member] is accepted canonical specification
+  + [source_authority_member] is accepted SJS satisfaction signature
+  + [source_authority_member] is accepted proof pack
+  + [source_authority_member] is accepted completion review
+  + [projection_record_member] is operation_request
+  + [projection_record_member] is dry_run_result
+  + [projection_record_member] is refusal_record
+  + [projection_record_member] is SOP-first interrupt context
+  + [carrier_context_member] is IRC message
+  + [carrier_context_member] is Matrix message
+  + [carrier_context_member] is web event
+  + [carrier_context_member] is Codex thread state
+  + [carrier_context_member] is terminal output
+  + [carrier_context_member] is mailbox path
+  + [completion_boundary] is IR7-S02 completion review accepts contract coverage only
+  + [completion_boundary_forbidden] is implementation acceptance
+  + [completion_boundary_forbidden] is live-control acceptance
+  + [completion_boundary_forbidden] is fixture acceptance
+  + [completion_boundary_forbidden] is dependency acceptance
+  + [completion_boundary_forbidden] is generated-output acceptance
+
+  = must: preserve source authority and projection records as distinct identities
+  = must: make completion review accept or reject only the contract, not future operation effects
+  = must: keep all surface projections and carrier contexts displayable but non-authoritative
+
+& [IR7S02CoverageReview] is the coverage checklist for IR7-S02
+  + [identity_and_lineage_schema_present] is OperationRequestIdentityAndLineageSchema
+  + [safety_field_set_present] is OperationRequestSafetyFieldSet
+  + [intended_effect_and_target_classifier_present] is IntendedEffectAndTargetClassifier
+  + [dry_run_result_record_schema_present] is DryRunResultRecordSchema
+  + [refusal_and_interrupt_output_contract_present] is RefusalAndInterruptOutputContract
+  + [no_live_effect_and_non_authority_rule_present] is NoLiveEffectAndNonAuthorityRule
+  + [source_projection_and_completion_boundary_present] is SourceProjectionAndCompletionBoundary
+  + [operations_simulator_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [command_executed] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_or_mutation_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR7-S02 only when all checklist items are satisfied
+  = must: open IR7-S03 only after this contract is reviewed in a completion review

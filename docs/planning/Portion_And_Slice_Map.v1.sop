@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is ready_for_IR7-S02_dry_run_contract
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7-S03_resource_safety_contract
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -198,14 +198,16 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/state/IR7_Work_State.v1.sop
   + [support_record] is docs/operations/IR7_Operations_Boundary_Import_And_Invariant_Reconciliation.v1.sop
   + [support_record] is docs/reviews/IR7_S01_Completion_Review.v1.sop
-  + [support_gap] is IR7-S02 dry-run operation request, result, refusal, and non-authority contract not yet executed
+  + [support_record] is docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+  + [support_record] is docs/reviews/IR7_S02_Completion_Review.v1.sop
+  + [support_gap] is IR7-S03 resource safety, human approval, credential, network, and rollback contract not yet executed
   + [support_gap] is IR7 dry-run operations fixture implementation not yet accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7-S02 dry-run contract design, not implementation or live operations control
-  = must: require deeper reasoning for IR7-S02
+  = must: open only IR7-S03 resource safety contract design, not implementation or live operations control
+  = must: require deeper reasoning for IR7-S03 because resource, credential, network, approval, and rollback boundaries are high-risk safety semantics
   = should: route bounded fixture drafting to GPT-5.3-Codex-Spark only after IR7 safety and dry-run contracts are accepted
 
 & [InitialSliceQueue] is the first clean subdivision sequence
