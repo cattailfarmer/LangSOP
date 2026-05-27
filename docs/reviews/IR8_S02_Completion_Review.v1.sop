@@ -1,0 +1,109 @@
+Subject: IR8 S02 Completion Review V1
+Date: 2026-05-27
+Review UUID: 7269537b-3555-448f-8279-af878620e708
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [completed_output] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+@ [accepted_dependency] docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [prior_completion_review] docs/reviews/IR8_S01_Completion_Review.v1.sop
+
+& [CompletedWorkReview: IR8-S02] is the completed-work review for IR8-S02 manager loop authority, readiness, packet, and proof contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR8-S02
+  + [completed_output] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [completed_output_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR8-S02 and open IR8-S03
+  + [next_gate_result] is IR8-S03 may open
+  + [next_model_route] is requires deeper reasoning for IR8-S03 coordination, surface, and operations dry-run handoff contract
+  + [next_model_route_reason] is handoff semantics sit directly on multi-agent coordination, user-facing surfaces, dry-run safety, dispatch boundaries, and live-control refusal
+
+  = must: treat this review as gate-opening evidence for IR8-S03 only
+  = must: rerun this review if the completed output, IR8-S01 output, IR8 slice surface, post-IR7 readiness surface, any accepted IR2 through IR7 implementation proof pack, IR7 implementation completion review, or FSC5 operations safety pack changes
+  = must: keep integrated manager implementation, fixture creation, expected ledger creation, generated outputs, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
+
+& [IR8S02Verification] is the verification result for IR8-S02
+  + [manager_cycle_input_contract_present] is true
+  + [authority_classification_routine_present] is true
+  + [freshness_and_support_routine_present] is true
+  + [work_packet_candidate_contract_present] is true
+  + [proof_obligation_and_completion_gate_contract_present] is true
+  + [manager_cycle_output_contract_present] is true
+  + [SOP_first_interrupt_contract_present] is true
+  + [source_authority_required] is true
+  + [authority_notice_required_for_non_source_records] is true
+  + [readiness_states_separated] is true
+  + [support_delta_and_requirement_delta_preserved] is true
+  + [work_packet_candidate_not_dispatch_authority] is true
+  + [completion_review_required] is true
+  + [Spark_or_deeper_route_required] is true
+  + [implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  ! [IR8S02VerificationSatisfied] is accepted
+    @ [support] docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+
+& [SupportDelta: IR8-S02] is the support delta produced by IR8-S02
+  + [new_support_record] is IR8 has a manager-cycle input, classification, freshness, support, packet candidate, proof obligation, completion gate, output, and interrupt contract
+  + [new_support_record] is manager loop output remains record-only and cannot dispatch agents, jobs, commands, operations, or live machine effects
+  + [new_support_record] is IR8-S03 has enough support to define coordination, surface, and operations dry-run handoff semantics without creating implementation code
+  + [support_status] is accepted
+
+& [RequirementDelta: IR8-S02] is the requirement delta produced by IR8-S02
+  + [requirement_delta] is IR8-S03 must define how manager outputs project to surfaces, how coordination claims and mailbox carriers constrain work packets, how operation requests become dry-run records, and how refusals and human overrides return without dispatch or live effects
+  + [requirement_delta] is IR8-S03 must preserve authority notice and freshness on every handoff record
+  + [requirement_delta] is IR8-S04 remains gated and Spark-suitable only after IR8-S03 acceptance because fixture planning needs accepted handoff semantics
+  + [requirement_delta] is no integrated manager implementation, fixture source, expected ledger, generated output, dependency installation, package metadata mutation, adapter work, transport work, UI work, command execution, process control, GPU control, model runtime mutation, job dispatch, agent dispatch, credential mutation, network mutation, destructive filesystem action, persistent operations automation, operations control, or live machine control is authorized by IR8-S02
+
+& [FaultReview: IR8-S02] is the fault review for IR8-S02
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_source_authority_requirement_found] is false
+  + [missing_authority_notice_rule_found] is false
+  + [false_ready_rule_found] is false
+  + [work_packet_dispatch_authority_promotion_found] is false
+  + [proof_obligation_bypass_found] is false
+  + [completion_gate_bypass_found] is false
+  + [SOP_interrupt_loss_found] is false
+  + [integrated_manager_implementation_leak_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR8S02Accepted] is accepted
+    @ [support] [IR8S02Verification]
+    @ [support] [SupportDelta: IR8-S02]
+    @ [support] [RequirementDelta: IR8-S02]
+    @ [support] [FaultReview: IR8-S02]
+
+& [NextSliceGate: IR8-S03] is opened
+  + [opened_slice] is IR8-S03 coordination, surface, and operations dry-run handoff contract
+  + [accepted_dependency] is docs/manager/IR8_Manager_Loop_Authority_Readiness_Packet_And_Proof_Contract.v1.sop
+  + [accepted_dependency_sha256] is 77811E6C8010D9B98A530941ECB6D1AD7B0F77D05313526B46DEA4C29A80F440
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is handoff semantics sit directly on multi-agent coordination, user-facing surfaces, dry-run safety, dispatch boundaries, and live-control refusal
+  + [safety_limit] is no agent dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR8-S03 next unless user redirects or a new fault invalidates this review

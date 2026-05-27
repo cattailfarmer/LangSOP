@@ -1,0 +1,191 @@
+Subject: IR8 Manager Loop Authority Readiness Packet And Proof Contract V1
+Date: 2026-05-27
+Contract UUID: ca0974a3-0e1b-46c5-852e-7a1b31cc2cf2
+
+@ [slice_surface] docs/slices/IR8_Final_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR8_Final_Slices.canonical.sop
+@ [boundary_map] docs/manager/IR8_Manager_Orchestration_Boundary_Import_And_Proof_Reconciliation.v1.sop
+@ [boundary_review] docs/reviews/IR8_S01_Completion_Review.v1.sop
+
+& [IR8ManagerLoopAuthorityReadinessPacketAndProofContractV1] is the IR8-S02 contract for the integrated manager loop
+  + [contract_id] is ir8-manager-loop-authority-readiness-packet-and-proof-contract-v1
+  + [contract_uuid] is ca0974a3-0e1b-46c5-852e-7a1b31cc2cf2
+  + [slice_id] is IR8-S02
+  + [source_chunk] is IR8 integrated manager orchestration planning
+  + [authority_scope] is manager-cycle inputs, authority classification, source and freshness checks, readiness recomputation, work packet candidate production, proof obligations, completion review gates, stale handling, and SOP-first interrupt routing
+  + [implementation_scope] is contract definition only
+  + [model_route_used] is requires deeper reasoning
+
+  = must: define the manager loop as a record-producing and proof-checking routine, not as an executor
+  = must: require every manager cycle to cite accepted source authority, current state, freshness basis, coordination boundary state, and forbidden-scope gates before proposing work
+  = must: separate ready work, blocked work, stale work, unsafe work, contested work, and ambiguous work into distinct outputs
+  = must: preserve that work packets are candidate assignments until accepted by readiness proof, coordination rules, human authority where required, and completion review gates
+  = must: preserve that proof obligations and completion gates can block or route work without silently changing source authority
+  - never: dispatch agents, execute commands, mutate files, create generated outputs, install dependencies, mutate package metadata, implement adapters, implement transports, implement UI, control processes, control GPU, mutate model runtimes, dispatch jobs, touch credentials, mutate network exposure, perform destructive filesystem actions, authorize operations control, or authorize live machine control from this contract
+
+& [ManagerCycleInputContract: IR8] is the input contract for one manager cycle
+  + [required_input] is source_authority_ref_set
+  + [required_input] is canonical_specification_ref_set
+  + [required_input] is active_work_state_ref
+  + [required_input] is readiness_surface_ref
+  + [required_input] is slice_or_chunk_surface_ref
+  + [required_input] is accepted_completion_review_ref_set
+  + [required_input] is coordination_claim_state_ref_set
+  + [required_input] is mailbox_or_rendezvous_context_ref_set when coordination may affect readiness
+  + [required_input] is operations_dry_run_context_ref_set when operation-like work may affect readiness
+  + [required_input] is safety_boundary_ref_set
+  + [required_input] is stale_trigger_ref_set
+  + [required_input] is forbidden_scope_ref_set
+  + [optional_input] is human_override_ref_set
+  + [optional_input] is prior_fault_record_ref_set
+  + [optional_input] is prior_generated_projection_ref_set
+
+  = must: reject a manager cycle request that lacks source authority, current work state, readiness surface, or forbidden-scope basis
+  = must: classify mailbox, chat, terminal, UI, graph checkpoint, dry-run, generated projection, and coordination context as context or evidence according to the IR8 authority ladder, not source authority
+
+& [AuthorityClassificationRoutine: IR8] is the required manager-cycle authority classifier
+  + [classification_step] is identify source authority records
+  + [classification_step] is identify accepted canonical specifications and SJS satisfaction signatures
+  + [classification_step] is identify accepted proof packs and completion reviews
+  + [classification_step] is identify manager planning records
+  + [classification_step] is identify accepted execution evidence
+  + [classification_step] is identify coordination boundary records
+  + [classification_step] is identify operations planning records
+  + [classification_step] is identify generated projection evidence
+  + [classification_step] is identify graph checkpoint context
+  + [classification_step] is identify carrier context
+  + [classification_step] is reject or interrupt on unclassified authority-sensitive records
+
+  = must: attach authority_notice to every classified non-source record that can influence readiness, packetization, or review
+  = must: route unknown, mixed, contradicted, or authority-promoted records to SOP-first interrupt context
+
+& [FreshnessAndSupportRoutine: IR8] is the required freshness and support recomputation routine
+  + [freshness_step] is compare cited hash or version evidence against current accepted boundary inputs
+  + [freshness_step] is evaluate stale triggers from the active slice surface, work state, completion reviews, and proof packs
+  + [freshness_step] is mark stale if source, canonical, slice surface, proof pack, completion review, coordination claim basis, safety boundary, or accepted generated-output policy changes
+  + [support_step] is collect requirement_set from active slice or chunk authority
+  + [support_step] is collect support_record_set from accepted outputs and completion reviews
+  + [support_step] is collect support_gap_set and unresolved fault set
+  + [support_step] is produce readiness_projection with ready, blocked, stale, unsafe, contested, or ambiguous state
+
+  = must: never produce ready when unresolved blocking support_gap, stale basis, contested claim, authority contradiction, missing proof, or forbidden-scope fault remains
+  = must: preserve support_delta and requirement_delta from completed work before choosing the next step
+
+& [WorkPacketCandidateContract: IR8] is the manager-generated work packet candidate contract
+  + [required_field] is packet_id
+  + [required_field] is packet_subject
+  + [required_field] is source_authority_basis_ref_set
+  + [required_field] is readiness_projection_ref
+  + [required_field] is accepted_dependency_ref_set
+  + [required_field] is expected_output_set
+  + [required_field] is forbidden_scope_set
+  + [required_field] is model_route
+  + [required_field] is model_route_reason
+  + [required_field] is proof_obligation_set
+  + [required_field] is completion_review_required
+  + [required_field] is stale_trigger_set
+  + [required_field] is coordination_claim_policy_ref
+  + [required_field] is generated_output_policy_ref when generated outputs may be created
+  + [required_field] is safety_boundary_ref_set when operation-like work may appear
+  + [state] is candidate
+  + [state] is blocked
+  + [state] is stale
+  + [state] is contested
+  + [state] is unsafe
+  + [state] is ready_for_claim
+
+  = must: treat ready_for_claim as coordination readiness only, not dispatch authority
+  = must: require completion_review_required true for every authority-sensitive work packet
+  = must: state whether a packet is GPT-5.3-Codex-Spark-suitable or requires deeper reasoning
+
+& [ProofObligationAndCompletionGateContract: IR8] is the manager-loop proof and gate contract
+  + [proof_obligation] is source_preservation_check
+  + [proof_obligation] is SJS_signature_check when canonical authority is created or trusted
+  + [proof_obligation] is boundary_hash_check for accepted dependency inputs
+  + [proof_obligation] is forbidden_scope_absence_check
+  + [proof_obligation] is authority_promotion_absence_check
+  + [proof_obligation] is stale_trigger_check
+  + [proof_obligation] is support_delta_check
+  + [proof_obligation] is requirement_delta_check
+  + [proof_obligation] is fault_review_check
+  + [proof_obligation] is generated_output_policy_check when generated outputs may be created
+  + [proof_obligation] is no_live_effect_check when operation-like work may appear
+  + [completion_gate] is completion_review_required
+  + [completion_gate] is accepted_output_hash_ledger_required
+  + [completion_gate] is next_gate_result_required
+  + [completion_gate] is next_model_route_required
+
+  = must: block downstream slice opening when proof obligations are missing, contradicted, stale, or unsupported
+  = must: route failed proof obligations to fault records, completion review, or rebake rather than silently patching readiness
+
+& [ManagerCycleOutputContract: IR8] is the output contract for one manager cycle
+  + [allowed_output] is readiness_projection
+  + [allowed_output] is work_packet_candidate
+  + [allowed_output] is blocked_work_notice
+  + [allowed_output] is stale_work_notice
+  + [allowed_output] is unsafe_work_notice
+  + [allowed_output] is contested_work_notice
+  + [allowed_output] is ambiguous_work_interrupt
+  + [allowed_output] is SOP_first_interrupt_context
+  + [allowed_output] is proof_obligation_record
+  + [allowed_output] is completion_review_gate_record
+  + [allowed_output] is support_delta_record
+  + [allowed_output] is requirement_delta_record
+  + [allowed_output] is fault_record
+  + [forbidden_output] is executed_command
+  + [forbidden_output] is dispatched_agent
+  + [forbidden_output] is dispatched_job
+  + [forbidden_output] is dependency_change
+  + [forbidden_output] is package_metadata_change
+  + [forbidden_output] is adapter_or_transport_effect
+  + [forbidden_output] is UI_effect
+  + [forbidden_output] is process_GPU_model_runtime_or_network_effect
+  + [forbidden_output] is credential_effect
+  + [forbidden_output] is destructive_filesystem_effect
+  + [forbidden_output] is live_machine_control_effect
+
+  = must: keep all outputs as records until a later accepted implementation and execution authority defines a bounded effect route
+  = must: attach authority_notice and freshness_state to outputs that may be projected to user-facing surfaces
+
+& [SOPFirstInterruptContract: IR8] is the manager-loop interrupt contract
+  + [interrupt_trigger] is missing_source_authority
+  + [interrupt_trigger] is invalid_or_missing_SJS_signature
+  + [interrupt_trigger] is stale_boundary_input
+  + [interrupt_trigger] is false_ready_projection
+  + [interrupt_trigger] is unsupported_requirement
+  + [interrupt_trigger] is contested_coordination_claim
+  + [interrupt_trigger] is hidden_scope_expansion
+  + [interrupt_trigger] is unclassified_authority_sensitive_record
+  + [interrupt_trigger] is generated_output_authority_promotion
+  + [interrupt_trigger] is graph_checkpoint_authority_promotion
+  + [interrupt_trigger] is dry_run_to_live_control_promotion
+  + [interrupt_trigger] is requested_forbidden_scope
+  + [interrupt_trigger] is model_route_ambiguity
+  + [interrupt_trigger] is human_override_required
+  + [interrupt_trigger] is safety_boundary_conflict
+
+  = must: preserve enough context in every interrupt to let SOP review or human review resume without losing source refs, claim refs, proof obligations, and fault basis
+  = must: mark interrupted work not-ready until the interrupt is resolved by accepted review, rebake, or explicit human authority where permitted
+
+& [IR8S02CoverageReview] is the coverage checklist for IR8-S02
+  + [manager_cycle_input_contract_present] is true
+  + [authority_classification_routine_present] is true
+  + [freshness_and_support_routine_present] is true
+  + [work_packet_candidate_contract_present] is true
+  + [proof_obligation_and_completion_gate_contract_present] is true
+  + [manager_cycle_output_contract_present] is true
+  + [SOP_first_interrupt_contract_present] is true
+  + [implementation_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [agent_dispatched] is false
+  + [operation_or_live_effect_authorized] is false
+
+  = must: accept IR8-S02 only when all checklist items are satisfied
+  = must: open IR8-S03 only after this manager loop contract is reviewed in a completion review
