@@ -1,0 +1,105 @@
+Subject: IR7 Implementation Completion Review V1
+Date: 2026-05-27
+Review UUID: 1947851d-b58a-43e0-8262-2586c75e5716
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ia07_review] docs/reviews/IR7_IA07_Completion_Review.v1.sop
+@ [dependency_decision] docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+@ [contract_tests] tests/test_ir7_operations_dry_run_contracts.py
+
+& [CompletedWorkReview: IR7-IA08] is the completed-work review for IR7-IA08 implementation completion review and proof pack
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA08
+  + [completed_output] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [completed_output] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7 implementation and close IR7 implementation activation sequence
+  + [next_gate_result] is no IR7 implementation activation slice remains open
+  + [future_rebake_required_for_operations_manager_live_control] is true
+
+  = must: treat this review as final acceptance evidence for the bounded IR7 operations dry-run simulator only
+  = must: require a future whole-field rebake before any operations adapter, live-control, dependency, or machine-management implementation can open
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7ImplementationCompletionVerification] is the verification result for IR7 implementation completion
+  + [implementation_proof_pack_present] is true
+  + [implementation_proof_pack_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [request_model_present] is true
+  + [dry_run_model_present] is true
+  + [refusal_model_present] is true
+  + [resource_safety_model_present] is true
+  + [action_route_model_present] is true
+  + [generated_path_policy_present] is true
+  + [fixture_runner_present] is true
+  + [contract_tests_present] is true
+  + [generated_output_no_live_effect_proof_present] is true
+  + [dependency_and_live_control_deferral_decision_present] is true
+  + [fixture_source_count] is 13
+  + [expected_ledger_count] is 5
+  + [baseline_test_count] is 40
+  + [targeted_ir7_test_count] is 7
+  + [test_failure_count] is 0
+  + [generated_output_left_after_tests] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7ImplementationCompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+    @ [support] tests/test_ir7_operations_dry_run_contracts.py
+    @ [support] docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+    @ [support] docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+
+& [SupportDelta: IR7ImplementationCompletion] is the support delta produced by IR7 implementation completion
+  + [new_support_record] is P9 operations-manager safety now has a bounded dry-run simulator implementation proof
+  + [new_support_record] is future operations-manager live-control work remains blocked until a new source-preserved, SJS-processed, and reviewed authority path exists
+  + [new_support_record] is future rebake can use IR7 proof pack as dry-run safety evidence
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7ImplementationCompletion] is the requirement delta produced by IR7 implementation completion
+  + [requirement_delta] is no current implementation activation slice remains open
+  + [requirement_delta] is future work requires rebake before opening operations adapter, dependency, live-control, machine-management, UI, transport, credential, network, process, GPU, model-runtime, or job-control implementation
+  + [requirement_delta] is any future model-routing recommendation must state Spark-suitable or deeper-reasoning status under the model budget routing SOP
+
+& [FaultReview: IR7ImplementationCompletion] is the fault review for IR7 implementation completion
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_output_found] is false
+  + [test_failure_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7ImplementationAccepted] is accepted
+    @ [support] [IR7ImplementationCompletionVerification]
+    @ [support] [SupportDelta: IR7ImplementationCompletion]
+    @ [support] [RequirementDelta: IR7ImplementationCompletion]
+    @ [support] [FaultReview: IR7ImplementationCompletion]

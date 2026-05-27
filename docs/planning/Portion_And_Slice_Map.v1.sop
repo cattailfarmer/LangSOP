@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is ready_for_IR7-IA08_implementation_proof_pack_and_completion_review
+& [Portion: P9OperationsManagerSafety] is implementation_accepted_pending_post_IR7_readiness_rebake
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -235,15 +235,16 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR7_IA06_Completion_Review.v1.sop
   + [support_record] is docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
   + [support_record] is docs/reviews/IR7_IA07_Completion_Review.v1.sop
-  + [support_gap] is IR7-IA08 implementation completion review and proof pack not yet executed
-  + [support_gap] is IR7 dry-run operations simulator implementation not yet accepted
+  + [support_record] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [support_record] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [support_gap] is post-IR7 readiness rebake not yet executed
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7-IA08 implementation proof pack and completion review records, not new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
-  = must: route IR7-IA08 as requires deeper reasoning because final implementation acceptance affects future operations-manager readiness
+  = must: open post-IR7 readiness rebake before new implementation work, dependencies, adapters, transports, UI, tests, generated outputs, or live operations control
+  = must: route post-IR7 readiness rebake as requires deeper reasoning because accepted implementation changes future operations-manager readiness and live-control boundaries
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
 & [InitialSliceQueue] is the first clean subdivision sequence

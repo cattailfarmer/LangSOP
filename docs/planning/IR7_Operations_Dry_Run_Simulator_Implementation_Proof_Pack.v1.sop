@@ -1,0 +1,147 @@
+Subject: IR7 Operations Dry Run Simulator Implementation Proof Pack V1
+Date: 2026-05-27
+Proof Pack UUID: 22cfa47d-9839-4088-920a-d7c6d6bb22c8
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [ia01_review] docs/reviews/IR7_IA01_Completion_Review.v1.sop
+@ [ia02_review] docs/reviews/IR7_IA02_Completion_Review.v1.sop
+@ [ia03_review] docs/reviews/IR7_IA03_Completion_Review.v1.sop
+@ [ia04_review] docs/reviews/IR7_IA04_Completion_Review.v1.sop
+@ [ia05_review] docs/reviews/IR7_IA05_Completion_Review.v1.sop
+@ [ia06_review] docs/reviews/IR7_IA06_Completion_Review.v1.sop
+@ [ia07_review] docs/reviews/IR7_IA07_Completion_Review.v1.sop
+@ [dependency_decision] docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+@ [generated_output_no_live_effect_proof] docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+@ [contract_tests] tests/test_ir7_operations_dry_run_contracts.py
+
+& [IR7OperationsDryRunSimulatorImplementationProofPackV1] is the proof pack for accepting the bounded IR7 operations dry-run simulator implementation
+  + [proof_pack_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper reasoning required
+  + [implementation_scope] is operations dry-run projection, request validation, dry-run result non-authority, refusal records, resource safety review, action route refusal, generated path policy, fixture runner, contract tests, generated-output proof, and dependency/live-control deferral
+  + [implementation_limit] is no adapter, no dependency installation, no package metadata mutation, no process control, no GPU control, no model runtime control, no job dispatch, no credential access, no network mutation, no destructive filesystem action, no operations control, and no live machine control
+  + [current_test_result] is python -m unittest discover -s tests passed 40 tests
+  + [current_targeted_test_result] is python -m unittest tests.test_ir7_operations_dry_run_contracts passed 7 tests
+  + [generated_output_left_after_tests] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this proof pack as acceptance evidence for the bounded dry-run simulator only
+  = must: preserve operation requests, dry-run results, refusal records, resource safety reviews, human approvals, generated reports, fixture results, and carrier state as non-authoritative for live control
+  = must: require a future source-preserved and SJS-processed authority path before live operations management can be reconsidered
+
+& [AcceptedImplementationDigestLedger: IR7OperationsDryRunSimulator] is the accepted digest ledger for IR7 implementation outputs
+  + [accepted_output] is src/langsop/operations/__init__.py
+  + [accepted_output_sha256] is CFEE010C76B4792F460F589F635F1DCD022E787C1F9C65AAE079F0CE0F693332
+  + [accepted_output] is src/langsop/operations/requests.py
+  + [accepted_output_sha256] is 34CB7F1E5808B8ED7F18EF6BB84F9D3D5D4AD651541555C011716A9270CB064F
+  + [accepted_output] is src/langsop/operations/dry_run.py
+  + [accepted_output_sha256] is 53B69BBB6F75653469792C92FB1F471B9925885979A8D9A1CF870A9C3B2CD77F
+  + [accepted_output] is src/langsop/operations/refusals.py
+  + [accepted_output_sha256] is 4449270177EC9E081FEEF1F40DCDD1155E96EB76F4B09E9E6462F7FAF65B55D5
+  + [accepted_output] is src/langsop/operations/resource_safety.py
+  + [accepted_output_sha256] is 8DA6BD3446DC83A0A825EEC0BB91F89B083F1BE3804D0C67F70F85E9DE838D11
+  + [accepted_output] is src/langsop/operations/action_routes.py
+  + [accepted_output_sha256] is 247C9D1FB8FCDB51BA1D563F532FEBC668E088EEB4B45CB59B0137BB7EC4F325
+  + [accepted_output] is src/langsop/operations/generated_paths.py
+  + [accepted_output_sha256] is D158D22FD0619B2D8A86D2E91B9F8994E62417CEB2D610DBDA4E8F785D3C07C6
+  + [accepted_output] is src/langsop/operations/fixture_runner.py
+  + [accepted_output_sha256] is A872D2EAD36AECF97A118D32DA6465B37218A9F0EB7E34C8CE8E86AFDBFD92D2
+  + [accepted_output] is tests/test_ir7_operations_dry_run_contracts.py
+  + [accepted_output_sha256] is A5B835EB5B57044870CB66F33EE91CB542A9FAA219EE06C814F59B5097765826
+  + [accepted_output] is docs/reviews/IR7_Operations_Dry_Run_Generated_Output_And_No_Live_Effect_Proof.v1.sop
+  + [accepted_output_sha256] is 90D3CDE434181A3322921981F4EB5CDC4061FA6F604C62D1E2EFDDCA5B98A185
+  + [accepted_output] is docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_output_sha256] is 5FD5BBD21CE743A69080522E09F83A736A99A66A1DD7E6C8753D437C04438020
+
+& [AcceptedFixtureAndExpectedLedgerCoverage: IR7OperationsDryRunSimulator] is the accepted fixture coverage ledger
+  + [fixture_source_root] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [fixture_source_count] is 13
+  + [expected_ledger_root] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [expected_ledger_count] is 5
+  + [fixture_corpus_run_count] is 13
+  + [fixture_corpus_failure_count] is 0
+  + [covered_case] is IR7X-001 dry_run_resource_request
+  + [covered_case] is IR7X-002 blocked_live_control
+  + [covered_case] is IR7X-003 gpu_contention
+  + [covered_case] is IR7X-004 model_runtime_unavailable
+  + [covered_case] is IR7X-005 credential_boundary
+  + [covered_case] is IR7X-006 network_exposure_refusal
+  + [covered_case] is IR7X-007 destructive_command_refusal
+  + [covered_case] is IR7X-008 missing_authority_notice
+  + [covered_case] is IR7X-009 stale_or_revoked_human_approval
+  + [covered_case] is IR7X-010 dry_run_success_not_live_approval
+  + [covered_case] is IR7X-011 coordination_claim_dispatch_refusal
+  + [covered_case] is IR7X-012 mailbox_carrier_not_dispatch_authority
+  + [covered_case] is IR7X-013 generated_projection_not_authority
+
+& [NoLiveEffectAndNoAuthorityPromotionProof: IR7OperationsDryRunSimulator] is the no-live-effect and no-authority-promotion proof ledger
+  + [operation_request_authority_status] is operations_planning_record_only
+  + [dry_run_result_live_effect_performed] is false
+  + [dry_run_result_completion_review_required] is true
+  + [dry_run_result_non_authority_notice_required] is true
+  + [refusal_record_command_generated] is false
+  + [resource_safety_live_control_authorized] is false
+  + [operation_action_live_control_refused] is true
+  + [generated_report_status] is generated_projection_only
+  + [generated_report_authority_status] is non_authoritative
+  + [dry_run_success_to_dispatch_permission] is false
+  + [coordination_claim_to_dispatch_authority] is false
+  + [mailbox_carrier_context_to_authority] is false
+  + [generated_projection_to_source_authority] is false
+  + [source_doc_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [platform_mailbox_mutation_found] is false
+  + [credential_access_found] is false
+  + [network_mutation_found] is false
+  + [destructive_filesystem_action_found] is false
+  + [operations_control_found] is false
+  + [live_machine_control_found] is false
+
+& [DependencyAndLiveControlDeferralLedger: IR7OperationsDryRunSimulator] is the accepted dependency and live-control deferral ledger
+  + [dependency_decision] is docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+  + [dependency_decision_sha256] is 5FD5BBD21CE743A69080522E09F83A736A99A66A1DD7E6C8753D437C04438020
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+& [IR7ImplementationProofPackFaultReview] is the fault review for the IR7 implementation proof pack
+  + [missing_required_output_found] is false
+  + [fixture_coverage_gap_found] is false
+  + [test_failure_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7OperationsDryRunSimulatorImplementationProofPackAccepted] is accepted
+    @ [support] [AcceptedImplementationDigestLedger: IR7OperationsDryRunSimulator]
+    @ [support] [AcceptedFixtureAndExpectedLedgerCoverage: IR7OperationsDryRunSimulator]
+    @ [support] [NoLiveEffectAndNoAuthorityPromotionProof: IR7OperationsDryRunSimulator]
+    @ [support] [DependencyAndLiveControlDeferralLedger: IR7OperationsDryRunSimulator]
+    @ [support] [IR7ImplementationProofPackFaultReview]
