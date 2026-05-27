@@ -1,0 +1,79 @@
+Subject: P6 S01 Completion Review V1
+Date: 2026-05-27
+Review UUID: 1416c2b1-3474-4899-a083-f2f3ac46dc53
+
+@ [completed_output] docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_slice_minting_review] docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+
+& [CompletedWorkReview: P6-S01] is the completed-work review for P6-S01 boundary import and projection obligation inventory
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P6-S01
+  + [completed_output] is docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+  + [completed_output_sha256] is 11EDE8406F7B78EAD229B5F185E3EC3D27A58805BEFAEC1BA62E37319293087D
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P6-S02
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P6-S02 may open
+  + [model_route_for_next_work] is requires deeper reasoning
+  + [model_route_reason] is authority display determines how humans and agents recognize source authority, stale projections, checkpoint nonauthority, and generated-output limits
+
+  = must: treat this review as gate-opening evidence for P6-S02 only
+  = must: rerun this review if P6-S01 output, P6 slice surface, P6 minting review, P2 completion, P4 completion, P5 completion, Post-P5 readiness, P8 completion, FSC4 surface boundary, or IR5 implementation completion changes
+  = must: keep projection fixture files, expected snapshots, generated projections, dependency installation, package metadata mutation, implementation code, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control gated
+
+& [P6S01Verification] is the verification result for P6-S01
+  + [accepted_projection_boundary_input_set_present] is true
+  + [projection_authority_class_inventory_present] is true
+  + [projection_obligation_family_matrix_present] is true
+  + [projection_materialization_gap_inventory_present] is true
+  + [support_vs_authority_inventory_present] is true
+  + [forbidden_projection_mutation_list_present] is true
+  + [P6-S02_opened] is true
+  + [P6-S03_opened] is false
+  + [P6-S04_opened] is false
+  + [P6-S05_opened] is false
+  + [P6-S06_opened] is false
+  + [P6-S07_opened] is false
+  + [projection_fixture_files_created] is false
+  + [expected_snapshots_created] is false
+  + [generated_projections_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6S01Accepted] is accepted
+    @ [support] docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+
+& [SupportDelta: P6-S01] is the support delta produced by P6-S01
+  + [new_support_record] is accepted projection boundary inputs are imported before authority notice, surface envelope, inbound action classification, fixture planning, or dependency posture is authored
+  + [new_support_record] is projection authority classes are separated so surface projections, generated projections, adapter messages, conversation logs, checkpoint displays, packet candidate displays, and handoff displays cannot silently become source authority
+  + [new_support_record] is P6 downstream obligation families are assigned to P6-S02 through P6-S07 with no dependency outside accepted upstream boundaries
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-S01] is the requirement delta produced by P6-S01
+  + [requirement_delta] is P6-S02 must define authority notice, freshness, checkpoint nonauthority, human handoff visibility, and generated projection nonpromotion before any surface envelope or inbound action route consumes projected state
+  + [requirement_delta] is every future P6 output must cite the imported P2, P4, P5, P8, FSC4, or IR5 obligation class it satisfies
+  + [requirement_delta] is no projection, generated projection, conversation message, adapter message, graph checkpoint display, packet candidate display, or handoff display may be treated as source authority
+
+& [NextSliceGate: P6-S02] is opened
+  + [opened_slice] is P6-S02 authority notice freshness and nonpromotion rendering contract
+  + [authority_basis] is docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+  + [authority_basis_sha256] is 11EDE8406F7B78EAD229B5F185E3EC3D27A58805BEFAEC1BA62E37319293087D
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+  = must: execute P6-S02 next unless user redirects, projection authority becomes ambiguous, or imported projection obligation authority changes

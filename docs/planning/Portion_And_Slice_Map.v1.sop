@@ -214,6 +214,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
   + [support_record] is docs/state/P6_Work_State.v1.sop
   + [support_record] is docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+  + [support_record] is docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
+  + [support_record] is docs/reviews/P6_S01_Completion_Review.v1.sop
   + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
@@ -221,7 +223,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [slice_family] is langflow-export-prototype
 
   = must: never let surfaces mutate canonical authority directly
-  = must: route P6-S01 as requiring deeper reasoning because boundary import decides which projection obligations become P6 authority and which remain plan-only support
+  = must: route P6-S02 as requiring deeper reasoning because authority display determines how humans and agents recognize source authority, stale projections, checkpoint nonauthority, and generated-output limits
   = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 final slices, P6-S01 through P6-S04, implementation activation, and fixture records stabilize
 
 & [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR8_readiness
@@ -485,19 +487,19 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6-S01-BoundaryImportAndProjectionObligationInventory] is ready_for_execution
+& [CurrentReadyChunk: P6-S02-AuthorityNoticeFreshnessAndNonpromotionRenderingContract] is ready_for_execution
   + [chunk_id] is P6
-  + [slice_id] is P6-S01
-  + [chunk_name] is boundary import and projection obligation inventory
-  + [authority_basis] is docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+  + [slice_id] is P6-S02
+  + [chunk_name] is authority notice freshness and nonpromotion rendering contract
+  + [authority_basis] is docs/reviews/P6_S01_Completion_Review.v1.sop
   + [readiness_surface] is docs/state/P6_Work_State.v1.sop
-  + [expected_output] is docs/surfaces/P6_Boundary_Import_And_Projection_Obligation_Inventory.v1.sop
-  + [completion_review_output] is docs/reviews/P6_S01_Completion_Review.v1.sop
+  + [expected_output] is docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+  + [completion_review_output] is docs/reviews/P6_S02_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
+  + [model_route_reason] is authority display determines how humans and agents recognize source authority, stale projections, checkpoint nonauthority, and generated-output limits
 
-  = must: import accepted P2, P4, P5, P8, FSC4, and IR5 projection obligations before authority notice rendering, surface envelopes, inbound action classification, projection fixture planning, dependency posture, implementation activation, or downstream gates
+  = must: define authority notice, freshness display, stale and blocked visibility, checkpoint nonauthority rendering, generated projection nonpromotion, human handoff visibility, and no-hidden-authority display rules before surface envelopes or inbound action classification
   = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected snapshots, proof ledgers, generated projections, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence

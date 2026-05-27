@@ -1,0 +1,198 @@
+Subject: P6 Boundary Import And Projection Obligation Inventory V1
+Date: 2026-05-27
+Inventory UUID: 2f6760a6-c50d-4c83-87f5-4b48f2693df8
+
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_slice_minting_review] docs/reviews/P6_Final_Slice_Minting_Review.v1.sop
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+@ [fsc4_surface_boundary] docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+@ [ir5_implementation_completion] docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+
+& [P6BoundaryImportAndProjectionObligationInventoryV1] is the P6-S01 boundary import and projection obligation inventory
+  + [slice_id] is P6-S01
+  + [slice_name] is boundary import and projection obligation inventory
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is boundary import decides which projection obligations become P6 authority and which remain plan-only support
+  + [inventory_result] is projection_obligations_imported_without_projection_materialization
+  + [next_gate_result] is P6-S02 may open
+  + [projection_fixture_file_creation_authorized] is false
+  + [expected_snapshot_creation_authorized] is false
+  + [generated_projection_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this inventory as P6 planning authority only
+  = must: preserve accepted P2, P4, P5, P8, FSC4, and IR5 records as boundary inputs, not editable projection drafts
+  = must: define P6 gaps as work for P6-S02 through P6-S07, not as immediate permission to create surface code, adapters, UI, fixture files, generated projections, dispatch records, or live effects
+  = must: keep source authority, surface projections, surface-local state, generated projections, adapter messages, conversation messages, inbound action proposals, packet candidates, assignments, dispatches, operations decisions, and live-control decisions in distinct authority classes
+
+& [AcceptedProjectionBoundaryInputSet: P6-S01] is the imported boundary input set
+  + [accepted_input] is docs/reviews/P2_Completion_Review.v1.sop
+  + [accepted_input_sha256] is 4C0F72BF1573147905DAECBE7DE7BFC27F3093E28744F636D20C4D7CFDAB32FD
+  + [accepted_role] is authority kernel input for record identity, natural keys, authority states, freshness rules, source/projection distinction, stale review, blocked review, contradiction review, lineage, and generated-output nonpromotion
+  + [material_status] is accepted_authority_kernel_boundary
+  + [accepted_input] is docs/reviews/P4_Completion_Review.v1.sop
+  + [accepted_input_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [accepted_role] is planning and packetization input for ready, blocked, stale, false-ready, packet candidate, completion-review, no-assignment, no-dispatch, and no-live-effect obligations
+  + [material_status] is accepted_planning_boundary
+  + [accepted_input] is docs/reviews/P5_Completion_Review.v1.sop
+  + [accepted_input_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [accepted_role] is LangGraph procedure runtime planning input for checkpoint nonauthority, transition traces, interrupt and human handoff display, proof trace planning, and graph-runtime deferral
+  + [material_status] is accepted_runtime_planning_boundary
+  + [accepted_input] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [accepted_input_sha256] is 79B7CC40C2CC22355333E30B0FE3070BD09BC8BF9A19FD8D3841C635A8A13848
+  + [accepted_role] is current readiness input that opens P6 final slices while keeping runtime implementation, projection fixtures, adapters, dispatch, operations control, and live control gated
+  + [material_status] is accepted_readiness_boundary
+  + [accepted_input] is docs/reviews/P8_Completion_Review.v1.sop
+  + [accepted_input_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
+  + [accepted_role] is proof fixture evaluation input for fixture planning, proof ledgers, stale and false-ready cases, generated-output nonpromotion, no-dispatch, and no-live-effect checks
+  + [material_status] is accepted_proof_planning_boundary
+  + [accepted_input] is docs/surfaces/FSC4_Surface_Boundary_And_Invariant_Map.v1.sop
+  + [accepted_input_sha256] is 5FCF193E8A02640A84AB0401B2E793CF3109274279E05E5F5E0CFD5E6E843763
+  + [accepted_role] is surface boundary input for projection nonauthority, authority notices, freshness visibility, stale and blocked rendering, adapter mutation boundaries, and surface-specific carrier limits
+  + [material_status] is accepted_surface_boundary_input
+  + [accepted_input] is docs/reviews/IR5_Implementation_Completion_Review.v1.sop
+  + [accepted_input_sha256] is CACE331B39B63BB4064358BD60F50330D53B8513A7E44A7E35607494C33B9783
+  + [accepted_role] is bounded surface projection implementation proof input that informs future projection fixture expectations without authorizing P6 implementation
+  + [material_status] is accepted_implementation_proof_support
+
+  = must: require every downstream P6 slice to cite the accepted_input and material_status it consumes
+  = must: mark downstream P6 outputs stale if any accepted_input hash changes or if a later completion review supersedes a projection obligation
+
+& [P6ProjectionAuthorityClassInventory] is the projection authority class inventory
+  + [authority_class] is SOP_source_authority
+  + [authority_class] is canonical_specification_authority
+  + [authority_class] is kernel_record_authority
+  + [authority_class] is accepted_completion_review_authority
+  + [authority_class] is accepted_human_override_record
+  + [authority_class] is accepted_interrupt_resolution_record
+  + [non_authority_class] is surface_projection
+  + [non_authority_class] is surface_snapshot
+  + [non_authority_class] is generated_projection
+  + [non_authority_class] is surface_local_state
+  + [non_authority_class] is adapter_message
+  + [non_authority_class] is chat_transcript_projection
+  + [non_authority_class] is Codex_thread_display
+  + [non_authority_class] is terminal_output_projection
+  + [non_authority_class] is IRC_channel_log
+  + [non_authority_class] is Matrix_room_event
+  + [non_authority_class] is web_UI_state
+  + [non_authority_class] is Langflow_diagram
+  + [non_authority_class] is graph_checkpoint_display
+  + [non_authority_class] is graph_transition_trace_display
+  + [non_authority_class] is packet_candidate_display
+  + [non_authority_class] is human_handoff_display
+  + [gated_authority_class] is assignment_record
+  + [gated_authority_class] is dispatch_record
+  + [gated_authority_class] is operations_control_record
+  + [gated_authority_class] is live_machine_control_record
+
+  = must: render every non_authority_class with an authority notice before it can support human or agent decisions
+  = must: reject any projection, adapter message, conversation event, checkpoint display, generated projection, packet candidate display, or handoff display as source authority unless a later accepted route elevates it
+  = must: route assignment, dispatch, operations control, and live machine control through future source-preserved authority, not through P6 projection inventory
+
+& [P6ProjectionObligationFamilyMatrix] is the projection obligation family matrix
+  + [obligation_family] is authority_notice_freshness_and_nonpromotion_rendering
+  + [owning_slice] is P6-S02
+  + [required_input_authority] is P2 authority states, P8 nonpromotion, P5 checkpoint nonauthority, FSC4 authority notice invariant, and Post-P5 readiness
+  + [obligation_family] is multi_surface_projection_envelope_and_surface_specific_boundaries
+  + [owning_slice] is P6-S03
+  + [required_input_authority] is P6-S02 authority notice contract, FSC4 surface boundaries, IR5 projection proof support, P4 packet visibility, and P5 handoff visibility
+  + [obligation_family] is inbound_action_classification_and_surface_mutation_boundary
+  + [owning_slice] is P6-S04
+  + [required_input_authority] is P6-S03 envelope, FSC4 adapter mutation boundary, P4 no-assignment no-dispatch boundary, and P5 interrupt handoff route
+  + [obligation_family] is projection_fixture_snapshot_plan_and_generated_projection_nonpromotion
+  + [owning_slice] is P6-S05
+  + [required_input_authority] is P6-S02 through P6-S04 contracts and P8 proof fixture evaluation boundaries
+  + [obligation_family] is surface_adapter_langflow_dependency_deferral_and_implementation_activation_boundary
+  + [owning_slice] is P6-S06
+  + [required_input_authority] is P6-S05 fixture plan, IR5 implementation proof support, and accepted no-package-mutation posture
+  + [obligation_family] is P6_completion_and_downstream_gate
+  + [owning_slice] is P6-S07
+  + [required_input_authority] is accepted P6-S01 through P6-S06 completion reviews
+
+  = must: keep each obligation family dependency-closed inside its owning slice after upstream acceptance
+  = must: reject downstream work that depends on a family before the owning slice completion review accepts it
+
+& [P6ProjectionMaterializationGapInventory] is the materialization gap inventory after P6-S01
+  + [materialization_gap] is authority_notice_freshness_and_nonpromotion_rendering_contract_not_yet_defined
+  + [materialization_gap] is checkpoint_nonauthority_display_contract_not_yet_defined
+  + [materialization_gap] is interrupt_and_human_handoff_display_contract_not_yet_defined
+  + [materialization_gap] is multi_surface_projection_envelope_not_yet_defined
+  + [materialization_gap] is surface_specific_boundary_matrix_not_yet_defined
+  + [materialization_gap] is inbound_action_classification_and_surface_mutation_route_not_yet_defined
+  + [materialization_gap] is projection_fixture_snapshot_plan_not_yet_defined
+  + [materialization_gap] is generated_projection_nonpromotion_boundary_not_yet_defined
+  + [materialization_gap] is surface_adapter_and_Langflow_dependency_deferral_not_yet_refreshed_for_P6
+  + [materialization_gap] is implementation_activation_boundary_not_yet_defined
+  + [materialization_gap] is no_projection_fixture_files_created
+  + [materialization_gap] is no_expected_snapshots_created
+  + [materialization_gap] is no_generated_projections_created
+  + [materialization_gap] is no_surface_code_written
+  + [materialization_gap] is no_adapter_or_transport_code_written
+  + [materialization_gap] is no_UI_written
+  + [materialization_gap] is no_dependency_installed
+  + [materialization_gap] is no_dispatch_or_live_effect_authorized
+
+  = must: close these gaps only through the assigned downstream P6 slice and completion review
+
+& [P6ProjectionSupportVsAuthorityInventory] is the support and authority separation inventory
+  + [accepted_authority] is P2 authority kernel completion review
+  + [accepted_authority] is P4 planning and packetization completion review
+  + [accepted_authority] is P5 runtime planning completion review
+  + [accepted_authority] is P8 proof fixture evaluation completion review
+  + [accepted_authority] is FSC4 surface boundary map
+  + [accepted_support] is IR5 bounded surface projection implementation proof
+  + [accepted_support] is Post-P5 readiness surface
+  + [plan_only_support] is future projection fixture path set
+  + [plan_only_support] is future expected projection snapshots
+  + [plan_only_support] is future generated projection ledgers
+  + [plan_only_support] is future adapter, transport, UI, IRC, Matrix, web, Codex, terminal, and Langflow implementation choices
+  + [not_authorized] is assignment
+  + [not_authorized] is dispatch
+  + [not_authorized] is operations control
+  + [not_authorized] is live machine control
+
+  = must: prevent support records from becoming authority records through projection display
+  = must: require a new source-preserved implementation activation before plan_only_support becomes file or code material
+
+& [ForbiddenProjectionMutationList: P6-S01] is the forbidden mutation set for P6-S01
+  + [forbidden_mutation] is editing accepted P2, P4, P5, P8, FSC4, or IR5 output files to make projection obligations easier
+  + [forbidden_mutation] is treating surface state as source authority
+  + [forbidden_mutation] is treating graph checkpoint state as source authority
+  + [forbidden_mutation] is treating adapter messages or conversation logs as source authority
+  + [forbidden_mutation] is treating generated projections as proof authority
+  + [forbidden_mutation] is creating projection fixture files
+  + [forbidden_mutation] is creating expected snapshots
+  + [forbidden_mutation] is creating generated projections
+  + [forbidden_mutation] is implementing UI components
+  + [forbidden_mutation] is implementing adapters or transports
+  + [forbidden_mutation] is installing Langflow, Matrix, IRC, web, or runtime packages
+  + [forbidden_mutation] is authorizing assignment or dispatch
+  + [forbidden_mutation] is authorizing operations control or live machine control
+  + [forbidden_mutation] is omitting authority_notice from future decision-making projections
+
+  = must: fail P6-S01 review if any forbidden mutation appears in the output
+
+& [P6S01DownstreamGate] is the gate opened by P6-S01
+  + [opened_slice] is P6-S02 authority notice freshness and nonpromotion rendering contract
+  + [activation_basis] is P6 projection obligation inventory accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is authority display determines how humans and agents recognize source authority, stale projections, checkpoint nonauthority, and generated-output limits
+  + [completion_review_required] is true
+
+  = must: open P6-S02 only after P6-S01 completion review accepts this boundary import
+  = must: keep P6-S03 through P6-S07 gated until their predecessor reviews accept
