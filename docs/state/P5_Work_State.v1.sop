@@ -33,11 +33,12 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [p6_s03_review] docs/reviews/P6_S03_Completion_Review.v1.sop
 @ [p6_s04_review] docs/reviews/P6_S04_Completion_Review.v1.sop
 @ [p6_s05_review] docs/reviews/P6_S05_Completion_Review.v1.sop
+@ [p6_s06_review] docs/reviews/P6_S06_Completion_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_completed_with_P6-S05_accepted_pending_P6-S06
+  + [surface_status] is P5_completed_with_P6-S06_accepted_pending_P6-S07
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -102,9 +103,11 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_downstream_slice_review_sha256] is 887CD5F224CF924D5929E8D5B052543E809C21F068AD868825953AB8D0FCE24B
   + [accepted_downstream_slice_review] is docs/reviews/P6_S05_Completion_Review.v1.sop
   + [accepted_downstream_slice_review_sha256] is A1E04B375A29A94B38B431319773BA59774509AC578C9AADE8A95E0251EF51D8
-  + [current_ready_chunk] is P6-S06 surface adapter Langflow dependency deferral and implementation activation boundary
+  + [accepted_downstream_slice_review] is docs/reviews/P6_S06_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is 01819F89B60E4412977C47248BBA53B269858F672FC0EE5908A05BDF89CC9E11
+  + [current_ready_chunk] is P6-S07 P6 completion review and downstream gate
   + [current_ready_chunk_model_route] is requires deeper reasoning
-  + [current_ready_chunk_model_route_reason] is adapter and dependency posture decide when surface implementation can safely enter the project
+  + [current_ready_chunk_model_route_reason] is final P6 acceptance changes projection fixture readiness, fixture material readiness, coordination readiness, and implementation gates
   + [gated_chunk] is P5 runtime implementation activation until source-preserved activation authority is accepted
   + [gated_chunk] is P8 fixture material implementation activation until P6 surface projection requirements are reviewed
   + [dependency_installation_authorized] is false
@@ -126,6 +129,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P6-S06 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
+  = must: execute P6-S07 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
   = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, or post-P8 readiness changes

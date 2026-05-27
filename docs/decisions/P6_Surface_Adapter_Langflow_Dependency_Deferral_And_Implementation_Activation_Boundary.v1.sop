@@ -1,0 +1,164 @@
+Subject: P6 Surface Adapter Langflow Dependency Deferral And Implementation Activation Boundary V1
+Date: 2026-05-27
+Decision UUID: e1597c4e-4961-4c41-bae3-1d302866cd18
+
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_s05_output] docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+@ [p6_s05_review] docs/reviews/P6_S05_Completion_Review.v1.sop
+@ [ir5_dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+@ [ir5_implementation_plan] docs/implementation/IR5_Surface_Projection_Prototype_Implementation_Plan.v1.sop
+
+& [P6SurfaceAdapterLangflowDependencyDeferralAndImplementationActivationBoundaryV1] is the P6-S06 surface adapter Langflow dependency deferral and implementation activation boundary
+  + [slice_id] is P6-S06
+  + [slice_name] is surface adapter Langflow dependency deferral and implementation activation boundary
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is adapter and dependency posture decide when surface implementation can safely enter the project
+  + [decision_result] is defer_dependency_installation_adapter_transport_UI_and_Langflow_implementation
+  + [next_gate_result] is P6-S07 may open
+  + [projection_fixture_file_creation_authorized] is false
+  + [expected_snapshot_creation_authorized] is false
+  + [generated_projection_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve dependency and adapter deferral until source-preserved P6 implementation activation is separately authored, SJS-processed, sliced, reviewed, and accepted
+  = must: treat this decision as a boundary, not permission to install packages, mutate package metadata, write adapters, run transports, create UI, export Langflow flows, create fixture material, generate projections, assign, dispatch, or control operations
+
+& [P6DependencyDeferralDecision] is the dependency deferral decision for P6 surfaces
+  + [external_dependency] is Langflow
+  + [external_dependency] is IRC_client_library
+  + [external_dependency] is Matrix_client_library
+  + [external_dependency] is web_UI_framework
+  + [external_dependency] is browser_runtime_or_server
+  + [external_dependency] is MCP_client_or_server_surface
+  + [current_dependency_status] is deferred
+  + [package_metadata_mutation_status] is not_authorized
+  + [installation_status] is not_authorized
+  + [adapter_status] is not_implemented
+  + [transport_status] is not_implemented
+  + [UI_status] is not_implemented
+  + [Langflow_status] is future_candidate_only
+  + [deferral_basis] is docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+  + [deferral_basis] is docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+
+  = must: require a future dependency decision refresh if package choice, version policy, dependency manager, execution environment, adapter boundary, transport boundary, UI boundary, or Langflow export boundary changes
+  = must: keep dependency work out of P6 planning completion
+
+& [P6ImplementationActivationPrerequisiteSet] is the prerequisite set for future P6 implementation activation
+  + [prerequisite] is source-preserved P6 implementation activation source
+  + [prerequisite] is SJS-processed P6 implementation activation canonical specification
+  + [prerequisite] is implementation activation slice surface
+  + [prerequisite] is accepted dependency and package metadata decision
+  + [prerequisite] is exact implementation file inventory
+  + [prerequisite] is accepted fixture source materialization boundary
+  + [prerequisite] is accepted expected snapshot inventory
+  + [prerequisite] is accepted generated projection root policy
+  + [prerequisite] is accepted no-dispatch and no-live-effect proof boundary
+  + [prerequisite] is accepted adapter and carrier context boundary
+  + [prerequisite] is completion review before downstream P7, P8, P9, or live-control-adjacent consumption
+
+  = must: require all prerequisites before surface implementation, fixture material creation, expected snapshot creation, generated projection materialization, dependency installation, adapter work, transport work, UI work, or Langflow export work
+
+& [P6FutureImplementationFileInventory] is the future file inventory candidate set for bounded P6 implementation activation
+  + [future_code_file] is src/langsop/surfaces_p6/__init__.py
+  + [future_code_file_role] is expose bounded P6 projection APIs and keep live transport, dispatch, operations, and UI server names absent
+  + [future_code_file] is src/langsop/surfaces_p6/envelope.py
+  + [future_code_file_role] is define common projection envelope, authority notice references, freshness state, and nonpromotion models
+  + [future_code_file] is src/langsop/surfaces_p6/surface_matrix.py
+  + [future_code_file_role] is encode manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and Langflow surface-family boundaries
+  + [future_code_file] is src/langsop/surfaces_p6/action_classifier.py
+  + [future_code_file_role] is classify inbound surface actions into request, refusal, interrupt, handoff, or review evidence without authority mutation
+  + [future_code_file] is src/langsop/surfaces_p6/nonpromotion.py
+  + [future_code_file_role] is validate generated projection, checkpoint, terminal, dry-run, and handoff nonpromotion
+  + [future_code_file] is src/langsop/surfaces_p6/generated_paths.py
+  + [future_code_file_role] is validate generated projection roots and refuse writes outside accepted generated paths
+  + [future_code_file] is src/langsop/surfaces_p6/fixture_runner.py
+  + [future_code_file_role] is run future P6 projection fixture cases and write generated projection evidence only under accepted roots
+  + [future_test_file] is tests/test_p6_surface_projection_contracts.py
+  + [inventory_status] is candidate_future_inventory_only
+
+  = must: require a future implementation activation slice before creating or editing any candidate file
+  = must: require deeper reasoning review before creating or editing files outside this inventory for P6 surface projection implementation
+
+& [P6SurfaceAdapterBoundarySet] is the future adapter and carrier boundary set
+  + [carrier_supported_as_projection] is chat
+  + [carrier_supported_as_projection] is Codex_thread
+  + [carrier_supported_as_projection] is terminal
+  + [carrier_supported_as_projection] is IRC
+  + [carrier_supported_as_projection] is Matrix
+  + [carrier_supported_as_projection] is web
+  + [carrier_supported_as_projection] is Langflow
+  + [carrier_supported_as_projection] is local_generated_report
+  + [carrier_implementation_status] is projection_record_only
+  + [transport_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [browser_UI_authorized] is false
+  + [Langflow_install_or_export_authorized] is false
+  + [adapter_queue_authorized] is false
+  + [MCP_client_or_server_authorized] is false
+
+  = must: represent carriers as carrier_context fields and projection records only until future activation
+  = must: preserve carrier context without treating it as authority
+  = must: refuse future implementation that opens live transports, UI surfaces, sockets, web servers, MCP connections, IRC connections, Matrix connections, or Langflow runtime without a separate accepted activation slice
+
+& [P6LangflowFitAndBoundaryAssessment] is the Langflow fit and boundary assessment for future P6 visual projections
+  + [fit_status] is useful_future_visual_projection_candidate
+  + [fit_reason] is Langflow can help humans inspect agent collaboration flows when used as a projection surface
+  + [mismatch_status] is authority_boundary_mismatch_if_used_as_truth
+  + [mismatch_reason] is Langflow flow state, component state, API calls, MCP calls, and visual graph layout are carrier or execution projections rather than signed SOP authority
+  + [required_adapter_mapping] is source_authority_records_to_visual_projection_inputs
+  + [required_adapter_mapping] is Langflow_interactions_to_request_interrupt_or_completion_review_records
+  + [blocked_mapping] is Langflow_node_success_to_completion_acceptance
+  + [blocked_mapping] is Langflow_flow_execution_to_dispatch
+  + [blocked_mapping] is Langflow_MCP_tool_output_to_source_authority
+
+  = must: use Langflow only as a projection or adapter surface after a later activation boundary specifies source-to-surface and surface-to-SOP-review mappings
+  = must: prevent Langflow graph success, visual node state, API response, MCP tool output, or user click from satisfying readiness, completion review, source specification processing, dispatch, operation, or live-control authority
+
+& [P6ImplementationProofPackRequirementSet] is the future implementation proof pack requirement set
+  + [proof_requirement] is compile and unit test proof
+  + [proof_requirement] is fixture proof over all P6 planned fixture cases or accepted pruned case set
+  + [proof_requirement] is authority notice and freshness visibility proof
+  + [proof_requirement] is checkpoint nonpromotion proof
+  + [proof_requirement] is generated projection nonpromotion proof
+  + [proof_requirement] is carrier context nonauthority proof
+  + [proof_requirement] is inbound action classification proof
+  + [proof_requirement] is no assignment proof
+  + [proof_requirement] is no dispatch proof
+  + [proof_requirement] is no operations control proof
+  + [proof_requirement] is no live machine control proof
+  + [proof_requirement] is dependency and package metadata mutation proof
+
+  = must: require implementation proof pack acceptance before P7 coordination expansion, P8 fixture material consumption, P9 operations reconsideration, or any user-facing adapter work consumes P6 implementation evidence
+
+& [P6ImplementationActivationStaleTriggerSet] is the stale trigger set for future P6 implementation activation
+  + [stale_trigger] is P6-S01 through P6-S05 output or review changes
+  + [stale_trigger] is P6 dependency deferral decision changes
+  + [stale_trigger] is fixture case set changes
+  + [stale_trigger] is generated projection root policy changes
+  + [stale_trigger] is no-dispatch or no-live-effect proof boundary changes
+  + [stale_trigger] is adapter or carrier boundary changes
+  + [stale_trigger] is Langflow fit or mapping boundary changes
+  + [stale_trigger] is package policy changes
+  + [stale_trigger] is future activation creates files outside accepted inventory
+  + [stale_trigger] is future activation installs dependencies without accepted dependency decision
+
+  = must: require rebake and completion review if any stale trigger fires
+
+& [P6S06DownstreamGate] is the gate opened by P6-S06
+  + [opened_slice] is P6-S07 P6 completion review and downstream gate
+  + [activation_basis] is surface adapter Langflow dependency deferral and implementation activation boundary accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P6 acceptance changes projection fixture readiness, fixture material readiness, coordination readiness, and implementation gates
+  + [completion_review_required] is true
+
+  = must: open P6-S07 only after P6-S06 completion review accepts this dependency deferral and implementation activation boundary
