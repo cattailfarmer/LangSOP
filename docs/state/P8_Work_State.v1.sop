@@ -54,11 +54,13 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [p8_ia03_review] docs/reviews/P8_IA03_Completion_Review.v1.sop
 @ [p8_ia04_output] docs/fixtures/P8_Negative_Oracle_Source_Material_And_Fault_Route_Refinement.v1.sop
 @ [p8_ia04_review] docs/reviews/P8_IA04_Completion_Review.v1.sop
+@ [p8_ia05_output] docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+@ [p8_ia05_review] docs/reviews/P8_IA05_Completion_Review.v1.sop
 
 & [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
   + [state_basis] is docs/reviews/P8_Completion_Review.v1.sop
   + [state_basis_sha256] is 27EA50246E5A51C7536CF2CEA22D64AF6DE39ABA9ACC4A7373CE8F376E8FA21A
-  + [surface_status] is P8_completed_with_fixture_material_activation_P8-IA04_accepted_pending_P8-IA05
+  + [surface_status] is P8_completed_with_fixture_material_activation_P8-IA05_accepted_pending_P8-IA06
   + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
   + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
@@ -175,11 +177,17 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_output_sha256] is BDC279D5EF51808EEAC0CF2D70A57B4554BC30A15D8B5A77FBEC03442BA36D66
   + [accepted_completion_review] is docs/reviews/P8_IA04_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is F5C73C3B12645BA878E3E8B7C01568702865AEC3D75038417FA57AAD887D61BF
-  + [current_ready_slice] is P8-IA05
-  + [current_ready_slice_name] is generated path policy and proof runner contract
-  + [current_ready_slice_expected_output] is docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is generated-output roots, proof runner effects, path refusal, source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [accepted_slice] is P8-IA05
+  + [accepted_output] is docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+  + [accepted_output_sha256] is BDFAD24A8B0BDE9D74A1B7FC5B33748EB3C23F541C43108A41ED32A20BB45CBD
+  + [accepted_completion_review] is docs/reviews/P8_IA05_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is C447BEA46306444962DEE065DFAC9F18B2A50066BFFC3CEF80066D53D5F419A9
+  + [current_ready_slice] is P8-IA06
+  + [current_ready_slice_name] is fixture material validation tests and generated-output nonpromotion proof
+  + [current_ready_slice_expected_output] is tests/test_p8_fixture_material_contracts.py
+  + [current_ready_slice_expected_output] is docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
+  + [current_ready_slice_model_route_reason] is validation tests and proof records are bounded by accepted fixture material, expected ledgers, negative oracle coverage, and generated path policy
   + [gated_chunk] is P6 implementation and projection fixture materialization until P6 final slices and implementation activation are accepted
   + [gated_chunk] is fixture material creation until P8-IA01 accepts exact files and P8-IA02 opens material creation
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted
@@ -187,7 +195,9 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [fixture_source_file_creation_authorized] is false
   + [expected_ledger_creation_authorized] is false
   + [proof_ledger_creation_authorized] is false
-  + [generated_output_creation_authorized] is false
+  + [generated_output_creation_authorized] is true_for_P8-IA06_ignored_generated_roots_only
+  + [test_file_creation_authorized] is true_for_P8-IA06_only
+  + [proof_runner_code_authorized] is false
   + [implementation_code_authorized] is false
   + [dependency_installation_authorized] is false
   + [package_metadata_mutation_authorized] is false
@@ -202,6 +212,6 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P8-IA05 before generated output creation, proof runner code, surface expansion, adapter work, dispatch, or live-control work
+  = must: execute P8-IA06 before dependency work, proof runner code, surface expansion, adapter work, dispatch, or live-control work
   = must: keep fixture obligations, generated outputs, proof ledgers, graph checkpoints, surface projections, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P8 fixture material implementation activation source, activation manifest, activation canonical, activation slices, activation minting review, P8-IA01 output, P8-IA01 review, P8-IA02 review, P8-IA02 fixture files, P8-IA03 review, P8-IA03 expected ledgers, P8-IA03 proof ledger seeds, P8-IA04 output, P8-IA04 review, P4 completion, post-P4 readiness, P6 completion, post-P6 readiness, accepted fixture oracle, or accepted proof pack changes
+  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P8 slice output, P8 slice review, P8 completion review, post-P8 readiness, P8 fixture material implementation activation source, activation manifest, activation canonical, activation slices, activation minting review, P8-IA01 output, P8-IA01 review, P8-IA02 review, P8-IA02 fixture files, P8-IA03 review, P8-IA03 expected ledgers, P8-IA03 proof ledger seeds, P8-IA04 output, P8-IA04 review, P8-IA05 output, P8-IA05 review, P4 completion, post-P4 readiness, P6 completion, post-P6 readiness, accepted fixture oracle, or accepted proof pack changes

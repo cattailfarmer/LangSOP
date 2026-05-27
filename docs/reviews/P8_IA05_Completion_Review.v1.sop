@@ -1,0 +1,112 @@
+Subject: P8 IA05 Completion Review V1
+Date: 2026-05-27
+Review UUID: f35f9eb7-5bd0-404d-9286-2a653f927283
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [completed_output] docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+@ [p8_ia04_review] docs/reviews/P8_IA04_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-IA05] is the completed-work review for P8-IA05 generated path policy and proof runner contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA05
+  + [completed_output] is docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+  + [completed_output_sha256] is BDFAD24A8B0BDE9D74A1B7FC5B33748EB3C23F541C43108A41ED32A20BB45CBD
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8-IA05 and open P8-IA06
+  + [next_gate_result] is P8-IA06 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for validation tests and generated-output/no-live-effect proof
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for P8-IA06 only
+  = must: rerun this review if generated path policy, proof runner contract, P8 fixture source material, expected ledgers, proof ledger seeds, negative oracle refinement, activation boundary, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime mutation, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control gated
+
+& [P8IA05Verification] is the verification result for P8-IA05
+  + [generated_path_policy_present] is true
+  + [proof_runner_behavior_contract_present] is true
+  + [accepted_read_roots_present] is true
+  + [accepted_generated_write_roots_present] is true
+  + [ignored_generated_root_present] is true
+  + [path_escape_refusal_present] is true
+  + [source_write_refusal_present] is true
+  + [expected_ledger_write_refusal_present] is true
+  + [proof_ledger_write_refusal_present] is true
+  + [platform_mailbox_write_refusal_present] is true
+  + [credential_path_refusal_present] is true
+  + [network_path_refusal_present] is true
+  + [assignment_dispatch_operations_live_control_refusal_present] is true
+  + [negative_oracle_preservation_present] is true
+  + [p8_ia06_gate_present] is true
+  + [generated_output_created] is false
+  + [proof_runner_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8IA05VerificationSatisfied] is accepted
+    @ [support] docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+
+& [SupportDelta: P8-IA05] is the support delta produced by P8-IA05
+  + [new_support_record] is P8 fixture material now has an accepted generated path policy that separates accepted fixture source roots, accepted expected ledger roots, accepted proof ledger evidence roots, and ignored generated-output roots
+  + [new_support_record] is P8 fixture material now has an accepted proof runner behavior contract without implementation code or generated output creation
+  + [new_support_record] is future P8 validation must refuse source paths, expected ledger paths, proof ledger paths, platform mailbox paths, credential paths, network paths, assignment records, dispatch records, operations targets, and live-control targets
+  + [new_support_record] is P8-IA06 may create bounded validation tests and generated-output/no-live-effect proof records against accepted fixture material and this contract
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-IA05] is the requirement delta produced by P8-IA05
+  + [requirement_delta] is P8-IA06 is GPT-5.3-Codex-Spark-suitable because tests and proof records are bounded by accepted fixture material, expected ledgers, negative oracle coverage, and generated path policy
+  + [requirement_delta] is P8-IA06 may create tests/test_p8_fixture_material_contracts.py and docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [requirement_delta] is P8-IA06 may exercise ignored generated-output roots only as disposable non-authority evidence
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime mutation, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, or live machine control is authorized by P8-IA05
+
+& [FaultReview: P8-IA05] is the fault review for P8-IA05
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [proof_ledger_mutation_found] is false
+  + [generated_output_created] is false
+  + [proof_runner_code_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_mutation_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8IA05Accepted] is accepted
+    @ [support] [P8IA05Verification]
+    @ [support] [SupportDelta: P8-IA05]
+    @ [support] [RequirementDelta: P8-IA05]
+    @ [support] [FaultReview: P8-IA05]
+
+& [NextSliceGate: P8-IA06] is opened
+  + [opened_slice] is P8-IA06 fixture material validation tests and generated-output nonpromotion proof
+  + [accepted_dependency] is docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+  + [accepted_dependency_sha256] is BDFAD24A8B0BDE9D74A1B7FC5B33748EB3C23F541C43108A41ED32A20BB45CBD
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is validation tests and proof records are bounded by accepted fixture material, expected ledgers, negative oracle coverage, and generated path policy
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-IA06 next unless user redirects or a new fault invalidates this review

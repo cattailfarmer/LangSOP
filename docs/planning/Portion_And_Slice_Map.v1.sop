@@ -41,9 +41,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p8_ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
 @ [p8_ia03_review] docs/reviews/P8_IA03_Completion_Review.v1.sop
 @ [p8_ia04_review] docs/reviews/P8_IA04_Completion_Review.v1.sop
+@ [p8_ia05_output] docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+@ [p8_ia05_review] docs/reviews/P8_IA05_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P8-IA05_generated_path_policy_and_proof_runner_contract
+  + [map_state] is ready_for_P8-IA06_fixture_material_validation_tests_and_generated_output_nonpromotion_proof
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -534,21 +536,24 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P8-IA05-GeneratedPathPolicyAndProofRunnerContract] is ready_for_execution
+& [CurrentReadyChunk: P8-IA06-FixtureMaterialValidationTestsAndGeneratedOutputNonpromotionProof] is ready_for_execution
   + [chunk_id] is P8
-  + [slice_id] is P8-IA05
-  + [chunk_name] is generated path policy and proof runner contract
-  + [authority_basis] is docs/reviews/P8_IA04_Completion_Review.v1.sop
-  + [authority_basis_sha256] is F5C73C3B12645BA878E3E8B7C01568702865AEC3D75038417FA57AAD887D61BF
+  + [slice_id] is P8-IA06
+  + [chunk_name] is fixture material validation tests and generated-output nonpromotion proof
+  + [authority_basis] is docs/reviews/P8_IA05_Completion_Review.v1.sop
+  + [authority_basis_sha256] is C447BEA46306444962DEE065DFAC9F18B2A50066BFFC3CEF80066D53D5F419A9
   + [readiness_surface] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
-  + [expected_output] is docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
-  + [completion_review_output] is docs/reviews/P8_IA05_Completion_Review.v1.sop
-  + [model_route] is requires deeper reasoning
-  + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is generated-output roots, proof runner effects, path refusal, source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [expected_output] is tests/test_p8_fixture_material_contracts.py
+  + [expected_output] is docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [completion_review_output] is docs/reviews/P8_IA06_Completion_Review.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [model_route_reason] is validation tests and proof records are bounded by accepted fixture material, expected ledgers, negative oracle coverage, and generated path policy
 
-  = must: define generated path policy and proof runner contract without creating generated outputs, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P8-IA06 through P8-IA08 gated until P8-IA05 completion review accepts
+  = must: create only bounded P8 fixture material validation tests, generated-output nonpromotion proof, and completion review outputs opened by P8-IA05
+  = must: keep generated outputs under tests/fixtures/generated/ ignored, disposable, rebuildable, and non-authoritative if validation emits them
+  = must: avoid proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
+  = must: keep P8-IA07 and P8-IA08 gated until P8-IA06 completion review accepts
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

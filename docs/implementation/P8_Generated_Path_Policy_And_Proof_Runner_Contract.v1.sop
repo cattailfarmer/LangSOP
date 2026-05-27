@@ -1,0 +1,198 @@
+Subject: P8 Generated Path Policy And Proof Runner Contract V1
+Date: 2026-05-27
+Contract UUID: 09c8a016-2920-4b6b-bc15-7902b6dc9ef7
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+@ [p8_path_policy] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [negative_oracle_refinement] docs/fixtures/P8_Negative_Oracle_Source_Material_And_Fault_Route_Refinement.v1.sop
+@ [p8_ia04_review] docs/reviews/P8_IA04_Completion_Review.v1.sop
+@ [generated_output_index] docs/proofs/p8_fixture_material/P8_Fixture_Material_Generated_Output_Index.v1.sop
+@ [no_dispatch_no_live_effect_ledger] docs/proofs/p8_fixture_material/P8_Fixture_Material_No_Dispatch_And_No_Live_Effect_Ledger.v1.sop
+
+& [P8GeneratedPathPolicyAndProofRunnerContractV1] is the P8-IA05 generated path policy and proof runner contract
+  + [slice_id] is P8-IA05
+  + [slice_name] is generated path policy and proof runner contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [contract_result] is generated_path_policy_and_proof_runner_contract_defined_without_code_or_generated_outputs
+  + [next_gate_result] is P8-IA06 may open after completion review
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for validation tests and generated-output/no-live-effect proof after this contract is accepted
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false_by_this_slice
+  + [proof_runner_code_creation_authorized] is false_by_this_slice
+  + [test_file_creation_authorized] is false_by_this_slice
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as contract authority for future P8 fixture proof validation, not proof runner implementation code
+  = must: keep generated outputs ignored, disposable, rebuildable, stale-markable, and non-authoritative
+  = must: keep proof runner effects bounded to in-memory comparison and future ignored generated-output writes under accepted generated roots
+  = must: reject any proof runner behavior that writes source fixtures, expected ledgers, proof ledgers, canonical specifications, source manifests, mailboxes, credentials, dispatch records, operations targets, or live-control targets
+
+& [P8AcceptedReadRootPolicy] is the read policy for future P8 proof runner validation
+  + [accepted_fixture_source_root] is tests/fixtures/sop/p2_authority_kernel/
+  + [accepted_fixture_source_root] is tests/fixtures/sop/p3_operator_contracts/
+  + [accepted_fixture_source_root] is tests/fixtures/sop/p4_packetization/
+  + [accepted_fixture_source_root] is tests/fixtures/sop/p5_runtime_proof/
+  + [accepted_fixture_source_root] is tests/fixtures/sop/p6_surface_projection/
+  + [accepted_fixture_source_root] is tests/fixtures/sop/p8_proof_fixtures/
+  + [accepted_expected_ledger_root] is tests/fixtures/expected/p2_authority_kernel/
+  + [accepted_expected_ledger_root] is tests/fixtures/expected/p3_operator_contracts/
+  + [accepted_expected_ledger_root] is tests/fixtures/expected/p4_packetization/
+  + [accepted_expected_ledger_root] is tests/fixtures/expected/p5_runtime_proof/
+  + [accepted_expected_ledger_root] is tests/fixtures/expected/p6_surface_projection/
+  + [accepted_expected_ledger_root] is tests/fixtures/expected/p8_proof_fixtures/
+  + [accepted_read_evidence_root] is docs/proofs/p8_fixture_material/
+  + [read_authority_basis] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [read_authority_basis] is docs/reviews/P8_IA03_Completion_Review.v1.sop
+  + [read_authority_basis] is docs/reviews/P8_IA04_Completion_Review.v1.sop
+
+  = must: read only tracked accepted fixture source, expected ledger, and P8 proof ledger seed files under these roots
+  = must: treat accepted expected ledgers as comparison evidence, not canonical source authority
+  = must: preserve file identity by normalized repository-relative path and stable fixture_case_id
+  = must: reject absolute paths, path escapes, symlink escapes, network paths, and untracked ad hoc input paths
+
+& [P8AcceptedGeneratedWritePolicy] is the write policy for future generated P8 validation outputs
+  + [accepted_generated_output_root] is tests/fixtures/generated/p2_authority_kernel/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p3_operator_contracts/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p4_packetization/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p5_runtime_proof/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p6_surface_projection/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p8_proof_fixtures/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p8_fixture_material/proof_results/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p8_fixture_material/reports/
+  + [ignored_generated_root] is tests/fixtures/generated/
+  + [generated_authority_class] is generated_output_non_authority
+  + [generated_effect_boundary] is disposable_fixture_proof_evidence_only
+  + [generated_creation_gate] is P8-IA06 acceptance path only
+  + [generated_creation_status_now] is not_created_by_P8-IA05
+
+  = must: write only under accepted generated output roots after P8-IA06 explicitly opens validation tests and generated-output proof
+  = must: make generated outputs rebuildable from accepted fixture sources, expected ledgers, and this contract
+  = must: include lineage to source fixture path, expected ledger path, contract version, and validation command if future generated outputs are emitted
+  = must: mark generated outputs stale when source fixtures, expected ledgers, proof ledgers, acceptance contracts, path policy, or negative oracle material changes
+  = must: prove deletion of tests/fixtures/generated/ cannot delete source authority, expected ledger authority, proof ledger authority, assignment state, dispatch state, operations state, or live-control state
+
+& [P8GeneratedPathRefusalPolicy] is the path refusal policy for future proof runner effects
+  + [refused_target_root] is docs/source/
+  + [refused_target_root] is docs/canonical/
+  + [refused_target_root] is docs/slices/
+  + [refused_target_root] is docs/reviews/
+  + [refused_target_root] is docs/proofs/
+  + [refused_target_root] is src/
+  + [refused_target_root] is tests/fixtures/sop/
+  + [refused_target_root] is tests/fixtures/expected/
+  + [refused_target_root] is platform/
+  + [refused_target_root] is platform/coordination/mailboxes/
+  + [refused_target_root] is .git/
+  + [refused_target_kind] is absolute_path
+  + [refused_target_kind] is parent_directory_escape
+  + [refused_target_kind] is symlink_escape
+  + [refused_target_kind] is unc_or_network_path
+  + [refused_target_kind] is credential_file
+  + [refused_target_kind] is destructive_filesystem_target
+  + [refused_target_kind] is assignment_record
+  + [refused_target_kind] is dispatch_record
+  + [refused_target_kind] is operations_target
+  + [refused_target_kind] is live_control_target
+
+  = must: refuse generated writes to source, canonical, slice, review, proof, source-code, fixture-source, expected-ledger, platform, mailbox, credential, VCS, assignment, dispatch, operations, and live-control paths
+  = must: allow human-authored completion reviews and proof review documents only through accepted slice work, not through proof runner generated-output writes
+  = must: emit a refusal or fault evidence record for any attempted path escape or authority-targeting write
+
+& [P8ProofRunnerBehaviorContract] is the behavior contract for future P8 proof runner implementation or tests
+  + [future_module_inventory] is src/langsop/fixtures/__init__.py
+  + [future_module_inventory] is src/langsop/fixtures/records.py
+  + [future_module_inventory] is src/langsop/fixtures/generated_paths.py
+  + [future_module_inventory] is src/langsop/fixtures/fixture_runner.py
+  + [future_test_inventory] is tests/test_p8_fixture_material_contracts.py
+  + [future_proof_review] is docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [execution_mode] is deterministic_fixture_validation_only
+  + [external_dependency_set] is empty
+  + [allowed_library_set] is Python standard library only
+  + [network_access_required] is false
+  + [process_control_required] is false
+  + [GPU_control_required] is false
+  + [model_runtime_control_required] is false
+  + [job_dispatch_required] is false
+
+  = must: validate fixture material by deterministic parsing, classification, and expected-ledger comparison
+  = must: produce in-memory validation results before any future generated-output write
+  = must: keep generated report writing behind P8AcceptedGeneratedWritePolicy
+  = must: return refusal or fault evidence for stale source, missing signatures, generated-output authority promotion, unsupported operator scope, deterministic replay mismatch, false-ready packets, dispatch promotion, checkpoint promotion, surface mutation, expected-ledger promotion, operations promotion, and live-control promotion
+  = must: never claim assignment, dispatch, operations control, live-control approval, process control, GPU control, model runtime control, credential access, network mutation, or destructive filesystem authority
+  = must: require a new deeper-reasoning activation if proof runner code is added outside the future module inventory or if generated output needs to leave accepted ignored roots
+
+& [P8NegativeOraclePreservationContract] is the negative oracle preservation rule for P8-IA06 and later proof work
+  + [required_negative_case] is stale_source_hash_blocks_ready
+  + [required_negative_case] is missing_sjs_signature_refusal
+  + [required_negative_case] is generated_projection_promotion_fault
+  + [required_negative_case] is unsupported_operator_scope_refusal
+  + [required_negative_case] is deterministic_replay_mismatch_fault
+  + [required_negative_case] is generated_operator_output_as_authority
+  + [required_negative_case] is blocked_requirement_packet
+  + [required_negative_case] is false_ready_packet
+  + [required_negative_case] is no_dispatch_packet_boundary
+  + [required_negative_case] is checkpoint_not_authority
+  + [required_negative_case] is stale_checkpoint_rebake_required
+  + [required_negative_case] is surface_action_mutation_refusal
+  + [required_negative_case] is generated_projection_non_authority
+  + [required_negative_case] is expected_ledger_non_authority
+  + [required_negative_case] is fixture_success_promoted_to_live_control
+
+  = must: preserve every accepted P8-IA04 negative oracle case in future validation tests and proof evidence
+  = must: fail validation when any negative oracle case is accepted as ready, dispatchable, operations-authoritative, source-authoritative, or live-control-authoritative
+  = must: keep no-dispatch, no-operations-control, and no-live-effect proof distinct even when the same fixture demonstrates more than one boundary
+
+& [P8IA06OpeningGate] is the gate opened by this contract after completion review
+  + [opened_slice] is P8-IA06 fixture material validation tests and generated-output nonpromotion proof
+  + [opened_test_file] is tests/test_p8_fixture_material_contracts.py
+  + [opened_proof_review] is docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [opened_generated_output_root] is tests/fixtures/generated/
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is tests and proof records are bounded by accepted fixture material, expected ledgers, negative oracle coverage, and this generated path policy
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: open P8-IA06 only after P8-IA05 completion review accepts this contract
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime mutation, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control gated
+  = must: keep P8-IA07 and P8-IA08 gated until P8-IA06 completion review accepts tests and proof evidence
+
+& [P8IA05BoundaryReview] is the boundary checklist for P8-IA05
+  + [accepted_read_roots_defined] is true
+  + [accepted_generated_write_roots_defined] is true
+  + [ignored_generated_root_defined] is true
+  + [source_path_refusal_defined] is true
+  + [expected_ledger_write_refusal_defined] is true
+  + [platform_mailbox_refusal_defined] is true
+  + [credential_path_refusal_defined] is true
+  + [network_path_refusal_defined] is true
+  + [assignment_dispatch_operations_live_control_refusal_defined] is true
+  + [negative_oracle_preservation_defined] is true
+  + [generated_output_created] is false
+  + [proof_runner_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8IA05BoundarySatisfied] is accepted
+    @ [support] [P8AcceptedReadRootPolicy]
+    @ [support] [P8AcceptedGeneratedWritePolicy]
+    @ [support] [P8GeneratedPathRefusalPolicy]
+    @ [support] [P8ProofRunnerBehaviorContract]
+    @ [support] [P8NegativeOraclePreservationContract]
+    @ [support] [P8IA06OpeningGate]
