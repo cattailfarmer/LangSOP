@@ -1,0 +1,121 @@
+Subject: P8 IA01 Completion Review V1
+Date: 2026-05-27
+Review UUID: d6e037d7-a930-4b27-a11f-0a20405fe013
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [completed_output] docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+@ [p8_path_policy] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [p8_materialization_boundary] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+
+& [CompletedWorkReview: P8-IA01] is the completed-work review for P8-IA01 fixture material activation boundary and exact file inventory
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA01
+  + [completed_output] is docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+  + [completed_output_sha256] is 03F0ABD00D318C5C9F6B45E7BB48E5525709639FA5E135E9E9B86B736A81632D
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8-IA01 and open P8-IA02
+  + [next_gate_result] is P8-IA02 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for kernel, operator, packet, runtime, and projection fixture source material
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for P8-IA02 only
+  = must: rerun this review if the activation boundary, P8 fixture material activation slice surface, canonical activation specification, path policy, materialization boundary, proof ledger contract, P6 completion review, or post-P6 readiness changes
+  = must: keep expected ledgers, proof ledgers, generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P8IA01Verification] is the verification result for P8-IA01
+  + [confirmed_fixture_root_inventory_present] is true
+  + [confirmed_fixture_source_inventory_present] is true
+  + [confirmed_expected_ledger_inventory_present] is true
+  + [confirmed_proof_ledger_inventory_present] is true
+  + [confirmed_generated_output_boundary_present] is true
+  + [confirmed_proof_runner_inventory_present] is true
+  + [confirmed_dependency_boundary_present] is true
+  + [confirmed_adapter_dispatch_operations_and_live_control_boundary_present] is true
+  + [confirmed_command_plan_present] is true
+  + [implementation_slice_proof_gate_present] is true
+  + [fixture_source_file_created] is false
+  + [expected_ledger_created] is false
+  + [proof_ledger_created] is false
+  + [generated_output_created] is false
+  + [proof_runner_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8IA01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+
+& [SupportDelta: P8-IA01] is the support delta produced by P8-IA01
+  + [new_support_record] is P8 fixture material implementation activation has confirmed exact roots, fixture source file inventory, expected ledger inventory, proof ledger inventory, generated-output roots, proof runner inventory, dependency boundary, adapter boundary, dispatch boundary, operations boundary, live-control boundary, command plan, and proof gates
+  + [new_support_record] is P8-IA02 may create only bounded fixture source material inside accepted roots
+  + [new_support_record] is P8-IA02 is GPT-5.3-Codex-Spark-suitable because fixture source file scope is bounded by accepted activation boundary and exact file inventory
+  + [new_support_record] is expected ledgers, proof ledgers, generated outputs, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, operations control, and live machine control remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-IA01] is the requirement delta produced by P8-IA01
+  + [requirement_delta] is P8-IA02 may create tracked fixture source files only inside accepted roots and only from the accepted file inventory
+  + [requirement_delta] is P8-IA02 must not create expected ledgers, proof ledgers, generated outputs, proof runner code, dependencies, adapters, transports, UI, tests, assignment records, dispatch records, operations effects, or live effects
+  + [requirement_delta] is future P8-IA03 must compare fixture source files against expected ledger inventory and preserve expected ledgers as evidence rather than canonical authority
+  + [requirement_delta] is future P8-IA05 and P8-IA06 must prove generated outputs are ignored, disposable, rebuildable, and non-authoritative
+
+& [FaultReview: P8-IA01] is the fault review for P8-IA01
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_file_leak_found] is false
+  + [expected_ledger_file_leak_found] is false
+  + [proof_ledger_file_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8IA01Accepted] is accepted
+    @ [support] [P8IA01Verification]
+    @ [support] [SupportDelta: P8-IA01]
+    @ [support] [RequirementDelta: P8-IA01]
+    @ [support] [FaultReview: P8-IA01]
+
+& [NextSliceGate: P8-IA02] is opened
+  + [opened_slice] is P8-IA02 kernel, operator, packet, runtime, and projection fixture source material
+  + [accepted_dependency] is docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+  + [accepted_dependency_sha256] is 03F0ABD00D318C5C9F6B45E7BB48E5525709639FA5E135E9E9B86B736A81632D
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture source material is bounded by accepted fixture plans, exact path inventory, and no-live-effect boundary
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-IA02 next unless user redirects or a new fault invalidates this review

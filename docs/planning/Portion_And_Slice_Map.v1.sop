@@ -37,9 +37,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p8_implementation_activation_canonical] docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
 @ [p8_implementation_activation_slices] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
 @ [p8_implementation_activation_minting_review] docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
+@ [p8_ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P8-IA01_fixture_material_activation_boundary_and_exact_file_inventory
+  + [map_state] is ready_for_P8-IA02_fixture_source_material
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -385,6 +386,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
   + [support_record] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
   + [support_record] is docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
+  + [support_record] is docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+  + [support_record] is docs/reviews/P8_IA01_Completion_Review.v1.sop
   + [support_gap] is fixture material files not yet authored and remain gated until source-preserved implementation activation
   + [support_gap] is expected ledgers, proof ledgers, generated outputs, and material false-ready/stale fixtures not yet generated
   + [proof_route] is fixture validation tests and expected trace records
@@ -511,21 +514,21 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P8-IA01-FixtureMaterialActivationBoundaryAndExactFileInventory] is ready_for_execution
+& [CurrentReadyChunk: P8-IA02-FixtureSourceMaterial] is ready_for_execution
   + [chunk_id] is P8
-  + [slice_id] is P8-IA01
-  + [chunk_name] is fixture material activation boundary and exact file inventory
-  + [authority_basis] is docs/reviews/P8_Fixture_Material_Implementation_Activation_Minting_Review.v1.sop
-  + [authority_basis_sha256] is 9A469FF897B4127E577AFED8E7DD74EBB0E5909F8133E7320E105748FED6D399
+  + [slice_id] is P8-IA02
+  + [chunk_name] is kernel, operator, packet, runtime, and projection fixture source material
+  + [authority_basis] is docs/reviews/P8_IA01_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 4173FCEF7D9AF5AAB14F6FA8A127D1F2FFC50E90273673F89552E7286A80199F
   + [readiness_surface] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
-  + [expected_output] is docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
-  + [completion_review_output] is docs/reviews/P8_IA01_Completion_Review.v1.sop
-  + [model_route] is requires deeper reasoning
-  + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is activation boundary, exact path inventory, generated-output roots, proof runner boundaries, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [expected_output] is fixture source files at paths accepted by docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+  + [completion_review_output] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [model_route_reason] is fixture source material is bounded by accepted fixture plans, exact path inventory, and no-live-effect boundary
 
-  = must: define exact file inventory and boundaries without creating fixture source files, expected ledgers, proof ledgers, generated outputs, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P8-IA02 through P8-IA08 gated until P8-IA01 completion review accepts
+  = must: create only accepted fixture source files and no expected ledgers, proof ledgers, generated outputs, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
+  = must: keep P8-IA03 through P8-IA08 gated until P8-IA02 completion review accepts
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

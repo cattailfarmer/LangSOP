@@ -1,0 +1,271 @@
+Subject: P8 Fixture Material Implementation Activation Boundary V1
+Date: 2026-05-27
+Activation Boundary UUID: 9e8131e3-083d-4522-84b0-97d2a4f2a868
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_P8_Fixture_Material_Implementation_Activation.canonical.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+@ [p8_path_policy] docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+@ [p8_materialization_boundary] docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_proof_ledger_contract] docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+
+& [P8FixtureMaterialImplementationActivationBoundaryV1] is the P8-IA01 activation boundary for future bounded fixture material implementation work
+  + [activation_boundary_id] is p8-fixture-material-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is 9e8131e3-083d-4522-84b0-97d2a4f2a868
+  + [slice_id] is P8-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary and exact file inventory only
+
+  = must: confirm future fixture source roots, expected ledger roots, proof ledger roots, generated-output roots, allowed file families, no-live-effect proof gates, no-dispatch proof gates, dependency boundary, adapter boundary, transport boundary, dispatch boundary, operations boundary, and live-control deferral boundary
+  = must: preserve accepted P2, P3, P4, P5, P6, P8, IR7, and IR8 source, fixture, expected ledger, proof ledger, generated output, projection, dry-run, manager, dispatch, operations, and live-control semantics without creating fixture files in this slice
+  = must: keep dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch mechanisms, live-control APIs, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem actions, and live machine control gated until P8-IA07 or a later dependency-authorizing slice
+  - never: create fixture source files, expected ledgers, proof ledgers, generated outputs, proof runner code, tests, dependencies, adapter transports, UI, assignment records, dispatch records, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control in this slice
+
+& [ConfirmedFixtureRootInventory: P8FixtureMaterial] is the exact future fixture root inventory
+  + [fixture_source_root] is tests/fixtures/sop/p2_authority_kernel/
+  + [expected_ledger_root] is tests/fixtures/expected/p2_authority_kernel/
+  + [generated_output_root] is tests/fixtures/generated/p2_authority_kernel/
+  + [fixture_source_root] is tests/fixtures/sop/p3_operator_contracts/
+  + [expected_ledger_root] is tests/fixtures/expected/p3_operator_contracts/
+  + [generated_output_root] is tests/fixtures/generated/p3_operator_contracts/
+  + [fixture_source_root] is tests/fixtures/sop/p4_packetization/
+  + [expected_ledger_root] is tests/fixtures/expected/p4_packetization/
+  + [generated_output_root] is tests/fixtures/generated/p4_packetization/
+  + [fixture_source_root] is tests/fixtures/sop/p5_runtime_proof/
+  + [expected_ledger_root] is tests/fixtures/expected/p5_runtime_proof/
+  + [generated_output_root] is tests/fixtures/generated/p5_runtime_proof/
+  + [fixture_source_root] is tests/fixtures/sop/p6_surface_projection/
+  + [expected_ledger_root] is tests/fixtures/expected/p6_surface_projection/
+  + [generated_output_root] is tests/fixtures/generated/p6_surface_projection/
+  + [fixture_source_root] is tests/fixtures/sop/p8_proof_fixtures/
+  + [expected_ledger_root] is tests/fixtures/expected/p8_proof_fixtures/
+  + [generated_output_root] is tests/fixtures/generated/p8_proof_fixtures/
+  + [proof_ledger_root] is docs/proofs/p8_fixture_material/
+  + [generated_proof_result_root] is tests/fixtures/generated/p8_fixture_material/proof_results/
+
+  = must: keep generated output roots ignored, disposable, and rebuildable
+  = must: require P8-IA01 completion review before any listed root can be used by future slices
+  = must: require separate completion review before any future file in these roots becomes accepted evidence
+  = must: reject fixture material outside listed roots unless a future deeper-reasoning activation rebakes the inventory
+
+& [ConfirmedFixtureSourceFileInventory: P8FixtureMaterial] is the exact future fixture source file inventory opened by P8-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/valid_signed_authority_record.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/stale_source_hash_blocks_ready.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/generated_projection_promotion_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p2_authority_kernel/missing_sjs_signature_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/valid_signature_validation_operator.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/unsupported_operator_scope_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/deterministic_replay_mismatch_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p3_operator_contracts/generated_output_as_authority_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p4_packetization/ready_packet_candidate.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p4_packetization/blocked_requirement_packet.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p4_packetization/false_ready_packet_fault.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p4_packetization/no_dispatch_packet_boundary.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/valid_runtime_transition_trace.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/checkpoint_non_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/sop_interrupt_handoff.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/stale_checkpoint_rebake_required.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/manager_authority_notice_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/stale_surface_projection.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/inbound_action_mutation_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/generated_projection_non_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/fixture_path_policy_valid.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/proof_ledger_acceptance.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/expected_ledger_non_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/p8_proof_fixtures/negative_oracle_fault_route.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to accepted upstream fixture plans
+  = must: require P8-IA02 completion review before any fixture source file becomes accepted proof material
+  = must: create no expected ledgers, proof ledgers, generated outputs, test files, implementation code, dependency changes, assignment, dispatch, operations control, or live effects in P8-IA02
+
+& [ConfirmedExpectedLedgerInventory: P8FixtureMaterial] is the exact expected ledger inventory opened by P8-IA03 after P8-IA02 is accepted
+  + [future_expected_ledger_file] is tests/fixtures/expected/p2_authority_kernel/authority_validation_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p2_authority_kernel/stale_and_signature_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p3_operator_contracts/operator_trace_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p3_operator_contracts/operator_fault_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p4_packetization/readiness_packet_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p4_packetization/no_dispatch_boundary_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/runtime_transition_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/interrupt_and_checkpoint_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p6_surface_projection/authority_projection_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p6_surface_projection/nonpromotion_and_action_refusal_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p8_proof_fixtures/fixture_policy_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p8_proof_fixtures/proof_ledger_acceptance_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/p8_proof_fixtures/negative_oracle_expected.sop
+
+  = must: make expected ledgers reviewable without generated outputs, runner state, carrier state, runtime state, assignment, dispatch, credential access, network mutation, operations control, or live control
+  = must: keep expected ledgers as tracked fixture evidence only after P8-IA03 completion review accepts them
+  = must: prevent expected ledgers from becoming source authority or canonical SJS authority
+
+& [ConfirmedProofLedgerInventory: P8FixtureMaterial] is the exact future proof ledger inventory opened by P8-IA03 and completed by P8-IA08
+  + [future_proof_ledger_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Source_File_Inventory_Ledger.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Expected_Ledger_Index.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Generated_Output_Index.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_No_Dispatch_And_No_Live_Effect_Ledger.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p8_fixture_material/P8_Fixture_Material_Validation_Result_Ledger.v1.sop
+
+  = must: treat proof ledgers as reviewable evidence, not canonical source authority
+  = must: require hashes of accepted fixture source files, expected ledgers, generated outputs, validation commands, and no-live-effect evidence before final P8-IA08 completion
+  = must: reject proof ledgers that cite dispatch effects, operations-control effects, live-control effects, credential access, network mutation, destructive filesystem actions, process control, GPU control, or model runtime mutation as successful proof
+
+& [ConfirmedGeneratedOutputBoundary: P8FixtureMaterial] is the generated-output boundary for future fixture material tests and proof runs
+  + [generated_output_root] is tests/fixtures/generated/p2_authority_kernel/
+  + [generated_output_root] is tests/fixtures/generated/p3_operator_contracts/
+  + [generated_output_root] is tests/fixtures/generated/p4_packetization/
+  + [generated_output_root] is tests/fixtures/generated/p5_runtime_proof/
+  + [generated_output_root] is tests/fixtures/generated/p6_surface_projection/
+  + [generated_output_root] is tests/fixtures/generated/p8_proof_fixtures/
+  + [generated_output_root] is tests/fixtures/generated/p8_fixture_material/proof_results/
+  + [generated_output_root] is tests/fixtures/generated/p8_fixture_material/reports/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is disposable_evidence_only
+  + [source_authority_status] is docs/source, docs/canonical, accepted tracked fixture source, accepted expected ledgers, and accepted proof ledgers only
+
+  = must: refuse writes outside accepted generated roots during future proof runner execution
+  = must: refuse generated writes to docs/source/, docs/canonical/, docs/slices/, docs/reviews/ except explicitly accepted proof-review outputs, src/, tests/fixtures/sop/, tests/fixtures/expected/, platform/, .git/, and platform/coordination/mailboxes/
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject generated outputs, reports, manifests, caches, carrier state, adapter state, dry-runs, packet candidates, approval displays, graph checkpoints, or runtime state as source authority, dispatch authority, operations authority, or live-control authority
+
+& [ConfirmedProofRunnerFileInventory: P8FixtureMaterial] is the maximum code and test inventory for future P8 proof runner work
+  + [future_code_file] is src/langsop/fixtures/__init__.py
+  + [future_code_file] is src/langsop/fixtures/records.py
+  + [future_code_file] is src/langsop/fixtures/generated_paths.py
+  + [future_code_file] is src/langsop/fixtures/fixture_runner.py
+  + [future_test_file] is tests/test_p8_fixture_material_contracts.py
+  + [future_review_file] is docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep proof runner code and test creation gated until P8-IA05 and P8-IA06 respectively
+  = must: keep fixture source and expected ledger creation separate from proof runner implementation
+
+& [ConfirmedDependencyBoundary: P8FixtureMaterial] is the dependency boundary for the first P8 fixture material implementation pass
+  + [allowed_dependency_set] is Python standard library only through P8-IA06
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [langgraph_runtime_dependency_state] is gated_until_future_dependency_authorization
+  + [langflow_dependency_state] is gated_until_future_dependency_authorization
+  + [transport_library_state] is gated_until_future_dependency_authorization
+  + [machine_control_library_state] is gated_until_future_dependency_authorization
+  + [GPU_management_library_state] is gated_until_future_dependency_authorization
+  + [local_model_runtime_client_state] is gated_until_future_dependency_authorization
+  + [job_queue_client_state] is gated_until_future_dependency_authorization
+  + [network_or_firewall_library_state] is gated_until_future_dependency_authorization
+
+  = must: require P8-IA07 or a later dependency-authorizing slice before adding package dependencies, lockfiles, imports from external adapter packages, UI frameworks, machine-management libraries, GPU libraries, model runtime clients, network libraries, watcher libraries, job queue clients, LangGraph runtime integrations, or Langflow integrations
+  = must: keep first-pass P8 implementation clearly marked as deterministic fixture material and proof evidence, not live adapter, UI, transport, dispatch, process control, GPU control, model runtime control, credential access, network mutation, or orchestration integration
+
+& [ConfirmedAdapterDispatchOperationsAndLiveControlBoundary: P8FixtureMaterial] is the adapter, transport, UI, dispatch, operations, and live-control boundary for first-pass fixture material implementation
+  + [adapter_status] is none
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only_after_test_slice_opens
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve generated output, graph checkpoint context, coordination context, operations dry-run context, and human approval context as traceable evidence without granting authority
+  = must: refuse future implementation that opens live transports, UI surfaces, assignment, dispatch, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, operations control, or live machine control without a separate accepted activation slice and separate live-control authority path
+
+& [ConfirmedCommandPlan: P8FixtureMaterial] is the command and verification plan for future implementation slices
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated outputs and reports are ignored, disposable, reproducible, and non-authoritative
+  + [no_dispatch_review] is prove fixture success and generated proof results remain evidence, not assignment or dispatch effects
+  + [no_live_effect_review] is prove commands, processes, GPU, model runtimes, jobs, credentials, network state, destructive filesystem targets, platform mailboxes, source docs, and expected ledgers are not mutated by fixture proof code or tests
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted P8 contract tests once tests.test_p8_fixture_material_contracts exists
+
+& [ImplementationSliceProofGate: P8FixtureMaterial] is the proof gate opened by this activation boundary
+  + [P8-IA02_opened_after_review] is kernel, operator, packet, runtime, and projection fixture source material
+  + [P8-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after P8-IA01 acceptance
+  + [P8-IA02_scope] is fixture source files only
+  + [fixture_creation_authorized_after_P8-IA01] is true_for_P8-IA02_only
+  + [expected_ledger_creation_authorized_after_P8-IA01] is false_until_P8-IA03
+  + [proof_ledger_creation_authorized_after_P8-IA01] is false_until_P8-IA03
+  + [generated_output_creation_authorized_after_P8-IA01] is false
+  + [proof_runner_code_creation_authorized_after_P8-IA01] is false
+  + [test_file_creation_authorized_after_P8-IA01] is false
+  + [dependency_installation_authorized_after_P8-IA01] is false
+  + [package_metadata_mutation_authorized_after_P8-IA01] is false
+  + [adapter_implementation_authorized_after_P8-IA01] is false
+  + [transport_implementation_authorized_after_P8-IA01] is false
+  + [UI_implementation_authorized_after_P8-IA01] is false
+  + [assignment_authorized_after_P8-IA01] is false
+  + [manager_dispatch_authorized_after_P8-IA01] is false
+  + [agent_dispatch_authorized_after_P8-IA01] is false
+  + [command_execution_authorized_after_P8-IA01] is validation_commands_only
+  + [process_control_authorized_after_P8-IA01] is false
+  + [GPU_control_authorized_after_P8-IA01] is false
+  + [model_runtime_control_authorized_after_P8-IA01] is false
+  + [job_dispatch_authorized_after_P8-IA01] is false
+  + [credential_access_authorized_after_P8-IA01] is false
+  + [network_mutation_authorized_after_P8-IA01] is false
+  + [destructive_filesystem_action_authorized_after_P8-IA01] is false
+  + [operations_control_authorized_after_P8-IA01] is false
+  + [live_machine_control_authorized_after_P8-IA01] is false
+
+  = must: open only P8-IA02 after this boundary is accepted
+  = must: keep expected ledgers, proof ledgers, generated outputs, proof runner code, tests, dependency changes, adapter work, transport work, UI work, proof packs, assignment, dispatch, credential access, network mutation, operations control, and live machine control gated until their specific slices open
+
+& [P8IA01CoverageReview] is the coverage checklist for P8-IA01
+  + [confirmed_fixture_root_inventory_present] is ConfirmedFixtureRootInventory: P8FixtureMaterial
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceFileInventory: P8FixtureMaterial
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory: P8FixtureMaterial
+  + [confirmed_proof_ledger_inventory_present] is ConfirmedProofLedgerInventory: P8FixtureMaterial
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary: P8FixtureMaterial
+  + [confirmed_proof_runner_inventory_present] is ConfirmedProofRunnerFileInventory: P8FixtureMaterial
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: P8FixtureMaterial
+  + [confirmed_adapter_dispatch_operations_and_live_control_boundary_present] is ConfirmedAdapterDispatchOperationsAndLiveControlBoundary: P8FixtureMaterial
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: P8FixtureMaterial
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: P8FixtureMaterial
+  + [fixture_source_file_created] is false
+  + [expected_ledger_created] is false
+  + [proof_ledger_created] is false
+  + [generated_output_created] is false
+  + [proof_runner_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept P8-IA01 only when all checklist items are satisfied
+  = must: open P8-IA02 only after this activation boundary is reviewed in a completion review
