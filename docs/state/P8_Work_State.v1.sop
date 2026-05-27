@@ -19,6 +19,7 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
 @ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
 @ [post_p8_readiness] docs/planning/Post_P8_Readiness_Surface.v1.sop
 @ [p5_slice_minting_review] docs/reviews/P5_Final_Slice_Minting_Review.v1.sop
+@ [p5_s01_review] docs/reviews/P5_S01_Completion_Review.v1.sop
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
 @ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
 @ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
@@ -84,10 +85,12 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_post_readiness_surface_sha256] is B40127FC08D7008E594D81EF15054E073CD19AC891769F556006CF6207CA625B
   + [accepted_downstream_minting_review] is docs/reviews/P5_Final_Slice_Minting_Review.v1.sop
   + [accepted_downstream_minting_review_sha256] is 444845693D3DD3C2D1F1646367100ADF65AAAF9060FAAF7233DE01D6E02ECE46
-  + [current_ready_chunk] is P5-S01 boundary import and runtime obligation inventory
-  + [current_ready_chunk_expected_output] is docs/runtime/P5_Boundary_Import_And_Runtime_Obligation_Inventory.v1.sop
+  + [accepted_downstream_slice_review] is docs/reviews/P5_S01_Completion_Review.v1.sop
+  + [accepted_downstream_slice_review_sha256] is 1877F49728EDC6F5F98BE2E14260CF46FA5A368115E946A0C0D54A505B38C08D
+  + [current_ready_chunk] is P5-S02 graph procedure state envelope and checkpoint nonauthority contract
+  + [current_ready_chunk_expected_output] is docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
   + [current_ready_chunk_model_route] is requires deeper reasoning
-  + [current_ready_chunk_model_route_reason] is boundary import decides which runtime obligations become P5 authority and which remain plan-only support
+  + [current_ready_chunk_model_route_reason] is graph checkpoint state can preserve execution continuity but cannot become semantic authority or proof authority
   + [gated_chunk] is P6 surface projection expansion until P5 runtime authority and projection fixture authority are reminted
   + [gated_chunk] is P8 fixture material implementation activation until future source-preserved implementation activation opens exact files
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted

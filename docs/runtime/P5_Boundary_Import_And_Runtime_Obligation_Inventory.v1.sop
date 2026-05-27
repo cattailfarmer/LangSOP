@@ -1,0 +1,121 @@
+Subject: P5 Boundary Import And Runtime Obligation Inventory V1
+Date: 2026-05-27
+Inventory UUID: 71336410-3ca0-4ed6-9e70-0d3f0546f35d
+
+@ [p5_slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [p5_slice_minting_review] docs/reviews/P5_Final_Slice_Minting_Review.v1.sop
+@ [p2_completion_review] docs/reviews/P2_Completion_Review.v1.sop
+@ [p3_completion_review] docs/reviews/P3_Completion_Review.v1.sop
+@ [p8_completion_review] docs/reviews/P8_Completion_Review.v1.sop
+
+& [P5BoundaryImportAndRuntimeObligationInventoryV1] is the P5-S01 boundary import and runtime obligation inventory
+  + [slice_id] is P5-S01
+  + [slice_name] is boundary import and runtime obligation inventory
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is boundary import decides which runtime obligations become P5 authority and which remain plan-only support
+  + [inventory_result] is runtime_obligations_imported_without_runtime_implementation
+  + [next_gate_result] is P5-S02 may open
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [command_execution_beyond_validation_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this inventory as P5 planning authority only
+  = must: preserve SOP source, canonical specifications, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment records, dispatch records, operations decisions, and live-control deferrals as distinct authority classes
+  = must: open graph state and checkpoint nonauthority only after this inventory is accepted by completion review
+
+& [P5ImportedAuthorityObligationSet] is the accepted authority obligation set imported by P5-S01
+  + [imported_obligation] is P2 record identity, natural keys, authority states, freshness rules, source/projection distinction, stale review, blocked review, contradiction review, and schema validation boundaries
+  + [imported_obligation] is P3 operator envelope, operator input and output authority basis, refusal semantics, trace identity, deterministic duty boundaries, nonautomation boundary, and support-readiness recomputation
+  + [imported_obligation] is P8 proof ledger required fields, evaluation result states, accepted absence proof, stale/rebake rules, generated-output nonpromotion, negative oracle cases, and downstream consumption gates
+  + [imported_obligation] is P4 packetization no-assignment no-dispatch and no-live-effect boundaries as inherited through P8 readiness
+  + [imported_obligation] is IR7 and IR8 dry-run and manager proof nonpromotion boundaries as inherited through P8 proof inputs
+
+  = must: require every future graph state, node transition, interrupt, proof trace, and completion review to cite the imported obligation class it satisfies
+  = must: mark P5 downstream slices stale when any imported authority obligation changes
+
+& [P5RuntimeAuthorityClassInventory] is the runtime authority class inventory
+  + [authority_class] is SOP_source_authority
+  + [authority_class] is canonical_specification_authority
+  + [authority_class] is kernel_record_authority
+  + [authority_class] is operator_contract_authority
+  + [authority_class] is proof_ledger_authority
+  + [authority_class] is graph_checkpoint_runtime_state
+  + [authority_class] is graph_transition_trace
+  + [authority_class] is generated_output_trace
+  + [authority_class] is surface_projection
+  + [authority_class] is packet_candidate
+  + [authority_class] is human_judgment_handoff
+  + [authority_class] is assignment_record
+  + [authority_class] is dispatch_record
+  + [authority_class] is operations_record
+  + [authority_class] is live_control_deferral
+
+  = must: keep graph_checkpoint_runtime_state, graph_transition_trace, generated_output_trace, surface_projection, packet_candidate, human_judgment_handoff, assignment_record, dispatch_record, operations_record, and live_control_deferral non-authoritative unless separate accepted source authority elevates the class
+  = must: reject any graph checkpoint, transition trace, generated output, surface projection, packet candidate, dry-run result, or displayed human approval as source authority
+
+& [P5RuntimeObligationFamilyMatrix] is the runtime obligation family matrix
+  + [obligation_family] is graph_state_envelope
+  + [owning_slice] is P5-S02
+  + [required_input_authority] is P2 record identity, P3 operator envelope, and P8 proof ledger boundaries
+  + [obligation_family] is checkpoint_nonauthority_and_resume
+  + [owning_slice] is P5-S02
+  + [required_input_authority] is P8 generated-output nonpromotion and stale/rebake rules
+  + [obligation_family] is operator_node_mapping
+  + [owning_slice] is P5-S03
+  + [required_input_authority] is P3 operator contracts and P2 kernel record authority
+  + [obligation_family] is deterministic_transition_records
+  + [owning_slice] is P5-S03
+  + [required_input_authority] is P3 trace identity, refusal semantics, and P8 proof ledger states
+  + [obligation_family] is SOP_interrupt_and_human_handoff
+  + [owning_slice] is P5-S04
+  + [required_input_authority] is P2 ambiguity/contradiction states, P3 refusal semantics, and P8 rebake rules
+  + [obligation_family] is runtime_proof_trace_fixtures
+  + [owning_slice] is P5-S05
+  + [required_input_authority] is P8 proof ledger, no-live-effect, no-dispatch, and nonpromotion contracts
+  + [obligation_family] is adapter_dependency_and_activation
+  + [owning_slice] is P5-S06
+  + [required_input_authority] is dependency posture, proof trace plan, implementation activation requirements, and no package metadata mutation boundary
+  + [obligation_family] is P5_completion_and_downstream_gate
+  + [owning_slice] is P5-S07
+  + [required_input_authority] is accepted P5-S01 through P5-S06 completion reviews
+
+  = must: keep each family dependency-closed inside its owning slice after upstream acceptance
+  = must: reject downstream work that depends on a family before the owning slice completion review accepts it
+
+& [P5RuntimeMaterializationGapInventory] is the materialization gap inventory after P5-S01
+  + [materialization_gap] is graph_state_envelope_contract_not_yet_defined
+  + [materialization_gap] is checkpoint_nonauthority_contract_not_yet_defined
+  + [materialization_gap] is operator_node_mapping_not_yet_defined
+  + [materialization_gap] is deterministic_transition_record_contract_not_yet_defined
+  + [materialization_gap] is SOP_interrupt_human_handoff_contract_not_yet_defined
+  + [materialization_gap] is runtime_proof_trace_fixture_plan_not_yet_defined
+  + [materialization_gap] is LangGraph_adapter_dependency_deferral_not_yet_refreshed_for_P5
+  + [materialization_gap] is implementation_activation_boundary_not_yet_defined
+  + [materialization_gap] is no_runtime_code_written
+  + [materialization_gap] is no_dependency_installed
+  + [materialization_gap] is no_graph_runtime_executed
+
+  = must: close these gaps only through the assigned downstream P5 slice and completion review
+
+& [P5S01DownstreamGate] is the gate opened by P5-S01
+  + [opened_slice] is P5-S02 graph procedure state envelope and checkpoint nonauthority contract
+  + [activation_basis] is runtime obligation inventory accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is graph checkpoint state can preserve execution continuity but cannot become semantic authority or proof authority
+  + [completion_review_required] is true
+
+  = must: open P5-S02 only after P5-S01 completion review accepts this boundary import and runtime obligation inventory
