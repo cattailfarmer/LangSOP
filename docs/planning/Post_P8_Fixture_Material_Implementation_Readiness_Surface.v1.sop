@@ -1,0 +1,112 @@
+Subject: Post P8 Fixture Material Implementation Readiness Surface V1
+Date: 2026-05-27
+Surface UUID: 15277027-4b23-4d86-ba91-8408b4e711c5
+
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+@ [p8_fixture_material_completion_review] docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+@ [p8_dependency_live_control_decision] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+@ [p8_work_state] docs/state/P8_Work_State.v1.sop
+
+& [PostP8FixtureMaterialImplementationReadinessSurfaceV1] is the current implementation-readiness surface after P8 fixture material implementation acceptance
+  + [surface_state] is ready_for_next_deeper_reasoning_design_selection
+  + [accepted_boundary_input] is P8FixtureMaterialImplementationProofPackV1
+  + [accepted_boundary_input_sha256] is 3C86A6357181133BB5265302B1128D9950942C060BB4224474F8A83B428BE0C4
+  + [accepted_boundary_input] is P8FixtureMaterialImplementationCompletionReviewV1
+  + [accepted_boundary_input_sha256] is B10995CC1F6A4D1A40FD9F3AC56B12B58AE6B2B053F8080F1FDDC5AA0F8892C2
+  + [accepted_boundary_input] is P8FixtureMaterialDependencyAdapterTransportDispatchOperationsAndLiveControlDeferralDecisionV1
+  + [accepted_boundary_input_sha256] is 474263639406A6D1F01F084DF9B1C5F08CE6A8227FC8738C86F096AAD7BC9F44
+  + [active_implementation_chunk] is none
+  + [current_ready_chunk] is P5 LangGraph procedure runtime implementation activation source preservation and final slice minting
+  + [current_ready_chunk_model_route] is requires deeper reasoning
+  + [current_ready_chunk_model_route_reason] is runtime implementation activation changes graph execution, checkpoint, interrupt, proof-runner, and authority boundaries
+  + [secondary_ready_chunk] is P6 surface projection implementation activation source preservation after P5 runtime implementation boundary or if rebake chooses surface-first
+  + [secondary_ready_chunk_model_route] is requires deeper reasoning
+  + [secondary_ready_chunk_model_route_reason] is surface implementation activation changes projection, inbound action, adapter, and authority display boundaries
+  + [future_spark_suitable_chunk] is bounded P5 or P6 fixture-driven implementation only after source-preserved activation, exact file inventory, dependency decisions, and proof gates are accepted
+  + [gated_chunk] is P7 coordination expansion until dispatch-adjacent authority and multi-agent work boundaries are source-preserved and accepted
+  + [gated_chunk] is P9 operations-manager planning until separate source-preserved operations and live-control authority is accepted
+  + [gated_chunk] is proof runner code until future implementation activation explicitly opens module inventory
+  + [gated_chunk] is adapter, transport, UI, dependency, package metadata, and dispatch work until explicit non-live authority is accepted
+  + [gated_chunk] is live-control authority reconsideration until separate source-preserved SJS authority is accepted
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: choose the next slice from current support, completed-work deltas, and whole-field dependency closure
+  = must: run completion review after each new design, planning, proof, or implementation slice before opening downstream slices
+  = must: preserve P8 fixture material as evidence, not as runtime, surface, adapter, dispatch, operations-control, or live-control authority
+  = must: preserve dry-run-only semantics for operation requests, resource reviews, human approvals, generated outputs, fixture success, manager packets, and handoff records
+  = must: keep dispatch and live-control work blocked unless a separate future authority is source-preserved, SJS-processed, least-privilege bounded, rollback-proved, abort-proved, monitored, and accepted
+
+& [ImplementationReadinessChunk: P5RuntimeImplementationActivation] is ready_for_source_preserved_activation
+  + [chunk_id] is P5-runtime-implementation-activation
+  + [chunk_name] is P5 LangGraph procedure runtime implementation activation
+  + [boundary_input_set] is docs/reviews/P5_Completion_Review.v1.sop
+  + [boundary_input_set] is docs/planning/Post_P5_Readiness_Surface.v1.sop
+  + [boundary_input_set] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is source-preserved P5 implementation activation source, canonical specification, slice surface, and activation minting review
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is LangGraph runtime, checkpoint non-authority, SOP interrupts, deterministic operator transitions, generated trace policy, and proof runner effects affect authority and safety semantics
+  + [future_bounded_implementation_route] is GPT-5.3-Codex-Spark-suitable only after activation boundary, exact module inventory, dependency decision, fixtures, expected ledgers, generated path policy, and proof gates are accepted
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, graph runtime execution beyond bounded proof, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, assignment, dispatch, operations control, and live machine control
+
+  = must: preserve external LangGraph dependency deferral unless a future source-preserved dependency decision explicitly changes it
+  = must: keep checkpoints, graph state, generated traces, fixture success, and runtime proof results non-authoritative
+
+& [ImplementationReadinessChunk: P6SurfaceImplementationActivation] is conditionally_ready_after_P5_runtime_boundary_or_surface_first_rebake
+  + [chunk_id] is P6-surface-implementation-activation
+  + [chunk_name] is P6 surface projection implementation activation
+  + [boundary_input_set] is docs/reviews/P6_Completion_Review.v1.sop
+  + [boundary_input_set] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [boundary_input_set] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is source-preserved P6 implementation activation source, canonical specification, slice surface, and activation minting review
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface projections, inbound action routing, freshness notices, multi-surface divergence, generated projection policy, and adapter boundaries affect authority and user workflow semantics
+  + [future_bounded_implementation_route] is GPT-5.3-Codex-Spark-suitable only after activation boundary, exact module inventory, dependency decision, fixtures, expected ledgers, generated path policy, and proof gates are accepted
+
+  = must: prevent projection displays, user clicks, chat commands, terminal output, adapter callbacks, generated projections, or surface state from mutating source authority directly
+  = must: preserve Langflow, IRC, Matrix, web, terminal, and Codex surfaces as projections until explicit adapter and transport authority is accepted
+
+& [PostP8FixtureReadinessSafetyBoundary] is the safety boundary for the post-P8 fixture material readiness surface
+  + [fixture_material_status] is accepted_for_bounded_evidence_and_proof_only
+  + [generated_output_status] is ignored_disposable_rebuildable_non_authoritative
+  + [expected_ledger_status] is comparison_evidence_not_canonical_source_authority
+  + [proof_ledger_status] is reviewable_evidence_not_dispatch_or_live_control_authority
+  + [future_runtime_implementation_authorized] is false
+  + [future_surface_implementation_authorized] is false
+  + [future_adapter_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: reject fixture success, generated output success, targeted test success, broad human approval, mailbox notice, claim state, graph checkpoint state, dry-run result, or generated report success as dispatch authority or live-control authority
+  = must: require separate future live-control authority before any live process, GPU, model runtime, job, credential, network, destructive filesystem, persistent automation, or machine-control effect
+
+& [PostP8FixtureReadinessClosureReview] is the dependency audit for the post-P8 fixture material readiness surface
+  + [P8_fixture_material_implementation_status] is accepted
+  + [P8_fixture_material_completion_status] is accepted
+  + [P8_dependency_dispatch_live_control_deferral_status] is accepted
+  + [P5_planning_status] is accepted_plan_and_contract_authority
+  + [P6_planning_status] is accepted_plan_and_contract_authority
+  + [current_ready_chunk_set] is P5 runtime implementation activation source preservation and final slice minting
+  + [secondary_ready_chunk_set] is P6 surface implementation activation source preservation after P5 runtime boundary or surface-first rebake
+  + [unresolved_external_dependency_set] is empty_for_planning
+  + [forbidden_external_dependency_found] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat implementation activation, adapter work, transport work, dispatch authority, live-control authority, and downstream operations execution as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

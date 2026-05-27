@@ -1,0 +1,120 @@
+Subject: P8 Fixture Material Implementation Completion Review V1
+Date: 2026-05-27
+Review UUID: 29de4cfd-c9fa-43c6-b81c-338b3876d84f
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+@ [ia07_review] docs/reviews/P8_IA07_Completion_Review.v1.sop
+@ [dependency_live_control_decision] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [contract_tests] tests/test_p8_fixture_material_contracts.py
+
+& [CompletedWorkReview: P8FixtureMaterialImplementation] is the completed-work review for P8 fixture material implementation activation completion
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA08
+  + [completed_output] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is 3C86A6357181133BB5265302B1128D9950942C060BB4224474F8A83B428BE0C4
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8 fixture material implementation activation and close the P8 fixture material activation sequence
+  + [next_gate_result] is no P8 fixture material implementation activation slice remains open
+  + [future_rebake_required_for_runtime_surface_coordination_or_operations_implementation] is true
+
+  = must: treat this review as final acceptance evidence for bounded P8 fixture material implementation only
+  = must: require a future whole-field rebake before P5 runtime implementation, P6 surface implementation, P7 coordination expansion, P9 operations-manager work, proof runner code, adapters, dispatch, dependency, live-control, operations-control, machine-management, UI, transport, credential, network, process, GPU, model-runtime, or job-control implementation can open
+  = must: keep dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution beyond validation commands, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P8FixtureMaterialImplementationCompletionVerification] is the verification result for P8 fixture material implementation completion
+  + [implementation_proof_pack_present] is true
+  + [implementation_proof_pack_sha256] is 3C86A6357181133BB5265302B1128D9950942C060BB4224474F8A83B428BE0C4
+  + [activation_boundary_present] is true
+  + [fixture_source_material_present] is true
+  + [expected_ledgers_present] is true
+  + [proof_ledgers_present] is true
+  + [negative_oracle_refinement_present] is true
+  + [generated_path_policy_present] is true
+  + [contract_tests_present] is true
+  + [generated_output_no_live_effect_proof_present] is true
+  + [dependency_live_control_deferral_decision_present] is true
+  + [fixture_source_count] is 24
+  + [expected_ledger_count] is 13
+  + [proof_ledger_count] is 5
+  + [negative_oracle_case_count] is 15
+  + [baseline_test_count] is 53
+  + [targeted_p8_test_count] is 5
+  + [targeted_ir8_test_count] is 8
+  + [targeted_ir7_test_count] is 7
+  + [test_failure_count] is 0
+  + [generated_output_left_after_tests] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [proof_runner_code_created] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8FixtureMaterialImplementationCompletionVerificationSatisfied] is accepted
+    @ [support] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+    @ [support] tests/test_p8_fixture_material_contracts.py
+    @ [support] docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+    @ [support] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+
+& [SupportDelta: P8FixtureMaterialImplementationCompletion] is the support delta produced by P8 fixture material implementation completion
+  + [new_support_record] is P8 now has accepted fixture source material, expected ledgers, proof ledger seeds, negative oracle coverage, generated path policy, contract tests, generated-output nonpromotion proof, no-dispatch proof, no-operations-control proof, no-live-effect proof, and dependency/live-control deferral evidence
+  + [new_support_record] is P5 LangGraph procedure runtime implementation activation may be reconsidered after whole-field rebake because runtime proof fixtures and expected ledgers now exist
+  + [new_support_record] is P6 surface projection implementation activation may be reconsidered after whole-field rebake because surface projection fixtures and expected ledgers now exist
+  + [new_support_record] is P7 coordination expansion and P9 operations-manager planning remain gated by future source-preserved dispatch, adapter, and live-control authority paths
+  + [new_support_record] is future AI collaboration platform manager work remains blocked until new source-preserved, SJS-processed, and reviewed adapter, dispatch, dependency, or live-control authority exists
+  + [support_status] is accepted
+
+& [RequirementDelta: P8FixtureMaterialImplementationCompletion] is the requirement delta produced by P8 fixture material implementation completion
+  + [requirement_delta] is no current P8 fixture material implementation activation slice remains open
+  + [requirement_delta] is future runtime, surface, coordination, operations-manager, adapter, dependency, dispatch, live-control, operations-control, machine-management, UI, transport, credential, network, process, GPU, model-runtime, or job-control implementation requires whole-field rebake before opening
+  + [requirement_delta] is any future dispatch or live-control work requires source preservation, SJS processing, explicit least-privilege boundaries, dry-run proof, rollback or abort proof, and completion review before implementation
+  + [requirement_delta] is any future model-routing recommendation must state Spark-suitable or deeper-reasoning status under the model budget routing SOP
+
+& [FaultReview: P8FixtureMaterialImplementationCompletion] is the fault review for P8 fixture material implementation completion
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_output_found] is false
+  + [fixture_coverage_gap_found] is false
+  + [expected_ledger_coverage_gap_found] is false
+  + [proof_ledger_coverage_gap_found] is false
+  + [negative_oracle_gap_found] is false
+  + [test_failure_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8FixtureMaterialImplementationAccepted] is accepted
+    @ [support] [P8FixtureMaterialImplementationCompletionVerification]
+    @ [support] [SupportDelta: P8FixtureMaterialImplementationCompletion]
+    @ [support] [RequirementDelta: P8FixtureMaterialImplementationCompletion]
+    @ [support] [FaultReview: P8FixtureMaterialImplementationCompletion]

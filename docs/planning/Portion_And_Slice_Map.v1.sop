@@ -48,9 +48,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p8_ia06_review] docs/reviews/P8_IA06_Completion_Review.v1.sop
 @ [p8_ia07_decision] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
 @ [p8_ia07_review] docs/reviews/P8_IA07_Completion_Review.v1.sop
+@ [p8_ia08_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+@ [p8_fixture_material_completion] docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+@ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+@ [p8_ia08_review] docs/reviews/P8_IA08_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P8-IA08_implementation_completion_review_proof_pack_and_downstream_readiness_rebake
+  + [map_state] is ready_for_P5_runtime_implementation_activation_source_preservation
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -541,24 +545,21 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P8-IA08-ImplementationCompletionReviewProofPackAndDownstreamReadinessRebake] is ready_for_execution
-  + [chunk_id] is P8
-  + [slice_id] is P8-IA08
-  + [chunk_name] is implementation completion review, proof pack, and downstream readiness rebake
-  + [authority_basis] is docs/reviews/P8_IA07_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 6895FF67893624685B6A4C1501ADB33ECCF9348BA7A071CE8B5AC91518A31F0E
-  + [readiness_surface] is docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
-  + [expected_output] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
-  + [expected_output] is docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
-  + [expected_output] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
-  + [completion_review_output] is docs/reviews/P8_IA08_Completion_Review.v1.sop
+& [CurrentReadyChunk: P5RuntimeImplementationActivationSourcePreservation] is ready_for_source_preserved_activation
+  + [chunk_id] is P5-runtime-implementation-activation
+  + [chunk_name] is P5 runtime implementation activation source preservation and final slice minting
+  + [authority_basis] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [authority_basis_sha256] is 62969AB6946AB46F77C8D7A411943A7FE394E80C626E1E0A62351A525BC3EE74
+  + [readiness_surface] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [expected_output] is source-preserved P5 implementation activation source, manifest, canonical specification, slice surface, and activation minting review
+  + [completion_review_output] is completed-work review for P5 implementation activation minting
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is final implementation acceptance affects future P5 runtime implementation, P6 surface projection implementation, P7 coordination expansion, and P9 operations-manager readiness
+  + [model_route_reason] is runtime implementation activation changes graph execution, checkpoint, interrupt, proof-runner, and authority boundaries
 
-  = must: create only proof pack, implementation completion review, downstream readiness surface, and P8-IA08 completion review outputs opened by P8-IA07
-  = must: include hashes, fixture source inventory, expected ledger inventory, proof ledger inventory, generated-output proof, no-dispatch proof, no-operations-control proof, no-live-effect proof, dependency decision, support deltas, requirement deltas, and no authority leaks
-  = must: avoid new implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
+  = must: preserve the dictated or derived P5 implementation activation source before producing canonical or slice surfaces
+  = must: route the preserved source through SJS before trusting activation slices as processed authority
+  = must: avoid direct runtime code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

@@ -1,0 +1,173 @@
+Subject: P8 Fixture Material Implementation Proof Pack V1
+Date: 2026-05-27
+Proof Pack UUID: 196a62ec-763e-4fa7-bb85-90511c4b37ab
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [ia01_review] docs/reviews/P8_IA01_Completion_Review.v1.sop
+@ [ia02_review] docs/reviews/P8_IA02_Completion_Review.v1.sop
+@ [ia03_review] docs/reviews/P8_IA03_Completion_Review.v1.sop
+@ [ia04_review] docs/reviews/P8_IA04_Completion_Review.v1.sop
+@ [ia05_review] docs/reviews/P8_IA05_Completion_Review.v1.sop
+@ [ia06_review] docs/reviews/P8_IA06_Completion_Review.v1.sop
+@ [ia07_review] docs/reviews/P8_IA07_Completion_Review.v1.sop
+@ [generated_path_contract] docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+@ [generated_output_no_live_effect_proof] docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+@ [dependency_live_control_decision] docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [contract_tests] tests/test_p8_fixture_material_contracts.py
+
+& [P8FixtureMaterialImplementationProofPackV1] is the proof pack for accepting the bounded P8 fixture material implementation activation sequence
+  + [proof_pack_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [implementation_scope] is exact file inventory, fixture source material, expected ledgers, proof ledger seeds, negative oracle coverage, generated path policy, proof runner behavior contract, contract tests, generated-output nonpromotion proof, no-dispatch proof, no-operations-control proof, no-live-effect proof, and dependency/adapter/dispatch/live-control deferral
+  + [implementation_limit] is no proof runner code, no external dependency, no package metadata mutation, no adapter, no transport, no UI, no assignment, no dispatch, no operations control, and no live machine control
+  + [current_compile_result] is python -m compileall -q src tests passed after P8-IA07
+  + [current_test_result] is python -m unittest discover -s tests passed 53 tests
+  + [current_targeted_p8_test_result] is python -m unittest tests.test_p8_fixture_material_contracts passed 5 tests
+  + [current_targeted_ir8_test_result] is python -m unittest tests.test_ir8_integrated_manager_contracts passed 8 tests
+  + [current_targeted_ir7_test_result] is python -m unittest tests.test_ir7_operations_dry_run_contracts passed 7 tests
+  + [current_diff_check_result] is git diff --check passed with CRLF warnings only
+  + [generated_output_left_after_tests] is false
+  + [platform_mailbox_created] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this proof pack as acceptance evidence for bounded P8 fixture material only
+  = must: preserve source documents, canonical specifications, completion reviews, accepted decision documents, tracked fixture sources, expected ledgers, and proof ledgers as authority-bearing evidence
+  = must: preserve generated outputs, fixture success, test success, graph checkpoints, packet candidates, dry-run results, carrier state, terminal output, chat messages, and adapter callbacks as non-authoritative until accepted by a later SOP review
+  = must: require a future source-preserved and SJS-processed authority path before proof runner code, adapters, transports, UI, dependency installation, dispatch, operations control, live-control, credential, network, process, GPU, model-runtime, or job-control implementation can be reconsidered
+
+& [AcceptedImplementationDigestLedger: P8FixtureMaterial] is the accepted digest ledger for P8 fixture material implementation activation outputs
+  + [accepted_output] is docs/implementation/P8_Fixture_Material_Implementation_Activation_Boundary.v1.sop
+  + [accepted_output_sha256] is 03F0ABD00D318C5C9F6B45E7BB48E5525709639FA5E135E9E9B86B736A81632D
+  + [accepted_output] is docs/reviews/P8_IA01_Completion_Review.v1.sop
+  + [accepted_output_sha256] is 4173FCEF7D9AF5AAB14F6FA8A127D1F2FFC50E90273673F89552E7286A80199F
+  + [accepted_output] is docs/reviews/P8_IA02_Completion_Review.v1.sop
+  + [accepted_output_sha256] is B5D709E9F667DC350DF74B69B3459AABDAD890FF9BE2C4EF83D3C4059171BDF8
+  + [accepted_output] is docs/reviews/P8_IA03_Completion_Review.v1.sop
+  + [accepted_output_sha256] is 3C51D8833A1F92136F48A88A487E89ED040AA0819698248D2A2B15AF24A32B37
+  + [accepted_output] is docs/fixtures/P8_Negative_Oracle_Source_Material_And_Fault_Route_Refinement.v1.sop
+  + [accepted_output_sha256] is BDC279D5EF51808EEAC0CF2D70A57B4554BC30A15D8B5A77FBEC03442BA36D66
+  + [accepted_output] is docs/reviews/P8_IA04_Completion_Review.v1.sop
+  + [accepted_output_sha256] is F5C73C3B12645BA878E3E8B7C01568702865AEC3D75038417FA57AAD887D61BF
+  + [accepted_output] is docs/implementation/P8_Generated_Path_Policy_And_Proof_Runner_Contract.v1.sop
+  + [accepted_output_sha256] is BDFAD24A8B0BDE9D74A1B7FC5B33748EB3C23F541C43108A41ED32A20BB45CBD
+  + [accepted_output] is docs/reviews/P8_IA05_Completion_Review.v1.sop
+  + [accepted_output_sha256] is C447BEA46306444962DEE065DFAC9F18B2A50066BFFC3CEF80066D53D5F419A9
+  + [accepted_output] is tests/test_p8_fixture_material_contracts.py
+  + [accepted_output_sha256] is B47A5A7E0A65B59B43CBE82D1C1C56BD2581DF79697C7FB6F020E38D857D47F5
+  + [accepted_output] is docs/reviews/P8_Fixture_Material_Generated_Output_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [accepted_output_sha256] is E7604550BB4A82BAA40C6D9B8DB41D9B3908C50BBE2020851A59BF6F1DED5CB4
+  + [accepted_output] is docs/reviews/P8_IA06_Completion_Review.v1.sop
+  + [accepted_output_sha256] is 8C5B011E2BF883D9F797AAF24B2202333901FA57881F217925A388830BF197A5
+  + [accepted_output] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_output_sha256] is 474263639406A6D1F01F084DF9B1C5F08CE6A8227FC8738C86F096AAD7BC9F44
+  + [accepted_output] is docs/reviews/P8_IA07_Completion_Review.v1.sop
+  + [accepted_output_sha256] is 6895FF67893624685B6A4C1501ADB33ECCF9348BA7A071CE8B5AC91518A31F0E
+
+& [AcceptedFixtureAndExpectedLedgerCoverage: P8FixtureMaterial] is the accepted fixture and expected ledger coverage ledger
+  + [fixture_source_root] is tests/fixtures/sop/p2_authority_kernel/
+  + [fixture_source_root] is tests/fixtures/sop/p3_operator_contracts/
+  + [fixture_source_root] is tests/fixtures/sop/p4_packetization/
+  + [fixture_source_root] is tests/fixtures/sop/p5_runtime_proof/
+  + [fixture_source_root] is tests/fixtures/sop/p6_surface_projection/
+  + [fixture_source_root] is tests/fixtures/sop/p8_proof_fixtures/
+  + [fixture_source_count] is 24
+  + [expected_ledger_root] is tests/fixtures/expected/p2_authority_kernel/
+  + [expected_ledger_root] is tests/fixtures/expected/p3_operator_contracts/
+  + [expected_ledger_root] is tests/fixtures/expected/p4_packetization/
+  + [expected_ledger_root] is tests/fixtures/expected/p5_runtime_proof/
+  + [expected_ledger_root] is tests/fixtures/expected/p6_surface_projection/
+  + [expected_ledger_root] is tests/fixtures/expected/p8_proof_fixtures/
+  + [expected_ledger_count] is 13
+  + [proof_ledger_root] is docs/proofs/p8_fixture_material/
+  + [proof_ledger_count] is 5
+  + [negative_oracle_case_count] is 15
+  + [contract_test_count] is 5
+  + [contract_test_failure_count] is 0
+
+& [NoDispatchOperationsLiveEffectAndNoAuthorityPromotionProof: P8FixtureMaterial] is the no-dispatch, no-operations-control, no-live-effect, and no-authority-promotion proof ledger
+  + [generated_output_authority_class] is generated_output_non_authority
+  + [fixture_success_source_authority_status] is false
+  + [fixture_success_assignment_authority_status] is false
+  + [fixture_success_dispatch_authority_status] is false
+  + [fixture_success_operations_authority_status] is false
+  + [fixture_success_live_control_authority_status] is false
+  + [expected_ledger_source_authority_status] is false
+  + [generated_output_discovery_excluded] is true
+  + [generated_output_left_after_tests] is false
+  + [source_fixture_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [proof_ledger_mutation_found] is false
+  + [platform_mailbox_mutation_found] is false
+  + [credential_access_found] is false
+  + [network_mutation_found] is false
+  + [destructive_filesystem_action_found] is false
+  + [assignment_found] is false
+  + [manager_dispatch_found] is false
+  + [agent_dispatch_found] is false
+  + [job_dispatch_found] is false
+  + [operations_control_found] is false
+  + [live_machine_control_found] is false
+
+& [DependencyDispatchOperationsAndLiveControlDeferralLedger: P8FixtureMaterial] is the accepted dependency, dispatch, operations, and live-control deferral ledger
+  + [dependency_live_control_decision] is docs/decisions/P8_Fixture_Material_Dependency_Adapter_Transport_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [dependency_live_control_decision_sha256] is 474263639406A6D1F01F084DF9B1C5F08CE6A8227FC8738C86F096AAD7BC9F44
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [proof_runner_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [future_adapter_authority_path_required] is true
+  + [future_dispatch_authority_path_required] is true
+  + [future_live_control_authority_path_required] is true
+
+& [P8FixtureMaterialImplementationProofPackFaultReview] is the fault review for the P8 fixture material implementation proof pack
+  + [missing_required_output_found] is false
+  + [fixture_coverage_gap_found] is false
+  + [expected_ledger_coverage_gap_found] is false
+  + [proof_ledger_coverage_gap_found] is false
+  + [negative_oracle_gap_found] is false
+  + [test_failure_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8FixtureMaterialImplementationProofPackAccepted] is accepted
+    @ [support] [AcceptedImplementationDigestLedger: P8FixtureMaterial]
+    @ [support] [AcceptedFixtureAndExpectedLedgerCoverage: P8FixtureMaterial]
+    @ [support] [NoDispatchOperationsLiveEffectAndNoAuthorityPromotionProof: P8FixtureMaterial]
+    @ [support] [DependencyDispatchOperationsAndLiveControlDeferralLedger: P8FixtureMaterial]
+    @ [support] [P8FixtureMaterialImplementationProofPackFaultReview]

@@ -1,0 +1,110 @@
+Subject: P8 IA08 Completion Review V1
+Date: 2026-05-27
+Review UUID: ec11194a-4edc-4ce4-bb68-175f6c743ae8
+
+@ [activation_slice_surface] docs/slices/P8_Fixture_Material_Implementation_Activation_Slices.v1.sop
+@ [p8_ia07_review] docs/reviews/P8_IA07_Completion_Review.v1.sop
+@ [proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+@ [implementation_completion_review] docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+@ [post_readiness_surface] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+
+& [CompletedWorkReview: P8-IA08] is the completed-work review for P8-IA08 implementation completion review, proof pack, and downstream readiness rebake
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P8-IA08
+  + [completed_output] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is 3C86A6357181133BB5265302B1128D9950942C060BB4224474F8A83B428BE0C4
+  + [completed_output] is docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+  + [completed_output_sha256] is B10995CC1F6A4D1A40FD9F3AC56B12B58AE6B2B053F8080F1FDDC5AA0F8892C2
+  + [completed_output] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [completed_output_sha256] is 62969AB6946AB46F77C8D7A411943A7FE394E80C626E1E0A62351A525BC3EE74
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8-IA08 and close P8 fixture material implementation activation
+  + [next_gate_result] is no P8 fixture material implementation activation slice remains open
+  + [next_ready_chunk] is P5 runtime implementation activation source preservation and final slice minting
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as final acceptance evidence for bounded P8 fixture material implementation activation only
+  = must: use docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop before opening P5 runtime implementation, P6 surface implementation, P7 coordination expansion, or P9 operations-manager planning
+  = must: keep dependency installation, package metadata mutation, proof runner code, adapter implementation, transport implementation, UI implementation, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control gated
+
+& [P8IA08Verification] is the verification result for P8-IA08
+  + [implementation_proof_pack_present] is true
+  + [implementation_completion_review_present] is true
+  + [post_readiness_surface_present] is true
+  + [P8_fixture_material_sequence_closed] is true
+  + [P8_fixture_source_count] is 24
+  + [P8_expected_ledger_count] is 13
+  + [P8_proof_ledger_count] is 5
+  + [P8_negative_oracle_case_count] is 15
+  + [P8_targeted_test_count] is 5
+  + [baseline_test_count] is 53
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [proof_runner_code_created] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8IA08VerificationSatisfied] is accepted
+    @ [support] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+    @ [support] docs/reviews/P8_Fixture_Material_Implementation_Completion_Review.v1.sop
+    @ [support] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+
+& [SupportDelta: P8-IA08] is the support delta produced by P8-IA08
+  + [new_support_record] is P8 fixture material implementation activation is closed with proof pack, completion review, and downstream readiness surface
+  + [new_support_record] is P5 runtime implementation activation source preservation and final slice minting may be considered as the next deeper-reasoning chunk
+  + [new_support_record] is P6 surface implementation activation may be considered after P5 runtime boundary or a surface-first rebake
+  + [new_support_record] is P7 coordination expansion and P9 operations-manager planning remain gated by source-preserved adapter, dispatch, operations, and live-control authority paths
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-IA08] is the requirement delta produced by P8-IA08
+  + [requirement_delta] is no P8 fixture material implementation activation slice remains open
+  + [requirement_delta] is next runtime or surface implementation work must begin with source preservation and SJS/canonical processing, not direct code work
+  + [requirement_delta] is future bounded runtime or surface implementation may become GPT-5.3-Codex-Spark-suitable only after its deeper-reasoning activation boundary, exact module inventory, dependency decision, fixture obligations, and proof gates are accepted
+  + [requirement_delta] is dispatch, operations control, and live machine control remain unauthorized
+
+& [FaultReview: P8-IA08] is the fault review for P8-IA08
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [missing_output_found] is false
+  + [test_failure_found] is false
+  + [generated_output_leak_after_tests_found] is false
+  + [platform_mailbox_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8IA08Accepted] is accepted
+    @ [support] [P8IA08Verification]
+    @ [support] [SupportDelta: P8-IA08]
+    @ [support] [RequirementDelta: P8-IA08]
+    @ [support] [FaultReview: P8-IA08]
+
+& [NextChunkGate: P5RuntimeImplementationActivation] is opened_for_planning_only
+  + [opened_chunk] is P5 runtime implementation activation source preservation and final slice minting
+  + [accepted_dependency] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [accepted_dependency_sha256] is 62969AB6946AB46F77C8D7A411943A7FE394E80C626E1E0A62351A525BC3EE74
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is runtime implementation activation changes graph execution, checkpoint, interrupt, proof-runner, and authority boundaries
+  + [safety_limit] is no direct code work, dependency installation, assignment, dispatch, operations control, or live machine control authorized
+
+  = must: preserve and process a P5 runtime implementation activation source before trusting downstream runtime implementation slices
