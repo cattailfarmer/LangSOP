@@ -1,0 +1,15 @@
+Subject: IR7 Fixture IR7X-012 Mailbox Carrier Not Dispatch Authority
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-012] is mailbox_carrier_not_dispatch_authority
+  + [operation_request_id] is ir7x-012
+  + [cited_authority] is mailbox_carrier_context
+  + [carrier_surface] is Codex thread state
+  + [intended_effect] is job_dispatch
+  + [expected_status] is blocked
+  + [expected_refusal] is refused_job_control
+  + [expected_refusal_reason] is mailbox_carrier_promoted_to_dispatch
+  + [expected_authority_status] is mailbox_carrier_context_not_authority

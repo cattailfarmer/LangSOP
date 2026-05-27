@@ -1,0 +1,15 @@
+Subject: IR7 Fixture IR7X-009 Stale Or Revoked Human Approval
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-009] is stale_or_revoked_human_approval
+  + [operation_request_id] is ir7x-009
+  + [human_approval_state] is stale_or_revoked
+  + [authority_notice_state] is present
+  + [boundary_pack_changed] is true
+  + [expected_status] is blocked
+  + [expected_refusal] is refused_human_override
+  + [expected_authority_status] is approval_record_not_live_control_authority
+  + [expected_live_effect_performed] is false

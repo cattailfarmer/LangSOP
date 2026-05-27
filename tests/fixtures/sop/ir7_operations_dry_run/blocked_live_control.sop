@@ -1,0 +1,16 @@
+Subject: IR7 Fixture IR7X-002 Blocked Live Control
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-002] is blocked_live_control
+  + [operation_request_id] is ir7x-002
+  + [intended_effect] is gpu_workload_launch
+  + [resource_target] is gpu
+  + [authority_notice_state] is present
+  + [safety_field_set] is complete
+  + [expected_status] is blocked
+  + [expected_refusal] is refused_gpu_control
+  + [expected_live_effect_performed] is false
+  + [expected_authority_status] is operation_request_not_command

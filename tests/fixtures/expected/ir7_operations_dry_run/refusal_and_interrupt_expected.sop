@@ -1,0 +1,12 @@
+Subject: IR7 Expected Ledger Refusal And Interrupt
+Date: 2026-05-27
+
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [ExpectedLedger: refusal_and_interrupt_expected] is the expected refusal ledger
+  + [covered_fixture] is IR7X-002
+  + [covered_fixture] is IR7X-007
+  + [required_refusal_output] is refused_gpu_control
+  + [required_refusal_output] is refused_destructive_filesystem_control
+  + [required_record_status] is refusal_as_record_not_command
+  + [live_effect_performed] is false

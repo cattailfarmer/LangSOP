@@ -1,0 +1,15 @@
+Subject: IR7 Fixture IR7X-011 Coordination Claim Dispatch Refusal
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-011] is coordination_claim_dispatch_refusal
+  + [operation_request_id] is ir7x-011
+  + [cited_authority] is coordination_claim
+  + [intended_effect] is job_dispatch
+  + [authority_notice_state] is present
+  + [expected_status] is blocked
+  + [expected_refusal] is refused_job_control
+  + [expected_refusal_reason] is coordination_claim_promoted_to_dispatch
+  + [expected_authority_status] is coordination_claim_not_dispatch_authority

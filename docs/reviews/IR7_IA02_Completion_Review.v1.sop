@@ -1,0 +1,122 @@
+Subject: IR7 IA02 Completion Review V1
+Date: 2026-05-27
+Review UUID: ff55903a-a0db-4aa0-9231-0aa8bc845522
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+@ [fixture_source_root] tests/fixtures/sop/ir7_operations_dry_run/
+@ [expected_ledger_root] tests/fixtures/expected/ir7_operations_dry_run/
+
+& [CompletedWorkReview: IR7-IA02] is the completed-work review for IR7-IA02 fixture source and expected-ledger seed material
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA02
+  + [completed_output] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [completed_fixture_source_count] is 13
+  + [completed_output] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [completed_expected_ledger_count] is 5
+  + [completed_output] is docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+  + [completed_output_sha256] is FDCAB825CE5160D18E895477C1F1F904F12375B0881FECE632D631A8D4338773
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-IA02 and open IR7-IA03
+  + [next_gate_result] is IR7-IA03 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for operation request, dry-run result, and refusal model implementation
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR7-IA03 only
+  = must: rerun this review if fixture source files, expected ledger files, fixture index, activation boundary, or activation slice surface changes
+  = must: keep implementation code, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7IA02Verification] is the verification result for IR7-IA02
+  + [fixture_source_root_present] is true
+  + [fixture_source_count] is 13
+  + [expected_ledger_root_present] is true
+  + [expected_ledger_count] is 5
+  + [fixture_index_updated] is true
+  + [dry_run_resource_request_fixture_present] is true
+  + [blocked_live_control_fixture_present] is true
+  + [gpu_contention_fixture_present] is true
+  + [model_runtime_unavailable_fixture_present] is true
+  + [credential_boundary_fixture_present] is true
+  + [network_exposure_refusal_fixture_present] is true
+  + [destructive_command_refusal_fixture_present] is true
+  + [missing_authority_notice_fixture_present] is true
+  + [stale_or_revoked_human_approval_fixture_present] is true
+  + [dry_run_success_not_live_approval_fixture_present] is true
+  + [coordination_claim_dispatch_refusal_fixture_present] is true
+  + [mailbox_carrier_not_dispatch_authority_fixture_present] is true
+  + [generated_projection_not_authority_fixture_present] is true
+  + [implementation_code_created] is false
+  + [generated_output_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7IA02VerificationSatisfied] is accepted
+    @ [support] tests/fixtures/sop/ir7_operations_dry_run/
+    @ [support] tests/fixtures/expected/ir7_operations_dry_run/
+    @ [support] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [SupportDelta: IR7-IA02] is the support delta produced by IR7-IA02
+  + [new_support_record] is IR7 now has tracked fixture source files for all 13 operations dry-run fixture cases
+  + [new_support_record] is IR7 now has five expected ledger files covering operation request validation, dry-run non-authority, refusal, resource safety and approval, and authority nonpromotion
+  + [new_support_record] is IR7 fixture index now records accepted fixture material inventory
+  + [new_support_record] is IR7-IA03 may implement operation request, dry-run result, and refusal models against bounded fixture material
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-IA02] is the requirement delta produced by IR7-IA02
+  + [requirement_delta] is IR7-IA03 is GPT-5.3-Codex-Spark-suitable because model implementation is bounded by accepted contracts and fixture material
+  + [requirement_delta] is IR7-IA03 may create src/langsop/operations/__init__.py, requests.py, dry_run.py, and refusals.py only
+  + [requirement_delta] is no generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-IA02
+
+& [FaultReview: IR7-IA02] is the fault review for IR7-IA02
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_count_mismatch_found] is false
+  + [expected_ledger_count_mismatch_found] is false
+  + [implementation_code_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7IA02Accepted] is accepted
+    @ [support] [IR7IA02Verification]
+    @ [support] [SupportDelta: IR7-IA02]
+    @ [support] [RequirementDelta: IR7-IA02]
+    @ [support] [FaultReview: IR7-IA02]
+
+& [NextSliceGate: IR7-IA03] is opened
+  + [opened_slice] is IR7-IA03 operation request, dry-run result, and refusal model implementation
+  + [accepted_dependency] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [accepted_dependency_count] is 13
+  + [accepted_dependency] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [accepted_dependency_count] is 5
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is model implementation is bounded by accepted contracts and fixture material
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA03 next unless user redirects or a new fault invalidates this review

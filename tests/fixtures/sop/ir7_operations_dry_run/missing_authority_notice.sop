@@ -1,0 +1,15 @@
+Subject: IR7 Fixture IR7X-008 Missing Authority Notice
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-008] is missing_authority_notice
+  + [operation_request_id] is ir7x-008
+  + [intended_effect] is estimate_resource_use
+  + [resource_target] is gpu
+  + [authority_notice_state] is missing_or_stale
+  + [expected_status] is faulted
+  + [expected_refusal] is blocked_operation_request
+  + [expected_refusal_reason] is missing_required_safety_field
+  + [expected_authority_status] is carrier_context_not_authority_notice

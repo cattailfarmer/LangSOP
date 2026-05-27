@@ -1,0 +1,11 @@
+Subject: IR7 Expected Ledger Operation Request Identity And Safety
+Date: 2026-05-27
+
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [ExpectedLedger: operation_request_identity_and_safety_expected] is the expected request validation ledger
+  + [covered_fixture] is IR7X-001
+  + [covered_fixture] is IR7X-008
+  + [required_identity_result] is accepted_when_identity_authority_notice_and_safety_fields_are_complete
+  + [required_identity_result] is refused_when_authority_notice_is_missing_or_stale
+  + [live_effect_performed] is false

@@ -1,0 +1,15 @@
+Subject: IR7 Fixture IR7X-013 Generated Projection Not Authority
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-013] is generated_projection_not_authority
+  + [operation_request_id] is ir7x-013
+  + [cited_authority] is generated_projection
+  + [cited_authority] is fixture_success
+  + [intended_effect] is live_process_start
+  + [expected_status] is blocked
+  + [expected_refusal] is refused_live_control
+  + [expected_refusal_reason] is generated_projection_promoted_to_authority
+  + [expected_authority_status] is generated_projection_not_source_authority

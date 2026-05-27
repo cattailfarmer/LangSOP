@@ -1,0 +1,12 @@
+Subject: IR7 Expected Ledger Dry Run Result Non Authority
+Date: 2026-05-27
+
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [ExpectedLedger: dry_run_result_non_authority_expected] is the expected dry-run result ledger
+  + [covered_fixture] is IR7X-001
+  + [covered_fixture] is IR7X-004
+  + [required_result_field] is live_effect_performed false
+  + [required_result_field] is completion_review_required true
+  + [required_result_field] is non_authority_notice present
+  + [forbidden_result] is live_approval

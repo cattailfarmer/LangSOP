@@ -1,0 +1,17 @@
+Subject: IR7 Fixture IR7X-003 GPU Contention
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-003] is gpu_contention
+  + [operation_request_id] is ir7x-003
+  + [intended_effect] is estimate_resource_use
+  + [resource_target] is gpu
+  + [predicted_side_effect] is gpu_contention
+  + [blast_radius] is uncertain
+  + [authority_notice_state] is present_and_fresh
+  + [expected_status] is review_required
+  + [expected_required_human_approval] is true
+  + [expected_refusal] is no_gpu_workload_launch
+  + [expected_live_effect_performed] is false

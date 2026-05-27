@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is ready_for_IR7-IA02_fixture_material
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7-IA03_request_dry_run_refusal_models
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -216,16 +216,19 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/IR7_Implementation_Activation_Minting_Review.v1.sop
   + [support_record] is docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
   + [support_record] is docs/reviews/IR7_IA01_Completion_Review.v1.sop
-  + [support_gap] is IR7-IA02 fixture source and expected-ledger seed material not yet executed
+  + [support_record] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [support_record] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [support_record] is docs/reviews/IR7_IA02_Completion_Review.v1.sop
+  + [support_gap] is IR7-IA03 operation request, dry-run result, and refusal model implementation not yet executed
   + [support_gap] is IR7 dry-run operations simulator implementation not yet accepted
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7-IA02 fixture source and expected-ledger seed material, not implementation code, generated outputs, dependencies, tests, or live operations control
-  = must: route IR7-IA02 as GPT-5.3-Codex-Spark-suitable because fixture and expected-ledger material is bounded by accepted fixture plan and activation boundary
-  = should: keep implementation code gated until IR7-IA02 is accepted
+  = must: open only IR7-IA03 operation request, dry-run result, and refusal model implementation files, not resource safety implementation, action routes, generated outputs, dependencies, tests, or live operations control
+  = must: route IR7-IA03 as GPT-5.3-Codex-Spark-suitable because model implementation is bounded by accepted contracts and fixture material
+  = should: keep resource safety, generated output, dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted slices
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

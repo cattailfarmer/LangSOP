@@ -1,0 +1,15 @@
+Subject: IR7 Expected Ledger No Live Effect And Authority Nonpromotion
+Date: 2026-05-27
+
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [ExpectedLedger: no_live_effect_and_authority_nonpromotion_expected] is the expected nonpromotion ledger
+  + [covered_fixture] is IR7X-010
+  + [covered_fixture] is IR7X-011
+  + [covered_fixture] is IR7X-012
+  + [covered_fixture] is IR7X-013
+  + [forbidden_promotion] is dry_run_success_to_dispatch_permission
+  + [forbidden_promotion] is coordination_claim_to_dispatch_authority
+  + [forbidden_promotion] is mailbox_carrier_context_to_authority
+  + [forbidden_promotion] is generated_projection_to_source_authority
+  + [live_effect_performed] is false

@@ -1,0 +1,14 @@
+Subject: IR7 Expected Ledger Resource Safety And Human Approval
+Date: 2026-05-27
+
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [ExpectedLedger: resource_safety_and_human_approval_expected] is the expected resource safety and approval ledger
+  + [covered_fixture] is IR7X-003
+  + [covered_fixture] is IR7X-005
+  + [covered_fixture] is IR7X-006
+  + [covered_fixture] is IR7X-009
+  + [required_risk_result] is unknown_or_critical_requires_review
+  + [required_approval_result] is stale_or_revoked_approval_invalid
+  + [required_secret_result] is opaque_secret_ref_only
+  + [live_effect_performed] is false

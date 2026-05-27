@@ -1,0 +1,16 @@
+Subject: IR7 Fixture IR7X-004 Model Runtime Unavailable
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-004] is model_runtime_unavailable
+  + [operation_request_id] is ir7x-004
+  + [intended_effect] is simulate
+  + [resource_target] is model_runtime
+  + [simulated_dependency_state] is unavailable
+  + [authority_notice_state] is present_and_fresh
+  + [expected_status] is blocked_for_live_effect
+  + [expected_refusal] is refused_model_runtime_control
+  + [expected_authority_status] is availability_report_not_runtime_control
+  + [expected_live_effect_performed] is false

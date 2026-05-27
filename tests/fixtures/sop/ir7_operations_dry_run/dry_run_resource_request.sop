@@ -1,0 +1,16 @@
+Subject: IR7 Fixture IR7X-001 Dry Run Resource Request
+Date: 2026-05-27
+
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [FixtureSource: IR7X-001] is dry_run_resource_request
+  + [operation_request_id] is ir7x-001
+  + [intended_effect] is estimate_resource_use
+  + [resource_target] is gpu
+  + [authority_notice_state] is present_and_fresh
+  + [safety_field_set] is complete
+  + [dry_run_required] is true
+  + [expected_status] is accepted
+  + [expected_live_effect_performed] is false
+  + [expected_authority_status] is dry_run_result_not_live_approval

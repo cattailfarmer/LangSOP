@@ -150,3 +150,31 @@ Fixture Index UUID: 0beae578-89e1-43bc-9dc4-51bf84ee2eee
 
   = must: reject IR7-S04 if fixture_count is less than 13
   = must: reject IR7-S04 if any index entry lacks primary_contract, expected_status, required_notice, required_refusal_or_gate, or expected_ledger_family
+
+& [AcceptedFixtureMaterial: IR7-IA02] is the accepted fixture source and expected-ledger material inventory
+  + [fixture_source_root] is tests/fixtures/sop/ir7_operations_dry_run/
+  + [fixture_source_count] is 13
+  + [expected_ledger_root] is tests/fixtures/expected/ir7_operations_dry_run/
+  + [expected_ledger_count] is 5
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/dry_run_resource_request.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/blocked_live_control.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/gpu_contention.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/model_runtime_unavailable.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/credential_boundary.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/network_exposure_refusal.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/destructive_command_refusal.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/missing_authority_notice.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/stale_or_revoked_human_approval.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/dry_run_success_not_live_approval.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/coordination_claim_dispatch_refusal.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/mailbox_carrier_not_dispatch_authority.sop
+  + [fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/generated_projection_not_authority.sop
+  + [expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/operation_request_identity_and_safety_expected.sop
+  + [expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/dry_run_result_non_authority_expected.sop
+  + [expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/refusal_and_interrupt_expected.sop
+  + [expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/resource_safety_and_human_approval_expected.sop
+  + [expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/no_live_effect_and_authority_nonpromotion_expected.sop
+  + [material_status] is seeded_for_IR7-IA02_completion_review
+
+  = must: keep accepted fixture material tracked and deterministic
+  = must: reject generated projection output, generated reports, runtime state, process state, GPU state, credential state, network state, and live-control results as fixture authority
