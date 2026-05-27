@@ -213,9 +213,9 @@ State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
   + [accepted_completion_review] is docs/reviews/P8_IA08_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is 7668B895660BA611FF777F941191B66F03AEB4B56AE741BCAD05229EDDE5EE4E
   + [current_ready_slice] is none_for_P8_fixture_material_implementation_activation
-  + [current_ready_chunk] is P5 runtime implementation activation source preservation and final slice minting
+  + [current_ready_chunk] is P5-IA01 runtime implementation activation boundary and exact file inventory
   + [current_ready_chunk_model_route] is requires deeper reasoning
-  + [current_ready_chunk_model_route_reason] is runtime implementation activation changes graph execution, checkpoint, interrupt, proof-runner, and authority boundaries
+  + [current_ready_chunk_model_route_reason] is activation boundary, exact module inventory, checkpoint persistence, generated trace roots, proof runner effects, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
   + [gated_chunk] is P6 implementation and projection fixture materialization until P6 final slices and implementation activation are accepted
   + [gated_chunk] is fixture material creation until P8-IA01 accepts exact files and P8-IA02 opens material creation
   + [gated_chunk] is P7 dispatch-adjacent coordination expansion until dispatch authority is source-preserved and accepted

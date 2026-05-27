@@ -46,11 +46,15 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [p8_ia07_review] docs/reviews/P8_IA07_Completion_Review.v1.sop
 @ [p8_ia08_review] docs/reviews/P8_IA08_Completion_Review.v1.sop
 @ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+@ [p5_runtime_activation_manifest] docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+@ [p5_runtime_activation_canonical] docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+@ [p5_runtime_activation_slices] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [p5_runtime_activation_minting_review] docs/reviews/P5_Runtime_Implementation_Activation_Minting_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_completed_with_P8_fixture_material_implementation_accepted_ready_for_runtime_activation_source_preservation
+  + [surface_status] is P5_runtime_implementation_activation_minted_ready_P5-IA01
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -141,9 +145,19 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_downstream_slice_review_sha256] is 7668B895660BA611FF777F941191B66F03AEB4B56AE741BCAD05229EDDE5EE4E
   + [accepted_downstream_readiness_surface] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
   + [accepted_downstream_readiness_surface_sha256] is 62969AB6946AB46F77C8D7A411943A7FE394E80C626E1E0A62351A525BC3EE74
-  + [current_ready_chunk] is P5 runtime implementation activation source preservation and final slice minting
-  + [current_ready_chunk_model_route] is requires deeper reasoning
-  + [current_ready_chunk_model_route_reason] is runtime implementation activation changes graph execution, checkpoint, interrupt, proof-runner, and authority boundaries
+  + [accepted_runtime_activation_manifest] is docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+  + [accepted_runtime_activation_manifest_sha256] is CCCBEB651D06805B95184A5F4AE50D8DF070F40823A2A33C61901B1C01EF868B
+  + [accepted_runtime_activation_canonical] is docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+  + [accepted_runtime_activation_canonical_sha256] is 9AE410E4FCA791AD61956B213669C5BC8ABFF80431CD4D71412E175B18E59B8C
+  + [accepted_runtime_activation_slices] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+  + [accepted_runtime_activation_slices_sha256] is 6CFC6865D64D54B5F4937743546025D5A2AE58B91EABDAAA7641D8917FF84D08
+  + [accepted_runtime_activation_minting_review] is docs/reviews/P5_Runtime_Implementation_Activation_Minting_Review.v1.sop
+  + [accepted_runtime_activation_minting_review_sha256] is FE83288311704AE061BB809C9F23EC28277B83026B9C077CCE7E73E4AA50EA5D
+  + [current_ready_slice] is P5-IA01
+  + [current_ready_slice_name] is runtime implementation activation boundary and exact file inventory
+  + [current_ready_slice_expected_output] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is activation boundary, exact module inventory, checkpoint persistence, generated trace roots, proof runner effects, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
   + [gated_chunk] is P5 runtime implementation activation until source-preserved activation authority is accepted
   + [gated_chunk] is P8 fixture material creation until P8-IA01 and downstream fixture-material slices accept exact files
   + [dependency_installation_authorized] is false
@@ -165,6 +179,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: preserve and process a P5 runtime implementation activation source before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
+  = must: execute P5-IA01 before surface projection implementation, runtime implementation, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, or post-P8 fixture material readiness changes
+  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P5 runtime activation manifest, P5 runtime activation canonical, P5 runtime activation slices, or P5 runtime activation minting review changes

@@ -1,0 +1,45 @@
+Subject: Derived P5 Runtime Implementation Activation Source
+Date: 2026-05-27
+Source UUID: 00665ce9-b65a-4d13-b43d-6ce58b65ee79
+
+@ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [DerivedP5RuntimeImplementationActivationSource] is the preserved source for P5 runtime implementation activation
+  + [source_kind] is derived_activation_source
+  + [source_purpose] is open bounded P5 runtime implementation activation planning after P8 fixture material implementation acceptance
+  + [activation_scope] is source preservation, canonical activation specification, final activation slices, exact module inventory, fixture and expected ledger usage, generated trace path policy, dependency deferral, no-dispatch proof, no-operations-control proof, no-live-effect proof, proof pack, and downstream readiness rebake
+  + [implementation_code_authorized_by_source] is false
+  + [dependency_installation_authorized_by_source] is false
+  + [package_metadata_mutation_authorized_by_source] is false
+  + [adapter_implementation_authorized_by_source] is false
+  + [graph_runtime_execution_authorized_by_source] is false
+  + [assignment_authorized_by_source] is false
+  + [dispatch_authorized_by_source] is false
+  + [operations_control_authorized_by_source] is false
+  + [live_machine_control_authorized_by_source] is false
+
+  = must: preserve this source as provenance and never overwrite it with canonical, exploded, pruned, or sliced outputs
+  = must: process this source into a separate canonical activation specification before trusting activation slices as processed authority
+  = must: keep P5 runtime activation as planning and slice authority until an accepted activation boundary opens bounded implementation work
+  = must: keep graph checkpoints, graph transitions, generated traces, interrupt handoffs, fixture success, tests, and proof results non-authoritative
+
+& [P5RuntimeImplementationActivationNeed] is the need statement for the activation
+  + [need] is convert accepted P5 runtime contracts and accepted P8 fixture material into a bounded implementation activation surface
+  + [need] is define exact code, test, fixture, generated-output, proof, dependency, adapter, dispatch, operations, and live-control boundaries before runtime code changes
+  + [need] is preserve external LangGraph dependency deferral unless a later accepted dependency decision changes it
+  + [need] is make later bounded implementation Spark-suitable only after deeper-reasoning activation boundaries are accepted
+
+& [P5RuntimeImplementationActivationInitialSliceShape] is the requested activation slice shape
+  + [slice_candidate] is P5-IA01 runtime implementation activation boundary and exact file inventory
+  + [slice_candidate] is P5-IA02 graph state checkpoint transition and interrupt model refresh
+  + [slice_candidate] is P5-IA03 generated trace path policy and fixture runner contract
+  + [slice_candidate] is P5-IA04 runtime validation tests and generated trace nonpromotion proof
+  + [slice_candidate] is P5-IA05 dependency adapter dispatch operations and live-control deferral decision
+  + [slice_candidate] is P5-IA06 implementation completion review proof pack and downstream readiness rebake
+
+  = must: run completed-work review after each activation slice
+  = must: keep implementation code gated until P5-IA01 accepts exact file inventory and downstream slice gates open it
+  = must: keep dependency installation, package metadata mutation, adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated throughout this activation unless future source-preserved authority changes the boundary

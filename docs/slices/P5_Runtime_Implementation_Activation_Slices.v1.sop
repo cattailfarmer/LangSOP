@@ -1,0 +1,121 @@
+Subject: P5 Runtime Implementation Activation Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 30853e77-9c09-469a-80f7-9acdc2d68364
+
+@ [canonical_specification] docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+@ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+
+& [P5RuntimeImplementationActivationSliceSurfaceV1] is the executable slice surface for P5 runtime implementation activation
+  + [chunk_ref] is P5 runtime implementation activation
+  + [chunk_boundary] is exact runtime file inventory, graph state model, checkpoint nonauthority model, deterministic transition model, interrupt handoff model, generated trace path policy, fixture runner contract, validation tests, generated trace nonpromotion proof, dependency deferral, adapter deferral, dispatch deferral, operations-control deferral, live-control deferral, proof pack, and downstream readiness rebake
+  + [accepted_boundary_input] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 62969AB6946AB46F77C8D7A411943A7FE394E80C626E1E0A62351A525BC3EE74
+  + [accepted_boundary_input] is docs/reviews/P5_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [accepted_boundary_input] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3C86A6357181133BB5265302B1128D9950942C060BB4224474F8A83B428BE0C4
+  + [unresolved_external_dependency_set] is empty_for_activation_minting
+  + [current_ready_slice] is P5-IA01
+  + [gated_slice_set] is P5-IA02, P5-IA03, P5-IA04, P5-IA05, and P5-IA06
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: execute P5-IA01 before creating runtime implementation files, generated traces, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+  = must: run completed-work review after each P5 implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes graph checkpoint state, graph transition traces, generated traces, fixture success, packet candidates, dry-run success, displayed human approvals, or manager packets to source authority, dispatch authority, operations authority, or live-control authority
+
+& [FinalWorkSlice: P5-IA01-RuntimeImplementationActivationBoundaryAndExactFileInventory] is ready
+  + [slice_id] is P5-IA01
+  + [slice_name] is runtime implementation activation boundary and exact file inventory
+  + [chunk_ref] is P5 runtime implementation activation
+  + [authority_basis] is docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+  + [activation_gate] is P8 fixture material implementation accepted
+  + [expected_output_set] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is activation boundary confirms exact runtime module inventory, fixture source paths, expected ledger paths, proof ledger paths, generated trace roots, dependency boundary, adapter boundary, dispatch boundary, operations boundary, live-control deferral boundary, command plan, and proof gates without creating runtime code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, exact module inventory, checkpoint persistence, generated trace roots, proof runner effects, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [forbidden_scope] is runtime code creation, generated trace creation, proof runner code creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P5-IA02-GraphStateCheckpointTransitionAndInterruptModelRefresh] is gated
+  + [slice_id] is P5-IA02
+  + [slice_name] is graph state checkpoint transition and interrupt model refresh
+  + [activation_gate] is P5-IA01 accepted
+  + [expected_output_set] is bounded runtime model files or model contract refresh files at paths accepted by P5-IA01
+  + [verification_oracle] is refreshed runtime models preserve graph checkpoint nonauthority, deterministic transitions, SOP interrupts, no-dispatch notices, no-operations-control notices, and no-live-effect notices without dependency installation, adapter work, dispatch, operations control, or live control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is checkpoint, transition, and interrupt implementation shape affects authority, replay, resume, and rebake semantics
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P5-IA03-GeneratedTracePathPolicyAndFixtureRunnerContract] is gated
+  + [slice_id] is P5-IA03
+  + [slice_name] is generated trace path policy and fixture runner contract
+  + [activation_gate] is P5-IA02 accepted
+  + [expected_output_set] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [verification_oracle] is fixture runner contract reads only accepted P5 fixture source and expected ledger paths, writes only ignored generated trace outputs under accepted roots, refuses path escapes, source paths, platform mailbox paths, credential paths, network paths, destructive filesystem targets, assignment records, dispatch records, operations targets, and live-control targets
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is generated trace roots, fixture runner effects, path refusal, checkpoint source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, process control, GPU control, model runtime mutation, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P5-IA04-RuntimeValidationTestsAndGeneratedTraceNonpromotionProof] is gated
+  + [slice_id] is P5-IA04
+  + [slice_name] is runtime validation tests and generated trace nonpromotion proof
+  + [activation_gate] is P5-IA03 accepted
+  + [expected_output_set] is tests for P5 runtime implementation contracts at paths accepted by P5-IA01
+  + [expected_output_set] is docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [verification_oracle] is tests cover graph state, checkpoint nonauthority, deterministic transitions, SOP interrupts, rebake routes, generated trace disposability, no-authority promotion, no-dispatch behavior, no-operations-control behavior, and no-live-effect behavior
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after P5-IA03 acceptance
+  + [model_route_reason] is validation tests and proof records are bounded by accepted runtime models, fixture material, generated trace path policy, and fixture runner contract
+  + [forbidden_scope] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution beyond validation commands, process control, GPU control, model runtime mutation, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P5-IA05-DependencyAdapterDispatchOperationsAndLiveControlDeferralDecision] is gated
+  + [slice_id] is P5-IA05
+  + [slice_name] is dependency, adapter, dispatch, operations, and live-control deferral decision
+  + [activation_gate] is P5-IA04 accepted
+  + [expected_output_set] is docs/decisions/P5_Runtime_Dependency_Adapter_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [verification_oracle] is decision either defers all dependency, adapter, transport, UI, dispatch, operations-control, and live-control work or explicitly authorizes narrowly scoped future work without command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, graph runtime, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
+  + [forbidden_scope] is unreviewed dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P5-IA06-ImplementationCompletionReviewProofPackAndDownstreamReadinessRebake] is gated
+  + [slice_id] is P5-IA06
+  + [slice_name] is implementation completion review, proof pack, and downstream readiness rebake
+  + [activation_gate] is P5-IA05 accepted
+  + [expected_output_set] is docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+  + [verification_oracle] is proof pack accepts only bounded implementation outputs with hashes, fixture source inventories, expected ledger inventories, generated trace proof, no-dispatch proof, no-operations-control proof, no-live-effect proof, dependency decision, support deltas, requirement deltas, and no authority, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final runtime implementation acceptance affects future P6 surface implementation, P7 coordination expansion, and P9 operations-manager readiness
+  + [forbidden_scope] is new implementation work, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [P5RuntimeImplementationActivationClosureReview] is the dependency audit for minted P5 runtime implementation activation slices
+  + [post_p8_fixture_material_readiness_status] is accepted
+  + [p5_completion_review_status] is accepted
+  + [current_ready_slice_set] is P5-IA01
+  + [unresolved_external_dependency_set] is empty_for_activation_minting
+  + [forbidden_external_dependency_found] is false
+  + [runtime_code_creation_authorized] is false
+  + [generated_trace_creation_authorized] is false
+  + [proof_runner_code_creation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P5-IA02 through P5-IA06 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

@@ -1,0 +1,23 @@
+Subject: P5 Runtime Implementation Activation Source Document Manifest
+Date: 2026-05-27
+Manifest UUID: ce518e72-09de-461d-a76e-63e5d2bcbff8
+
+@ [source_document] docs/source/2026-05-27_p5_runtime_implementation_activation/Derived_P5_Runtime_Implementation_Activation_Source.sop
+@ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [post_p5_readiness] docs/planning/Post_P5_Readiness_Surface.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [P5RuntimeImplementationActivationSourceDocumentManifest] is the preserved source manifest for P5 runtime implementation activation
+  + [manifest_uuid] is ce518e72-09de-461d-a76e-63e5d2bcbff8
+  + [source_document] is docs/source/2026-05-27_p5_runtime_implementation_activation/Derived_P5_Runtime_Implementation_Activation_Source.sop
+  + [source_document_sha256] is 56733605F41E110EF2AE572284E729ABCD83B2CD4BF546235A0581A9FD5A8B60
+  + [source_document_role] is preserved_activation_source
+  + [source_preservation_status] is preserved
+  + [canonical_output_expected] is docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+  + [slice_output_expected] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+  + [minting_review_expected] is docs/reviews/P5_Runtime_Implementation_Activation_Minting_Review.v1.sop
+
+  = must: treat the source document as provenance
+  = must: never overwrite the source document with canonical, exploded, pruned, or sliced outputs
+  = must: require SJS satisfaction signature before trusting the canonical activation as processed authority

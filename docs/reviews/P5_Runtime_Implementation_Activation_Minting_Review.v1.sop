@@ -1,0 +1,100 @@
+Subject: P5 Runtime Implementation Activation Minting Review V1
+Date: 2026-05-27
+Review UUID: db94cae6-fe45-449d-b8ec-a921562c8d7e
+
+@ [source_manifest] docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+
+& [CompletedWorkReview: P5RuntimeImplementationActivationMinting] is the completed-work review for P5 runtime implementation activation source processing and slice minting
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_p5_runtime_implementation_activation/Derived_P5_Runtime_Implementation_Activation_Source.sop
+  + [completed_output_sha256] is 56733605F41E110EF2AE572284E729ABCD83B2CD4BF546235A0581A9FD5A8B60
+  + [completed_output] is docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+  + [completed_output_sha256] is CCCBEB651D06805B95184A5F4AE50D8DF070F40823A2A33C61901B1C01EF868B
+  + [completed_output] is docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+  + [completed_output_sha256] is 9AE410E4FCA791AD61956B213669C5BC8ABFF80431CD4D71412E175B18E59B8C
+  + [completed_output] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+  + [completed_output_sha256] is 6CFC6865D64D54B5F4937743546025D5A2AE58B91EABDAAA7641D8917FF84D08
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P5 runtime implementation activation minting and open P5-IA01
+  + [next_gate_result] is P5-IA01 may open
+  + [next_model_route] is requires deeper reasoning
+
+  = must: treat this review as gate-opening evidence for P5-IA01 only
+  = must: rerun this review if source document, manifest, canonical specification, slice surface, post-P8 fixture material readiness, P5 completion review, or P8 fixture material proof pack changes
+  = must: keep runtime code, generated traces, proof runner code, dependency installation, package metadata mutation, adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
+
+& [P5RuntimeImplementationActivationMintingVerification] is the verification result for the P5 runtime activation minting
+  + [source_document_preserved] is true
+  + [source_manifest_present] is true
+  + [canonical_specification_present] is true
+  + [satisfaction_signature_present] is true
+  + [satisfaction_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_present] is true
+  + [slice_count] is 6
+  + [current_ready_slice] is P5-IA01
+  + [runtime_code_created] is false
+  + [generated_trace_created] is false
+  + [proof_runner_code_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P5RuntimeImplementationActivationMintingVerificationSatisfied] is accepted
+    @ [support] docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+    @ [support] docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+    @ [support] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+
+& [SupportDelta: P5RuntimeImplementationActivationMinting] is the support delta produced by P5 runtime implementation activation minting
+  + [new_support_record] is P5 runtime implementation activation has source-preserved provenance, canonical activation authority, six activation slices, and a ready first slice P5-IA01
+  + [new_support_record] is P5-IA01 requires deeper reasoning because exact runtime module inventory, checkpoint persistence, generated trace paths, proof runner effects, dependency posture, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [support_status] is accepted
+
+& [RequirementDelta: P5RuntimeImplementationActivationMinting] is the requirement delta produced by P5 runtime implementation activation minting
+  + [requirement_delta] is P5-IA01 may define runtime implementation activation boundary and exact file inventory only
+  + [requirement_delta] is no runtime code, generated trace, proof runner code, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, assignment, dispatch, operations control, or live machine control is authorized by minting
+  + [requirement_delta] is future Spark-suitable P5 work starts only after deeper-reasoning upstream activation gates are accepted
+
+& [FaultReview: P5RuntimeImplementationActivationMinting] is the fault review for P5 runtime activation minting
+  + [source_overwrite_found] is false
+  + [missing_satisfaction_signature_found] is false
+  + [runtime_code_leak_found] is false
+  + [generated_trace_leak_found] is false
+  + [proof_runner_code_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P5RuntimeImplementationActivationMintingAccepted] is accepted
+    @ [support] [P5RuntimeImplementationActivationMintingVerification]
+    @ [support] [SupportDelta: P5RuntimeImplementationActivationMinting]
+    @ [support] [RequirementDelta: P5RuntimeImplementationActivationMinting]
+    @ [support] [FaultReview: P5RuntimeImplementationActivationMinting]
+
+& [NextSliceGate: P5-IA01] is opened
+  + [opened_slice] is P5-IA01 runtime implementation activation boundary and exact file inventory
+  + [accepted_dependency] is docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+  + [accepted_dependency_sha256] is 9AE410E4FCA791AD61956B213669C5BC8ABFF80431CD4D71412E175B18E59B8C
+  + [accepted_dependency] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+  + [accepted_dependency_sha256] is 6CFC6865D64D54B5F4937743546025D5A2AE58B91EABDAAA7641D8917FF84D08
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, exact module inventory, checkpoint persistence, generated trace roots, proof runner effects, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [safety_limit] is no runtime code, dependency installation, assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P5-IA01 next unless user redirects or a new fault invalidates this review

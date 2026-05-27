@@ -1,0 +1,68 @@
+Subject: LangSOP P5 Runtime Implementation Activation Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+@ [source_document] docs/source/2026-05-27_p5_runtime_implementation_activation/Derived_P5_Runtime_Implementation_Activation_Source.sop
+@ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+@ [p5_completion_review] docs/reviews/P5_Completion_Review.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [CanonicalRecord: P5RuntimeImplementationActivation] is the processed planning authority for P5 runtime implementation activation slices
+  + [canonical_uuid] is e756df54-7ade-4185-a856-42fd2916746a
+  + [source_manifest_uuid] is ce518e72-09de-461d-a76e-63e5d2bcbff8
+  + [authority_scope] is P5 runtime implementation activation slice order, activation boundary, exact file inventory, graph state and checkpoint model refresh, deterministic transition model, interrupt handoff model, generated trace path policy, fixture runner contract, validation tests, generated trace nonpromotion, no-dispatch proof, no-operations-control proof, no-live-effect proof, dependency deferral, adapter deferral, dispatch deferral, live-control deferral, proof pack, and downstream readiness rebake
+  + [implementation_scope] is activation slice minting only
+  + [depends_on] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [depends_on] is docs/reviews/P5_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+  = must: use docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop as the current P5 runtime implementation activation slice surface after minting review accepts
+  = must: execute P5-IA01 first
+  = must: run completion review after each P5 implementation activation slice before opening the next gated slice
+  = must: keep graph checkpoints, graph transitions, generated traces, interrupt handoffs, fixture success, tests, proof ledgers, source authority, assignment, dispatch, operations control, and live-control deferrals in distinct authority classes
+  = must: keep assignment, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to skip activation slices or directly create runtime code, proof runner code, dependencies, package metadata changes, adapters, transports, UI, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+
+& [CanonicalP5RuntimeImplementationActivationSliceSet] is the final P5 runtime implementation activation slice sequence
+  + [slice] is P5-IA01 runtime implementation activation boundary and exact file inventory
+  + [slice] is P5-IA02 graph state checkpoint transition and interrupt model refresh
+  + [slice] is P5-IA03 generated trace path policy and fixture runner contract
+  + [slice] is P5-IA04 runtime validation tests and generated trace nonpromotion proof
+  + [slice] is P5-IA05 dependency adapter dispatch operations and live-control deferral decision
+  + [slice] is P5-IA06 implementation completion review proof pack and downstream readiness rebake
+
+  = must: preserve this order unless completion review rebakes P5 runtime implementation activation
+
+& [CanonicalP5RuntimeImplementationActivationGate] is the activation rule for P5 runtime implementation work
+  + [current_ready_slice] is P5-IA01
+  + [gated_slice] is P5-IA02 until P5-IA01 accepted
+  + [gated_slice] is P5-IA03 until P5-IA02 accepted
+  + [gated_slice] is P5-IA04 until P5-IA03 accepted
+  + [gated_slice] is P5-IA05 until P5-IA04 accepted
+  + [gated_slice] is P5-IA06 until P5-IA05 accepted
+
+& [CanonicalP5RuntimeImplementationActivationModelRouting] is the model-routing record
+  + [P5-IA01] is requires deeper reasoning
+  + [P5-IA02] is requires deeper reasoning
+  + [P5-IA03] is requires deeper reasoning
+  + [P5-IA04] is GPT-5.3-Codex-Spark-suitable after P5-IA03 acceptance
+  + [P5-IA05] is requires deeper reasoning
+  + [P5-IA06] is requires deeper reasoning
+
+  = must: keep activation boundary, exact file inventory, checkpoint model, interrupt model, generated trace path policy, dependency decisions, adapter decisions, dispatch boundaries, operations boundaries, proof-pack closure, and live-control boundaries under deeper reasoning
+  = must: treat bounded validation tests, generated trace nonpromotion proof, no-dispatch proof, no-operations-control proof, and no-live-effect proof as Spark-suitable only after upstream activation gates are accepted
+
+& [SatisfactionSignature: P5RuntimeImplementationActivation] is the valid SJS satisfaction signature for the P5 runtime implementation activation canonical specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is f2f550ea-0baf-42d1-b872-372b69c0c9ba
+  + [signed_subject] is docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p5_runtime_implementation_activation/Source_Document_Manifest.sop
+  + [source_sha256] is 56733605F41E110EF2AE572284E729ABCD83B2CD4BF546235A0581A9FD5A8B60
+  + [source_sha256] is CCCBEB651D06805B95184A5F4AE50D8DF070F40823A2A33C61901B1C01EF868B
+  + [source_sha256] is 62969AB6946AB46F77C8D7A411943A7FE394E80C626E1E0A62351A525BC3EE74
+  + [source_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
+  + [source_sha256] is 3C86A6357181133BB5265302B1128D9950942C060BB4224474F8A83B428BE0C4
+  + [canonical_source_specification] is docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+  + [satisfaction_result] is accepted
+
+  = must: treat this canonical specification as processed to satisfaction only while source hashes remain unchanged
