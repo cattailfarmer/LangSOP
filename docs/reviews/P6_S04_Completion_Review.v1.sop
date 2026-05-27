@@ -1,0 +1,79 @@
+Subject: P6 S04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 7975fe5c-a0e0-4e39-b394-29305577dab5
+
+@ [completed_output] docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+@ [p6_s03_output] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+@ [p6_s03_review] docs/reviews/P6_S03_Completion_Review.v1.sop
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+
+& [CompletedWorkReview: P6-S04] is the completed-work review for P6-S04 inbound action classification and surface mutation boundary contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [reviewed_slice_ref] is P6-S04
+  + [completed_output] is docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+  + [completed_output_sha256] is EAC92BD2F68BD9E70A61EE92965023DBC41FF63262DF4451B44A0E4A4F1B4F43
+  + [support_delta_classification] is accepted
+  + [requirement_delta_classification] is accepted
+  + [stale_output_review] is no stale accepted input found
+  + [contradiction_review] is no contradiction found
+  + [coordination_claim_review] is coordination claim not required for this planning-only slice
+  + [fault_review] is no forbidden scope leak found
+  + [rebake_decision] is no rebake required before P6-S05
+  + [next_gate_decision] is open_next_slice
+  + [next_gate_result] is P6-S05 may open
+  + [model_route_for_next_work] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_condition] is Spark-suitable only while projection authority, surface mutation, nonpromotion, and no-live-effect semantics remain stable
+
+  = must: treat this review as gate-opening evidence for P6-S05 only
+  = must: rerun this review if P6-S04 output, P6-S03 output, P6-S03 review, P6 slice surface, conversation/adapter contracts, IR6 claim or conflict contracts, IR7 dry-run contract, or IR8 handoff contract changes
+  = must: keep projection fixture files, expected snapshots, generated projections, dependency installation, package metadata mutation, implementation code, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control gated
+
+& [P6S04Verification] is the verification result for P6-S04
+  + [inbound_action_classification_envelope_present] is true
+  + [inbound_action_kind_matrix_present] is true
+  + [surface_mutation_boundary_matrix_present] is true
+  + [authority_sensitive_route_matrix_present] is true
+  + [human_override_interrupt_and_rebake_boundary_present] is true
+  + [dispatch_operations_and_live_control_refusal_boundary_present] is true
+  + [inbound_action_stale_trigger_set_present] is true
+  + [P6-S05_opened] is true
+  + [P6-S06_opened] is false
+  + [P6-S07_opened] is false
+  + [projection_fixture_files_created] is false
+  + [expected_snapshots_created] is false
+  + [generated_projections_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [implementation_created] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6S04Accepted] is accepted
+    @ [support] docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+
+& [SupportDelta: P6-S04] is the support delta produced by P6-S04
+  + [new_support_record] is every inbound surface action now has a required classification envelope before it can become request, refusal, interrupt, handoff, or review evidence
+  + [new_support_record] is surfaces may emit request and refusal records but cannot directly mutate source specifications, accepted claims, completion reviews, assignments, dispatch records, operations records, or live-control records
+  + [new_support_record] is P6-S05 fixture planning is bounded enough to be Spark-suitable while semantics remain stable
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-S04] is the requirement delta produced by P6-S04
+  + [requirement_delta] is P6-S05 must plan positive and negative projection fixtures for low-authority context, proposal, work request, claim request, review request, interrupt, human override, dry-run, operation refusal, dispatch refusal, and live-control refusal cases
+  + [requirement_delta] is P6-S05 must preserve generated projection nonpromotion and no-live-effect checks without creating fixture source files, expected snapshots, or generated projections
+  + [requirement_delta] is P6-S05 is GPT-5.3-Codex-Spark-suitable only if no semantic change invalidates P6-S01 through P6-S04
+
+& [NextSliceGate: P6-S05] is opened
+  + [opened_slice] is P6-S05 projection fixture snapshot plan and generated projection nonpromotion boundary
+  + [authority_basis] is docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+  + [authority_basis_sha256] is EAC92BD2F68BD9E70A61EE92965023DBC41FF63262DF4451B44A0E4A4F1B4F43
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_condition] is Spark-suitable only while projection authority, surface mutation, nonpromotion, and no-live-effect semantics remain stable
+  + [completion_review_required] is true
+
+  = must: execute P6-S05 next unless user redirects, projection fixture semantics change, or P6-S01 through P6-S04 authority becomes stale

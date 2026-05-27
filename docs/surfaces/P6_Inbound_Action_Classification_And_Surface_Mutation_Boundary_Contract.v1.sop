@@ -1,0 +1,228 @@
+Subject: P6 Inbound Action Classification And Surface Mutation Boundary Contract V1
+Date: 2026-05-27
+Contract UUID: 0fc65f61-a3cd-43b0-ae13-5bd5dc06a745
+
+@ [p6_slice_surface] docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
+@ [p6_s03_output] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+@ [p6_s03_review] docs/reviews/P6_S03_Completion_Review.v1.sop
+@ [conversation_adapter_contracts] docs/surfaces/Conversation_Adapter_Projection_Contracts.v1.sop
+@ [ir6_claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [ir6_conflict_override_contract] docs/coordination/IR6_Conflict_Stale_And_Human_Override_Review_Contract.v1.sop
+@ [ir7_dry_run_contract] docs/operations/IR7_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+@ [ir8_handoff_contract] docs/manager/IR8_Coordination_Surface_And_Operations_Dry_Run_Handoff_Contract.v1.sop
+
+& [P6InboundActionClassificationAndSurfaceMutationBoundaryContractV1] is the P6-S04 inbound action classification and surface mutation boundary contract
+  + [slice_id] is P6-S04
+  + [slice_name] is inbound action classification and surface mutation boundary contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is inbound action classification decides which surface actions become proposals, interrupts, reviews, or rejected authority mutations
+  + [contract_result] is inbound_action_classification_and_surface_mutation_boundary_defined_without_adapter_or_UI_implementation
+  + [next_gate_result] is P6-S05 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable only if projection authority, surface mutation, nonpromotion, and no-live-effect semantics remain stable
+  + [next_model_route_depth] is Spark-suitable under stable semantics
+  + [projection_fixture_file_creation_authorized] is false
+  + [expected_snapshot_creation_authorized] is false
+  + [generated_projection_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define inbound action classification and mutation boundaries only
+  = must: convert carrier input into reviewable request, refusal, interrupt, or handoff records before any authority-sensitive route is considered
+  = must: block direct source mutation, direct claim activation, direct completion acceptance, direct assignment, direct dispatch, direct operations control, and direct live machine control from every surface
+
+& [P6InboundActionClassificationEnvelope] is the required envelope for every inbound surface action
+  + [required_field] is inbound_action_id
+  + [required_field] is inbound_action_uuid
+  + [required_field] is carrier_surface
+  + [required_field] is surface_family
+  + [required_field] is actor_ref
+  + [required_field] is conversation_ref
+  + [required_field] is source_message_or_event_ref
+  + [required_field] is projected_subject_ref
+  + [required_field] is requested_action_kind
+  + [required_field] is requested_effect_class
+  + [required_field] is claimed_authority_basis_ref_set
+  + [required_field] is authority_notice_seen
+  + [required_field] is freshness_state_seen
+  + [required_field] is projection_ref
+  + [required_field] is mutation_boundary_ref
+  + [required_field] is classification_result
+  + [required_field] is required_route_set
+  + [required_field] is forbidden_effect_set
+  + [required_field] is evidence_ref_set
+  + [classification_result] is low_authority_context
+  + [classification_result] is proposal_record_required
+  + [classification_result] is work_request_record_required
+  + [classification_result] is coordination_review_required
+  + [classification_result] is completion_review_required
+  + [classification_result] is SOP_first_interrupt_required
+  + [classification_result] is human_override_review_required
+  + [classification_result] is dry_run_or_safety_review_required
+  + [classification_result] is refused
+
+  = must: reject inbound actions that omit carrier, actor, conversation, authority notice, freshness, requested effect, or evidence context
+  = must: preserve carrier context as evidence and routing context only
+  = must: force SOP_first_interrupt_required when classification is ambiguous, authority-sensitive, stale, contradicted, or unsupported
+
+& [P6InboundActionKindMatrix] is the action-kind matrix for P6 surfaces
+  + [low_authority_action] is observation
+  + [low_authority_action] is comment
+  + [low_authority_action] is clarification
+  + [low_authority_action] is proposal
+  + [authority_sensitive_action] is work_request
+  + [authority_sensitive_action] is claim_request
+  + [authority_sensitive_action] is review_request
+  + [authority_sensitive_action] is rebake_request
+  + [authority_sensitive_action] is interrupt_resolution_request
+  + [authority_sensitive_action] is human_override_request
+  + [operation_like_action] is dry_run_request
+  + [operation_like_action] is operation_request
+  + [forbidden_action] is direct_source_write
+  + [forbidden_action] is direct_canonical_write
+  + [forbidden_action] is direct_claim_activation
+  + [forbidden_action] is direct_completion_acceptance
+  + [forbidden_action] is direct_assignment
+  + [forbidden_action] is direct_dispatch
+  + [forbidden_action] is direct_command_execution
+  + [forbidden_action] is direct_operations_control
+  + [forbidden_action] is direct_live_machine_control
+  + [unsupported_action] is unknown_or_ambiguous
+  + [unsupported_action] is carrier_cannot_preserve_required_context
+
+  = must: let low_authority_action become carrier context or proposal only
+  = must: route authority_sensitive_action through accepted operator, coordination review, completion review, SOP-first interrupt, SJS reprocessing, or human override review
+  = must: route operation_like_action through dry-run and safety review semantics with no live effect
+  = must: refuse forbidden_action before mutation, execution, assignment, dispatch, operations control, or live-control effects
+
+& [P6SurfaceMutationBoundaryMatrix] is the mutation boundary matrix for classified inbound actions
+  + [allowed_output_record] is observation_context_record
+  + [allowed_output_record] is proposal_record
+  + [allowed_output_record] is work_request_record
+  + [allowed_output_record] is coordination_review_request
+  + [allowed_output_record] is completion_review_request
+  + [allowed_output_record] is rebake_request
+  + [allowed_output_record] is SOP_first_interrupt_context
+  + [allowed_output_record] is human_override_review_request
+  + [allowed_output_record] is dry_run_review_request
+  + [allowed_output_record] is refused_action_record
+  + [allowed_output_record] is blocked_projection
+  + [allowed_output_record] is stale_projection
+  + [blocked_mutation_target] is source_specification
+  + [blocked_mutation_target] is source_manifest
+  + [blocked_mutation_target] is canonical_specification
+  + [blocked_mutation_target] is accepted_completion_review
+  + [blocked_mutation_target] is accepted_claim_state
+  + [blocked_mutation_target] is accepted_work_packet
+  + [blocked_mutation_target] is proof_ledger
+  + [blocked_mutation_target] is graph_checkpoint_state
+  + [blocked_mutation_target] is assignment_record
+  + [blocked_mutation_target] is dispatch_record
+  + [blocked_mutation_target] is operations_control_record
+  + [blocked_mutation_target] is live_machine_control_record
+
+  = must: require a later accepted authority route before any allowed_output_record can affect authority-bearing state
+  = must: treat request records as evidence and workflow inputs, not as accepted authority or effects
+  = must: preserve every refused or blocked mutation attempt for review and fixture planning
+
+& [P6AuthoritySensitiveRouteMatrix] is the route matrix for authority-sensitive actions
+  + [route_for] is work_request
+  + [allowed_route] is work_packet_generation_or_manager_review
+  + [route_for] is claim_request
+  + [allowed_route] is coordination_claim_register_or_conflict_review
+  + [route_for] is review_request
+  + [allowed_route] is completion_review_delta_gate
+  + [route_for] is rebake_request
+  + [allowed_route] is source_preservation_plus_SJS_reprocessing_plus_completion_review
+  + [route_for] is interrupt_resolution_request
+  + [allowed_route] is SOP_first_interrupt_resolution_record
+  + [route_for] is human_override_request
+  + [allowed_route] is scoped_human_override_review
+  + [route_for] is dry_run_request
+  + [allowed_route] is dry_run_operation_request_contract_with_no_live_effect
+  + [route_for] is operation_request
+  + [allowed_route] is refusal_or_resource_safety_review_with_no_live_effect
+  + [blocked_route] is carrier_text_as_authority
+  + [blocked_route] is button_click_as_authority
+  + [blocked_route] is terminal_output_as_authority
+  + [blocked_route] is IRC_or_Matrix_event_as_authority
+  + [blocked_route] is Codex_thread_state_as_authority
+  + [blocked_route] is web_UI_state_as_authority
+  + [blocked_route] is Langflow_diagram_as_authority
+
+  = must: display allowed route and blocked route before presenting or accepting authority-sensitive actions
+  = must: prevent carrier state from satisfying source authority, proof authority, completion authority, claim authority, dispatch authority, operation authority, or live-control authority
+
+& [P6HumanOverrideInterruptAndRebakeBoundary] is the boundary for human overrides, interrupts, and rebakes initiated from surfaces
+  + [human_override_required_field] is requested_override_scope
+  + [human_override_required_field] is human_actor_ref
+  + [human_override_required_field] is authority_notice_ref
+  + [human_override_required_field] is freshness_state
+  + [human_override_required_field] is expiration_or_recheck_condition
+  + [human_override_required_field] is explicit_limit_set
+  + [human_override_required_field] is forbidden_effect_set
+  + [interrupt_required_field] is unresolved_question
+  + [interrupt_required_field] is candidate_resolution_set
+  + [interrupt_required_field] is authority_basis_ref_set
+  + [interrupt_required_field] is affected_slice_or_record_set
+  + [interrupt_required_field] is resume_condition_set
+  + [rebake_required_field] is stale_authority_ref_set
+  + [rebake_required_field] is affected_record_ref_set
+  + [rebake_required_field] is source_preservation_required
+  + [rebake_required_field] is SJS_reprocessing_required
+  + [rebake_required_field] is completion_review_required
+
+  = must: keep human override scoped, explicit, fresh, revocable, and bounded by forbidden effects
+  = must: keep interrupt and rebake requests visible until accepted review resolves, rejects, or rebakes them
+  = must: prevent human override, interrupt, or rebake display from authorizing assignment, dispatch, operations control, or live machine control
+
+& [P6DispatchOperationsAndLiveControlRefusalBoundary] is the refusal boundary for dispatch-like and operation-like surface actions
+  + [refusal_reason] is assignment_requested_without_authority
+  + [refusal_reason] is dispatch_requested_without_authority
+  + [refusal_reason] is command_execution_requested_without_authority
+  + [refusal_reason] is operations_control_requested_without_authority
+  + [refusal_reason] is live_machine_control_requested_without_authority
+  + [refusal_reason] is dry_run_success_promoted_to_live_control
+  + [refusal_reason] is human_approval_promoted_to_live_control
+  + [refusal_reason] is generated_projection_promoted_to_dispatch
+  + [refusal_reason] is carrier_event_promoted_to_dispatch
+  + [safe_next_route] is refused_action_record
+  + [safe_next_route] is dry_run_review_request
+  + [safe_next_route] is resource_safety_review_request
+  + [safe_next_route] is SOP_first_interrupt_context
+  + [safe_next_route] is future_source_preserved_authority_required
+
+  = must: refuse dispatch-like and live-control-like actions unless separate future source-preserved authority explicitly opens a bounded route
+  = must: preserve refusal evidence for P6-S05 fixture planning and downstream P9 safety review
+
+& [P6InboundActionStaleTriggerSet] is the stale trigger set exported by P6-S04
+  + [stale_trigger] is P6-S03 surface envelope changes
+  + [stale_trigger] is inbound action envelope changes
+  + [stale_trigger] is action-kind matrix changes
+  + [stale_trigger] is mutation boundary matrix changes
+  + [stale_trigger] is authority-sensitive route matrix changes
+  + [stale_trigger] is human override, interrupt, or rebake boundary changes
+  + [stale_trigger] is dispatch operations or live-control refusal boundary changes
+  + [stale_trigger] is a surface action mutates authority without classified route
+  + [stale_trigger] is dispatch-like or live-control-like action is not refused
+
+  = must: mark P6-S05 and downstream slices stale when any listed trigger fires after they begin
+  = must: route stale-trigger repair through completion review and rebake rather than silent projection edits
+
+& [P6S04DownstreamGate] is the gate opened by P6-S04
+  + [opened_slice] is P6-S05 projection fixture snapshot plan and generated projection nonpromotion boundary
+  + [activation_basis] is inbound action classification and surface mutation boundary contract accepted
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_condition] is Spark-suitable only while projection authority, surface mutation, nonpromotion, and no-live-effect semantics remain stable
+  + [completion_review_required] is true
+
+  = must: open P6-S05 only after P6-S04 completion review accepts this action classification boundary
+  = must: keep P6-S06 through P6-S07 gated until their predecessor reviews accept
