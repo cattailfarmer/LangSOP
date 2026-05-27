@@ -1,0 +1,58 @@
+Subject: IR7 Work State V1
+Date: 2026-05-26
+State UUID: ce3b54f4-35a2-4001-b7b9-a4579d4acca8
+
+@ [source_manifest] docs/source/2026-05-26_ir7_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/IR7_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/IR7_Final_Slice_Minting_Review.v1.sop
+@ [post_ir6_readiness] docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+@ [ir6_implementation_proof_pack] docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+@ [ir6_implementation_completion_review] docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+
+& [IR7WorkStateV1] is the current derived work state for IR7 operations dry-run request simulator planning
+  + [chunk_ref] is IR7 operations dry-run request simulator planning
+  + [state_basis] is docs/reviews/IR7_Final_Slice_Minting_Review.v1.sop
+  + [state_basis_sha256] is 62E9297B3F8976F29F699E4350B92F946C36EFE403122026625A7AE7D45083B8
+  + [surface_status] is IR7_final_slices_accepted_and_IR7-S01_open
+  + [source_document] is docs/source/2026-05-26_ir7_final_slices/Derived_IR7_Final_Slices_Source.sop
+  + [source_document_sha256] is 9482711BA29A4924479663F42DAE398AB93A05537F2751E6D9E3053200CB657E
+  + [source_manifest] is docs/source/2026-05-26_ir7_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is DFA004AB8C742C220070510EAC5DFD768809FF41F75860F15E2A9E394CD3256B
+  + [canonical_specification] is docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is 727CD73B6180D5794B8E2FAE5D8EA65CEBA837356E797CE6808065120F54E6DD
+  + [slice_surface] is docs/slices/IR7_Final_Slices.v1.sop
+  + [slice_surface_sha256] is A52969918D00039D4E4BD1CF3B8C599CF4A38D40492811F5FB08FBA831100112
+  + [slice_minting_review] is docs/reviews/IR7_Final_Slice_Minting_Review.v1.sop
+  + [slice_minting_review_sha256] is 62E9297B3F8976F29F699E4350B92F946C36EFE403122026625A7AE7D45083B8
+  + [accepted_boundary_input] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 32B7C88C80115C05A1606B9618B154A6D1365D94531F2D6EA46BACAB1F5D3B0C
+  + [accepted_boundary_input] is docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
+  + [accepted_boundary_input_sha256] is D062EA85C7ACF6B1E6384E5D7BEEB3AE5BEE0A3F40C4EBCBA739BD987F9774A1
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is F200CA49FD087B486D601AB95749CA98B63D7F9246869DB417B4BE2CB2AE4C0C
+  + [current_ready_slice] is IR7-S01
+  + [current_ready_slice_name] is operations boundary import and invariant reconciliation
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is operations and live-control boundary import decides every downstream dry-run and safety semantics
+  + [future_bounded_fixture_route] is GPT-5.3-Codex-Spark-suitable only after IR7-S01 through IR7-S03 are accepted
+  + [operations_simulator_implementation_authorized] is false
+  + [fixture_file_creation_authorized_by_current_slice] is false
+  + [expected_ledger_creation_authorized_by_current_slice] is false
+  + [dependency_installation_authorized_by_current_slice] is false
+  + [package_metadata_mutation_authorized_by_current_slice] is false
+  + [generated_output_creation_authorized_by_current_slice] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [IR7_state] is ready_for_IR7-S01_operations_boundary_import_and_invariant_reconciliation
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute IR7-S01 before dry-run contracts, resource safety contracts, fixture plans, implementation activation, dependency installation, generated outputs, operations simulator implementation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential mutation, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: keep operation request, dry-run result, refusal, and human approval records non-authoritative until completion reviews accept their contracts
+  = must: mark this state stale if IR7 source document, IR7 source manifest, canonical specification, slice surface, minting review, post-IR6 readiness surface, FSC5 operations safety pack, IR6 proof pack, or IR6 implementation completion review changes

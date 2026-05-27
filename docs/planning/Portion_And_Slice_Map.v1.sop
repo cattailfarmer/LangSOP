@@ -181,7 +181,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 
   = should: route fixture generation to GPT-5.3-Codex-Spark after schemas and operator contracts stabilize
 
-& [Portion: P9OperationsManagerSafety] is ready_for_IR7_final_slice_minting
+& [Portion: P9OperationsManagerSafety] is ready_for_IR7-S01_operations_boundary_import
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -192,14 +192,18 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_Post_IR6_Implementation_Readiness.canonical.sop
   + [support_record] is docs/planning/Post_IR6_Implementation_Readiness_Surface.v1.sop
   + [support_record] is docs/reviews/Post_IR6_Implementation_Readiness_Rebake_Review.v1.sop
-  + [support_gap] is IR7 final slices not yet minted
+  + [support_record] is docs/canonical/LangSOP_IR7_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/IR7_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/IR7_Final_Slice_Minting_Review.v1.sop
+  + [support_record] is docs/state/IR7_Work_State.v1.sop
+  + [support_gap] is IR7-S01 operations boundary import and invariant reconciliation not yet executed
   + [support_gap] is IR7 dry-run operations fixture implementation not yet accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
 
-  = must: open only IR7 final-slice minting, not implementation or live operations control
-  = must: require deeper reasoning for IR7 readiness and final-slice minting
+  = must: open only IR7-S01 operations boundary import, not implementation or live operations control
+  = must: require deeper reasoning for IR7-S01
   = should: route bounded fixture drafting to GPT-5.3-Codex-Spark only after IR7 safety and dry-run contracts are accepted
 
 & [InitialSliceQueue] is the first clean subdivision sequence
