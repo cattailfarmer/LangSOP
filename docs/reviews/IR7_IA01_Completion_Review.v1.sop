@@ -1,0 +1,107 @@
+Subject: IR7 IA01 Completion Review V1
+Date: 2026-05-27
+Review UUID: 1601af27-d42d-42c9-bda7-f6837b977e24
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [completed_output] docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+@ [activation_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR7_Operations_Dry_Run_Simulator_Implementation_Plan.v1.sop
+
+& [CompletedWorkReview: IR7-IA01] is the completed-work review for IR7-IA01 bounded operations dry-run implementation activation boundary and dependency decision
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is IR7-IA01
+  + [completed_output] is docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+  + [completed_output_sha256] is DB6E5687E4567DBE90A5B4A433DEDCB92F13258E02C4B8D9609C3582DB46598F
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR7-IA01 and open IR7-IA02
+  + [next_gate_result] is IR7-IA02 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for fixture source and expected-ledger seed material
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for IR7-IA02 only
+  = must: rerun this review if the activation boundary, IR7 implementation activation slice surface, IR7 activation pack, or IR7 implementation plan changes
+  = must: keep implementation code, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [IR7IA01Verification] is the verification result for IR7-IA01
+  + [confirmed_implementation_file_inventory_present] is true
+  + [confirmed_fixture_source_inventory_present] is true
+  + [confirmed_expected_ledger_inventory_present] is true
+  + [confirmed_generated_output_boundary_present] is true
+  + [confirmed_dependency_boundary_present] is true
+  + [confirmed_adapter_and_live_control_boundary_present] is true
+  + [confirmed_command_plan_present] is true
+  + [implementation_slice_proof_gate_present] is true
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_projection_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR7IA01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+
+& [SupportDelta: IR7-IA01] is the support delta produced by IR7-IA01
+  + [new_support_record] is IR7 implementation activation has confirmed file, fixture, expected-ledger, generated-output, dependency, adapter, live-control, command, and proof-gate boundaries
+  + [new_support_record] is IR7-IA02 may create only bounded fixture source and expected-ledger seed material inside accepted roots
+  + [new_support_record] is dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, generated output creation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, operations control, and live machine control remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: IR7-IA01] is the requirement delta produced by IR7-IA01
+  + [requirement_delta] is IR7-IA02 is GPT-5.3-Codex-Spark-suitable because fixture and expected-ledger scope is bounded by accepted activation boundary
+  + [requirement_delta] is IR7-IA02 may create tracked fixture source files and expected ledger files only inside accepted roots
+  + [requirement_delta] is no implementation code, generated output, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, tests, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control is authorized by IR7-IA01
+
+& [FaultReview: IR7-IA01] is the fault review for IR7-IA01
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [implementation_code_leak_found] is false
+  + [fixture_source_file_leak_found] is false
+  + [expected_ledger_file_leak_found] is false
+  + [generated_output_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [test_file_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR7IA01Accepted] is accepted
+    @ [support] [IR7IA01Verification]
+    @ [support] [SupportDelta: IR7-IA01]
+    @ [support] [RequirementDelta: IR7-IA01]
+    @ [support] [FaultReview: IR7-IA01]
+
+& [NextSliceGate: IR7-IA02] is opened
+  + [opened_slice] is IR7-IA02 fixture source and expected-ledger seed material
+  + [accepted_dependency] is docs/implementation/IR7_Bounded_Operations_Dry_Run_Implementation_Activation_Boundary.v1.sop
+  + [accepted_dependency_sha256] is DB6E5687E4567DBE90A5B4A433DEDCB92F13258E02C4B8D9609C3582DB46598F
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is fixture and expected-ledger material is bounded by accepted fixture plan and activation boundary
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR7-IA02 next unless user redirects or a new fault invalidates this review

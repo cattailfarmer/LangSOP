@@ -1,0 +1,191 @@
+Subject: IR7 Bounded Operations Dry Run Implementation Activation Boundary V1
+Date: 2026-05-27
+Activation Boundary UUID: 34777243-2b07-4ca7-85e4-a7a7562fff60
+
+@ [activation_slice_surface] docs/slices/IR7_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_IR7_Implementation_Activation.canonical.sop
+@ [IR7_activation_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Activation_Pack.v1.sop
+@ [implementation_plan] docs/implementation/IR7_Operations_Dry_Run_Simulator_Implementation_Plan.v1.sop
+@ [fixture_plan] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Plan.v1.sop
+@ [fixture_index] docs/fixtures/IR7_Operations_Dry_Run_Fixture_Index.v1.sop
+
+& [IR7BoundedOperationsDryRunImplementationActivationBoundaryV1] is the IR7-IA01 activation boundary for future bounded operations dry-run simulator implementation work
+  + [activation_boundary_id] is ir7-bounded-operations-dry-run-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is 34777243-2b07-4ca7-85e4-a7a7562fff60
+  + [slice_id] is IR7-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [implementation_scope] is activation boundary and dependency decision only
+
+  = must: confirm future file inventory, fixture inventory, expected-ledger inventory, generated-output boundary, dependency boundary, adapter boundary, live-control deferral boundary, command plan, and proof gate for implementation slices
+  = must: preserve accepted IR7 operation request, dry-run result, refusal, resource safety, human approval, fixture, generated-output, dispatch, credential, network, operation safety, and no-live-control semantics without implementation code creation in this slice
+  = must: keep package dependency changes, adapters, transports, UI, live-control APIs, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem actions, and dispatch gated until IR7-IA07 or a later dependency-authorizing slice
+  - never: create operations implementation code, fixture source files, expected ledgers, generated projections, generated reports, tests, dependencies, adapter transports, UI, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, destructive filesystem action, operations control, or live machine control in this slice
+
+& [ConfirmedImplementationFileInventory: IR7OperationsDryRunSimulator] is the maximum code and test file inventory for first-pass IR7 operations dry-run simulator implementation
+  + [future_code_file] is src/langsop/operations/__init__.py
+  + [future_code_file] is src/langsop/operations/requests.py
+  + [future_code_file] is src/langsop/operations/dry_run.py
+  + [future_code_file] is src/langsop/operations/refusals.py
+  + [future_code_file] is src/langsop/operations/resource_safety.py
+  + [future_code_file] is src/langsop/operations/action_routes.py
+  + [future_code_file] is src/langsop/operations/generated_paths.py
+  + [future_code_file] is src/langsop/operations/fixture_runner.py
+  + [future_test_file] is tests/test_ir7_operations_dry_run_contracts.py
+
+  = must: require deeper reasoning review before adding implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+
+& [ConfirmedFixtureSourceInventory: IR7OperationsDryRunSimulator] is the fixture source inventory opened by IR7-IA02 after this boundary is accepted
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/dry_run_resource_request.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/blocked_live_control.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/gpu_contention.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/model_runtime_unavailable.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/credential_boundary.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/network_exposure_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/destructive_command_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/missing_authority_notice.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/stale_or_revoked_human_approval.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/dry_run_success_not_live_approval.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/coordination_claim_dispatch_refusal.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/mailbox_carrier_not_dispatch_authority.sop
+  + [future_fixture_source_file] is tests/fixtures/sop/ir7_operations_dry_run/generated_projection_not_authority.sop
+
+  = must: keep fixture source files small, deterministic, and traceable to FixturePlan: IR7OperationsDryRunFixturePlanV1
+  = must: require completion review before any fixture source file becomes accepted proof material
+
+& [ConfirmedExpectedLedgerInventory: IR7OperationsDryRunSimulator] is the expected ledger inventory opened by IR7-IA02 after this boundary is accepted
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/operation_request_identity_and_safety_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/dry_run_result_non_authority_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/refusal_and_interrupt_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/resource_safety_and_human_approval_expected.sop
+  + [future_expected_ledger_file] is tests/fixtures/expected/ir7_operations_dry_run/no_live_effect_and_authority_nonpromotion_expected.sop
+
+  = must: make expected ledgers reviewable without generated projections, generated reports, carrier state, runtime state, dispatch, credential access, network mutation, operation control, or live control
+  = must: keep expected ledgers as tracked fixture authority only after IR7-IA02 completion review accepts them
+
+& [ConfirmedGeneratedOutputBoundary: IR7OperationsDryRunSimulator] is the generated-output boundary for future tests and fixture runs
+  + [generated_output_root] is .langsop/projections/ir7_operations_dry_run/
+  + [generated_output_root] is .langsop/reports/ir7_operations_dry_run/
+  + [generated_output_root] is tests/fixtures/generated/ir7_operations_dry_run/
+  + [generated_output_root] is tests/fixtures/generated/ir7_operations_dry_run/projections/
+  + [generated_output_root] is tests/fixtures/generated/ir7_operations_dry_run/reports/
+  + [ignored_generated_path] is .langsop/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [generated_output_status] is projection_only
+  + [source_authority_status] is docs/ and accepted tracked fixture source or expected ledgers only
+
+  = must: refuse writes outside accepted generated roots during projection or test execution
+  = must: refuse generated writes to docs/, src/, tests/fixtures/sop/, tests/fixtures/expected/, platform/, .git/, and platform/coordination/mailboxes/
+  = must: prove generated output deletion and rebuild cannot erase authority
+  = must: reject projection records, reports, manifests, caches, carrier state, adapter state, dry-runs, resource estimates, approval displays, or runtime state as source authority, dispatch authority, operations authority, or live-control authority
+
+& [ConfirmedDependencyBoundary: IR7OperationsDryRunSimulator] is the dependency boundary for the first IR7 implementation pass
+  + [allowed_dependency_set] is Python standard library only through IR7-IA06
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [psutil_dependency_state] is gated_until_IR7-IA07_dependency_decision
+  + [nvidia_management_dependency_state] is gated_until_future_dependency_authorization
+  + [local_model_runtime_client_state] is gated_until_future_dependency_authorization
+  + [job_queue_client_state] is gated_until_future_dependency_authorization
+  + [network_or_firewall_library_state] is gated_until_future_dependency_authorization
+
+  = must: require IR7-IA07 or a later dependency-authorizing slice before adding package dependencies, lockfiles, imports from external adapter packages, UI frameworks, machine-management libraries, GPU libraries, model runtime clients, network libraries, watcher libraries, or job queue clients
+  = must: keep first-pass operations dry-run implementation clearly marked as data projection, not live adapter, UI, transport, dispatch, process control, GPU control, model runtime control, credential access, network mutation, or orchestration integration
+
+& [ConfirmedAdapterAndLiveControlBoundary: IR7OperationsDryRunSimulator] is the adapter, transport, UI, and live-control boundary for first-pass implementation
+  + [adapter_status] is carrier_context_projection_only
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve carrier context and dry-run context as traceable evidence without granting authority
+  = must: refuse future implementation that opens live transports, UI surfaces, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, operations control, or live machine control without a separate accepted activation slice and separate live-control authority path
+
+& [ConfirmedCommandPlan: IR7OperationsDryRunSimulator] is the command and verification plan for future implementation slices
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_output_review] is prove generated projections and reports are ignored, disposable, reproducible, and non-authoritative
+  + [no_live_effect_review] is prove commands, processes, GPU, model runtimes, jobs, credentials, network state, destructive filesystem targets, platform mailboxes, source docs, and expected ledgers are not mutated by projection code or tests
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted contract tests once tests.test_ir7_operations_dry_run_contracts exists
+
+& [ImplementationSliceProofGate: IR7OperationsDryRunSimulator] is the proof gate opened by this activation boundary
+  + [IR7-IA02_opened_after_review] is fixture source and expected-ledger seed material
+  + [IR7-IA02_model_route] is GPT-5.3-Codex-Spark-suitable after IR7-IA01 acceptance
+  + [IR7-IA02_scope] is fixture source files, expected ledger files, and fixture index only
+  + [code_creation_authorized_after_IR7-IA01] is false
+  + [fixture_creation_authorized_after_IR7-IA01] is true_for_IR7-IA02_only
+  + [expected_ledger_creation_authorized_after_IR7-IA01] is true_for_IR7-IA02_only
+  + [generated_projection_creation_authorized_after_IR7-IA01] is false
+  + [test_file_creation_authorized_after_IR7-IA01] is false
+  + [dependency_installation_authorized_after_IR7-IA01] is false
+  + [package_metadata_mutation_authorized_after_IR7-IA01] is false
+  + [adapter_implementation_authorized_after_IR7-IA01] is false
+  + [transport_implementation_authorized_after_IR7-IA01] is false
+  + [UI_implementation_authorized_after_IR7-IA01] is false
+  + [process_control_authorized_after_IR7-IA01] is false
+  + [GPU_control_authorized_after_IR7-IA01] is false
+  + [model_runtime_control_authorized_after_IR7-IA01] is false
+  + [job_dispatch_authorized_after_IR7-IA01] is false
+  + [credential_access_authorized_after_IR7-IA01] is false
+  + [network_mutation_authorized_after_IR7-IA01] is false
+  + [destructive_filesystem_action_authorized_after_IR7-IA01] is false
+  + [operations_control_authorized_after_IR7-IA01] is false
+  + [live_machine_control_authorized_after_IR7-IA01] is false
+
+  = must: open only IR7-IA02 after this boundary is accepted
+  = must: keep request models, dry-run models, refusal models, resource safety models, action routes, generated path policy, fixture runner, tests, generated outputs, dependency changes, adapter work, transport work, UI work, proof packs, dispatch, credential access, network mutation, operations control, and live machine control gated until their specific slices open
+
+& [IR7IA01CoverageReview] is the coverage checklist for IR7-IA01
+  + [confirmed_implementation_file_inventory_present] is ConfirmedImplementationFileInventory: IR7OperationsDryRunSimulator
+  + [confirmed_fixture_source_inventory_present] is ConfirmedFixtureSourceInventory: IR7OperationsDryRunSimulator
+  + [confirmed_expected_ledger_inventory_present] is ConfirmedExpectedLedgerInventory: IR7OperationsDryRunSimulator
+  + [confirmed_generated_output_boundary_present] is ConfirmedGeneratedOutputBoundary: IR7OperationsDryRunSimulator
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: IR7OperationsDryRunSimulator
+  + [confirmed_adapter_and_live_control_boundary_present] is ConfirmedAdapterAndLiveControlBoundary: IR7OperationsDryRunSimulator
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: IR7OperationsDryRunSimulator
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: IR7OperationsDryRunSimulator
+  + [implementation_code_created] is false
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_projection_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept IR7-IA01 only when all checklist items are satisfied
+  = must: open IR7-IA02 only after this activation boundary is reviewed in a completion review
