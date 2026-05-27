@@ -22,9 +22,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p4_slice_minting_review] docs/reviews/P4_Final_Slice_Minting_Review.v1.sop
 @ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
 @ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
+@ [p8_slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [p8_slice_minting_review] docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P8_proof_fixtures_evaluation_and_faults_final_slice_minting
+  + [map_state] is ready_for_P8-S01_boundary_import_and_fixture_obligation_inventory
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -294,6 +296,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P4_Completion_Review.v1.sop
   + [support_record] is docs/planning/Post_P4_Readiness_Surface.v1.sop
   + [support_record] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [support_record] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices_Source.sop
+  + [support_record] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+  + [support_record] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+  + [support_record] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+  + [support_record] is docs/state/P8_Work_State.v1.sop
   + [support_gap] is fixture pack not yet authored
   + [support_gap] is false-ready and stale-slice fault examples not yet encoded
   + [proof_route] is fixture validation tests and expected trace records
@@ -420,19 +428,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P8-ProofFixturesEvaluationAndFaultsFinalSliceMinting] is ready_for_execution
+& [CurrentReadyChunk: P8-S01-BoundaryImportAndFixtureObligationInventory] is ready_for_execution
   + [chunk_id] is P8
-  + [chunk_name] is P8 proof fixtures evaluation and faults final slice minting
-  + [authority_basis] is docs/reviews/P4_Completion_Review.v1.sop
-  + [readiness_surface] is docs/planning/Post_P4_Readiness_Surface.v1.sop
-  + [expected_output] is source-preserved P8 final slice surface
-  + [expected_output] is P8 fixture, evaluation, fault, proof ledger, generated-output, and no-live-effect planning slices
+  + [slice_id] is P8-S01
+  + [chunk_name] is boundary import and fixture obligation inventory
+  + [authority_basis] is docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+  + [readiness_surface] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+  + [expected_output] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [completion_review_output] is docs/reviews/P8_S01_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is P8 decides when planned fixture obligations become material fixtures, generated outputs, proof ledgers, and nonpromotion rules that downstream runtime and surfaces depend on
-  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable fixture material creation only after P8 implementation activation accepts fixture paths and no-live-effect proof boundaries
+  + [model_route_reason] is boundary import decides which fixture obligations become P8 authority and which remain plan-only support
+  + [future_Spark_suitable_work] is GPT-5.3-Codex-Spark-suitable P8-S04 negative fixture oracle planning only after P8-S03 accepts fixture path and materialization boundaries
 
-  = must: source-preserve, SJS-process, and final-slice P8 before trusting fixture work as current authority
+  = must: create only the P8-S01 boundary import output and P8-S01 completion review unless a completed-work delta rebakes this map
   = must: create no implementation work, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, fixture source files, expected ledgers, generated databases, or silent edits to prior outputs
 
 & [InitialSliceQueue] is the first clean subdivision sequence

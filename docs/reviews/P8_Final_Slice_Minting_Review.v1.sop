@@ -1,0 +1,121 @@
+Subject: P8 Final Slice Minting Review V1
+Date: 2026-05-27
+Review UUID: cfbd1aac-0091-4dc3-b6bf-c6390dc425d2
+
+@ [source_manifest] docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
+@ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
+
+& [CompletedWorkReview: P8-Final-Slice-Minting] is the completed-work review for minting P8 proof fixtures evaluation and faults final slices
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_output] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices_Source.sop
+  + [completed_output_sha256] is 09124CB741E65225E1952D6546BC606749FA6992CC0B977B72B7B47FEE5AD290
+  + [completed_output] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+  + [completed_output_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
+  + [completed_output] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+  + [completed_output_sha256] is C4C46C540DDD38C53E794CF47761FFCB168D86AA9CEDFD1B0DA5FF522F52CC83
+  + [completed_output] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+  + [completed_output_sha256] is 08DA4696DD364CCE487EF3BE4C3B6EDBA2CC7028CEE4E7F8096AF237865DEA2B
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P8 final slice surface and open P8-S01
+  + [next_gate_result] is P8-S01 may open
+  + [next_model_route] is requires deeper reasoning for P8-S01
+  + [next_model_route_reason] is boundary import decides which fixture obligations become P8 authority and which remain plan-only support
+
+  = must: treat this review as gate-opening evidence for P8-S01 only
+  = must: rerun this review if source manifest, canonical specification, slice surface, post-P4 readiness surface, P4 completion review, accepted fixture oracle plans, or accepted proof packs change
+  = must: keep fixture source file creation, expected ledger creation, generated output creation, implementation code, dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control gated
+
+& [P8FinalSliceMintingVerification] is the verification result for P8 final-slice minting
+  + [source_preserved] is true
+  + [source_manifest_created] is true
+  + [canonical_specification_created] is true
+  + [sjs_signature_present] is true
+  + [valid_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [work_state_created] is true
+  + [slice_count] is 6
+  + [current_ready_slice] is P8-S01
+  + [gated_slice] is P8-S02
+  + [gated_slice] is P8-S03
+  + [gated_slice] is P8-S04
+  + [gated_slice] is P8-S05
+  + [gated_slice] is P8-S06
+  + [unresolved_external_dependency_set] is empty_after_gate
+  + [fixture_file_created] is false
+  + [expected_ledger_created] is false
+  + [generated_output_created] is false
+  + [implementation_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implemented] is false
+  + [transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P8FinalSliceMintingVerificationSatisfied] is accepted
+    @ [support] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+
+& [SupportDelta: P8-Final-Slice-Minting] is the support delta produced by minted P8 final slices
+  + [new_support_record] is P8-S01 may import accepted fixture and proof obligations before fixture path policy
+  + [new_support_record] is P8-S02 through P8-S06 remain gated until completion reviews accept upstream outputs
+  + [new_support_record] is Spark-suitable work is limited to bounded P8-S04 negative fixture oracle planning after P8-S01 through P8-S03 are accepted and only if fault semantics and authority rules remain stable
+  + [support_status] is accepted
+
+& [RequirementDelta: P8-Final-Slice-Minting] is the requirement delta produced by minted P8 final slices
+  + [requirement_delta] is P8-S01 requires deeper reasoning
+  + [requirement_delta] is completion review required after every P8 slice
+  + [requirement_delta] is no fixture source file creation, expected ledger creation, generated output creation, implementation code, dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, or live machine control is authorized by slice minting
+  + [requirement_delta] is every P8 planning slice must preserve generated-output nonpromotion and no-live-effect proof boundaries
+
+& [FaultReview: P8-Final-Slice-Minting] is the fault review for minted P8 final slices
+  + [source_overwrite_found] is false
+  + [missing_sjs_signature_found] is false
+  + [false_ready_downstream_slice_found] is false
+  + [fixture_creation_leak_found] is false
+  + [expected_ledger_creation_leak_found] is false
+  + [generated_output_creation_leak_found] is false
+  + [implementation_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P8FinalSlicesAccepted] is accepted
+    @ [support] [P8FinalSliceMintingVerification]
+    @ [support] [SupportDelta: P8-Final-Slice-Minting]
+    @ [support] [RequirementDelta: P8-Final-Slice-Minting]
+    @ [support] [FaultReview: P8-Final-Slice-Minting]
+
+& [NextSliceGate: P8-S01] is opened
+  + [opened_slice] is P8-S01 boundary import and fixture obligation inventory
+  + [accepted_boundary_input] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is F252635D3228050A4358C3FCE73C0BFC302BEAEF869F5EC31787CF2214D0ACFB
+  + [accepted_boundary_input] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 0F6CD13A806E09C6DC30EDCAAF987872DE18D249B2B2BD9C77A486CD67A460B8
+  + [accepted_boundary_input] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is boundary import decides which fixture obligations become P8 authority and which remain plan-only support
+  + [safety_limit] is no fixture file creation, expected ledger creation, generated output creation, assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P8-S01 next unless user redirects or a new fault invalidates this review

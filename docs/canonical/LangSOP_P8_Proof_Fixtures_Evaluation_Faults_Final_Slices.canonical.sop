@@ -1,0 +1,119 @@
+Subject: LangSOP P8 Proof Fixtures Evaluation Faults Final Slices Canonical Specification
+Date: 2026-05-27
+
+@ [source_manifest] docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+@ [dictated_source] docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices_Source.sop
+@ [slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
+@ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
+@ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+@ [p3_fixture_oracle] docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+@ [p4_fixture_oracle] docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+@ [ir7_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir8_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+
+& [CanonicalRecord: P8ProofFixturesEvaluationFaultsFinalSlices] is the processed planning authority for P8 proof fixtures evaluation and faults final slices
+  + [canonical_uuid] is 7c7de911-494f-47a1-ba3a-60a444691680
+  + [source_manifest_uuid] is a7456722-07a4-4293-90a5-ccdc606a28b6
+  + [slice_surface_uuid] is 10c391e1-c86b-48ee-931b-0fa877077aeb
+  + [authority_scope] is P8 final slice order, fixture obligation inventory, fixture path policy, generated-output nonpromotion, fixture materialization plan, implementation activation boundary, stale false-ready contradiction and fault oracle plan, proof ledger, evaluation acceptance, downstream gate, model routing, safety limits, and completion review obligations
+  + [implementation_scope] is P8 slice-minting authority only
+  + [depends_on] is docs/reviews/P4_Completion_Review.v1.sop
+  + [depends_on] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [depends_on] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+  + [depends_on] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+  + [depends_on] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [depends_on] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [depends_on] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+
+  = must: use docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop as the executable P8 final slice surface
+  = must: execute P8-S01 before consolidating fixture obligations, defining path policy, or opening fixture materialization boundaries
+  = must: execute P8-S02 before any fixture materialization or proof ledger planning
+  = must: execute P8-S03 before negative fixture oracle planning can become Spark-suitable
+  = must: execute P8-S05 before downstream P5 runtime, P6 surface, or P8 implementation activation consumes proof ledger authority
+  = must: keep fixture source file creation, expected ledger creation, generated output creation, dependency installation, package metadata mutation, adapter work, transport work, UI work, assignment, dispatch, operations control, and live machine control unauthorized
+  - never: treat this canonical specification as permission to write fixture files, create expected ledgers, create generated outputs, write implementation code, install dependencies, mutate package metadata, assign work, dispatch work, control operations, or control the live machine
+
+& [CanonicalP8FinalSliceSequence] is the accepted final slice sequence for P8
+  + [slice] is P8-S01 boundary import and fixture obligation inventory
+  + [slice] is P8-S02 fixture path policy and generated-output nonpromotion contract
+  + [slice] is P8-S03 fixture pack materialization plan and implementation activation boundary
+  + [slice] is P8-S04 stale false-ready contradiction and fault oracle plan
+  + [slice] is P8-S05 proof ledger and evaluation acceptance contract
+  + [slice] is P8-S06 P8 completion review and downstream gate
+  + [current_ready_slice] is P8-S01
+  + [gated_slice] is P8-S02 until P8-S01 accepted
+  + [gated_slice] is P8-S03 until P8-S02 accepted
+  + [gated_slice] is P8-S04 until P8-S03 accepted
+  + [gated_slice] is P8-S05 until P8-S04 accepted
+  + [gated_slice] is P8-S06 until P8-S05 accepted
+
+  = must: preserve this order unless a completed-work review rebakes the P8 surface
+  = must: mark downstream slices stale when upstream P8 output changes fixture obligations, path policy, nonpromotion, materialization boundary, fault oracle, proof ledger, evaluation acceptance, or downstream gate
+
+& [CanonicalP8ModelRouting] is the model routing for P8 final slices
+  + [P8-S01] is requires deeper reasoning
+  + [P8-S02] is requires deeper reasoning
+  + [P8-S03] is requires deeper reasoning
+  + [P8-S04] is GPT-5.3-Codex-Spark-suitable only after P8-S03 acceptance unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [P8-S05] is requires deeper reasoning
+  + [P8-S06] is requires deeper reasoning
+
+  = must: keep fixture material authority, generated-output nonpromotion, proof ledger acceptance, stale false-ready fault semantics, downstream gates, dispatch boundaries, and live-control boundaries under deeper reasoning
+  = must: treat bounded negative fixture oracle planning as Spark-suitable only after fixture path policy and materialization boundaries are accepted
+
+& [CanonicalP8SafetyLimit] is the inherited safety limit for P8 final slices
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: block command execution beyond validation commands, process control, GPU control, model runtime mutation, job dispatch, credential access or mutation, network exposure mutation, destructive filesystem action, persistent automation, operations control, and live machine control
+
+& [SatisfactionSignature: P8ProofFixturesEvaluationFaultsFinalSlices] is the valid SJS satisfaction signature for the P8 final slice specification
+  + [signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [signature_uuid] is 7d112990-79f7-4c6f-a3b9-5fff1e173853
+  + [signed_subject] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+  + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+  + [source_sha256] is 09124CB741E65225E1952D6546BC606749FA6992CC0B977B72B7B47FEE5AD290
+  + [source_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
+  + [source_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [source_sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+  + [source_sha256] is F252635D3228050A4358C3FCE73C0BFC302BEAEF869F5EC31787CF2214D0ACFB
+  + [source_sha256] is 0F6CD13A806E09C6DC30EDCAAF987872DE18D249B2B2BD9C77A486CD67A460B8
+  + [source_sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+  + [source_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [source_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [slice_surface_sha256] is 08DA4696DD364CCE487EF3BE4C3B6EDBA2CC7028CEE4E7F8096AF237865DEA2B
+  + [canonical_source_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+  + [slice_surface] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+  + [processed_stage_set] is source_preserved, manifest_created, post_P4_readiness_imported, fixture_oracles_imported, proof_packs_imported, slices_minted, gates_defined, expected_outputs_defined, model_routes_defined, safety_limits_preserved, justified, and signed
+  + [signature_status] is valid
+  + [signature_limit] is planning authority for P8 final slice execution only; no fixture file creation, expected ledger creation, generated output creation, implementation code, dependency installation, adapter work, dispatch, operations control, or live machine control authorized
+  + [invalidation_condition] is source_hash_change, fixture_oracle_change, proof_pack_change, P4_readiness_change, P4_completion_change, forbidden_external_dependency_found, generated_output_promotion, dispatch_authority_leak, live_control_leak, or proof_ledger_contradiction
+
+  = must: reprocess when P8 boundaries, fixture inputs, proof inputs, slice order, model routing, safety limits, or required outputs materially change
+
+& [RegistryRecord: P8ProofFixturesEvaluationFaultsFinalSlices] is the durable identity ledger for P8 final slice minting
+  + [registry_uuid] is aef779a4-d124-4d65-a00f-fe4f9cdb5b90
+  + [manifest_node_uuid] is a7456722-07a4-4293-90a5-ccdc606a28b6
+  + [canonical_node_uuid] is 7c7de911-494f-47a1-ba3a-60a444691680
+  + [slice_surface_uuid] is 10c391e1-c86b-48ee-931b-0fa877077aeb
+  + [signature_uuid] is 7d112990-79f7-4c6f-a3b9-5fff1e173853
+  + [slice_minting_review_uuid] is cfbd1aac-0091-4dc3-b6bf-c6390dc425d2
+  + [edge] is manifest_node_uuid promoted_to canonical_node_uuid
+  + [edge] is canonical_node_uuid authorizes slice_surface_uuid
+  + [edge] is canonical_node_uuid signed_by signature_uuid
+
+  = must: preserve this registry for P8 completion reviews and downstream readiness

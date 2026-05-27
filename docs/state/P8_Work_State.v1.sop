@@ -1,0 +1,72 @@
+Subject: P8 Work State V1
+Date: 2026-05-27
+State UUID: f1aa131c-5e28-4358-8f39-3fcba2f43ff0
+
+@ [source_manifest] docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+@ [slice_surface] docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+@ [slice_minting_review] docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+@ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
+@ [p4_completion_review] docs/reviews/P4_Completion_Review.v1.sop
+@ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+@ [p3_fixture_oracle] docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+@ [p4_fixture_oracle] docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+@ [ir7_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir8_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+
+& [P8WorkStateV1] is the current derived work state for P8 proof fixtures evaluation and faults
+  + [state_basis] is docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+  + [state_basis_sha256] is 23A4F845D673F6439ABA281E5AF4379933703FBC0E386C0212CB1939A817868B
+  + [surface_status] is P8_final_slices_minted_pending_P8-S01
+  + [source_manifest] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is B6A2592ED9B07111E563BD06293CD21C5381414186C5366829CDB19A6168AEA5
+  + [canonical_specification] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+  + [canonical_specification_sha256] is C4C46C540DDD38C53E794CF47761FFCB168D86AA9CEDFD1B0DA5FF522F52CC83
+  + [slice_surface] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+  + [slice_surface_sha256] is 08DA4696DD364CCE487EF3BE4C3B6EDBA2CC7028CEE4E7F8096AF237865DEA2B
+  + [slice_minting_review] is docs/reviews/P8_Final_Slice_Minting_Review.v1.sop
+  + [slice_minting_review_sha256] is 23A4F845D673F6439ABA281E5AF4379933703FBC0E386C0212CB1939A817868B
+  + [accepted_boundary_input] is docs/reviews/P4_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [accepted_boundary_input] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+  + [accepted_boundary_input] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is F252635D3228050A4358C3FCE73C0BFC302BEAEF869F5EC31787CF2214D0ACFB
+  + [accepted_boundary_input] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 0F6CD13A806E09C6DC30EDCAAF987872DE18D249B2B2BD9C77A486CD67A460B8
+  + [accepted_boundary_input] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [current_ready_slice] is P8-S01
+  + [current_ready_slice_name] is boundary import and fixture obligation inventory
+  + [current_ready_slice_expected_output] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [current_ready_slice_model_route] is requires deeper reasoning
+  + [current_ready_slice_model_route_reason] is boundary import decides which fixture obligations become P8 authority and which remain plan-only support
+  + [gated_slice] is P8-S02
+  + [gated_slice] is P8-S03
+  + [gated_slice] is P8-S04
+  + [gated_slice] is P8-S05
+  + [gated_slice] is P8-S06
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this file as derived current state, not replacement canonical authority
+  = must: execute P8-S01 before fixture path policy, materialization planning, fault oracle consolidation, proof ledger planning, runtime work, surface expansion, fixture material creation, adapter work, dispatch, or live-control work
+  = must: keep fixture obligations, generated outputs, proof ledgers, graph checkpoints, surface projections, packet candidates, manager handoff records, coordination handoff records, dispatch decisions, and live-control deferrals in distinct authority classes
+  = must: mark this state stale if P8 source, manifest, canonical specification, slice surface, minting review, P4 completion, post-P4 readiness, accepted fixture oracles, or accepted proof packs change

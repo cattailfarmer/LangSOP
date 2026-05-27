@@ -1,0 +1,36 @@
+Subject: P8 Proof Fixtures Evaluation Faults Final Slices Source Manifest
+Date: 2026-05-27
+Manifest UUID: a7456722-07a4-4293-90a5-ccdc606a28b6
+
+& [SourceDocumentManifest: P8ProofFixturesEvaluationFaultsFinalSlices] is the source preservation manifest for P8 proof fixtures evaluation and faults final slice minting
+  + [dictated_source] is docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices_Source.sop
+    + [sha256] is 09124CB741E65225E1952D6546BC606749FA6992CC0B977B72B7B47FEE5AD290
+    + [source_role] is preserved manager-derived P8 slice-minting source
+  + [authority_source] is docs/reviews/P4_Completion_Review.v1.sop
+    + [sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+    + [source_role] is accepted P4 completion and gate-opening review
+  + [authority_source] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+    + [sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+    + [source_role] is accepted post-P4 readiness surface
+  + [authority_source] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+    + [sha256] is F252635D3228050A4358C3FCE73C0BFC302BEAEF869F5EC31787CF2214D0ACFB
+    + [source_role] is accepted P2 authority kernel fixture oracle plan
+  + [authority_source] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+    + [sha256] is 0F6CD13A806E09C6DC30EDCAAF987872DE18D249B2B2BD9C77A486CD67A460B8
+    + [source_role] is accepted P3 operator trace fixture oracle plan
+  + [authority_source] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+    + [sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+    + [source_role] is accepted P4 packet trace fixture oracle plan
+  + [authority_source] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+    + [sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+    + [source_role] is accepted operations dry-run proof pack input
+  + [authority_source] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+    + [sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+    + [source_role] is accepted integrated manager proof pack input
+  + [canonical_target] is docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+  + [slice_surface_target] is docs/slices/P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.v1.sop
+
+  = must: preserve this manifest as source lineage for P8 final slice minting
+  = must: invalidate P8 slice minting if a cited source hash changes without reprocessing
+  = must: treat this manifest as planning lineage, not fixture material authority
+  - never: use this manifest to authorize fixture source file creation, expected ledger creation, generated output creation, dependency installation, adapter implementation, dispatch, operations control, or live machine control

@@ -1,0 +1,30 @@
+Subject: P8 Proof Fixtures Evaluation Faults Final Slices Source
+Date: 2026-05-27
+Source UUID: 08a085e7-a645-4ed7-b55f-67441383d76d
+
+& [SourcePrompt: P8ProofFixturesEvaluationFaultsFinalSlices] is the preserved manager-derived source for minting P8 proof fixtures evaluation and faults final slices
+  + [source_kind] is manager-derived slice-minting source
+  + [origin] is post-P4 readiness after whole-field planning and packetization acceptance
+  + [purpose] is convert accepted P2 schema fixture oracles, P3 operator trace fixture oracles, P4 packet trace fixture oracles, IR7 operations dry-run proof packs, and IR8 manager proof packs into dependency-closed P8 final slices
+  + [reason] is P8 is ready for deeper-reasoning slice minting, but the system must define fixture path policy, generated-output nonpromotion, proof ledger boundaries, stale and false-ready fault cases, and no-live-effect evaluation gates before fixture material, LangGraph runtime, surface projection, or operations-adjacent work consumes fixture authority
+
+  = must: preserve fixture plans as reviewable obligations, not fixture source files, expected ledgers, generated outputs, runtime tests, dispatches, or live effects
+  = must: preserve P2 authority overlays, P3 operator nonautomation boundaries, and P4 packet no-assignment no-dispatch no-live-effect boundaries
+  = must: import Post_P4_Readiness_Surface.v1.sop, P4_Completion_Review.v1.sop, P2 fixture oracle plan, P3 fixture oracle plan, P4 fixture oracle plan, IR7 operations proof pack, and IR8 manager proof pack as boundary inputs
+  = must: split P8 so each slice has no dependency outside its declared boundary
+  = must: route fixture material authority, generated-output policy, proof ledger semantics, stale/false-ready faults, and downstream gates to deeper reasoning
+  = should: make bounded fixture material creation GPT-5.3-Codex-Spark-suitable only after P8 implementation activation accepts file paths, expected ledgers, generated output nonpromotion, and no-live-effect proof boundaries
+
+& [RequiredP8SliceFamilySet] is the source-level slice family set for P8
+  + [slice_family] is boundary import and fixture obligation inventory
+  + [slice_family] is fixture path policy and generated-output nonpromotion contract
+  + [slice_family] is fixture pack materialization plan and implementation activation boundary
+  + [slice_family] is stale false-ready contradiction and fault oracle plan
+  + [slice_family] is proof ledger and evaluation acceptance contract
+  + [slice_family] is P8 completion review and downstream gate
+
+  = must: execute boundary import before revising or consolidating fixture obligations
+  = must: execute generated-output nonpromotion before fixture material creation is reconsidered
+  = must: execute implementation activation boundary before any fixture files, expected ledgers, or generated outputs are created
+  = must: execute proof ledger planning without writing ledgers
+  = must: execute completion review before P5 runtime, P6 surface expansion, P7 dispatch-adjacent coordination, P8 fixture material creation, or P9 operations live-control reconsideration consumes P8 authority

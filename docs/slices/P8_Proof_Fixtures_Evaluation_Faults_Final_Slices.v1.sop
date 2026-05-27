@@ -1,0 +1,126 @@
+Subject: P8 Proof Fixtures Evaluation Faults Final Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 10c391e1-c86b-48ee-931b-0fa877077aeb
+
+@ [source_manifest] docs/source/2026-05-27_p8_proof_fixtures_evaluation_faults_final_slices/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P8_Proof_Fixtures_Evaluation_Faults_Final_Slices.canonical.sop
+@ [post_p4_readiness] docs/planning/Post_P4_Readiness_Surface.v1.sop
+@ [p2_fixture_oracle] docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+@ [p3_fixture_oracle] docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+@ [p4_fixture_oracle] docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+@ [ir7_proof_pack] docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+@ [ir8_proof_pack] docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+
+& [P8ProofFixturesEvaluationFaultsFinalSliceSurfaceV1] is the final slice surface for P8 proof fixtures evaluation and faults
+  + [chunk_ref] is P8 proof fixtures evaluation and faults
+  + [chunk_boundary] is fixture obligation inventory, fixture path policy, generated-output nonpromotion, fixture materialization plan, implementation activation boundary, stale false-ready contradiction and fault oracle plan, proof ledger, evaluation acceptance, completion review, and downstream gate
+  + [accepted_boundary_input] is docs/reviews/P4_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 2A64F5DE0AA070B3C38D9256922C5B0FEA10A90BA61D954C4BAD00860EBB5B31
+  + [accepted_boundary_input] is docs/planning/Post_P4_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 135181FED9D847E01BEA9D4D3C263497CB9C77102CD62722710D29DF719197BB
+  + [accepted_boundary_input] is docs/fixtures/P2_Authority_Kernel_Fixture_And_Validation_Oracle_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is F252635D3228050A4358C3FCE73C0BFC302BEAEF869F5EC31787CF2214D0ACFB
+  + [accepted_boundary_input] is docs/fixtures/P3_Operator_Trace_Fixture_Oracle_And_No_Automation_Boundary_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 0F6CD13A806E09C6DC30EDCAAF987872DE18D249B2B2BD9C77A486CD67A460B8
+  + [accepted_boundary_input] is docs/fixtures/P4_Packet_Trace_Fixture_Oracle_And_No_Live_Effect_Plan.v1.sop
+  + [accepted_boundary_input_sha256] is 13560E72824F4B7B66376317A85C437DAC8D9198CD71AD4171D59E7B32502DE6
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [current_ready_slice] is P8-S01
+  + [gated_slice_set] is P8-S02, P8-S03, P8-S04, P8-S05, and P8-S06
+  + [safety_limit] is no fixture source file creation, no expected ledger creation, no generated output creation, no implementation code, no dependency installation, no package metadata mutation, no adapter implementation, no assignment, no dispatch, no operations control, and no live machine control authorized
+
+  = must: execute P8-S01 before consolidating fixture obligations or defining fixture path policy
+  = must: run completed-work review after each P8 slice
+  = must: stale downstream slices when fixture path policy, generated-output nonpromotion, proof ledger, fault oracle, or no-live-effect boundary changes
+  = must: preserve accepted fixture oracle plans as boundary inputs unless a P8 completion review explicitly supersedes them
+
+& [FinalWorkSlice: P8-S01-BoundaryImportAndFixtureObligationInventory] is ready
+  + [slice_id] is P8-S01
+  + [slice_name] is boundary import and fixture obligation inventory
+  + [authority_basis] is docs/reviews/P4_Completion_Review.v1.sop
+  + [activation_gate] is post-P4 readiness accepted
+  + [expected_output_set] is docs/fixtures/P8_Boundary_Import_And_Fixture_Obligation_Inventory.v1.sop
+  + [verification_oracle] is inventory imports P2, P3, P4, IR7, and IR8 fixture and proof obligations, classifies materialization gaps, and assigns downstream P8 slices without creating fixture files or generated outputs
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is boundary import decides which fixture obligations become P8 authority and which remain plan-only support
+  + [forbidden_scope] is fixture source creation, expected ledger creation, generated output creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-S02-FixturePathPolicyAndGeneratedOutputNonpromotionContract] is gated
+  + [slice_id] is P8-S02
+  + [slice_name] is fixture path policy and generated-output nonpromotion contract
+  + [activation_gate] is P8-S01 accepted
+  + [expected_output_set] is docs/fixtures/P8_Fixture_Path_Policy_And_Generated_Output_Nonpromotion_Contract.v1.sop
+  + [verification_oracle] is contract defines fixture source roots, expected ledger roots, generated output roots, ignored output rules, authority notices, freshness, rebuildability, disposable generated outputs, and no source-authority promotion
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is fixture path policy and generated-output nonpromotion affect all downstream proof and runtime authority
+  + [forbidden_scope] is fixture file creation, expected ledger creation, generated output creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-S03-FixturePackMaterializationPlanAndImplementationActivationBoundary] is gated
+  + [slice_id] is P8-S03
+  + [slice_name] is fixture pack materialization plan and implementation activation boundary
+  + [activation_gate] is P8-S02 accepted
+  + [expected_output_set] is docs/fixtures/P8_Fixture_Pack_Materialization_Plan_And_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is plan defines which fixture families may become material only after source-preserved implementation activation, path policy acceptance, expected ledger policy acceptance, generated-output nonpromotion proof, and no-live-effect proof
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is fixture materialization boundary decides when plan-only oracles may become files without becoming authority or effects
+  + [forbidden_scope] is fixture source creation, expected ledger creation, generated output creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-S04-StaleFalseReadyContradictionAndFaultOraclePlan] is gated
+  + [slice_id] is P8-S04
+  + [slice_name] is stale false-ready contradiction and fault oracle plan
+  + [activation_gate] is P8-S03 accepted
+  + [expected_output_set] is docs/fixtures/P8_Stale_False_Ready_Contradiction_And_Fault_Oracle_Plan.v1.sop
+  + [verification_oracle] is plan defines stale, false-ready, contradiction, hidden authority, projection promotion, generated-output promotion, missing review gate, missing model route, forbidden effect, dispatch leak, and live-control leak cases without fixture file creation
+  + [model_route] is GPT-5.3-Codex-Spark-suitable only after P8-S03 acceptance unless fault semantics, authority rules, or no-live-effect boundaries change
+  + [model_route_reason] is negative fixture oracle planning is bounded after path policy and materialization boundaries are accepted
+  + [forbidden_scope] is fixture source creation, expected ledger creation, generated output creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-S05-ProofLedgerAndEvaluationAcceptanceContract] is gated
+  + [slice_id] is P8-S05
+  + [slice_name] is proof ledger and evaluation acceptance contract
+  + [activation_gate] is P8-S04 accepted
+  + [expected_output_set] is docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+  + [verification_oracle] is contract defines proof ledger fields, evaluation result states, accepted absence proofs, stale proof rules, generated-output review, no-live-effect review, downstream consumption gates, and nonpromotion notices without writing ledgers
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is proof ledger acceptance decides which future generated outputs can support P5 and P6 without becoming source authority
+  + [forbidden_scope] is ledger creation, fixture file creation, generated output creation, implementation code, dependency installation, adapter implementation, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P8-S06-P8CompletionReviewAndDownstreamGate] is gated
+  + [slice_id] is P8-S06
+  + [slice_name] is P8 completion review and downstream gate
+  + [activation_gate] is P8-S05 accepted
+  + [expected_output_set] is docs/reviews/P8_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P8_Readiness_Surface.v1.sop
+  + [verification_oracle] is completion review accepts P8 outputs with hashes, support deltas, requirement deltas, P5/P6/P8 implementation gates, model-route recommendations, and no fixture, generated-output, dependency, adapter, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final P8 acceptance changes LangGraph runtime readiness, surface projection readiness, fixture material readiness, and implementation gates
+  + [forbidden_scope] is new implementation work, fixture file creation, expected ledger creation, generated output creation, dependency installation, adapter implementation, transport implementation, UI implementation, dispatch, operations control, live machine control, and silently editing prior slice outputs
+  + [completion_review_required] is true
+
+& [P8FinalSliceClosureReview] is the dependency audit for minted P8 final slices
+  + [post_P4_readiness_status] is accepted
+  + [P2_fixture_oracle_status] is accepted_boundary_input
+  + [P3_fixture_oracle_status] is accepted_boundary_input
+  + [P4_fixture_oracle_status] is accepted_boundary_input
+  + [IR7_proof_pack_status] is accepted_boundary_input
+  + [IR8_proof_pack_status] is accepted_boundary_input
+  + [P8-S01_ready] is true
+  + [fixture_source_file_creation_authorized] is false
+  + [expected_ledger_creation_authorized] is false
+  + [generated_output_creation_authorized] is false
+  + [implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P8-S02 through P8-S06 as gated, not ready
+  = must: rerun closure review when a fixture oracle, proof pack, generated-output policy, proof ledger policy, or P4 authority boundary changes
