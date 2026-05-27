@@ -1,0 +1,123 @@
+Subject: IR6 IA03 Completion Review V1
+Date: 2026-05-26
+Review UUID: 57cae0bb-990e-4281-9074-93176fab5600
+
+@ [activation_slice_surface] docs/slices/IR6_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/IR6_Bounded_Coordination_Implementation_Activation_Boundary.v1.sop
+@ [claim_identity_contract] docs/coordination/IR6_Claim_Identity_And_Work_Boundary_Projection_Contract.v1.sop
+@ [fixture_index] docs/fixtures/IR6_Coordination_Mailbox_Fixture_Index.v1.sop
+@ [previous_completion_review] docs/reviews/IR6_IA02_Completion_Review.v1.sop
+@ [completed_output] src/langsop/coordination/__init__.py
+@ [completed_output] src/langsop/coordination/claims.py
+
+& [CompletedWorkReview: IR6-IA03] is the completed-work review for IR6-IA03 claim identity and work-boundary model implementation
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-26
+  + [completed_slice] is IR6-IA03
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [review_result] is accepted
+  + [closure_recommendation] is accept IR6-IA03 and open IR6-IA04
+  + [next_gate_result] is IR6-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable unless mailbox carrier or conflict-review semantics change
+  + [next_model_route_depth] is Spark-suitable
+  + [completed_output] is src/langsop/coordination/__init__.py
+  + [completed_output_sha256] is E27072E03E52FF8931529C6CDA4255940B17210EDB155DAB2FF8216152CD77B5
+  + [completed_output] is src/langsop/coordination/claims.py
+  + [completed_output_sha256] is A781562614687FB9BB74FD2EA37B46B7BE4888C05D75D50C9F9F0110BCF2F32F
+
+  = must: treat this review as gate-opening evidence for IR6-IA04 only
+  = must: rerun this review if claim identity contract, fixture index, IR6-IA02 completion review, or any completed model file changes
+  = must: keep mailbox carrier IO, generated outputs, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, operations simulator implementation, agent dispatch, operations control, and live machine control gated
+
+& [IR6IA03Verification] is the verification result for IR6-IA03
+  + [claim_identity_model_present] is true
+  + [work_boundary_model_present] is true
+  + [public_surface_exports_bounded] is true
+  + [claim_identity_required_field_set_present] is true
+  + [work_boundary_required_field_set_present] is true
+  + [freshness_state_vocabulary_present] is true
+  + [compatibility_relation_vocabulary_present] is true
+  + [stop_boundary_status_set_present] is true
+  + [missing_authority_notice_refusal_supported] is true
+  + [identity_collapse_interrupt_supported] is true
+  + [dependency_closed_with_stop_evidence_rejection_supported] is true
+  + [generated_authority_promotion_rejection_supported] is true
+  + [source_mutation_refusal_supported] is true
+  + [mailbox_IO_refusal_supported] is true
+  + [agent_dispatch_refusal_supported] is true
+  + [live_control_refusal_supported] is true
+  + [baseline_compile_command] is passed
+  + [baseline_test_command] is passed
+  + [manual_smoke_validation] is passed
+  + [mailbox_carrier_model_created] is false
+  + [conflict_review_model_created] is false
+  + [action_route_implementation_created] is false
+  + [fixture_runner_implementation_created] is false
+  + [generated_projection_created] is false
+  + [generated_report_created] is false
+  + [test_file_created] is false
+  + [mailbox_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [operations_simulator_code_created] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [IR6IA03VerificationSatisfied] is accepted
+    @ [support] src/langsop/coordination/__init__.py
+    @ [support] src/langsop/coordination/claims.py
+
+& [SupportDelta: IR6-IA03] is the support delta produced by IR6-IA03
+  + [new_support_record] is IR6 claim identity envelopes can validate required fields, authority basis, authority notice, forbidden actions, identity separation, generated authority promotion, source mutation requests, mailbox IO requests, agent dispatch requests, and live-control requests
+  + [new_support_record] is IR6 work-boundary envelopes can validate required boundary fields, authority basis, authority notice, dependency-closed with stop evidence, dependency-closed with unfresh state, generated authority promotion, source mutation requests, mailbox IO requests, dispatch requests, and live-control requests
+  + [new_support_record] is coordination package exports bounded claim/work-boundary model APIs without mailbox carrier IO, conflict review implementation, generated-output, dispatch, operations, or live-control implementation
+  + [support_status] is accepted
+
+& [RequirementDelta: IR6-IA03] is the requirement delta produced by IR6-IA03
+  + [requirement_delta] is IR6-IA04 may implement only the mailbox carrier, conflict review, and action route files named in the activation boundary
+  + [requirement_delta] is IR6-IA04 remains GPT-5.3-Codex-Spark-suitable unless mailbox carrier, conflict-review, or action-route semantics change beyond accepted fixture material
+  + [requirement_delta] is no fixture runner, generated output, dependency installation, mailbox IO, adapter implementation, transport implementation, UI implementation, operations simulator, agent dispatch, operations control, or live machine control is authorized by IR6-IA03
+
+& [FaultReview: IR6-IA03] is the fault review for IR6-IA03
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [generated_output_leak_found] is false
+  + [mailbox_carrier_code_leak_found] is false
+  + [conflict_review_code_leak_found] is false
+  + [action_route_code_leak_found] is false
+  + [fixture_runner_code_leak_found] is false
+  + [test_file_leak_found] is false
+  + [mailbox_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [operations_simulator_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [IR6IA03Accepted] is accepted
+    @ [support] [IR6IA03Verification]
+    @ [support] [SupportDelta: IR6-IA03]
+    @ [support] [RequirementDelta: IR6-IA03]
+    @ [support] [FaultReview: IR6-IA03]
+
+& [NextSliceGate: IR6-IA04] is opened
+  + [opened_slice] is IR6-IA04 mailbox carrier and conflict review model implementation
+  + [accepted_dependency] is src/langsop/coordination/__init__.py
+  + [accepted_dependency_sha256] is E27072E03E52FF8931529C6CDA4255940B17210EDB155DAB2FF8216152CD77B5
+  + [accepted_dependency] is src/langsop/coordination/claims.py
+  + [accepted_dependency_sha256] is A781562614687FB9BB74FD2EA37B46B7BE4888C05D75D50C9F9F0110BCF2F32F
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is mailbox carrier and conflict review model implementation is bounded by accepted claim models, fixture sources, and expected ledgers unless semantics change
+  + [safety_limit] is no live operations control authorized
+  + [completion_review_required] is true
+
+  = must: execute IR6-IA04 next unless user redirects or a new fault invalidates this review

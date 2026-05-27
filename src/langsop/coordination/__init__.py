@@ -1,4 +1,41 @@
-"""Inert coordination module marker for future multi-agent work state."""
+"""Bounded coordination projection helpers for LangSOP IR6."""
 
-__all__ = ()
+from .claims import (
+    ClaimCompatibilityRelation,
+    ClaimCompatibilityResult,
+    ClaimFreshnessState,
+    ClaimIdentityEnvelope,
+    ClaimIssueKind,
+    ClaimIssueSeverity,
+    ClaimProjectionStatus,
+    ClaimValidationIssue,
+    ClaimValidationResult,
+    WorkBoundaryProjectionEnvelope,
+    WorkBoundaryStatus,
+    boundary_status_for_claim_evidence,
+    claim_identity_envelope_from_parts,
+    classify_claim_compatibility,
+    validate_claim_identity_envelope,
+    validate_work_boundary_projection_envelope,
+    work_boundary_projection_envelope_from_parts,
+)
 
+__all__ = (
+    "ClaimCompatibilityRelation",
+    "ClaimCompatibilityResult",
+    "ClaimFreshnessState",
+    "ClaimIdentityEnvelope",
+    "ClaimIssueKind",
+    "ClaimIssueSeverity",
+    "ClaimProjectionStatus",
+    "ClaimValidationIssue",
+    "ClaimValidationResult",
+    "WorkBoundaryProjectionEnvelope",
+    "WorkBoundaryStatus",
+    "boundary_status_for_claim_evidence",
+    "claim_identity_envelope_from_parts",
+    "classify_claim_compatibility",
+    "validate_claim_identity_envelope",
+    "validate_work_boundary_projection_envelope",
+    "work_boundary_projection_envelope_from_parts",
+)
