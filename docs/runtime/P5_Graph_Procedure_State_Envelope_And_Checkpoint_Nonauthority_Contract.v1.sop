@@ -1,0 +1,112 @@
+Subject: P5 Graph Procedure State Envelope And Checkpoint Nonauthority Contract V1
+Date: 2026-05-27
+Contract UUID: 9f963c2a-5fe4-4b65-9608-8617ca9f40c9
+
+@ [p5_slice_surface] docs/slices/P5_LangGraph_Procedure_Runtime_Final_Slices.v1.sop
+@ [p5_s01_output] docs/runtime/P5_Boundary_Import_And_Runtime_Obligation_Inventory.v1.sop
+@ [p5_s01_review] docs/reviews/P5_S01_Completion_Review.v1.sop
+@ [p8_proof_ledger_contract] docs/planning/P8_Proof_Ledger_And_Evaluation_Acceptance_Contract.v1.sop
+
+& [P5GraphProcedureStateEnvelopeAndCheckpointNonauthorityContractV1] is the P5-S02 graph procedure state envelope and checkpoint nonauthority contract
+  + [slice_id] is P5-S02
+  + [slice_name] is graph procedure state envelope and checkpoint nonauthority contract
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is graph checkpoint state can preserve execution continuity but cannot become semantic authority or proof authority
+  + [contract_result] is graph_state_and_checkpoint_nonauthority_defined_without_runtime_implementation
+  + [next_gate_result] is P5-S03 may open
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [implementation_code_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [graph_runtime_execution_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: define graph state and checkpoint records as contracts only
+  = must: keep checkpoint records separate from SOP source authority, canonical specifications, proof ledgers, generated outputs, surface projections, assignment, dispatch, operations control, and live machine control
+  = must: require SOP-first reconsideration when checkpoint resume semantics conflict with current source authority or proof ledger authority
+
+& [P5GraphProcedureStateRequiredFieldSet] is the required field set for future graph procedure state records
+  + [required_field] is graph_run_id
+  + [required_field] is graph_run_uuid
+  + [required_field] is procedure_id
+  + [required_field] is procedure_uuid
+  + [required_field] is graph_contract_ref
+  + [required_field] is graph_contract_sha256
+  + [required_field] is source_authority_ref_set
+  + [required_field] is source_authority_sha256_set
+  + [required_field] is kernel_record_ref_set
+  + [required_field] is operator_contract_ref_set
+  + [required_field] is proof_ledger_ref_set
+  + [required_field] is checkpoint_ref
+  + [required_field] is checkpoint_sha256
+  + [required_field] is current_node_id
+  + [required_field] is current_node_kind
+  + [required_field] is pending_edge_set
+  + [required_field] is pending_interrupt_ref
+  + [required_field] is result_state
+  + [required_field] is stale_trigger_set
+  + [required_field] is nonpromotion_notice
+  + [required_field] is no_dispatch_review
+  + [required_field] is no_live_effect_review
+  + [required_field] is resume_policy
+  + [required_field] is downstream_consumption_gate
+
+  = must: reject graph procedure state records that omit source authority, checkpoint identity, result state, nonpromotion notice, no-dispatch review, no-live-effect review, or resume policy
+  = must: treat graph_run_id as a local natural key and graph_run_uuid as durable cross-surface runtime identity
+
+& [P5CheckpointNonauthorityRules] is the checkpoint nonauthority rule set
+  + [rule] is checkpoint state may preserve runtime continuity
+  + [rule] is checkpoint state may support resume only when source authority and proof ledger freshness checks pass
+  + [rule] is checkpoint state must not replace SOP source, canonical specifications, proof ledgers, or completion reviews
+  + [rule] is checkpoint state must not promote generated outputs to source authority
+  + [rule] is checkpoint state must not authorize assignment, dispatch, operations control, live machine control, dependency installation, package metadata mutation, or adapter implementation
+  + [rule] is checkpoint state must carry stale triggers when any source authority, operator contract, proof ledger, path policy, nonpromotion policy, or no-live-effect boundary changes
+
+  = must: render checkpoint nonauthority notices in downstream surfaces
+  = must: route checkpoint authority conflict to SOP interrupt rather than continuing graph execution
+
+& [P5CheckpointFreshnessAndResumeContract] is the checkpoint freshness and resume contract
+  + [freshness_check] is source_authority_hash_match
+  + [freshness_check] is canonical_specification_hash_match
+  + [freshness_check] is kernel_record_schema_hash_match
+  + [freshness_check] is operator_contract_hash_match
+  + [freshness_check] is proof_ledger_contract_hash_match
+  + [freshness_check] is generated_output_nonpromotion_policy_hash_match
+  + [freshness_check] is no_live_effect_policy_hash_match
+  + [freshness_check] is downstream_consumption_gate_hash_match
+  + [resume_result] is resumable
+  + [resume_result] is blocked_for_stale_authority
+  + [resume_result] is blocked_for_missing_proof
+  + [resume_result] is interrupted_for_SOP_judgment
+  + [resume_result] is rebake_required
+
+  = must: require blocked_for_stale_authority when accepted authority hashes do not match the checkpoint basis
+  = must: require interrupted_for_SOP_judgment when checkpoint state is internally consistent but current meaning, authority, or repair path is ambiguous
+  = must: require rebake_required when the graph contract or operator mapping changes enough that checkpoint resume would change case meaning
+
+& [P5RuntimeProjectionAndGeneratedOutputSeparationRules] is the projection and generated-output separation rule set
+  + [separated_record_class] is graph_procedure_state
+  + [separated_record_class] is checkpoint_state
+  + [separated_record_class] is graph_transition_trace
+  + [separated_record_class] is generated_output_trace
+  + [separated_record_class] is surface_projection
+  + [separated_record_class] is proof_ledger
+  + [separated_record_class] is SOP_source_authority
+  + [separated_record_class] is canonical_specification
+
+  = must: keep graph procedure state and checkpoint state outside generated output roots unless future implementation activation explicitly defines ignored runtime trace paths
+  = must: keep generated output traces non-authoritative and consumable only through accepted proof ledgers and absence proofs
+  = must: keep surface projections read-only projections of authority class and freshness state
+
+& [P5S02DownstreamGate] is the gate opened by P5-S02
+  + [opened_slice] is P5-S03 operator node mapping and deterministic transition contract
+  + [activation_basis] is graph procedure state envelope and checkpoint nonauthority accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is operator-to-node mapping determines which SOP duties can be mechanical and when the graph must stop for judgment
+  + [completion_review_required] is true
+
+  = must: open P5-S03 only after P5-S02 completion review accepts this graph procedure state envelope and checkpoint nonauthority contract
