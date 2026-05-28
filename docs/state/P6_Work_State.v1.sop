@@ -51,11 +51,15 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
 @ [p6_surface_matrix] src/langsop/surfaces_p6/surface_matrix.py
 @ [p6_action_classifier] src/langsop/surfaces_p6/action_classifier.py
 @ [p6_ia03_review] docs/reviews/P6_IA03_Completion_Review.v1.sop
+@ [p6_generated_projection_policy] docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [p6_generated_path_policy] src/langsop/surfaces_p6/generated_paths.py
+@ [p6_fixture_runner] src/langsop/surfaces_p6/fixture_runner.py
+@ [p6_ia04_review] docs/reviews/P6_IA04_Completion_Review.v1.sop
 
 & [P6WorkStateV1] is the current derived work state for P6 surface projection system
   + [state_basis] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
   + [state_basis_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
-  + [surface_status] is P6-IA03_accepted_ready_for_P6-IA04
+  + [surface_status] is P6-IA04_accepted_ready_for_P6-IA05
   + [source_manifest] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
   + [canonical_specification] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
@@ -137,19 +141,29 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [accepted_surface_model_refresh_review] is docs/reviews/P6_IA02_Completion_Review.v1.sop
   + [accepted_surface_model_refresh_review_sha256] is D5DFA6126A4AB7416BC8E05EAF20B847E3B78F34DE714BABBA0FDBEC2B8C0296
   + [accepted_surface_matrix] is src/langsop/surfaces_p6/surface_matrix.py
-  + [accepted_surface_matrix_sha256] is 4EFB93A8095F26D69CA4FA75748A43F18E36FFDE077469AC760FD14EDA2E2495
+  + [accepted_surface_matrix_sha256] is 26D0DA17971F7093829CE385323CF7DECFB0CB06347E90EE9817AF94014A88F2
   + [accepted_action_classifier] is src/langsop/surfaces_p6/action_classifier.py
   + [accepted_action_classifier_sha256] is 59A17B2DC706E1CCA593B6953A9C83940FDC0F3EE52D3A894C10FDF2C0C5FD0D
   + [accepted_surface_projector_action_review] is docs/reviews/P6_IA03_Completion_Review.v1.sop
   + [accepted_surface_projector_action_review_sha256] is 8F6B01C9913F753384064DCF930FECE567187B8506456496FA852C3328869250
-  + [current_ready_slice] is P6-IA04
-  + [current_ready_slice_name] is generated projection path policy and fixture runner contract
-  + [expected_current_output] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
-  + [expected_current_output] is src/langsop/surfaces_p6/generated_paths.py
-  + [expected_current_output] is src/langsop/surfaces_p6/fixture_runner.py
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_depth] is deeper_reasoning_required
-  + [current_ready_slice_model_route_reason] is generated projection path policy and fixture runner contract define which generated outputs may exist without becoming authority or live effects
+  + [accepted_generated_projection_policy] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [accepted_generated_projection_policy_sha256] is 4C47F05659E1598BA6BB50E93D577478C394369112EA2C2A3EA37B6612661AEA
+  + [accepted_generated_path_policy] is src/langsop/surfaces_p6/generated_paths.py
+  + [accepted_generated_path_policy_sha256] is FFD9ECE38C6937FF73C9D55C7526E16D9D86B6A1043FC21840D93F366026D0D6
+  + [accepted_fixture_runner] is src/langsop/surfaces_p6/fixture_runner.py
+  + [accepted_fixture_runner_sha256] is 74A84940FA7D46D5BAEED1B02DC99D1A3EE9E145A7799D2CB2559FAD5801758F
+  + [accepted_p6_ia04_review] is docs/reviews/P6_IA04_Completion_Review.v1.sop
+  + [accepted_p6_ia04_review_sha256] is 0FC36BB412EDC664E08946F0658568CABE0AB07A4F12B4A58EB335AC7A97B760
+  + [current_ready_slice] is P6-IA05
+  + [current_ready_slice_name] is surface validation tests and generated projection nonpromotion proof
+  + [expected_current_output] is tests/test_p6_surface_implementation_contracts.py
+  + [expected_current_output] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [current_ready_slice_model_route] is GPT-5.3-Codex-Spark-suitable
+  + [current_ready_slice_model_route_depth] is bounded_implementation_and_validation
+  + [current_ready_slice_model_route_reason] is validation tests and proof records are bounded by accepted P6 fixtures, expected ledgers, path policy, and in-memory runner behavior
+  + [generated_projection_creation_authorized] is true_for_P6-IA05_validation_only_under_accepted_generated_roots
+  + [test_file_creation_authorized] is true_for_P6-IA05_only
+  + [proof_review_creation_authorized] is true_for_P6-IA05_only
   + [UI_implementation_authorized] is false
   + [adapter_implementation_authorized] is false
   + [transport_implementation_authorized] is false
@@ -162,6 +176,6 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P6-IA04 only inside docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop, src/langsop/surfaces_p6/generated_paths.py, and src/langsop/surfaces_p6/fixture_runner.py before test/proof acceptance, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: execute P6-IA05 only inside tests/test_p6_surface_implementation_contracts.py and docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop before dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control
   = must: keep source authority, projection records, generated snapshots, adapter messages, human handoffs, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P6 completion review, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, IR5 implementation completion, P6 surface implementation activation source, P6 surface implementation activation manifest, P6 surface implementation activation canonical specification, P6 surface implementation activation slice surface, P6 surface implementation activation minting review, P6-IA01 boundary, P6-IA01 review, P6-IA02 model files, P6-IA02 review, P6-IA03 surface matrix, P6-IA03 action classifier, or P6-IA03 review changes
+  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P6 completion review, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, IR5 implementation completion, P6 surface implementation activation source, P6 surface implementation activation manifest, P6 surface implementation activation canonical specification, P6 surface implementation activation slice surface, P6 surface implementation activation minting review, P6-IA01 boundary, P6-IA01 review, P6-IA02 model files, P6-IA02 review, P6-IA03 surface matrix, P6-IA03 action classifier, P6-IA03 review, P6-IA04 contract, P6-IA04 path policy, P6-IA04 fixture runner, or P6-IA04 review changes

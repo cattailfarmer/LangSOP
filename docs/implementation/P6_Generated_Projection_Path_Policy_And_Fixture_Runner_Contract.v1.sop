@@ -1,0 +1,233 @@
+Subject: P6 Generated Projection Path Policy And Fixture Runner Contract V1
+Date: 2026-05-27
+Contract UUID: 49ad8c73-94e0-464b-a986-dff21fc90504
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+@ [p6_ia01_review] docs/reviews/P6_IA01_Completion_Review.v1.sop
+@ [p6_model_refresh_review] docs/reviews/P6_IA02_Completion_Review.v1.sop
+@ [p6_projector_action_review] docs/reviews/P6_IA03_Completion_Review.v1.sop
+@ [p6_surface_matrix] src/langsop/surfaces_p6/surface_matrix.py
+@ [p6_action_classifier] src/langsop/surfaces_p6/action_classifier.py
+@ [p6_generated_path_policy] src/langsop/surfaces_p6/generated_paths.py
+@ [p6_fixture_runner] src/langsop/surfaces_p6/fixture_runner.py
+@ [p6_fixture_plan] docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [P6GeneratedProjectionPathPolicyAndFixtureRunnerContractV1] is the P6-IA04 contract for generated projection paths and fixture runner behavior
+  + [contract_id] is p6-generated-projection-path-policy-and-fixture-runner-contract-v1
+  + [contract_uuid] is 49ad8c73-94e0-464b-a986-dff21fc90504
+  + [slice_id] is P6-IA04
+  + [contract_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [implementation_scope] is generated projection path policy and fixture runner contract plus bounded pure runner code
+
+  = must: define path acceptance, path refusal, fixture runner read boundaries, generated projection write boundaries, generated projection record shape, nonpromotion behavior, no-assignment behavior, no-dispatch behavior, no-operations-control behavior, no-live-effect behavior, and proof gates
+  = must: preserve P6 surface model refresh and projector/action semantics without creating generated projections, generated reports, tests, dependency changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control in this slice
+  = must: keep generated projection writes gated until P6-IA05 tests and proof execution intentionally create disposable generated evidence under accepted ignored roots
+  - never: treat fixture source, expected ledgers, generated projections, projection reports, carrier surfaces, displayed authority notices, inbound actions, human handoff displays, packet candidates, or displayed approvals as source authority, assignment authority, dispatch authority, operations-control authority, or live-control authority
+
+& [AcceptedSurfaceFixtureInputInventory: P6SurfaceImplementation] is the fixture input inventory for P6 surface fixture runner work
+  + [fixture_source_root] is tests/fixtures/sop/p6_surface_projection/
+  + [expected_ledger_root] is tests/fixtures/expected/p6_surface_projection/
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/manager_authority_notice_projection.sop
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/stale_surface_projection.sop
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/inbound_action_mutation_refusal.sop
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p6_surface_projection/generated_projection_non_authority.sop
+  + [accepted_expected_ledger_file] is tests/fixtures/expected/p6_surface_projection/authority_projection_expected.sop
+  + [accepted_expected_ledger_file] is tests/fixtures/expected/p6_surface_projection/nonpromotion_and_action_refusal_expected.sop
+
+  = must: require fixture runner code to read fixture source and expected ledgers only from accepted roots
+  = must: refuse missing, path-escaped, platform mailbox, credential, network, destructive filesystem, assignment, dispatch, operations, or live-control inputs
+  = must: preserve fixture source and expected ledgers as tracked evidence, not canonical source authority
+
+& [AcceptedGeneratedProjectionRootSet: P6SurfaceImplementation] is the accepted generated projection root set
+  + [accepted_generated_projection_root] is tests/fixtures/generated/p6_surface_projection/
+  + [accepted_generated_projection_root] is tests/fixtures/generated/p6_surface_projection/projections/
+  + [accepted_generated_projection_root] is tests/fixtures/generated/p6_surface_projection/reports/
+  + [accepted_generated_projection_root] is tests/fixtures/generated/p6_surface_implementation/proof_results/
+  + [accepted_generated_projection_root] is tests/fixtures/generated/p6_surface_implementation/reports/
+  + [accepted_generated_projection_root] is .langsop/projections/p6_surface_projection/
+  + [accepted_generated_projection_root] is .langsop/reports/p6_surface_projection/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [ignored_generated_path] is .langsop/
+  + [generated_projection_authority_class] is generated_output_non_authority
+  + [generated_projection_disposition] is disposable_rebuildable_evidence
+
+  = must: refuse writes outside accepted generated projection roots
+  = must: require generated projection roots to remain ignored by source discovery and disposable under deletion
+  = must: prove future generated projection deletion and rebuild cannot erase accepted fixture source, expected ledgers, proof ledgers, source docs, canonical specs, completion reviews, or readiness gates
+
+& [RefusedSurfacePathTargetSet: P6SurfaceImplementation] is the refused path target set for fixture runner reads and writes
+  + [refused_target] is docs/source/
+  + [refused_target] is docs/canonical/
+  + [refused_target] is docs/slices/
+  + [refused_target] is docs/reviews/
+  + [refused_target] is docs/proofs/
+  + [refused_target] is src/
+  + [refused_target] is tests/fixtures/sop/
+  + [refused_target] is tests/fixtures/expected/
+  + [refused_target] is platform/
+  + [refused_target] is platform/coordination/mailboxes/
+  + [refused_target] is .git/
+  + [refused_target] is credential_file
+  + [refused_target] is network_path
+  + [refused_target] is destructive_filesystem_target
+  + [refused_target] is assignment_record
+  + [refused_target] is dispatch_record
+  + [refused_target] is operations_target
+  + [refused_target] is live_control_target
+
+  = must: refuse source, expected ledger, proof ledger, mailbox, platform, credential, network, destructive filesystem, assignment, dispatch, operations, or live-control mutation attempts
+  = must: treat any accepted generated path under a refused target as a policy contradiction and block proof execution
+
+& [SurfaceFixtureRunnerContract: P6SurfaceImplementation] is the fixture runner contract opened for P6-IA05 validation
+  + [runner_input] is accepted P6 fixture source files
+  + [runner_input] is accepted P6 expected ledger files
+  + [runner_input] is accepted P6 surface model refresh helpers
+  + [runner_input] is accepted P6 surface projector and inbound action classifier helpers
+  + [runner_output] is in-memory generated projection comparison report
+  + [runner_output] is future generated projection evidence under accepted generated projection roots
+  + [runner_output] is future generated no-authority-promotion evidence under accepted generated projection roots
+  + [runner_output_status] is disposable_generated_evidence_only
+  + [source_write_authorized] is false
+  + [expected_ledger_write_authorized] is false
+  + [proof_ledger_write_authorized_by_runner] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: classify accepted fixture source fields through P6 surface projection, nonpromotion, and inbound action helpers
+  = must: compare observed surface facts against expected ledgers without mutating fixture source or expected ledgers
+  = must: generate reports only after path policy acceptance
+  = must: fail or block when any fixture result claims source authority, assignment authority, dispatch authority, operations-control authority, live-control authority, credential access, network mutation, process control, GPU control, model runtime mutation, job dispatch, or destructive filesystem effects
+
+& [GeneratedSurfaceProjectionRecordShape: P6SurfaceImplementation] is the required shape for future generated P6 projection records
+  + [required_field] is projection_id
+  + [required_field] is projection_uuid
+  + [required_field] is fixture_source_ref
+  + [required_field] is fixture_source_sha256
+  + [required_field] is expected_ledger_ref_set
+  + [required_field] is expected_ledger_sha256_set
+  + [required_field] is surface_model_ref_set
+  + [required_field] is surface_model_sha256_set
+  + [required_field] is surface_family
+  + [required_field] is carrier_surface
+  + [required_field] is projection_state
+  + [required_field] is projected_status
+  + [required_field] is acceptance_status
+  + [required_field] is action_result
+  + [required_field] is fault_kind_set
+  + [required_field] is refusal_kind_set
+  + [required_field] is source_authority_preserved
+  + [required_field] is generated_projection_authority
+  + [required_field] is surface_mutation_authority
+  + [required_field] is assignment_authorized
+  + [required_field] is dispatch_authorized
+  + [required_field] is operations_control_authorized
+  + [required_field] is live_control_authorized
+  + [required_field] is nonpromotion_notice
+  + [required_field] is no_assignment_notice
+  + [required_field] is no_dispatch_notice
+  + [required_field] is no_operations_control_notice
+  + [required_field] is no_live_effect_notice
+  + [required_field] is generated_output_status
+
+  = must: require explicit false or not_applicable values for generated_projection_authority, surface_mutation_authority, assignment_authorized, dispatch_authorized, operations_control_authorized, live_control_authorized, and action_result when absent
+  = must: reject generated projection records that omit nonpromotion, no-assignment, no-dispatch, no-operations-control, or no-live-effect notices
+  = must: keep generated projection record shape as evidence shape, not source authority shape
+
+& [GeneratedProjectionNonpromotionAndNoLiveEffectRules: P6SurfaceImplementation] is the generated projection nonpromotion and no-live-effect rule set
+  + [rule] is generated P6 surface projections are generated_output_non_authority
+  + [rule] is carrier surfaces preserve display context only
+  + [rule] is fixture success supports proof review only through accepted ledgers and completion review
+  + [rule] is inbound action classification creates request, refusal, interrupt, or review evidence only
+  + [rule] is generated projection reports must not mutate source authority, expected ledgers, proof ledgers, platform mailboxes, credentials, network state, process state, GPU state, model runtime state, job queues, operations targets, or live machine state
+
+  = must: fail validation when generated output is promoted to source authority
+  = must: fail validation when surface actions are promoted to source mutation, assignment, dispatch, operations-control, or live-control authority
+  = must: fail validation when displayed approvals or fixture success are promoted to assignment, dispatch, operations-control, or live-control authority
+
+& [P6IA04CommandAndProofPlan] is the command and proof plan opened for P6-IA05
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test] is python -m unittest tests.test_p6_surface_implementation_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p5_runtime_implementation_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_projection_review] is prove generated P6 outputs are ignored, disposable, reproducible, and non-authoritative
+  + [no_dispatch_review] is prove P6 outputs remain evidence and refusal records, not dispatch effects
+  + [no_operations_control_review] is prove P6 outputs do not operate processes, GPUs, model runtimes, jobs, credentials, network state, platform mailboxes, or destructive filesystem targets
+  + [no_live_effect_review] is prove source docs, canonical specs, fixture source, expected ledgers, proof ledgers, operations records, and live machine state are not mutated by P6 proof code or tests
+
+  = must: run targeted P6 contract tests after P6-IA05 creates them
+  = must: keep command execution limited to validation commands
+
+& [ImplementationSliceProofGate: P6SurfaceGeneratedProjectionPolicy] is the proof gate opened by this contract
+  + [P6-IA05_opened_after_review] is surface validation tests and generated projection nonpromotion proof
+  + [P6-IA05_model_route] is GPT-5.3-Codex-Spark-suitable after P6-IA04 acceptance
+  + [P6-IA05_scope] is tests/test_p6_surface_implementation_contracts.py and docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [generated_projection_creation_authorized_after_P6-IA04] is true_for_P6-IA05_validation_only_under_accepted_generated_roots
+  + [test_file_creation_authorized_after_P6-IA04] is true_for_P6-IA05_only
+  + [proof_review_creation_authorized_after_P6-IA04] is true_for_P6-IA05_only
+  + [dependency_installation_authorized_after_P6-IA04] is false
+  + [package_metadata_mutation_authorized_after_P6-IA04] is false
+  + [external_langgraph_adapter_authorized_after_P6-IA04] is false
+  + [transport_implementation_authorized_after_P6-IA04] is false
+  + [UI_implementation_authorized_after_P6-IA04] is false
+  + [Langflow_export_authorized_after_P6-IA04] is false
+  + [assignment_authorized_after_P6-IA04] is false
+  + [manager_dispatch_authorized_after_P6-IA04] is false
+  + [agent_dispatch_authorized_after_P6-IA04] is false
+  + [command_execution_authorized_after_P6-IA04] is validation_commands_only
+  + [process_control_authorized_after_P6-IA04] is false
+  + [GPU_control_authorized_after_P6-IA04] is false
+  + [model_runtime_control_authorized_after_P6-IA04] is false
+  + [job_dispatch_authorized_after_P6-IA04] is false
+  + [credential_access_authorized_after_P6-IA04] is false
+  + [network_mutation_authorized_after_P6-IA04] is false
+  + [destructive_filesystem_action_authorized_after_P6-IA04] is false
+  + [operations_control_authorized_after_P6-IA04] is false
+  + [live_machine_control_authorized_after_P6-IA04] is false
+
+  = must: open only P6-IA05 after this contract is accepted
+  = must: keep dependency changes, external LangGraph adapters, transports, UI, Langflow export, assignment, dispatch, operations control, and live machine control gated
+
+& [P6IA04CoverageReview] is the coverage checklist for P6-IA04
+  + [accepted_surface_fixture_input_inventory_present] is AcceptedSurfaceFixtureInputInventory: P6SurfaceImplementation
+  + [accepted_generated_projection_root_set_present] is AcceptedGeneratedProjectionRootSet: P6SurfaceImplementation
+  + [refused_surface_path_target_set_present] is RefusedSurfacePathTargetSet: P6SurfaceImplementation
+  + [surface_fixture_runner_contract_present] is SurfaceFixtureRunnerContract: P6SurfaceImplementation
+  + [generated_surface_projection_record_shape_present] is GeneratedSurfaceProjectionRecordShape: P6SurfaceImplementation
+  + [generated_projection_nonpromotion_and_no_live_effect_rules_present] is GeneratedProjectionNonpromotionAndNoLiveEffectRules: P6SurfaceImplementation
+  + [command_and_proof_plan_present] is P6IA04CommandAndProofPlan
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: P6SurfaceGeneratedProjectionPolicy
+  + [generated_projection_created] is false
+  + [generated_report_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_export_created] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept P6-IA04 only when all checklist items are satisfied
+  = must: open P6-IA05 only after this contract is reviewed in a completion review

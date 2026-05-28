@@ -294,12 +294,12 @@ def _projection_status(
 ) -> P6ProjectionStatus:
     if "projected_status" in input_packet:
         return P6ProjectionStatus(str(input_packet["projected_status"]))
-    if nonpromotion_issue:
-        return P6ProjectionStatus.FAULTED
     if _source_mutation_requested(input_packet):
         return P6ProjectionStatus.REFUSED
     if freshness_state == P6FreshnessState.STALE:
         return P6ProjectionStatus.STALE
+    if nonpromotion_issue:
+        return P6ProjectionStatus.FAULTED
     if freshness_state == P6FreshnessState.FAULTED:
         return P6ProjectionStatus.FAULTED
     if freshness_state == P6FreshnessState.INTERRUPTED:

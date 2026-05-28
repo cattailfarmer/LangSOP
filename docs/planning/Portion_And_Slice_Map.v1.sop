@@ -82,9 +82,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p6_surface_matrix] src/langsop/surfaces_p6/surface_matrix.py
 @ [p6_action_classifier] src/langsop/surfaces_p6/action_classifier.py
 @ [p6_ia03_review] docs/reviews/P6_IA03_Completion_Review.v1.sop
+@ [p6_generated_projection_policy] docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [p6_generated_path_policy] src/langsop/surfaces_p6/generated_paths.py
+@ [p6_fixture_runner] src/langsop/surfaces_p6/fixture_runner.py
+@ [p6_ia04_review] docs/reviews/P6_IA04_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P6-IA03_accepted_ready_for_P6-IA04
+  + [map_state] is P6-IA04_accepted_ready_for_P6-IA05
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -292,7 +296,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is src/langsop/surfaces_p6/surface_matrix.py
   + [support_record] is src/langsop/surfaces_p6/action_classifier.py
   + [support_record] is docs/reviews/P6_IA03_Completion_Review.v1.sop
-  + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
+  + [support_record] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [support_record] is src/langsop/surfaces_p6/generated_paths.py
+  + [support_record] is src/langsop/surfaces_p6/fixture_runner.py
+  + [support_record] is docs/reviews/P6_IA04_Completion_Review.v1.sop
+  + [support_gap] is P6 surface implementation validation tests and generated projection proof are not yet accepted
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
   + [slice_family] is chat-and-adapter-projection-contracts
@@ -589,31 +597,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6SurfaceGeneratedProjectionPolicyAndRunner] is ready_for_execution
+& [CurrentReadyChunk: P6SurfaceValidationTestsAndGeneratedProjectionProof] is ready_for_execution
   + [chunk_id] is P6-surface-implementation-activation
-  + [slice_id] is P6-IA04
-  + [chunk_name] is P6 generated projection path policy and fixture runner contract
-  + [authority_basis] is docs/reviews/P6_IA03_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 8F6B01C9913F753384064DCF930FECE567187B8506456496FA852C3328869250
+  + [slice_id] is P6-IA05
+  + [chunk_name] is P6 surface validation tests and generated projection nonpromotion proof
+  + [authority_basis] is docs/reviews/P6_IA04_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 0FC36BB412EDC664E08946F0658568CABE0AB07A4F12B4A58EB335AC7A97B760
   + [readiness_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
-  + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
-  + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
-  + [accepted_runtime_model_refresh] is src/langsop/runtime/p5_models.py
-  + [accepted_runtime_model_refresh_sha256] is 0BDC42950DC5045EDC4F8D47B5B09EADC3CE9DCC44FF4C9868549A00ACD1479C
-  + [accepted_generated_trace_policy] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
-  + [accepted_generated_trace_policy_sha256] is 97F2FD1A4B3FC47483DA1E3768293B167627593F53FB2D7F19C6B88F6D719BAC
-  + [accepted_runtime_contract_tests] is tests/test_p5_runtime_implementation_contracts.py
-  + [accepted_runtime_contract_tests_sha256] is ACCB3C81448B8922914352F1CE2D758A0BA8F51C6698143EEE77EDE982B6689B
-  + [accepted_runtime_generated_trace_proof] is docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
-  + [accepted_runtime_generated_trace_proof_sha256] is CB9FB56534573F80CA4B58E4AADA53F461D314D077FB3D9975CCE4A77BC7A91C
-  + [accepted_runtime_dependency_deferral] is docs/decisions/P5_Runtime_Dependency_Adapter_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
-  + [accepted_runtime_dependency_deferral_sha256] is DF660AB75F0E1F55A2AB947A2DC24DF2859AA748CDEDE6DF3A1F4CCECAAB2F0B
-  + [accepted_runtime_implementation_proof_pack] is docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
-  + [accepted_runtime_implementation_proof_pack_sha256] is F7061297AEFFF69BFC00E8F0BF1B932FA18BB9CC510151377F7F87D18540DEB0
-  + [accepted_runtime_implementation_completion_review] is docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
-  + [accepted_runtime_implementation_completion_review_sha256] is 341DB4884F69208A51BD8D0E77CB1475FFA6B8D4B22D1EF26B77CFEE9D659BE4
-  + [accepted_post_runtime_implementation_readiness] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
-  + [accepted_post_runtime_implementation_readiness_sha256] is 5A518D58C0140C75FA3A0780B0D545D17B4F58DCD25983886C0BD16E2E0DE534
   + [accepted_p6_surface_implementation_activation_canonical] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
   + [accepted_p6_surface_implementation_activation_canonical_sha256] is 60CA1748951DB329435821EC2DA685DF9259116D5556D5A4E200EE65972A1896
   + [accepted_p6_surface_implementation_activation_slices] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
@@ -633,21 +623,28 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_p6_surface_model_refresh_review] is docs/reviews/P6_IA02_Completion_Review.v1.sop
   + [accepted_p6_surface_model_refresh_review_sha256] is D5DFA6126A4AB7416BC8E05EAF20B847E3B78F34DE714BABBA0FDBEC2B8C0296
   + [accepted_surface_matrix] is src/langsop/surfaces_p6/surface_matrix.py
-  + [accepted_surface_matrix_sha256] is 4EFB93A8095F26D69CA4FA75748A43F18E36FFDE077469AC760FD14EDA2E2495
+  + [accepted_surface_matrix_sha256] is 26D0DA17971F7093829CE385323CF7DECFB0CB06347E90EE9817AF94014A88F2
   + [accepted_action_classifier] is src/langsop/surfaces_p6/action_classifier.py
   + [accepted_action_classifier_sha256] is 59A17B2DC706E1CCA593B6953A9C83940FDC0F3EE52D3A894C10FDF2C0C5FD0D
   + [accepted_p6_surface_projector_action_review] is docs/reviews/P6_IA03_Completion_Review.v1.sop
   + [accepted_p6_surface_projector_action_review_sha256] is 8F6B01C9913F753384064DCF930FECE567187B8506456496FA852C3328869250
-  + [expected_current_output] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
-  + [expected_current_output] is src/langsop/surfaces_p6/generated_paths.py
-  + [expected_current_output] is src/langsop/surfaces_p6/fixture_runner.py
-  + [next_candidate_slice_family] is P6_generated_projection_path_policy_and_fixture_runner_contract
-  + [model_route] is requires deeper reasoning
-  + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is generated projection path policy and fixture runner contract define which generated outputs may exist without becoming authority or live effects
+  + [accepted_generated_projection_policy] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [accepted_generated_projection_policy_sha256] is 4C47F05659E1598BA6BB50E93D577478C394369112EA2C2A3EA37B6612661AEA
+  + [accepted_generated_path_policy] is src/langsop/surfaces_p6/generated_paths.py
+  + [accepted_generated_path_policy_sha256] is FFD9ECE38C6937FF73C9D55C7526E16D9D86B6A1043FC21840D93F366026D0D6
+  + [accepted_fixture_runner] is src/langsop/surfaces_p6/fixture_runner.py
+  + [accepted_fixture_runner_sha256] is 74A84940FA7D46D5BAEED1B02DC99D1A3EE9E145A7799D2CB2559FAD5801758F
+  + [accepted_p6_ia04_review] is docs/reviews/P6_IA04_Completion_Review.v1.sop
+  + [accepted_p6_ia04_review_sha256] is 0FC36BB412EDC664E08946F0658568CABE0AB07A4F12B4A58EB335AC7A97B760
+  + [expected_current_output] is tests/test_p6_surface_implementation_contracts.py
+  + [expected_current_output] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [next_candidate_slice_family] is P6_surface_validation_tests_and_generated_projection_nonpromotion_proof
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is bounded_implementation_and_validation
+  + [model_route_reason] is validation tests and proof records are bounded by accepted P6 fixtures, expected ledgers, path policy, and in-memory runner behavior
 
-  = must: preserve P5 runtime implementation evidence as readiness support, not executable adapter authority
-  = must: execute P6-IA04 only inside docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop, src/langsop/surfaces_p6/generated_paths.py, and src/langsop/surfaces_p6/fixture_runner.py before test/proof acceptance, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
+  = must: preserve P6 generated path policy and fixture runner evidence as readiness support, not source, adapter, or dispatch authority
+  = must: execute P6-IA05 only inside tests/test_p6_surface_implementation_contracts.py and docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop before dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence
