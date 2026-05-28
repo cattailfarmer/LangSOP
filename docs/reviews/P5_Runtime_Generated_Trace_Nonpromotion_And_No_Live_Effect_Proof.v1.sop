@@ -1,0 +1,86 @@
+Subject: P5 Runtime Generated Trace Nonpromotion And No Live Effect Proof V1
+Date: 2026-05-27
+Proof UUID: 501132a8-036f-4632-a23c-e6e336a1b8f9
+
+@ [activation_slice_surface] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [generated_trace_policy] docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [p5_ia03_review] docs/reviews/P5_IA03_Completion_Review.v1.sop
+@ [runtime_model_refresh] src/langsop/runtime/p5_models.py
+@ [contract_tests] tests/test_p5_runtime_implementation_contracts.py
+
+& [P5RuntimeGeneratedTraceNonpromotionAndNoLiveEffectProofV1] is the proof record for P5-IA04 generated trace nonpromotion and no-live-effect behavior
+  + [proof_id] is p5-runtime-generated-trace-nonpromotion-and-no-live-effect-proof-v1
+  + [proof_uuid] is 501132a8-036f-4632-a23c-e6e336a1b8f9
+  + [slice_id] is P5-IA04
+  + [contract_test] is tests/test_p5_runtime_implementation_contracts.py
+  + [contract_test_sha256] is ACCB3C81448B8922914352F1CE2D758A0BA8F51C6698143EEE77EDE982B6689B
+  + [generated_trace_authority_status] is false
+  + [source_authority_status] is false_for_generated_traces
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [external_langgraph_adapter_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+
+  = must: reject checkpoint or generated trace promotion to source authority
+  = must: reject fixture success as assignment, dispatch, operations-control, or live-control authority
+  = must: preserve generated outputs as ignored, disposable, reproducible, and non-authoritative evidence
+  = must: preserve accepted fixture source, expected ledgers, proof ledgers, source docs, canonical specs, completion reviews, and readiness gates when generated outputs are deleted
+
+& [P5RuntimeValidationCoverage] is the validation coverage accepted by P5-IA04
+  + [covered_case] is valid runtime transition trace
+  + [covered_case] is checkpoint nonauthority refusal
+  + [covered_case] is SOP interrupt handoff
+  + [covered_case] is stale checkpoint rebake required
+  + [covered_case] is deterministic transition evidence id
+  + [covered_case] is generated trace policy accepted roots
+  + [covered_case] is generated trace policy refused source targets
+  + [covered_case] is generated trace policy refused mailbox targets
+  + [covered_case] is generated trace policy refused credential, network, destructive filesystem, assignment, dispatch, operations, and live-control targets
+  + [covered_case] is generated output discovery exclusion
+  + [covered_case] is generated output deletion preserving accepted fixture source
+  + [covered_case] is proof record no-live-effect fields
+
+  = must: keep future P5 runtime fixture runner implementation aligned with this coverage
+  = must: rerun P5 validation if runtime model refresh, generated trace policy, fixture source, expected ledgers, or proof records change
+
+& [GeneratedOutputProbe: P5RuntimeImplementation] is the generated output disposal proof used by tests
+  + [probe_path] is tests/fixtures/generated/p5_runtime_implementation/proof_results/generated_runtime_probe.sop
+  + [probe_authority_class] is generated_output_non_authority
+  + [probe_status] is created_during_validation_and_deleted_by_test_teardown
+  + [discovery_inclusion_expected] is false
+  + [rebuild_required_for_authority] is false
+  + [authority_loss_on_deletion] is false
+
+  = must: keep probe output under ignored generated roots only
+  = must: reject any future proof that depends on probe persistence as source authority
+
+& [NoLiveEffectAbsenceProof: P5RuntimeImplementation] is the absence proof for forbidden effects during P5 validation
+  + [source_doc_mutation_found] is false
+  + [canonical_spec_mutation_found] is false
+  + [slice_surface_mutation_found] is false
+  + [fixture_source_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [proof_ledger_mutation_found] is false
+  + [platform_mailbox_mutation_found] is false
+  + [credential_access_found] is false
+  + [network_mutation_found] is false
+  + [destructive_filesystem_action_found] is false
+  + [process_control_found] is false
+  + [GPU_control_found] is false
+  + [model_runtime_control_found] is false
+  + [job_dispatch_found] is false
+  + [assignment_effect_found] is false
+  + [dispatch_effect_found] is false
+  + [operations_control_effect_found] is false
+  + [live_machine_control_effect_found] is false
+
+  ! [P5RuntimeGeneratedTraceProofAccepted] is accepted
+    @ [support] [P5RuntimeValidationCoverage]
+    @ [support] [GeneratedOutputProbe: P5RuntimeImplementation]
+    @ [support] [NoLiveEffectAbsenceProof: P5RuntimeImplementation]

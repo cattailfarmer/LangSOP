@@ -61,9 +61,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p5_ia02_review] docs/reviews/P5_IA02_Completion_Review.v1.sop
 @ [p5_generated_trace_policy] docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
 @ [p5_ia03_review] docs/reviews/P5_IA03_Completion_Review.v1.sop
+@ [p5_runtime_contract_tests] tests/test_p5_runtime_implementation_contracts.py
+@ [p5_runtime_generated_trace_proof] docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+@ [p5_ia04_review] docs/reviews/P5_IA04_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P5-IA04_runtime_validation_tests_and_generated_trace_nonpromotion_proof
+  + [map_state] is ready_for_P5-IA05_dependency_adapter_dispatch_operations_and_live_control_deferral_decision
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -554,12 +557,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P5-IA04-RuntimeValidationTestsAndGeneratedTraceNonpromotionProof] is ready_for_execution
+& [CurrentReadyChunk: P5-IA05-DependencyAdapterDispatchOperationsAndLiveControlDeferralDecision] is ready_for_execution
   + [chunk_id] is P5-runtime-implementation-activation
-  + [slice_id] is P5-IA04
-  + [chunk_name] is runtime validation tests and generated trace nonpromotion proof
-  + [authority_basis] is docs/reviews/P5_IA03_Completion_Review.v1.sop
-  + [authority_basis_sha256] is A9CA6ACDE3472D0FF4D2F545F42A8DB13397B3BC66DAB7CA0339F7272290FEE1
+  + [slice_id] is P5-IA05
+  + [chunk_name] is dependency, adapter, dispatch, operations, and live-control deferral decision
+  + [authority_basis] is docs/reviews/P5_IA04_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 1A73E6360978270189C7C54ADB841202D8ED75EDD6AAD14102801F1836AD0DF4
   + [readiness_surface] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
   + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
   + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
@@ -567,17 +570,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_runtime_model_refresh_sha256] is 0BDC42950DC5045EDC4F8D47B5B09EADC3CE9DCC44FF4C9868549A00ACD1479C
   + [accepted_generated_trace_policy] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
   + [accepted_generated_trace_policy_sha256] is 97F2FD1A4B3FC47483DA1E3768293B167627593F53FB2D7F19C6B88F6D719BAC
-  + [expected_output] is tests/test_p5_runtime_implementation_contracts.py
-  + [expected_output] is docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
-  + [completion_review_output] is docs/reviews/P5_IA04_Completion_Review.v1.sop
-  + [model_route] is GPT-5.3-Codex-Spark-suitable
-  + [model_route_depth] is Spark-suitable
-  + [model_route_reason] is validation tests and proof records are bounded by accepted runtime models, fixture material, generated trace path policy, and fixture runner contract
+  + [accepted_runtime_contract_tests] is tests/test_p5_runtime_implementation_contracts.py
+  + [accepted_runtime_contract_tests_sha256] is ACCB3C81448B8922914352F1CE2D758A0BA8F51C6698143EEE77EDE982B6689B
+  + [accepted_runtime_generated_trace_proof] is docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [accepted_runtime_generated_trace_proof_sha256] is CB9FB56534573F80CA4B58E4AADA53F461D314D077FB3D9975CCE4A77BC7A91C
+  + [expected_output] is docs/decisions/P5_Runtime_Dependency_Adapter_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [completion_review_output] is docs/reviews/P5_IA05_Completion_Review.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is dependency, adapter, graph runtime, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
 
-  = must: add bounded tests for accepted transition, checkpoint nonauthority refusal, SOP interrupt handoff, stale checkpoint rebake, generated trace nonpromotion, path refusal, no-dispatch, no-operations-control, and no-live-effect behavior
-  = must: prove generated runtime outputs are ignored, disposable, reproducible, and non-authoritative
+  = must: decide whether to defer or narrowly authorize future dependency, adapter, transport, UI, dispatch, operations-control, and live-control work
+  = must: preserve no command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, or live machine control
   = must: avoid dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P5-IA05 and P5-IA06 gated until P5-IA04 completion review accepts
+  = must: keep P5-IA06 gated until P5-IA05 completion review accepts
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design
