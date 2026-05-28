@@ -13,9 +13,11 @@ State UUID: ae74e2db-40df-4767-92c3-1cfd2690a997
 @ [dr02_review] docs/reviews/P7P9_DR02_Completion_Review.v1.sop
 @ [dr03_output] docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
 @ [dr03_review] docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+@ [dr04_output] docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+@ [dr04_review] docs/reviews/P7P9_DR04_Completion_Review.v1.sop
 
 & [PostP6SurfaceImplementationDownstreamReentryStateV1] is the current derived state for P7/P9 downstream reentry
-  + [state_status] is P7P9_DR03_accepted_DR04_ready
+  + [state_status] is P7P9_DR04_accepted_DR05_ready
   + [accepted_source] is docs/source/2026-05-27_post_p6_surface_implementation_downstream_reentry/Post_P6_Surface_Implementation_Downstream_Reentry_Source.sop
   + [accepted_source_sha256] is D17D24EE49303EA3C76679BEA026771EE8767D4732AA929DE931AD75995A6192
   + [accepted_manifest] is docs/source/2026-05-27_post_p6_surface_implementation_downstream_reentry/Source_Document_Manifest.sop
@@ -43,10 +45,15 @@ State UUID: ae74e2db-40df-4767-92c3-1cfd2690a997
   + [accepted_output_sha256] is 6F05A01F5B644F8BE76786B82C36DDF318A66C54A27C79A526E18F499BD67412
   + [accepted_completion_review] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
   + [accepted_completion_review_sha256] is BAB264A803D8AD58301B5753DA4D19C7EFBC9D617E045A7687319A67FF793C0D
-  + [current_ready_slice] is P7P9-DR04
-  + [current_ready_slice_name] is cross-surface carrier, conversation, and rendezvous projection contract
+  + [accepted_slice] is P7P9-DR04
+  + [accepted_output] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [accepted_output_sha256] is 443F95926968992444E3982F0570CBC950567803E59B95E00019CB9B9D778DCF
+  + [accepted_completion_review] is docs/reviews/P7P9_DR04_Completion_Review.v1.sop
+  + [accepted_completion_review_sha256] is 3E7631E8665945F88ACAE9CC2DD754D2D6DC35FFF6F2CAFBD61A7BFD7EC4AEE9
+  + [current_ready_slice] is P7P9-DR05
+  + [current_ready_slice_name] is conflict, staleness, human override, and completion review contract
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+  + [current_ready_slice_model_route_reason] is conflict and override behavior controls multi-agent safety and later operations-manager handoffs
   + [future_Spark_suitable_work] is P7P9-DR09 fixture oracle and generated-output boundary plan after P7P9-DR01 through P7P9-DR08 acceptance
   + [dependency_installation_authorized] is false
   + [package_metadata_mutation_authorized] is false
@@ -70,16 +77,17 @@ State UUID: ae74e2db-40df-4767-92c3-1cfd2690a997
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P7P9-DR04 next unless user redirects or a new fault invalidates the downstream reentry state
+  = must: execute P7P9-DR05 next unless user redirects or a new fault invalidates the downstream reentry state
   = must: preserve P7P9-DR01 as boundary import evidence, not implementation, transport, dispatch, operations-control, or live-control authority
   = must: preserve P7P9-DR02 as identity and authority-class evidence, not assignment, dispatch, operations-control, or live-control authority
   = must: preserve P7P9-DR03 as claim and dispatch-refusal evidence, not assignment, dispatch, operations-control, or live-control authority
-  = must: keep P7P9-DR05 through P7P9-DR10 gated until completion reviews accept their direct upstream dependencies
-  = must: stale this state if source, manifest, canonical specification, reentry surface, slice surface, reentry review, P7P9-DR01 output, P7P9-DR01 review, P7P9-DR02 output, P7P9-DR02 review, P7P9-DR03 output, P7P9-DR03 review, P6 surface implementation proof, post-P6 surface readiness, post-IR8 readiness, IR6 coordination proof, IR7 dry-run proof, IR8 manager proof, FSC5 operations safety, operations safety canonical authority, capability field, portion map, or README current-status references change
+  = must: preserve P7P9-DR04 as carrier and rendezvous projection evidence, not transport, assignment, dispatch, operations-control, or live-control authority
+  = must: keep P7P9-DR06 through P7P9-DR10 gated until completion reviews accept their direct upstream dependencies
+  = must: stale this state if source, manifest, canonical specification, reentry surface, slice surface, reentry review, P7P9-DR01 output, P7P9-DR01 review, P7P9-DR02 output, P7P9-DR02 review, P7P9-DR03 output, P7P9-DR03 review, P7P9-DR04 output, P7P9-DR04 review, P6 surface implementation proof, post-P6 surface readiness, post-IR8 readiness, IR6 coordination proof, IR7 dry-run proof, IR8 manager proof, FSC5 operations safety, operations safety canonical authority, capability field, portion map, or README current-status references change
 
-& [OpenFrontier: P7P9-DR04] is ready
+& [OpenFrontier: P7P9-DR05] is ready
   + [frontier_kind] is deeper-reasoning planning contract
-  + [expected_output_set] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
-  + [verification_oracle] is contract defines how IRC, Matrix, web, Codex, terminal, browser, mailbox, Langflow, and narrative surfaces may project conversation and rendezvous state while preserving source/canonical authority and refusing mailbox IO or transport implementation
+  + [expected_output_set] is docs/coordination/P7_Conflict_Staleness_Human_Override_And_Completion_Review_Contract.v1.sop
+  + [verification_oracle] is contract defines conflict detection, stale claim review, stale surface review, ambiguous identity interrupt, hidden scope expansion fault, human override, release notice, and completion-review gate without resolving conflicts silently
   + [forbidden_scope] is mailbox IO, adapter implementation, transport implementation, UI implementation, Langflow export, dependency installation, package metadata mutation, assignment, dispatch, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, operations control, and live machine control
   + [completion_review_required] is true

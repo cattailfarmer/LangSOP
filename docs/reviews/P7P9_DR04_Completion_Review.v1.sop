@@ -1,0 +1,113 @@
+Subject: P7P9 DR04 Completion Review V1
+Date: 2026-05-27
+Review UUID: 20056e72-55d8-464e-8b9b-0cc59520bfc1
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [slice_surface] docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+@ [dr03_review] docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+@ [completed_output] docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+
+& [CompletedWorkReview: P7P9-DR04] is the completed-work review for cross-surface carrier, conversation, and rendezvous projection contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P7P9-DR04
+  + [completed_output] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [completed_output_sha256] is 443F95926968992444E3982F0570CBC950567803E59B95E00019CB9B9D778DCF
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [authority_basis_sha256] is 8B2B13EDDD722EA620CE0886CB24BB4CACC35FEE111C134EEB93DAEFBFB1A0BE
+  + [slice_surface] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+  + [slice_surface_sha256] is F068D0A6FCE7B273AC5D3D770D1FDA397706430B4F5304F6E52C5D25818A19F2
+  + [upstream_review] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [upstream_review_sha256] is BAB264A803D8AD58301B5753DA4D19C7EFBC9D617E045A7687319A67FF793C0D
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is P7P9-DR05 may open
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_reason] is conflict and override behavior controls multi-agent safety and later operations-manager handoffs
+
+  = must: treat this review as gate-opening evidence for P7P9-DR05 only
+  = must: rerun this review if P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop, downstream reentry canonical authority, slice surface, P7P9-DR03 output, or P7P9-DR03 completion review changes
+  = must: keep P7P9-DR06 through P7P9-DR10 gated until upstream completion reviews accept their direct dependencies
+  = must: keep dependency installation, package metadata mutation, mailbox IO, adapter work, transport work, UI work, Langflow export, assignment, dispatch, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, persistent automation, operations control, and live machine control gated
+
+& [VerificationOracleResult: P7P9-DR04] is the verification result for carrier and rendezvous projection contract
+  + [carrier_notice_record_contract_present] is true
+  + [rendezvous_packet_projection_contract_present] is true
+  + [conversation_surface_projection_contract_present] is true
+  + [read_cursor_freshness_projection_contract_present] is true
+  + [cross_surface_inbound_action_classification_present] is true
+  + [P7_carrier_and_rendezvous_boundary_present] is true
+  + [fault_containment_present] is true
+  + [next_slice] is P7P9-DR05
+  + [next_slice_model_route] is requires deeper reasoning
+  + [Spark_suitable_work] is none_until_DR08_acceptance
+  + [mailbox_IO_created] is false
+  + [IRC_implementation_created] is false
+  + [Matrix_implementation_created] is false
+  + [web_adapter_created] is false
+  + [browser_adapter_created] is false
+  + [Langflow_export_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P7P9DR04VerificationSatisfied] is accepted
+    @ [support] docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+
+& [SupportDelta: P7P9-DR04] is the support delta produced by carrier and rendezvous contract
+  + [new_support_record] is carrier notices can project mailbox, IRC, Matrix, web, browser, Codex, terminal, Langflow, narrative, debug, manager, and worker packet state without becoming signed authority
+  + [new_support_record] is rendezvous packets can coordinate participants, claims, questions, and safe routes while preserving no-dispatch and no-live-control flags
+  + [new_support_record] is read cursors and freshness projections are visible carrier state, not authority
+  + [new_support_record] is inbound carrier actions are classified before mutation and route source changes, claim changes, operations-looking requests, dispatch-looking requests, and live-control-looking requests to safe routes or refusals
+  + [new_support_record] is P7P9-DR05 conflict, staleness, human override, and completion review contract may open
+  + [support_status] is accepted
+
+& [RequirementDelta: P7P9-DR04] is the requirement delta produced by carrier and rendezvous contract
+  + [requirement_delta] is P7P9-DR05 must define conflict, stale carrier, stale claim, ambiguous identity, human override, release notice, and completion-review behavior using accepted carrier and rendezvous semantics
+  + [requirement_delta] is P7P9-DR05 requires deeper reasoning
+  + [requirement_delta] is P9 operations-manager safety remains gated until P7P9-DR05 accepts conflict and human override behavior
+  + [requirement_delta] is no carrier, rendezvous packet, surface projection, read cursor, inbound action, or transport presence can authorize assignment, dispatch, operations control, or live machine control
+
+& [FaultReview: P7P9-DR04] is the fault review for carrier and rendezvous contract
+  + [source_overwrite_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [chat_protocol_as_source_truth_found] is false
+  + [carrier_notice_as_signed_authority_found] is false
+  + [surface_projection_as_source_mutation_found] is false
+  + [rendezvous_packet_as_assignment_found] is false
+  + [read_cursor_as_authority_found] is false
+  + [inbound_action_as_direct_mutation_found] is false
+  + [transport_presence_as_credential_permission_found] is false
+  + [operation_request_from_carrier_as_command_found] is false
+  + [live_control_request_from_carrier_as_approval_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [mailbox_IO_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P7P9DR04Accepted] is accepted
+    @ [support] [VerificationOracleResult: P7P9-DR04]
+    @ [support] [SupportDelta: P7P9-DR04]
+    @ [support] [RequirementDelta: P7P9-DR04]
+    @ [support] [FaultReview: P7P9-DR04]
+
+& [NextSliceGate: P7P9-DR05] is opened
+  + [opened_slice] is P7P9-DR05 conflict, staleness, human override, and completion review contract
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [completed_dependency] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [completed_dependency_sha256] is 443F95926968992444E3982F0570CBC950567803E59B95E00019CB9B9D778DCF
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is conflict and override behavior controls multi-agent safety and later operations-manager handoffs
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P7P9-DR05 next unless user redirects or a new fault invalidates this review

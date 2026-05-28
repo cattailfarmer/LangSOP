@@ -105,10 +105,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p7p9_dr02_review] docs/reviews/P7P9_DR02_Completion_Review.v1.sop
 @ [p7p9_dr03_output] docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
 @ [p7p9_dr03_review] docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+@ [p7p9_dr04_output] docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+@ [p7p9_dr04_review] docs/reviews/P7P9_DR04_Completion_Review.v1.sop
 @ [post_p6_downstream_reentry_state] docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P7P9_DR03_accepted_DR04_ready
+  + [map_state] is P7P9_DR04_accepted_DR05_ready
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -447,6 +449,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P7P9_DR02_Completion_Review.v1.sop
   + [support_record] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
   + [support_record] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [support_record] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR04_Completion_Review.v1.sop
   + [support_record] is docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
@@ -639,6 +643,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P7P9_DR02_Completion_Review.v1.sop
   + [support_record] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
   + [support_record] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [support_record] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR04_Completion_Review.v1.sop
   + [support_record] is docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
@@ -650,12 +656,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P7P9-DR04-CrossSurfaceCarrierConversationAndRendezvousProjectionContract] is ready
+& [CurrentReadyChunk: P7P9-DR05-ConflictStalenessHumanOverrideAndCompletionReviewContract] is ready
   + [chunk_id] is p7p9-downstream-reentry
-  + [slice_id] is P7P9-DR04
-  + [chunk_name] is cross-surface carrier conversation and rendezvous projection contract
-  + [authority_basis] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
-  + [authority_basis_sha256] is BAB264A803D8AD58301B5753DA4D19C7EFBC9D617E045A7687319A67FF793C0D
+  + [slice_id] is P7P9-DR05
+  + [chunk_name] is conflict staleness human override and completion review contract
+  + [authority_basis] is docs/reviews/P7P9_DR04_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 3E7631E8665945F88ACAE9CC2DD754D2D6DC35FFF6F2CAFBD61A7BFD7EC4AEE9
   + [readiness_surface] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
   + [accepted_p6_surface_implementation_activation_canonical] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
   + [accepted_p6_surface_implementation_activation_canonical_sha256] is 60CA1748951DB329435821EC2DA685DF9259116D5556D5A4E200EE65972A1896
@@ -727,17 +733,21 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_p7p9_dr03_output_sha256] is 6F05A01F5B644F8BE76786B82C36DDF318A66C54A27C79A526E18F499BD67412
   + [accepted_p7p9_dr03_review] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
   + [accepted_p7p9_dr03_review_sha256] is BAB264A803D8AD58301B5753DA4D19C7EFBC9D617E045A7687319A67FF793C0D
+  + [accepted_p7p9_dr04_output] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [accepted_p7p9_dr04_output_sha256] is 443F95926968992444E3982F0570CBC950567803E59B95E00019CB9B9D778DCF
+  + [accepted_p7p9_dr04_review] is docs/reviews/P7P9_DR04_Completion_Review.v1.sop
+  + [accepted_p7p9_dr04_review_sha256] is 3E7631E8665945F88ACAE9CC2DD754D2D6DC35FFF6F2CAFBD61A7BFD7EC4AEE9
   + [accepted_downstream_reentry_state] is docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
-  + [accepted_downstream_reentry_state_sha256] is AE3E856BB2DC18F4BED05B984DFFB588B410DA7B3AAE9E4AFF79A1593D120EC9
-  + [expected_current_output] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [accepted_downstream_reentry_state_sha256] is 67CF8E6052BB30624531C5BC3F09AFF25007D0ECB6026FCCBBE9F49B0D403DB3
+  + [expected_current_output] is docs/coordination/P7_Conflict_Staleness_Human_Override_And_Completion_Review_Contract.v1.sop
   + [next_candidate_slice_family] is P7_coordination_and_multi_agent_governance_contracts
   + [next_candidate_slice_family] is P9_operations_manager_safety_contracts_after_P7_boundary
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+  + [model_route_reason] is conflict and override behavior controls multi-agent safety and later operations-manager handoffs
 
   = must: preserve P6 surface implementation completion as readiness support, not dependency, adapter, dispatch, operations, or live-control authority
-  = must: execute P7P9-DR04 before P7 conflict or P9 operations-manager safety semantics advance
+  = must: execute P7P9-DR05 before P9 operations-manager safety semantics advance
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

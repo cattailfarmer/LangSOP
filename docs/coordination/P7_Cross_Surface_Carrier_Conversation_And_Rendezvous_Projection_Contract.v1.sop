@@ -1,0 +1,189 @@
+Subject: P7 Cross Surface Carrier Conversation And Rendezvous Projection Contract V1
+Date: 2026-05-27
+Output UUID: 14afcc99-eeb1-459a-8e49-0bcc07fb5c52
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [slice_surface] docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+@ [dr02_output] docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+@ [dr03_output] docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+@ [dr03_review] docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+
+& [P7CrossSurfaceCarrierConversationAndRendezvousProjectionContractV1] is the P7P9-DR04 output for carrier, conversation, and rendezvous projection semantics
+  + [slice_id] is P7P9-DR04
+  + [slice_status] is completed_for_review
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [authority_basis_sha256] is 8B2B13EDDD722EA620CE0886CB24BB4CACC35FEE111C134EEB93DAEFBFB1A0BE
+  + [completed_dependency] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [completed_dependency_sha256] is 6F05A01F5B644F8BE76786B82C36DDF318A66C54A27C79A526E18F499BD67412
+  + [completed_dependency_review] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [completed_dependency_review_sha256] is BAB264A803D8AD58301B5753DA4D19C7EFBC9D617E045A7687319A67FF793C0D
+
+  = must: define cross-surface carriers and rendezvous packets as projection contracts, not transport implementation
+  = must: preserve typed collaboration kernel authority over IRC, Matrix, web, Codex, terminal, browser, mailbox, Langflow, narrative, debug, and manager surfaces
+  = must: require authority notices, freshness notices, and dispatch refusal notices on every carrier that can be mistaken for command authority
+  - never: implement IRC, Matrix, web, browser, terminal, Codex, mailbox, Langflow, MCP, adapter, transport, UI, scheduler, assignment, dispatch, operations control, or live machine control
+
+| [CarrierKind] is (
+  mailbox_file |
+  IRC_message |
+  Matrix_event |
+  web_event |
+  browser_event |
+  Codex_thread_message |
+  terminal_output |
+  Langflow_node |
+  narrative_entry |
+  debug_projection |
+  manager_projection |
+  worker_packet_projection
+)
+
+| [CarrierDeliveryState] is (
+  projected |
+  queued_for_projection |
+  observed |
+  stale |
+  refused |
+  superseded |
+  unknown
+)
+
+| [InboundCarrierAction] is (
+  observe_only |
+  source_preserving_intake_required |
+  claim_review_required |
+  stale_review_required |
+  human_override_review_required |
+  operations_dry_run_review_required |
+  dispatch_refused |
+  live_control_refused
+)
+
+& [CarrierNoticeRecordContract] is the record contract for a cross-surface carrier notice
+  + [carrier_notice_uuid] is required stable UUID for the carrier notice record
+  + [conversation_uuid] is required parent conversation identity
+  + [carrier_kind] is exclusive CarrierKind
+  + [surface_projection_uuid] is optional surface projection reference
+  + [carrier_address] is projection-specific address or label
+  + [payload_summary] is bounded description of the carrier payload
+  + [payload_ref] is optional reference to external carrier location
+  + [source_authority_ref_set] is set of source_document, canonical_specification, or signed_review references cited by the payload
+  + [claim_ref_set] is set of coordination claim references cited by the payload
+  + [assignment_candidate_ref_set] is set of assignment candidate references cited by the payload
+  + [operation_request_ref_set] is set of operation request references cited by the payload
+  + [authority_notice] is required
+  + [freshness_notice] is required
+  + [dispatch_refusal_notice] is required when assignment, dispatch, operation, approval, or live-control language is present
+  + [delivery_state] is exclusive CarrierDeliveryState
+  + [inbound_action] is exclusive InboundCarrierAction
+
+  = must: keep payload_summary and payload_ref non-authoritative until source-preserving intake accepts them
+  = must: preserve carrier_kind as transport provenance, not truth status
+  = must: require dispatch_refusal_notice when carrier payload mentions "run", "assign", "dispatch", "approve", "control", "start", "stop", "kill", "delete", "credential", "network", "GPU", "process", "job", or equivalent operational intent
+  = must: mark inbound_action source_preserving_intake_required when payload attempts to change source, canonical, or requirements
+  - never: treat a carrier notice as mailbox IO authority
+  - never: treat an observed carrier as proof that a participant accepted a task
+  - never: treat a carrier address as credential or network permission
+
+& [RendezvousPacketProjectionContract] is the record contract for a cross-surface rendezvous packet
+  + [rendezvous_packet_uuid] is required stable UUID for the packet projection
+  + [conversation_uuid] is required parent conversation identity
+  + [participant_ref_set] is set of participant_uuid values involved in the rendezvous
+  + [claim_ref_set] is set of related claim_uuid values
+  + [purpose] is bounded rendezvous purpose
+  + [coordination_question] is the open coordination question being carried
+  + [proposed_next_route] is source_preserving_intake, claim_review, stale_review, human_override_review, operations_dry_run_review, completion_review, or blocked
+  + [authority_basis_set] is set of source_document, canonical_specification, signed_review, or accepted state references
+  + [carrier_notice_set] is set of carrier_notice_uuid references
+  + [rendezvous_state] is proposed, active, stale, resolved, superseded, refused, or unknown
+  + [dispatch_authority_present] is false
+  + [live_control_authority_present] is false
+
+  = must: preserve rendezvous packets as coordination projections and review prompts
+  = must: include proposed_next_route when the rendezvous asks for decision or handoff
+  = must: set dispatch_authority_present false and live_control_authority_present false in current scope
+  - never: treat rendezvous_state active as a command, assignment, dispatch, or live-control approval
+
+& [ConversationSurfaceProjectionContract] is the rule for projecting conversation state across surfaces
+  + [conversation_uuid] is the durable kernel identity
+  + [surface_projection_uuid] is the surface-specific identity
+  + [surface_kind] is Codex, terminal, IRC, Matrix, web, browser, mailbox, Langflow, narrative, debug, manager_view, or worker_packet_view
+  + [projected_subject_set] is source authority, canonical authority, narrative anchor, claim, assignment candidate, carrier notice, rendezvous packet, operation request, dry-run result, completion review, or fault
+  + [projection_status] is current, stale, blocked, contradicted, refused, or unknown
+  + [projection_notice] is required
+  + [source_trace_set] is required for authority-bearing projected subjects
+
+  = must: project conversation state from kernel records, not infer kernel records from surface scrollback
+  = must: preserve projection_status separately from source truth status
+  = must: require source_trace_set for any projected subject that can influence planning
+  - never: collapse multiple surface threads into one conversation_uuid without explicit lineage review
+  - never: let a surface projection write source authority directly
+
+& [ReadCursorAndFreshnessProjectionContract] is the rule for durable carrier cursors and freshness notices
+  + [read_cursor_uuid] is required stable UUID for cursor projection
+  + [conversation_uuid] is required parent conversation identity
+  + [carrier_kind] is exclusive CarrierKind
+  + [carrier_address] is projection-specific address or label
+  + [last_seen_carrier_ref] is optional carrier payload reference
+  + [last_read_message_timestamp_ms] is optional mailbox-style cursor value
+  + [cursor_state] is current, stale, blocked, ambiguous, superseded, or unknown
+  + [cursor_notice] is required
+
+  = must: treat read cursors as carrier projection state, not authority
+  = must: mark cursor_state stale when carrier ordering, timestamp, or lineage is ambiguous
+  = must: preserve unread carrier notices as review prompts
+  - never: allow read cursor advancement to delete or overwrite carrier evidence
+
+& [CrossSurfaceInboundActionClassification] is the rule for actions entering through a carrier or surface
+  + [inbound_action_ref] is carrier_notice_uuid, surface_projection_uuid, external payload ref, or unknown
+  + [classification] is exclusive InboundCarrierAction
+  + [classification_basis] is source change, claim change, review request, stale signal, human override, operation request, dispatch request, live-control request, or observe-only signal
+  + [safe_route] is source_preserving_intake, claim_review, stale_review, human_override_review, operations_dry_run_review, dispatch_refusal, live_control_refusal, or observe_only
+
+  = must: classify before mutation
+  = must: route source changes to source_preserving_intake
+  = must: route claim changes to claim_review
+  = must: route operation-looking requests to operations_dry_run_review or refusal
+  = must: route dispatch-looking requests to dispatch_refusal
+  = must: route live-control-looking requests to live_control_refusal
+  - never: execute an inbound action directly from a carrier
+
+& [P7CarrierAndRendezvousBoundary] is the P7 boundary opened by this contract
+  + [P7P9-DR05_precondition] is accepted participant identity, claim and dispatch refusal contract, carrier notice contract, rendezvous packet projection, conversation surface projection, read cursor projection, and inbound action classification
+  + [P7P9-DR05_ready_state] is ready_after_completion_review
+  + [P7P9-DR05_expected_output] is docs/coordination/P7_Conflict_Staleness_Human_Override_And_Completion_Review_Contract.v1.sop
+  + [P7P9-DR05_model_route] is requires deeper reasoning
+  + [P7P9-DR05_model_route_reason] is conflict and override behavior controls multi-agent safety and later operations-manager handoffs
+  + [P9_dependency_note] is P9 operations-manager safety remains gated until P7P9-DR05 accepts conflict, staleness, and human override behavior
+
+  ! [P7P9DR04VerificationSatisfied] is accepted
+    @ [support] [CarrierNoticeRecordContract]
+    @ [support] [RendezvousPacketProjectionContract]
+    @ [support] [ConversationSurfaceProjectionContract]
+    @ [support] [ReadCursorAndFreshnessProjectionContract]
+    @ [support] [CrossSurfaceInboundActionClassification]
+    @ [support] [P7CarrierAndRendezvousBoundary]
+
+& [FaultContainment: P7P9-DR04] is the fault containment record for carrier and rendezvous projection
+  + [chat_protocol_as_source_truth] is refused
+  + [carrier_notice_as_signed_authority] is refused
+  + [surface_projection_as_source_mutation] is refused
+  + [rendezvous_packet_as_assignment] is refused
+  + [read_cursor_as_authority] is refused
+  + [inbound_action_as_direct_mutation] is refused
+  + [transport_presence_as_credential_permission] is refused
+  + [operation_request_from_carrier_as_command] is refused
+  + [live_control_request_from_carrier_as_approval] is refused
+
+  = must: preserve each refused carrier promotion as evidence for P7P9-DR05 and later fixture oracles
+
+& [NextSliceRecommendation: P7P9-DR05] is the recommendation after P7P9-DR04
+  + [next_slice] is P7P9-DR05 conflict, staleness, human override, and completion review contract
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is conflict and override behavior controls multi-agent safety and later operations-manager handoffs
+  + [future_Spark_suitable_work] is fixture oracle drafting only after P7P9-DR01 through P7P9-DR08 are accepted
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: require completion review acceptance before P7P9-DR05 starts
