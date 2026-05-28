@@ -1,0 +1,113 @@
+Subject: P6 Surface Implementation Activation Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 0c932a4f-e280-4b85-994b-b60deaccab7e
+
+@ [canonical_specification] docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_p6_surface_implementation_activation/Source_Document_Manifest.sop
+@ [post_p5_runtime_implementation_readiness] docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [P6SurfaceImplementationActivationSliceSurfaceV1] is the executable slice surface for P6 surface implementation activation
+  + [chunk_ref] is P6 surface implementation activation
+  + [chunk_boundary] is exact surface implementation file inventory, projection state and authority notice model refresh, freshness and nonpromotion model refresh, multi-surface rendering model refresh, inbound action classification model refresh, generated projection path policy, fixture runner contract, validation tests, generated projection nonpromotion proof, dependency deferral, adapter deferral, transport deferral, UI deferral, Langflow deferral, dispatch deferral, operations-control deferral, live-control deferral, proof pack, and downstream readiness rebake
+  + [accepted_boundary_input] is docs/reviews/P6_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is 1024C0B1B3AB56A147FCD7663292F2D224AF671D5BB0FCF11B2D1FAD11FF29CB
+  + [accepted_boundary_input] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 0651D3D563C7C232F09C4EBCB2D9C7F2B4105D345E7F862819C337DDF42C6D09
+  + [accepted_boundary_input] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 5A518D58C0140C75FA3A0780B0D545D17B4F58DCD25983886C0BD16E2E0DE534
+  + [accepted_boundary_input] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3C86A6357181133BB5265302B1128D9950942C060BB4224474F8A83B428BE0C4
+  + [current_ready_slice] is P6-IA01
+  + [gated_slice_set] is P6-IA02, P6-IA03, P6-IA04, P6-IA05, P6-IA06, and P6-IA07
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: execute P6-IA01 before creating surface implementation files, generated projections, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem actions, operations control, or live machine control
+  = must: run completed-work review after each P6 implementation activation slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes surface projections, generated projections, fixture success, inbound action requests, displayed approvals, packet candidates, dry-run success, graph checkpoints, or carrier state to source authority, dispatch authority, operations authority, or live-control authority
+
+& [FinalWorkSlice: P6-IA01-SurfaceImplementationActivationBoundaryAndExactFileInventory] is ready
+  + [slice_id] is P6-IA01
+  + [slice_name] is surface implementation activation boundary and exact file inventory
+  + [authority_basis] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+  + [activation_gate] is P5 runtime implementation accepted
+  + [expected_output_set] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+  + [verification_oracle] is activation boundary confirms exact surface implementation module inventory, fixture source paths, expected projection paths, generated projection roots, dependency boundary, adapter boundary, transport boundary, UI boundary, Langflow boundary, dispatch boundary, operations boundary, live-control deferral boundary, command plan, and proof gates without creating implementation code
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, projection authority, surface mutation, generated projection roots, adapter boundaries, UI boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [forbidden_scope] is implementation code creation, generated projection creation, proof runner code creation, dependency installation, package metadata mutation, adapter implementation, transport implementation, UI implementation, Langflow implementation, tests, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-IA02-ProjectionStateAuthorityFreshnessAndNonpromotionModelRefresh] is gated
+  + [slice_id] is P6-IA02
+  + [slice_name] is projection state authority freshness and nonpromotion model refresh
+  + [activation_gate] is P6-IA01 accepted
+  + [expected_output_set] is bounded surface model files at paths accepted by P6-IA01
+  + [verification_oracle] is refreshed models preserve authority notices, freshness notices, blocked and stale visibility, generated projection nonpromotion, no-dispatch notices, no-operations-control notices, and no-live-effect notices
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-IA03-MultiSurfaceProjectorAndInboundActionModelRefresh] is gated
+  + [slice_id] is P6-IA03
+  + [slice_name] is multi-surface projector and inbound action model refresh
+  + [activation_gate] is P6-IA02 accepted
+  + [expected_output_set] is bounded projector and inbound action files at paths accepted by P6-IA01
+  + [verification_oracle] is projection and action models render manager, worker, narrative, debug, chat, terminal, IRC, Matrix, web, Codex, and optional Langflow surfaces without source authority promotion, hidden mutation, assignment, dispatch, operations control, or live control
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-IA04-GeneratedProjectionPathPolicyAndFixtureRunnerContract] is gated
+  + [slice_id] is P6-IA04
+  + [slice_name] is generated projection path policy and fixture runner contract
+  + [activation_gate] is P6-IA03 accepted
+  + [expected_output_set] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [verification_oracle] is fixture runner contract reads only accepted P6 fixture source and expected projection ledger paths, writes only ignored generated projection outputs under accepted roots, refuses path escapes, source paths, platform mailbox paths, credential paths, network paths, destructive filesystem targets, assignment records, dispatch records, operations targets, and live-control targets
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-IA05-SurfaceValidationTestsAndGeneratedProjectionNonpromotionProof] is gated
+  + [slice_id] is P6-IA05
+  + [slice_name] is surface validation tests and generated projection nonpromotion proof
+  + [activation_gate] is P6-IA04 accepted
+  + [expected_output_set] is tests/test_p6_surface_implementation_contracts.py
+  + [expected_output_set] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [verification_oracle] is tests cover authority notices, freshness notices, blocked and stale visibility, generated projection disposability, inbound action refusal, no-authority promotion, no-dispatch behavior, no-operations-control behavior, and no-live-effect behavior
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after P6-IA04 acceptance
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-IA06-DependencyAdapterTransportUILangflowDispatchOperationsAndLiveControlDeferralDecision] is gated
+  + [slice_id] is P6-IA06
+  + [slice_name] is dependency adapter transport UI Langflow dispatch operations and live-control deferral decision
+  + [activation_gate] is P6-IA05 accepted
+  + [expected_output_set] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [verification_oracle] is decision either defers all dependency, adapter, transport, UI, Langflow, dispatch, operations-control, and live-control work or explicitly authorizes narrowly scoped future work without command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P6-IA07-ImplementationCompletionReviewProofPackAndDownstreamReadinessRebake] is gated
+  + [slice_id] is P6-IA07
+  + [slice_name] is implementation completion review proof pack and downstream readiness rebake
+  + [activation_gate] is P6-IA06 accepted
+  + [expected_output_set] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [expected_output_set] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [expected_output_set] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [verification_oracle] is proof pack accepts only bounded implementation outputs with hashes, fixture source inventories, expected projection inventories, generated projection proof, no-dispatch proof, no-operations-control proof, no-live-effect proof, dependency decision, support deltas, requirement deltas, and no authority, dispatch, operations-control, or live-control leaks
+  + [model_route] is requires deeper reasoning
+  + [completion_review_required] is true
+
+& [P6SurfaceImplementationActivationClosureReview] is the dependency audit for minted P6 surface implementation activation slices
+  + [p6_completion_review_status] is accepted
+  + [post_p5_runtime_implementation_readiness_status] is accepted
+  + [p8_fixture_material_proof_pack_status] is accepted
+  + [current_ready_slice_set] is P6-IA01
+  + [unresolved_external_dependency_set] is empty_for_activation_minting
+  + [forbidden_external_dependency_found] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P6-IA02 through P6-IA07 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

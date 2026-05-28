@@ -70,9 +70,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p5_runtime_implementation_completion_review] docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
 @ [post_p5_runtime_implementation_readiness] docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
 @ [p5_ia06_review] docs/reviews/P5_IA06_Completion_Review.v1.sop
+@ [p6_surface_implementation_activation_canonical] docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+@ [p6_surface_implementation_activation_slices] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [p6_surface_implementation_activation_minting_review] docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P5_runtime_implementation_activation_complete_ready_for_downstream_source_preserved_activation_minting
+  + [map_state] is P6_surface_implementation_activation_minted_ready_for_P6-IA01
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -236,7 +239,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: keep P5 accepted as planning and contract authority, not runtime implementation, dependency, adapter, graph execution, assignment, dispatch, operations-control, or live-control authority
   = should: route graph proof implementation to GPT-5.3-Codex-Spark after P5 final slices, implementation activation, contracts, and fixtures stabilize
 
-& [Portion: P6SurfaceProjectionSystem] is accepted_plan_and_contract_authority
+& [Portion: P6SurfaceProjectionSystem] is accepted_plan_and_contract_authority_with_implementation_activation_minted
   + [portion_id] is P6
   + [portion_name] is surface projection system
   + [purpose] is render manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and optional Langflow projections from kernel records
@@ -266,6 +269,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P6_S06_Completion_Review.v1.sop
   + [support_record] is docs/reviews/P6_Completion_Review.v1.sop
   + [support_record] is docs/planning/Post_P6_Readiness_Surface.v1.sop
+  + [support_record] is docs/source/2026-05-27_p6_surface_implementation_activation/Derived_P6_Surface_Implementation_Activation_Source.sop
+  + [support_record] is docs/source/2026-05-27_p6_surface_implementation_activation/Source_Document_Manifest.sop
+  + [support_record] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+  + [support_record] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+  + [support_record] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
   + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
@@ -563,13 +571,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: PostP5RuntimeImplementationDownstreamActivationPreparation] is readiness_only_no_current_execution_slice
-  + [chunk_id] is P5-runtime-implementation-activation
-  + [slice_id] is none_in_P5_runtime_implementation_activation
-  + [chunk_name] is downstream source-preserved activation preparation after P5 runtime implementation completion
-  + [authority_basis] is docs/reviews/P5_IA06_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 98C0EE66F2EAEE215126D60C1586E32973A37A73AA91FC489285EC8CE847ECAF
-  + [readiness_surface] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+& [CurrentReadyChunk: P6SurfaceImplementationActivationBoundary] is ready_for_execution
+  + [chunk_id] is P6-surface-implementation-activation
+  + [slice_id] is P6-IA01
+  + [chunk_name] is P6 surface implementation activation boundary and exact file inventory
+  + [authority_basis] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
+  + [authority_basis_sha256] is 84DF21598829D461F0E1752A209F534D1B37167A21A802C4E668D379C578D1BC
+  + [readiness_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
   + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
   + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
   + [accepted_runtime_model_refresh] is src/langsop/runtime/p5_models.py
@@ -588,15 +596,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_runtime_implementation_completion_review_sha256] is 341DB4884F69208A51BD8D0E77CB1475FFA6B8D4B22D1EF26B77CFEE9D659BE4
   + [accepted_post_runtime_implementation_readiness] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
   + [accepted_post_runtime_implementation_readiness_sha256] is 5A518D58C0140C75FA3A0780B0D545D17B4F58DCD25983886C0BD16E2E0DE534
-  + [next_candidate_slice_family] is P6_surface_projection_implementation_activation_minting
-  + [next_candidate_slice_family] is P7_coordination_expansion_planning_rebake
-  + [next_candidate_slice_family] is P9_operations_manager_safety_reentry_rebake
+  + [accepted_p6_surface_implementation_activation_canonical] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+  + [accepted_p6_surface_implementation_activation_canonical_sha256] is 60CA1748951DB329435821EC2DA685DF9259116D5556D5A4E200EE65972A1896
+  + [accepted_p6_surface_implementation_activation_slices] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+  + [accepted_p6_surface_implementation_activation_slices_sha256] is 472C79337B4CDAD168D502D2D18E6121FD3EEAD6FC733AADFDF5A6D3D29BBBD6
+  + [accepted_p6_surface_implementation_activation_minting_review] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
+  + [accepted_p6_surface_implementation_activation_minting_review_sha256] is 84DF21598829D461F0E1752A209F534D1B37167A21A802C4E668D379C578D1BC
+  + [expected_current_output] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+  + [next_candidate_slice_family] is P6_surface_projection_implementation_activation_boundary
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is downstream activation affects projection authority, coordination boundaries, operations safety, and live-control gates
+  + [model_route_reason] is activation boundary affects projection authority, surface mutation boundaries, generated projection roots, adapter boundaries, UI boundaries, dispatch boundaries, operations boundaries, and live-control gates
 
   = must: preserve P5 runtime implementation evidence as readiness support, not executable adapter authority
-  = must: require separate source-preserved activation before P6 implementation, P7 coordination expansion, or P9 operations-manager work consumes P5 runtime implementation as executable authority
+  = must: execute P6-IA01 before P6 implementation files, generated projections, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

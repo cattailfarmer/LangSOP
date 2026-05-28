@@ -1,0 +1,68 @@
+Subject: P6 Surface Implementation Activation Minting Review V1
+Date: 2026-05-27
+Review UUID: 023fe2c4-43a6-47bd-b1bf-5734fa8512f3
+
+@ [source_manifest] docs/source/2026-05-27_p6_surface_implementation_activation/Source_Document_Manifest.sop
+@ [canonical_specification] docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+@ [slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [post_p5_runtime_implementation_readiness] docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+
+& [CompletedWorkReview: P6SurfaceImplementationActivationMinting] is the completed-work review for P6 surface implementation activation minting
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P6 surface implementation activation source preservation, canonical processing, and slice minting
+  + [source_document] is docs/source/2026-05-27_p6_surface_implementation_activation/Derived_P6_Surface_Implementation_Activation_Source.sop
+  + [source_document_sha256] is 51658B11B2E51A0AF829B7F0C54381E4C5F3AE81B1F1ACD0E7508FDB1FAEA955
+  + [source_manifest] is docs/source/2026-05-27_p6_surface_implementation_activation/Source_Document_Manifest.sop
+  + [source_manifest_sha256] is 2BE61D9E8552965188A3AABF9FC2F845ED2CB6A05E5704642B8FABD1FFFB97C9
+  + [canonical_specification] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+  + [canonical_specification_sha256] is 60CA1748951DB329435821EC2DA685DF9259116D5556D5A4E200EE65972A1896
+  + [slice_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+  + [slice_surface_sha256] is 472C79337B4CDAD168D502D2D18E6121FD3EEAD6FC733AADFDF5A6D3D29BBBD6
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P6 surface implementation activation minting and open P6-IA01
+  + [next_gate_result] is P6-IA01 may open
+  + [next_model_route] is requires deeper reasoning for surface implementation activation boundary and exact file inventory
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as gate-opening evidence for P6-IA01 only
+  = must: rerun this review if source document, source manifest, canonical specification, slice surface, P6 completion review, post-P6 readiness, post-P5 runtime implementation readiness, or P8 fixture material proof pack changes
+  = must: keep implementation code, generated projections, proof runner code, dependencies, package metadata mutation, adapters, transports, UI, Langflow export, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P6SurfaceImplementationActivationMintingVerification] is the verification result for P6 surface implementation activation minting
+  + [source_preserved] is true
+  + [manifest_created] is true
+  + [canonical_specification_created] is true
+  + [satisfaction_signature_present] is true
+  + [satisfaction_signature_protocol_uuid] is ad10f10f-d506-48ef-a805-f8b0a133766c
+  + [slice_surface_created] is true
+  + [current_ready_slice] is P6-IA01
+  + [implementation_code_created] is false
+  + [generated_projection_created] is false
+  + [proof_runner_code_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_implemented] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6SurfaceImplementationActivationMinted] is accepted
+    @ [support] docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+    @ [support] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+
+& [NextSliceGate: P6-IA01] is opened
+  + [opened_slice] is P6-IA01 surface implementation activation boundary and exact file inventory
+  + [accepted_dependency] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is activation boundary, projection authority, surface mutation, generated projection roots, adapter boundaries, UI boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P6-IA01 next unless user redirects or a new fault invalidates this review

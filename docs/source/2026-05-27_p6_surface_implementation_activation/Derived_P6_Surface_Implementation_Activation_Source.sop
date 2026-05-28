@@ -1,0 +1,45 @@
+Subject: Derived P6 Surface Implementation Activation Source
+Date: 2026-05-27
+Source UUID: 15d55e22-ad22-4a33-b96a-48e6438f056f
+
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+@ [p5_runtime_implementation_proof_pack] docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+@ [p5_runtime_implementation_completion_review] docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
+@ [post_p5_runtime_implementation_readiness] docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [DerivedP6SurfaceImplementationActivationSource] is the preserved source for P6 surface projection implementation activation
+  + [source_purpose] is activate bounded P6 surface projection implementation planning after P5 runtime implementation evidence is accepted
+  + [source_basis] is accepted P6 planning and projection contracts
+  + [source_basis] is accepted P5 runtime implementation proof and post-runtime readiness
+  + [source_basis] is accepted P8 fixture material proof pack
+  + [activation_scope] is source-preserved implementation activation slice minting only
+  + [implementation_scope] is not opened by this source document
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [surface_implementation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: mint P6 surface implementation activation slices before any surface implementation, generated projection creation, adapter work, transport work, UI work, dependency installation, package metadata mutation, assignment, dispatch, operations control, or live machine control
+  = must: preserve surface projections as projections of authority and freshness state, not source authority
+  = must: preserve P5 runtime evidence as runtime proof support, not executable adapter authority
+  = must: preserve P8 fixture material as fixture and expected evidence, not source authority or live-control authority
+
+& [P6SurfaceImplementationActivationNeed] is the need motivating this source
+  + [need] is exact surface implementation file inventory
+  + [need] is projection state and authority notice model refresh
+  + [need] is multi-surface rendering and inbound action classification model refresh
+  + [need] is generated projection path policy and fixture runner contract
+  + [need] is validation tests for authority notice, freshness, blocked and stale visibility, generated projection nonpromotion, inbound action refusal, and no-live-effect behavior
+  + [need] is dependency, adapter, transport, UI, Langflow, dispatch, operations, and live-control deferral decision
+  + [need] is implementation proof pack and downstream readiness rebake
+
+  = must: keep slices dependency-closed and completion-reviewed
+  = must: keep Spark-suitable work bounded behind accepted deeper-reasoning activation boundaries
