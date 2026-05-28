@@ -1,0 +1,222 @@
+Subject: P5 Generated Trace Path Policy And Fixture Runner Contract V1
+Date: 2026-05-27
+Contract UUID: 0b725c09-dfe0-439d-8e4d-eea31b1aa8d4
+
+@ [activation_slice_surface] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+@ [p5_ia01_review] docs/reviews/P5_IA01_Completion_Review.v1.sop
+@ [p5_runtime_model_refresh] src/langsop/runtime/p5_models.py
+@ [p5_ia02_review] docs/reviews/P5_IA02_Completion_Review.v1.sop
+@ [p5_fixture_plan] docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [P5GeneratedTracePathPolicyAndFixtureRunnerContractV1] is the P5-IA03 contract for generated trace paths and future runtime fixture runner behavior
+  + [contract_id] is p5-generated-trace-path-policy-and-fixture-runner-contract-v1
+  + [contract_uuid] is 0b725c09-dfe0-439d-8e4d-eea31b1aa8d4
+  + [slice_id] is P5-IA03
+  + [contract_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [implementation_scope] is generated trace path policy and fixture runner contract only
+
+  = must: define path acceptance, path refusal, fixture runner read boundaries, generated trace write boundaries, generated trace record shape, nonpromotion behavior, no-assignment behavior, no-dispatch behavior, no-operations-control behavior, no-live-effect behavior, and proof gates
+  = must: preserve P5 runtime model refresh semantics without creating generated traces, proof ledgers, tests, dependency changes, adapters, transports, UI, assignment, dispatch, operations control, or live machine control in this slice
+  = must: keep generated trace writes gated until P5-IA04 tests and proof execution intentionally create disposable generated evidence under accepted ignored roots
+  - never: treat fixture source, expected ledgers, generated traces, graph checkpoints, fixture success, reports, terminal output, human handoff records, packet candidates, manager packets, or displayed approvals as source authority, assignment authority, dispatch authority, operations-control authority, or live-control authority
+
+& [AcceptedRuntimeFixtureInputInventory: P5RuntimeImplementation] is the fixture input inventory for future P5 runtime fixture runner work
+  + [fixture_source_root] is tests/fixtures/sop/p5_runtime_proof/
+  + [expected_ledger_root] is tests/fixtures/expected/p5_runtime_proof/
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/valid_runtime_transition_trace.sop
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/checkpoint_non_authority.sop
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/sop_interrupt_handoff.sop
+  + [accepted_fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/stale_checkpoint_rebake_required.sop
+  + [accepted_expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/runtime_transition_expected.sop
+  + [accepted_expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/interrupt_and_checkpoint_expected.sop
+
+  = must: require future fixture runner code to read fixture source and expected ledgers only from accepted roots
+  = must: refuse missing, path-escaped, platform mailbox, credential, network, destructive filesystem, assignment, dispatch, operations, or live-control inputs
+  = must: preserve fixture source and expected ledgers as tracked evidence, not canonical source authority
+
+& [AcceptedGeneratedTraceRootSet: P5RuntimeImplementation] is the accepted generated trace root set
+  + [accepted_generated_trace_root] is tests/fixtures/generated/p5_runtime_proof/checkpoints/
+  + [accepted_generated_trace_root] is tests/fixtures/generated/p5_runtime_proof/traces/
+  + [accepted_generated_trace_root] is tests/fixtures/generated/p5_runtime_proof/reports/
+  + [accepted_generated_trace_root] is tests/fixtures/generated/p5_runtime_implementation/proof_results/
+  + [accepted_generated_trace_root] is tests/fixtures/generated/p5_runtime_implementation/reports/
+  + [accepted_generated_trace_root] is .langsop/checkpoints/p5_runtime_proof/
+  + [accepted_generated_trace_root] is .langsop/traces/p5_runtime_proof/
+  + [accepted_generated_trace_root] is .langsop/reports/p5_runtime_proof/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [ignored_generated_path] is .langsop/
+  + [generated_trace_authority_class] is generated_output_non_authority
+  + [generated_trace_disposition] is disposable_rebuildable_evidence
+
+  = must: refuse writes outside accepted generated trace roots
+  = must: require generated trace roots to remain ignored by source discovery and disposable under deletion
+  = must: prove future generated trace deletion and rebuild cannot erase accepted fixture source, expected ledgers, proof ledgers, source docs, canonical specs, completion reviews, or readiness gates
+
+& [RefusedRuntimePathTargetSet: P5RuntimeImplementation] is the refused path target set for future fixture runner reads and writes
+  + [refused_target] is docs/source/
+  + [refused_target] is docs/canonical/
+  + [refused_target] is docs/slices/
+  + [refused_target] is docs/reviews/
+  + [refused_target] is docs/proofs/
+  + [refused_target] is src/
+  + [refused_target] is tests/fixtures/sop/
+  + [refused_target] is tests/fixtures/expected/
+  + [refused_target] is platform/
+  + [refused_target] is platform/coordination/mailboxes/
+  + [refused_target] is .git/
+  + [refused_target] is credential_file
+  + [refused_target] is network_path
+  + [refused_target] is destructive_filesystem_target
+  + [refused_target] is assignment_record
+  + [refused_target] is dispatch_record
+  + [refused_target] is operations_target
+  + [refused_target] is live_control_target
+
+  = must: refuse source, expected ledger, proof ledger, mailbox, platform, credential, network, destructive filesystem, assignment, dispatch, operations, or live-control mutation attempts
+  = must: treat any accepted generated path under a refused target as a policy contradiction and block future proof execution
+
+& [FutureRuntimeFixtureRunnerContract: P5RuntimeImplementation] is the fixture runner contract opened for P5-IA04 validation
+  + [runner_input] is accepted P5 fixture source files
+  + [runner_input] is accepted P5 expected ledger files
+  + [runner_input] is accepted P5 runtime model refresh helpers
+  + [runner_output] is generated trace comparison report under accepted generated trace roots
+  + [runner_output] is generated checkpoint evidence under accepted generated trace roots
+  + [runner_output] is generated transition evidence under accepted generated trace roots
+  + [runner_output] is generated no-authority-promotion evidence under accepted generated trace roots
+  + [runner_output_status] is disposable_generated_evidence_only
+  + [source_write_authorized] is false
+  + [expected_ledger_write_authorized] is false
+  + [proof_ledger_write_authorized_by_runner] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: classify accepted fixture source fields through P5 runtime model refresh helpers
+  = must: compare observed runtime facts against expected ledgers without mutating fixture source or expected ledgers
+  = must: generate reports only after path policy acceptance
+  = must: fail or block when any fixture result claims source authority, assignment authority, dispatch authority, operations-control authority, live-control authority, credential access, network mutation, process control, GPU control, model runtime mutation, job dispatch, or destructive filesystem effects
+
+& [GeneratedRuntimeTraceRecordShape: P5RuntimeImplementation] is the required shape for future generated runtime trace records
+  + [required_field] is trace_id
+  + [required_field] is trace_uuid
+  + [required_field] is fixture_source_ref
+  + [required_field] is fixture_source_sha256
+  + [required_field] is expected_ledger_ref_set
+  + [required_field] is expected_ledger_sha256_set
+  + [required_field] is runtime_model_ref
+  + [required_field] is runtime_model_sha256
+  + [required_field] is runtime_record_kind
+  + [required_field] is runtime_state
+  + [required_field] is edge_kind
+  + [required_field] is issue_kind
+  + [required_field] is deterministic_transition_id
+  + [required_field] is checkpoint_authority
+  + [required_field] is source_authority_preserved
+  + [required_field] is dispatch_authority
+  + [required_field] is operations_control_authority
+  + [required_field] is live_control_authority
+  + [required_field] is nonpromotion_notice
+  + [required_field] is no_assignment_notice
+  + [required_field] is no_dispatch_notice
+  + [required_field] is no_operations_control_notice
+  + [required_field] is no_live_effect_notice
+  + [required_field] is generated_output_status
+
+  = must: require explicit false or not_applicable values for checkpoint_authority, dispatch_authority, operations_control_authority, live_control_authority, and issue_kind when absent
+  = must: reject generated trace records that omit nonpromotion, no-assignment, no-dispatch, no-operations-control, or no-live-effect notices
+  = must: keep generated trace record shape as evidence shape, not source authority shape
+
+& [GeneratedTraceNonpromotionAndNoLiveEffectRules: P5RuntimeImplementation] is the generated trace nonpromotion and no-live-effect rule set
+  + [rule] is generated runtime traces are generated_output_non_authority
+  + [rule] is graph checkpoints preserve runtime continuity only
+  + [rule] is deterministic transition ids prove repeatability only
+  + [rule] is fixture success supports proof review only through accepted ledgers and completion review
+  + [rule] is SOP interrupts are handoff evidence, not assignment, dispatch, operations-control, or live-control commands
+  + [rule] is generated trace reports must not mutate source authority, expected ledgers, proof ledgers, platform mailboxes, credentials, network state, process state, GPU state, model runtime state, job queues, operations targets, or live machine state
+
+  = must: fail validation when generated output is promoted to source authority
+  = must: fail validation when checkpoint state is promoted to source authority
+  = must: fail validation when fixture success is promoted to assignment, dispatch, operations-control, or live-control authority
+
+& [P5IA03CommandAndProofPlan] is the command and proof plan opened for P5-IA04
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test] is python -m unittest tests.test_p5_runtime_implementation_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_trace_review] is prove generated runtime outputs are ignored, disposable, reproducible, and non-authoritative
+  + [no_dispatch_review] is prove runtime outputs remain evidence and handoff records, not dispatch effects
+  + [no_operations_control_review] is prove runtime outputs do not operate processes, GPUs, model runtimes, jobs, credentials, network state, platform mailboxes, or destructive filesystem targets
+  + [no_live_effect_review] is prove source docs, canonical specs, fixture source, expected ledgers, proof ledgers, operations records, and live machine state are not mutated by runtime proof code or tests
+
+  = must: run targeted P5 contract tests after P5-IA04 creates them
+  = must: keep command execution limited to validation commands
+
+& [ImplementationSliceProofGate: P5RuntimeGeneratedTracePolicy] is the proof gate opened by this contract
+  + [P5-IA04_opened_after_review] is runtime validation tests and generated trace nonpromotion proof
+  + [P5-IA04_model_route] is GPT-5.3-Codex-Spark-suitable after P5-IA03 acceptance
+  + [P5-IA04_scope] is tests/test_p5_runtime_implementation_contracts.py and docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [generated_trace_creation_authorized_after_P5-IA03] is true_for_P5-IA04_validation_only_under_accepted_generated_roots
+  + [test_file_creation_authorized_after_P5-IA03] is true_for_P5-IA04_only
+  + [proof_review_creation_authorized_after_P5-IA03] is true_for_P5-IA04_only
+  + [dependency_installation_authorized_after_P5-IA03] is false
+  + [package_metadata_mutation_authorized_after_P5-IA03] is false
+  + [external_langgraph_adapter_authorized_after_P5-IA03] is false
+  + [transport_implementation_authorized_after_P5-IA03] is false
+  + [UI_implementation_authorized_after_P5-IA03] is false
+  + [assignment_authorized_after_P5-IA03] is false
+  + [manager_dispatch_authorized_after_P5-IA03] is false
+  + [agent_dispatch_authorized_after_P5-IA03] is false
+  + [command_execution_authorized_after_P5-IA03] is validation_commands_only
+  + [process_control_authorized_after_P5-IA03] is false
+  + [GPU_control_authorized_after_P5-IA03] is false
+  + [model_runtime_control_authorized_after_P5-IA03] is false
+  + [job_dispatch_authorized_after_P5-IA03] is false
+  + [credential_access_authorized_after_P5-IA03] is false
+  + [network_mutation_authorized_after_P5-IA03] is false
+  + [destructive_filesystem_action_authorized_after_P5-IA03] is false
+  + [operations_control_authorized_after_P5-IA03] is false
+  + [live_machine_control_authorized_after_P5-IA03] is false
+
+  = must: open only P5-IA04 after this contract is accepted
+  = must: keep dependency changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
+
+& [P5IA03CoverageReview] is the coverage checklist for P5-IA03
+  + [accepted_runtime_fixture_input_inventory_present] is AcceptedRuntimeFixtureInputInventory: P5RuntimeImplementation
+  + [accepted_generated_trace_root_set_present] is AcceptedGeneratedTraceRootSet: P5RuntimeImplementation
+  + [refused_runtime_path_target_set_present] is RefusedRuntimePathTargetSet: P5RuntimeImplementation
+  + [future_runtime_fixture_runner_contract_present] is FutureRuntimeFixtureRunnerContract: P5RuntimeImplementation
+  + [generated_runtime_trace_record_shape_present] is GeneratedRuntimeTraceRecordShape: P5RuntimeImplementation
+  + [generated_trace_nonpromotion_and_no_live_effect_rules_present] is GeneratedTraceNonpromotionAndNoLiveEffectRules: P5RuntimeImplementation
+  + [command_and_proof_plan_present] is P5IA03CommandAndProofPlan
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: P5RuntimeGeneratedTracePolicy
+  + [generated_trace_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept P5-IA03 only when all checklist items are satisfied
+  = must: open P5-IA04 only after this contract is reviewed in a completion review

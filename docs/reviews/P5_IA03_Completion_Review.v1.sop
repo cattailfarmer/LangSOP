@@ -1,0 +1,122 @@
+Subject: P5 IA03 Completion Review V1
+Date: 2026-05-27
+Review UUID: 19fbf04f-251f-4af1-aae2-a0c5955cd377
+
+@ [activation_slice_surface] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+@ [p5_runtime_model_refresh] src/langsop/runtime/p5_models.py
+@ [p5_ia02_review] docs/reviews/P5_IA02_Completion_Review.v1.sop
+@ [completed_output] docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+
+& [CompletedWorkReview: P5-IA03] is the completed-work review for P5-IA03 generated trace path policy and fixture runner contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P5-IA03
+  + [completed_output] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [completed_output_sha256] is 97F2FD1A4B3FC47483DA1E3768293B167627593F53FB2D7F19C6B88F6D719BAC
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P5-IA03 and open P5-IA04
+  + [next_gate_result] is P5-IA04 may open
+  + [next_model_route] is GPT-5.3-Codex-Spark-suitable for runtime validation tests and generated trace nonpromotion proof
+  + [next_model_route_depth] is Spark-suitable
+
+  = must: treat this review as gate-opening evidence for P5-IA04 only
+  = must: rerun this review if the generated trace path policy, P5 runtime model refresh, P5-IA01 boundary, P5-IA02 review, accepted fixture material, or activation slice surface changes
+  = must: keep dependency installation, package metadata mutation, external LangGraph adapters, transports, UI, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P5IA03Verification] is the verification result for P5-IA03
+  + [accepted_runtime_fixture_input_inventory_present] is true
+  + [accepted_generated_trace_root_set_present] is true
+  + [refused_runtime_path_target_set_present] is true
+  + [future_runtime_fixture_runner_contract_present] is true
+  + [generated_runtime_trace_record_shape_present] is true
+  + [generated_trace_nonpromotion_and_no_live_effect_rules_present] is true
+  + [command_and_proof_plan_present] is true
+  + [implementation_slice_proof_gate_present] is true
+  + [fixture_source_read_boundary_present] is true
+  + [expected_ledger_read_boundary_present] is true
+  + [generated_trace_write_boundary_present] is true
+  + [platform_mailbox_refusal_present] is true
+  + [credential_network_destructive_path_refusal_present] is true
+  + [assignment_dispatch_operations_live_control_refusal_present] is true
+  + [generated_trace_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [external_langgraph_adapter_implemented] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P5IA03VerificationSatisfied] is accepted
+    @ [support] docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+
+& [SupportDelta: P5-IA03] is the support delta produced by P5-IA03
+  + [new_support_record] is P5 now has accepted generated trace roots, refused path target rules, fixture runner contract, generated runtime trace record shape, nonpromotion rules, no-dispatch rules, no-operations-control rules, no-live-effect rules, and P5-IA04 command/proof gates
+  + [new_support_record] is P5-IA04 may create tests/test_p5_runtime_implementation_contracts.py and docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [new_support_record] is P5-IA04 is GPT-5.3-Codex-Spark-suitable because validation tests and proof are bounded by accepted runtime model refresh, fixture material, generated trace path policy, and fixture runner contract
+  + [support_status] is accepted
+
+& [RequirementDelta: P5-IA03] is the requirement delta produced by P5-IA03
+  + [requirement_delta] is P5-IA04 may create disposable generated trace evidence only under accepted ignored generated roots during validation
+  + [requirement_delta] is P5-IA04 must prove generated trace outputs are ignored, disposable, reproducible, and non-authoritative
+  + [requirement_delta] is P5-IA04 tests must cover accepted transition, checkpoint nonauthority refusal, SOP interrupt handoff, stale checkpoint rebake, generated trace nonpromotion, path refusal, no-dispatch, no-operations-control, and no-live-effect behavior
+  + [requirement_delta] is no dependency installation, package metadata mutation, external LangGraph adapter, transport, UI, assignment, dispatch, operations control, or live machine control is authorized by P5-IA03
+
+& [FaultReview: P5-IA03] is the fault review for P5-IA03
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [runtime_model_mutation_found] is false
+  + [generated_trace_leak_found] is false
+  + [proof_ledger_file_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [external_langgraph_adapter_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P5IA03Accepted] is accepted
+    @ [support] [P5IA03Verification]
+    @ [support] [SupportDelta: P5-IA03]
+    @ [support] [RequirementDelta: P5-IA03]
+    @ [support] [FaultReview: P5-IA03]
+
+& [NextSliceGate: P5-IA04] is opened
+  + [opened_slice] is P5-IA04 runtime validation tests and generated trace nonpromotion proof
+  + [accepted_dependency] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [accepted_dependency_sha256] is 97F2FD1A4B3FC47483DA1E3768293B167627593F53FB2D7F19C6B88F6D719BAC
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_reason] is validation tests and proof records are bounded by accepted runtime models, fixture material, generated trace path policy, and fixture runner contract
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P5-IA04 next unless user redirects or a new fault invalidates this review

@@ -59,9 +59,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p5_ia01_review] docs/reviews/P5_IA01_Completion_Review.v1.sop
 @ [p5_runtime_model_refresh] src/langsop/runtime/p5_models.py
 @ [p5_ia02_review] docs/reviews/P5_IA02_Completion_Review.v1.sop
+@ [p5_generated_trace_policy] docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [p5_ia03_review] docs/reviews/P5_IA03_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P5-IA03_generated_trace_path_policy_and_fixture_runner_contract
+  + [map_state] is ready_for_P5-IA04_runtime_validation_tests_and_generated_trace_nonpromotion_proof
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -552,27 +554,30 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P5-IA03-GeneratedTracePathPolicyAndFixtureRunnerContract] is ready_for_execution
+& [CurrentReadyChunk: P5-IA04-RuntimeValidationTestsAndGeneratedTraceNonpromotionProof] is ready_for_execution
   + [chunk_id] is P5-runtime-implementation-activation
-  + [slice_id] is P5-IA03
-  + [chunk_name] is generated trace path policy and fixture runner contract
-  + [authority_basis] is docs/reviews/P5_IA02_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 673C2D7B9C28F758958F533AC2F32A6A797A75431097C3D6CDFCFE782854A722
+  + [slice_id] is P5-IA04
+  + [chunk_name] is runtime validation tests and generated trace nonpromotion proof
+  + [authority_basis] is docs/reviews/P5_IA03_Completion_Review.v1.sop
+  + [authority_basis_sha256] is A9CA6ACDE3472D0FF4D2F545F42A8DB13397B3BC66DAB7CA0339F7272290FEE1
   + [readiness_surface] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
   + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
   + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
   + [accepted_runtime_model_refresh] is src/langsop/runtime/p5_models.py
   + [accepted_runtime_model_refresh_sha256] is 0BDC42950DC5045EDC4F8D47B5B09EADC3CE9DCC44FF4C9868549A00ACD1479C
-  + [expected_output] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
-  + [completion_review_output] is docs/reviews/P5_IA03_Completion_Review.v1.sop
-  + [model_route] is requires deeper reasoning
-  + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is generated trace roots, fixture runner effects, path refusal, checkpoint source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [accepted_generated_trace_policy] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [accepted_generated_trace_policy_sha256] is 97F2FD1A4B3FC47483DA1E3768293B167627593F53FB2D7F19C6B88F6D719BAC
+  + [expected_output] is tests/test_p5_runtime_implementation_contracts.py
+  + [expected_output] is docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [completion_review_output] is docs/reviews/P5_IA04_Completion_Review.v1.sop
+  + [model_route] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is Spark-suitable
+  + [model_route_reason] is validation tests and proof records are bounded by accepted runtime models, fixture material, generated trace path policy, and fixture runner contract
 
-  = must: define fixture runner contract that reads only accepted P5 fixture source and expected ledger paths and writes generated trace outputs only under accepted ignored roots
-  = must: define refusal rules for path escapes, source paths, platform mailbox paths, credential paths, network paths, destructive filesystem targets, assignment records, dispatch records, operations targets, and live-control targets
-  = must: avoid generated trace creation, proof ledger creation, tests, dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P5-IA04 through P5-IA06 gated until P5-IA03 completion review accepts
+  = must: add bounded tests for accepted transition, checkpoint nonauthority refusal, SOP interrupt handoff, stale checkpoint rebake, generated trace nonpromotion, path refusal, no-dispatch, no-operations-control, and no-live-effect behavior
+  = must: prove generated runtime outputs are ignored, disposable, reproducible, and non-authoritative
+  = must: avoid dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
+  = must: keep P5-IA05 and P5-IA06 gated until P5-IA04 completion review accepts
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design
