@@ -1,0 +1,34 @@
+Subject: Post P6 Surface Implementation Downstream Reentry Source
+Date: 2026-05-27
+Source UUID: 1e96d399-1558-4ccc-86ad-a25a764fd6a9
+
+& [SourcePrompt: PostP6SurfaceImplementationDownstreamReentry] is the preserved manager-derived source for rebaking P7 coordination and P9 operations-manager readiness after P6 surface implementation completion
+  + [source_kind] is manager-derived downstream reentry source
+  + [origin] is long-haul project-manager session after accepted P6 surface implementation activation
+  + [purpose] is convert completed P6 surface implementation evidence, post-P6 surface readiness, post-IR8 manager readiness, IR6 coordination evidence, IR7 operations dry-run evidence, IR8 manager evidence, and FSC5 operations safety into a dependency-closed P7 and P9 planning reentry surface without authorizing runtime dispatch, mailbox IO, operations control, or live machine control
+  + [reason] is the whole-pie product needs the next coherent manager layer: multi-user and multi-agent coordination plus future Ryzen 9 RTX 5090 operations-manager safety must be visible and slice-ready, but P6 surface completion is only projection evidence and cannot directly open coordination transport, assignment, process control, GPU control, job dispatch, or live-control authority
+
+  = must: preserve accepted P6 surface implementation proof pack, completion review, post-surface readiness surface, P6-IA07 closeout review, activation canonical specification, activation slice surface, activation minting review, and P6 dependency/adapter/UI/Langflow/dispatch/operations/live-control deferral as boundary inputs
+  = must: preserve post-IR8 implementation readiness as manager-layer context and whole-field support
+  = must: preserve IR6 coordination mailbox proof as bounded coordination carrier evidence, not direct mailbox transport or agent-dispatch authority
+  = must: preserve IR7 operations dry-run proof as dry-run-only safety evidence, not command execution or live operations authority
+  = must: preserve IR8 integrated manager proof as bounded manager-loop evidence, not adapter, assignment, dispatch, operations-control, or live-control authority
+  = must: preserve FSC5 operations safety and the signed operations safety canonical specification as standing safety limits for P9
+  = must: produce a downstream reentry authority that opens only source-preserved planning, final slice minting, boundary import, and proof-review work for P7 and P9
+  = must: treat P7 and P9 as contiguous reentry surfaces only where their dependency boundary is closed by accepted coordination, operations dry-run, manager, surface projection, fixture, runtime, and safety evidence
+  = must: keep dependency installation, package metadata mutation, mailbox IO, transport implementation, adapter implementation, UI implementation, Langflow export, assignment, agent dispatch, manager dispatch, job dispatch, command execution beyond validation commands, process control, GPU control, model runtime mutation, credential access or mutation, network exposure mutation, destructive filesystem action, persistent operations automation, operations control, and live machine control gated
+  = must: keep chat, IRC, Matrix, web, Codex, terminal, browser, Langflow, mailbox carrier, surface projection, generated output, dry-run result, human approval display, graph checkpoint, and manager packet records as projections or carriers unless separately promoted by valid source-preserved SJS authority
+  = must: route P7/P9 boundary import, authority distinction, model routing, dispatch safety, future machine-management safety, and live-control questions to deeper reasoning
+  = should: make later bounded fixture drafting, ledger refresh, and narrow proof updates GPT-5.3-Codex-Spark-suitable only after P7/P9 boundary and contract slices are accepted
+
+& [RequiredPostP6DownstreamReentryChunkSet] is the source-level chunk set for the next development stage
+  + [ready_chunk_candidate] is P7/P9 downstream reentry final slice minting
+  + [ready_chunk_candidate] is P7 coordination boundary import and authority gap inventory after slice minting
+  + [ready_chunk_candidate] is P9 operations-manager safety boundary import and live-control gap inventory after P7 boundary import is accepted
+  + [blocked_downstream_candidate] is coordination transport, mailbox IO, IRC adapter, Matrix adapter, web adapter, UI surface, Langflow export, assignment, or agent dispatch until separate source-preserved SJS authority exists
+  + [blocked_downstream_candidate] is future operations-manager runtime, scheduler, resource monitor, GPU/process/job controller, model-runtime manager, credential manager, network exposure manager, persistent automation, or live machine control until separate source-preserved safety authority exists
+
+  = must: keep P7 slices dependency-closed around accepted P2 authority kernel, P3 operator contracts, P4 packetization, P6 surface projection implementation, P8 fixture material proof, IR6 coordination implementation, and IR8 manager proof
+  = must: keep P9 slices dependency-closed around accepted P2 through P8 evidence, IR7 dry-run implementation, IR8 manager proof, P6 surface no-live-effect evidence, and FSC5 operations safety
+  = must: emit completion reviews before downstream implementation chunks consume completed P7/P9 reentry work
+  = must: record every model-route recommendation as either requires deeper reasoning or GPT-5.3-Codex-Spark-suitable

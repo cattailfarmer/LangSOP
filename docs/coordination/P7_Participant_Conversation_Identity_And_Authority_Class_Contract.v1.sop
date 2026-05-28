@@ -1,0 +1,200 @@
+Subject: P7 Participant Conversation Identity And Authority Class Contract V1
+Date: 2026-05-27
+Output UUID: b127d089-240f-4baa-9fda-8343b7c1d378
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [slice_surface] docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+@ [dr01_output] docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+@ [dr01_review] docs/reviews/P7P9_DR01_Completion_Review.v1.sop
+
+& [P7ParticipantConversationIdentityAndAuthorityClassContractV1] is the P7P9-DR02 output for participant identity, conversation identity, and authority class boundaries
+  + [slice_id] is P7P9-DR02
+  + [slice_status] is completed_for_review
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_reason] is participant identity and authority class distinctions shape every later coordination and operations-manager handoff
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [authority_basis_sha256] is 8B2B13EDDD722EA620CE0886CB24BB4CACC35FEE111C134EEB93DAEFBFB1A0BE
+  + [completed_dependency] is docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+  + [completed_dependency_sha256] is 545B8BE921C2A74D6E597E1D3559C0958E5E1B2B48E8CDD8DDCAB85A8F750F0B
+  + [completed_dependency_review] is docs/reviews/P7P9_DR01_Completion_Review.v1.sop
+  + [completed_dependency_review_sha256] is 491E02FCC489C4448C092AB7E1D730A3E173F9D49B94D0D4944F0E82C01BA50A
+
+  = must: define identity classes and authority classes without implementing participant storage, session registry, mailbox IO, adapter behavior, assignment, dispatch, operations control, or live machine control
+  = must: preserve cross-surface participation as projection and carrier behavior unless a later valid source-preserved authority opens bounded implementation
+  = must: make authority promotion explicit, signed, and reviewable
+  - never: infer dispatch authority from participant role, conversation role, surface presence, chat message, manager packet, work packet, dry-run result, or human approval display
+
+| [ParticipantKind] is (
+  human_user |
+  agent |
+  manager_agent |
+  worker_agent |
+  tool_process |
+  automation_process |
+  surface |
+  carrier |
+  external_service
+)
+
+| [ConversationSurfaceKind] is (
+  Codex |
+  terminal |
+  IRC |
+  Matrix |
+  web |
+  browser |
+  mailbox |
+  Langflow |
+  narrative |
+  debug |
+  manager_view |
+  worker_packet_view
+)
+
+| [AuthorityClass] is (
+  source_document |
+  canonical_specification |
+  signed_review |
+  narrative_record |
+  surface_projection |
+  carrier_notice |
+  coordination_claim |
+  assignment_candidate |
+  work_packet_candidate |
+  dispatch_authority |
+  operation_request |
+  dry_run_result |
+  human_approval_display |
+  generated_output |
+  live_control_authority
+)
+
+& [ParticipantIdentityRecordContract] is the record contract for a participant in a multi-user and multi-agent collaboration surface
+  + [participant_uuid] is required stable UUID for the participant record
+  + [participant_kind] is exclusive ParticipantKind
+  + [display_name] is projection label only
+  + [principal_ref] is optional external identity reference
+  + [conversation_uuid_set] is set of conversation_uuid values where the participant is visible
+  + [agent_instance_ref] is optional local agent instance reference
+  + [surface_presence_set] is set of surface_projection references where participant visibility is projected
+  + [authority_class_set] is set of AuthorityClass values granted by accepted source authority
+  + [authority_basis_set] is set of source_document, canonical_specification, or signed_review references
+  + [freshness_state] is current, stale, blocked, contradicted, or unknown
+  + [revocation_state] is active, revoked, expired, superseded, or unknown
+
+  = must: treat participant_uuid as an identity key, not permission by itself
+  = must: require authority_basis_set before a participant may claim any authority_class beyond surface_projection or carrier_notice
+  = must: mark generated or inferred participant records as projection-only until source-preserved authority accepts them
+  = must: keep display_name non-authoritative
+  - never: use participant_kind agent, manager_agent, or worker_agent as assignment or dispatch authority
+  - never: use principal_ref or surface presence as credential access permission
+
+& [ConversationIdentityRecordContract] is the record contract for a durable collaboration conversation
+  + [conversation_uuid] is required stable UUID for the conversation lineage
+  + [conversation_purpose] is narrative description of the bounded collaboration purpose
+  + [source_authority_ref_set] is set of source_document or canonical_specification references that may steer the conversation
+  + [surface_projection_set] is set of conversation surface projections
+  + [carrier_notice_set] is set of mailbox, IRC, Matrix, web, terminal, Codex, browser, Langflow, narrative, or debug carrier notices
+  + [participant_set] is set of participant_uuid references
+  + [active_claim_set] is set of coordination_claim references
+  + [work_packet_candidate_set] is set of packet candidates visible to the conversation
+  + [operation_request_set] is set of dry-run operation request references visible to the conversation
+  + [read_cursor_set] is set of carrier read cursor projections
+  + [freshness_state] is current, stale, blocked, contradicted, or unknown
+  + [lineage_state] is root, branch, merge_candidate, superseded, archived, or unknown
+
+  = must: treat conversation_uuid as the durable handle for narrative and coordination continuity
+  = must: preserve source_authority_ref_set separately from carrier_notice_set
+  = must: distinguish conversation branch, conversation projection, and surface thread
+  = must: make stale carrier notices visible without promoting them to source authority
+  - never: treat IRC room, Matrix room, web thread, terminal scrollback, Codex thread, mailbox inbox, Langflow graph, or browser page as canonical memory by itself
+
+& [SurfaceProjectionIdentityContract] is the identity contract for a surface-specific projection of a conversation
+  + [surface_projection_uuid] is required stable UUID for the projection record
+  + [conversation_uuid] is required parent conversation identity
+  + [surface_kind] is exclusive ConversationSurfaceKind
+  + [surface_address] is projection-specific address or label
+  + [projected_record_set] is set of projected source, narrative, claim, packet, or operation references
+  + [authority_notice] is required projection notice explaining non-authoritative status
+  + [freshness_notice] is required projection notice explaining current, stale, blocked, contradicted, or unknown state
+  + [inbound_action_policy] is accepted, refused, queued_for_source_preserving_intake, or unknown
+
+  = must: require authority_notice and freshness_notice on every decision-making projection
+  = must: classify inbound actions before they can affect source, claims, work packets, operations, or reviews
+  = must: route source-changing inbound actions through source-preserving intake and SJS governance
+  - never: let a surface projection mutate canonical authority directly
+  - never: let inbound_action_policy accepted mean dispatch, operations control, or live control
+
+& [AuthorityClassPromotionContract] is the rule for moving a record between authority classes
+  + [from_class] is AuthorityClass
+  + [to_class] is AuthorityClass
+  + [promotion_basis] is source_document, canonical_specification, signed_review, or explicit human override record
+  + [promotion_review] is required for any promotion that affects claims, packets, operations, assignment, dispatch, or live control
+  + [promotion_state] is proposed, accepted, refused, stale, superseded, or blocked
+
+  = must: require signed source-preserved authority before promoting surface_projection, carrier_notice, narrative_record, generated_output, work_packet_candidate, operation_request, dry_run_result, or human_approval_display into a stronger authority class
+  = must: require separate future SJS authority before any promotion to dispatch_authority or live_control_authority
+  = must: require completion review for every accepted promotion that changes slice readiness
+  - never: promote generated_output to source_document
+  - never: promote carrier_notice to canonical_specification
+  - never: promote work_packet_candidate to dispatch_authority
+  - never: promote dry_run_result to human_approval_display or live_control_authority
+  - never: promote human_approval_display to live_control_authority without explicit future safety authority, freshness, revocation, rollback, monitor, and emergency-stop proof
+
+& [AuthorityClassPermissionMatrix] is the planning matrix for allowed and refused authority behavior
+  + [source_document] may support canonical_specification through SJS processing only
+  + [canonical_specification] may open signed_review and slice readiness through completion review
+  + [signed_review] may open the next gated planning slice only within its stated scope
+  + [narrative_record] may support reentry and context but may not authorize implementation or dispatch
+  + [surface_projection] may display source state, projection state, freshness, and notices but may not mutate authority directly
+  + [carrier_notice] may carry coordination information but may not become signed authority
+  + [coordination_claim] may declare intent and work boundary but may not assign or dispatch work
+  + [assignment_candidate] may suggest a responsible participant but may not command action
+  + [work_packet_candidate] may package bounded work context but may not dispatch an agent or job
+  + [operation_request] may request dry-run consideration but may not execute an operation
+  + [dry_run_result] may inform planning and refusal but may not approve live action
+  + [human_approval_display] may show approval state but may not substitute for future safety authority
+  + [generated_output] may support fixture comparison but may not become source or canonical authority
+  + [dispatch_authority] is absent and blocked in current scope
+  + [live_control_authority] is absent and blocked in current scope
+
+  = must: expose refused promotions as operational faults when attempted
+  = must: preserve blocked authority classes visibly so downstream planning does not infer false readiness
+
+& [P7IdentityAndAuthorityBoundary] is the P7 boundary opened by this contract
+  + [P7P9-DR03_precondition] is accepted participant identity, conversation identity, surface projection identity, and authority class matrix
+  + [P7P9-DR03_ready_state] is ready_after_completion_review
+  + [P7P9-DR03_expected_output] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [P7P9-DR03_model_route] is requires deeper reasoning
+  + [P7P9-DR03_model_route_reason] is assignment candidates must help managers without becoming dispatch authority
+  + [P9_dependency_note] is P9 operations-manager safety remains gated until P7P9-DR05 because operations-manager handoff depends on participant identity, assignment refusal, carrier projection, conflict review, and human override semantics
+
+  ! [P7P9DR02VerificationSatisfied] is accepted
+    @ [support] [ParticipantIdentityRecordContract]
+    @ [support] [ConversationIdentityRecordContract]
+    @ [support] [SurfaceProjectionIdentityContract]
+    @ [support] [AuthorityClassPromotionContract]
+    @ [support] [AuthorityClassPermissionMatrix]
+    @ [support] [P7IdentityAndAuthorityBoundary]
+
+& [FaultContainment: P7P9-DR02] is the fault containment record for this contract
+  + [chat_protocol_as_source_truth] is refused
+  + [surface_presence_as_participant_authority] is refused
+  + [manager_packet_as_dispatch_authority] is refused
+  + [work_packet_as_assignment_authority] is refused
+  + [dry_run_result_as_live_approval] is refused
+  + [human_approval_display_as_live_control] is refused
+  + [generated_output_as_source] is refused
+  + [carrier_notice_as_signed_authority] is refused
+  + [credential_access_from_participant_identity] is refused
+
+  = must: route any refused promotion attempt to operational fault capture and completion-review reconsideration
+
+& [NextSliceRecommendation: P7P9-DR03] is the recommendation after P7P9-DR02
+  + [next_slice] is P7P9-DR03 work claim, assignment candidate, and dispatch refusal contract
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is assignment candidates must help managers without becoming dispatch authority
+  + [future_Spark_suitable_work] is fixture oracle drafting only after P7P9-DR01 through P7P9-DR08 are accepted
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: require completion review acceptance before P7P9-DR03 starts

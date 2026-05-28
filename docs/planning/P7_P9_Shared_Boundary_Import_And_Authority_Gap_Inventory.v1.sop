@@ -1,0 +1,180 @@
+Subject: P7 P9 Shared Boundary Import And Authority Gap Inventory V1
+Date: 2026-05-27
+Output UUID: 1adb9337-bd3d-46d9-9586-dda53a0e2fb8
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [slice_surface] docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+@ [reentry_review] docs/reviews/Post_P6_Surface_Implementation_Downstream_Reentry_Rebake_Review.v1.sop
+@ [p6_surface_implementation_proof_pack] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+@ [post_p6_surface_readiness] docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [P7P9SharedBoundaryImportAndAuthorityGapInventoryV1] is the P7P9-DR01 output for shared downstream reentry boundary import
+  + [slice_id] is P7P9-DR01
+  + [slice_status] is completed_for_review
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_reason] is shared authority gaps decide the safe order for coordination contracts, dispatch refusal, operations-manager safety, and future live-control reconsideration
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [authority_basis_sha256] is 8B2B13EDDD722EA620CE0886CB24BB4CACC35FEE111C134EEB93DAEFBFB1A0BE
+  + [slice_surface] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+  + [slice_surface_sha256] is F068D0A6FCE7B273AC5D3D770D1FDA397706430B4F5304F6E52C5D25818A19F2
+
+  = must: provide the shared boundary for P7 and P9 without creating P7/P9 contracts beyond gap inventory
+  = must: preserve the distinction between source authority, canonical authority, projections, carriers, manager packets, work packets, operation requests, dry-run results, human approval displays, generated outputs, and live effects
+  = must: open P7P9-DR02 only after completion review accepts this output
+  - never: authorize assignment, dispatch, operations control, live machine control, mailbox IO, adapters, transports, UI, dependency installation, package metadata mutation, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, or persistent operations automation
+
+& [AcceptedBoundaryInput: P6SurfaceImplementation] is imported as projection and no-live-effect support
+  + [source] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [source_sha256] is 981FC13220B30E20F2D296A7580E73739050DC363A7A923515745EAC0218A81F
+  + [source] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [source_sha256] is ADB8E0B6A9AC26FD59CC5DC8391AD6C118FBAB87989C9B5D03DAFCC37071731D
+  + [source] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [source_sha256] is 7BEBE692F0192DFE9D31E7D7B9B3B3F86909DA064895D617DFA2C7F355CD7055
+  + [accepted_support] is surface projections can display authority notices, freshness notices, no-dispatch notices, no-operations-control notices, and no-live-effect notices
+  + [accepted_support] is inbound surface action classification can distinguish user intent, manager packet, carrier state, and refused authority promotion
+  + [accepted_support] is generated projections remain disposable and non-authoritative
+  + [accepted_limit] is P6 does not authorize IRC, Matrix, browser, web, Codex, terminal, Langflow, MCP, adapter, transport, UI, assignment, dispatch, operations control, or live-control implementation
+
+  = must: let P7 use P6 only for projection semantics and surface participation boundaries
+  = must: let P9 use P6 only for no-live-effect and no-dispatch proof support
+
+& [AcceptedBoundaryInput: CoordinationEvidence] is imported as P7 coordination support
+  + [source] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [source_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [source] is docs/reviews/IR6_Implementation_Completion_Review.v1.sop
+  + [source_sha256] is F200CA49FD087B486D601AB95749CA98B63D7F9246869DB417B4BE2CB2AE4C0C
+  + [accepted_support] is claim identity, work-boundary projection, mailbox carrier projection, conflict review, stale claim review, human override, generated-output nonpromotion, and no-mailbox-IO proof are available as evidence
+  + [accepted_limit] is IR6 does not authorize new mailbox file writing, mailbox transport, IRC/Matrix/web adapter behavior, automatic assignment, agent dispatch, operations control, or live control
+
+  = must: import IR6 as bounded coordination evidence, not as a direct transport or dispatch layer
+  = must: require P7 to restate participant and authority-class identity before extending coordination semantics
+
+& [AcceptedBoundaryInput: OperationsDryRunEvidence] is imported as P9 dry-run support
+  + [source] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [source_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [source] is docs/reviews/IR7_Implementation_Completion_Review.v1.sop
+  + [source_sha256] is 31184C312AA4A7FA727598B69AE9B8F7F556E35CED4F7C2092E9DE165FB65F3D
+  + [accepted_support] is dry-run request identity, refusal behavior, no-live-effect proof, resource safety, human approval freshness, credential boundary, network boundary, and rollback expectations are available as evidence
+  + [accepted_limit] is IR7 does not authorize live command execution, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, persistent automation, operations control, or live machine control
+
+  = must: import IR7 as dry-run and refusal evidence, not as a machine controller
+  = must: require P9 to restate resource taxonomy and approval safety before any future operations-manager runtime planning
+
+& [AcceptedBoundaryInput: IntegratedManagerEvidence] is imported as manager orchestration support
+  + [source] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [source_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [source] is docs/reviews/IR8_Implementation_Completion_Review.v1.sop
+  + [source_sha256] is CAB85007AEA0F5711959DDBD6D157E39DE04E1DC24C4DFB2728225A550B3C328
+  + [source] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [source_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [accepted_support] is manager loop records, readiness projection records, work packet candidate records, coordination handoff records, operations dry-run handoff records, generated-output nonpromotion, no-dispatch proof, and no-live-effect proof are available as evidence
+  + [accepted_limit] is IR8 does not authorize manager adapters, dependency installation, package metadata mutation, assignment, dispatch, operations control, or live machine control
+
+  = must: use manager evidence to shape packet and handoff semantics without creating dispatch authority
+
+& [AcceptedBoundaryInput: OperationsSafety] is imported as P9 safety authority
+  + [source] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [source_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [source] is docs/canonical/LangSOP_Operations_Safety_Spec.canonical.sop
+  + [source_sha256] is A23DE5C7756F81F36D2E5BFD77E2F49681E52075F49CCE6FFB3AD6B113C6B446
+  + [accepted_support] is live-control safety specification, dry-run-before-live rule, explicit human approval requirement, rollback expectation, credential boundary, network boundary, and operations fault routing are standing safety constraints
+  + [accepted_limit] is operations safety support does not by itself authorize live resource operations
+
+  = must: treat FSC5 as the safety ceiling for all P9 planning
+  = must: require separate future source-preserved SJS safety authority before any live-control reconsideration
+
+& [AuthorityClassGapInventory] is the shared distinction map that P7/P9 must preserve
+  + [authority_class] is source_document
+    + [current_support] is preserved source and manifest records exist for downstream reentry
+    + [gap_state] is no gap for planning; future source changes require reprocessing
+  + [authority_class] is canonical_specification
+    + [current_support] is SJS-signed canonical downstream reentry specification exists
+    + [gap_state] is no gap for P7P9-DR01 through P7P9-DR10 planning order
+  + [authority_class] is projection_surface
+    + [current_support] is P6 surface implementation can project authority and freshness notices
+    + [gap_state] is P7/P9 must define participant and carrier semantics before new surfaces are trusted
+  + [authority_class] is conversation_carrier
+    + [current_support] is IR6 mailbox carrier proof and P6 cross-surface projection evidence exist
+    + [gap_state] is IRC, Matrix, web, browser, Codex, terminal, mailbox IO, and Langflow carriers lack implementation authority
+  + [authority_class] is coordination_claim
+    + [current_support] is IR6 claim proof exists
+    + [gap_state] is P7 must restate participant identity, claim compatibility, stale claim review, and human override under the broader multi-user/multi-agent surface model
+  + [authority_class] is assignment_candidate
+    + [current_support] is IR8 work packet candidate records exist
+    + [gap_state] is assignment candidate is not assignment authority and requires P7 dispatch refusal contract
+  + [authority_class] is dispatch_authority
+    + [current_support] is none
+    + [gap_state] is intentionally blocked until separate source-preserved SJS authority exists
+  + [authority_class] is operation_request
+    + [current_support] is IR7 dry-run request evidence and IR8 operations handoff evidence exist
+    + [gap_state] is P9 must restate operations-manager request identity and refusal semantics before runtime planning
+  + [authority_class] is dry_run_result
+    + [current_support] is IR7 dry-run result proof exists
+    + [gap_state] is dry-run success is not live approval and must remain non-authoritative
+  + [authority_class] is human_approval_display
+    + [current_support] is operations safety approval requirements exist
+    + [gap_state] is P9 must define freshness, expiration, revocation, scope, and audit before any future live-control activation can be proposed
+  + [authority_class] is live_control_authority
+    + [current_support] is none
+    + [gap_state] is intentionally blocked until separate source-preserved safety authority, dry-run proof, least-privilege boundary, rollback proof, monitor proof, emergency stop, and explicit human approval model are accepted
+
+  = must: preserve the authority_class gap inventory as an input to P7P9-DR02 through P7P9-DR08
+  = must: reject future packets that collapse assignment_candidate into dispatch_authority or dry_run_result into live_control_authority
+
+& [P7ReadinessGapSet] is the coordination gap set opened by this boundary import
+  + [gap] is participant identity and conversation identity must be widened from IR6 to multi-user and multi-agent surfaces
+  + [gap] is authority class contract must distinguish human user, agent, manager, worker, tool, automation, surface, carrier, source, projection, generated output, claim, packet, operation request, and approval display
+  + [gap] is work claim and assignment candidate semantics must preserve dispatch refusal
+  + [gap] is cross-surface carrier and rendezvous projection must support IRC, Matrix, web, Codex, terminal, browser, mailbox, Langflow, and narrative surfaces without making any protocol source truth
+  + [gap] is conflict, staleness, human override, release, supersession, and completion review must be restated for multi-agent and multi-surface participation
+  + [blocked_scope] is mailbox IO, IRC adapter, Matrix adapter, web adapter, browser adapter, Codex adapter, terminal adapter, Langflow export, UI implementation, assignment, dispatch, and automatic conflict resolution
+
+  = must: route P7P9-DR02 through P7P9-DR05 to deeper reasoning
+
+& [P9ReadinessGapSet] is the operations-manager safety gap set opened by this boundary import
+  + [gap] is resource taxonomy must classify process, GPU, model runtime, job, file, credential, network, automation, scheduler, monitor, and external service targets
+  + [gap] is operations-manager request and dry-run result semantics must preserve no-live-effect and dispatch refusal
+  + [gap] is approval, credential, network, rollback, and emergency-stop semantics must be stated before any future live-control reconsideration
+  + [gap] is generated output and fixture oracle plan must prove no promotion from dry-run success to live approval
+  + [gap] is future Ryzen 9 RTX 5090 management remains deferred until separate signed safety activation, least-privilege credentials, monitors, rollback, and emergency stop exist
+  + [blocked_scope] is runtime scheduler, resource monitor, GPU controller, process controller, model-runtime manager, job controller, credential manager, network manager, persistent automation, command execution, operations control, and live machine control
+
+  = must: route P7P9-DR06 through P7P9-DR08 to deeper reasoning
+  = must: treat P7P9-DR09 as GPT-5.3-Codex-Spark-suitable only after P7P9-DR01 through P7P9-DR08 are accepted
+
+& [DependencyClosureResult: P7P9-DR01] is the slice dependency closure result
+  + [P7P9-DR02_state] is ready_after_DR01_completion_review
+  + [P7P9-DR03_state] is gated_until_DR02_acceptance
+  + [P7P9-DR04_state] is gated_until_DR03_acceptance
+  + [P7P9-DR05_state] is gated_until_DR04_acceptance
+  + [P7P9-DR06_state] is gated_until_DR05_acceptance
+  + [P7P9-DR07_state] is gated_until_DR06_acceptance
+  + [P7P9-DR08_state] is gated_until_DR07_acceptance
+  + [P7P9-DR09_state] is Spark_suitable_after_DR08_acceptance
+  + [P7P9-DR10_state] is gated_until_DR09_acceptance
+  + [unresolved_external_dependency_set] is empty_for_DR02_planning
+  + [implementation_authority_gap] is present_and_intentionally_blocked
+  + [dispatch_authority_gap] is present_and_intentionally_blocked
+  + [live_control_authority_gap] is present_and_intentionally_blocked
+
+  ! [P7P9DR01VerificationSatisfied] is accepted
+    @ [support] [AcceptedBoundaryInput: P6SurfaceImplementation]
+    @ [support] [AcceptedBoundaryInput: CoordinationEvidence]
+    @ [support] [AcceptedBoundaryInput: OperationsDryRunEvidence]
+    @ [support] [AcceptedBoundaryInput: IntegratedManagerEvidence]
+    @ [support] [AcceptedBoundaryInput: OperationsSafety]
+    @ [support] [AuthorityClassGapInventory]
+    @ [support] [P7ReadinessGapSet]
+    @ [support] [P9ReadinessGapSet]
+    @ [support] [DependencyClosureResult: P7P9-DR01]
+
+& [NextSliceRecommendation: P7P9-DR02] is the recommendation after P7P9-DR01
+  + [next_slice] is P7P9-DR02 participant, conversation identity, and authority class contract
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is participant identity and authority class distinctions shape every later coordination and operations-manager handoff
+  + [future_Spark_suitable_work] is fixture oracle drafting only after P7P9-DR01 through P7P9-DR08 are accepted
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: require completion review acceptance before P7P9-DR02 starts

@@ -1,0 +1,195 @@
+Subject: P7 P9 Downstream Reentry Final Slices V1
+Date: 2026-05-27
+Slice Surface UUID: 55a4dbba-ea1e-4d40-a97f-613fe82254c5
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [source_manifest] docs/source/2026-05-27_post_p6_surface_implementation_downstream_reentry/Source_Document_Manifest.sop
+@ [reentry_surface] docs/planning/Post_P6_Surface_Implementation_Downstream_Reentry_Surface.v1.sop
+@ [p6_surface_implementation_proof_pack] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+@ [post_p6_surface_readiness] docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [P7P9DownstreamReentryFinalSliceSurfaceV1] is the executable slice surface for dependency-closed P7/P9 downstream reentry planning
+  + [chunk_ref] is P7/P9 downstream reentry after P6 surface implementation completion
+  + [chunk_boundary] is shared authority boundary import, P7 coordination identity and carrier contracts, P7 conflict and dispatch refusal contracts, P9 operations-manager safety taxonomy, P9 dry-run and refusal contracts, P9 approval credential network rollback emergency-stop contracts, fixture/proof planning, implementation deferral, and completion review
+  + [accepted_boundary_input] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 981FC13220B30E20F2D296A7580E73739050DC363A7A923515745EAC0218A81F
+  + [accepted_boundary_input] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [accepted_boundary_input_sha256] is ADB8E0B6A9AC26FD59CC5DC8391AD6C118FBAB87989C9B5D03DAFCC37071731D
+  + [accepted_boundary_input] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is 7BEBE692F0192DFE9D31E7D7B9B3B3F86909DA064895D617DFA2C7F355CD7055
+  + [accepted_boundary_input] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [accepted_boundary_input_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [accepted_boundary_input] is docs/planning/IR6_Coordination_Mailbox_Projection_Prototype_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is EE2BB9CB263D9284E42F79F4529B96AB9A09637D696B0F75A8100EC5AE44568C
+  + [accepted_boundary_input] is docs/planning/IR7_Operations_Dry_Run_Simulator_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is 3A5C3335211D2CBB9ACAF673F20DFF5C4FCDEE0079EF5146E70B20122C49A06A
+  + [accepted_boundary_input] is docs/planning/IR8_Integrated_Manager_Orchestration_Implementation_Proof_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C9827553DB24ED1624F4884452841F0E7A86D17AF3943CE6D572279B080BE448
+  + [accepted_boundary_input] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [accepted_boundary_input_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [unresolved_external_dependency_set] is empty_for_planning_slice_minting
+  + [current_ready_slice] is P7P9-DR01
+  + [gated_slice_set] is P7P9-DR02, P7P9-DR03, P7P9-DR04, P7P9-DR05, P7P9-DR06, P7P9-DR07, P7P9-DR08, P7P9-DR09, and P7P9-DR10
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: execute P7P9-DR01 before creating P7 or P9 contracts, fixture plans, implementation activation plans, dependency changes, mailbox IO, transport adapters, UI, scheduler, resource monitor, GPU/process/model-runtime/job controller, or generated outputs
+  = must: run completed-work review after every P7/P9 downstream reentry slice
+  = must: stale downstream slices when an upstream output changes or contradicts current assumptions
+  = must: reject any output that promotes conversation surfaces, coordination claims, mailbox carriers, manager packets, work packets, operation requests, dry-run results, fixture success, graph checkpoints, human approval displays, generated projections, or generated reports to source authority, assignment authority, dispatch authority, operations authority, or live-control authority
+
+& [FinalWorkSlice: P7P9-DR01-SharedBoundaryImportAndAuthorityGapInventory] is ready
+  + [slice_id] is P7P9-DR01
+  + [slice_name] is shared boundary import and authority gap inventory
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P7 coordination and P9 operations-manager shared gate
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is post-P6 surface implementation downstream reentry accepted
+  + [expected_output_set] is docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+  + [verification_oracle] is boundary map imports P6 surface no-promotion evidence, IR6 coordination evidence, IR7 dry-run safety, IR8 manager evidence, FSC5 operations safety, and post-P6/post-IR8 readiness gates while listing remaining authority gaps without implementing coordination or operations behavior
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is shared authority gaps decide the safe order for coordination contracts, dispatch refusal, operations-manager safety, and future live-control reconsideration
+  + [forbidden_scope] is coordination implementation, mailbox IO, adapter implementation, transport implementation, UI implementation, Langflow export, fixture creation, generated output creation, dependency installation, package metadata mutation, assignment, dispatch, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, operations control, and live machine control
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR02-ParticipantConversationIdentityAndAuthorityClassContract] is gated
+  + [slice_id] is P7P9-DR02
+  + [slice_name] is participant, conversation identity, and authority class contract
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P7 coordination identity foundation
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR01 accepted
+  + [expected_output_set] is docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+  + [verification_oracle] is contract distinguishes human user, agent, manager, worker, tool, automation, surface, carrier, source authority, projection, generated output, claim, packet, operation request, and approval display without permitting assignment or dispatch
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is participant identity and authority class distinctions shape every later coordination and operations-manager handoff
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR03-WorkClaimAssignmentCandidateAndDispatchRefusalContract] is gated
+  + [slice_id] is P7P9-DR03
+  + [slice_name] is work claim, assignment candidate, and dispatch refusal contract
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P7 coordination claim and assignment boundary
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR02 accepted
+  + [expected_output_set] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [verification_oracle] is contract defines claim intent, claim scope, work boundary, compatibility, assignment candidate, dispatch refusal, human override route, and manager packet non-authority without implementing assignment or dispatch
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is assignment candidates must help managers without becoming dispatch authority
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR04-CrossSurfaceCarrierConversationAndRendezvousProjectionContract] is gated
+  + [slice_id] is P7P9-DR04
+  + [slice_name] is cross-surface carrier, conversation, and rendezvous projection contract
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P7 cross-surface coordination projections
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR03 accepted
+  + [expected_output_set] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [verification_oracle] is contract defines how IRC, Matrix, web, Codex, terminal, browser, mailbox, Langflow, and narrative surfaces may project conversation and rendezvous state while preserving source/canonical authority and refusing mailbox IO or transport implementation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR05-ConflictStalenessHumanOverrideAndCompletionReviewContract] is gated
+  + [slice_id] is P7P9-DR05
+  + [slice_name] is conflict, staleness, human override, and completion review contract
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P7 coordination review and fault boundary
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR04 accepted
+  + [expected_output_set] is docs/coordination/P7_Conflict_Staleness_Human_Override_And_Completion_Review_Contract.v1.sop
+  + [verification_oracle] is contract defines conflict detection, stale claim review, stale surface review, ambiguous identity interrupt, hidden scope expansion fault, human override, release notice, and completion-review gate without resolving conflicts silently
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is conflict and override behavior controls multi-agent safety and later operations-manager handoffs
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR06-OperationsManagerSafetyBoundaryAndResourceTaxonomy] is gated
+  + [slice_id] is P7P9-DR06
+  + [slice_name] is operations-manager safety boundary and resource taxonomy
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P9 operations-manager safety foundation
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR05 accepted
+  + [expected_output_set] is docs/operations/P9_Operations_Manager_Safety_Boundary_And_Resource_Taxonomy.v1.sop
+  + [verification_oracle] is contract classifies process, GPU, model runtime, job, file, credential, network, automation, scheduler, monitor, and external service resources; imports FSC5 safety; and identifies live-control gaps without authorizing any resource mutation
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is resource taxonomy and safety boundaries control future Ryzen 9 RTX 5090 management authority
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR07-OperationsManagerDryRunRequestResultAndRefusalContract] is gated
+  + [slice_id] is P7P9-DR07
+  + [slice_name] is operations-manager dry-run request, result, and refusal contract
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P9 dry-run operations-manager semantics
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR06 accepted
+  + [expected_output_set] is docs/operations/P9_Operations_Manager_Dry_Run_Request_Result_And_Refusal_Contract.v1.sop
+  + [verification_oracle] is contract defines operations-manager request identity, intended effect, dry-run result, refusal reason, no-live-effect proof, coordination handoff, and dispatch refusal without command execution or job control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dry-run outputs must support planning without becoming live approval or dispatch authority
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR08-ApprovalCredentialNetworkRollbackAndEmergencyStopContract] is gated
+  + [slice_id] is P7P9-DR08
+  + [slice_name] is approval, credential, network, rollback, and emergency-stop contract
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P9 live-control safety precondition
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR07 accepted
+  + [expected_output_set] is docs/operations/P9_Approval_Credential_Network_Rollback_And_Emergency_Stop_Contract.v1.sop
+  + [verification_oracle] is contract defines explicit human approval, freshness, expiration, revocation, least privilege, credential boundary, network boundary, rollback or abort route, emergency stop, audit trace, and refusal behavior without granting live control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is approval, credential, network, rollback, and emergency-stop semantics are high-risk safety preconditions
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR09-FixtureOracleAndGeneratedOutputBoundaryPlan] is gated
+  + [slice_id] is P7P9-DR09
+  + [slice_name] is fixture oracle and generated-output boundary plan
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P7/P9 fixture and proof planning
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR08 accepted
+  + [expected_output_set] is docs/fixtures/P7_P9_Downstream_Reentry_Fixture_Oracle_And_Generated_Output_Boundary_Plan.v1.sop
+  + [verification_oracle] is fixture oracle plan covers valid claim, compatible parallel claim, conflicting claim, stale claim, mailbox carrier refusal, surface projection nonauthority, assignment refusal, dispatch refusal, dry-run operation request, live-control refusal, credential refusal, network refusal, GPU contention, model runtime unavailable, stale approval, rollback path, emergency stop path, and generated-output nonpromotion
+  + [model_route] is GPT-5.3-Codex-Spark-suitable after P7P9-DR01 through P7P9-DR08 acceptance
+  + [model_route_reason] is bounded fixture oracle drafting is mechanical once coordination and operations-manager contracts are accepted
+  + [completion_review_required] is true
+
+& [FinalWorkSlice: P7P9-DR10-CompletionReviewImplementationDeferralAndFutureActivationPack] is gated
+  + [slice_id] is P7P9-DR10
+  + [slice_name] is completion review, implementation deferral, and future activation pack
+  + [chunk_ref] is P7/P9 downstream reentry
+  + [portion_ref] is P7/P9 planning closure and future activation boundary
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [activation_gate] is P7P9-DR09 accepted
+  + [expected_output_set] is docs/planning/P7_P9_Downstream_Reentry_Activation_Pack.v1.sop
+  + [expected_output_set] is docs/decisions/P7_P9_Coordination_Operations_Manager_Implementation_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+  + [verification_oracle] is completion review accepts only bounded planning proof and either defers or narrowly proposes later source-preserved activation for implementation without directly authorizing dependency changes, adapters, UI, assignment, dispatch, operations control, or live machine control
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final planning closure decides whether future implementation activation can even be proposed and must preserve every dispatch and live-control gate
+  + [completion_review_required] is true
+
+& [P7P9DownstreamReentryFinalSliceClosureReview] is the dependency audit for minted downstream reentry slices
+  + [p6_surface_implementation_status] is accepted
+  + [post_p6_surface_readiness_status] is accepted
+  + [post_IR8_readiness_status] is accepted
+  + [IR6_coordination_proof_status] is accepted
+  + [IR7_operations_dry_run_proof_status] is accepted
+  + [IR8_integrated_manager_proof_status] is accepted
+  + [FSC5_operations_safety_status] is accepted
+  + [current_ready_slice_set] is P7P9-DR01
+  + [unresolved_external_dependency_set] is empty_for_planning_slice_minting
+  + [forbidden_external_dependency_found] is false
+  + [mailbox_IO_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P7P9-DR02 through P7P9-DR10 as gated, not ready
+  = must: rerun closure review when a boundary pack changes, proof fails, or implementation contradiction appears

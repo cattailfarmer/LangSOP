@@ -95,9 +95,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p6_surface_implementation_completion_review] docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
 @ [post_p6_surface_implementation_readiness] docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
 @ [p6_ia07_review] docs/reviews/P6_IA07_Completion_Review.v1.sop
+@ [post_p6_downstream_reentry_canonical] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [post_p6_downstream_reentry_surface] docs/planning/Post_P6_Surface_Implementation_Downstream_Reentry_Surface.v1.sop
+@ [p7_p9_downstream_reentry_slices] docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+@ [post_p6_downstream_reentry_review] docs/reviews/Post_P6_Surface_Implementation_Downstream_Reentry_Rebake_Review.v1.sop
+@ [p7p9_dr01_output] docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+@ [p7p9_dr01_review] docs/reviews/P7P9_DR01_Completion_Review.v1.sop
+@ [p7p9_dr02_output] docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+@ [p7p9_dr02_review] docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+@ [p7p9_dr03_output] docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+@ [p7p9_dr03_review] docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+@ [post_p6_downstream_reentry_state] docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P6_surface_implementation_activation_complete_downstream_reentry_ready
+  + [map_state] is P7P9_DR03_accepted_DR04_ready
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -328,7 +339,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: keep P6 accepted as planning and contract authority, not surface implementation, adapter, transport, UI, Langflow, assignment, dispatch, operations-control, or live-control authority
   = should: route bounded projection rendering to GPT-5.3-Codex-Spark after P6 implementation activation and fixture records stabilize
 
-& [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_IR8_readiness
+& [Portion: P7CoordinationAndMultiAgentGovernance] is supported_by_post_P6_downstream_reentry_DR01
   + [portion_id] is P7
   + [portion_name] is coordination and multi-agent governance
   + [purpose] is preserve claims, ownership, conversation identity, rendezvous packets, mailbox messages, conflicts, and human overrides
@@ -426,11 +437,23 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
   + [support_record] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
   + [support_record] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+  + [support_record] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [support_record] is docs/planning/Post_P6_Surface_Implementation_Downstream_Reentry_Surface.v1.sop
+  + [support_record] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/Post_P6_Surface_Implementation_Downstream_Reentry_Rebake_Review.v1.sop
+  + [support_record] is docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR01_Completion_Review.v1.sop
+  + [support_record] is docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+  + [support_record] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [support_record] is docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
   + [support_gap] is future agent dispatch authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is fixture scenarios with overlapping claims, inbox messages, stale claims, and conflict notices
   + [slice_family] is coordination-claim-schema
   + [slice_family] is rendezvous-packet-fixtures
   + [slice_family] is mailbox-projection-integration
+  + [slice_family] is participant-conversation-authority-class-contract
 
   = must: preserve conversation identity and work boundaries before multi-agent dispatch
   = must: keep mailbox transport, agent dispatch, operations control, and live machine control gated until future source-preserved authority explicitly opens bounded work
@@ -500,7 +523,7 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route fixture material creation through separate source-preserved implementation activation before any files, ledgers, generated outputs, or proof runner effects are authored
   = should: route fixture generation to GPT-5.3-Codex-Spark after P8 fixture contracts, downstream P5/P6 consumption requirements, and implementation activation stabilize
 
-& [Portion: P9OperationsManagerSafety] is supported_by_post_IR8_readiness_live_control_gated
+& [Portion: P9OperationsManagerSafety] is supported_by_post_P6_downstream_reentry_DR01_live_control_gated
   + [portion_id] is P9
   + [portion_name] is operations-manager safety and future machine control
   + [purpose] is define safe boundaries for future Ryzen 9 RTX 5090 process, GPU, model runtime, and job-control management
@@ -606,22 +629,34 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_Post_IR8_Implementation_Readiness.canonical.sop
   + [support_record] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
   + [support_record] is docs/reviews/Post_IR8_Implementation_Readiness_Rebake_Review.v1.sop
+  + [support_record] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [support_record] is docs/planning/Post_P6_Surface_Implementation_Downstream_Reentry_Surface.v1.sop
+  + [support_record] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+  + [support_record] is docs/reviews/Post_P6_Surface_Implementation_Downstream_Reentry_Rebake_Review.v1.sop
+  + [support_record] is docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR01_Completion_Review.v1.sop
+  + [support_record] is docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+  + [support_record] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [support_record] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [support_record] is docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
   + [support_gap] is future live-control authority not source-preserved, SJS-processed, or accepted
   + [proof_route] is signed safety specification plus dry-run proof before live resource operations
   + [slice_family] is operations-manager-safety-specification
   + [slice_family] is dry-run-resource-control-fixtures
+  + [slice_family] is resource-taxonomy-and-live-control-gap-inventory
 
   = must: use post-IR8 implementation readiness before dependencies, adapters, transports, UI, or live operations control
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: PostP6SurfaceImplementationDownstreamReentry] is ready_for_planning_rebake
-  + [chunk_id] is post-P6-surface-implementation-downstream-reentry
-  + [slice_id] is downstream-reentry
-  + [chunk_name] is downstream P7 coordination and P9 operations-manager readiness rebake from completed P6 surface implementation
-  + [authority_basis] is docs/reviews/P6_IA07_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 9E3D28C7B5BFEA778F41362F06A144ACA39E64D9D87119CD692A1333E8D0445B
-  + [readiness_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+& [CurrentReadyChunk: P7P9-DR04-CrossSurfaceCarrierConversationAndRendezvousProjectionContract] is ready
+  + [chunk_id] is p7p9-downstream-reentry
+  + [slice_id] is P7P9-DR04
+  + [chunk_name] is cross-surface carrier conversation and rendezvous projection contract
+  + [authority_basis] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [authority_basis_sha256] is BAB264A803D8AD58301B5753DA4D19C7EFBC9D617E045A7687319A67FF793C0D
+  + [readiness_surface] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
   + [accepted_p6_surface_implementation_activation_canonical] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
   + [accepted_p6_surface_implementation_activation_canonical_sha256] is 60CA1748951DB329435821EC2DA685DF9259116D5556D5A4E200EE65972A1896
   + [accepted_p6_surface_implementation_activation_slices] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
@@ -672,15 +707,37 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_post_surface_implementation_readiness_sha256] is 7BEBE692F0192DFE9D31E7D7B9B3B3F86909DA064895D617DFA2C7F355CD7055
   + [accepted_p6_ia07_review] is docs/reviews/P6_IA07_Completion_Review.v1.sop
   + [accepted_p6_ia07_review_sha256] is 9E3D28C7B5BFEA778F41362F06A144ACA39E64D9D87119CD692A1333E8D0445B
-  + [expected_current_output] is source-preserved downstream readiness rebake specification
-  + [next_candidate_slice_family] is P7_coordination_and_multi_agent_governance_rebake
-  + [next_candidate_slice_family] is P9_operations_manager_safety_reentry_rebake
+  + [accepted_downstream_reentry_canonical] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [accepted_downstream_reentry_canonical_sha256] is 8B2B13EDDD722EA620CE0886CB24BB4CACC35FEE111C134EEB93DAEFBFB1A0BE
+  + [accepted_downstream_reentry_surface] is docs/planning/Post_P6_Surface_Implementation_Downstream_Reentry_Surface.v1.sop
+  + [accepted_downstream_reentry_surface_sha256] is 32039369F5514B8CD1948590954D8AB78A2DFFFC6CB789FC9AAB7AA8D4811F31
+  + [accepted_downstream_reentry_slices] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+  + [accepted_downstream_reentry_slices_sha256] is F068D0A6FCE7B273AC5D3D770D1FDA397706430B4F5304F6E52C5D25818A19F2
+  + [accepted_downstream_reentry_review] is docs/reviews/Post_P6_Surface_Implementation_Downstream_Reentry_Rebake_Review.v1.sop
+  + [accepted_downstream_reentry_review_sha256] is 8252EE78266915BE3C6D34ECEFFA641C828A1DD58FC7EB9913B3EA751C69B7F3
+  + [accepted_p7p9_dr01_output] is docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+  + [accepted_p7p9_dr01_output_sha256] is 545B8BE921C2A74D6E597E1D3559C0958E5E1B2B48E8CDD8DDCAB85A8F750F0B
+  + [accepted_p7p9_dr01_review] is docs/reviews/P7P9_DR01_Completion_Review.v1.sop
+  + [accepted_p7p9_dr01_review_sha256] is 491E02FCC489C4448C092AB7E1D730A3E173F9D49B94D0D4944F0E82C01BA50A
+  + [accepted_p7p9_dr02_output] is docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+  + [accepted_p7p9_dr02_output_sha256] is 5550EA8F6A7D2A5852D8D068731D6BA2FFCB48776C11A89EE123FBD32AAB9644
+  + [accepted_p7p9_dr02_review] is docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+  + [accepted_p7p9_dr02_review_sha256] is 6CA1776B6C55ED748393DEF02D92ACCE873F4267E56FC781FDEFE7F9A793DF2D
+  + [accepted_p7p9_dr03_output] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [accepted_p7p9_dr03_output_sha256] is 6F05A01F5B644F8BE76786B82C36DDF318A66C54A27C79A526E18F499BD67412
+  + [accepted_p7p9_dr03_review] is docs/reviews/P7P9_DR03_Completion_Review.v1.sop
+  + [accepted_p7p9_dr03_review_sha256] is BAB264A803D8AD58301B5753DA4D19C7EFBC9D617E045A7687319A67FF793C0D
+  + [accepted_downstream_reentry_state] is docs/state/Post_P6_Surface_Implementation_Downstream_Reentry_State.v1.sop
+  + [accepted_downstream_reentry_state_sha256] is AE3E856BB2DC18F4BED05B984DFFB588B410DA7B3AAE9E4AFF79A1593D120EC9
+  + [expected_current_output] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [next_candidate_slice_family] is P7_coordination_and_multi_agent_governance_contracts
+  + [next_candidate_slice_family] is P9_operations_manager_safety_contracts_after_P7_boundary
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is downstream reentry affects coordination identity, dispatch boundaries, operations safety, and live-control gates
+  + [model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
 
   = must: preserve P6 surface implementation completion as readiness support, not dependency, adapter, dispatch, operations, or live-control authority
-  = must: require source-preserved, SJS-processed downstream planning before P7, P9, adapter, UI, dispatch, operations, or live-control implementation
+  = must: execute P7P9-DR04 before P7 conflict or P9 operations-manager safety semantics advance
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

@@ -1,0 +1,111 @@
+Subject: P7P9 DR03 Completion Review V1
+Date: 2026-05-27
+Review UUID: 8fff441e-4f57-4460-a7ab-6adbd001cbf5
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [slice_surface] docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+@ [dr02_review] docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+@ [completed_output] docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+
+& [CompletedWorkReview: P7P9-DR03] is the completed-work review for work claim, assignment candidate, and dispatch refusal contract
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P7P9-DR03
+  + [completed_output] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [completed_output_sha256] is 6F05A01F5B644F8BE76786B82C36DDF318A66C54A27C79A526E18F499BD67412
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [authority_basis_sha256] is 8B2B13EDDD722EA620CE0886CB24BB4CACC35FEE111C134EEB93DAEFBFB1A0BE
+  + [slice_surface] is docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+  + [slice_surface_sha256] is F068D0A6FCE7B273AC5D3D770D1FDA397706430B4F5304F6E52C5D25818A19F2
+  + [upstream_review] is docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+  + [upstream_review_sha256] is 6CA1776B6C55ED748393DEF02D92ACCE873F4267E56FC781FDEFE7F9A793DF2D
+  + [model_route_used] is requires deeper reasoning
+  + [review_result] is accepted
+  + [next_gate_result] is P7P9-DR04 may open
+  + [next_model_route] is requires deeper reasoning
+  + [next_model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+
+  = must: treat this review as gate-opening evidence for P7P9-DR04 only
+  = must: rerun this review if P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop, downstream reentry canonical authority, slice surface, P7P9-DR02 output, or P7P9-DR02 completion review changes
+  = must: keep P7P9-DR05 through P7P9-DR10 gated until upstream completion reviews accept their direct dependencies
+  = must: keep dependency installation, package metadata mutation, mailbox IO, adapter work, transport work, UI work, Langflow export, assignment, dispatch, command execution, process control, GPU control, model runtime mutation, job dispatch, credential access, network mutation, destructive filesystem action, persistent automation, operations control, and live machine control gated
+
+& [VerificationOracleResult: P7P9-DR03] is the verification result for work claim and dispatch refusal contract
+  + [work_claim_record_contract_present] is true
+  + [assignment_candidate_record_contract_present] is true
+  + [claim_compatibility_review_contract_present] is true
+  + [dispatch_refusal_contract_present] is true
+  + [manager_packet_nonauthority_rule_present] is true
+  + [P7_claim_and_dispatch_boundary_present] is true
+  + [fault_containment_present] is true
+  + [next_slice] is P7P9-DR04
+  + [next_slice_model_route] is requires deeper reasoning
+  + [Spark_suitable_work] is none_until_DR08_acceptance
+  + [assignment_storage_created] is false
+  + [dispatch_queue_created] is false
+  + [mailbox_IO_created] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P7P9DR03VerificationSatisfied] is accepted
+    @ [support] docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+
+& [SupportDelta: P7P9-DR03] is the support delta produced by work claim and dispatch refusal contract
+  + [new_support_record] is work claims may describe intent, scope, authority basis, forbidden scope, compatibility, state, freshness, and expiration without becoming assignment authority
+  + [new_support_record] is assignment candidates may suggest participants for planning but remain non-command records with human review required
+  + [new_support_record] is dispatch refusal reasons and safe next routes are defined for missing authority, stale authority, ambiguous identity, conflicting claims, hidden scope expansion, operations-control blocks, and live-control blocks
+  + [new_support_record] is P7P9-DR04 cross-surface carrier, conversation, and rendezvous projection contract may open
+  + [support_status] is accepted
+
+& [RequirementDelta: P7P9-DR03] is the requirement delta produced by work claim and dispatch refusal contract
+  + [requirement_delta] is P7P9-DR04 must define cross-surface carrier and rendezvous projection semantics using accepted identity, claim, and refusal boundaries
+  + [requirement_delta] is P7P9-DR04 requires deeper reasoning
+  + [requirement_delta] is P9 operations-manager safety still waits for P7P9-DR04 and P7P9-DR05 because carrier and conflict semantics shape future operations handoffs
+  + [requirement_delta] is no claim, assignment candidate, manager packet, work packet candidate, operation request, dry-run result, or approval display can authorize assignment, dispatch, operations control, or live machine control
+
+& [FaultReview: P7P9-DR03] is the fault review for work claim and dispatch refusal contract
+  + [source_overwrite_found] is false
+  + [unprocessed_specification_used_as_authority_found] is false
+  + [claim_as_assignment_authority_found] is false
+  + [assignment_candidate_as_assignment_authority_found] is false
+  + [manager_packet_as_dispatch_authority_found] is false
+  + [carrier_notice_as_dispatch_authority_found] is false
+  + [work_packet_candidate_as_job_dispatch_found] is false
+  + [operation_request_as_command_execution_found] is false
+  + [dry_run_result_as_live_approval_found] is false
+  + [hidden_scope_expansion_silent_resolution_found] is false
+  + [stale_claim_silent_acceptance_found] is false
+  + [conflicting_claim_silent_resolution_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [mailbox_IO_leak_found] is false
+  + [adapter_implementation_leak_found] is false
+  + [transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P7P9DR03Accepted] is accepted
+    @ [support] [VerificationOracleResult: P7P9-DR03]
+    @ [support] [SupportDelta: P7P9-DR03]
+    @ [support] [RequirementDelta: P7P9-DR03]
+    @ [support] [FaultReview: P7P9-DR03]
+
+& [NextSliceGate: P7P9-DR04] is opened
+  + [opened_slice] is P7P9-DR04 cross-surface carrier, conversation, and rendezvous projection contract
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [completed_dependency] is docs/coordination/P7_Work_Claim_Assignment_Candidate_And_Dispatch_Refusal_Contract.v1.sop
+  + [completed_dependency_sha256] is 6F05A01F5B644F8BE76786B82C36DDF318A66C54A27C79A526E18F499BD67412
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P7P9-DR04 next unless user redirects or a new fault invalidates this review

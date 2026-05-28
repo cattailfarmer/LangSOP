@@ -1,0 +1,84 @@
+Subject: Post P6 Surface Implementation Downstream Reentry Surface V1
+Date: 2026-05-27
+Readiness Surface UUID: e5173b64-d991-4210-b775-d7fedce4ab3f
+
+@ [source_document] docs/source/2026-05-27_post_p6_surface_implementation_downstream_reentry/Post_P6_Surface_Implementation_Downstream_Reentry_Source.sop
+@ [p6_surface_implementation_proof_pack] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+@ [p6_surface_implementation_completion_review] docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+@ [post_p6_surface_readiness] docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+@ [post_ir8_readiness] docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+@ [operations_safety_pack] docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+
+& [PostP6SurfaceImplementationDownstreamReentrySurfaceV1] is the readiness surface for downstream P7 coordination and P9 operations-manager planning reentry
+  + [readiness_surface_id] is post-p6-surface-implementation-downstream-reentry-surface-v1
+  + [readiness_surface_uuid] is e5173b64-d991-4210-b775-d7fedce4ab3f
+  + [source_document] is docs/source/2026-05-27_post_p6_surface_implementation_downstream_reentry/Post_P6_Surface_Implementation_Downstream_Reentry_Source.sop
+  + [source_sha256] is D17D24EE49303EA3C76679BEA026771EE8767D4732AA929DE931AD75995A6192
+  + [readiness_basis] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [readiness_basis_sha256] is 981FC13220B30E20F2D296A7580E73739050DC363A7A923515745EAC0218A81F
+  + [readiness_basis] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [readiness_basis_sha256] is ADB8E0B6A9AC26FD59CC5DC8391AD6C118FBAB87989C9B5D03DAFCC37071731D
+  + [readiness_basis] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [readiness_basis_sha256] is 7BEBE692F0192DFE9D31E7D7B9B3B3F86909DA064895D617DFA2C7F355CD7055
+  + [readiness_basis] is docs/planning/Post_IR8_Implementation_Readiness_Surface.v1.sop
+  + [readiness_basis_sha256] is ADB5C53595EFA512B277ED53C98217873167FA34A47F769C82BCB694F66FB2D3
+  + [readiness_basis] is docs/planning/FSC5_Operations_Safety_Pack.v1.sop
+  + [readiness_basis_sha256] is C77D65523BC0EF43D82905660AF4F8E68A4270C0ED4D96DF60812B69A630B865
+  + [surface_status] is downstream_reentry_planning_authority_available
+  + [ready_work] is P7/P9 final slice minting
+  + [ready_work] is P7P9-DR01 shared boundary import and authority gap inventory after slice surface acceptance
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is downstream reentry affects coordination identity, multi-agent authority, dispatch boundaries, operations-manager safety, and live-control gates
+  + [Spark_suitable_work] is bounded fixture drafting, ledger refresh, and narrow proof updates only after deeper-reasoning boundary contracts are accepted
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [mailbox_IO_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [Langflow_export_authorized] is false
+  + [assignment_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [command_execution_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_mutation_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this surface as planning and final-slice authority only
+  = must: use docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop after minting review acceptance before executing downstream slice work
+  = must: keep P7 coordination work bounded to authority contracts, projection contracts, fixture plans, deferral decisions, and review records until a later source-preserved implementation activation exists
+  = must: keep P9 operations-manager work bounded to safety contracts, dry-run contracts, fixture plans, deferral decisions, and review records until a later source-preserved safety activation exists
+  = must: stale this surface if P6 surface implementation evidence, post-P6 surface readiness, post-IR8 readiness, IR6 coordination proof, IR7 dry-run proof, IR8 manager proof, FSC5 operations safety, operations safety canonical authority, capability field, or portion map changes
+  - never: use this surface to authorize runtime assignment, dispatch, mailbox transport, adapter behavior, command execution, process control, GPU control, model runtime mutation, job control, credential access, network mutation, destructive filesystem action, persistent automation, operations control, or live machine control
+
+& [DownstreamReentryDelta: PostP6SurfaceImplementation] is the readiness delta produced by this rebake
+  + [new_support] is P6 surface implementation proof may support P7 surface participation boundaries and P9 no-live-effect proof without authorizing adapters or live operations
+  + [new_support] is IR6 coordination proof may support P7 claim and mailbox carrier semantics without authorizing mailbox IO or agent dispatch
+  + [new_support] is IR7 dry-run proof may support P9 dry-run and refusal semantics without authorizing command execution or live control
+  + [new_support] is IR8 manager proof may support manager packet and handoff semantics without authorizing manager dispatch
+  + [new_support] is FSC5 operations safety remains the standing live-control safety limit for P9
+  + [blocked_support] is IRC, Matrix, browser, web, Codex, terminal, Langflow, MCP, scheduler, telemetry, adapter, or transport implementation remains blocked
+  + [blocked_support] is future Ryzen 9 RTX 5090 process, GPU, model-runtime, job-control, credential, network, and live-control management remains blocked
+
+  = must: keep the typed collaboration kernel as the source of truth and treat conversation surfaces as projections or carriers
+  = must: keep the narrative, coordination, SJS, data-driven design, surface projection, and operations safety layers distinct even when a manager packet cites all of them
+
+& [RecommendedNextSliceFamily: P7P9DownstreamReentry] is the next planning recommendation after this readiness rebake
+  + [candidate_slice_family] is P7P9_downstream_reentry_final_slices
+  + [candidate_slice_family] is P7_coordination_boundary_import
+  + [candidate_slice_family] is P9_operations_manager_safety_boundary_import_after_P7_boundary
+  + [candidate_slice_family] is future_fixture_oracle_generation_after_boundaries
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is P7/P9 coordination, authority, and safety contracts decide later worker packets, surface participation, assignment refusal, and machine-management refusal semantics
+  + [future_Spark_suitable_work] is fixture drafting, ledger updates, and proof index refresh after deeper-reasoning P7/P9 contracts are accepted
+
+  = must: mint final downstream reentry slices before executing P7 or P9 boundary work
+  = must: run completed-work review after slice minting and after every downstream reentry slice

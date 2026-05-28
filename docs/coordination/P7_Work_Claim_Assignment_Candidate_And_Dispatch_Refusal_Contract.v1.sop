@@ -1,0 +1,177 @@
+Subject: P7 Work Claim Assignment Candidate And Dispatch Refusal Contract V1
+Date: 2026-05-27
+Output UUID: a252ab54-9f23-4d6c-91e1-b3e511dcb76f
+
+@ [canonical_specification] docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+@ [slice_surface] docs/slices/P7_P9_Downstream_Reentry_Final_Slices.v1.sop
+@ [dr01_output] docs/planning/P7_P9_Shared_Boundary_Import_And_Authority_Gap_Inventory.v1.sop
+@ [dr02_output] docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+@ [dr02_review] docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+
+& [P7WorkClaimAssignmentCandidateAndDispatchRefusalContractV1] is the P7P9-DR03 output for claim, assignment candidate, and dispatch refusal semantics
+  + [slice_id] is P7P9-DR03
+  + [slice_status] is completed_for_review
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_reason] is assignment candidates must help managers without becoming dispatch authority
+  + [authority_basis] is docs/canonical/LangSOP_Post_P6_Surface_Implementation_Downstream_Reentry.canonical.sop
+  + [authority_basis_sha256] is 8B2B13EDDD722EA620CE0886CB24BB4CACC35FEE111C134EEB93DAEFBFB1A0BE
+  + [completed_dependency] is docs/coordination/P7_Participant_Conversation_Identity_And_Authority_Class_Contract.v1.sop
+  + [completed_dependency_sha256] is 5550EA8F6A7D2A5852D8D068731D6BA2FFCB48776C11A89EE123FBD32AAB9644
+  + [completed_dependency_review] is docs/reviews/P7P9_DR02_Completion_Review.v1.sop
+  + [completed_dependency_review_sha256] is 6CA1776B6C55ED748393DEF02D92ACCE873F4267E56FC781FDEFE7F9A793DF2D
+
+  = must: define claim and assignment-candidate records as coordination evidence, not command authority
+  = must: preserve assignment_candidate separately from assignment_authority and dispatch_authority
+  = must: refuse dispatch whenever a request lacks separate source-preserved dispatch authority
+  = must: route disputed, stale, ambiguous, or expanded work boundaries to conflict review instead of silent execution
+  - never: implement assignment storage, queueing, agent dispatch, job dispatch, mailbox IO, transport behavior, operations control, or live machine control
+
+| [ClaimState] is (
+  proposed |
+  active |
+  compatible |
+  contested |
+  stale |
+  released |
+  superseded |
+  blocked |
+  completed |
+  unknown
+)
+
+| [ClaimCompatibility] is (
+  compatible |
+  overlapping_compatible |
+  overlapping_requires_review |
+  conflicting |
+  stale_requires_review |
+  unknown
+)
+
+| [DispatchRefusalReason] is (
+  missing_dispatch_authority |
+  stale_authority_basis |
+  ambiguous_participant_identity |
+  ambiguous_work_boundary |
+  conflicting_claim |
+  hidden_scope_expansion |
+  missing_human_override |
+  operations_control_blocked |
+  live_control_blocked |
+  carrier_notice_not_authority |
+  dry_run_result_not_approval |
+  generated_output_not_source
+)
+
+& [WorkClaimRecordContract] is the record contract for a coordination work claim
+  + [claim_uuid] is required stable UUID for the claim record
+  + [conversation_uuid] is required parent conversation identity
+  + [claimant_participant_uuid] is required participant identity
+  + [claim_kind] is exploration, planning, specification, implementation, review, validation, narrative, coordination, operations_dry_run, or unknown
+  + [claim_scope] is bounded description of files, subjects, slices, or surfaces touched by the claim
+  + [claim_intent] is the claimant's declared work purpose
+  + [authority_basis_set] is set of source_document, canonical_specification, signed_review, or accepted state references
+  + [support_basis_set] is set of proof, readiness, state, or narrative records supporting the claim
+  + [forbidden_scope_set] is set of explicitly blocked scopes
+  + [compatibility_basis_set] is set of claims considered compatible or conflicting
+  + [claim_state] is exclusive ClaimState
+  + [freshness_state] is current, stale, blocked, contradicted, or unknown
+  + [expiration_condition] is completion, release, supersession, stale authority, conflicting claim, human override, or unknown
+
+  = must: require claim_scope before a claim becomes active
+  = must: require authority_basis_set before a claim may steer work
+  = must: preserve forbidden_scope_set in every work packet candidate derived from a claim
+  = must: mark claim_state contested when compatibility cannot be proven locally
+  = must: mark claim_state stale when authority_basis_set or support_basis_set changes materially
+  - never: treat a work claim as assignment authority
+  - never: treat active claim_state as permission to run tools outside the claim boundary
+
+& [AssignmentCandidateRecordContract] is the record contract for a non-command assignment suggestion
+  + [assignment_candidate_uuid] is required stable UUID for the candidate record
+  + [claim_uuid] is required parent work claim reference
+  + [candidate_participant_uuid] is suggested participant identity
+  + [candidate_basis] is capability evidence, prior work evidence, user preference, availability projection, or manager heuristic
+  + [candidate_confidence] is low, medium, high, or unknown
+  + [candidate_limit] is bounded reason the candidate should not be treated as assignment authority
+  + [candidate_state] is proposed, refused, stale, superseded, accepted_for_planning, or unknown
+  + [human_review_required] is true
+  + [dispatch_authority_present] is false
+
+  = must: expose assignment_candidate as a planning aid only
+  = must: preserve human_review_required unless a future source-preserved authority explicitly defines a narrower automated assignment route
+  = must: keep dispatch_authority_present false in current scope
+  - never: use assignment_candidate_uuid as a queue item, process command, agent command, job command, or mailbox send directive
+
+& [ClaimCompatibilityReviewContract] is the local review rule for overlapping claims
+  + [primary_claim_uuid] is required
+  + [other_claim_uuid] is required
+  + [compatibility_result] is exclusive ClaimCompatibility
+  + [compatibility_basis] is file boundary, subject boundary, slice boundary, authority basis, participant identity, stale state, or human override
+  + [review_required] is true when compatibility_result is overlapping_requires_review, conflicting, stale_requires_review, or unknown
+  + [release_notice_required] is true when a claim is released, superseded, or completed
+
+  = must: compare claim_scope before allowing parallel work to proceed
+  = must: treat hidden scope expansion as conflicting until review accepts a widened boundary
+  = must: require release_notice_required before stale claims stop blocking new work
+  - never: resolve conflicting claims silently
+
+& [DispatchRefusalContract] is the required refusal behavior when a candidate tries to become command authority
+  + [dispatch_refusal_uuid] is required stable UUID for the refusal record
+  + [request_ref] is claim, assignment_candidate, work_packet_candidate, manager_packet, carrier_notice, operation_request, dry_run_result, human_approval_display, generated_output, or unknown
+  + [refusal_reason] is exclusive DispatchRefusalReason
+  + [refusal_notice] is required human-readable refusal summary
+  + [safe_next_route] is source_preserving_intake, conflict_review, stale_review, human_override_review, operations_dry_run_review, completion_review, or blocked
+  + [authority_basis_required] is source-preserved SJS dispatch authority for dispatch; source-preserved safety authority for live control
+  + [refusal_state] is emitted, superseded, resolved_by_review, or unknown
+
+  = must: emit a refusal when any participant, surface, carrier, manager packet, work packet candidate, claim, assignment candidate, dry-run result, or approval display requests assignment or dispatch without authority
+  = must: route operations-looking dispatch requests to operations dry-run review or blocked state, not live execution
+  = must: route live-control-looking requests to blocked state unless future safety authority exists
+  - never: convert a refusal into a retry loop, command queue, job queue, mailbox send, scheduler action, or live operation
+
+& [ManagerPacketNonAuthorityRule] is the manager-layer rule for claim and assignment output
+  + [manager_packet_may_include] is claim summary, assignment candidate, readiness reason, forbidden scope, stale trigger, verification oracle, and safe next route
+  + [manager_packet_must_include] is authority_notice and dispatch_refusal_notice when assignment or dispatch is absent
+  + [manager_packet_must_not_include] is command directive, hidden queue directive, process directive, GPU directive, job directive, credential directive, network directive, or live-control directive
+
+  = must: keep manager packets useful for planning and review
+  = must: reject manager packets that omit dispatch_refusal_notice while suggesting work ownership
+
+& [P7ClaimAndDispatchBoundary] is the P7 boundary opened by this contract
+  + [P7P9-DR04_precondition] is accepted participant identity, authority class contract, work claim contract, assignment candidate contract, compatibility review, dispatch refusal, and manager packet nonauthority rule
+  + [P7P9-DR04_ready_state] is ready_after_completion_review
+  + [P7P9-DR04_expected_output] is docs/coordination/P7_Cross_Surface_Carrier_Conversation_And_Rendezvous_Projection_Contract.v1.sop
+  + [P7P9-DR04_model_route] is requires deeper reasoning
+  + [P7P9-DR04_model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+  + [P9_dependency_note] is P9 operations-manager safety remains gated until carrier and conflict semantics are accepted
+
+  ! [P7P9DR03VerificationSatisfied] is accepted
+    @ [support] [WorkClaimRecordContract]
+    @ [support] [AssignmentCandidateRecordContract]
+    @ [support] [ClaimCompatibilityReviewContract]
+    @ [support] [DispatchRefusalContract]
+    @ [support] [ManagerPacketNonAuthorityRule]
+    @ [support] [P7ClaimAndDispatchBoundary]
+
+& [FaultContainment: P7P9-DR03] is the fault containment record for claim and dispatch refusal
+  + [claim_as_assignment_authority] is refused
+  + [assignment_candidate_as_assignment_authority] is refused
+  + [manager_packet_as_dispatch_authority] is refused
+  + [carrier_notice_as_dispatch_authority] is refused
+  + [work_packet_candidate_as_job_dispatch] is refused
+  + [operation_request_as_command_execution] is refused
+  + [dry_run_result_as_live_approval] is refused
+  + [hidden_scope_expansion] is routed_to_conflict_review
+  + [stale_claim] is routed_to_stale_review
+  + [conflicting_claim] is routed_to_conflict_review
+
+  = must: preserve each refusal as reviewable evidence for later fixture oracles
+
+& [NextSliceRecommendation: P7P9-DR04] is the recommendation after P7P9-DR03
+  + [next_slice] is P7P9-DR04 cross-surface carrier, conversation, and rendezvous projection contract
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is surface and carrier semantics determine multi-user and multi-agent collaboration without making chat protocol the source of truth
+  + [future_Spark_suitable_work] is fixture oracle drafting only after P7P9-DR01 through P7P9-DR08 are accepted
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+
+  = must: require completion review acceptance before P7P9-DR04 starts
