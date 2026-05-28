@@ -1,0 +1,125 @@
+Subject: P6 IA03 Completion Review V1
+Date: 2026-05-27
+Review UUID: 848eba58-1fb9-475c-bb75-780af6132589
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [completed_input] docs/reviews/P6_IA02_Completion_Review.v1.sop
+@ [surface_envelope_model] src/langsop/surfaces_p6/envelope.py
+@ [surface_nonpromotion_model] src/langsop/surfaces_p6/nonpromotion.py
+@ [completed_output] src/langsop/surfaces_p6/surface_matrix.py
+@ [completed_output] src/langsop/surfaces_p6/action_classifier.py
+
+& [CompletedWorkReview: P6-IA03] is the completed-work review for P6-IA03 multi-surface projector and inbound action model refresh
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P6-IA03
+  + [completed_output] is src/langsop/surfaces_p6/surface_matrix.py
+  + [completed_output_sha256] is 4EFB93A8095F26D69CA4FA75748A43F18E36FFDE077469AC760FD14EDA2E2495
+  + [completed_output] is src/langsop/surfaces_p6/action_classifier.py
+  + [completed_output_sha256] is 59A17B2DC706E1CCA593B6953A9C83940FDC0F3EE52D3A894C10FDF2C0C5FD0D
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P6-IA03 and open P6-IA04
+  + [next_gate_result] is P6-IA04 may open
+  + [next_model_route] is requires deeper reasoning for generated projection path policy and fixture runner contract
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as gate-opening evidence for P6-IA04 only
+  = must: rerun this review if P6-IA03 outputs, P6-IA02 outputs, P6-IA02 review, P6-IA01 boundary, P6 implementation activation slice surface, or P6 multi-surface and inbound action contracts change
+  = must: keep generated projections, proof ledgers, tests, dependency installation, package metadata mutation, adapters, transports, UI, Langflow export, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P6IA03Verification] is the verification result for P6-IA03
+  + [surface_matrix_created] is true
+  + [action_classifier_created] is true
+  + [surface_code_scope_within_P6-IA01_inventory] is true
+  + [manager_surface_boundary_present] is true
+  + [worker_surface_boundary_present] is true
+  + [narrative_surface_boundary_present] is true
+  + [debug_surface_boundary_present] is true
+  + [chat_surface_boundary_present] is true
+  + [Codex_surface_boundary_present] is true
+  + [terminal_surface_boundary_present] is true
+  + [IRC_surface_boundary_present] is true
+  + [Matrix_surface_boundary_present] is true
+  + [web_surface_boundary_present] is true
+  + [Langflow_surface_boundary_present] is true
+  + [low_authority_action_classification_present] is true
+  + [authority_sensitive_action_classification_present] is true
+  + [operation_like_action_classification_present] is true
+  + [forbidden_action_refusal_present] is true
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_control_authorized] is false
+  + [generated_projection_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_export_implemented] is false
+  + [command_execution_authorized] is validation_commands_only
+
+  ! [P6IA03VerificationSatisfied] is accepted
+    @ [support] src/langsop/surfaces_p6/surface_matrix.py
+    @ [support] src/langsop/surfaces_p6/action_classifier.py
+
+& [SupportDelta: P6-IA03] is the support delta produced by P6-IA03
+  + [new_support_record] is P6 now has pure multi-surface capability matrix records for manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, and Langflow carriers
+  + [new_support_record] is P6 now has pure inbound action classification into low-authority context, proposal, work request, coordination review, completion review, SOP-first interrupt, human override review, dry-run or safety review, and refusal evidence
+  + [new_support_record] is P6 action classification preserves false assignment, dispatch, operations-control, and live-control authorization values on every result
+  + [new_support_record] is P6-IA04 may create docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop plus src/langsop/surfaces_p6/generated_paths.py and src/langsop/surfaces_p6/fixture_runner.py
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-IA03] is the requirement delta produced by P6-IA03
+  + [requirement_delta] is P6-IA04 must use accepted P6 fixture source and expected projection roots only and must refuse path escapes, source writes, proof ledger writes outside accepted review scope, platform mailbox writes, credentials, network mutation, dispatch, operations control, and live-control targets
+  + [requirement_delta] is P6-IA04 must keep generated projections disposable, ignored, reproducible, and non-authoritative
+  + [requirement_delta] is P6-IA05 must cover surface matrix and inbound action classification with generated projection nonpromotion and no-live-effect proof
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter, transport, UI, Langflow export, assignment, dispatch, operations control, or live machine control is authorized by P6-IA03
+
+& [FaultReview: P6-IA03] is the fault review for P6-IA03
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [surface_code_outside_inventory_found] is false
+  + [generated_projection_leak_found] is false
+  + [proof_ledger_file_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [Langflow_export_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P6IA03Accepted] is accepted
+    @ [support] [P6IA03Verification]
+    @ [support] [SupportDelta: P6-IA03]
+    @ [support] [RequirementDelta: P6-IA03]
+    @ [support] [FaultReview: P6-IA03]
+
+& [NextSliceGate: P6-IA04] is opened
+  + [opened_slice] is P6-IA04 generated projection path policy and fixture runner contract
+  + [accepted_dependency] is src/langsop/surfaces_p6/surface_matrix.py
+  + [accepted_dependency_sha256] is 4EFB93A8095F26D69CA4FA75748A43F18E36FFDE077469AC760FD14EDA2E2495
+  + [accepted_dependency] is src/langsop/surfaces_p6/action_classifier.py
+  + [accepted_dependency_sha256] is 59A17B2DC706E1CCA593B6953A9C83940FDC0F3EE52D3A894C10FDF2C0C5FD0D
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is generated projection path policy and fixture runner contract define which generated outputs may exist without becoming authority or live effects
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P6-IA04 next unless user redirects or a new fault invalidates this review
