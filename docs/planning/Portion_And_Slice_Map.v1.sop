@@ -86,9 +86,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p6_generated_path_policy] src/langsop/surfaces_p6/generated_paths.py
 @ [p6_fixture_runner] src/langsop/surfaces_p6/fixture_runner.py
 @ [p6_ia04_review] docs/reviews/P6_IA04_Completion_Review.v1.sop
+@ [p6_contract_tests] tests/test_p6_surface_implementation_contracts.py
+@ [p6_generated_projection_proof] docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+@ [p6_ia05_review] docs/reviews/P6_IA05_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P6-IA04_accepted_ready_for_P6-IA05
+  + [map_state] is P6-IA05_accepted_ready_for_P6-IA06
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -300,7 +303,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is src/langsop/surfaces_p6/generated_paths.py
   + [support_record] is src/langsop/surfaces_p6/fixture_runner.py
   + [support_record] is docs/reviews/P6_IA04_Completion_Review.v1.sop
-  + [support_gap] is P6 surface implementation validation tests and generated projection proof are not yet accepted
+  + [support_record] is tests/test_p6_surface_implementation_contracts.py
+  + [support_record] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [support_record] is docs/reviews/P6_IA05_Completion_Review.v1.sop
+  + [support_gap] is P6 dependency adapter transport UI Langflow dispatch operations and live-control deferral decision not yet accepted
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
   + [slice_family] is chat-and-adapter-projection-contracts
@@ -597,12 +603,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6SurfaceValidationTestsAndGeneratedProjectionProof] is ready_for_execution
+& [CurrentReadyChunk: P6SurfaceDependencyAdapterTransportUILangflowDispatchOperationsLiveControlDeferral] is ready_for_execution
   + [chunk_id] is P6-surface-implementation-activation
-  + [slice_id] is P6-IA05
-  + [chunk_name] is P6 surface validation tests and generated projection nonpromotion proof
-  + [authority_basis] is docs/reviews/P6_IA04_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 0FC36BB412EDC664E08946F0658568CABE0AB07A4F12B4A58EB335AC7A97B760
+  + [slice_id] is P6-IA06
+  + [chunk_name] is P6 dependency adapter transport UI Langflow dispatch operations and live-control deferral decision
+  + [authority_basis] is docs/reviews/P6_IA05_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 0AF19129C8A736044AD2DB417866959F66B50554A9F20FC28951699E1FDD93A2
   + [readiness_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
   + [accepted_p6_surface_implementation_activation_canonical] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
   + [accepted_p6_surface_implementation_activation_canonical_sha256] is 60CA1748951DB329435821EC2DA685DF9259116D5556D5A4E200EE65972A1896
@@ -636,15 +642,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_fixture_runner_sha256] is 74A84940FA7D46D5BAEED1B02DC99D1A3EE9E145A7799D2CB2559FAD5801758F
   + [accepted_p6_ia04_review] is docs/reviews/P6_IA04_Completion_Review.v1.sop
   + [accepted_p6_ia04_review_sha256] is 0FC36BB412EDC664E08946F0658568CABE0AB07A4F12B4A58EB335AC7A97B760
-  + [expected_current_output] is tests/test_p6_surface_implementation_contracts.py
-  + [expected_current_output] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
-  + [next_candidate_slice_family] is P6_surface_validation_tests_and_generated_projection_nonpromotion_proof
-  + [model_route] is GPT-5.3-Codex-Spark-suitable
-  + [model_route_depth] is bounded_implementation_and_validation
-  + [model_route_reason] is validation tests and proof records are bounded by accepted P6 fixtures, expected ledgers, path policy, and in-memory runner behavior
+  + [accepted_contract_tests] is tests/test_p6_surface_implementation_contracts.py
+  + [accepted_contract_tests_sha256] is 1C35422CF90506FC314B42C902942629FFA085A882701D8C8DF837DAE01D94EE
+  + [accepted_generated_projection_proof] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [accepted_generated_projection_proof_sha256] is 06EF371718168EA71E2A2EB2C022B73E584CDC206265E94137B3827DA22602CF
+  + [accepted_p6_ia05_review] is docs/reviews/P6_IA05_Completion_Review.v1.sop
+  + [accepted_p6_ia05_review_sha256] is 0AF19129C8A736044AD2DB417866959F66B50554A9F20FC28951699E1FDD93A2
+  + [expected_current_output] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [next_candidate_slice_family] is P6_dependency_adapter_transport_UI_Langflow_dispatch_operations_live_control_deferral_decision
+  + [model_route] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [model_route_reason] is dependency, adapter, transport, UI, Langflow, dispatch, operations-control, and live-control posture changes system authority boundaries
 
-  = must: preserve P6 generated path policy and fixture runner evidence as readiness support, not source, adapter, or dispatch authority
-  = must: execute P6-IA05 only inside tests/test_p6_surface_implementation_contracts.py and docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop before dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
+  = must: preserve P6 validation tests and proof as readiness support, not dependency, adapter, dispatch, operations, or live-control authority
+  = must: execute P6-IA06 only inside docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop before dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

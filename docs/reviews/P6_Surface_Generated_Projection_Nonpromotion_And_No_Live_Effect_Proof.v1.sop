@@ -1,0 +1,97 @@
+Subject: P6 Surface Generated Projection Nonpromotion And No Live Effect Proof V1
+Date: 2026-05-27
+Proof UUID: d662291b-af53-42b1-bc99-0ec99c01bf6f
+
+@ [p6_ia04_review] docs/reviews/P6_IA04_Completion_Review.v1.sop
+@ [p6_generated_projection_policy] docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [p6_generated_path_policy] src/langsop/surfaces_p6/generated_paths.py
+@ [p6_fixture_runner] src/langsop/surfaces_p6/fixture_runner.py
+@ [p6_contract_tests] tests/test_p6_surface_implementation_contracts.py
+@ [fixture_source_root] tests/fixtures/sop/p6_surface_projection/
+@ [expected_ledger_root] tests/fixtures/expected/p6_surface_projection/
+
+& [P6SurfaceGeneratedProjectionNonpromotionAndNoLiveEffectProofV1] is the P6-IA05 generated projection nonpromotion and no-live-effect proof
+  + [proof_id] is p6-surface-generated-projection-nonpromotion-and-no-live-effect-proof-v1
+  + [proof_uuid] is d662291b-af53-42b1-bc99-0ec99c01bf6f
+  + [slice_id] is P6-IA05
+  + [proof_status] is accepted_by_completion_review_pending
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is bounded_implementation_and_validation
+  + [model_route_reason] is tests and proof records are bounded by accepted fixture source, expected ledgers, path policy, and in-memory runner contracts
+  + [generated_projection_authority_status] is false
+  + [source_authority_status] is false
+  + [surface_mutation_authority] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_export_created] is false
+  + [generated_output_status] is disposable_generated_evidence_only
+
+  = must: reject generated projection promotion to source authority
+  = must: reject surface action mutation as source authority
+  = must: reject fixture success as authority
+  = must: preserve generated projection outputs as ignored, disposable, rebuildable, non-authoritative evidence only
+  = must: preserve no assignment, no dispatch, no operations control, and no live machine control
+
+& [P6GeneratedProjectionFixtureProof] is the fixture runner proof over accepted P6 fixture source
+  + [covered_fixture] is manager_authority_notice_projection
+  + [covered_fixture_projection_state] is visible_authority_notice
+  + [covered_fixture_result] is passed
+  + [covered_fixture] is stale_surface_projection
+  + [covered_fixture_projection_state] is visible_stale_notice
+  + [covered_fixture_result] is passed
+  + [covered_fixture] is inbound_action_mutation_refusal
+  + [covered_fixture_action_result] is refused
+  + [covered_fixture_refusal_kind] is surface_cannot_mutate_source_authority
+  + [covered_fixture_result] is passed
+  + [covered_fixture] is generated_projection_non_authority
+  + [covered_fixture_projection_state] is faulted
+  + [covered_fixture_fault_kind] is generated_projection_promoted_to_authority
+  + [covered_fixture_result] is passed
+
+  = must: keep fixture runner output in memory unless generated-output path policy accepts an ignored generated root
+  = must: fail validation if stale surfaces become ready, generated projections become source authority, or surface actions mutate source authority
+
+& [P6GeneratedOutputPathProof] is the generated output path and deletion proof
+  + [accepted_generated_output_root] is tests/fixtures/generated/p6_surface_projection/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p6_surface_projection/projections/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p6_surface_projection/reports/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p6_surface_implementation/proof_results/
+  + [accepted_generated_output_root] is tests/fixtures/generated/p6_surface_implementation/reports/
+  + [accepted_generated_output_root] is .langsop/projections/p6_surface_projection/
+  + [accepted_generated_output_root] is .langsop/reports/p6_surface_projection/
+  + [ignored_generated_root] is tests/fixtures/generated/
+  + [ignored_generated_root] is .langsop/
+  + [source_fixture_deletion_by_generated_cleanup] is false
+  + [expected_ledger_deletion_by_generated_cleanup] is false
+  + [proof_ledger_deletion_by_generated_cleanup] is false
+  + [platform_mailbox_mutation] is false
+  + [credential_access] is false
+  + [network_mutation] is false
+  + [destructive_filesystem_action] is false
+
+  = must: prove deletion of ignored generated P6 outputs cannot remove fixture source, expected ledgers, canonical specs, completion reviews, proof records, assignment records, dispatch records, operations records, or live-control state
+  = must: reject generated writes to docs, src, platform, .git, fixture source, expected ledger, credential, network, assignment, dispatch, operations, or live-control targets
+
+& [P6NoDispatchOperationsOrLiveEffectProof] is the no-dispatch, no-operations-control, and no-live-effect proof
+  + [surface_action_classification_output] is request_refusal_or_review_evidence_only
+  + [inbound_action_direct_source_mutation] is refused
+  + [generated_projection_success_as_assignment_authority] is false
+  + [generated_projection_success_as_dispatch_authority] is false
+  + [generated_projection_success_as_operations_authority] is false
+  + [generated_projection_success_as_live_control_authority] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_target_mutated] is false
+  + [live_machine_state_mutated] is false
+
+  = must: keep generated P6 projection proof distinct from assignment, dispatch, operations-control, or live-control approval
+  = must: require a later accepted deeper-reasoning decision before dependency, adapter, transport, UI, Langflow export, dispatch, operations-control, or live-control implementation

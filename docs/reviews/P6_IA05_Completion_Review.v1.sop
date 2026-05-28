@@ -1,0 +1,82 @@
+Subject: P6 IA05 Completion Review V1
+Date: 2026-05-27
+Review UUID: d30a4b3f-db47-4784-b5cb-3d1e616a052d
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [p6_ia04_review] docs/reviews/P6_IA04_Completion_Review.v1.sop
+@ [p6_contract_tests] tests/test_p6_surface_implementation_contracts.py
+@ [p6_generated_projection_proof] docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+
+& [P6IA05CompletionReviewV1] is the completion review for P6-IA05 surface validation tests and generated projection nonpromotion proof
+  + [review_id] is p6-ia05-completion-review-v1
+  + [review_uuid] is d30a4b3f-db47-4784-b5cb-3d1e616a052d
+  + [slice_id] is P6-IA05
+  + [review_status] is accepted
+  + [model_route_used] is GPT-5.3-Codex-Spark-suitable
+  + [model_route_depth] is bounded_implementation_and_validation
+  + [accepted_contract_tests] is tests/test_p6_surface_implementation_contracts.py
+  + [accepted_contract_tests_sha256] is 1C35422CF90506FC314B42C902942629FFA085A882701D8C8DF837DAE01D94EE
+  + [accepted_generated_projection_proof] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [accepted_generated_projection_proof_sha256] is 06EF371718168EA71E2A2EB2C022B73E584CDC206265E94137B3827DA22602CF
+  + [support_delta] is P6 fixture runner, path policy, generated output ignoring, nonpromotion, no-dispatch, no-operations-control, and no-live-effect behavior now have executable tests
+  + [requirement_delta] is dependency adapter transport UI Langflow dispatch operations and live-control deferral decision is now ready for deeper-reasoning slice P6-IA06
+
+  = must: accept P6-IA05 only as tests and proof evidence over the accepted P6 fixture runner and path policy
+  = must: keep dependency installation, package metadata mutation, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, and live machine control gated
+
+& [P6IA05ImplementationReview] is the implementation coverage review for P6-IA05
+  + [contract_test_file_created] is true
+  + [proof_review_created] is true
+  + [fixture_runner_corpus_tested] is true
+  + [path_policy_tested] is true
+  + [generated_output_ignored_tested] is true
+  + [generated_output_cleanup_tested] is true
+  + [generated_projection_nonpromotion_tested] is true
+  + [surface_mutation_refusal_tested] is true
+  + [no_dispatch_tested] is true
+  + [no_operations_control_tested] is true
+  + [no_live_effect_tested] is true
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_export_created] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve generated outputs as ignored, disposable, rebuildable evidence only
+  = must: require P6-IA06 to decide dependency, adapter, transport, UI, Langflow, dispatch, operations-control, and live-control posture before any such implementation opens
+
+& [P6IA05ValidationReview] is the validation record for accepted P6-IA05 work
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [targeted_contract_test] is python -m unittest tests.test_p6_surface_implementation_contracts
+  + [targeted_contract_test_result] is passed_5_tests
+  + [test_command] is python -m unittest discover -s tests
+  + [test_result] is passed_63_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p5_runtime_implementation_contracts
+  + [targeted_existing_contract_test_result] is passed_5_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_existing_contract_test_result] is passed_5_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [targeted_existing_contract_test_result] is passed_8_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [targeted_existing_contract_test_result] is passed_7_tests
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed
+
+  = must: rerun validation if tests, proof, runner, path policy, or fixture material changes
+
+& [P6IA06OpeningGate] is the next slice opened by accepted P6-IA05
+  + [opened_slice] is P6-IA06
+  + [opened_slice_name] is dependency adapter transport UI Langflow dispatch operations and live-control deferral decision
+  + [opened_decision] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is dependency, adapter, transport, UI, Langflow, dispatch, operations-control, and live-control posture changes system authority boundaries
+  + [safety_limit] is no dependency installation, package metadata mutation, adapter, transport, UI, Langflow export, dispatch, operations control, or live machine control without accepted decision authority
+
+  = must: open P6-IA06 only after this review is accepted
+  = must: keep implementation effects gated until P6-IA06 decision explicitly accepts or defers them
