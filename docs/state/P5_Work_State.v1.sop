@@ -62,11 +62,15 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [p5_ia04_review] docs/reviews/P5_IA04_Completion_Review.v1.sop
 @ [p5_runtime_dependency_deferral] docs/decisions/P5_Runtime_Dependency_Adapter_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
 @ [p5_ia05_review] docs/reviews/P5_IA05_Completion_Review.v1.sop
+@ [p5_runtime_implementation_proof_pack] docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+@ [p5_runtime_implementation_completion_review] docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
+@ [post_p5_runtime_implementation_readiness] docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+@ [p5_ia06_review] docs/reviews/P5_IA06_Completion_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_runtime_implementation_activation_P5-IA05_accepted_ready_P5-IA06
+  + [surface_status] is P5_runtime_implementation_activation_complete
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -189,14 +193,20 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_runtime_dependency_deferral_sha256] is DF660AB75F0E1F55A2AB947A2DC24DF2859AA748CDEDE6DF3A1F4CCECAAB2F0B
   + [accepted_runtime_dependency_deferral_review] is docs/reviews/P5_IA05_Completion_Review.v1.sop
   + [accepted_runtime_dependency_deferral_review_sha256] is AE5E8273096C69B09AFBF18B8A3B4C1DA4483B203E43F3C5699C62A507425109
-  + [current_ready_slice] is P5-IA06
-  + [current_ready_slice_name] is implementation completion review, proof pack, and downstream readiness rebake
-  + [current_ready_slice_expected_output] is docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
-  + [current_ready_slice_expected_output] is docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
-  + [current_ready_slice_expected_output] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
-  + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_depth] is deeper_reasoning_required
-  + [current_ready_slice_model_route_reason] is final runtime implementation acceptance affects future P6 surface implementation, P7 coordination expansion, and P9 operations-manager readiness
+  + [accepted_runtime_implementation_proof_pack] is docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+  + [accepted_runtime_implementation_proof_pack_sha256] is F7061297AEFFF69BFC00E8F0BF1B932FA18BB9CC510151377F7F87D18540DEB0
+  + [accepted_runtime_implementation_completion_review] is docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
+  + [accepted_runtime_implementation_completion_review_sha256] is 341DB4884F69208A51BD8D0E77CB1475FFA6B8D4B22D1EF26B77CFEE9D659BE4
+  + [accepted_post_runtime_implementation_readiness] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+  + [accepted_post_runtime_implementation_readiness_sha256] is 5A518D58C0140C75FA3A0780B0D545D17B4F58DCD25983886C0BD16E2E0DE534
+  + [accepted_runtime_implementation_closeout_review] is docs/reviews/P5_IA06_Completion_Review.v1.sop
+  + [accepted_runtime_implementation_closeout_review_sha256] is 98C0EE66F2EAEE215126D60C1586E32973A37A73AA91FC489285EC8CE847ECAF
+  + [current_ready_slice] is none_in_P5_runtime_implementation_activation
+  + [next_recommended_slice_family] is P6_surface_projection_implementation_activation_minting
+  + [next_recommended_slice_family] is P7_coordination_expansion_planning_rebake
+  + [next_recommended_slice_family] is P9_operations_manager_safety_reentry_rebake
+  + [next_recommended_model_route] is requires deeper reasoning
+  + [next_recommended_model_route_reason] is downstream activation affects projection authority, coordination boundaries, operations safety, and live-control gates
   + [dependency_installation_authorized] is false
   + [package_metadata_mutation_authorized] is false
   + [runtime_code_refresh_authorized] is accepted_for_P5-IA02_only
@@ -217,6 +227,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P5-IA06 before downstream P6 implementation activation, P7 coordination expansion, or P9 operations-manager readiness consumes P5 runtime implementation evidence
+  = must: require separate source-preserved activation before downstream P6 implementation activation, P7 coordination expansion, or P9 operations-manager readiness consumes P5 runtime implementation evidence as executable authority
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P5 runtime activation manifest, P5 runtime activation canonical, P5 runtime activation slices, P5 runtime activation minting review, P5-IA01 boundary, P5-IA01 review, P5 runtime model refresh, P5-IA02 review, P5 generated trace policy, P5-IA03 review, P5 contract tests, P5 generated trace proof, P5-IA04 review, P5 runtime dependency deferral, or P5-IA05 review changes
+  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P5 runtime activation manifest, P5 runtime activation canonical, P5 runtime activation slices, P5 runtime activation minting review, P5-IA01 boundary, P5-IA01 review, P5 runtime model refresh, P5-IA02 review, P5 generated trace policy, P5-IA03 review, P5 contract tests, P5 generated trace proof, P5-IA04 review, P5 runtime dependency deferral, P5-IA05 review, P5 runtime implementation proof pack, P5 runtime implementation completion review, post-P5 runtime implementation readiness, or P5-IA06 review changes

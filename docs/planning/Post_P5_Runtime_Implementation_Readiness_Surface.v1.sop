@@ -1,0 +1,52 @@
+Subject: Post P5 Runtime Implementation Readiness Surface V1
+Date: 2026-05-27
+Readiness Surface UUID: 54efd994-ea53-476e-8b84-c1bd50e1c48f
+
+@ [proof_pack] docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+@ [completion_review] docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
+@ [post_p8_fixture_material_readiness] docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+@ [p6_completion_review] docs/reviews/P6_Completion_Review.v1.sop
+@ [post_p6_readiness] docs/planning/Post_P6_Readiness_Surface.v1.sop
+
+& [PostP5RuntimeImplementationReadinessSurfaceV1] is the downstream readiness surface after accepted P5 runtime implementation activation
+  + [readiness_surface_id] is post-p5-runtime-implementation-readiness-surface-v1
+  + [readiness_surface_uuid] is 54efd994-ea53-476e-8b84-c1bd50e1c48f
+  + [readiness_basis] is docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+  + [readiness_basis_sha256] is F7061297AEFFF69BFC00E8F0BF1B932FA18BB9CC510151377F7F87D18540DEB0
+  + [readiness_basis] is docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
+  + [readiness_basis_sha256] is 341DB4884F69208A51BD8D0E77CB1475FFA6B8D4B22D1EF26B77CFEE9D659BE4
+  + [surface_status] is accepted_runtime_implementation_evidence_available
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [external_langgraph_adapter_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat P5 runtime implementation evidence as bounded proof support for downstream planning, not as live runtime integration authority
+  = must: require separate source-preserved activation before P6 implementation, P7 coordination expansion, or P9 operations-manager work consumes P5 runtime implementation as executable adapter authority
+
+& [DownstreamReadinessDelta: P5RuntimeImplementation] is the readiness delta produced by accepted P5 runtime implementation
+  + [ready_support] is P6 surface projection implementation activation may cite P5 runtime implementation evidence for runtime-state and generated-trace nonpromotion notices
+  + [ready_support] is future P7 coordination expansion may cite P5 runtime implementation evidence for SOP interrupt and human handoff boundary semantics
+  + [ready_support] is future P9 operations-manager safety planning may cite P5 runtime implementation evidence as no-live-effect proof support
+  + [blocked_support] is external LangGraph package installation remains blocked
+  + [blocked_support] is live graph runtime execution remains blocked
+  + [blocked_support] is checkpoint persistence outside ignored generated roots remains blocked
+  + [blocked_support] is assignment, dispatch, operations control, and live machine control remain blocked
+
+  = must: keep downstream slices dependency-closed and source-preserved before new implementation activation
+  = must: stale this readiness surface if P5 runtime proof pack, completion review, validation tests, generated trace proof, or dependency deferral changes
+
+& [RecommendedNextSliceFamily: PostP5RuntimeImplementation] is the next planning recommendation after P5 runtime implementation completion
+  + [candidate_slice_family] is P6_surface_projection_implementation_activation_minting
+  + [candidate_slice_family] is P7_coordination_expansion_planning_rebake
+  + [candidate_slice_family] is P9_operations_manager_safety_reentry_rebake
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is downstream activation affects projection authority, coordination boundaries, operations safety, and live-control gates
+  + [Spark_suitable_work] is bounded fixture and proof updates only after future deeper-reasoning activation accepts exact scopes
+
+  = must: not start downstream implementation from this readiness surface without source-preserved activation and completion-review gates
