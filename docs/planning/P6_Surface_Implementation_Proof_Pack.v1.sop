@@ -1,0 +1,139 @@
+Subject: P6 Surface Implementation Proof Pack V1
+Date: 2026-05-27
+Proof Pack UUID: 5f3853b3-f0fb-4dd4-bd80-acbfd0f22a5d
+
+@ [activation_boundary] docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+@ [p6_ia01_review] docs/reviews/P6_IA01_Completion_Review.v1.sop
+@ [surface_package] src/langsop/surfaces_p6/__init__.py
+@ [surface_envelope] src/langsop/surfaces_p6/envelope.py
+@ [surface_nonpromotion] src/langsop/surfaces_p6/nonpromotion.py
+@ [p6_ia02_review] docs/reviews/P6_IA02_Completion_Review.v1.sop
+@ [surface_matrix] src/langsop/surfaces_p6/surface_matrix.py
+@ [action_classifier] src/langsop/surfaces_p6/action_classifier.py
+@ [p6_ia03_review] docs/reviews/P6_IA03_Completion_Review.v1.sop
+@ [generated_projection_policy] docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [generated_path_policy] src/langsop/surfaces_p6/generated_paths.py
+@ [fixture_runner] src/langsop/surfaces_p6/fixture_runner.py
+@ [p6_ia04_review] docs/reviews/P6_IA04_Completion_Review.v1.sop
+@ [contract_tests] tests/test_p6_surface_implementation_contracts.py
+@ [generated_projection_proof] docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+@ [p6_ia05_review] docs/reviews/P6_IA05_Completion_Review.v1.sop
+@ [dependency_deferral] docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [p6_ia06_review] docs/reviews/P6_IA06_Completion_Review.v1.sop
+
+& [P6SurfaceImplementationProofPackV1] is the proof pack for accepted P6 surface implementation activation
+  + [proof_pack_id] is p6-surface-implementation-proof-pack-v1
+  + [proof_pack_uuid] is 5f3853b3-f0fb-4dd4-bd80-acbfd0f22a5d
+  + [proof_pack_status] is accepted_by_completion_review_pending
+  + [slice_set] is P6-IA01 through P6-IA07
+  + [model_route_used] is requires deeper reasoning
+  + [surface_implementation_status] is bounded_pure_surface_projection_model_fixture_runner_and_validation_evidence_accepted
+  + [dependency_installation_status] is deferred
+  + [adapter_transport_UI_Langflow_status] is deferred
+  + [dispatch_status] is not_authorized
+  + [operations_control_status] is not_authorized
+  + [live_machine_control_status] is not_authorized
+
+  = must: treat this proof pack as reviewable implementation evidence, not source authority, dispatch authority, operations-control authority, or live-control authority
+  = must: keep dependency, adapter, transport, UI, Langflow, dispatch, operations-control, and live-control work gated until future accepted authority explicitly opens bounded work
+
+& [P6SurfaceAcceptedArtifactHashLedger] is the accepted artifact hash ledger for P6 surface implementation activation
+  + [accepted_artifact] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+  + [accepted_artifact_sha256] is 7D2E8FB1D3F52B94336F2F2F436997C1B6A17887C6B8CEB9187C55FB73E6FCBE
+  + [accepted_artifact] is docs/reviews/P6_IA01_Completion_Review.v1.sop
+  + [accepted_artifact_sha256] is 5662F4D04D7333F3EDCEC605D255CAA4BDA46E722DCBB24ED4684E64A3E83C72
+  + [accepted_artifact] is src/langsop/surfaces_p6/__init__.py
+  + [accepted_artifact_sha256] is 35599A205D135862B97341A091AC44C4805AAE267FE4962EFF45ACA015047CE5
+  + [accepted_artifact] is src/langsop/surfaces_p6/envelope.py
+  + [accepted_artifact_sha256] is BEFA514C5B0C632F26F70845D617665757007ADE99852BD0BA4D4B8A67CCF543
+  + [accepted_artifact] is src/langsop/surfaces_p6/nonpromotion.py
+  + [accepted_artifact_sha256] is E75E13B52A9301495DDF2E2B01E11B3695600B81947A84591ADD0F248039FB45
+  + [accepted_artifact] is docs/reviews/P6_IA02_Completion_Review.v1.sop
+  + [accepted_artifact_sha256] is D5DFA6126A4AB7416BC8E05EAF20B847E3B78F34DE714BABBA0FDBEC2B8C0296
+  + [accepted_artifact] is src/langsop/surfaces_p6/surface_matrix.py
+  + [accepted_artifact_sha256] is 26D0DA17971F7093829CE385323CF7DECFB0CB06347E90EE9817AF94014A88F2
+  + [accepted_artifact] is src/langsop/surfaces_p6/action_classifier.py
+  + [accepted_artifact_sha256] is 59A17B2DC706E1CCA593B6953A9C83940FDC0F3EE52D3A894C10FDF2C0C5FD0D
+  + [accepted_artifact] is docs/reviews/P6_IA03_Completion_Review.v1.sop
+  + [accepted_artifact_sha256] is 8F6B01C9913F753384064DCF930FECE567187B8506456496FA852C3328869250
+  + [accepted_artifact] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [accepted_artifact_sha256] is 4C47F05659E1598BA6BB50E93D577478C394369112EA2C2A3EA37B6612661AEA
+  + [accepted_artifact] is src/langsop/surfaces_p6/generated_paths.py
+  + [accepted_artifact_sha256] is FFD9ECE38C6937FF73C9D55C7526E16D9D86B6A1043FC21840D93F366026D0D6
+  + [accepted_artifact] is src/langsop/surfaces_p6/fixture_runner.py
+  + [accepted_artifact_sha256] is 74A84940FA7D46D5BAEED1B02DC99D1A3EE9E145A7799D2CB2559FAD5801758F
+  + [accepted_artifact] is docs/reviews/P6_IA04_Completion_Review.v1.sop
+  + [accepted_artifact_sha256] is 0FC36BB412EDC664E08946F0658568CABE0AB07A4F12B4A58EB335AC7A97B760
+  + [accepted_artifact] is tests/test_p6_surface_implementation_contracts.py
+  + [accepted_artifact_sha256] is 1C35422CF90506FC314B42C902942629FFA085A882701D8C8DF837DAE01D94EE
+  + [accepted_artifact] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [accepted_artifact_sha256] is 06EF371718168EA71E2A2EB2C022B73E584CDC206265E94137B3827DA22602CF
+  + [accepted_artifact] is docs/reviews/P6_IA05_Completion_Review.v1.sop
+  + [accepted_artifact_sha256] is 0AF19129C8A736044AD2DB417866959F66B50554A9F20FC28951699E1FDD93A2
+  + [accepted_artifact] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_artifact_sha256] is 7343C8B9ED68F8C81DDCA67278C63C9B5B524BD123EB6D9C02542CF5D95147BC
+  + [accepted_artifact] is docs/reviews/P6_IA06_Completion_Review.v1.sop
+  + [accepted_artifact_sha256] is D778D023AB6A589AFC253FD09C6A057E80538E4D102BF0A378E0123853AC2B94
+
+  = must: mark proof pack stale if any accepted artifact hash changes
+  = must: rerun completion review when accepted artifact inventory changes
+
+& [P6SurfaceValidationCommandLedger] is the validation command ledger for P6 surface implementation activation
+  + [validation_command] is python -m compileall -q src tests
+  + [validation_result] is passed
+  + [validation_command] is python -m unittest discover -s tests
+  + [validation_result] is passed_63_tests
+  + [validation_command] is python -m unittest tests.test_p6_surface_implementation_contracts
+  + [validation_result] is passed_5_tests
+  + [validation_command] is python -m unittest tests.test_p5_runtime_implementation_contracts
+  + [validation_result] is passed_5_tests
+  + [validation_command] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [validation_result] is passed_5_tests
+  + [validation_command] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [validation_result] is passed_8_tests
+  + [validation_command] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [validation_result] is passed_7_tests
+  + [validation_command] is git diff --check
+  + [validation_result] is passed_with_CRLF_warnings_only
+
+  = must: treat validation command evidence as proof support, not operations-control authority
+  = must: rerun validation if surface models, generated projection policy, tests, proof, dependency decision, or state surfaces change
+
+& [P6SurfaceNoAuthorityLeakLedger] is the no-authority-leak ledger for P6 surface implementation activation
+  + [generated_projection_promoted_to_source_authority_found] is false
+  + [surface_action_promoted_to_source_mutation_found] is false
+  + [fixture_success_promoted_to_assignment_found] is false
+  + [fixture_success_promoted_to_dispatch_found] is false
+  + [fixture_success_promoted_to_operations_control_found] is false
+  + [fixture_success_promoted_to_live_control_found] is false
+  + [carrier_context_promoted_to_authority_found] is false
+  + [displayed_approval_promoted_to_authority_found] is false
+  + [source_authority_mutation_found] is false
+  + [expected_ledger_mutation_found] is false
+  + [proof_ledger_mutation_found] is false
+  + [platform_mailbox_mutation_found] is false
+  + [credential_access_found] is false
+  + [network_mutation_found] is false
+  + [destructive_filesystem_action_found] is false
+  + [process_control_found] is false
+  + [GPU_control_found] is false
+  + [model_runtime_control_found] is false
+  + [job_dispatch_found] is false
+
+  = must: reject downstream consumption that treats this proof pack as dispatch, operations-control, or live-control permission
+  = must: keep no-authority-leak ledger loaded for future P7 coordination expansion and P9 operations-manager readiness rebakes
+
+& [P6SurfaceSupportAndRequirementDeltaLedger] is the support and requirement delta ledger for P6 surface implementation activation
+  + [support_delta] is P6 surface implementation has accepted pure surface projection envelope, nonpromotion, surface matrix, and inbound action classifier helpers
+  + [support_delta] is P6 surface implementation has accepted generated projection path policy and in-memory fixture runner
+  + [support_delta] is P6 surface implementation has accepted tests and generated projection nonpromotion/no-live-effect proof
+  + [support_delta] is P6 surface dependency, adapter, transport, UI, Langflow, dispatch, operations, and live-control work remains deferred
+  + [requirement_delta] is downstream P7 and P9 readiness may consume P6 surface implementation only as bounded projection and proof evidence
+  + [requirement_delta] is downstream work must not treat P6 surface evidence as dependency, adapter, dispatch, operations-control, or live-control authority
+  + [requirement_delta] is future multi-user and multi-agent collaboration surfaces require separate source-preserved adapter and dispatch authority paths
+
+  ! [P6SurfaceImplementationProofPackAccepted] is accepted
+    @ [support] [P6SurfaceAcceptedArtifactHashLedger]
+    @ [support] [P6SurfaceValidationCommandLedger]
+    @ [support] [P6SurfaceNoAuthorityLeakLedger]
+    @ [support] [P6SurfaceSupportAndRequirementDeltaLedger]

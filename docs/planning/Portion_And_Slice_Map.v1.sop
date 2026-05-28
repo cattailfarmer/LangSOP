@@ -91,9 +91,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p6_ia05_review] docs/reviews/P6_IA05_Completion_Review.v1.sop
 @ [p6_dependency_deferral_decision] docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
 @ [p6_ia06_review] docs/reviews/P6_IA06_Completion_Review.v1.sop
+@ [p6_surface_implementation_proof_pack] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+@ [p6_surface_implementation_completion_review] docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+@ [post_p6_surface_implementation_readiness] docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+@ [p6_ia07_review] docs/reviews/P6_IA07_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P6-IA06_accepted_ready_for_P6-IA07
+  + [map_state] is P6_surface_implementation_activation_complete_downstream_reentry_ready
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -310,7 +314,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P6_IA05_Completion_Review.v1.sop
   + [support_record] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
   + [support_record] is docs/reviews/P6_IA06_Completion_Review.v1.sop
-  + [support_gap] is P6 surface implementation proof pack, completion review, and downstream readiness rebake not yet accepted
+  + [support_record] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [support_record] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [support_record] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [support_record] is docs/reviews/P6_IA07_Completion_Review.v1.sop
+  + [support_gap] is downstream P7 coordination and P9 operations-manager readiness rebakes not yet source-preserved or accepted
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
   + [slice_family] is chat-and-adapter-projection-contracts
@@ -607,12 +615,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6SurfaceImplementationCompletionProofPackAndReadinessRebake] is ready_for_execution
-  + [chunk_id] is P6-surface-implementation-activation
-  + [slice_id] is P6-IA07
-  + [chunk_name] is P6 surface implementation proof pack, completion review, and downstream readiness rebake
-  + [authority_basis] is docs/reviews/P6_IA06_Completion_Review.v1.sop
-  + [authority_basis_sha256] is D778D023AB6A589AFC253FD09C6A057E80538E4D102BF0A378E0123853AC2B94
+& [CurrentReadyChunk: PostP6SurfaceImplementationDownstreamReentry] is ready_for_planning_rebake
+  + [chunk_id] is post-P6-surface-implementation-downstream-reentry
+  + [slice_id] is downstream-reentry
+  + [chunk_name] is downstream P7 coordination and P9 operations-manager readiness rebake from completed P6 surface implementation
+  + [authority_basis] is docs/reviews/P6_IA07_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 9E3D28C7B5BFEA778F41362F06A144ACA39E64D9D87119CD692A1333E8D0445B
   + [readiness_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
   + [accepted_p6_surface_implementation_activation_canonical] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
   + [accepted_p6_surface_implementation_activation_canonical_sha256] is 60CA1748951DB329435821EC2DA685DF9259116D5556D5A4E200EE65972A1896
@@ -656,16 +664,23 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_dependency_deferral_decision_sha256] is 7343C8B9ED68F8C81DDCA67278C63C9B5B524BD123EB6D9C02542CF5D95147BC
   + [accepted_p6_ia06_review] is docs/reviews/P6_IA06_Completion_Review.v1.sop
   + [accepted_p6_ia06_review_sha256] is D778D023AB6A589AFC253FD09C6A057E80538E4D102BF0A378E0123853AC2B94
-  + [expected_current_output] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
-  + [expected_current_output] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
-  + [expected_current_output] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
-  + [next_candidate_slice_family] is P6_surface_implementation_completion_proof_pack_and_downstream_readiness_rebake
+  + [accepted_surface_implementation_proof_pack] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [accepted_surface_implementation_proof_pack_sha256] is 981FC13220B30E20F2D296A7580E73739050DC363A7A923515745EAC0218A81F
+  + [accepted_surface_implementation_completion_review] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [accepted_surface_implementation_completion_review_sha256] is ADB8E0B6A9AC26FD59CC5DC8391AD6C118FBAB87989C9B5D03DAFCC37071731D
+  + [accepted_post_surface_implementation_readiness] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [accepted_post_surface_implementation_readiness_sha256] is 7BEBE692F0192DFE9D31E7D7B9B3B3F86909DA064895D617DFA2C7F355CD7055
+  + [accepted_p6_ia07_review] is docs/reviews/P6_IA07_Completion_Review.v1.sop
+  + [accepted_p6_ia07_review_sha256] is 9E3D28C7B5BFEA778F41362F06A144ACA39E64D9D87119CD692A1333E8D0445B
+  + [expected_current_output] is source-preserved downstream readiness rebake specification
+  + [next_candidate_slice_family] is P7_coordination_and_multi_agent_governance_rebake
+  + [next_candidate_slice_family] is P9_operations_manager_safety_reentry_rebake
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is implementation completion acceptance and downstream readiness rebake affect surface, coordination, fixture, and operations readiness
+  + [model_route_reason] is downstream reentry affects coordination identity, dispatch boundaries, operations safety, and live-control gates
 
-  = must: preserve P6 dependency deferral as readiness support, not dependency, adapter, dispatch, operations, or live-control authority
-  = must: execute P6-IA07 only inside docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop, docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop, and docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop before dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
+  = must: preserve P6 surface implementation completion as readiness support, not dependency, adapter, dispatch, operations, or live-control authority
+  = must: require source-preserved, SJS-processed downstream planning before P7, P9, adapter, UI, dispatch, operations, or live-control implementation
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

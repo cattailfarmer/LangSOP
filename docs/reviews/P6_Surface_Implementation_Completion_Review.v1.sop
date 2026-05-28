@@ -1,0 +1,46 @@
+Subject: P6 Surface Implementation Completion Review V1
+Date: 2026-05-27
+Review UUID: 50f97648-3424-4115-bc24-c4c2f0f77785
+
+@ [proof_pack] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [p6_ia06_review] docs/reviews/P6_IA06_Completion_Review.v1.sop
+
+& [P6SurfaceImplementationCompletionReviewV1] is the implementation completion review for P6 surface implementation activation
+  + [review_id] is p6-surface-implementation-completion-review-v1
+  + [review_uuid] is 50f97648-3424-4115-bc24-c4c2f0f77785
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [review_result] is accepted
+  + [proof_pack] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [proof_pack_sha256] is 981FC13220B30E20F2D296A7580E73739050DC363A7A923515745EAC0218A81F
+  + [accepted_slice_set] is P6-IA01, P6-IA02, P6-IA03, P6-IA04, P6-IA05, P6-IA06, and P6-IA07
+  + [surface_implementation_status] is accepted_bounded_pure_surface_projection_model_fixture_runner_and_validation_evidence
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [Langflow_export_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: treat this completion review as acceptance of bounded P6 surface implementation evidence only
+  = must: keep live surface integration, external adapter package installation, transports, UI, Langflow export, assignment, dispatch, operations control, and live machine control gated behind future accepted authority
+  = must: rerun completion review if proof pack, accepted artifacts, validation evidence, dependency decision, generated projection proof, or path policy changes
+
+& [P6SurfaceImplementationAcceptance] is the acceptance result for P6 surface implementation activation
+  + [activation_boundary_accepted] is true
+  + [surface_model_refresh_accepted] is true
+  + [projector_and_action_classifier_accepted] is true
+  + [generated_projection_policy_accepted] is true
+  + [surface_validation_tests_accepted] is true
+  + [generated_projection_nonpromotion_proof_accepted] is true
+  + [dependency_deferral_accepted] is true
+  + [proof_pack_accepted] is true
+  + [downstream_readiness_rebake_required] is true
+
+  ! [P6SurfaceImplementationAccepted] is accepted
+    @ [support] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop

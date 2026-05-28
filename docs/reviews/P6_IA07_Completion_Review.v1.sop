@@ -1,0 +1,88 @@
+Subject: P6 IA07 Completion Review V1
+Date: 2026-05-27
+Review UUID: 8124d2e9-714d-454f-ac62-97aa6b8a1933
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [proof_pack] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+@ [implementation_completion_review] docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+@ [post_surface_readiness] docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+
+& [CompletedWorkReview: P6-IA07] is the completed-work review for P6-IA07 implementation completion review, proof pack, and downstream readiness rebake
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P6-IA07
+  + [completed_output] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [completed_output_sha256] is 981FC13220B30E20F2D296A7580E73739050DC363A7A923515745EAC0218A81F
+  + [completed_output] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [completed_output_sha256] is ADB8E0B6A9AC26FD59CC5DC8391AD6C118FBAB87989C9B5D03DAFCC37071731D
+  + [completed_output] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [completed_output_sha256] is 7BEBE692F0192DFE9D31E7D7B9B3B3F86909DA064895D617DFA2C7F355CD7055
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P6 surface implementation activation as complete
+  + [next_gate_result] is downstream activation requires separate source-preserved planning
+
+  = must: treat this review as closure evidence for P6 surface implementation activation
+  = must: rerun this review if proof pack, implementation completion review, post-surface readiness, accepted P6-IA01 through P6-IA06 artifacts, validation tests, generated projection proof, dependency decision, or validation command evidence changes
+  = must: keep new implementation work, dependency installation, package metadata mutation, external adapters, transports, UI, Langflow export, assignment, dispatch, command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P6IA07Verification] is the verification result for P6-IA07
+  + [proof_pack_present] is true
+  + [implementation_completion_review_present] is true
+  + [post_surface_readiness_surface_present] is true
+  + [accepted_artifact_hash_ledger_present] is true
+  + [validation_command_ledger_present] is true
+  + [no_authority_leak_ledger_present] is true
+  + [support_requirement_delta_ledger_present] is true
+  + [downstream_readiness_delta_present] is true
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [Langflow_export_authorized] is false
+  + [assignment_authorized] is false
+  + [dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6IA07VerificationSatisfied] is accepted
+    @ [support] docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+    @ [support] docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+    @ [support] docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+
+& [SupportDelta: P6-IA07] is the support delta produced by P6-IA07
+  + [new_support_record] is P6 surface implementation activation is complete as bounded pure projection model, in-memory fixture runner, path policy, and validation evidence
+  + [new_support_record] is downstream P7 and P9 may cite P6 surface implementation evidence for readiness planning only
+  + [new_support_record] is dependency, adapter, transport, UI, Langflow export, assignment, dispatch, operations-control, and live-control work remains gated
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-IA07] is the requirement delta produced by P6-IA07
+  + [requirement_delta] is downstream implementation activation must be source-preserved, SJS-processed, and completion reviewed before consuming P6 surface implementation evidence as executable adapter authority
+  + [requirement_delta] is no downstream slice may treat P6 surface proof pack as dispatch, operations-control, or live-control permission
+  + [requirement_delta] is future multi-user, multi-agent, UI, transport, dispatch, or live-control integration requires separate authority paths
+
+& [FaultReview: P6-IA07] is the fault review for P6-IA07
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [surface_model_mutation_found] is false
+  + [generated_projection_policy_mutation_found] is false
+  + [test_file_mutation_found] is false
+  + [dependency_decision_mutation_found] is false
+  + [new_implementation_work_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [Langflow_export_leak_found] is false
+  + [assignment_leak_found] is false
+  + [dispatch_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P6IA07Accepted] is accepted
+    @ [support] [P6IA07Verification]
+    @ [support] [SupportDelta: P6-IA07]
+    @ [support] [RequirementDelta: P6-IA07]
+    @ [support] [FaultReview: P6-IA07]
