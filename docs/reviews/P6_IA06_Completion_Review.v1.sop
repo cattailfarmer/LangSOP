@@ -1,0 +1,79 @@
+Subject: P6 IA06 Completion Review V1
+Date: 2026-05-27
+Review UUID: aeddef29-0a1f-488e-81b5-f207edd7a46d
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [p6_ia05_review] docs/reviews/P6_IA05_Completion_Review.v1.sop
+@ [p6_dependency_deferral_decision] docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+
+& [P6IA06CompletionReviewV1] is the completion review for P6-IA06 dependency adapter transport UI Langflow dispatch operations and live-control deferral decision
+  + [review_id] is p6-ia06-completion-review-v1
+  + [review_uuid] is aeddef29-0a1f-488e-81b5-f207edd7a46d
+  + [slice_id] is P6-IA06
+  + [review_status] is accepted
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [accepted_dependency_deferral_decision] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_dependency_deferral_decision_sha256] is 7343C8B9ED68F8C81DDCA67278C63C9B5B524BD123EB6D9C02542CF5D95147BC
+  + [support_delta] is P6 surface implementation now has an accepted decision deferring dependencies, adapters, transports, UI, Langflow export, dispatch, operations control, and live-control work
+  + [requirement_delta] is P6-IA07 proof pack, completion review, and downstream readiness rebake is now ready
+
+  = must: accept P6-IA06 only as a deferral and future authority-path decision
+  = must: preserve future adapter, dispatch, operations, and live-control possibilities without authorizing any current implementation effect
+
+& [P6IA06DecisionCoverageReview] is the decision coverage review for P6-IA06
+  + [dependency_posture_defined] is true
+  + [adapter_transport_UI_Langflow_posture_defined] is true
+  + [dispatch_authority_path_defined] is true
+  + [live_control_authority_path_defined] is true
+  + [future_adapter_activation_boundary_defined] is true
+  + [authority_boundary_assessment_defined] is true
+  + [decision_consequence_ledger_defined] is true
+  + [fault_review_defined] is true
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [Langflow_export_created] is false
+  + [manager_dispatch_created] is false
+  + [agent_dispatch_created] is false
+  + [job_dispatch_created] is false
+  + [operations_control_created] is false
+  + [live_machine_control_created] is false
+
+  = must: require later source-preserved SJS-processed authority before any deferred capability can be implemented
+  = must: reject any shortcut that treats fixture success, generated projection success, test success, human approval display, chat command, terminal output, UI state, adapter callback, telemetry, or graph checkpoint as source, dispatch, operations, or live-control authority
+
+& [P6IA06ValidationReview] is the validation record for accepted P6-IA06 work
+  + [compile_command] is python -m compileall -q src tests
+  + [compile_result] is passed
+  + [targeted_contract_test] is python -m unittest tests.test_p6_surface_implementation_contracts
+  + [targeted_contract_test_result] is passed_5_tests
+  + [test_command] is python -m unittest discover -s tests
+  + [test_result] is passed_63_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p5_runtime_implementation_contracts
+  + [targeted_existing_contract_test_result] is passed_5_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_existing_contract_test_result] is passed_5_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [targeted_existing_contract_test_result] is passed_8_tests
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [targeted_existing_contract_test_result] is passed_7_tests
+  + [diff_hygiene_command] is git diff --check
+  + [diff_hygiene_result] is passed
+
+  = must: rerun validation if the decision, tests, proof, runner, path policy, or state surfaces change
+
+& [P6IA07OpeningGate] is the next slice opened by accepted P6-IA06
+  + [opened_slice] is P6-IA07
+  + [opened_slice_name] is implementation completion review proof pack and downstream readiness rebake
+  + [opened_output] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [opened_output] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [opened_output] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is completion acceptance and readiness rebake affect downstream surface, coordination, fixture, and operations readiness
+  + [safety_limit] is no dependency installation, package metadata mutation, adapter, transport, UI, Langflow export, dispatch, operations control, or live machine control
+
+  = must: open P6-IA07 only after this review is accepted
+  = must: keep downstream readiness stale until P6-IA07 proof pack and completion review are accepted

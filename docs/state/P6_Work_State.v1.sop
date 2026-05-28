@@ -58,11 +58,13 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
 @ [p6_contract_tests] tests/test_p6_surface_implementation_contracts.py
 @ [p6_generated_projection_proof] docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
 @ [p6_ia05_review] docs/reviews/P6_IA05_Completion_Review.v1.sop
+@ [p6_dependency_deferral_decision] docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [p6_ia06_review] docs/reviews/P6_IA06_Completion_Review.v1.sop
 
 & [P6WorkStateV1] is the current derived work state for P6 surface projection system
   + [state_basis] is docs/slices/P6_Surface_Projection_System_Final_Slices.v1.sop
   + [state_basis_sha256] is 2146C5325FFBDC02CF821C614FC2C8A87128D485AC959C934738D481CA815C44
-  + [surface_status] is P6-IA05_accepted_ready_for_P6-IA06
+  + [surface_status] is P6-IA06_accepted_ready_for_P6-IA07
   + [source_manifest] is docs/source/2026-05-27_p6_surface_projection_system_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 7CDAFF8D081857C649A1C3FD697117E1D90C2B73CB7C694F902E2067A588A823
   + [canonical_specification] is docs/canonical/LangSOP_P6_Surface_Projection_System_Final_Slices.canonical.sop
@@ -163,12 +165,18 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [accepted_generated_projection_proof_sha256] is 06EF371718168EA71E2A2EB2C022B73E584CDC206265E94137B3827DA22602CF
   + [accepted_p6_ia05_review] is docs/reviews/P6_IA05_Completion_Review.v1.sop
   + [accepted_p6_ia05_review_sha256] is 0AF19129C8A736044AD2DB417866959F66B50554A9F20FC28951699E1FDD93A2
-  + [current_ready_slice] is P6-IA06
-  + [current_ready_slice_name] is dependency adapter transport UI Langflow dispatch operations and live-control deferral decision
-  + [expected_current_output] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_dependency_deferral_decision] is docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_dependency_deferral_decision_sha256] is 7343C8B9ED68F8C81DDCA67278C63C9B5B524BD123EB6D9C02542CF5D95147BC
+  + [accepted_p6_ia06_review] is docs/reviews/P6_IA06_Completion_Review.v1.sop
+  + [accepted_p6_ia06_review_sha256] is D778D023AB6A589AFC253FD09C6A057E80538E4D102BF0A378E0123853AC2B94
+  + [current_ready_slice] is P6-IA07
+  + [current_ready_slice_name] is implementation completion review proof pack and downstream readiness rebake
+  + [expected_current_output] is docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop
+  + [expected_current_output] is docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop
+  + [expected_current_output] is docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop
   + [current_ready_slice_model_route] is requires deeper reasoning
   + [current_ready_slice_model_route_depth] is deeper_reasoning_required
-  + [current_ready_slice_model_route_reason] is dependency, adapter, transport, UI, Langflow, dispatch, operations-control, and live-control posture changes system authority boundaries
+  + [current_ready_slice_model_route_reason] is implementation completion acceptance and downstream readiness rebake affect surface, coordination, fixture, and operations readiness
   + [generated_projection_creation_authorized] is false
   + [test_file_creation_authorized] is false
   + [proof_review_creation_authorized] is false
@@ -184,6 +192,6 @@ State UUID: 15de2332-81a9-4a04-9a11-7d344787024d
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P6-IA06 only inside docs/decisions/P6_Surface_Dependency_Adapter_Transport_UI_Langflow_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop before dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control
+  = must: execute P6-IA07 only inside docs/planning/P6_Surface_Implementation_Proof_Pack.v1.sop, docs/reviews/P6_Surface_Implementation_Completion_Review.v1.sop, and docs/planning/Post_P6_Surface_Implementation_Readiness_Surface.v1.sop before dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control
   = must: keep source authority, projection records, generated snapshots, adapter messages, human handoffs, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P6 completion review, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, IR5 implementation completion, P6 surface implementation activation source, P6 surface implementation activation manifest, P6 surface implementation activation canonical specification, P6 surface implementation activation slice surface, P6 surface implementation activation minting review, P6-IA01 boundary, P6-IA01 review, P6-IA02 model files, P6-IA02 review, P6-IA03 surface matrix, P6-IA03 action classifier, P6-IA03 review, P6-IA04 contract, P6-IA04 path policy, P6-IA04 fixture runner, P6-IA04 review, P6-IA05 tests, P6-IA05 proof, or P6-IA05 review changes
+  = must: mark this state stale if P6 source, manifest, canonical specification, slice surface, minting review, P6-S01 output, P6-S01 review, P6-S02 output, P6-S02 review, P6-S03 output, P6-S03 review, P6-S04 output, P6-S04 review, P6-S05 output, P6-S05 review, P6-S06 output, P6-S06 review, P6 completion review, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P2 completion, P4 completion, P5 completion, post-P5 readiness, P8 completion, FSC4 surface boundary, FSC4 completion, IR5 implementation completion, P6 surface implementation activation source, P6 surface implementation activation manifest, P6 surface implementation activation canonical specification, P6 surface implementation activation slice surface, P6 surface implementation activation minting review, P6-IA01 boundary, P6-IA01 review, P6-IA02 model files, P6-IA02 review, P6-IA03 surface matrix, P6-IA03 action classifier, P6-IA03 review, P6-IA04 contract, P6-IA04 path policy, P6-IA04 fixture runner, P6-IA04 review, P6-IA05 tests, P6-IA05 proof, P6-IA05 review, P6-IA06 decision, or P6-IA06 review changes

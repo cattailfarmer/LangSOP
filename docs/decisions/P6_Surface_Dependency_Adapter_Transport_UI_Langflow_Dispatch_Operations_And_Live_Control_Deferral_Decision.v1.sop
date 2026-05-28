@@ -1,0 +1,224 @@
+Subject: P6 Surface Dependency Adapter Transport UI Langflow Dispatch Operations And Live Control Deferral Decision V1
+Date: 2026-05-27
+Decision UUID: f266e33d-cca7-42ed-aa44-5a386b65fac5
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [p6_ia05_review] docs/reviews/P6_IA05_Completion_Review.v1.sop
+@ [contract_tests] tests/test_p6_surface_implementation_contracts.py
+@ [generated_projection_proof] docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+@ [generated_projection_policy] docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [prior_p6_planning_decision] docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+@ [ir5_surface_adapter_dependency_decision] docs/decisions/IR5_Surface_Adapter_And_Langflow_Dependency_Decision.v1.sop
+@ [ir6_mailbox_transport_dependency_decision] docs/decisions/IR6_Mailbox_IO_Transport_Adapter_And_Dependency_Decision.v1.sop
+@ [ir7_operations_live_control_decision] docs/decisions/IR7_Operations_Adapter_Dependency_And_Live_Control_Deferral_Decision.v1.sop
+@ [ir8_manager_dispatch_live_control_decision] docs/decisions/IR8_Manager_Adapter_Dependency_Dispatch_And_Live_Control_Deferral_Decision.v1.sop
+
+& [P6SurfaceDependencyAdapterTransportUILangflowDispatchOperationsAndLiveControlDeferralDecisionV1] is the dependency, adapter, transport, UI, Langflow, dispatch, operations, and live-control deferral decision for P6-IA06
+  + [slice_id] is P6-IA06
+  + [slice_name] is dependency adapter transport UI Langflow dispatch operations and live-control deferral decision
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [decision_result] is defer_all_surface_external_dependencies_package_metadata_mutation_adapters_transports_UI_Langflow_dispatch_operations_control_and_live_control_for_current_P6_implementation_pass
+  + [surface_runtime_status] is pure_projection_model_and_fixture_runner_only
+  + [surface_adapter_status] is deferred_to_future_explicit_surface_adapter_activation_slice
+  + [coordination_adapter_status] is deferred_to_future_explicit_coordination_adapter_activation_slice
+  + [operations_adapter_status] is deferred_to_future_explicit_operations_adapter_activation_slice
+  + [transport_status] is deferred_to_future_explicit_transport_activation_slice
+  + [UI_status] is deferred_to_future_explicit_UI_activation_slice
+  + [langflow_projection_status] is deferred_to_future_explicit_visual_projection_activation_slice
+  + [manager_dispatch_status] is deferred_to_future_explicit_dispatch_authority_path
+  + [agent_dispatch_status] is deferred_to_future_explicit_dispatch_authority_path
+  + [job_dispatch_status] is deferred_to_future_explicit_dispatch_authority_path
+  + [process_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [GPU_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [model_runtime_control_status] is deferred_to_future_explicit_live_control_authority_path
+  + [credential_access_status] is deferred_to_future_explicit_least_privilege_credential_authority_path
+  + [network_mutation_status] is deferred_to_future_explicit_network_exposure_authority_path
+  + [destructive_filesystem_action_status] is deferred_to_future_explicit_live_control_authority_path
+  + [persistent_operations_automation_status] is deferred_to_future_explicit_automation_authority_path
+  + [package_metadata_mutation_authorized] is false
+  + [dependency_installation_authorized] is false
+  + [adapter_implementation_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [Langflow_export_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [live_machine_control_authorized] is false
+  + [current_surface_validation_status] is sufficient_for_P6_surface_implementation_proof_pack
+
+  = must: preserve this decision as a deferral, not a rejection of future web UI, IRC, Matrix, terminal, Codex, MCP, Langflow, manager, scheduler, telemetry, Ryzen 9 RTX 5090 operations-manager, or multi-agent collaboration surfaces
+  = must: require a later explicit activation slice before adding package dependencies, lockfiles, imports from external adapter packages, socket listeners, chat clients, Matrix clients, IRC clients, web servers, browser automation runtimes, Langflow exports, MCP clients, MCP servers, job queues, scheduler clients, telemetry collectors, process controllers, GPU controllers, model runtime clients, credential readers, network mutators, or persistent automation
+  = must: require a separate future source-preserved and SJS-processed dispatch authority path before any manager, agent, or job dispatch can be reconsidered
+  = must: require a separate future source-preserved and SJS-processed live-control authority path before any live machine control can be reconsidered
+  = must: keep SOP, SJS, completion reviews, accepted decision documents, tracked fixture sources, expected ledgers, proof ledgers, and canonical specifications as source authority
+  = must: treat fixture success, generated reports, test results, dry-run results, manager packets, handoff records, carrier messages, terminal output, chat events, UI state, telemetry, graph checkpoints, adapter callbacks, and dispatch attempts as projections or evidence until rewritten into accepted SOP authority by a later reviewed process
+
+& [DependencyEvidence: CurrentP6SurfaceProofNeed] is the current proof sufficiency evidence for deferring external dependency installation
+  + [contract_test_output] is tests/test_p6_surface_implementation_contracts.py
+  + [contract_test_output_sha256] is 1C35422CF90506FC314B42C902942629FFA085A882701D8C8DF837DAE01D94EE
+  + [generated_projection_no_live_effect_proof] is docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+  + [generated_projection_no_live_effect_proof_sha256] is 06EF371718168EA71E2A2EB2C022B73E584CDC206265E94137B3827DA22602CF
+  + [ia05_completion_review] is docs/reviews/P6_IA05_Completion_Review.v1.sop
+  + [ia05_completion_review_sha256] is 0AF19129C8A736044AD2DB417866959F66B50554A9F20FC28951699E1FDD93A2
+  + [generated_projection_policy] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [generated_projection_policy_sha256] is 4C47F05659E1598BA6BB50E93D577478C394369112EA2C2A3EA37B6612661AEA
+  + [current_test_result] is python -m unittest discover -s tests passed 63 tests after P6-IA05
+  + [current_targeted_test_result] is python -m unittest tests.test_p6_surface_implementation_contracts passed 5 tests after P6-IA05
+  + [current_dependency_set] is empty
+  + [external_surface_adapter_needed_for_current_proof] is false
+  + [external_transport_needed_for_current_proof] is false
+  + [external_UI_needed_for_current_proof] is false
+  + [external_langflow_needed_for_current_proof] is false
+  + [external_scheduler_or_job_queue_needed_for_current_proof] is false
+  + [external_process_library_needed_for_current_proof] is false
+  + [external_GPU_library_needed_for_current_proof] is false
+  + [external_model_runtime_client_needed_for_current_proof] is false
+  + [external_network_or_firewall_library_needed_for_current_proof] is false
+
+  ! [CurrentP6SurfaceProofNeedSatisfiedWithoutDependency] is accepted
+    @ [support] docs/reviews/P6_IA05_Completion_Review.v1.sop
+    @ [support] tests/test_p6_surface_implementation_contracts.py
+    @ [support] docs/reviews/P6_Surface_Generated_Projection_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+
+& [FutureSurfaceAdapterActivationBoundary] is the required boundary for any later surface adapter, transport, UI, runtime, or projection implementation slice
+  + [future_slice_required] is true
+  + [future_slice_must_authorize] is dependency installation
+  + [future_slice_must_authorize] is package_metadata_mutation
+  + [future_slice_must_authorize] is adapter module inventory
+  + [future_slice_must_authorize] is source-to-surface projection mapping
+  + [future_slice_must_authorize] is surface-to-SOP-review reentry mapping
+  + [future_slice_must_authorize] is carrier and telemetry storage boundary
+  + [future_slice_must_authorize] is filesystem watch or polling boundary
+  + [future_slice_must_authorize] is socket, web server, MCP client, MCP server, IRC, Matrix, terminal, browser, or Codex thread boundary
+  + [future_slice_must_authorize] is Langflow projection export boundary
+  + [future_slice_must_authorize] is generated projection persistence and cleanup policy
+  + [future_slice_must_authorize] is operations dry-run handoff boundary
+  + [future_forbidden_without_slice] is dependency installation
+  + [future_forbidden_without_slice] is lockfile mutation
+  + [future_forbidden_without_slice] is runtime requirements mutation
+  + [future_forbidden_without_slice] is adapter package import
+  + [future_forbidden_without_slice] is transport implementation
+  + [future_forbidden_without_slice] is UI implementation
+  + [future_forbidden_without_slice] is socket listener
+  + [future_forbidden_without_slice] is web server launch
+  + [future_forbidden_without_slice] is IRC connection
+  + [future_forbidden_without_slice] is Matrix connection
+  + [future_forbidden_without_slice] is MCP client or server connection
+  + [future_forbidden_without_slice] is Langflow import or export
+  + [future_forbidden_without_slice] is manager dispatch
+  + [future_forbidden_without_slice] is agent dispatch
+  + [future_forbidden_without_slice] is job dispatch
+  + [future_forbidden_without_slice] is operations control
+  + [future_forbidden_without_slice] is live machine control
+
+  = must: require generated adapter outputs, telemetry snapshots, reports, traces, and projections to remain ignored, disposable, and reproducible unless accepted by a later review
+  = must: require adapter tests to prove carrier state, telemetry state, graph checkpoints, UI state, terminal output, chat messages, callback success, fixture success, and generated report success cannot open authority, dispatch, operations-control, or live-control gates
+  = must: require adapter tests to prove user or agent interactions route back to SOP-first manager records, operation requests, human override records, conflict reviews, resource safety reviews, dependency decisions, or completion reviews rather than direct mutation
+
+& [FutureDispatchAuthorityPath: P6SurfaceImplementation] is the only path by which manager, agent, or job dispatch may be reconsidered later
+  + [required_future_step] is preserve new dispatch source document
+  + [required_future_step] is SJS-process new source into signed canonical dispatch authority
+  + [required_future_step] is define dispatch subject taxonomy for manager dispatch, agent dispatch, job dispatch, work claims, cancel requests, and multi-agent participation
+  + [required_future_step] is define identity, authentication, capability, and least-privilege boundary for dispatch recipients
+  + [required_future_step] is define dry-run, refusal, rollback, abort, and monitoring proof for dispatch effects
+  + [required_future_step] is define explicit fresh scoped human approval and expiration rule where dispatch may affect external state
+  + [required_future_step] is define audit log, provenance, and reentry mapping from dispatch result to SOP review
+  + [required_future_step] is run completion review that explicitly accepts dispatch scope
+  + [forbidden_shortcut] is relying on fixture success
+  + [forbidden_shortcut] is relying on generated-output proof success
+  + [forbidden_shortcut] is relying on manager packet readiness
+  + [forbidden_shortcut] is relying on dry-run success
+  + [forbidden_shortcut] is relying on broad human approval
+  + [forbidden_shortcut] is relying on terminal, chat, mailbox, IRC, Matrix, web, Codex, graph checkpoint, or adapter state
+  + [forbidden_shortcut] is relying on this deferral decision as permission
+
+  = must: require a future, separate authority path for any dispatch capability
+  = must: keep current P6 surface implementation work non-dispatch even after P6 implementation completion
+
+& [FutureLiveControlAuthorityPath: P6SurfaceImplementation] is the only path by which live machine control may be reconsidered later
+  + [required_future_step] is preserve new live-control source document
+  + [required_future_step] is SJS-process new source into signed canonical safety authority
+  + [required_future_step] is define target host inventory and resource API boundaries
+  + [required_future_step] is define least-privilege credential and secret boundary
+  + [required_future_step] is define network exposure boundary
+  + [required_future_step] is define process, GPU, model runtime, job queue, scheduler, and telemetry control boundary
+  + [required_future_step] is define dry-run, rollback, abort, emergency stop, and monitoring proof
+  + [required_future_step] is define explicit fresh scoped human approval and expiration rule
+  + [required_future_step] is run completion review that explicitly accepts live-control scope
+  + [forbidden_shortcut] is relying on fixture success
+  + [forbidden_shortcut] is relying on generated-output proof success
+  + [forbidden_shortcut] is relying on IR7 operations dry-run success
+  + [forbidden_shortcut] is relying on IR8 manager readiness success
+  + [forbidden_shortcut] is relying on broad human approval
+  + [forbidden_shortcut] is relying on terminal, chat, mailbox, IRC, Matrix, web, Codex, graph checkpoint, or adapter state
+  + [forbidden_shortcut] is relying on this deferral decision as permission
+
+  = must: require a future, separate authority path for any live-control capability
+  = must: keep current P6 surface implementation work non-live even after P6 implementation completion
+
+& [AuthorityBoundaryAssessment: P6SurfaceAdapters] is the authority fit assessment for future surface projections and adapters
+  + [fit_status] is future_adapter_candidates_preserved
+  + [fit_reason] is manager, worker, narrative, debug, chat, Codex, terminal, IRC, Matrix, web, Langflow, MCP, telemetry, and future machine-management surfaces may become useful projections after authority-preserving boundaries exist
+  + [mismatch_status] is authority_boundary_mismatch_if_used_directly_as_truth
+  + [mismatch_reason] is UI state, chat events, terminal output, Langflow graph state, adapter callbacks, telemetry, process state, GPU state, model runtime state, job queues, and dispatch attempts are projections or execution state rather than accepted SOP authority
+  + [adapter_need] is map accepted LangSOP authority records into adapter inputs and map adapter outputs back into non-authoritative manager observations, operation requests, human override records, resource safety reviews, refusal records, SOP-first interrupts, dependency decisions, or completion reviews until accepted by SOP review
+
+  = must: prevent fixture success, generated report success, telemetry availability, dry-run success, approval display state, adapter callback success, UI click, chat command, terminal output, or graph execution success from satisfying readiness, completion review, source specification processing, dispatch authority, operations authority, or live-control gates by itself
+  = must: preserve human override, human approval, conflict review, resource safety review, dependency decision, and completion review as reviewed SOP records rather than direct UI, transport, mailbox, terminal, adapter, or dispatch effects
+
+& [DecisionConsequences: P6-IA06] is the consequence ledger for the deferral decision
+  + [P6_IA07_may_proceed_without_external_dependency] is true
+  + [P6_IA07_must_record_dependency_deferral] is true
+  + [P6_IA07_must_record_no_dispatch_boundary] is true
+  + [P6_IA07_must_record_no_operations_control_boundary] is true
+  + [P6_IA07_must_record_no_live_control_boundary] is true
+  + [downstream_surface_adapter_work] is future_source_preserved_SJS_processed_adapter_authority_path
+  + [downstream_dispatch_work] is future_source_preserved_SJS_processed_dispatch_authority_path
+  + [downstream_live_control_work] is future_source_preserved_SJS_processed_live_control_authority_path
+  + [dependency_risk_reduced] is no unreviewed package, lockfile, UI runtime, network transport, MCP connection, scheduler, process controller, GPU controller, model runtime client, job queue client, credential boundary, dispatch runtime, operations adapter, or live-control runtime enters current proof
+  + [architecture_option_preserved] is future AI collaboration platform manager integrations, multi-user surfaces, multi-agent dispatch, and Ryzen 9 RTX 5090 operations-manager capabilities can be introduced later with explicit authority-preserving adapter, dispatch, and live-control boundaries
+
+& [P6IA06FaultReview] is the fault review for the dependency, adapter, transport, UI, Langflow, dispatch, operations, and live-control deferral decision
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_implementation_created] is false
+  + [transport_implementation_created] is false
+  + [UI_implementation_created] is false
+  + [langflow_import_or_export_added] is false
+  + [MCP_client_or_server_created] is false
+  + [socket_listener_created] is false
+  + [web_server_created] is false
+  + [manager_dispatch_created] is false
+  + [agent_dispatch_created] is false
+  + [job_dispatch_created] is false
+  + [process_control_created] is false
+  + [GPU_control_created] is false
+  + [model_runtime_control_created] is false
+  + [credential_access_created] is false
+  + [network_mutation_created] is false
+  + [destructive_filesystem_action_created] is false
+  + [operations_control_created] is false
+  + [live_machine_control_created] is false
+  + [fixture_success_authority_promotion_found] is false
+  + [generated_output_authority_promotion_found] is false
+  + [test_success_authority_promotion_found] is false
+  + [surface_action_authority_promotion_found] is false
+  + [human_approval_authority_promotion_found] is false
+
+  ! [P6SurfaceDependencyAdapterTransportUILangflowDispatchOperationsAndLiveControlDeferralDecisionAccepted] is accepted
+    @ [support] [DependencyEvidence: CurrentP6SurfaceProofNeed]
+    @ [support] [FutureSurfaceAdapterActivationBoundary]
+    @ [support] [FutureDispatchAuthorityPath: P6SurfaceImplementation]
+    @ [support] [FutureLiveControlAuthorityPath: P6SurfaceImplementation]
+    @ [support] [AuthorityBoundaryAssessment: P6SurfaceAdapters]
+    @ [support] [DecisionConsequences: P6-IA06]
+    @ [support] [P6IA06FaultReview]
