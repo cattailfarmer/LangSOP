@@ -64,9 +64,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p5_runtime_contract_tests] tests/test_p5_runtime_implementation_contracts.py
 @ [p5_runtime_generated_trace_proof] docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
 @ [p5_ia04_review] docs/reviews/P5_IA04_Completion_Review.v1.sop
+@ [p5_runtime_dependency_deferral] docs/decisions/P5_Runtime_Dependency_Adapter_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+@ [p5_ia05_review] docs/reviews/P5_IA05_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P5-IA05_dependency_adapter_dispatch_operations_and_live_control_deferral_decision
+  + [map_state] is ready_for_P5-IA06_implementation_completion_review_proof_pack_and_downstream_readiness_rebake
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -557,12 +559,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P5-IA05-DependencyAdapterDispatchOperationsAndLiveControlDeferralDecision] is ready_for_execution
+& [CurrentReadyChunk: P5-IA06-ImplementationCompletionReviewProofPackAndDownstreamReadinessRebake] is ready_for_execution
   + [chunk_id] is P5-runtime-implementation-activation
-  + [slice_id] is P5-IA05
-  + [chunk_name] is dependency, adapter, dispatch, operations, and live-control deferral decision
-  + [authority_basis] is docs/reviews/P5_IA04_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 1A73E6360978270189C7C54ADB841202D8ED75EDD6AAD14102801F1836AD0DF4
+  + [slice_id] is P5-IA06
+  + [chunk_name] is implementation completion review, proof pack, and downstream readiness rebake
+  + [authority_basis] is docs/reviews/P5_IA05_Completion_Review.v1.sop
+  + [authority_basis_sha256] is AE5E8273096C69B09AFBF18B8A3B4C1DA4483B203E43F3C5699C62A507425109
   + [readiness_surface] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
   + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
   + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
@@ -574,16 +576,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_runtime_contract_tests_sha256] is ACCB3C81448B8922914352F1CE2D758A0BA8F51C6698143EEE77EDE982B6689B
   + [accepted_runtime_generated_trace_proof] is docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
   + [accepted_runtime_generated_trace_proof_sha256] is CB9FB56534573F80CA4B58E4AADA53F461D314D077FB3D9975CCE4A77BC7A91C
-  + [expected_output] is docs/decisions/P5_Runtime_Dependency_Adapter_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
-  + [completion_review_output] is docs/reviews/P5_IA05_Completion_Review.v1.sop
+  + [accepted_runtime_dependency_deferral] is docs/decisions/P5_Runtime_Dependency_Adapter_Dispatch_Operations_And_Live_Control_Deferral_Decision.v1.sop
+  + [accepted_runtime_dependency_deferral_sha256] is DF660AB75F0E1F55A2AB947A2DC24DF2859AA748CDEDE6DF3A1F4CCECAAB2F0B
+  + [expected_output] is docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+  + [expected_output] is docs/reviews/P5_Runtime_Implementation_Completion_Review.v1.sop
+  + [expected_output] is docs/planning/Post_P5_Runtime_Implementation_Readiness_Surface.v1.sop
+  + [completion_review_output] is docs/reviews/P5_IA06_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is dependency, adapter, graph runtime, dispatch, operations, safety, and live-control boundaries affect authority and future machine-control semantics
+  + [model_route_reason] is final runtime implementation acceptance affects future P6 surface implementation, P7 coordination expansion, and P9 operations-manager readiness
 
-  = must: decide whether to defer or narrowly authorize future dependency, adapter, transport, UI, dispatch, operations-control, and live-control work
-  = must: preserve no command execution, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, assignment, dispatch, operations control, or live machine control
-  = must: avoid dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P5-IA06 gated until P5-IA05 completion review accepts
+  = must: produce proof pack, implementation completion review, and post-P5-runtime readiness rebake from accepted P5-IA01 through P5-IA05 outputs
+  = must: cite hashes for runtime model refresh, generated trace policy, validation tests, generated trace proof, dependency deferral, and validation commands
+  = must: avoid new implementation work, dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
+  = must: close P5 runtime implementation activation only after proof pack and completion review accept
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

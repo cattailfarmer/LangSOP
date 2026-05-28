@@ -1,0 +1,105 @@
+Subject: P5 Runtime Dependency Adapter Dispatch Operations And Live Control Deferral Decision V1
+Date: 2026-05-27
+Decision UUID: a46fdc27-c95a-48d7-9b6d-0f2f515682c6
+
+@ [activation_slice_surface] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+@ [runtime_model_refresh] src/langsop/runtime/p5_models.py
+@ [generated_trace_policy] docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+@ [runtime_validation_review] docs/reviews/P5_IA04_Completion_Review.v1.sop
+@ [generated_trace_proof] docs/reviews/P5_Runtime_Generated_Trace_Nonpromotion_And_No_Live_Effect_Proof.v1.sop
+@ [prior_langgraph_decision] docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+
+& [P5RuntimeDependencyAdapterDispatchOperationsAndLiveControlDeferralDecisionV1] is the P5-IA05 decision for runtime dependency, adapter, dispatch, operations, and live-control posture
+  + [decision_id] is p5-runtime-dependency-adapter-dispatch-operations-and-live-control-deferral-decision-v1
+  + [decision_uuid] is a46fdc27-c95a-48d7-9b6d-0f2f515682c6
+  + [slice_id] is P5-IA05
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [decision_result] is defer_dependency_adapter_dispatch_operations_and_live_control
+  + [dependency_installation_authorized] is false
+  + [package_metadata_mutation_authorized] is false
+  + [external_langgraph_adapter_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve current P5 runtime implementation as pure deterministic runtime evidence and validation support only
+  = must: require separate source-preserved, SJS-processed, completion-reviewed authority before installing dependencies, mutating package metadata, adding external LangGraph adapters, adding transports, adding UI, assigning work, dispatching work, controlling operations, or controlling live machine state
+  = must: keep generated traces, graph checkpoints, fixture success, human handoff records, manager packets, dry-run outputs, and displayed approvals non-authoritative
+
+& [P5RuntimeDependencyPosture] is the dependency posture for current P5 runtime implementation
+  + [allowed_dependency_set] is Python standard library only
+  + [external_dependency_set] is empty
+  + [langgraph_runtime_dependency_state] is deferred
+  + [langgraph_package_installation_authorized] is false
+  + [langgraph_adapter_implementation_authorized] is false
+  + [langflow_dependency_state] is deferred
+  + [transport_library_state] is deferred
+  + [UI_framework_state] is deferred
+  + [machine_control_library_state] is deferred
+  + [GPU_management_library_state] is deferred
+  + [local_model_runtime_client_state] is deferred
+  + [job_queue_client_state] is deferred
+  + [network_or_firewall_library_state] is deferred
+
+  = must: require future dependency decision refresh if package choice, version policy, dependency manager, execution environment, adapter boundary, fixture runner persistence behavior, or live-control posture changes
+  = must: keep dependency work out of P5 runtime implementation completion proof pack
+
+& [P5RuntimeAdapterAndTransportPosture] is the adapter and transport posture for current P5 runtime implementation
+  + [external_langgraph_adapter_status] is not_implemented
+  + [graph_runtime_execution_against_live_state_authorized] is false
+  + [checkpoint_persistence_adapter_status] is not_implemented
+  + [transport_implementation_status] is not_implemented
+  + [socket_or_network_listener_authorized] is false
+  + [mailbox_IO_authorized] is false
+  + [UI_implementation_status] is not_implemented
+
+  = must: require future accepted authority before checkpoint persistence leaves disposable generated roots
+  = must: require future accepted authority before any runtime output is projected to live surfaces, transports, sockets, mailboxes, UI, process runners, GPU tools, model runtimes, or job queues
+  = must: reject adapter behavior that writes source authority, mutates expected ledgers, mutates proof ledgers outside accepted proof-review slices, assigns work, dispatches work, controls operations, or controls live machine state
+
+& [P5RuntimeDispatchOperationsAndLiveControlPosture] is the dispatch, operations, and live-control posture for current P5 runtime implementation
+  + [assignment_authority_status] is not_authorized
+  + [manager_dispatch_status] is not_authorized
+  + [agent_dispatch_status] is not_authorized
+  + [job_dispatch_status] is not_authorized
+  + [operations_control_status] is not_authorized
+  + [live_machine_control_status] is not_authorized
+  + [credential_access_status] is not_authorized
+  + [network_mutation_status] is not_authorized
+  + [destructive_filesystem_action_status] is not_authorized
+  + [process_control_status] is not_authorized
+  + [GPU_control_status] is not_authorized
+  + [model_runtime_control_status] is not_authorized
+
+  = must: refuse future work that treats P5 runtime validation, generated trace proof, dry-run evidence, manager packets, mailbox carriers, or human approval displays as assignment, dispatch, operations-control, or live-control authority
+  = must: preserve operations and live-control work for a later explicit safety authority path
+
+& [FutureP5RuntimeDependencyAuthorizationPrerequisiteSet] is the prerequisite set for any future P5 dependency or adapter authorization
+  + [prerequisite] is source-preserved future dependency specification
+  + [prerequisite] is SJS-processed canonical dependency specification
+  + [prerequisite] is explicit package manager and lockfile policy
+  + [prerequisite] is exact external dependency version and update policy
+  + [prerequisite] is exact adapter boundary and forbidden-effect matrix
+  + [prerequisite] is generated trace persistence and cleanup policy
+  + [prerequisite] is no-dispatch proof
+  + [prerequisite] is no-operations-control proof
+  + [prerequisite] is no-live-effect proof
+  + [prerequisite] is human review before any live-control capability
+
+  = must: require all prerequisites before future dependency installation, package metadata mutation, adapter implementation, dispatch integration, operations control, or live-control work
+
+& [P5IA05CompletionGate] is the gate opened by this deferral decision
+  + [opened_slice] is P5-IA06 implementation completion review, proof pack, and downstream readiness rebake
+  + [activation_basis] is P5 runtime dependency, adapter, dispatch, operations, and live-control deferral accepted
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is final runtime implementation acceptance affects future P6 surface implementation, P7 coordination expansion, and P9 operations-manager readiness
+  + [completion_review_required] is true
+
+  = must: open P5-IA06 only after P5-IA05 completion review accepts this decision
