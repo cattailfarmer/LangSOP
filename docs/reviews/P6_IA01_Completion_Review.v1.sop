@@ -1,0 +1,125 @@
+Subject: P6 IA01 Completion Review V1
+Date: 2026-05-27
+Review UUID: 215466f7-11b7-46be-a657-8acd42c95471
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [completed_output] docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+@ [p6_authority_notice_contract] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+@ [p6_multi_surface_contract] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+@ [p6_inbound_action_contract] docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+@ [p6_fixture_plan] docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+@ [p6_dependency_deferral] docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [CompletedWorkReview: P6-IA01] is the completed-work review for P6-IA01 surface implementation activation boundary and exact file inventory
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P6-IA01
+  + [completed_output] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+  + [completed_output_sha256] is 7D2E8FB1D3F52B94336F2F2F436997C1B6A17887C6B8CEB9187C55FB73E6FCBE
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P6-IA01 and open P6-IA02
+  + [next_gate_result] is P6-IA02 may open
+  + [next_model_route] is requires deeper reasoning for projection state authority freshness and nonpromotion model refresh
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as gate-opening evidence for P6-IA02 only
+  = must: rerun this review if the activation boundary, P6 implementation activation slice surface, canonical activation specification, P6 surface contracts, P6 fixture plan, P6 dependency deferral, P8 fixture material proof pack, P5 runtime implementation proof pack, or post-P5 runtime implementation readiness changes
+  = must: keep generated projections, proof ledgers, tests, dependency installation, package metadata mutation, adapters, transports, UI, Langflow export, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P6IA01Verification] is the verification result for P6-IA01
+  + [confirmed_authority_and_contract_basis_inventory_present] is true
+  + [confirmed_surface_implementation_file_inventory_present] is true
+  + [confirmed_model_and_projection_inventory_present] is true
+  + [confirmed_fixture_and_expected_projection_inventory_present] is true
+  + [confirmed_generated_projection_boundary_present] is true
+  + [confirmed_dependency_boundary_present] is true
+  + [confirmed_adapter_transport_UI_dispatch_operations_and_live_control_boundary_present] is true
+  + [confirmed_command_plan_present] is true
+  + [implementation_slice_proof_gate_present] is true
+  + [surface_code_created] is false
+  + [generated_projection_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_export_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P6IA01VerificationSatisfied] is accepted
+    @ [support] docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+
+& [SupportDelta: P6-IA01] is the support delta produced by P6-IA01
+  + [new_support_record] is P6 surface implementation activation has confirmed authority basis, exact src/langsop/surfaces_p6 module inventory, fixture source paths, expected projection ledgers, proof ledger roots, generated projection roots, dependency boundary, adapter boundary, transport boundary, UI boundary, Langflow boundary, dispatch boundary, operations boundary, live-control boundary, command plan, and proof gates
+  + [new_support_record] is P6-IA02 may create or refresh only src/langsop/surfaces_p6/__init__.py, src/langsop/surfaces_p6/envelope.py, and src/langsop/surfaces_p6/nonpromotion.py
+  + [new_support_record] is P6-IA02 requires deeper reasoning because projection state, authority notice, freshness, nonpromotion, stop-state, and no-live-effect model shape affect every downstream surface and action classifier
+  + [new_support_record] is generated projections, proof ledgers, tests, dependency installation, package metadata mutation, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, and live machine control remain gated
+  + [support_status] is accepted
+
+& [RequirementDelta: P6-IA01] is the requirement delta produced by P6-IA01
+  + [requirement_delta] is P6-IA02 may create or refresh only P6 authority, freshness, projection envelope, and nonpromotion model files named in the accepted file inventory
+  + [requirement_delta] is P6-IA02 must preserve existing IR5 surface prototype behavior and must not rewrite src/langsop/surfaces as P6
+  + [requirement_delta] is P6-IA02 must preserve generated projection nonpromotion, carrier context nonauthority, no-assignment, no-dispatch, no-operations-control, and no-live-effect semantics
+  + [requirement_delta] is P6-IA03 must stay inside the accepted surface_matrix and action_classifier inventory unless completion review rebakes the boundary
+  + [requirement_delta] is P6-IA04 must define generated projection path policy and fixture runner contract before P6-IA05 test/proof work treats generated projections as evidence
+  + [requirement_delta] is no dependency installation, package metadata mutation, adapter, transport, UI, Langflow export, assignment, dispatch, operations control, or live machine control is authorized by P6-IA01
+
+& [FaultReview: P6-IA01] is the fault review for P6-IA01
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [surface_code_leak_found] is false
+  + [generated_projection_leak_found] is false
+  + [proof_ledger_file_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [Langflow_export_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P6IA01Accepted] is accepted
+    @ [support] [P6IA01Verification]
+    @ [support] [SupportDelta: P6-IA01]
+    @ [support] [RequirementDelta: P6-IA01]
+    @ [support] [FaultReview: P6-IA01]
+
+& [NextSliceGate: P6-IA02] is opened
+  + [opened_slice] is P6-IA02 projection state authority freshness and nonpromotion model refresh
+  + [accepted_dependency] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+  + [accepted_dependency_sha256] is 7D2E8FB1D3F52B94336F2F2F436997C1B6A17887C6B8CEB9187C55FB73E6FCBE
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is projection state, authority notice, freshness, nonpromotion, stop-state, generated projection boundary, carrier context, and no-live-effect model shape affects all downstream P6 surfaces
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P6-IA02 next unless user redirects or a new fault invalidates this review

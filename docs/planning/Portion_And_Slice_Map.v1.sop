@@ -73,9 +73,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p6_surface_implementation_activation_canonical] docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
 @ [p6_surface_implementation_activation_slices] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
 @ [p6_surface_implementation_activation_minting_review] docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
+@ [p6_ia01_output] docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+@ [p6_ia01_review] docs/reviews/P6_IA01_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P6_surface_implementation_activation_minted_ready_for_P6-IA01
+  + [map_state] is P6-IA01_accepted_ready_for_P6-IA02
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -274,6 +276,8 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
   + [support_record] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
   + [support_record] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
+  + [support_record] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+  + [support_record] is docs/reviews/P6_IA01_Completion_Review.v1.sop
   + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
@@ -571,12 +575,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6SurfaceImplementationActivationBoundary] is ready_for_execution
+& [CurrentReadyChunk: P6SurfaceImplementationModels] is ready_for_execution
   + [chunk_id] is P6-surface-implementation-activation
-  + [slice_id] is P6-IA01
-  + [chunk_name] is P6 surface implementation activation boundary and exact file inventory
-  + [authority_basis] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
-  + [authority_basis_sha256] is 84DF21598829D461F0E1752A209F534D1B37167A21A802C4E668D379C578D1BC
+  + [slice_id] is P6-IA02
+  + [chunk_name] is P6 projection state authority freshness and nonpromotion model refresh
+  + [authority_basis] is docs/reviews/P6_IA01_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 5662F4D04D7333F3EDCEC605D255CAA4BDA46E722DCBB24ED4684E64A3E83C72
   + [readiness_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
   + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
   + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
@@ -602,14 +606,20 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_p6_surface_implementation_activation_slices_sha256] is 472C79337B4CDAD168D502D2D18E6121FD3EEAD6FC733AADFDF5A6D3D29BBBD6
   + [accepted_p6_surface_implementation_activation_minting_review] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
   + [accepted_p6_surface_implementation_activation_minting_review_sha256] is 84DF21598829D461F0E1752A209F534D1B37167A21A802C4E668D379C578D1BC
-  + [expected_current_output] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
-  + [next_candidate_slice_family] is P6_surface_projection_implementation_activation_boundary
+  + [accepted_p6_surface_implementation_activation_boundary] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
+  + [accepted_p6_surface_implementation_activation_boundary_sha256] is 7D2E8FB1D3F52B94336F2F2F436997C1B6A17887C6B8CEB9187C55FB73E6FCBE
+  + [accepted_p6_surface_implementation_activation_boundary_review] is docs/reviews/P6_IA01_Completion_Review.v1.sop
+  + [accepted_p6_surface_implementation_activation_boundary_review_sha256] is 5662F4D04D7333F3EDCEC605D255CAA4BDA46E722DCBB24ED4684E64A3E83C72
+  + [expected_current_output] is src/langsop/surfaces_p6/__init__.py
+  + [expected_current_output] is src/langsop/surfaces_p6/envelope.py
+  + [expected_current_output] is src/langsop/surfaces_p6/nonpromotion.py
+  + [next_candidate_slice_family] is P6_surface_projection_state_authority_freshness_and_nonpromotion_model_refresh
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is activation boundary affects projection authority, surface mutation boundaries, generated projection roots, adapter boundaries, UI boundaries, dispatch boundaries, operations boundaries, and live-control gates
+  + [model_route_reason] is projection state, authority notice, freshness, nonpromotion, stop-state, carrier context, generated projection boundary, and no-live-effect model shape affects all downstream P6 surfaces
 
   = must: preserve P5 runtime implementation evidence as readiness support, not executable adapter authority
-  = must: execute P6-IA01 before P6 implementation files, generated projections, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
+  = must: execute P6-IA02 only inside src/langsop/surfaces_p6/__init__.py, src/langsop/surfaces_p6/envelope.py, and src/langsop/surfaces_p6/nonpromotion.py before generated projections, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence

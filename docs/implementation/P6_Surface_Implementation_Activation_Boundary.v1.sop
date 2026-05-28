@@ -1,0 +1,272 @@
+Subject: P6 Surface Implementation Activation Boundary V1
+Date: 2026-05-27
+Activation Boundary UUID: d8da8116-8f73-4120-81b0-9265027d824a
+
+@ [activation_slice_surface] docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_P6_Surface_Implementation_Activation.canonical.sop
+@ [p6_authority_notice_contract] docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+@ [p6_multi_surface_contract] docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+@ [p6_inbound_action_contract] docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+@ [p6_fixture_plan] docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+@ [p6_dependency_deferral] docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+@ [p5_runtime_implementation_proof_pack] docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+
+& [P6SurfaceImplementationActivationBoundaryV1] is the P6-IA01 activation boundary for future bounded P6 surface implementation work
+  + [activation_boundary_id] is p6-surface-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is d8da8116-8f73-4120-81b0-9265027d824a
+  + [slice_id] is P6-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [implementation_scope] is activation boundary and exact file inventory only
+
+  = must: confirm future surface implementation module inventory, accepted fixture source paths, expected projection ledger paths, proof ledger paths, generated projection roots, dependency boundary, adapter boundary, transport boundary, UI boundary, Langflow boundary, dispatch boundary, operations boundary, live-control deferral boundary, command plan, and proof gates
+  = must: preserve P6 authority notice, freshness, nonpromotion, stop-state, multi-surface carrier, inbound action classification, no-assignment, no-dispatch, no-operations-control, and no-live-effect semantics without creating implementation code in this slice
+  = must: keep the accepted IR5 surface prototype in src/langsop/surfaces as prior implementation evidence rather than rewriting it for P6
+  - never: create surface implementation code, generated projections, proof runner code, tests, dependency changes, package metadata changes, adapters, transports, UI, Langflow exports, assignment records, dispatch records, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control in this slice
+
+& [ConfirmedSurfaceAuthorityAndContractBasisInventory: P6SurfaceImplementation] is the accepted authority and contract basis for future P6 surface implementation slices
+  + [accepted_contract] is docs/surfaces/P6_Authority_Notice_Freshness_And_Nonpromotion_Rendering_Contract.v1.sop
+  + [accepted_contract] is docs/surfaces/P6_Multi_Surface_Projection_Envelope_And_Surface_Specific_Boundary_Contract.v1.sop
+  + [accepted_contract] is docs/surfaces/P6_Inbound_Action_Classification_And_Surface_Mutation_Boundary_Contract.v1.sop
+  + [accepted_contract] is docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+  + [accepted_contract] is docs/decisions/P6_Surface_Adapter_Langflow_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+  + [accepted_fixture_material_basis] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [accepted_runtime_basis] is docs/planning/P5_Runtime_Implementation_Proof_Pack.v1.sop
+  + [authority_class] is SOP_source_authority
+  + [authority_class] is canonical_specification_authority
+  + [authority_class] is accepted_surface_contract_authority
+  + [authority_class] is accepted_fixture_material_evidence
+  + [authority_class] is accepted_runtime_implementation_evidence
+  + [authority_class] is generated_projection_evidence
+  + [authority_class] is carrier_context
+  + [authority_class] is inbound_action_request_evidence
+  + [authority_class] is human_handoff_display_evidence
+
+  = must: require future surface outputs to cite accepted authority and contract basis refs
+  = must: keep generated projections, carrier context, inbound action packets, graph checkpoints, dry-run displays, and human handoff displays non-authoritative unless a separate accepted source authority elevates the class
+  = must: route hidden authority, stale projection basis, unsupported carrier capability, ambiguous action intent, dispatch-like request, operation-like request, or live-control-adjacent request to refusal, interrupt, or completion review rather than silent continuation
+
+& [ConfirmedSurfaceImplementationFileInventory: P6SurfaceImplementation] is the maximum P6 surface code and test inventory for first-pass P6 implementation activation
+  + [future_surface_code_file] is src/langsop/surfaces_p6/__init__.py
+  + [future_surface_code_file] is src/langsop/surfaces_p6/envelope.py
+  + [future_surface_code_file] is src/langsop/surfaces_p6/surface_matrix.py
+  + [future_surface_code_file] is src/langsop/surfaces_p6/action_classifier.py
+  + [future_surface_code_file] is src/langsop/surfaces_p6/nonpromotion.py
+  + [future_surface_code_file] is src/langsop/surfaces_p6/generated_paths.py
+  + [future_surface_code_file] is src/langsop/surfaces_p6/fixture_runner.py
+  + [future_test_file] is tests/test_p6_surface_implementation_contracts.py
+
+  = must: require deeper reasoning review before adding P6 surface implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+  = must: keep first-pass P6 surface implementation pure, deterministic, in-process, and free of live transport, UI server, adapter, Langflow runtime, dispatch, operations-control, or live-control behavior
+  = must: keep existing IR5 surface projection behavior covered by current tests unless a later accepted rebake explicitly supersedes it
+
+& [ConfirmedP6ModelAndProjectionInventory: P6SurfaceImplementation] is the accepted model and projection inventory for future P6 implementation refresh
+  + [record_model] is P6_authority_notice_rendering_envelope
+  + [record_model_basis] is P6AuthorityNoticeRenderingEnvelope
+  + [record_model] is P6_freshness_lineage_state
+  + [record_model_basis] is P6FreshnessAndLineageRenderingContract
+  + [record_model] is P6_nonpromotion_notice
+  + [record_model_basis] is P6CheckpointAndGeneratedProjectionNonpromotionRenderingRule
+  + [record_model] is P6_stop_state_handoff_context
+  + [record_model_basis] is P6StopStateAndHandoffRenderingContract
+  + [record_model] is P6_common_projection_envelope
+  + [record_model_basis] is P6CommonProjectionEnvelope
+  + [record_model] is P6_surface_family_boundary
+  + [record_model_basis] is P6ManagerWorkerSurfaceBoundarySet, P6NarrativeDebugSurfaceBoundarySet, P6ConversationCarrierSurfaceBoundarySet, and P6LangflowSurfaceBoundarySet
+  + [record_model] is P6_multi_surface_divergence
+  + [record_model_basis] is P6MultiSurfaceDivergenceAndCapabilityRule
+  + [record_model] is P6_inbound_action_classification
+  + [record_model_basis] is P6InboundActionClassificationEnvelope and P6InboundActionKindMatrix
+  + [record_model] is P6_surface_mutation_boundary
+  + [record_model_basis] is P6SurfaceMutationBoundaryMatrix and P6AuthoritySensitiveRouteMatrix
+
+  = must: require explicit source authority refs, source authority hash refs when available, lineage edges, authority notice, freshness state, nonpromotion notices, forbidden effects, required routes, no-assignment notice, no-dispatch notice, no-operations-control notice, and no-live-effect notice on future P6 projection outputs
+  = must: classify ready, blocked, stale, faulted, interrupted, contested, pending_review, unsupported_scope, refused, and generated_projection_only states without hidden writes
+  = must: preserve null and not_applicable values explicitly when assignment, dispatch, operations-control, live-control, adapter, transport, UI, Langflow, or credential fields do not apply
+
+& [ConfirmedP6FixtureAndExpectedProjectionInventory: P6SurfaceImplementation] is the accepted fixture and expected ledger inventory for P6 implementation proof
+  + [fixture_source_root] is tests/fixtures/sop/p6_surface_projection/
+  + [expected_projection_root] is tests/fixtures/expected/p6_surface_projection/
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/manager_authority_notice_projection.sop
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/stale_surface_projection.sop
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/inbound_action_mutation_refusal.sop
+  + [fixture_source_file] is tests/fixtures/sop/p6_surface_projection/generated_projection_non_authority.sop
+  + [expected_projection_file] is tests/fixtures/expected/p6_surface_projection/authority_projection_expected.sop
+  + [expected_projection_file] is tests/fixtures/expected/p6_surface_projection/nonpromotion_and_action_refusal_expected.sop
+  + [planning_fixture_family] is docs/fixtures/P6_Projection_Fixture_Snapshot_Plan_And_Generated_Projection_Nonpromotion_Boundary.v1.sop
+  + [materialized_fixture_scope] is accepted_P8_fixture_material_subset
+  + [proof_ledger_root] is docs/proofs/p6_surface_implementation/
+  + [future_proof_ledger_file] is docs/proofs/p6_surface_implementation/P6_Surface_Source_File_Inventory_Ledger.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p6_surface_implementation/P6_Surface_Expected_Projection_Ledger_Index.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p6_surface_implementation/P6_Surface_Generated_Projection_Output_Index.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p6_surface_implementation/P6_Surface_No_Dispatch_Operations_And_No_Live_Effect_Ledger.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p6_surface_implementation/P6_Surface_Validation_Result_Ledger.v1.sop
+
+  = must: read fixture source and expected projection ledgers only from accepted roots during future proof work
+  = must: treat expected projection ledgers and proof ledgers as reviewable evidence rather than canonical source authority
+  = must: require hashes for accepted fixture sources, expected projections, generated projections, validation commands, no-dispatch evidence, no-operations-control evidence, and no-live-effect evidence before P6-IA07 completion
+  = should: require a later rebake before expanding from the accepted P8 four-case materialized fixture subset to the full P6 twenty-case planning family
+
+& [ConfirmedGeneratedProjectionBoundary: P6SurfaceImplementation] is the generated projection boundary for future P6 fixture and proof runs
+  + [generated_projection_root] is tests/fixtures/generated/p6_surface_projection/
+  + [generated_projection_root] is tests/fixtures/generated/p6_surface_projection/projections/
+  + [generated_projection_root] is tests/fixtures/generated/p6_surface_projection/reports/
+  + [generated_projection_root] is tests/fixtures/generated/p6_surface_implementation/proof_results/
+  + [generated_projection_root] is tests/fixtures/generated/p6_surface_implementation/reports/
+  + [generated_projection_root] is .langsop/projections/p6_surface_projection/
+  + [generated_projection_root] is .langsop/reports/p6_surface_projection/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [ignored_generated_path] is .langsop/
+  + [generated_projection_status] is disposable_evidence_only
+  + [source_authority_status] is false
+  + [assignment_authority_status] is false
+  + [dispatch_authority_status] is false
+  + [operations_control_authority_status] is false
+  + [live_control_authority_status] is false
+
+  = must: refuse generated writes outside accepted generated projection roots during future proof runner execution
+  = must: refuse generated writes to docs/source/, docs/canonical/, docs/slices/, docs/reviews/, docs/proofs/ except accepted proof-review outputs, src/, tests/fixtures/sop/, tests/fixtures/expected/, platform/, .git/, and platform/coordination/mailboxes/
+  = must: prove generated projection deletion and rebuild cannot erase source authority, fixture authority, expected evidence, proof ledgers, completion reviews, readiness gates, coordination records, operations records, or live-control gates
+  = must: reject generated projections, reports, manifests, carrier state, adapter state, terminal output, IRC events, Matrix events, web UI state, Langflow node state, graph checkpoints, dry-run output, human approval displays, packet candidates, or manager packets as source authority, assignment authority, dispatch authority, operations-control authority, or live-control authority
+
+& [ConfirmedDependencyBoundary: P6SurfaceImplementation] is the dependency boundary for the first P6 surface implementation activation pass
+  + [allowed_dependency_set] is Python standard library only through P6-IA05
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [Langflow_dependency_state] is gated_until_future_dependency_authorization
+  + [IRC_client_dependency_state] is gated_until_future_dependency_authorization
+  + [Matrix_client_dependency_state] is gated_until_future_dependency_authorization
+  + [web_UI_framework_state] is gated_until_future_dependency_authorization
+  + [browser_runtime_or_server_state] is gated_until_future_dependency_authorization
+  + [MCP_client_or_server_surface_state] is gated_until_future_dependency_authorization
+  + [machine_control_library_state] is gated_until_future_dependency_authorization
+  + [GPU_management_library_state] is gated_until_future_dependency_authorization
+  + [local_model_runtime_client_state] is gated_until_future_dependency_authorization
+  + [job_queue_client_state] is gated_until_future_dependency_authorization
+  + [network_or_firewall_library_state] is gated_until_future_dependency_authorization
+
+  = must: require P6-IA06 or a later dependency-authorizing slice before adding package dependencies, lockfiles, adapter packages, UI frameworks, Langflow packages, IRC clients, Matrix clients, web servers, browser runtimes, MCP integrations, watcher libraries, job queue clients, machine-management libraries, GPU libraries, model runtime clients, or network libraries
+  = must: keep first-pass P6 implementation clearly marked as deterministic fixture evaluation and projection evidence, not a live adapter, transport, UI, dispatch layer, operations controller, or machine-control integration
+
+& [ConfirmedAdapterTransportUIDispatchOperationsAndLiveControlBoundary: P6SurfaceImplementation] is the adapter, transport, UI, dispatch, operations, and live-control boundary for first-pass P6 implementation
+  + [adapter_status] is none
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [Langflow_export_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [MCP_client_or_server_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only_after_test_slice_opens
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve surface projection context, inbound action context, carrier context, generated projection context, checkpoint context, dry-run context, and human approval context as traceable evidence without granting authority
+  = must: refuse future implementation that opens live transports, UI surfaces, sockets, web servers, Langflow runtime/export, MCP connections, IRC connections, Matrix connections, assignment, dispatch, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, operations control, or live machine control without separate accepted authority
+
+& [ConfirmedCommandPlan: P6SurfaceImplementation] is the command and verification plan for future implementation slices
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test_after_creation] is python -m unittest tests.test_p6_surface_implementation_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p5_runtime_implementation_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_projection_review] is prove generated projections and reports are ignored, disposable, reproducible, and non-authoritative
+  + [no_assignment_review] is prove projection outputs remain display, request, handoff, or refusal evidence, not assignment effects
+  + [no_dispatch_review] is prove projection outputs remain display, request, handoff, or refusal evidence, not dispatch effects
+  + [no_operations_control_review] is prove projection outputs do not operate commands, processes, GPUs, model runtimes, jobs, credentials, network state, platform mailboxes, or destructive filesystem targets
+  + [no_live_effect_review] is prove source docs, canonical specs, fixture sources, expected ledgers, proof ledgers, coordination records, operations records, and live machine state are not mutated by P6 proof code or tests
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted P6 contract tests once tests.test_p6_surface_implementation_contracts exists
+
+& [ImplementationSliceProofGate: P6SurfaceImplementation] is the proof gate opened by this activation boundary
+  + [P6-IA02_opened_after_review] is projection state authority freshness and nonpromotion model refresh
+  + [P6-IA02_model_route] is requires deeper reasoning
+  + [P6-IA02_scope] is src/langsop/surfaces_p6/__init__.py, src/langsop/surfaces_p6/envelope.py, and src/langsop/surfaces_p6/nonpromotion.py only
+  + [P6-IA03_scope] is src/langsop/surfaces_p6/surface_matrix.py and src/langsop/surfaces_p6/action_classifier.py only after P6-IA02 acceptance
+  + [P6-IA04_scope] is docs/implementation/P6_Generated_Projection_Path_Policy_And_Fixture_Runner_Contract.v1.sop plus src/langsop/surfaces_p6/generated_paths.py and src/langsop/surfaces_p6/fixture_runner.py only after P6-IA03 acceptance
+  + [surface_code_refresh_authorized_after_P6-IA01] is true_for_P6-IA02_only
+  + [generated_projection_creation_authorized_after_P6-IA01] is false
+  + [proof_ledger_creation_authorized_after_P6-IA01] is false
+  + [test_file_creation_authorized_after_P6-IA01] is false
+  + [dependency_installation_authorized_after_P6-IA01] is false
+  + [package_metadata_mutation_authorized_after_P6-IA01] is false
+  + [adapter_implementation_authorized_after_P6-IA01] is false
+  + [transport_implementation_authorized_after_P6-IA01] is false
+  + [UI_implementation_authorized_after_P6-IA01] is false
+  + [Langflow_export_authorized_after_P6-IA01] is false
+  + [assignment_authorized_after_P6-IA01] is false
+  + [manager_dispatch_authorized_after_P6-IA01] is false
+  + [agent_dispatch_authorized_after_P6-IA01] is false
+  + [command_execution_authorized_after_P6-IA01] is validation_commands_only
+  + [process_control_authorized_after_P6-IA01] is false
+  + [GPU_control_authorized_after_P6-IA01] is false
+  + [model_runtime_control_authorized_after_P6-IA01] is false
+  + [job_dispatch_authorized_after_P6-IA01] is false
+  + [credential_access_authorized_after_P6-IA01] is false
+  + [network_mutation_authorized_after_P6-IA01] is false
+  + [destructive_filesystem_action_authorized_after_P6-IA01] is false
+  + [operations_control_authorized_after_P6-IA01] is false
+  + [live_machine_control_authorized_after_P6-IA01] is false
+
+  = must: open only P6-IA02 after this boundary is accepted
+  = must: keep generated projections, proof ledgers, tests, dependency changes, adapters, transports, UI, Langflow exports, assignment, dispatch, operations control, and live machine control gated until their specific slices open
+
+& [P6IA01CoverageReview] is the coverage checklist for P6-IA01
+  + [confirmed_authority_and_contract_basis_inventory_present] is ConfirmedSurfaceAuthorityAndContractBasisInventory: P6SurfaceImplementation
+  + [confirmed_surface_implementation_file_inventory_present] is ConfirmedSurfaceImplementationFileInventory: P6SurfaceImplementation
+  + [confirmed_model_and_projection_inventory_present] is ConfirmedP6ModelAndProjectionInventory: P6SurfaceImplementation
+  + [confirmed_fixture_and_expected_projection_inventory_present] is ConfirmedP6FixtureAndExpectedProjectionInventory: P6SurfaceImplementation
+  + [confirmed_generated_projection_boundary_present] is ConfirmedGeneratedProjectionBoundary: P6SurfaceImplementation
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: P6SurfaceImplementation
+  + [confirmed_adapter_transport_UI_dispatch_operations_and_live_control_boundary_present] is ConfirmedAdapterTransportUIDispatchOperationsAndLiveControlBoundary: P6SurfaceImplementation
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: P6SurfaceImplementation
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: P6SurfaceImplementation
+  + [surface_code_created] is false
+  + [generated_projection_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [Langflow_export_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept P6-IA01 only when all checklist items are satisfied
+  = must: open P6-IA02 only after this activation boundary is reviewed in a completion review
