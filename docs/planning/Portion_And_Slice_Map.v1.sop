@@ -75,9 +75,13 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p6_surface_implementation_activation_minting_review] docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
 @ [p6_ia01_output] docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
 @ [p6_ia01_review] docs/reviews/P6_IA01_Completion_Review.v1.sop
+@ [p6_surface_p6_package] src/langsop/surfaces_p6/__init__.py
+@ [p6_surface_envelope_model] src/langsop/surfaces_p6/envelope.py
+@ [p6_surface_nonpromotion_model] src/langsop/surfaces_p6/nonpromotion.py
+@ [p6_ia02_review] docs/reviews/P6_IA02_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is P6-IA01_accepted_ready_for_P6-IA02
+  + [map_state] is P6-IA02_accepted_ready_for_P6-IA03
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -278,6 +282,10 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [support_record] is docs/reviews/P6_Surface_Implementation_Activation_Minting_Review.v1.sop
   + [support_record] is docs/implementation/P6_Surface_Implementation_Activation_Boundary.v1.sop
   + [support_record] is docs/reviews/P6_IA01_Completion_Review.v1.sop
+  + [support_record] is src/langsop/surfaces_p6/__init__.py
+  + [support_record] is src/langsop/surfaces_p6/envelope.py
+  + [support_record] is src/langsop/surfaces_p6/nonpromotion.py
+  + [support_record] is docs/reviews/P6_IA02_Completion_Review.v1.sop
   + [support_gap] is projection fixtures not yet generated and remain gated until P6 final slices plus implementation activation accept them
   + [proof_route] is projection snapshots with authority_notice, freshness_rule, and blocked/stale visibility
   + [slice_family] is manager-worker-debug-surface-projections
@@ -575,12 +583,12 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P6SurfaceImplementationModels] is ready_for_execution
+& [CurrentReadyChunk: P6SurfaceImplementationProjectorsAndActions] is ready_for_execution
   + [chunk_id] is P6-surface-implementation-activation
-  + [slice_id] is P6-IA02
-  + [chunk_name] is P6 projection state authority freshness and nonpromotion model refresh
-  + [authority_basis] is docs/reviews/P6_IA01_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 5662F4D04D7333F3EDCEC605D255CAA4BDA46E722DCBB24ED4684E64A3E83C72
+  + [slice_id] is P6-IA03
+  + [chunk_name] is P6 multi-surface projector and inbound action model refresh
+  + [authority_basis] is docs/reviews/P6_IA02_Completion_Review.v1.sop
+  + [authority_basis_sha256] is D5DFA6126A4AB7416BC8E05EAF20B847E3B78F34DE714BABBA0FDBEC2B8C0296
   + [readiness_surface] is docs/slices/P6_Surface_Implementation_Activation_Slices.v1.sop
   + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
   + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
@@ -610,16 +618,23 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   + [accepted_p6_surface_implementation_activation_boundary_sha256] is 7D2E8FB1D3F52B94336F2F2F436997C1B6A17887C6B8CEB9187C55FB73E6FCBE
   + [accepted_p6_surface_implementation_activation_boundary_review] is docs/reviews/P6_IA01_Completion_Review.v1.sop
   + [accepted_p6_surface_implementation_activation_boundary_review_sha256] is 5662F4D04D7333F3EDCEC605D255CAA4BDA46E722DCBB24ED4684E64A3E83C72
-  + [expected_current_output] is src/langsop/surfaces_p6/__init__.py
-  + [expected_current_output] is src/langsop/surfaces_p6/envelope.py
-  + [expected_current_output] is src/langsop/surfaces_p6/nonpromotion.py
-  + [next_candidate_slice_family] is P6_surface_projection_state_authority_freshness_and_nonpromotion_model_refresh
+  + [accepted_surface_p6_package] is src/langsop/surfaces_p6/__init__.py
+  + [accepted_surface_p6_package_sha256] is 35599A205D135862B97341A091AC44C4805AAE267FE4962EFF45ACA015047CE5
+  + [accepted_surface_envelope_model] is src/langsop/surfaces_p6/envelope.py
+  + [accepted_surface_envelope_model_sha256] is BEFA514C5B0C632F26F70845D617665757007ADE99852BD0BA4D4B8A67CCF543
+  + [accepted_surface_nonpromotion_model] is src/langsop/surfaces_p6/nonpromotion.py
+  + [accepted_surface_nonpromotion_model_sha256] is E75E13B52A9301495DDF2E2B01E11B3695600B81947A84591ADD0F248039FB45
+  + [accepted_p6_surface_model_refresh_review] is docs/reviews/P6_IA02_Completion_Review.v1.sop
+  + [accepted_p6_surface_model_refresh_review_sha256] is D5DFA6126A4AB7416BC8E05EAF20B847E3B78F34DE714BABBA0FDBEC2B8C0296
+  + [expected_current_output] is src/langsop/surfaces_p6/surface_matrix.py
+  + [expected_current_output] is src/langsop/surfaces_p6/action_classifier.py
+  + [next_candidate_slice_family] is P6_multi_surface_projector_and_inbound_action_model_refresh
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is projection state, authority notice, freshness, nonpromotion, stop-state, carrier context, generated projection boundary, and no-live-effect model shape affects all downstream P6 surfaces
+  + [model_route_reason] is multi-surface projection and inbound action classification shape determines how carrier context, authority-sensitive requests, dispatch-like requests, and live-control-like requests are rendered or refused
 
   = must: preserve P5 runtime implementation evidence as readiness support, not executable adapter authority
-  = must: execute P6-IA02 only inside src/langsop/surfaces_p6/__init__.py, src/langsop/surfaces_p6/envelope.py, and src/langsop/surfaces_p6/nonpromotion.py before generated projections, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
+  = must: execute P6-IA03 only inside src/langsop/surfaces_p6/surface_matrix.py and src/langsop/surfaces_p6/action_classifier.py before generated projections, proof runner code, dependency changes, package metadata changes, adapters, transports, UI, Langflow export, assignment, dispatch, operations control, or live machine control
   = must: keep dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated
 
 & [InitialSliceQueue] is the first clean subdivision sequence
