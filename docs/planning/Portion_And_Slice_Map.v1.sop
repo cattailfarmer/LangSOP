@@ -55,9 +55,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p5_runtime_activation_canonical] docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
 @ [p5_runtime_activation_slices] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
 @ [p5_runtime_activation_minting_review] docs/reviews/P5_Runtime_Implementation_Activation_Minting_Review.v1.sop
+@ [p5_ia01_output] docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+@ [p5_ia01_review] docs/reviews/P5_IA01_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P5-IA01_runtime_implementation_activation_boundary_and_exact_file_inventory
+  + [map_state] is ready_for_P5-IA02_graph_state_checkpoint_transition_and_interrupt_model_refresh
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -548,22 +550,25 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P5-IA01-RuntimeImplementationActivationBoundaryAndExactFileInventory] is ready_for_execution
+& [CurrentReadyChunk: P5-IA02-GraphStateCheckpointTransitionAndInterruptModelRefresh] is ready_for_execution
   + [chunk_id] is P5-runtime-implementation-activation
-  + [slice_id] is P5-IA01
-  + [chunk_name] is runtime implementation activation boundary and exact file inventory
-  + [authority_basis] is docs/reviews/P5_Runtime_Implementation_Activation_Minting_Review.v1.sop
-  + [authority_basis_sha256] is FE83288311704AE061BB809C9F23EC28277B83026B9C077CCE7E73E4AA50EA5D
+  + [slice_id] is P5-IA02
+  + [chunk_name] is graph state checkpoint transition and interrupt model refresh
+  + [authority_basis] is docs/reviews/P5_IA01_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 42B2BF3C9E4A617629CA08D6D87A18B859DF4B2A3BE02D52BA781781D8D89BC0
   + [readiness_surface] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
-  + [expected_output] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
-  + [completion_review_output] is docs/reviews/P5_IA01_Completion_Review.v1.sop
+  + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+  + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
+  + [expected_output] is bounded runtime model files or model contract refresh files at paths accepted by P5-IA01
+  + [completion_review_output] is docs/reviews/P5_IA02_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is activation boundary, exact module inventory, checkpoint persistence, generated trace roots, proof runner effects, dependency decisions, adapter boundaries, dispatch boundaries, operations boundaries, and live-control boundaries control future implementation authority
+  + [model_route_reason] is graph state, checkpoint, transition, interrupt, resume, and rebake implementation shape affects authority, replay, generated trace semantics, and future proof authority
 
-  = must: define exact runtime module inventory, fixture paths, expected ledgers, generated trace roots, dependency boundary, adapter boundary, dispatch boundary, operations boundary, live-control boundary, command plan, and proof gates without creating runtime code
-  = must: avoid direct runtime code, dependency changes, package metadata changes, adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P5-IA02 through P5-IA06 gated until P5-IA01 completion review accepts
+  = must: refresh only graph state, checkpoint, transition, interrupt, resume, rebake, and runtime proof model behavior inside the P5-IA01 accepted runtime implementation file inventory
+  = must: preserve existing IR4 runtime graph test behavior unless a future accepted rebake explicitly supersedes it
+  = must: avoid generated trace creation, proof ledger creation, tests, dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
+  = must: keep P5-IA03 through P5-IA06 gated until P5-IA02 completion review accepts
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

@@ -1,0 +1,266 @@
+Subject: P5 Runtime Implementation Activation Boundary V1
+Date: 2026-05-27
+Activation Boundary UUID: ab81cde0-6a55-407c-9063-0025898d345f
+
+@ [activation_slice_surface] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [canonical_specification] docs/canonical/LangSOP_P5_Runtime_Implementation_Activation.canonical.sop
+@ [p5_runtime_obligation_inventory] docs/runtime/P5_Boundary_Import_And_Runtime_Obligation_Inventory.v1.sop
+@ [p5_graph_state_contract] docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
+@ [p5_transition_contract] docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+@ [p5_interrupt_contract] docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+@ [p5_fixture_plan] docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
+@ [p5_dependency_deferral] docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+@ [p8_fixture_material_proof_pack] docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+
+& [P5RuntimeImplementationActivationBoundaryV1] is the P5-IA01 activation boundary for future bounded runtime implementation work
+  + [activation_boundary_id] is p5-runtime-implementation-activation-boundary-v1
+  + [activation_boundary_uuid] is ab81cde0-6a55-407c-9063-0025898d345f
+  + [slice_id] is P5-IA01
+  + [boundary_status] is accepted_by_completion_review_pending
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [implementation_scope] is activation boundary and exact file inventory only
+
+  = must: confirm future runtime module inventory, accepted fixture source paths, expected trace ledger paths, proof ledger paths, generated trace roots, dependency boundary, adapter boundary, dispatch boundary, operations boundary, live-control deferral boundary, command plan, and proof gates
+  = must: preserve graph checkpoint nonauthority, deterministic transition, SOP interrupt handoff, generated trace nonpromotion, no-assignment, no-dispatch, no-operations-control, and no-live-effect semantics without creating runtime code in this slice
+  = must: keep dependency installation, package metadata mutation, external LangGraph adapter work, transport, UI, assignment, dispatch, operations control, and live machine control gated until a later accepted slice explicitly opens a bounded path
+  - never: create runtime code, generated traces, proof runner code, tests, dependency changes, package metadata changes, adapters, transports, UI, assignment records, dispatch records, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, or live machine control in this slice
+
+& [ConfirmedRuntimeAuthorityAndContractBasisInventory: P5RuntimeImplementation] is the accepted authority and contract basis for future P5 runtime implementation slices
+  + [accepted_contract] is docs/runtime/P5_Boundary_Import_And_Runtime_Obligation_Inventory.v1.sop
+  + [accepted_contract] is docs/runtime/P5_Graph_Procedure_State_Envelope_And_Checkpoint_Nonauthority_Contract.v1.sop
+  + [accepted_contract] is docs/runtime/P5_Operator_Node_Mapping_And_Deterministic_Transition_Contract.v1.sop
+  + [accepted_contract] is docs/runtime/P5_SOP_Interrupt_Human_Judgment_Handoff_And_Rebake_Route_Contract.v1.sop
+  + [accepted_contract] is docs/fixtures/P5_Runtime_Proof_Trace_Fixture_Plan_And_No_Live_Effect_Execution_Boundary.v1.sop
+  + [accepted_contract] is docs/decisions/P5_LangGraph_Adapter_Dependency_Deferral_And_Implementation_Activation_Boundary.v1.sop
+  + [accepted_fixture_material_basis] is docs/planning/P8_Fixture_Material_Implementation_Proof_Pack.v1.sop
+  + [accepted_fixture_material_basis] is docs/planning/Post_P8_Fixture_Material_Implementation_Readiness_Surface.v1.sop
+  + [authority_class] is SOP_source_authority
+  + [authority_class] is canonical_specification_authority
+  + [authority_class] is kernel_record_authority
+  + [authority_class] is operator_contract_authority
+  + [authority_class] is proof_ledger_authority
+  + [authority_class] is graph_checkpoint_runtime_state
+  + [authority_class] is graph_transition_trace
+  + [authority_class] is generated_output_trace
+  + [authority_class] is human_judgment_handoff
+
+  = must: require future runtime outputs to cite accepted authority and contract basis refs
+  = must: keep graph checkpoint runtime state, graph transition traces, generated traces, and human handoff records non-authoritative unless a separate accepted source authority elevates the class
+  = must: route authority conflicts, ambiguous identity, contested authority, stale checkpoint basis, and repair-path ambiguity to SOP interrupt rather than silent continuation
+
+& [ConfirmedRuntimeImplementationFileInventory: P5RuntimeImplementation] is the maximum runtime code and test inventory for first-pass P5 runtime implementation activation
+  + [future_runtime_code_file] is src/langsop/runtime/__init__.py
+  + [future_runtime_code_file] is src/langsop/runtime/graph_state.py
+  + [future_runtime_code_file] is src/langsop/runtime/checkpoints.py
+  + [future_runtime_code_file] is src/langsop/runtime/graph_contracts.py
+  + [future_runtime_code_file] is src/langsop/runtime/interrupts.py
+  + [future_runtime_code_file] is src/langsop/runtime/graph_runner.py
+  + [future_runtime_code_file] is src/langsop/runtime/fixture_runner.py
+  + [future_runtime_code_file] is src/langsop/runtime/generated_paths.py
+  + [future_runtime_code_file] is src/langsop/runtime/p5_models.py
+  + [future_test_file] is tests/test_p5_runtime_implementation_contracts.py
+
+  = must: require deeper reasoning review before adding runtime implementation files outside this inventory
+  = must: keep code and test creation gated until the specific implementation activation slice opens
+  = must: keep first-pass runtime implementation pure, deterministic, in-process, and free of external LangGraph dependency installation
+  = must: keep existing IR4 runtime graph behavior covered by current tests unless a later accepted rebake explicitly supersedes it
+
+& [ConfirmedRuntimeRecordModelInventory: P5RuntimeImplementation] is the accepted record model inventory for future P5 runtime model refresh
+  + [record_model] is graph_procedure_state
+  + [record_model_basis] is P5GraphProcedureStateRequiredFieldSet
+  + [record_model] is checkpoint_nonauthority_review
+  + [record_model_basis] is P5CheckpointNonauthorityRules
+  + [record_model] is checkpoint_freshness_resume_review
+  + [record_model_basis] is P5CheckpointFreshnessAndResumeContract
+  + [record_model] is operator_node_mapping
+  + [record_model_basis] is P5OperatorNodeMappingRequiredFieldSet
+  + [record_model] is deterministic_transition_record
+  + [record_model_basis] is P5DeterministicTransitionRecordRequiredFieldSet
+  + [record_model] is transition_result_edge_vocabulary
+  + [record_model_basis] is P5TransitionResultAndEdgeVocabulary
+  + [record_model] is SOP_interrupt_human_judgment_handoff
+  + [record_model_basis] is P5HumanJudgmentHandoffRequiredFieldSet
+  + [record_model] is rebake_route
+  + [record_model_basis] is P5RebakeRouteRequiredFieldSet
+  + [record_model] is expected_runtime_trace
+  + [record_model_basis] is P5ExpectedTraceRecordRequiredFieldSet
+
+  = must: require explicit nonpromotion, no-assignment, no-dispatch, no-operations-control, and no-live-effect notices on future model outputs
+  = must: classify pass, fail, blocked, stale, contradicted, interrupted, faulted, rebake_required, and not_run states without hidden writes
+  = must: preserve null and not_applicable values explicitly when refusal, interrupt, stale, fault, rebake, assignment, dispatch, operations-control, or live-control fields do not apply
+
+& [ConfirmedFixtureAndExpectedTraceInventory: P5RuntimeImplementation] is the accepted fixture and expected ledger inventory for runtime implementation proof
+  + [fixture_source_root] is tests/fixtures/sop/p5_runtime_proof/
+  + [expected_ledger_root] is tests/fixtures/expected/p5_runtime_proof/
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/valid_runtime_transition_trace.sop
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/checkpoint_non_authority.sop
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/sop_interrupt_handoff.sop
+  + [fixture_source_file] is tests/fixtures/sop/p5_runtime_proof/stale_checkpoint_rebake_required.sop
+  + [expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/runtime_transition_expected.sop
+  + [expected_ledger_file] is tests/fixtures/expected/p5_runtime_proof/interrupt_and_checkpoint_expected.sop
+  + [proof_ledger_root] is docs/proofs/p5_runtime_implementation/
+  + [future_proof_ledger_file] is docs/proofs/p5_runtime_implementation/P5_Runtime_Source_File_Inventory_Ledger.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p5_runtime_implementation/P5_Runtime_Expected_Trace_Ledger_Index.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p5_runtime_implementation/P5_Runtime_Generated_Trace_Output_Index.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p5_runtime_implementation/P5_Runtime_No_Dispatch_Operations_And_No_Live_Effect_Ledger.v1.sop
+  + [future_proof_ledger_file] is docs/proofs/p5_runtime_implementation/P5_Runtime_Validation_Result_Ledger.v1.sop
+
+  = must: read fixture source and expected ledgers only from accepted roots during future proof work
+  = must: treat expected ledgers and proof ledgers as reviewable evidence rather than canonical source authority
+  = must: require hashes for accepted fixture sources, expected ledgers, generated traces, validation commands, no-dispatch evidence, no-operations-control evidence, and no-live-effect evidence before P5-IA06 completion
+
+& [ConfirmedGeneratedTraceBoundary: P5RuntimeImplementation] is the generated trace boundary for future runtime fixture and proof runs
+  + [generated_trace_root] is tests/fixtures/generated/p5_runtime_proof/checkpoints/
+  + [generated_trace_root] is tests/fixtures/generated/p5_runtime_proof/traces/
+  + [generated_trace_root] is tests/fixtures/generated/p5_runtime_proof/reports/
+  + [generated_trace_root] is tests/fixtures/generated/p5_runtime_implementation/proof_results/
+  + [generated_trace_root] is tests/fixtures/generated/p5_runtime_implementation/reports/
+  + [generated_trace_root] is .langsop/checkpoints/p5_runtime_proof/
+  + [generated_trace_root] is .langsop/traces/p5_runtime_proof/
+  + [generated_trace_root] is .langsop/reports/p5_runtime_proof/
+  + [ignored_generated_path] is tests/fixtures/generated/
+  + [ignored_generated_path] is .langsop/
+  + [generated_trace_status] is disposable_evidence_only
+  + [source_authority_status] is false
+  + [assignment_authority_status] is false
+  + [dispatch_authority_status] is false
+  + [operations_control_authority_status] is false
+  + [live_control_authority_status] is false
+
+  = must: refuse generated writes outside accepted generated trace roots during future proof runner execution
+  = must: refuse generated writes to docs/source/, docs/canonical/, docs/slices/, docs/reviews/, docs/proofs/ except accepted proof-review outputs, src/, tests/fixtures/sop/, tests/fixtures/expected/, platform/, .git/, and platform/coordination/mailboxes/
+  = must: prove generated trace deletion and rebuild cannot erase source authority, fixture authority, expected evidence, proof ledgers, completion reviews, or readiness gates
+  = must: reject graph checkpoints, generated traces, fixture success, reports, manifests, caches, packet candidates, approval displays, dry-run outputs, or manager packets as source authority, dispatch authority, operations-control authority, or live-control authority
+
+& [ConfirmedDependencyBoundary: P5RuntimeImplementation] is the dependency boundary for the first P5 runtime implementation activation pass
+  + [allowed_dependency_set] is Python standard library only through P5-IA04
+  + [allowed_stdlib] is dataclasses
+  + [allowed_stdlib] is enum
+  + [allowed_stdlib] is hashlib
+  + [allowed_stdlib] is json
+  + [allowed_stdlib] is pathlib
+  + [allowed_stdlib] is re
+  + [allowed_stdlib] is shutil
+  + [allowed_stdlib] is tempfile
+  + [allowed_stdlib] is typing
+  + [allowed_stdlib] is unittest
+  + [external_dependency_set] is empty
+  + [langgraph_runtime_dependency_state] is gated_until_future_dependency_authorization
+  + [langflow_dependency_state] is gated_until_future_dependency_authorization
+  + [transport_library_state] is gated_until_future_dependency_authorization
+  + [machine_control_library_state] is gated_until_future_dependency_authorization
+  + [GPU_management_library_state] is gated_until_future_dependency_authorization
+  + [local_model_runtime_client_state] is gated_until_future_dependency_authorization
+  + [job_queue_client_state] is gated_until_future_dependency_authorization
+  + [network_or_firewall_library_state] is gated_until_future_dependency_authorization
+
+  = must: require P5-IA05 or a later dependency-authorizing slice before adding package dependencies, lockfiles, imports from external LangGraph packages, UI frameworks, machine-management libraries, GPU libraries, model runtime clients, network libraries, watcher libraries, job queue clients, LangFlow integrations, or live-control integrations
+  = must: keep first-pass runtime implementation clearly marked as deterministic fixture evaluation and proof evidence, not a live LangGraph adapter, transport, dispatch layer, operations controller, or machine-control integration
+
+& [ConfirmedAdapterDispatchOperationsAndLiveControlBoundary: P5RuntimeImplementation] is the adapter, transport, UI, dispatch, operations, and live-control boundary for first-pass runtime implementation
+  + [adapter_status] is none
+  + [external_langgraph_adapter_authorized] is false
+  + [transport_implementation_authorized] is false
+  + [UI_implementation_authorized] is false
+  + [socket_or_network_listener_authorized] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only_after_test_slice_opens
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [persistent_operations_automation_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: preserve checkpoint context, generated trace context, interrupt context, human approval context, dry-run context, and manager packet context as traceable evidence without granting authority
+  = must: refuse future implementation that opens live transports, UI surfaces, assignment, dispatch, process control, GPU control, model runtime control, job dispatch, credential access, network mutation, operations control, or live machine control without separate accepted authority
+
+& [ConfirmedCommandPlan: P5RuntimeImplementation] is the command and verification plan for future implementation slices
+  + [baseline_compile_command] is python -m compileall -q src tests
+  + [baseline_test_command] is python -m unittest discover -s tests
+  + [targeted_contract_test_after_creation] is python -m unittest tests.test_p5_runtime_implementation_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_p8_fixture_material_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir8_integrated_manager_contracts
+  + [targeted_existing_contract_test] is python -m unittest tests.test_ir7_operations_dry_run_contracts
+  + [diff_hygiene_command] is git diff --check
+  + [generated_trace_review] is prove generated checkpoints, traces, reports, and proof results are ignored, disposable, reproducible, and non-authoritative
+  + [no_assignment_review] is prove runtime outputs remain evidence and handoff records, not assignment effects
+  + [no_dispatch_review] is prove runtime outputs remain evidence and handoff records, not dispatch effects
+  + [no_operations_control_review] is prove runtime outputs do not operate processes, GPUs, model runtimes, jobs, credentials, network state, platform mailboxes, or destructive filesystem targets
+  + [no_live_effect_review] is prove source docs, canonical specs, fixture source, expected ledgers, proof ledgers, operations records, and live machine state are not mutated by runtime proof code or tests
+
+  = must: run baseline tests and diff hygiene after every future slice
+  = should: run compile check after code slices begin
+  = must: run targeted P5 contract tests once tests.test_p5_runtime_implementation_contracts exists
+
+& [ImplementationSliceProofGate: P5RuntimeImplementation] is the proof gate opened by this activation boundary
+  + [P5-IA02_opened_after_review] is graph state checkpoint transition and interrupt model refresh
+  + [P5-IA02_model_route] is requires deeper reasoning
+  + [P5-IA02_scope] is runtime model and contract refresh files only inside ConfirmedRuntimeImplementationFileInventory
+  + [runtime_code_refresh_authorized_after_P5-IA01] is true_for_P5-IA02_only
+  + [generated_trace_creation_authorized_after_P5-IA01] is false
+  + [proof_ledger_creation_authorized_after_P5-IA01] is false
+  + [test_file_creation_authorized_after_P5-IA01] is false
+  + [dependency_installation_authorized_after_P5-IA01] is false
+  + [package_metadata_mutation_authorized_after_P5-IA01] is false
+  + [external_langgraph_adapter_authorized_after_P5-IA01] is false
+  + [transport_implementation_authorized_after_P5-IA01] is false
+  + [UI_implementation_authorized_after_P5-IA01] is false
+  + [assignment_authorized_after_P5-IA01] is false
+  + [manager_dispatch_authorized_after_P5-IA01] is false
+  + [agent_dispatch_authorized_after_P5-IA01] is false
+  + [command_execution_authorized_after_P5-IA01] is validation_commands_only
+  + [process_control_authorized_after_P5-IA01] is false
+  + [GPU_control_authorized_after_P5-IA01] is false
+  + [model_runtime_control_authorized_after_P5-IA01] is false
+  + [job_dispatch_authorized_after_P5-IA01] is false
+  + [credential_access_authorized_after_P5-IA01] is false
+  + [network_mutation_authorized_after_P5-IA01] is false
+  + [destructive_filesystem_action_authorized_after_P5-IA01] is false
+  + [operations_control_authorized_after_P5-IA01] is false
+  + [live_machine_control_authorized_after_P5-IA01] is false
+
+  = must: open only P5-IA02 after this boundary is accepted
+  = must: keep generated traces, proof ledgers, tests, dependency changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, and live machine control gated until their specific slices open
+
+& [P5IA01CoverageReview] is the coverage checklist for P5-IA01
+  + [confirmed_authority_and_contract_basis_inventory_present] is ConfirmedRuntimeAuthorityAndContractBasisInventory: P5RuntimeImplementation
+  + [confirmed_runtime_implementation_file_inventory_present] is ConfirmedRuntimeImplementationFileInventory: P5RuntimeImplementation
+  + [confirmed_runtime_record_model_inventory_present] is ConfirmedRuntimeRecordModelInventory: P5RuntimeImplementation
+  + [confirmed_fixture_and_expected_trace_inventory_present] is ConfirmedFixtureAndExpectedTraceInventory: P5RuntimeImplementation
+  + [confirmed_generated_trace_boundary_present] is ConfirmedGeneratedTraceBoundary: P5RuntimeImplementation
+  + [confirmed_dependency_boundary_present] is ConfirmedDependencyBoundary: P5RuntimeImplementation
+  + [confirmed_adapter_dispatch_operations_and_live_control_boundary_present] is ConfirmedAdapterDispatchOperationsAndLiveControlBoundary: P5RuntimeImplementation
+  + [confirmed_command_plan_present] is ConfirmedCommandPlan: P5RuntimeImplementation
+  + [implementation_slice_proof_gate_present] is ImplementationSliceProofGate: P5RuntimeImplementation
+  + [runtime_code_created] is false
+  + [generated_trace_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  = must: accept P5-IA01 only when all checklist items are satisfied
+  = must: open P5-IA02 only after this activation boundary is reviewed in a completion review
