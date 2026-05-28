@@ -1,0 +1,126 @@
+Subject: P5 IA02 Completion Review V1
+Date: 2026-05-27
+Review UUID: a349470a-3f5b-4f83-aa3d-9ad86b4db4fc
+
+@ [activation_slice_surface] docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
+@ [activation_boundary] docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
+@ [p5_ia01_review] docs/reviews/P5_IA01_Completion_Review.v1.sop
+@ [completed_output] src/langsop/runtime/p5_models.py
+@ [completed_output] src/langsop/runtime/__init__.py
+
+& [CompletedWorkReview: P5-IA02] is the completed-work review for P5-IA02 graph state checkpoint transition and interrupt model refresh
+  + [completed_by] is Codex project-manager session
+  + [completed_at] is 2026-05-27
+  + [completed_slice] is P5-IA02
+  + [completed_output] is src/langsop/runtime/p5_models.py
+  + [completed_output_sha256] is 0BDC42950DC5045EDC4F8D47B5B09EADC3CE9DCC44FF4C9868549A00ACD1479C
+  + [completed_output] is src/langsop/runtime/__init__.py
+  + [completed_output_sha256] is 711EE017333BFF595C9C8FC40CD8EBAF6679E9BD59324B63B00199E19E610FE5
+  + [model_route_used] is requires deeper reasoning
+  + [model_route_depth] is deeper_reasoning_required
+  + [review_result] is accepted
+  + [closure_recommendation] is accept P5-IA02 and open P5-IA03
+  + [next_gate_result] is P5-IA03 may open
+  + [next_model_route] is requires deeper reasoning for generated trace path policy and fixture runner contract
+  + [next_model_route_depth] is deeper_reasoning_required
+
+  = must: treat this review as gate-opening evidence for P5-IA03 only
+  = must: rerun this review if p5_models.py, runtime package exports, P5-IA01 boundary, P5 runtime contracts, fixture material, or activation slice surface changes
+  = must: keep generated traces, proof ledgers, tests, dependency installation, package metadata mutation, external LangGraph adapters, transports, UI, assignment, dispatch, command execution beyond validation commands, process control, GPU control, model runtime control, credential access, network mutation, destructive filesystem action, operations control, and live machine control gated
+
+& [P5IA02Verification] is the verification result for P5-IA02
+  + [p5_runtime_model_module_present] is true
+  + [runtime_package_exports_present] is true
+  + [transition_state_vocabulary_present] is true
+  + [edge_kind_vocabulary_present] is true
+  + [checkpoint_nonpromotion_classification_present] is true
+  + [stale_checkpoint_rebake_classification_present] is true
+  + [SOP_interrupt_classification_present] is true
+  + [generated_trace_nonpromotion_classification_present] is true
+  + [no_assignment_notice_present] is true
+  + [no_dispatch_notice_present] is true
+  + [no_operations_control_notice_present] is true
+  + [no_live_effect_notice_present] is true
+  + [deterministic_transition_id_present] is true
+  + [generated_trace_created] is false
+  + [proof_ledger_created] is false
+  + [test_file_created] is false
+  + [dependency_installed] is false
+  + [package_metadata_mutated] is false
+  + [external_langgraph_adapter_implemented] is false
+  + [adapter_or_transport_implemented] is false
+  + [UI_implemented] is false
+  + [assignment_authorized] is false
+  + [manager_dispatch_authorized] is false
+  + [agent_dispatch_authorized] is false
+  + [command_execution_authorized] is validation_commands_only
+  + [process_control_authorized] is false
+  + [GPU_control_authorized] is false
+  + [model_runtime_control_authorized] is false
+  + [job_dispatch_authorized] is false
+  + [credential_access_authorized] is false
+  + [network_mutation_authorized] is false
+  + [destructive_filesystem_action_authorized] is false
+  + [operations_control_authorized] is false
+  + [live_machine_control_authorized] is false
+
+  ! [P5IA02VerificationSatisfied] is accepted
+    @ [support] src/langsop/runtime/p5_models.py
+    @ [support] src/langsop/runtime/__init__.py
+
+& [SupportDelta: P5-IA02] is the support delta produced by P5-IA02
+  + [new_support_record] is P5 now has pure runtime model refresh helpers for transition traces, graph checkpoints, SOP interrupts, stale checkpoint rebake, generated trace nonpromotion, no-assignment notices, no-dispatch notices, no-operations-control notices, no-live-effect notices, and deterministic transition evidence ids
+  + [new_support_record] is existing IR4 runtime graph behavior remains covered by the unchanged full test suite
+  + [new_support_record] is P5-IA03 may define generated trace path policy and fixture runner contract against accepted P5 runtime model refresh helpers and P5-IA01 generated trace roots
+  + [support_status] is accepted
+
+& [RequirementDelta: P5-IA02] is the requirement delta produced by P5-IA02
+  + [requirement_delta] is P5-IA03 must define generated trace path policy and fixture runner contract before P5-IA04 tests create or inspect generated traces
+  + [requirement_delta] is future P5 validation must cover transition_accepted, refused checkpoint, interrupted SOP handoff, rebake_required stale checkpoint, generated trace nonpromotion, no-dispatch, no-operations-control, and no-live-effect cases
+  + [requirement_delta] is runtime evidence remains non-authoritative and cannot promote checkpoints, traces, fixture success, reports, human handoff records, or manager packets to source, dispatch, operations-control, or live-control authority
+  + [requirement_delta] is no dependency installation, package metadata mutation, external LangGraph adapter, transport, UI, assignment, dispatch, operations control, or live machine control is authorized by P5-IA02
+
+& [FaultReview: P5-IA02] is the fault review for P5-IA02
+  + [source_overwrite_found] is false
+  + [accepted_boundary_mutation_found] is false
+  + [unexpected_file_created_found] is false
+  + [generated_trace_leak_found] is false
+  + [proof_ledger_file_leak_found] is false
+  + [test_file_leak_found] is false
+  + [dependency_installation_leak_found] is false
+  + [package_metadata_mutation_leak_found] is false
+  + [external_langgraph_adapter_leak_found] is false
+  + [adapter_or_transport_implementation_leak_found] is false
+  + [UI_implementation_leak_found] is false
+  + [assignment_leak_found] is false
+  + [manager_dispatch_leak_found] is false
+  + [agent_dispatch_leak_found] is false
+  + [command_execution_leak_found] is false
+  + [process_control_leak_found] is false
+  + [GPU_control_leak_found] is false
+  + [model_runtime_control_leak_found] is false
+  + [job_dispatch_leak_found] is false
+  + [credential_access_leak_found] is false
+  + [network_mutation_leak_found] is false
+  + [destructive_filesystem_action_leak_found] is false
+  + [operations_control_leak_found] is false
+  + [live_machine_control_leak_found] is false
+
+  ! [P5IA02Accepted] is accepted
+    @ [support] [P5IA02Verification]
+    @ [support] [SupportDelta: P5-IA02]
+    @ [support] [RequirementDelta: P5-IA02]
+    @ [support] [FaultReview: P5-IA02]
+
+& [NextSliceGate: P5-IA03] is opened
+  + [opened_slice] is P5-IA03 generated trace path policy and fixture runner contract
+  + [accepted_dependency] is src/langsop/runtime/p5_models.py
+  + [accepted_dependency_sha256] is 0BDC42950DC5045EDC4F8D47B5B09EADC3CE9DCC44FF4C9868549A00ACD1479C
+  + [accepted_dependency] is src/langsop/runtime/__init__.py
+  + [accepted_dependency_sha256] is 711EE017333BFF595C9C8FC40CD8EBAF6679E9BD59324B63B00199E19E610FE5
+  + [model_route] is requires deeper reasoning
+  + [model_route_reason] is generated trace roots, fixture runner effects, path refusal, checkpoint source protection, and no-live-effect boundaries affect authority and safety semantics
+  + [safety_limit] is no assignment, dispatch, operations control, or live machine control authorized
+  + [completion_review_required] is true
+
+  = must: execute P5-IA03 next unless user redirects or a new fault invalidates this review

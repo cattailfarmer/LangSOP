@@ -57,9 +57,11 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
 @ [p5_runtime_activation_minting_review] docs/reviews/P5_Runtime_Implementation_Activation_Minting_Review.v1.sop
 @ [p5_ia01_output] docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
 @ [p5_ia01_review] docs/reviews/P5_IA01_Completion_Review.v1.sop
+@ [p5_runtime_model_refresh] src/langsop/runtime/p5_models.py
+@ [p5_ia02_review] docs/reviews/P5_IA02_Completion_Review.v1.sop
 
 & [PortionSliceMapV1] is the slice-ready whole-pie decomposition map for LangSOP
-  + [map_state] is ready_for_P5-IA02_graph_state_checkpoint_transition_and_interrupt_model_refresh
+  + [map_state] is ready_for_P5-IA03_generated_trace_path_policy_and_fixture_runner_contract
   + [slice_policy] is portions bake the whole product; slice families divide portions; slices are minted just in time from readiness
   + [rebake_trigger] is source change, authority change, portion boundary change, completed-work delta, stale support, false-ready slice, new safety risk, or implementation contradiction
 
@@ -550,25 +552,27 @@ Portion Slice Map UUID: 7f03db1d-3818-4acd-a42f-a306e26e4a39
   = must: route P2 authority kernel schema slices as requiring deeper reasoning because natural keys, authority states, freshness, source/projection distinction, and cross-surface identity affect all downstream contracts
   = should: keep dependency, process, GPU, model-runtime, job, credential, network, and live-control work gated until later accepted authority
 
-& [CurrentReadyChunk: P5-IA02-GraphStateCheckpointTransitionAndInterruptModelRefresh] is ready_for_execution
+& [CurrentReadyChunk: P5-IA03-GeneratedTracePathPolicyAndFixtureRunnerContract] is ready_for_execution
   + [chunk_id] is P5-runtime-implementation-activation
-  + [slice_id] is P5-IA02
-  + [chunk_name] is graph state checkpoint transition and interrupt model refresh
-  + [authority_basis] is docs/reviews/P5_IA01_Completion_Review.v1.sop
-  + [authority_basis_sha256] is 42B2BF3C9E4A617629CA08D6D87A18B859DF4B2A3BE02D52BA781781D8D89BC0
+  + [slice_id] is P5-IA03
+  + [chunk_name] is generated trace path policy and fixture runner contract
+  + [authority_basis] is docs/reviews/P5_IA02_Completion_Review.v1.sop
+  + [authority_basis_sha256] is 673C2D7B9C28F758958F533AC2F32A6A797A75431097C3D6CDFCFE782854A722
   + [readiness_surface] is docs/slices/P5_Runtime_Implementation_Activation_Slices.v1.sop
   + [accepted_boundary] is docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
   + [accepted_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
-  + [expected_output] is bounded runtime model files or model contract refresh files at paths accepted by P5-IA01
-  + [completion_review_output] is docs/reviews/P5_IA02_Completion_Review.v1.sop
+  + [accepted_runtime_model_refresh] is src/langsop/runtime/p5_models.py
+  + [accepted_runtime_model_refresh_sha256] is 0BDC42950DC5045EDC4F8D47B5B09EADC3CE9DCC44FF4C9868549A00ACD1479C
+  + [expected_output] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
+  + [completion_review_output] is docs/reviews/P5_IA03_Completion_Review.v1.sop
   + [model_route] is requires deeper reasoning
   + [model_route_depth] is deeper_reasoning_required
-  + [model_route_reason] is graph state, checkpoint, transition, interrupt, resume, and rebake implementation shape affects authority, replay, generated trace semantics, and future proof authority
+  + [model_route_reason] is generated trace roots, fixture runner effects, path refusal, checkpoint source protection, and no-live-effect boundaries affect authority and safety semantics
 
-  = must: refresh only graph state, checkpoint, transition, interrupt, resume, rebake, and runtime proof model behavior inside the P5-IA01 accepted runtime implementation file inventory
-  = must: preserve existing IR4 runtime graph test behavior unless a future accepted rebake explicitly supersedes it
+  = must: define fixture runner contract that reads only accepted P5 fixture source and expected ledger paths and writes generated trace outputs only under accepted ignored roots
+  = must: define refusal rules for path escapes, source paths, platform mailbox paths, credential paths, network paths, destructive filesystem targets, assignment records, dispatch records, operations targets, and live-control targets
   = must: avoid generated trace creation, proof ledger creation, tests, dependency changes, package metadata changes, external LangGraph adapters, transports, UI, assignment, dispatch, operations control, live machine control, or silent edits to prior outputs
-  = must: keep P5-IA03 through P5-IA06 gated until P5-IA02 completion review accepts
+  = must: keep P5-IA04 through P5-IA06 gated until P5-IA03 completion review accepts
 
 & [InitialSliceQueue] is the first clean subdivision sequence
   + [slice_candidate] is kernel-record-schema-design

@@ -52,11 +52,14 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
 @ [p5_runtime_activation_minting_review] docs/reviews/P5_Runtime_Implementation_Activation_Minting_Review.v1.sop
 @ [p5_ia01_output] docs/implementation/P5_Runtime_Implementation_Activation_Boundary.v1.sop
 @ [p5_ia01_review] docs/reviews/P5_IA01_Completion_Review.v1.sop
+@ [p5_runtime_model_refresh] src/langsop/runtime/p5_models.py
+@ [p5_runtime_package_exports] src/langsop/runtime/__init__.py
+@ [p5_ia02_review] docs/reviews/P5_IA02_Completion_Review.v1.sop
 
 & [P5WorkStateV1] is the current derived work state for P5 LangGraph procedure runtime
   + [state_basis] is docs/reviews/P5_Completion_Review.v1.sop
   + [state_basis_sha256] is 9D73F0512ACBF3CEBA55ECE86179A1A8BDDA66F62AA81B1C0F223DF061E4CACD
-  + [surface_status] is P5_runtime_implementation_activation_P5-IA01_accepted_ready_P5-IA02
+  + [surface_status] is P5_runtime_implementation_activation_P5-IA02_accepted_ready_P5-IA03
   + [source_manifest] is docs/source/2026-05-27_p5_langgraph_procedure_runtime_final_slices/Source_Document_Manifest.sop
   + [source_manifest_sha256] is 587077C47C10ED485CA575B1DB9BADEF7CFDD2FE69D52AB077FD5EA2373B477C
   + [canonical_specification] is docs/canonical/LangSOP_P5_LangGraph_Procedure_Runtime_Final_Slices.canonical.sop
@@ -159,19 +162,24 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [accepted_runtime_activation_boundary_sha256] is 9D58749DE5D6F4C4D4388A8BFC66E52921683A9D7E0C0E9382C615800BD2D6A1
   + [accepted_runtime_activation_boundary_review] is docs/reviews/P5_IA01_Completion_Review.v1.sop
   + [accepted_runtime_activation_boundary_review_sha256] is 42B2BF3C9E4A617629CA08D6D87A18B859DF4B2A3BE02D52BA781781D8D89BC0
-  + [current_ready_slice] is P5-IA02
-  + [current_ready_slice_name] is graph state checkpoint transition and interrupt model refresh
-  + [current_ready_slice_expected_output] is bounded runtime model files or model contract refresh files at paths accepted by P5-IA01
+  + [accepted_runtime_model_refresh] is src/langsop/runtime/p5_models.py
+  + [accepted_runtime_model_refresh_sha256] is 0BDC42950DC5045EDC4F8D47B5B09EADC3CE9DCC44FF4C9868549A00ACD1479C
+  + [accepted_runtime_package_exports] is src/langsop/runtime/__init__.py
+  + [accepted_runtime_package_exports_sha256] is 711EE017333BFF595C9C8FC40CD8EBAF6679E9BD59324B63B00199E19E610FE5
+  + [accepted_runtime_model_refresh_review] is docs/reviews/P5_IA02_Completion_Review.v1.sop
+  + [accepted_runtime_model_refresh_review_sha256] is 673C2D7B9C28F758958F533AC2F32A6A797A75431097C3D6CDFCFE782854A722
+  + [current_ready_slice] is P5-IA03
+  + [current_ready_slice_name] is generated trace path policy and fixture runner contract
+  + [current_ready_slice_expected_output] is docs/implementation/P5_Generated_Trace_Path_Policy_And_Fixture_Runner_Contract.v1.sop
   + [current_ready_slice_model_route] is requires deeper reasoning
-  + [current_ready_slice_model_route_reason] is graph state, checkpoint, transition, interrupt, resume, and rebake implementation shape affects authority, replay, generated trace semantics, and future proof authority
-  + [gated_chunk] is P5-IA03 generated trace path policy until P5-IA02 acceptance
+  + [current_ready_slice_model_route_reason] is generated trace roots, fixture runner effects, path refusal, checkpoint source protection, and no-live-effect boundaries affect authority and safety semantics
   + [gated_chunk] is P5-IA04 validation tests until P5-IA03 acceptance
   + [gated_chunk] is P5-IA05 dependency adapter dispatch operations and live-control deferral until P5-IA04 acceptance
   + [gated_chunk] is P5-IA06 completion proof pack until P5-IA05 acceptance
   + [dependency_installation_authorized] is false
   + [package_metadata_mutation_authorized] is false
-  + [runtime_code_refresh_authorized] is true_for_P5-IA02_only_within_accepted_inventory
-  + [implementation_code_authorized] is bounded_runtime_model_refresh_only_for_P5-IA02
+  + [runtime_code_refresh_authorized] is accepted_for_P5-IA02_only
+  + [implementation_code_authorized] is false_until_future_slice
   + [adapter_implementation_authorized] is false
   + [transport_implementation_authorized] is false
   + [UI_implementation_authorized] is false
@@ -188,6 +196,6 @@ State UUID: a0cc1d7d-b9f5-471e-967c-e499154f9738
   + [live_machine_control_authorized] is false
 
   = must: treat this file as derived current state, not replacement canonical authority
-  = must: execute P5-IA02 before generated trace path policy, runtime validation tests, adapter work, dispatch, or live-control work
+  = must: execute P5-IA03 before runtime validation tests, generated trace proof, adapter work, dispatch, or live-control work
   = must: keep SOP source, proof ledgers, generated outputs, graph checkpoints, surface projections, packet candidates, assignment decisions, dispatch decisions, operations decisions, and live-control deferrals in distinct authority classes
-  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P5 runtime activation manifest, P5 runtime activation canonical, P5 runtime activation slices, P5 runtime activation minting review, P5-IA01 boundary, or P5-IA01 review changes
+  = must: mark this state stale if P5 source, manifest, canonical specification, slice surface, minting review, P2 completion, post-P2 readiness, P3 completion, post-P3 readiness, P8 completion, post-P8 readiness, P6 completion, post-P6 readiness, P8 fixture material activation minting review, P8-IA01 review, P8-IA02 review, P8-IA03 review, P8-IA04 review, P8-IA05 review, P8-IA06 review, P8-IA07 review, P8-IA08 review, post-P8 fixture material readiness, P5 runtime activation manifest, P5 runtime activation canonical, P5 runtime activation slices, P5 runtime activation minting review, P5-IA01 boundary, P5-IA01 review, P5 runtime model refresh, or P5-IA02 review changes
